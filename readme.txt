@@ -14,18 +14,18 @@ A super-awesome downloads manager for WordPress.
 
 Delightful Downloads is a super-awesome downloads manager for WordPress. Easily add download links/buttons to posts and track download statistics.
 
-Features
-* File upload via WordPress admin.
-* Settings page to set default options.
-* Member only downloads with page redirect for non-logged in users.
-* Shortcode to display text link or button.
-* Shortcode to display downloads count and file size.
-* Shortcode to display total blog downloads.
-* Editor button to automatically generate shortcodes.
-* Various button styles included with the ability to customise through CSS.
-* Add download buttons to sidebar widgets.
-* Localization support.
-* Error logging.
+= Features =
++ File upload via WordPress admin.
++ Settings page to set default options.
++ Member only downloads with page redirect for non-logged in users.
++ Shortcode to display text link or button.
++ Shortcode to display downloads count and file size.
++ Shortcode to display total blog downloads.
++ Editor button to automatically generate shortcodes.
++ Various button styles included with the ability to customise through CSS.
++ Add download buttons to sidebar widgets.
++ Localization support.
++ Error logging.
 
 == Installation ==
 
