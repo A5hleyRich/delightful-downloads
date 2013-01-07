@@ -66,9 +66,8 @@ Use the shortcode [ddownload_total_count].
 + Fixes a bug that caused the inability to add a download on the post screen.
 
 = 1.0 =
-Initial stable plugin release.
++ Initial stable plugin release.
 
 == Upgrade notice ==
 
-= 1.0 =
-Initial stable plugin release.
+
