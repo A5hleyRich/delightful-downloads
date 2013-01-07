@@ -67,7 +67,3 @@ Use the shortcode [ddownload_total_count].
 
 = 1.0 =
 + Initial stable plugin release.
-
-== Upgrade notice ==
-
-
