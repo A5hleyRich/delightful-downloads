@@ -35,7 +35,7 @@ add_action( 'wp_enqueue_scripts', 'dedo_enqueue_scripts' );
  */
 function dedo_admin_enqueue_scripts( $page ) {
 	// Register scripts
-	wp_register_script( 'dedo-admin-js-post', DEDO_PLUGIN_URL . 'includes/js/admin-post.js', array( 'jquery' ), '1.0', true );
+	wp_register_script( 'dedo-admin-js-post', DEDO_PLUGIN_URL . 'includes/js/admin-post.js', array( 'jquery', 'jquery-ui-selectable' ), '1.0', true );
 	wp_register_script( 'dedo-admin-js-post-download', DEDO_PLUGIN_URL . 'includes/js/admin-post-download.js', array( 'jquery', 'plupload-all' ), '1.0', true );
 	
 	// Enqueue on all admin pages
