@@ -3,8 +3,8 @@ Contributors: A5hleyRich
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=V9N52LEZA75XE
 Tags: download, manager, downloads, monitor, shortcode, delightful downloads, file, counter, tracking
 Requires at least: 3.5
-Tested up to: 3.5
-Stable tag: trunk
+Tested up to: 3.5.1
+Stable tag: 1.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -22,7 +22,7 @@ Delightful Downloads is a super-awesome downloads manager for WordPress. Easily 
 + Shortcode to display downloads count and file size.
 + Shortcode to display total blog downloads.
 + Editor button to automatically generate shortcodes.
-+ Various button styles included with the ability to customise through CSS.
++ Various button styles included with the ability to customize with CSS.
 + Add download buttons to sidebar widgets.
 + Localization support.
 + Error logging.
@@ -61,6 +61,20 @@ Use the shortcode [ddownload_total_count].
 6. Settings screen.
 
 == Changelog ==
+
+= 1.1 =
++ Downloads by admins are no longer logged or added to the file's download count.
++ Added the ability to search for downloads in the shortcode generator window.
++ Added ddownload_total_count shortcode button to the shortcode generator window.
++ Added download information to the shortcode generator window.
++ Added cache duration to settings page.
++ Added the ability to manually enter a file URL on the add/edit download screen.
++ Added file browser to add/edit download screen.
++ Improved Ajax upload functionality.
++ Improved performance of ddownload_total_count via caching.
++ Improved internal option handling.
++ Fixed a bug on the settings page causing the Default CSS Styles option not to deselect.
++ Fixed a bug in the download log screen that resulted in not being able to filter by ip address.
 
 = 1.0.1 =
 + Fixes a bug that caused the inability to add a download on the post screen.
