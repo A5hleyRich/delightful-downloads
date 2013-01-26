@@ -4,7 +4,7 @@ Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_i
 Tags: download, manager, downloads, monitor, shortcode, delightful downloads, file, counter, tracking
 Requires at least: 3.5
 Tested up to: 3.5.1
-Stable tag: 1.1.1
+Stable tag: 1.1.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -61,6 +61,10 @@ Use the shortcode [ddownload_total_count].
 6. Settings screen.
 
 == Changelog ==
+
+= 1.1.2 =
++ Fixes shortcode formatting.
++ Fixes a bug that caused the file browser to not load.
 
 = 1.1.1 =
 + Fixes headers already sent error.
