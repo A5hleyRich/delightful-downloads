@@ -94,7 +94,6 @@ function dedo_shortcode_download_count( $atts ) {
 	else {
 		// Check id exists
 		if( dedo_download_valid( $id ) ) {
-			
 			// Get download post meta
 			$output = get_post_meta( $id, '_dedo_file_count', true );
 		}

@@ -1,4 +1,4 @@
-<?php
+	<?php
 /**
  * @package Scripts
  */
@@ -37,6 +37,7 @@ function dedo_admin_enqueue_scripts( $page ) {
 	// Register scripts
 	wp_register_script( 'dedo-admin-js-post', DEDO_PLUGIN_URL . 'includes/js/admin-post.js', array( 'jquery', 'jquery-ui-selectable' ), '1.0', true );
 	wp_register_script( 'dedo-admin-js-post-download', DEDO_PLUGIN_URL . 'includes/js/admin-post-download.js', array( 'jquery', 'plupload-all' ), '1.0', true );
+	wp_register_script( 'jqueryFileTree', DEDO_PLUGIN_URL . 'includes/js/jqueryFileTree/jqueryFileTree.js', array( 'jquery' ), '1.01', true );
 	
 	// Enqueue on all admin pages
 	wp_enqueue_style( 'dedo-admin-css', DEDO_PLUGIN_URL . 'includes/css/admin.css' );
@@ -45,6 +46,8 @@ function dedo_admin_enqueue_scripts( $page ) {
 	if( in_array( $page, array( 'post.php', 'post-new.php', 'post-edit.php' ) ) && get_post_type() == 'dedo_download' ) {
 		wp_enqueue_script( 'plupload-all' );
 		wp_enqueue_script( 'dedo-admin-js-post-download' );
+		wp_enqueue_script( 'jqueryFileTree' );
+		wp_enqueue_style( 'jqueryFileTree-css', DEDO_PLUGIN_URL . 'includes/js/jqueryFileTree/jqueryFileTree.css' );
 	}
 	
 	// Enqueue on all other add/edit screen

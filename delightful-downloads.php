@@ -3,7 +3,7 @@
 Plugin Name: Delightful Downloads
 Plugin URI: http://wordpress.org/extend/plugins/delightful-downloads/
 Description: A super-awesome downloads manager for WordPress.
-Version: 1.0.1
+Version: 1.1
 Author: Ashley Rich
 Author URI: http://www.ashleyrich.com
 License: GPL2
@@ -54,9 +54,21 @@ add_action( 'plugins_loaded', 'dedo_localization' );
 /**
  * Options
  */
-global $dedo_options;
-$dedo_options = get_option( 'delightful-downloads' );
- 
+global $dedo_options, $dedo_default_options;
+
+$dedo_default_options = array(
+ 	'members_only'		=> 0,
+	'members_redirect'	=> 0,
+	'enable_css'		=> 1,
+	'cache_duration'	=> 10,
+	'default_text'		=> __( 'Download', 'delightful-downloads' ),
+	'default_style'		=> 'button',
+	'default_color'		=> 'blue',
+	'reset_settings'	=> 0 
+);
+
+$dedo_options = wp_parse_args( get_option( 'delightful-downloads' ), $dedo_default_options );
+
 /**
  * Include required plugin files
  */
@@ -78,16 +90,13 @@ if( is_admin() ) {
  * On activation
  */
 function dedo_activation() {
-	global $dedo_options;
-	
-	// Add default settings to database
-	$defaults = dedo_get_default_options();
+	global $dedo_options, $dedo_default_options;
 	
 	if( $dedo_options['reset_settings'] ) {
-		update_option( 'delightful-downloads', $defaults );
+		update_option( 'delightful-downloads', $dedo_default_options );
 	}
 	else {
-		add_option( 'delightful-downloads', $defaults );
+		add_option( 'delightful-downloads', $dedo_default_options );
 	}
 	
 }

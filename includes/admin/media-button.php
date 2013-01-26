@@ -39,14 +39,20 @@ function dedo_media_modal() {
 					<h1><?php _e( 'Insert Download', 'delightful-downloads' ); ?></h1>
 				</div>
 				<div class="left-panel">
+					<div class="dedo-download-toolbar">
+						<input type="search" id="dedo-download-search" class="search" placeholder="<?php _e( 'Search', 'delightful-downloads' ); ?>" />
+						<a href="#" id="dedo-total-count-button" class="button"><?php _e( 'Insert Total Download Count', 'delightful-downloads' ); ?></a>
+					</div>
 					<div class="dedo-download-list">
 						<ul id="selectable_list">
 							<?php
 							while ( $downloads->have_posts() ) {
 								$downloads->the_post();
-								echo '<li data-ID="' . get_the_ID() . '">';
-								echo '<strong>' . get_the_title() . '</strong>';
-								echo '<span class="download_url">' . get_post_meta( get_the_ID(), '_dedo_file_url', true ) . '</span>';
+								$download_id = get_the_ID();
+								$download_size = dedo_human_filesize( get_post_meta( $download_id, '_dedo_file_size', true ) );
+								echo '<li data-ID="' .$download_id  . '"  data-size="' .$download_size  . '">';
+								echo '<strong>' . get_the_title() . ' <span>(' . __( 'ID:', 'delightful-downloads' ) . ' ' . $download_id . ')</span></strong>';
+								echo '<span class="download_meta">' . get_post_meta( $download_id, '_dedo_file_url', true ) . '</span>';
 								echo '</li>';
 							}
 							?>
@@ -56,6 +62,7 @@ function dedo_media_modal() {
 				<div class="right-panel">
 					<div class="download-details" style="display: none">
 						<h3><?php _e( 'Download Details', 'delightful-downloads' ); ?></h3>
+						<div class="meta"></div>
 						<label for="dedo-download-text"><?php _e( 'Text', 'delightful-downloads' ); ?>:</label>
 						<input type="text" name="dedo-download-text" id="dedo-download-text" value="<?php echo $dedo_options['default_text']; ?>"/>
 						<label for="dedo-download-style"><?php _e( 'Style', 'delightful-downloads' ); ?>:</label>
@@ -84,9 +91,9 @@ function dedo_media_modal() {
 								?>
 							</select>
 						</div>
-						<input id="dedo-download-button" type="button" value="<?php _e( 'Insert Download', 'delightful-downloads' ); ?>" class="button-primary" />
-						<input id="dedo-filesize-button" type="button" value="<?php _e( 'Insert File Size', 'delightful-downloads' ); ?>" class="button" />
-						<input id="dedo-count-button"type="button" value="<?php _e( 'Insert Download Count', 'delightful-downloads' ); ?>" class="button" />
+						<a href="#" id="dedo-download-button" class="button-primary"><?php _e( 'Insert Download', 'delightful-downloads' ); ?></a>
+						<a href="#" id="dedo-filesize-button" class="button"><?php _e( 'Insert File Size', 'delightful-downloads' ); ?></a>
+						<a href="#" id="dedo-count-button" class="button"><?php _e( 'Insert Download Count', 'delightful-downloads' ); ?></a>
 					</div>
 				</div>
 						

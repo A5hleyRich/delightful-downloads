@@ -25,19 +25,22 @@ function dedo_download_process() {
 			if( dedo_download_valid( $download_id ) ) {
 				// Grab download info
 				$download_url = get_post_meta( $download_id, '_dedo_file_url', true );
-				$download_path = str_replace( WP_CONTENT_URL, WP_CONTENT_DIR, $download_url );
+				$download_path = str_replace( dedo_root_url(), dedo_root_dir(), $download_url );
 				$download_count = get_post_meta( $download_id, '_dedo_file_count', true );
 				
 				// Check actual file exists
 				if( file_exists( $download_path ) ) {
-					// Update download count
-					update_post_meta( $download_id, '_dedo_file_count', ++$download_count );
-				
-					// Add log post type
-					if( $download_log = wp_insert_post( array( 'post_type' => 'dedo_log', 'post_author' => get_current_user_id() ) ) ) {
-						// Add meta data if log sucessfully created
-						update_post_meta( $download_log, '_dedo_log_download', $download_id );
-						update_post_meta( $download_log, '_dedo_log_ip', dedo_download_ip() );
+					// Update count and log on non-admins only
+					if( !current_user_can( 'administrator' ) ) {
+						// Update download count
+						update_post_meta( $download_id, '_dedo_file_count', ++$download_count );
+					
+						// Add log post type
+						if( $download_log = wp_insert_post( array( 'post_type' => 'dedo_log', 'post_author' => get_current_user_id() ) ) ) {
+							// Add meta data if log sucessfully created
+							update_post_meta( $download_log, '_dedo_log_download', $download_id );
+							update_post_meta( $download_log, '_dedo_log_ip', dedo_download_ip() );
+						}
 					}
 					
 					// Disable gzip compression

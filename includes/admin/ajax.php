@@ -21,14 +21,13 @@ function dedo_download_upload_ajax() {
 	$file = wp_handle_upload( $_FILES['async-upload'], array( 'test_form'=> true, 'action' => 'dedo_download_upload' ) );
 	
 	// Check for success
-	if( isset( $file['file'] ) ) {
+	if( $file ) {
 		// Post ID
 		$post_id = $_REQUEST['post_id'];
 	
 		// Add/update post meta
 		update_post_meta( $post_id, '_dedo_file_url', $file['url'] );
 		update_post_meta( $post_id, '_dedo_file_size', $_FILES['async-upload']['size'] );
-		update_post_meta( $post_id, '_dedo_file_type', $file['type'] );
 	
 		// Echo success response
 		echo $file['url'];

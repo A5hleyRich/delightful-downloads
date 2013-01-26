@@ -22,7 +22,7 @@ Delightful Downloads is a super-awesome downloads manager for WordPress. Easily 
 + Shortcode to display downloads count and file size.
 + Shortcode to display total blog downloads.
 + Editor button to automatically generate shortcodes.
-+ Various button styles included with the ability to customize with CSS.
++ Various button styles included with the ability to customise through CSS.
 + Add download buttons to sidebar widgets.
 + Localization support.
 + Error logging.

@@ -33,6 +33,7 @@ function dedo_register_settings() {
 	add_settings_field( 'members_only', __( 'Members Download', 'delightful-downloads' ), 'dedo_settings_members_only_field', __FILE__, 'dedo_settings_general' );
 	add_settings_field( 'members_redirect', __( 'Non-Members Redirect', 'delightful-downloads' ), 'dedo_settings_members_redirect_field', __FILE__, 'dedo_settings_general' );
 	add_settings_field( 'enable_css', __( 'Default CSS Styles', 'delightful-downloads' ), 'dedo_settings_enable_css_field', __FILE__, 'dedo_settings_general' );
+	add_settings_field( 'cache_duration', __( 'Cache Duration', 'delightful-downloads' ), 'dedo_settings_cache_duration_field', __FILE__, 'dedo_settings_general' );
 	add_settings_field( 'default_text', __( 'Default Text', 'delightful-downloads' ), 'dedo_settings_default_text_field', __FILE__, 'dedo_settings_shortcodes' );
 	add_settings_field( 'default_style', __( 'Default Style', 'delightful-downloads' ), 'dedo_settings_default_style_field', __FILE__, 'dedo_settings_shortcodes' );
 	add_settings_field( 'default_color', __( 'Default Color', 'delightful-downloads' ), 'dedo_settings_default_color_field', __FILE__, 'dedo_settings_shortcodes' );
@@ -46,13 +47,36 @@ add_action( 'admin_init', 'dedo_register_settings' );
  * @return void
  */
 function dedo_validate_settings( $input ) {
-	 $defaults = dedo_get_default_options();
+	 global $dedo_default_options;
 	 
-	 $parsed = wp_parse_args( $input, $defaults );
+	 $parsed = wp_parse_args( $input, $dedo_default_options );
 	 
-	 // Fix empty default text textbox
-	 if( trim( $input['default_text'] == '' ) ) {
-		 $parsed['default_text'] = $defaults['default_text'];
+	 // Save empty text fields with default options
+	 $textfields = array(
+	 	'default_text',
+	 	'cache_duration'
+	 );
+	 
+	 foreach( $textfields as $textfield ) {
+		 if( trim( $input[$textfield] ) == '' ) {
+			 $parsed[$textfield] = $dedo_default_options[$textfield];
+		 }
+	 }
+	 
+	 // Save checkboxes
+	 $checkboxes = array(
+	 	'members_only',
+	 	'enable_css',
+	 	'reset_settings'
+	 );
+	 
+	 foreach( $checkboxes as $checkbox ) {
+		 if( $input[$checkbox] == '' ) {
+			 $parsed[$checkbox] = 0;
+		 }
+		 else {
+			$parsed[$checkbox] = 1;	 
+		 }
 	 }
 	 
 	 return $parsed;
@@ -167,6 +191,20 @@ function dedo_settings_enable_css_field() {
 	echo __( 'Enable', 'delightful-downloads' );
 	echo '</label>';
 	echo '<p class="description">' . __( 'Disable this option to remove the default button styling and the Delightful Downloads CSS file.', 'delightful-downloads' ) . '</p>';
+}
+
+/**
+ * Render cache duration field
+ *
+ * @return void
+ */
+function dedo_settings_cache_duration_field() {
+	global $dedo_options;
+	
+	$cache_duration = $dedo_options['cache_duration'];
+
+	echo '<input type="number" name="delightful-downloads[cache_duration]" value="' . $cache_duration . '" class="regular-text" />';
+	echo '<p class="description">' . __( 'The time in minutes to cache queries. Affects how often the ddownload_total_count shortcode updates.', 'delightful-downloads' ) . '</p>';
 }
 
 /**

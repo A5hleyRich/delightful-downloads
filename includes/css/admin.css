@@ -33,9 +33,27 @@
 	right: 0;
 	bottom: 0;
 	width: 20%;
-	padding: 45px 5% 10px 5%;
+	padding: 45px 5%;
 	border-left: 1px solid #dfdfdf;
 	background-color: whiteSmoke;
+	overflow: auto;
+}
+
+.dedo-download-toolbar {
+	margin: 20px;
+}
+
+.dedo-download-toolbar input[type="search"] {
+	font-family: sans-serif;
+	font-size: 12px;
+	padding: 4px;
+	line-height: 18px;	
+}
+
+.dedo-download-toolbar #dedo-total-count-button {
+	float: right;
+	height: 30px;
+	line-height: 30px;
 }
 
 .dedo-download-list ul {
@@ -56,7 +74,11 @@
 	box-shadow: 0 0 0 1px white,0 0 0 5px #1E8CBE;
 }
 
-.dedo-download-list .download_url {
+.dedo-download-list strong span {
+	color: gray;
+}
+
+.dedo-download-list .download_meta {
 	display: block;
 	margin-top: 3px;
 	color: gray;
@@ -69,6 +91,18 @@
 	color: #777;
 	text-shadow: 0 1px 0 white;
 	margin: 0 0 8px;	
+}
+
+.right-panel .download-details .meta {
+	margin-bottom: 16px;
+	padding-bottom: 11px;
+	border-bottom: 1px solid #e5e5e5;
+	box-shadow: 0 1px 0 #fff;
+	color: #464646;
+}
+
+.right-panel .download-details .meta div {
+	color: #999;
 }
 
 .right-panel .download-details label {
@@ -93,7 +127,7 @@
 	margin-top: 30px;
 }
 
-.right-panel .download-details input[type=button] {
+.right-panel .download-details .button, .right-panel .download-details .button-primary {
 	display: block;
 	margin: 0 auto;
 	width: 100%;
@@ -101,6 +135,7 @@
 	margin-top: 10px;
 	padding: 10px 0;
 	font-size: 16px;
+	text-align: center;
 }
 
 /* Meta Box File Buttons */
@@ -158,6 +193,23 @@ a#plupload-cancel-button:hover {
 
 #plupload-container .error {
 	color: red;
+}
+
+#dedo-file-url {
+	margin-bottom: 10px;
+}
+
+#dedo-file-browser {
+	position: relative;
+	margin: 10px 0;
+	padding: 10px;
+	background-color: #fff;
+	border: 1px solid #dfdfdf;
+}
+
+#dedo-file-browser-close {
+	display: inline-block;
+	color: #f00;
 }
 
 /* Menu Icon */

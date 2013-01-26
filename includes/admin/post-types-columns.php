@@ -77,8 +77,8 @@ function dedo_download_column_orderby( $query ) {
 	$orderby = $query->get( 'orderby');  
   
     if( $orderby == 'downloads' ) {  
-        $query->set('meta_key','_dedo_file_count');  
-        $query->set('orderby','meta_value_num');  
+        $query->set( 'meta_key', '_dedo_file_count' );  
+        $query->set( 'orderby', 'meta_value_num' );  
     } 
 }
 add_action( 'pre_get_posts', 'dedo_download_column_orderby' );
@@ -119,7 +119,7 @@ function dedo_log_column_contents( $column_name, $post_id ) {
 	// IP column
 	if( $column_name == 'ip' ) {
 		$ip_address = get_post_meta( $post_id, '_dedo_log_ip', true );
-		echo '<a href="edit.php?post_type=dedo_log&ip=' . $ip_address . '">' . $ip_address . '<a/>';
+		echo '<a href="edit.php?post_type=dedo_log&ip_address=' . $ip_address . '">' . $ip_address . '<a/>';
 	}
 	
 	// Date column
@@ -129,3 +129,21 @@ function dedo_log_column_contents( $column_name, $post_id ) {
 	}
 }
 add_action( 'manage_dedo_log_posts_custom_column', 'dedo_log_column_contents', 10, 2 );
+
+/**
+ * Log post type sortable columns action
+ *
+ * @param array $query
+ *
+ * @return void
+ */
+function dedo_log_column_sort( $query ) {
+	$ip_address = ( isset( $_GET['ip_address'] ) ? $_GET['ip_address'] : false );  
+  
+    if( $ip_address ) {  
+        $query->set( 'meta_key', '_dedo_log_ip' );
+        $query->set( 'meta_value', $ip_address );    
+    } 
+
+}
+add_action( 'pre_get_posts', 'dedo_log_column_sort' );
