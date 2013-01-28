@@ -62,6 +62,11 @@ Use the shortcode [ddownload_total_count].
 
 == Changelog ==
 
+= 1.2 =
++ Added dashboard widget.
++ Improved caching.
++ Improved [ddownload_total_count] shortcode.
+
 = 1.1.2 =
 + Fixes shortcode formatting.
 + Fixes a bug that caused the file browser to not load.

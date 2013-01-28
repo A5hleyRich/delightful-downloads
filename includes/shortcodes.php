@@ -143,7 +143,34 @@ add_shortcode( 'ddownload_size', 'dedo_shortcode_download_size' );
  *
  * @return string
  */
-function dedo_shortcode_total_count() {
-	return dedo_get_total_count();
+function dedo_shortcode_total_count( $atts ) {
+	extract( 
+		shortcode_atts( array(
+			'days' 		=> 0,
+			'format'	=> true,
+			'cache'		=> true
+		), $atts )
+	);
+	
+	// Convert to int
+	$days = (int) $days;
+	
+	// Supply correct boolean for format
+	if( in_array( $format, array( 'true', 'yes' ) ) ) {
+		$format = true;
+	}
+	else {
+		$format = false;
+	}
+	
+	// Supply correct boolean for cache
+	if( in_array( $cache, array( 'true', 'yes' ) ) ) {
+		$cache = true;
+	}
+	else {
+		$cache = false;
+	}
+	
+	return dedo_get_total_count( $days, $format, $cache );
 }
 add_shortcode( 'ddownload_total_count', 'dedo_shortcode_total_count' );

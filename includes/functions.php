@@ -238,23 +238,36 @@ function dedo_get_shortcode_colors() {
  *
  * @return int
  */
-function dedo_get_total_count() {
+function dedo_get_total_count( $days = 0, $format = true, $cache = true ) {
 	global $wpdb, $dedo_options;
 	
-	// Check for cached count in transient api
-	if( ( $count = get_transient( 'delightful-downloads-total-count' ) ) === false ) {
-		$cache_duration = $dedo_options['cache_duration'];
-		
-		// Query the db and save to cache
-		$sql = "SELECT SUM(`meta_value`) FROM `$wpdb->postmeta` WHERE `meta_key`='_dedo_file_count'";
-		$query = $wpdb->get_var( $sql );
-		
-		set_transient( 'delightful-downloads-total-count', $query, $cache_duration * 60 );
-		
-		return $query;
+	$cache_duration = $dedo_options['cache_duration'] * 60;
+	
+	// Set correct SQL query
+	if( $days === 0 ) {
+		$sql = "SELECT SUM(`meta_value`) FROM `$wpdb->postmeta` WHERE `meta_key` = '_dedo_file_count'";
 	}
 	else {
-		// Return cached count
-		return $count;
+		$sql = "SELECT COUNT(*) 
+				FROM `$wpdb->posts`
+				WHERE `post_type`  = 'dedo_log'
+				AND DATE_SUB( NOW(), INTERVAL $days DAY ) <= `post_date`";
+	}
+	
+	// Check for cached data and set transient
+	if( ( $count = get_transient( 'delightful-downloads-count-' . $days ) ) === false || $cache === false ) {
+		$count = $wpdb->get_var( $sql );
+		
+		if( $cache_duration > 0 ) {
+			set_transient( 'delightful-downloads-count-' . $days, $count, $cache_duration );
+		}
+	}
+	
+	// Format number with commas
+	if( $format === true ) {
+		return number_format( $count, 0, '', ',' );
+	}
+	else {
+		return $count;	
 	}
 }

@@ -249,3 +249,72 @@ only screen and (min-device-pixel-ratio: 1.5) {
 		background-size: 16px 16px !important;
 	}
 }
+
+/* Dashboard */
+#dedo_dashboard_downloads .inside {
+	font-size: 12px;
+	padding-top: 20px;
+}
+
+#dedo_dashboard_downloads .table {
+	position: relative;
+	margin: 0;
+	padding: 0;
+	border-top: 1px solid #ececec;
+	width: 45%;
+}
+
+#dedo_dashboard_downloads .table_today, #dedo_dashboard_downloads .table_last7 {
+	float: left;
+	clear: left;
+}
+
+#dedo_dashboard_downloads .table_alltime, #dedo_dashboard_downloads .table_last30 {
+	float: right;
+	clear: right;
+}
+
+#dedo_dashboard_downloads .table_last7, #dedo_dashboard_downloads .table_last30 {
+	margin-top: 40px;
+}
+
+#dedo_dashboard_downloads .sub, #dedo_dashboard_downloads .version {
+	margin: -12px;
+}
+
+#dedo_dashboard_downloads .sub {
+	position: absolute;
+	top: -17px;
+	left: 15px;
+	padding: 5px 0 15px;
+	color: #8f8f8f;
+	font-size: 14px;
+}
+
+#dedo_dashboard_downloads table td {
+	padding: 3px 0;
+	white-space: nowrap;
+}
+
+#dedo_dashboard_downloads td.b {
+	padding-right: 6px;
+	text-align: right;
+	font-size: 18px;
+	width: 1%;
+	font-family: Georgia, "Times New Roman", "Bitstream Charter", Times, serif;
+}
+
+#dedo_dashboard_downloads td.t {
+	font-size: 12px;
+	padding-right: 12px;
+	padding-top: 6px;
+}
+
+#dedo_dashboard_downloads .version {
+	padding: 6px 10px 12px;
+	clear: both;
+}
+
+#dedo_dashboard_downloads .version p {
+	margin-bottom: 0;
+}
