@@ -124,7 +124,7 @@ function dedo_log_column_contents( $column_name, $post_id ) {
 	
 	// Date column
 	if( $column_name == 'ddate' ) {
-		echo human_time_diff( get_the_time( 'U' ) ) . ' ago<br />';
+		echo human_time_diff( get_the_time( 'U', current_time( 'timestamp' ) ) ) . ' ago<br />';
 		echo get_the_time( 'Y/m/d \a\t H:i:s' );
 	}
 }

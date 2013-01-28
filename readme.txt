@@ -66,6 +66,7 @@ Use the shortcode [ddownload_total_count].
 + Added dashboard widget.
 + Improved caching.
 + Improved [ddownload_total_count] shortcode.
++ Fixed a bug that caused the incorrect time to display in the download logs.
 
 = 1.1.2 =
 + Fixes shortcode formatting.
