@@ -41,7 +41,7 @@ add_action( 'wp_dashboard_setup', 'dedo_register_dashboard_widgets' );
 function dedo_dashboard_downloads_widget() {
 	?>
 	<div class="table table_today">
-		<p class="sub">Today</p>
+		<p class="sub"><?php _e( 'Today', 'delightful-downloads' ); ?></p>
 		<table>
 			<tbody>
 				<tr>
@@ -52,7 +52,7 @@ function dedo_dashboard_downloads_widget() {
 		</table>
 	</div>
 	<div class="table table_alltime">
-		<p class="sub">All Time</p>
+		<p class="sub"><?php _e( 'All Time', 'delightful-downloads' ); ?></p>
 		<table>
 			<tbody>
 				<tr>
@@ -63,7 +63,7 @@ function dedo_dashboard_downloads_widget() {
 		</table>
 	</div>
 	<div class="table table_last7">
-		<p class="sub">Last 7 Days</p>
+		<p class="sub"><?php _e( 'Last 7 Days', 'delightful-downloads' ); ?></p>
 		<table>
 			<tbody>
 				<tr>
@@ -74,7 +74,7 @@ function dedo_dashboard_downloads_widget() {
 		</table>
 	</div>
 	<div class="table table_last30">
-		<p class="sub">Last 30 Days</p>
+		<p class="sub"><?php _e( 'Last 30 Days', 'delightful-downloads' ); ?></p>
 		<table>
 			<tbody>
 				<tr>

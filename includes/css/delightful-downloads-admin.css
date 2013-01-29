@@ -7,6 +7,29 @@
 	width: 15%;
 }
 
+/* Settings page */
+#dedo-settings-main {
+	float: left;
+	width: 65%;
+}
+
+#dedo-settings-sidebar {
+	float: right;
+	width: 30%;
+}
+
+#dedo-settings-sidebar .settings-widget {
+	margin-bottom: 20px;
+	padding: 10px;
+	background-color: #f5f5f5;
+	border: 1px solid #dfdfdf;
+	border-radius: 3px;
+}
+
+#dedo-settings-sidebar .settings-widget h4 {
+	margin-top: 0;
+}
+
 /* Download Modal Window */
 #dedo-download-modal .media-modal-content {
 	padding: 20px;

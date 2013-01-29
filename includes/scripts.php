@@ -40,7 +40,7 @@ function dedo_admin_enqueue_scripts( $page ) {
 	wp_register_script( 'jqueryFileTree', DEDO_PLUGIN_URL . 'includes/js/jqueryFileTree/jqueryFileTree.js', array( 'jquery' ), '1.01', true );
 	
 	// Enqueue on all admin pages
-	wp_enqueue_style( 'dedo-admin-css', DEDO_PLUGIN_URL . 'includes/css/admin.css' );
+	wp_enqueue_style( 'dedo-admin-css', DEDO_PLUGIN_URL . 'includes/css/delightful-downloads-admin.css' );
 	
 	// Enqueue on dedo_download post add/edit screen
 	if( in_array( $page, array( 'post.php', 'post-new.php', 'post-edit.php' ) ) && get_post_type() == 'dedo_download' ) {

@@ -1,6 +1,6 @@
 === Delightful Downloads ===
 Contributors: A5hleyRich
-Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=V9N52LEZA75XE
+Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=95AQB5DP83XAU
 Tags: download, manager, downloads, monitor, shortcode, delightful downloads, file, counter, tracking
 Requires at least: 3.5
 Tested up to: 3.5.1
@@ -64,6 +64,8 @@ Use the shortcode [ddownload_total_count].
 
 = 1.2 =
 + Added dashboard widget.
++ Added an option to the settings screen to set the directory used in the file browser.
++ Added support options to settings screen.
 + Improved caching.
 + Improved [ddownload_total_count] shortcode.
 + Fixed a bug that caused the incorrect time to display in the download logs.

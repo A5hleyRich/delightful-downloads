@@ -27,16 +27,18 @@ function dedo_register_settings() {
 	// Form sections
 	add_settings_section( 'dedo_settings_general', __( 'General', 'delightful-downloads' ), 'dedo_settings_general_section', __FILE__ );
 	add_settings_section( 'dedo_settings_shortcodes', __( 'Shortcodes', 'delightful-downloads' ), 'dedo_settings_shortcodes_section', __FILE__ );
+	add_settings_section( 'dedo_settings_advanced', __( 'Advanced', 'delightful-downloads' ), 'dedo_settings_advanced_section', __FILE__ );
 	add_settings_section( 'dedo_settings_uninstall', __( 'Uninstall', 'delightful-downloads' ), 'dedo_settings_uninstall_section', __FILE__ );
 	
 	// Form fields
 	add_settings_field( 'members_only', __( 'Members Download', 'delightful-downloads' ), 'dedo_settings_members_only_field', __FILE__, 'dedo_settings_general' );
 	add_settings_field( 'members_redirect', __( 'Non-Members Redirect', 'delightful-downloads' ), 'dedo_settings_members_redirect_field', __FILE__, 'dedo_settings_general' );
 	add_settings_field( 'enable_css', __( 'Default CSS Styles', 'delightful-downloads' ), 'dedo_settings_enable_css_field', __FILE__, 'dedo_settings_general' );
-	add_settings_field( 'cache_duration', __( 'Cache Duration', 'delightful-downloads' ), 'dedo_settings_cache_duration_field', __FILE__, 'dedo_settings_general' );
 	add_settings_field( 'default_text', __( 'Default Text', 'delightful-downloads' ), 'dedo_settings_default_text_field', __FILE__, 'dedo_settings_shortcodes' );
 	add_settings_field( 'default_style', __( 'Default Style', 'delightful-downloads' ), 'dedo_settings_default_style_field', __FILE__, 'dedo_settings_shortcodes' );
 	add_settings_field( 'default_color', __( 'Default Color', 'delightful-downloads' ), 'dedo_settings_default_color_field', __FILE__, 'dedo_settings_shortcodes' );
+	add_settings_field( 'cache_duration', __( 'Cache Duration', 'delightful-downloads' ), 'dedo_settings_cache_duration_field', __FILE__, 'dedo_settings_advanced' );
+	add_settings_field( 'upload_browser_dir', __( 'Upload Browse Directory', 'delightful-downloads' ), 'dedo_settings_upload_browse_dir_field', __FILE__, 'dedo_settings_advanced' );
 	add_settings_field( 'reset_settings', __( 'Reset Settings', 'delightful-downloads' ), 'dedo_settings_reset_settings_field', __FILE__, 'dedo_settings_uninstall' );
 } 
 add_action( 'admin_init', 'dedo_register_settings' );
@@ -92,18 +94,30 @@ function dedo_render_page_settings() {
 	<div class="wrap">
 		<div id="icon-options-general" class="icon32"><br></div>
 		<h2>Delightful Downloads <?php _e( 'Settings', 'delightful-downloads' ); ?></h2>
-		<?php if ( isset( $_GET['settings-updated'] ) ) {
-			echo '<div class="updated"><p>' . __( 'Settings updated successfully.', 'delightful-downloads' ) . '</p></div>';
-		} ?>
-		<form action="options.php" method="post">
-			<?php 
-				settings_fields( 'dedo_settings' ); 
-				do_settings_sections( __FILE__ );
-			?>
-			<p class="submit">
-				<input type="submit" name="submit" id="submit" class="button button-primary" value="Save Changes">
-			</p>
-		</form>
+		<div id="dedo-settings-main">	
+			<?php if ( isset( $_GET['settings-updated'] ) ) {
+				echo '<div class="updated"><p>' . __( 'Settings updated successfully.', 'delightful-downloads' ) . '</p></div>';
+			} ?>
+			<form action="options.php" method="post">
+				<?php 
+					settings_fields( 'dedo_settings' ); 
+					do_settings_sections( __FILE__ );
+				?>
+				<p class="submit">
+					<input type="submit" name="submit" id="submit" class="button button-primary" value="Save Changes">
+				</p>
+			</form>
+		</div>
+		<div id="dedo-settings-sidebar">
+			<div id="dedo-donate" class="settings-widget">
+				<h4><?php _e( 'Support Delightful Downloads', 'delightful-downloads' ); ?></h4>
+				<p><?php _e( 'A lot of time and effort has gone into developing Delightful Downloads. Please consider buying me a coffee to help support future development. Or, rate this plugin 5 stars on WordPress.org.', 'delightful-downloads' ); ?></p>
+				<ul>
+					<li><a href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=95AQB5DP83XAU">Donate via PayPal</a></li>
+					<li><a href="http://wordpress.org/extend/plugins/delightful-downloads/">Rate 5 Stars on WordPress.org</a></li>
+				</ul>
+			</div>
+		</div>
 	</div>
 	<?php
 }
@@ -123,6 +137,15 @@ function dedo_settings_general_section() {
  * @return void
  */
 function dedo_settings_shortcodes_section() {
+	return;
+}
+
+/**
+ * Render advanced section
+ *
+ * @return void
+ */
+function dedo_settings_advanced_section() {
 	return;
 }
 
@@ -194,20 +217,6 @@ function dedo_settings_enable_css_field() {
 }
 
 /**
- * Render cache duration field
- *
- * @return void
- */
-function dedo_settings_cache_duration_field() {
-	global $dedo_options;
-	
-	$cache_duration = $dedo_options['cache_duration'];
-
-	echo '<input type="number" name="delightful-downloads[cache_duration]" value="' . $cache_duration . '" class="regular-text" />';
-	echo '<p class="description">' . __( 'The time in minutes to cache queries.', 'delightful-downloads' ) . '</p>';
-}
-
-/**
  * Render default text field
  *
  * @return void
@@ -259,6 +268,34 @@ function dedo_settings_default_color_field() {
 	}
 	echo '</select>';
 	echo '<p class="description">' . __( 'The default button color.', 'delightful-downloads' ) . '</p>';
+}
+
+/**
+ * Render cache duration field
+ *
+ * @return void
+ */
+function dedo_settings_cache_duration_field() {
+	global $dedo_options;
+	
+	$cache_duration = $dedo_options['cache_duration'];
+
+	echo '<input type="number" name="delightful-downloads[cache_duration]" value="' . $cache_duration . '" class="small-text" />';
+	echo '<p class="description">' . __( 'The time in minutes to cache queries.', 'delightful-downloads' ) . '</p>';
+}
+
+/**
+ * Render upload browse dir field
+ *
+ * @return void
+ */
+function dedo_settings_upload_browse_dir_field() {
+	global $dedo_options;
+	
+	$upload_browse_dir = $dedo_options['upload_browse_dir'];
+
+	echo '<input type="text" name="delightful-downloads[upload_browse_dir]" value="' . $upload_browse_dir . '" class="regular-text" placeholder="wp-content/uploads/"/>';
+	echo '<p class="description">' . __( 'The default directory used by the file browser with trailing slash. Leave blank for root directory.', 'delightful-downloads' ) . '</p>';
 }
 
 /**

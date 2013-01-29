@@ -42,7 +42,7 @@ function dedo_meta_box_file( $post ) {
 	$file_url = get_post_meta( $post->ID, '_dedo_file_url', true );
 	$file_size = get_post_meta( $post->ID, '_dedo_file_size', true );
 	
-	global $post;
+	global $post, $dedo_options;;
 	 
 	$plupload_init = array(
 		'runtimes'            => 'html5, silverlight, flash, html4',
@@ -66,13 +66,10 @@ function dedo_meta_box_file( $post ) {
 			'post_id'			=> $post->ID
 		),
 	);
-	 
-	// Pass to plupload
-	$plupload_init = apply_filters( 'plupload_init', $plupload_init );
 	
 	$filebrowser_init = array(
-		'root'		=> dedo_root_dir( '/' ),
-		'url'		=> dedo_root_url( '/' ),
+		'root'		=> dedo_root_dir( '/' ) . $dedo_options['upload_browse_dir'],
+		'url'		=> dedo_root_url( '/' ) . $dedo_options['upload_browse_dir'],
 		'script'	=> DEDO_PLUGIN_URL . 'includes/js/jqueryFileTree/connectors/jqueryFileTree.php'
 	);
 	
@@ -91,7 +88,7 @@ function dedo_meta_box_file( $post ) {
 						<?php _e( 'File URL:', 'delightful-downloads' ); ?>
 					</th>
 					<td id="plupload-file">
-						<input type="text" name="dedo-file-url" id="dedo-file-url" value="<?php echo $file_url ?>" class="large-text" placeholder="<?php _e( 'File URL', 'delightful-downloads' ); ?>" />
+						<input type="text" name="dedo-file-url" id="dedo-file-url" value="<?php echo $file_url ?>" class="large-text" placeholder="<?php echo dedo_root_url( '/' ); ?>" />
 						<!-- Display with JS tuned on-->
 						<div class="hide-if-no-js">
 							<input id="dedo-upload-button" type="button" value="<?php _e( 'Upload File', 'delightful-downloads' ); ?>" class="button" />

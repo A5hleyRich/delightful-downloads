@@ -64,6 +64,7 @@ $dedo_default_options = array(
 	'default_text'		=> __( 'Download', 'delightful-downloads' ),
 	'default_style'		=> 'button',
 	'default_color'		=> 'blue',
+	'upload_browse_dir'	=> '/wp-content/uploads/',
 	'reset_settings'	=> 0 
 );
 
