@@ -84,7 +84,7 @@ function dedo_dashboard_downloads_widget() {
 			</tbody>
 		</table>
 	</div>
-	<div class="version">
+	<div class="dedo-version">
 		<p><?php _e( 'You are using' ); ?> <strong>Delightful Downloads <?php echo DEDO_VERSION; ?></strong>.</p>
 	</div>
 	<?php

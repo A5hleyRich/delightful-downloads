@@ -333,11 +333,11 @@ only screen and (min-device-pixel-ratio: 1.5) {
 	padding-top: 6px;
 }
 
-#dedo_dashboard_downloads .version {
-	padding: 6px 10px 12px;
+#dedo_dashboard_downloads .dedo-version {
+	padding: 6px 0 0;
 	clear: both;
 }
 
-#dedo_dashboard_downloads .version p {
+#dedo_dashboard_downloads .dedo-version p {
 	margin-bottom: 0;
 }
