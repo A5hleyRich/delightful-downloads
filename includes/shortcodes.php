@@ -55,10 +55,10 @@ function dedo_shortcode_download( $atts ) {
 			// Get style type
 			switch( $style ) {
 				case 'button':
-					$output = '<a href="' . $download_link . '" class="download-button button-' . $color . $class . '"  title="' . $alt . '">' . $text . '</a>';
+					$output = '<a href="' . $download_link . '" class="download-button button-' . $color . $class . '"  title="' . $alt . '" rel="nofollow">' . $text . '</a>';
 					break;
 				case 'link':
-					$output = '<a href="' . $download_link . '" class="download-link' . $class . '" title="' . $alt . '">' . $text . '</a>';
+					$output = '<a href="' . $download_link . '" class="download-link' . $class . '" title="' . $alt . '" rel="nofollow">' . $text . '</a>';
 					break;
 				case 'text':
 				default:

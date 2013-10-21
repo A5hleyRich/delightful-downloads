@@ -38,7 +38,6 @@ function dedo_register_settings() {
 	add_settings_field( 'default_style', __( 'Default Style', 'delightful-downloads' ), 'dedo_settings_default_style_field', __FILE__, 'dedo_settings_shortcodes' );
 	add_settings_field( 'default_color', __( 'Default Color', 'delightful-downloads' ), 'dedo_settings_default_color_field', __FILE__, 'dedo_settings_shortcodes' );
 	add_settings_field( 'cache_duration', __( 'Cache Duration', 'delightful-downloads' ), 'dedo_settings_cache_duration_field', __FILE__, 'dedo_settings_advanced' );
-	add_settings_field( 'upload_browser_dir', __( 'Upload Browse Directory', 'delightful-downloads' ), 'dedo_settings_upload_browse_dir_field', __FILE__, 'dedo_settings_advanced' );
 	add_settings_field( 'reset_settings', __( 'Reset Settings', 'delightful-downloads' ), 'dedo_settings_reset_settings_field', __FILE__, 'dedo_settings_uninstall' );
 } 
 add_action( 'admin_init', 'dedo_register_settings' );
@@ -282,20 +281,6 @@ function dedo_settings_cache_duration_field() {
 
 	echo '<input type="number" name="delightful-downloads[cache_duration]" value="' . $cache_duration . '" class="small-text" />';
 	echo '<p class="description">' . __( 'The time in minutes to cache queries.', 'delightful-downloads' ) . '</p>';
-}
-
-/**
- * Render upload browse dir field
- *
- * @return void
- */
-function dedo_settings_upload_browse_dir_field() {
-	global $dedo_options;
-	
-	$upload_browse_dir = $dedo_options['upload_browse_dir'];
-
-	echo '<input type="text" name="delightful-downloads[upload_browse_dir]" value="' . $upload_browse_dir . '" class="regular-text" placeholder="wp-content/uploads/"/>';
-	echo '<p class="description">' . __( 'The default directory used by the file browser with trailing slash. Leave blank for root directory.', 'delightful-downloads' ) . '</p>';
 }
 
 /**

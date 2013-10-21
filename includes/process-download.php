@@ -25,7 +25,7 @@ function dedo_download_process() {
 			if( dedo_download_valid( $download_id ) ) {
 				// Grab download info
 				$download_url = get_post_meta( $download_id, '_dedo_file_url', true );
-				$download_path = str_replace( dedo_root_url(), dedo_root_dir(), $download_url );
+				$download_path = dedo_url_to_absolute( $download_url );
 				$download_count = get_post_meta( $download_id, '_dedo_file_count', true );
 				
 				// Check actual file exists
@@ -69,20 +69,18 @@ function dedo_download_process() {
 					exit;
 				}
 				else {
-					// File not found, log error and display message
-					dedo_log_error( __( 'File does not exist: ' ) . $download_path );
-					wp_die( __( 'File does not exist!', 'delightful-downloads' ) );
+					// File not found, display message
+					wp_die( $download_path );
+					//wp_die( __( 'File does not exist!', 'delightful-downloads' ) );
 				}			
 			}
 			else {
-				// Provided ID is not a valid download, log and display error
-				dedo_log_error( __( 'Invalid download: ' ) . $download_id );
+				// Provided ID is not a valid download, display error
 				wp_die( __( 'Invalid download.', 'delightful-downloads' ) );
 			}
 		}
 		else {
-			// User does not have permission to access file. Log error and attempt to redirect to a page, else display message.
-			dedo_log_error( __( 'User does not have permission to access file.' ) . $download_id );
+			// User does not have permission to access file. Attempt to redirect to a page, else display message.
 			
 			$members_redirect = $dedo_options['members_redirect'];
 			

@@ -3,8 +3,8 @@ Contributors: A5hleyRich
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=95AQB5DP83XAU
 Tags: download, manager, downloads, monitor, shortcode, delightful downloads, file, counter, tracking
 Requires at least: 3.5
-Tested up to: 3.5.1
-Stable tag: 1.2
+Tested up to: 3.6.1
+Stable tag: 1.2.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -25,7 +25,6 @@ Delightful Downloads is a super-awesome downloads manager for WordPress. Easily 
 + Various button styles included with the ability to customise through CSS.
 + Add download buttons to sidebar widgets.
 + Localization support.
-+ Error logging.
 
 == Installation ==
 
@@ -61,6 +60,16 @@ Use the shortcode [ddownload_total_count].
 6. Settings screen.
 
 == Changelog ==
+
+= 1.2.1 =
++ Improved download links by adding rel="nofollow" to encourage Search Engines not to download files.
++ Improved the file browser so that it no longer shows hidden files.
++ Fixed a bug that caused menu images to not display.
++ Fixed a bug that caused the file browser to not display.
++ Fixed a bug that caused a 'file does not exist' error due to subdomain.
++ Fixed a bug that caused a 'file does not exist' error when using non-standard port numbers for the host server.
++ Removed the option to manually specifiy an upload directory for the file browser.
++ Removed text file error logging in preperation for improved statistics.
 
 = 1.2 =
 + Added dashboard widget.

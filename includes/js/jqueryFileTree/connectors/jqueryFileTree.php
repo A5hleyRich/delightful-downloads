@@ -8,6 +8,10 @@
 // A Beautiful Site (http://abeautifulsite.net/)
 // 24 March 2008
 //
+// Modified by Ashley Rich (http://www.ashleyrich.com)
+// Do not show hidden unix files.
+//
+//
 // History:
 //
 // 1.01 - updated to work with foreign characters in directory/file names (12 April 2008)
@@ -15,6 +19,8 @@
 //
 // Output a list of files for jQuery File Tree
 //
+
+header('Access-Control-Allow-Origin: *');
 
 $_POST['dir'] = urldecode($_POST['dir']);
 
@@ -25,13 +31,13 @@ if( file_exists($root . $_POST['dir']) ) {
 		echo "<ul class=\"jqueryFileTree\" style=\"display: none;\">";
 		// All dirs
 		foreach( $files as $file ) {
-			if( file_exists($root . $_POST['dir'] . $file) && $file != '.' && $file != '..' && is_dir($root . $_POST['dir'] . $file) ) {
+			if( file_exists($root . $_POST['dir'] . $file) && $file != '.' && $file != '..' && is_dir($root . $_POST['dir'] . $file) && strpos($file, '.') !== 0 ) {
 				echo "<li class=\"directory collapsed\"><a href=\"#\" rel=\"" . htmlentities($_POST['dir'] . $file) . "/\">" . htmlentities($file) . "</a></li>";
 			}
 		}
 		// All files
 		foreach( $files as $file ) {
-			if( file_exists($root . $_POST['dir'] . $file) && $file != '.' && $file != '..' && !is_dir($root . $_POST['dir'] . $file) ) {
+			if( file_exists($root . $_POST['dir'] . $file) && $file != '.' && $file != '..' && !is_dir($root . $_POST['dir'] . $file) && strpos($file, '.') !== 0 ) {
 				$ext = preg_replace('/^.*\./', '', $file);
 				echo "<li class=\"file ext_$ext\"><a href=\"#\" rel=\"" . htmlentities($_POST['dir'] . $file) . "\">" . htmlentities($file) . "</a></li>";
 			}

@@ -68,8 +68,8 @@ function dedo_meta_box_file( $post ) {
 	);
 	
 	$filebrowser_init = array(
-		'root'		=> dedo_root_dir( '/' ) . $dedo_options['upload_browse_dir'],
-		'url'		=> dedo_root_url( '/' ) . $dedo_options['upload_browse_dir'],
+		'root'		=> dedo_get_upload_dir( 'basedir' ) . '/',
+		'url'		=> dedo_get_upload_dir( 'baseurl' ) . '/',
 		'script'	=> DEDO_PLUGIN_URL . 'includes/js/jqueryFileTree/connectors/jqueryFileTree.php'
 	);
 	
@@ -88,7 +88,7 @@ function dedo_meta_box_file( $post ) {
 						<?php _e( 'File URL:', 'delightful-downloads' ); ?>
 					</th>
 					<td id="plupload-file">
-						<input type="text" name="dedo-file-url" id="dedo-file-url" value="<?php echo $file_url ?>" class="large-text" placeholder="<?php echo dedo_root_url( '/' ); ?>" />
+						<input type="text" name="dedo-file-url" id="dedo-file-url" value="<?php echo $file_url ?>" class="large-text" placeholder="<?php echo dedo_get_upload_dir( 'dedo_baseurl' ); ?>" />
 						<!-- Display with JS tuned on-->
 						<div class="hide-if-no-js">
 							<input id="dedo-upload-button" type="button" value="<?php _e( 'Upload File', 'delightful-downloads' ); ?>" class="button" />
@@ -194,7 +194,7 @@ function dedo_meta_boxes_save( $post_id ) {
 	else {
 		if( isset( $_POST['dedo-file-url'] ) ) {
 			$file_url = trim( $_POST['dedo-file-url'] );
-			$file_path = str_replace( dedo_root_url(), dedo_root_dir(), $file_url );
+			$file_path = dedo_url_to_absolute( $file_url );
 			
 			// Does file exist?
 			if( file_exists( $file_path ) ) {

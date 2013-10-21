@@ -237,7 +237,7 @@ a#plupload-cancel-button:hover {
 
 /* Menu Icon */
 #menu-posts-dedo_download .wp-menu-image {
-	background: transparent url("/wp-content/plugins/delightful-downloads/includes/images/menu.png") no-repeat;
+	background: transparent url("../images/menu.png") no-repeat;
 	background-position: 0 -35px !important;
 }
 
@@ -251,7 +251,7 @@ a#plupload-cancel-button:hover {
 }
 
 #dedo-media-button span.wp-media-buttons-icon {
-	background: transparent url("/wp-content/plugins/delightful-downloads/includes/images/media-button.png") no-repeat;
+	background: transparent url("../images/media-button.png") no-repeat;
 	background-position: -1px 0;
 }
 
@@ -262,13 +262,13 @@ only screen and (min-device-pixel-ratio: 1.5) {
   
 	/* Menu Icon */
 	#menu-posts-dedo_download .wp-menu-image {
-		background-image: url("/wp-content/plugins/delightful-downloads/includes/images/menu@x2.png");
+		background-image: url("../images/menu@x2.png");
 		background-size: 28px 64px !important;
 	}
   
 	/* Media Button */
 	#dedo-media-button span.wp-media-buttons-icon {
-		background-image: url("/wp-content/plugins/delightful-downloads/includes/images/media-button@x2.png");
+		background-image: url("../images/media-button@x2.png");
 		background-size: 16px 16px !important;
 	}
 }

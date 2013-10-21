@@ -94,28 +94,27 @@ function dedo_download_mime( $path ) {
  */
 function dedo_download_filename( $path = '' ) {
 	// Strip path, leave filename and extension
-	$file = strtolower( end( explode( '/', $path ) ) );
+	$file = explode( '/', $path );
 	
-	return $file;
+	return end( $file );
 }
 
 /**
- * Get root directory
+ * Convert file URL to absolute address
  *
- * @return string
+ * @since  1.2.1
  */
-function dedo_root_dir( $path = '' ) {
-	return $_SERVER['DOCUMENT_ROOT'] . $path;
-}
+function dedo_url_to_absolute( $url ) {
+	
+	// Get URL of WordPress core files.
+	$root_url = site_url();
 
-/**
- * Get root URL
- *
- * @return string
- */
-function dedo_root_url( $path = '' ) {
-	$url = parse_url( site_url() );
-	return $url['scheme'] . '://' . $url['host'] . $path;
+	// Check for trailing slash and add it if required
+	if( preg_match( '/[a-zA-Z0-9\_\-]$/', $root_url ) ) {
+		$root_url .= '/';
+	}
+
+	return str_replace( $root_url, ABSPATH, $url );
 }
 
 /**
@@ -172,35 +171,54 @@ function dedo_human_filesize( $bytes ) {
 }
 
 /**
- * Sets upload dir as used by wp_handle_upload
+ * Return various upload dirs/urls for Delightful Downloads.
  *
- * @param array $upload_dir upload directy
- *
- * @return array
+ * @since  1.3
  */
-function dedo_set_upload_dir( $upload_dir ) {
-	$upload_dir['subdir'] = '/delightful-downloads' . $upload_dir['subdir'];
-	$upload_dir['path'] = $upload_dir['basedir'] . $upload_dir['subdir'];
-	$upload_dir['url']	= $upload_dir['baseurl'] . $upload_dir['subdir'];
-	
-	return $upload_dir;
+function dedo_get_upload_dir( $return = '', $upload_dir = '' ) {
+    $upload_dir = ( $upload_dir == '' ? wp_upload_dir() : $upload_dir );
+
+    $upload_dir['path'] = $upload_dir['basedir'] . '/delightful-downloads' . $upload_dir['subdir'];
+    $upload_dir['url'] = $upload_dir['baseurl'] . '/delightful-downloads' . $upload_dir['subdir'];
+    $upload_dir['dedo_basedir'] = $upload_dir['basedir'] . '/delightful-downloads';
+    $upload_dir['dedo_baseurl'] = $upload_dir['baseurl'] . '/delightful-downloads';
+
+    switch( $return ) {
+        default:
+            return $upload_dir;
+            break;
+        case 'path':
+            return $upload_dir['path'];
+            break;
+        case 'url':
+            return $upload_dir['url'];
+            break;
+        case 'subdir':
+            return $upload_dir['subdir'];
+            break;
+        case 'basedir':
+            return $upload_dir['basedir'];
+            break;
+        case 'baseurl':
+            return $upload_dir['baseurl'];
+            break;
+        case 'dedo_basedir':
+            return $upload_dir['dedo_basedir'];
+            break;
+        case 'dedo_baseurl':
+            return $upload_dir['dedo_baseurl'];
+            break;
+    }
 }
 
 /**
- * Logs an error to text file
+ * Set the upload dir for Delightful Downloads.
  *
- * @param string $message error message
- *
- * @return void
+ * @since  1.2.1
  */
-function dedo_log_error( $message ) {
-	$file = DEDO_PLUGIN_DIR . 'logs/errors.txt';
-	$ip_address = dedo_download_ip();
-	$date = date( 'D M d H:i:s Y' );
-	
-	$output = "[" . $date . "] [client " . $ip_address . "] " . $message . "\n";
-	
-	@file_put_contents( $file, $output, FILE_APPEND | LOCK_EX );
+function dedo_set_upload_dir( $upload_dir ) {
+
+    return dedo_get_upload_dir( '', $upload_dir );
 }
 
 /**
@@ -270,4 +288,19 @@ function dedo_get_total_count( $days = 0, $format = true, $cache = true ) {
 	else {
 		return $count;	
 	}
+}
+
+/**
+ * Basic crawler detection
+ *
+ * @since  1.2.1
+ */
+function dedo_detect_crawler() {
+
+	$crawlers = array( 'Googlebot', 'bingbot', 'msnbot', 'yahoo! slurp', 'ask jeeves', 'jeeves', 'teoma', '80legs' );
+
+	if( in_array( $_SERVER['HTTP_USER_AGENT'], $crawlers ) ) {
+		return true;
+	}
+	return false;
 }
