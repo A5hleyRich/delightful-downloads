@@ -12,6 +12,8 @@ A super-awesome downloads manager for WordPress.
 
 == Description ==
 
+** For those updating from versions prior to version 1.2.1. Downloads uploaded manually must now be within the WordPress file structure (for example wp-content/uploads), any pre-existing downloads outside the WordPress file structure must move the files and update the download URL. **
+
 Delightful Downloads is a super-awesome downloads manager for WordPress. Easily add download links/buttons to posts and track download statistics.
 
 = Features =
@@ -49,6 +51,14 @@ Use the shortcode [ddownload_count id=*], which can be generated using the short
 = How do I display my total blog downloads? =
 
 Use the shortcode [ddownload_total_count].
+
+= I clicked a download but the download count doesn't change? =
+
+Please ensure that you are not logged in as an admin as downloads by admins are not logged. 
+
+= Can I manually upload files? =
+
+Yes, simply upload them to your server anywhere within the WordPress file structure (the wp-contet/uploads directory is provided for user uploads). Once uploaded you can copy and paste the file URL into the Add New Download screen. Please note that files outside the WordPress directory structure will produce a file not found error.
 
 == Screenshots ==
 
