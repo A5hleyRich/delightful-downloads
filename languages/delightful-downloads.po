@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Delightful Downloads\n"
-"POT-Creation-Date: 2013-11-01 19:07-0000\n"
-"PO-Revision-Date: 2013-11-01 19:09-0000\n"
+"POT-Creation-Date: 2013-11-02 17:36-0000\n"
+"PO-Revision-Date: 2013-11-02 17:36-0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -19,43 +19,43 @@ msgstr ""
 msgid "Download"
 msgstr ""
 
-#: ../includes/functions.php:231
+#: ../includes/functions.php:200
 msgid "Button"
 msgstr ""
 
-#: ../includes/functions.php:232
+#: ../includes/functions.php:201
 msgid "Link"
 msgstr ""
 
-#: ../includes/functions.php:233 ../includes/admin/media-button.php:66
+#: ../includes/functions.php:202 ../includes/admin/media-button.php:66
 msgid "Text"
 msgstr ""
 
-#: ../includes/functions.php:244
+#: ../includes/functions.php:213
 msgid "Black"
 msgstr ""
 
-#: ../includes/functions.php:245
+#: ../includes/functions.php:214
 msgid "Blue"
 msgstr ""
 
-#: ../includes/functions.php:246
+#: ../includes/functions.php:215
 msgid "Grey"
 msgstr ""
 
-#: ../includes/functions.php:247
+#: ../includes/functions.php:216
 msgid "Green"
 msgstr ""
 
-#: ../includes/functions.php:248
+#: ../includes/functions.php:217
 msgid "Purple"
 msgstr ""
 
-#: ../includes/functions.php:249
+#: ../includes/functions.php:218
 msgid "Red"
 msgstr ""
 
-#: ../includes/functions.php:250
+#: ../includes/functions.php:219
 msgid "Yellow"
 msgstr ""
 
@@ -170,11 +170,19 @@ msgstr ""
 msgid "Anonymous"
 msgstr ""
 
-#: ../includes/process-download.php:79
+#: ../includes/process-download.php:116
+msgid "Server error, file cannot be opened!"
+msgstr ""
+
+#: ../includes/process-download.php:121
+msgid "File does not exist!"
+msgstr ""
+
+#: ../includes/process-download.php:126
 msgid "Invalid download."
 msgstr ""
 
-#: ../includes/process-download.php:94
+#: ../includes/process-download.php:141
 msgid "Please login to download this file!"
 msgstr ""
 
@@ -264,37 +272,53 @@ msgstr ""
 msgid "File URL:"
 msgstr ""
 
-#: ../includes/admin/meta-boxes.php:94
-msgid "Upload File"
+#: ../includes/admin/meta-boxes.php:91
+msgid "Enter file URL here"
+msgstr ""
+
+#: ../includes/admin/meta-boxes.php:92
+#, php-format
+msgid ""
+"You may manually enter a file URL here, for files that are already uploaded "
+"to the server. Please note that only files within the WordPress directory "
+"structure are allowed (for example: %s). Alternatively, you can browse to "
+"the file using the file browser, or upload a new file:"
 msgstr ""
 
 #: ../includes/admin/meta-boxes.php:95
+msgid "Upload File"
+msgstr ""
+
+#: ../includes/admin/meta-boxes.php:96
 msgid "Select Existing File"
 msgstr ""
 
-#: ../includes/admin/meta-boxes.php:109
+#: ../includes/admin/meta-boxes.php:110
 #, php-format
 msgid "Maximum upload file size: %s."
 msgstr ""
 
-#: ../includes/admin/meta-boxes.php:114
+#: ../includes/admin/meta-boxes.php:115
 msgid "File Size:"
 msgstr ""
 
-#: ../includes/admin/meta-boxes.php:141
+#: ../includes/admin/meta-boxes.php:142
 msgid "Count"
 msgstr ""
 
-#: ../includes/admin/meta-boxes.php:189
+#: ../includes/admin/meta-boxes.php:190
 msgid "There was an error when uploading the file. Please try again."
 msgstr ""
 
-#: ../includes/admin/meta-boxes.php:209
-msgid "The file specified does not exist!"
+#: ../includes/admin/meta-boxes.php:208
+#, php-format
+msgid ""
+"The file does not exist! Please check the URL and ensure it is within the "
+"WordPress directory structure. (For example: %s)"
 msgstr ""
 
 #: ../includes/admin/page-settings.php:15
-#: ../includes/admin/page-settings.php:95
+#: ../includes/admin/page-settings.php:98
 msgid "Settings"
 msgstr ""
 
@@ -346,64 +370,64 @@ msgstr ""
 msgid "Reset Settings"
 msgstr ""
 
-#: ../includes/admin/page-settings.php:98
+#: ../includes/admin/page-settings.php:101
 msgid "Settings updated successfully."
 msgstr ""
 
-#: ../includes/admin/page-settings.php:112
+#: ../includes/admin/page-settings.php:115
 msgid "Support Delightful Downloads"
 msgstr ""
 
-#: ../includes/admin/page-settings.php:113
+#: ../includes/admin/page-settings.php:116
 msgid ""
 "A lot of time and effort has gone into developing Delightful Downloads. "
 "Please consider buying me a coffee to help support future development. Or, "
 "rate this plugin 5 stars on WordPress.org."
 msgstr ""
 
-#: ../includes/admin/page-settings.php:172
+#: ../includes/admin/page-settings.php:175
 msgid "Member Only"
 msgstr ""
 
-#: ../includes/admin/page-settings.php:174
+#: ../includes/admin/page-settings.php:177
 msgid "Allow only logged in users to download files."
 msgstr ""
 
-#: ../includes/admin/page-settings.php:197
+#: ../includes/admin/page-settings.php:200
 msgid ""
 "The page to redirect non-logged in users when attempting to download a file. "
 "If no page is selected a default error will be displayed."
 msgstr ""
 
-#: ../includes/admin/page-settings.php:213
-#: ../includes/admin/page-settings.php:298
+#: ../includes/admin/page-settings.php:216
+#: ../includes/admin/page-settings.php:301
 msgid "Enable"
 msgstr ""
 
-#: ../includes/admin/page-settings.php:215
+#: ../includes/admin/page-settings.php:218
 msgid ""
 "Disable this option to remove the default button styling and the Delightful "
 "Downloads CSS file."
 msgstr ""
 
-#: ../includes/admin/page-settings.php:229
+#: ../includes/admin/page-settings.php:232
 msgid ""
 "The default text displayed on link and button styles shortcode. Use %title% "
 "to automatically insert download title."
 msgstr ""
 
-#: ../includes/admin/page-settings.php:249
+#: ../includes/admin/page-settings.php:252
 msgid "The default display style."
 msgstr ""
 
-#: ../includes/admin/page-settings.php:269
+#: ../includes/admin/page-settings.php:272
 msgid "The default button color."
 msgstr ""
 
-#: ../includes/admin/page-settings.php:283
+#: ../includes/admin/page-settings.php:286
 msgid "The time in minutes to cache queries."
 msgstr ""
 
-#: ../includes/admin/page-settings.php:299
+#: ../includes/admin/page-settings.php:302
 msgid "Reset plugin settings on re-activation."
 msgstr ""
