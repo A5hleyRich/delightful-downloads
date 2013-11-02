@@ -4,7 +4,7 @@ Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_i
 Tags: download, manager, downloads, monitor, shortcode, delightful downloads, file, counter, tracking
 Requires at least: 3.5
 Tested up to: 3.7.1
-Stable tag: 1.2.1
+Stable tag: 1.2.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -73,12 +73,12 @@ Yes, simply upload them to your server anywhere within the WordPress file struct
 
 = 1.2.2 =
 + Added caching to the [ddownload_count] shortcode.
-+ Improved the Add Download screen with more descriptive help text and better error checking.
++ Added language template po and mo files.
++ Improved the Add Download screen with more descriptive help text.
 + Fixed a bug that would occasionally show an error when saving plugin settings.
 + Fixed a bug that caused the Dashboard Statistics widget to incorrectly display counts based on the WordPress timezone settings.
 + Fixed a bug that caused the Logs table to incorrectly show the relative time since a download.
 + Fixed a bug that caused the Logs table to incorrectly show the author.
-
 
 = 1.2.1 =
 + Improved download links by adding rel="nofollow" to encourage Search Engines not to download files.
