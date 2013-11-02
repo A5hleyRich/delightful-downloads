@@ -79,6 +79,9 @@ function dedo_validate_settings( $input ) {
 			$parsed[$checkbox] = 1;	 
 		 }
 	 }
+
+	 // Ensure cache duration is a positive number only
+	 $parsed['cache_duration'] = abs( intval( $parsed['cache_duration'] ) );
 	 
 	 return $parsed;
 }
