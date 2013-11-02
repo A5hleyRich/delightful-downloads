@@ -219,8 +219,8 @@ a#plupload-cancel-button:hover {
 	color: red;
 }
 
-#dedo-file-url {
-	margin-bottom: 10px;
+#dedo_file .hide-if-no-js {
+	margin: 30px 0 0;
 }
 
 #dedo-file-browser {

@@ -3,8 +3,8 @@ Contributors: A5hleyRich
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=95AQB5DP83XAU
 Tags: download, manager, downloads, monitor, shortcode, delightful downloads, file, counter, tracking
 Requires at least: 3.5
-Tested up to: 3.7
-Stable tag: 1.2.2
+Tested up to: 3.7.1
+Stable tag: 1.2.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -14,7 +14,7 @@ A super-awesome downloads manager for WordPress.
 
 Delightful Downloads is a super-awesome downloads manager for WordPress that allows you to easily add download buttons to posts and track download statistics.
 
-** For those updating from versions prior to version 1.2.1. Downloads uploaded manually must now be within the WordPress file structure (for example wp-content/uploads), any pre-existing files outside the WordPress directory structure must be moved and the download URL updated. **
+** For those updating from versions prior to version 1.2.1. Downloads uploaded manually must now be within the WordPress file structure (for example wp-content/uploads), any pre-existing files outside of the WordPress directory structure must be moved and the download URL updated. Sorry for any inconveniences caused. **
 
 = Features =
 + File upload via WordPress admin.
@@ -73,6 +73,7 @@ Yes, simply upload them to your server anywhere within the WordPress file struct
 
 = 1.2.2 =
 + Added caching to the [ddownload_count] shortcode.
++ Improved the Add Download screen with more descriptive help text and better error checking.
 + Fixed a bug that caused the Dashboard Statistics widget to incorrectly display counts based on the WordPress timezone settings.
 + Fixed a bug that caused the Logs table to incorrectly show the relative time since a download.
 + Fixed a bug that caused the Logs table to incorrectly show the author.

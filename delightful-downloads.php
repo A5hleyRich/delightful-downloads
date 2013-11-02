@@ -8,7 +8,7 @@ Author: Ashley Rich
 Author URI: http://ashleyrich.com
 License: GPL2
 
-Copyright 2013  Ashley Rich  (email : ashleyrich@me.com)
+Copyright 2013  Ashley Rich  (email : me@ashleyrich.com)
 
 This program is free software; you can redistribute it and/or modify
 it under the terms of the GNU General Public License, version 2, as 

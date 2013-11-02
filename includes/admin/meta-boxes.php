@@ -88,7 +88,8 @@ function dedo_meta_box_file( $post ) {
 						<?php _e( 'File URL:', 'delightful-downloads' ); ?>
 					</th>
 					<td id="plupload-file">
-						<input type="text" name="dedo-file-url" id="dedo-file-url" value="<?php echo $file_url ?>" class="large-text" placeholder="<?php echo dedo_get_upload_dir( 'dedo_baseurl' ); ?>" />
+						<input type="text" name="dedo-file-url" id="dedo-file-url" value="<?php echo $file_url ?>" class="large-text" placeholder="<?php _e( 'Enter file URL here', 'delightful-downloads' ); ?>" />
+						<p class="description"><?php printf( __( 'You may manually enter a file URL here, for files that are already uploaded to the server. Please note that only files within the WordPress directory structure are allowed (for example: %s). Alternatively, you can browse to the file using the file browser, or upload a new file:', 'delightful-downloads' ), dedo_get_upload_dir( 'dedo_baseurl' ) ); ?></p>
 						<!-- Display with JS tuned on-->
 						<div class="hide-if-no-js">
 							<input id="dedo-upload-button" type="button" value="<?php _e( 'Upload File', 'delightful-downloads' ); ?>" class="button" />
@@ -198,10 +199,20 @@ function dedo_meta_boxes_save( $post_id ) {
 			
 			// Does file exist?
 			if( file_exists( $file_path ) ) {
-				$file_size = filesize( $file_path );
 				
-				update_post_meta( $post_id, '_dedo_file_url', $file_url );
-				update_post_meta( $post_id, '_dedo_file_size', $file_size );
+				// Check the file is within the WordPress directory structure
+				if( strpos( $file_url, site_url() ) !== false ) {
+					$file_size = filesize( $file_path );
+					
+					update_post_meta( $post_id, '_dedo_file_url', $file_url );
+					update_post_meta( $post_id, '_dedo_file_size', $file_size );
+				}
+				else {
+					// Display file location error
+					$notices = get_option( 'delightful-downloads-notices', array() );
+					$notices[] = '<div class="error"><p>' . sprintf( __( 'The file must be saved within the WordPress directory structure. (For example: %s)', 'delightful-downloads' ), dedo_get_upload_dir( 'dedo_baseurl' ) ) . '</p></div>';
+					update_option( 'delightful-downloads-notices', $notices );
+				}
 			}
 			else {
 				// Display file does not exist error
