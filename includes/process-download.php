@@ -113,7 +113,7 @@ function dedo_download_process() {
 					}
 					else {
 						// Server error
-						wp_die( __( 'File cannot be opened!', 'delightful-downloads' ) );
+						wp_die( __( 'Server error, file cannot be opened!', 'delightful-downloads' ) );
 					}
 				}
 				else {

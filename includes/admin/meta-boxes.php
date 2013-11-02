@@ -199,25 +199,13 @@ function dedo_meta_boxes_save( $post_id ) {
 			
 			// Does file exist?
 			if( file_exists( $file_path ) ) {
-				
-				// Check the file is within the WordPress directory structure
-				if( strpos( $file_url, site_url() ) !== false ) {
-					$file_size = filesize( $file_path );
-					
-					update_post_meta( $post_id, '_dedo_file_url', $file_url );
-					update_post_meta( $post_id, '_dedo_file_size', $file_size );
-				}
-				else {
-					// Display file location error
-					$notices = get_option( 'delightful-downloads-notices', array() );
-					$notices[] = '<div class="error"><p>' . sprintf( __( 'The file must be saved within the WordPress directory structure. (For example: %s)', 'delightful-downloads' ), dedo_get_upload_dir( 'dedo_baseurl' ) ) . '</p></div>';
-					update_option( 'delightful-downloads-notices', $notices );
-				}
+				update_post_meta( $post_id, '_dedo_file_url', $file_url );
+				update_post_meta( $post_id, '_dedo_file_size', filesize( $file_path ) );
 			}
 			else {
 				// Display file does not exist error
 				$notices = get_option( 'delightful-downloads-notices', array() );
-				$notices[] = '<div class="error"><p>' . __( 'The file specified does not exist!', 'delightful-downloads' ) . '</p></div>';
+				$notices[] = '<div class="error"><p>' . sprintf( __( 'The file does not exist! Please check the URL and ensure it is within the WordPress directory structure. (For example: %s)', 'delightful-downloads' ), dedo_get_upload_dir( 'dedo_baseurl' ) ) . '</p></div>';
 				update_option( 'delightful-downloads-notices', $notices );
 			}
 		}

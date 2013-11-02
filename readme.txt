@@ -74,6 +74,7 @@ Yes, simply upload them to your server anywhere within the WordPress file struct
 = 1.2.2 =
 + Added caching to the [ddownload_count] shortcode.
 + Improved the Add Download screen with more descriptive help text and better error checking.
++ Fixed a bug that would occasionally show an error when saving plugin settings.
 + Fixed a bug that caused the Dashboard Statistics widget to incorrectly display counts based on the WordPress timezone settings.
 + Fixed a bug that caused the Logs table to incorrectly show the relative time since a download.
 + Fixed a bug that caused the Logs table to incorrectly show the author.

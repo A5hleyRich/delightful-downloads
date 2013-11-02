@@ -49,7 +49,7 @@ add_action( 'admin_init', 'dedo_register_settings' );
  */
 function dedo_validate_settings( $input ) {
 	 global $dedo_default_options;
-	 
+
 	 $parsed = wp_parse_args( $input, $dedo_default_options );
 	 
 	 // Save empty text fields with default options
@@ -72,7 +72,7 @@ function dedo_validate_settings( $input ) {
 	 );
 	 
 	 foreach( $checkboxes as $checkbox ) {
-		 if( $input[$checkbox] == '' ) {
+		 if( !isset( $input[$checkbox] ) ) {
 			 $parsed[$checkbox] = 0;
 		 }
 		 else {
