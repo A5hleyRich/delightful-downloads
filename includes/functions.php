@@ -252,6 +252,34 @@ function dedo_get_shortcode_colors() {
 }
  
 /**
+ * Returns download count for a single file
+ *
+ * @since  1.2.2
+ */
+function dedo_get_single_count( $id, $format = true, $cache = true ) {
+	global $dedo_options;
+
+	$cache_duration = $dedo_options['cache_duration'] * 60;
+	
+	// Check for cached data and set transient
+	if( ( $count = get_transient( 'delightful-downloads-count-file-' . $id ) ) === false || $cache === false ) {
+		$count = get_post_meta( $id, '_dedo_file_count', true );
+		
+		if( $cache_duration > 0 ) {
+			set_transient( 'delightful-downloads-count-file-' . $id, $count, $cache_duration );
+		}
+	}
+
+	// Format number with commas
+	if( $format === true ) {
+		return number_format( $count, 0, '', ',' );
+	}
+	else {
+		return $count;	
+	}
+}
+
+/**
  * Returns total download count of all files
  *
  * @return int
@@ -274,11 +302,11 @@ function dedo_get_total_count( $days = 0, $format = true, $cache = true ) {
 	}
 
 	// Check for cached data and set transient
-	if( ( $count = get_transient( 'delightful-downloads-count-' . $days ) ) === false || $cache === false ) {
+	if( ( $count = get_transient( 'delightful-downloads-total-count-days-' . $days ) ) === false || $cache === false ) {
 		$count = $wpdb->get_var( $sql );
 		
 		if( $cache_duration > 0 ) {
-			set_transient( 'delightful-downloads-count-' . $days, $count, $cache_duration );
+			set_transient( 'delightful-downloads-total-count-days-' . $days, $count, $cache_duration );
 		}
 	}
 	

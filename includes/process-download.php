@@ -31,7 +31,7 @@ function dedo_download_process() {
 				// Check actual file exists
 				if( file_exists( $download_path ) ) {
 					// Update count and log on non-admins only
-					if( !current_user_can( 'administrator' ) ) {
+					if( true ) {
 						// Update download count
 						update_post_meta( $download_id, '_dedo_file_count', ++$download_count );
 					

@@ -83,9 +83,30 @@ add_shortcode( 'ddownload', 'dedo_shortcode_download' );
 function dedo_shortcode_download_count( $atts ) {
 	extract( 
 		shortcode_atts( array(
-			'id' 	=> '',
+			'id' 		=> '',
+			'format'	=> true,
+			'cache'		=> true
 		), $atts )
 	);
+
+	// Convert to int
+	$id = (int) $id;
+	
+	// Supply correct boolean for format
+	if( in_array( $format, array( 'true', 'yes' ) ) ) {
+		$format = true;
+	}
+	else {
+		$format = false;
+	}
+	
+	// Supply correct boolean for cache
+	if( in_array( $cache, array( 'true', 'yes' ) ) ) {
+		$cache = true;
+	}
+	else {
+		$cache = false;
+	}
 	
 	// Check for required id
 	if( $id == '' ) {
@@ -95,7 +116,7 @@ function dedo_shortcode_download_count( $atts ) {
 		// Check id exists
 		if( dedo_download_valid( $id ) ) {
 			// Get download post meta
-			$output = get_post_meta( $id, '_dedo_file_count', true );
+			$output = dedo_get_single_count( $id, $format, $cache );
 		}
 		else {
 			$output ='<strong>' . __( 'Invalid download ID.', 'delightful-downloads' ) . '</strong>';
