@@ -282,7 +282,7 @@ function dedo_settings_cache_duration_field() {
 	
 	$cache_duration = $dedo_options['cache_duration'];
 
-	echo '<input type="number" name="delightful-downloads[cache_duration]" value="' . $cache_duration . '" class="small-text" />';
+	echo '<input type="number" name="delightful-downloads[cache_duration]" value="' . $cache_duration . '" min="0" class="small-text" />';
 	echo '<p class="description">' . __( 'The time in minutes to cache queries.', 'delightful-downloads' ) . '</p>';
 }
 
