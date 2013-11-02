@@ -79,7 +79,8 @@ function dedo_download_valid( $download_id ) {
  */
 function dedo_download_mime( $path ) {
 	// Strip path, leave filename and extension
-	$file = strtolower( end( explode( '/', $path ) ) );
+	$file = explode( '/', $path );
+	$file = strtolower( end( $file ) );
 	$filetype = wp_check_filetype( $file );	
 	
 	return $filetype['type'];
@@ -115,38 +116,6 @@ function dedo_url_to_absolute( $url ) {
 	}
 
 	return str_replace( $root_url, ABSPATH, $url );
-}
-
-/**
- * Send file in chunks - http://codeigniter.com/wiki/Download_helper_for_large_files/
- *
- * @param string $file absolute path to file
- * @param    boolean   return bytes of file
- *
- * @return void
- */
-function dedo_download_chunked( $file, $retbytes = true ) {
-	$chunksize = 1 * ( 1024 * 1024 );
-	$buffer = '';
-	$cnt = 0;
-
-	$handle = fopen( $file, 'r' );
-	if( $handle === false ) return false;
-
-	while( !feof( $handle ) ) {
-	   $buffer = fread( $handle, $chunksize );
-	   echo $buffer;
-	   ob_flush();
-	   flush();
-
-	   if ( $retbytes ) $cnt += strlen( $buffer );
-	}
-
-	$status = fclose( $handle );
-
-	if( $retbytes AND $status ) return $cnt;
-
-	return $status;
 }
 
 /**

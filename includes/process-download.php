@@ -43,9 +43,12 @@ function dedo_download_process() {
 							update_post_meta( $download_log, '_dedo_log_ip', dedo_download_ip() );
 						}
 					}
+
+					// Disable php notices, can cause corrupt downloads
+					@ini_set( 'error_reporting', E_ERROR );
 					
 					// Disable gzip compression
-					if( function_exists( 'apache_setenv' ) ) @apache_setenv( 'no-gzip', 1 );
+					@apache_setenv( 'no-gzip', 1 );
 					@ini_set( 'zlib.output_compression', 'Off' );
 
 					// Close sessions, which can sometimes cause buffering errors??
@@ -65,11 +68,10 @@ function dedo_download_process() {
 					header( 'Content-Type: ' . dedo_download_mime( $download_path ) );
 					header( 'Content-Length: ' . filesize( $download_path ) );
 					header( 'Accept-Ranges: bytes' );
-				
+
 					// Output file in chuncks
 					while( !feof( $file ) ) {
 						print @fread( $file, 1024 * 1024 );
-						ob_flush();
 						flush();
 
 						// Check conection, if lost close file and end loop
