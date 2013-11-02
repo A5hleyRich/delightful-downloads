@@ -28,8 +28,9 @@ function dedo_download_process() {
 				$download_path = dedo_url_to_absolute( $download_url );
 				$download_count = get_post_meta( $download_id, '_dedo_file_count', true );
 				
-				// Check actual file exists
-				if( file_exists( $download_path ) ) {
+				// Check file exists
+				if( $file = @fopen( $download_path, 'rb' ) ) {
+
 					// Update count and log on non-admins only
 					if( !current_user_can( 'administrator' ) ) {
 						// Update download count
@@ -55,7 +56,7 @@ function dedo_download_process() {
 					
 					// Disable max_execution_time
 					@set_time_limit( 0 );
-					
+
 					// Set headers
 					header( 'Pragma: public' );
 					header( 'Expires: -1' );
@@ -63,16 +64,29 @@ function dedo_download_process() {
 					header( 'Content-Disposition: attachment; filename="' . basename( $download_path ) . '";' );
 					header( 'Content-Type: ' . dedo_download_mime( $download_path ) );
 					header( 'Content-Length: ' . filesize( $download_path ) );
-					
-					// Download file
-					@dedo_download_chunked( $download_path );
-					exit;
+					header( 'Accept-Ranges: bytes' );
+				
+					// Output file in chuncks
+					while( !feof( $file ) ) {
+						print @fread( $file, 1024 * 1024 );
+						ob_flush();
+						flush();
+
+						// Check conection, if lost close file and end loop
+						if( connection_status() != 0 ) {
+							@fclose( $file );
+							exit();
+						}
+					}
+
+					// Reached end of file, close it. Job done!
+					@fclose( $file );
+					exit();
 				}
 				else {
 					// File not found, display message
-					wp_die( $download_path );
-					//wp_die( __( 'File does not exist!', 'delightful-downloads' ) );
-				}			
+					wp_die( __( 'File does not exist!', 'delightful-downloads' ) );
+				}		
 			}
 			else {
 				// Provided ID is not a valid download, display error
