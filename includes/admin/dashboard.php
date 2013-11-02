@@ -41,11 +41,11 @@ add_action( 'wp_dashboard_setup', 'dedo_register_dashboard_widgets' );
 function dedo_dashboard_downloads_widget() {
 	?>
 	<div class="table table_today">
-		<p class="sub"><?php _e( 'Today', 'delightful-downloads' ); ?></p>
+		<p class="sub"><?php _e( 'Last 24 Hours', 'delightful-downloads' ); ?></p>
 		<table>
 			<tbody>
 				<tr>
-					<td class="b"><a href="edit.php?post_type=dedo_log"><?php echo dedo_get_total_count( 1 ); ?></a></td>
+					<td class="b"><a href="edit.php?post_type=dedo_log"><?php echo dedo_get_total_count( 1, true, false ); ?></a></td>
 					<td class="last t"><a href="edit.php?post_type=dedo_download"><?php _e( 'Downloads', 'delightful-downloads' ); ?></a></td>
 				</tr>
 			</tbody>
@@ -56,7 +56,7 @@ function dedo_dashboard_downloads_widget() {
 		<table>
 			<tbody>
 				<tr>
-					<td class="b"><a href="edit.php?post_type=dedo_log"><?php echo dedo_get_total_count( 0 ); ?></a></td>
+					<td class="b"><a href="edit.php?post_type=dedo_log"><?php echo dedo_get_total_count( 0, true, false ); ?></a></td>
 					<td class="last t"><a href="edit.php?post_type=dedo_download"><?php _e( 'Downloads', 'delightful-downloads' ); ?></a></td>
 				</tr>
 			</tbody>
@@ -67,7 +67,7 @@ function dedo_dashboard_downloads_widget() {
 		<table>
 			<tbody>
 				<tr>
-					<td class="b"><a href="edit.php?post_type=dedo_log"><?php echo dedo_get_total_count( 7 ); ?></a></td>
+					<td class="b"><a href="edit.php?post_type=dedo_log"><?php echo dedo_get_total_count( 7, true, false ); ?></a></td>
 					<td class="last t"><a href="edit.php?post_type=dedo_download"><?php _e( 'Downloads', 'delightful-downloads' ); ?></a></td>
 				</tr>
 			</tbody>
@@ -78,7 +78,7 @@ function dedo_dashboard_downloads_widget() {
 		<table>
 			<tbody>
 				<tr>
-					<td class="b"><a href="edit.php?post_type=dedo_log"><?php echo dedo_get_total_count( 30 ); ?></a></td>
+					<td class="b"><a href="edit.php?post_type=dedo_log"><?php echo dedo_get_total_count( 30, true, false ); ?></a></td>
 					<td class="last t"><a href="edit.php?post_type=dedo_download"><?php _e( 'Downloads', 'delightful-downloads' ); ?></a></td>
 				</tr>
 			</tbody>

@@ -260,18 +260,19 @@ function dedo_get_total_count( $days = 0, $format = true, $cache = true ) {
 	global $wpdb, $dedo_options;
 	
 	$cache_duration = $dedo_options['cache_duration'] * 60;
-	
+	$wp_time = current_time( 'mysql' );
+
 	// Set correct SQL query
-	if( $days === 0 ) {
-		$sql = "SELECT SUM(`meta_value`) FROM `$wpdb->postmeta` WHERE `meta_key` = '_dedo_file_count'";
-	}
-	else {
+	if( $days > 0 ) {
 		$sql = "SELECT COUNT(*) 
 				FROM `$wpdb->posts`
-				WHERE `post_type`  = 'dedo_log'
-				AND DATE_SUB( NOW(), INTERVAL $days DAY ) <= `post_date`";
+				WHERE `post_type`  = 'post'
+				AND DATE_SUB( '$wp_time', INTERVAL $days DAY ) <= `post_date`";
 	}
-	
+	else {
+				$sql = "SELECT SUM(`meta_value`) FROM `$wpdb->postmeta` WHERE `meta_key` = '_dedo_file_count'";
+	}
+
 	// Check for cached data and set transient
 	if( ( $count = get_transient( 'delightful-downloads-count-' . $days ) ) === false || $cache === false ) {
 		$count = $wpdb->get_var( $sql );
