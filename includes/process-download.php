@@ -29,61 +29,92 @@ function dedo_download_process() {
 				$download_count = get_post_meta( $download_id, '_dedo_file_count', true );
 				
 				// Check file exists
-				if( $file = @fopen( $download_path, 'rb' ) ) {
+				if( file_exists( $download_path ) ) {
+					// Try to open file, else display server error
+					if( $file = @fopen( $download_path, 'rb' ) ) {
 
-					// Update count and log on non-admins only
-					if( !current_user_can( 'administrator' ) ) {
-						// Update download count
-						update_post_meta( $download_id, '_dedo_file_count', ++$download_count );
-					
-						// Add log post type
-						if( $download_log = wp_insert_post( array( 'post_type' => 'dedo_log', 'post_author' => get_current_user_id() ) ) ) {
-							// Add meta data if log sucessfully created
-							update_post_meta( $download_log, '_dedo_log_download', $download_id );
-							update_post_meta( $download_log, '_dedo_log_ip', dedo_download_ip() );
+						// Update count and log on non-admins only
+						if( !current_user_can( 'administrator' ) ) {
+							// Update download count
+							update_post_meta( $download_id, '_dedo_file_count', ++$download_count );
+						
+							// Add log post type
+							if( $download_log = wp_insert_post( array( 'post_type' => 'dedo_log', 'post_author' => get_current_user_id() ) ) ) {
+								// Add meta data if log sucessfully created
+								update_post_meta( $download_log, '_dedo_log_download', $download_id );
+								update_post_meta( $download_log, '_dedo_log_ip', dedo_download_ip() );
+							}
 						}
-					}
 
-					// Disable php notices, can cause corrupt downloads
-					@ini_set( 'error_reporting', E_ERROR );
-					
-					// Disable gzip compression
-					@apache_setenv( 'no-gzip', 1 );
-					@ini_set( 'zlib.output_compression', 'Off' );
+						// Disable php notices, can cause corrupt downloads
+						@ini_set( 'error_reporting', 0 );
+						
+						// Disable gzip compression
+						@apache_setenv( 'no-gzip', 1 );
+						@ini_set( 'zlib.output_compression', 'Off' );
 
-					// Close sessions, which can sometimes cause buffering errors??
-					@session_write_close();
-					
-					// Disable nested buffering.... 3 hours of head scratching!!
-					for( $i = 0; $i < ob_get_level(); $i++ ) { @ob_end_clean(); }
-					
-					// Disable max_execution_time
-					@set_time_limit( 0 );
+						// Close sessions, which can sometimes cause buffering errors??
+						@session_write_close();
+						
+						// Disable nested buffering.... 3 hours of head scratching!!
+						for( $i = 0; $i < ob_get_level(); $i++ ) { @ob_end_clean(); }
+						
+						// Disable max_execution_time
+						@set_time_limit( 0 );
 
-					// Set headers
-					header( 'Pragma: public' );
-					header( 'Expires: -1' );
-					header( 'Cache-Control: public, must-revalidate, post-check=0, pre-check=0' );
-					header( 'Content-Disposition: attachment; filename="' . basename( $download_path ) . '";' );
-					header( 'Content-Type: ' . dedo_download_mime( $download_path ) );
-					header( 'Content-Length: ' . filesize( $download_path ) );
-					header( 'Accept-Ranges: bytes' );
+						// Set headers
+						header( 'Pragma: public' );
+						header( 'Expires: -1' );
+						header( 'Cache-Control: public, must-revalidate, post-check=0, pre-check=0' );
+						header( 'Content-Disposition: attachment; filename="' . basename( $download_path ) . '";' );
+						header( 'Content-Type: ' . dedo_download_mime( $download_path ) );
+						header( 'Content-Length: ' . filesize( $download_path ) );
+						//header( 'Accept-Ranges: bytes' );
 
-					// Output file in chuncks
-					while( !feof( $file ) ) {
-						print @fread( $file, 1024 * 1024 );
-						flush();
+						/*
+						// Check for resumable download
+						if( isset( $_SERVER['HTTP_RANGE'] ) ) {
+							list( $param, $range ) = explode( '=', $_SERVER['HTTP_RANGE'] );
+							// Check for bytes
+							if( strtolower( trim( $param ) ) != 'bytes' ) {
+								header( 'HTTP/1.1 416 Requested Range Not Satisfiable' );
+								exit();
+							}
+							// Get bytes from first range
+							$range = explode( ',', $range, 2 );
+							list( $start, $end ) = explode( '-', $range );
+							
+							// Set correct ranges
+							$start = ( empty( $start ) || $end < $start ? 0 : );
 
-						// Check conection, if lost close file and end loop
-						if( connection_status() != 0 ) {
-							@fclose( $file );
-							exit();
+							$seek_end   = (empty($seek_end)) ? ($file_size - 1) : min(abs(intval($seek_end)),($file_size - 1));
+							$seek_start = (empty($seek_start) || $seek_end < abs(intval($seek_start))) ? 0 : max(abs(intval($seek_start)),0);
+
+							// Fast forward to requested bytes
+							fseek( $file, $start );
 						}
-					}
+						*/
 
-					// Reached end of file, close it. Job done!
-					@fclose( $file );
-					exit();
+						// Output file in chuncks
+						while( !feof( $file ) ) {
+							print @fread( $file, 1024 * 1024 );
+							flush();
+
+							// Check conection, if lost close file and end loop
+							if( connection_status() != 0 ) {
+								@fclose( $file );
+								exit();
+							}
+						}
+
+						// Reached end of file, close it. Job done!
+						@fclose( $file );
+						exit();
+					}
+					else {
+						// Server error
+						wp_die( __( 'File cannot be opened!', 'delightful-downloads' ) );
+					}
 				}
 				else {
 					// File not found, display message
