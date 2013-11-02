@@ -161,8 +161,8 @@ function dedo_log_column_headings( $columns ) {
       	'cb' 			=> '<input type="checkbox" />',
         'ddownload' 	=> __( 'Download', 'delightful-downloads' ),
         'ip'			=> __( 'IP Address', 'delightful-downloads' ),
-        'author' 		=> __( 'User', 'delightful-downloads' ),
-        'ddate' 		=> __( 'Date', 'delightful-downloads' )
+        'dedo_author' 	=> __( 'User', 'delightful-downloads' ),
+        'dedo_date' 	=> __( 'Date', 'delightful-downloads' )
     );
 }
 add_filter( 'manage_dedo_log_posts_columns', 'dedo_log_column_headings' );
@@ -185,12 +185,22 @@ function dedo_log_column_contents( $column_name, $post_id ) {
 	// IP column
 	if( $column_name == 'ip' ) {
 		$ip_address = get_post_meta( $post_id, '_dedo_log_ip', true );
-		echo '<a href="edit.php?post_type=dedo_log&ip_address=' . $ip_address . '">' . $ip_address . '<a/>';
+		echo '<a href="' . admin_url( 'edit.php?post_type=dedo_log&ip_address=' . $ip_address  ) . '">' . $ip_address . '</a>';
+	}
+
+	// User column
+	if( $column_name == 'dedo_author' ) {
+		if( $author = get_the_author() ) {
+			echo '<a href="' . admin_url( 'edit.php?post_type=dedo_log&author=' . get_the_author_meta( 'ID' )  ) . '">' . $author . '</a>';		}
+		else {
+			_e( 'Anonymous', 'delightful-downloads' );
+		}
+		
 	}
 	
 	// Date column
-	if( $column_name == 'ddate' ) {
-		echo human_time_diff( get_the_time( 'U', current_time( 'timestamp' ) ) ) . ' ago<br />';
+	if( $column_name == 'dedo_date' ) {
+		echo human_time_diff( get_the_time( 'U' ), current_time( 'timestamp' ) ) . ' ago<br />';
 		echo get_the_time( 'Y/m/d \a\t H:i:s' );
 	}
 }

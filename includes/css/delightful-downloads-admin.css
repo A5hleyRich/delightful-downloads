@@ -3,7 +3,8 @@
 .wp-list-table .column-file, 
 .wp-list-table .column-shortcode, 
 .wp-list-table .column-ip, 
-.wp-list-table .column-ddate {
+.wp-list-table .column-dedo_author,
+.wp-list-table .column-dedo_date {
 	width: 15%;
 }
 

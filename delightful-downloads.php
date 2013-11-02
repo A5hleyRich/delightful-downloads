@@ -35,7 +35,7 @@ if ( !defined( 'ABSPATH' ) ) exit;
  * Constants
  */
 if( !defined( 'DEDO_VERSION' ) )
-	define( 'DEDO_VERSION', '1.2.1' );
+	define( 'DEDO_VERSION', '1.2.2' );
 
 if( !defined( 'DEDO_PLUGIN_URL' ) )
 	define( 'DEDO_PLUGIN_URL', plugin_dir_url( __FILE__ ) );
