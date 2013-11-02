@@ -50,7 +50,7 @@ function dedo_download_process() {
 						@ini_set( 'error_reporting', 0 );
 						
 						// Disable gzip compression
-						@apache_setenv( 'no-gzip', 1 );
+						if( function_exists( 'apache_setenv' ) ) @apache_setenv( 'no-gzip', 1 );
 						@ini_set( 'zlib.output_compression', 'Off' );
 
 						// Close sessions, which can sometimes cause buffering errors??
