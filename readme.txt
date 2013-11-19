@@ -4,7 +4,7 @@ Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_i
 Tags: download, manager, downloads, monitor, shortcode, delightful downloads, file, counter, tracking
 Requires at least: 3.5
 Tested up to: 3.7.1
-Stable tag: 1.2.2
+Stable tag: 1.2.3
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -70,6 +70,9 @@ Yes, simply upload them to your server anywhere within the WordPress file struct
 6. Settings screen.
 
 == Changelog ==
+
+= 1.2.3 =
++ Fixed a bug that caused downloads to become corrupt when the NextGEN Gallery plugin was active.
 
 = 1.2.2 =
 + Added caching to the [ddownload_count] shortcode.

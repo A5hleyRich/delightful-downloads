@@ -146,4 +146,4 @@ function dedo_download_process() {
 		return false;
 	}		
 }
-add_action( 'init', 'dedo_download_process', 100 );
+add_action( 'init', 'dedo_download_process', 0 );
