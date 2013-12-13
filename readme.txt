@@ -3,8 +3,8 @@ Contributors: A5hleyRich
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=95AQB5DP83XAU
 Tags: download, manager, downloads, monitor, shortcode, delightful downloads, file, counter, tracking
 Requires at least: 3.5
-Tested up to: 3.7.1
-Stable tag: 1.2.3
+Tested up to: 3.8.1
+Stable tag: 1.3
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -70,6 +70,22 @@ Yes, simply upload them to your server anywhere within the WordPress file struct
 6. Settings screen.
 
 == Changelog ==
+
+= 1.3 =
++ Added download tags and categories.
++ Added folder protection so that files can no longer be accessed directly.
++ Added the option to block user agents such as search bots.
++ Added [ddownload_list] shortcode to list downloads.
++ Added [ddownload_total_filesize] shortcode to output file size of all files.
++ Added [ddownload_total_files] shortcode to output the total number of files.
++ Added the option to enable/disable logging of downloads by admins.
++ Added the option to specify download address and enable/disable pretty permalinks.
++ Added Support Screen.
++ Added User Agent to logs screen.
++ Added filters for developers.
++ Added uninstall functionality.
++ Improved [ddownload] with additional wildcards.
++ Improved Settings Screen.
 
 = 1.2.3 =
 + Fixed a bug that caused downloads to become corrupt when the NextGEN Gallery plugin was active.

@@ -1,7 +1,11 @@
 <?php
 /**
- * @package Functions
- */
+ * Delightful Downloads Functions
+ *
+ * @package     Delightful Downloads
+ * @subpackage  Functions/General
+ * @since       1.0
+*/
 
 // Exit if accessed directly
 if ( !defined( 'ABSPATH' ) ) exit;
@@ -9,18 +13,175 @@ if ( !defined( 'ABSPATH' ) ) exit;
 /**
  * Generate download link based on id
  *
- * @param int id dedo_download post type id
- *
- * @return bool
+ * @since  1.0
  */
 function dedo_download_link( $id ) {
-	 return home_url( '?ddownload=' . $id );
+	 global $dedo_options;
+
+	 // Check if pretty permalinks is enabled and return correct addresss
+	 if( $dedo_options['download_url_rewrite'] ) {
+	 	return home_url( $dedo_options['download_url'] . '/' . $id );
+	 }
+	 else {
+	 	return home_url( '?' . $dedo_options['download_url'] . '=' . $id );
+	 }
+}
+
+/**
+ * Returns shortcode styles
+ *
+ * @since  1.0
+ */
+function dedo_get_shortcode_styles() {
+	$styles = array(
+	 	'button'		=> array(
+	 		'name'			=> __( 'Button', 'delightful-downloads' ),
+	 		'format'		=> '<a href="%url%" title="%text%" rel="nofollow" class="%class%">%text%</a>'
+	 	),
+	 	'link'			=> array(
+	 		'name'			=> __( 'Link', 'delightful-downloads' ),
+	 		'format'		=> '<a href="%url%" title="%text%" rel="nofollow" class="%class%">%text%</a>'
+	 	),
+	 	'plain_text'	=> array(
+	 		'name'			=> __( 'Plain Text', 'delightful-downloads' ),
+	 		'format'		=> '%url%'
+	 	)
+	);
+
+	return apply_filters( 'dedo_get_styles', $styles );
+}
+
+/**
+ * Returns default shortcode buttons
+ *
+ * @since  1.3
+ */
+function dedo_get_shortcode_buttons() {
+	$buttons =  array(
+		'black'		=> array(
+			'name'		=> __( 'Black', 'delightful-downloads' ),
+			'class'		=> 'button-black'
+		),
+		'blue'		=> array(
+			'name'		=> __( 'Blue', 'delightful-downloads' ),
+			'class'		=> 'button-blue'
+		),
+		'grey'		=> array(
+			'name'		=> __( 'Grey', 'delightful-downloads' ),
+			'class'		=> 'button-grey'
+		),
+		'green'		=> array(
+			'name'		=> __( 'Green', 'delightful-downloads' ),
+			'class'		=> 'button-green'
+		),
+		'purple'	=> array(
+			'name'		=> __( 'Purple', 'delightful-downloads' ),
+			'class'		=> 'button-purple'
+		),
+		'red'		=> array(
+			'name'		=> __( 'Red', 'delightful-downloads' ),
+			'class'		=> 'button-red'
+		),
+		'yellow'	=> array(
+			'name'		=> __( 'Yellow', 'delightful-downloads' ),
+			'class'		=> 'button-yellow'
+		)
+	);
+
+	return apply_filters( 'dedo_get_buttons', $buttons );
+}
+
+/**
+ * Returns list styles
+ *
+ * @since  1.3
+ */
+function dedo_get_shortcode_lists() {
+	$lists = array(
+	 	'title'				=> array(
+	 		'name'				=> __( 'Title', 'delightful-downloads' ),
+	 		'format'			=> '<a href="%url%" title="%title%" rel="nofollow">%title%</a>'
+	 	),
+	 	'title_date'		=> array(
+	 		'name'				=> __( 'Title (Date)', 'delightful-downloads' ),
+	 		'format'			=> '<a href="%url%" title="%title% (%date%)" rel="nofollow">%title% (%date%)</a>'
+	 	),
+	 	'title_downloads'	=> array(
+	 		'name'				=> __( 'Title (Downloads)', 'delightful-downloads' ),
+	 		'format'			=> '<a href="%url%" title="%title% (Downloads: %downloads%)" rel="nofollow">%title% (Downloads: %downloads%)</a>'
+	 	),
+	 	'title_filesize'	=> array(
+	 		'name'				=> __( 'Title (Filesize)', 'delightful-downloads' ),
+	 		'format'			=> '<a href="%url%" title="%title% (%filesize%)" rel="nofollow">%title% (%filesize%)</a>'
+	 	)
+	);
+
+	return apply_filters( 'dedo_get_lists', $lists );
+}
+
+/**
+ * Replace wildcards
+ *
+ * @since  1.3
+ */
+ function dedo_search_replace_wildcards( $string, $id ) {
+
+ 	// id
+ 	if( strpos( $string, '%id%' ) !== false ) {
+ 		$string = str_replace( '%id%', $id, $string );
+ 	}
+
+ 	// url
+ 	if( strpos( $string, '%url%' ) !== false ) {
+ 		$value = dedo_download_link( $id );
+ 		$string = str_replace( '%url%', $value, $string );
+ 	}
+
+ 	// title
+ 	if( strpos( $string, '%title%' ) !== false ) {
+ 		$value = get_the_title( $id );
+ 		$string = str_replace( '%title%', $value, $string );
+ 	}
+
+ 	// date
+ 	if( strpos( $string, '%date%' ) !== false ) {
+ 		$value = get_the_time( 'F j, Y', $id );
+ 		$string = str_replace( '%date%', $value, $string );
+ 	}
+
+ 	// filesize
+ 	if( strpos( $string, '%filesize%' ) !== false ) {
+ 		$value = dedo_format_filesize( get_post_meta( $id, '_dedo_file_size', true ) );
+ 		$string = str_replace( '%filesize%', $value, $string );
+ 	}
+
+ 	// downloads
+ 	if( strpos( $string, '%count%' ) !== false ) {
+ 		$value = dedo_format_number( get_post_meta( $id, '_dedo_file_count', true ) );
+ 		$string = str_replace( '%count%', $value, $string );
+ 	}
+
+ 	return apply_filters( 'dedo_search_replace_wildcards', $string );
+ }
+
+/**
+ * Check for valid download
+ *
+ * @since  1.0
+ */
+function dedo_download_valid( $download_id ) {
+	if( $download = get_post( $download_id, ARRAY_A ) ) {
+		if( $download['post_type'] == 'dedo_download' && $download['post_status'] == 'publish' ) {
+			return true;
+		}
+	}
+	return false;
 }
 
 /**
  * Check user has permission to download file
  *
- * @return bool
+ * @since  1.0
  */
 function dedo_download_permission() {
 	global $dedo_options;
@@ -41,9 +202,70 @@ function dedo_download_permission() {
 }
 
 /**
+ * Check if user is blocked
+ *
+ * @since  1.3
+ */
+function dedo_download_blocked( $current_agent ) {
+	// Retrieve user agents
+	$user_agents = dedo_get_agents();
+
+	foreach( $user_agents as $user_agent ) {
+		if( strpos( $current_agent, $user_agent ) ) {
+			return false;
+		}	
+	}
+
+	return true;
+}
+
+/**
+ * Get blocked user agents
+ *
+ * @since  1.3
+ */
+function dedo_get_agents() {
+	global $dedo_options;
+	
+	// Get agents and explode into array
+	$crawlers = $dedo_options['block_agents'];
+	$crawlers = explode( "\n", $crawlers );
+
+	return $crawlers;
+}
+
+/**
+ * Add download log
+ *
+ * @since  1.3
+ */
+function dedo_download_log( $download_id ) {
+	global $dedo_options;
+
+	// Get current download count
+	$download_count = get_post_meta( $download_id, '_dedo_file_count', true );
+
+	// If is admin and log admin is false, do not log
+	if( current_user_can( 'administrator' ) && !$dedo_options['log_admin_downloads'] ) {
+		return;
+	}
+
+	// Update download count
+	update_post_meta( $download_id, '_dedo_file_count', ++$download_count );
+
+	// Add log post type
+	if( $download_log = wp_insert_post( array( 'post_type' => 'dedo_log', 'post_author' => get_current_user_id() ) ) ) {
+		// Add meta data if log sucessfully created
+		update_post_meta( $download_log, '_dedo_log_download', $download_id );
+		update_post_meta( $download_log, '_dedo_log_ip', dedo_download_ip() );
+		update_post_meta( $download_log, '_dedo_log_agent', $_SERVER['HTTP_USER_AGENT'] );
+	}
+}
+
+/**
  * Get users IP Address
  *
- * @return string
+ * @since  1.0
  */
 function dedo_download_ip() {
 	if( isset( $_SERVER[ 'REMOTE_ADDR' ] ) ) {
@@ -53,29 +275,11 @@ function dedo_download_ip() {
 		return '0.0.0.0';
 	}
 }
- 
-/**
- * Check for valid download
- *
- * @param int $download_id id of download to check is valid
- *
- * @return bool
- */
-function dedo_download_valid( $download_id ) {
-	if( $download = get_post( $download_id, ARRAY_A ) ) {
-		if( $download['post_type'] == 'dedo_download' && $download['post_status'] == 'publish' ) {
-			return true;
-		}
-	}
-	return false;
-}
 
 /**
  * Get file mime type based on file extension
  *
- * @param string $file filename including extension
- *
- * @return string
+ * @since  1.0
  */
 function dedo_download_mime( $path ) {
 	// Strip path, leave filename and extension
@@ -89,9 +293,7 @@ function dedo_download_mime( $path ) {
 /**
  * Get file name from path
  *
- * @param string $path path to file
- *
- * @return string
+ * @since  1.0
  */
 function dedo_download_filename( $path = '' ) {
 	// Strip path, leave filename and extension
@@ -108,12 +310,7 @@ function dedo_download_filename( $path = '' ) {
 function dedo_url_to_absolute( $url ) {
 	
 	// Get URL of WordPress core files.
-	$root_url = site_url();
-
-	// Check for trailing slash and add it if required
-	if( preg_match( '/[a-zA-Z0-9\_\-]$/', $root_url ) ) {
-		$root_url .= '/';
-	}
+	$root_url = trailingslashit( site_url() );
 
 	return str_replace( $root_url, ABSPATH, $url );
 }
@@ -121,13 +318,11 @@ function dedo_url_to_absolute( $url ) {
 /**
  * Convert bytes to human readable format
  *
- * @param int $bytes file size in bytes
- *
- * @return string
+ * @since  1.3
  */
-function dedo_human_filesize( $bytes ) {
+function dedo_format_filesize( $bytes ) {
 	//Check a number was sent
-    if( !empty( $bytes ) ) {
+    if( !empty( $bytes ) && $bytes != 0 ) {
 
         //Set text sizes
         $s = array( 'Bytes', 'KB', 'MB', 'GB', 'TB', 'PB' );
@@ -137,6 +332,19 @@ function dedo_human_filesize( $bytes ) {
         $output = sprintf( '%.1f '.$s[$e], ( $bytes / pow( 1024, floor( $e ) ) ) );
         return $output;
     }
+    else {
+    	return '0 Bytes';
+    }
+}
+
+/**
+ * Format large numbers
+ *
+ * @since  1.3
+ */
+function dedo_format_number( $number ) {
+	
+    return number_format( $number, 0, '', ',' );
 }
 
 /**
@@ -191,114 +399,153 @@ function dedo_set_upload_dir( $upload_dir ) {
 }
 
 /**
- * Returns shortcode styles
+ * Protect uploads dir from direct access
  *
- * @return array
+ * @since  1.3
  */
-function dedo_get_shortcode_styles() {
-	return array(
-	 	'button'	=> __( 'Button', 'delightful-downloads' ),
-		'link'		=> __( 'Link', 'delightful-downloads' ),
-		'text'		=> __( 'Text', 'delightful-downloads' ) 
-	);
-}
- 
-/**
- * Returns shortcode colors
- *
- * @return array
- */
-function dedo_get_shortcode_colors() {
-	return array(
-		'black'		=> __( 'Black', 'delightful-downloads' ),
-	 	'blue'		=> __( 'Blue', 'delightful-downloads' ),
-	 	'grey'		=> __( 'Grey', 'delightful-downloads' ),
-	 	'green'		=> __( 'Green', 'delightful-downloads' ),
-	 	'purple'	=> __( 'Purple', 'delightful-downloads' ),
-	 	'red'		=> __( 'Red', 'delightful-downloads' ),
-	 	'yellow'	=> __( 'Yellow', 'delightful-downloads' )
-	);
-}
- 
-/**
- * Returns download count for a single file
- *
- * @since  1.2.2
- */
-function dedo_get_single_count( $id, $format = true, $cache = true ) {
-	global $dedo_options;
+function dedo_folder_protection() {
+	// Get delightful downloads upload base path
+	$upload_dir = dedo_get_upload_dir( 'dedo_basedir' );
 
-	$cache_duration = $dedo_options['cache_duration'] * 60;
-	
-	// Check for cached data and set transient
-	if( ( $count = get_transient( 'delightful-downloads-count-file-' . $id ) ) === false || $cache === false ) {
-		$count = get_post_meta( $id, '_dedo_file_count', true );
-		
-		if( $cache_duration > 0 ) {
-			set_transient( 'delightful-downloads-count-file-' . $id, $count, $cache_duration );
+	// Default files
+	$index = DEDO_PLUGIN_DIR . 'assets/default_files/index.php';
+	$htaccess = DEDO_PLUGIN_DIR . 'assets/default_files/.htaccess';
+
+	// Create upload dir if needed
+	wp_mkdir_p( $upload_dir );
+
+	// Check for root index.php
+	if( !file_exists( $upload_dir . '/index.php' ) ) {
+		@copy( $index, $upload_dir . '/index.php' );
+	}
+
+	// Check for root .htaccess
+	if( !file_exists( $upload_dir . '/.htaccess' ) ) {
+		@copy( $htaccess, $upload_dir . '/.htaccess' );
+	}
+
+	// Check subdirs for index.php
+	$subdirs = dedo_folder_scan( $upload_dir );
+
+	foreach( $subdirs as $subdir ) {
+		if( !file_exists( $subdir . '/index.php' ) ) {
+			@copy( $index, $subdir . '/index.php' );
 		}
 	}
-
-	// Format number with commas
-	if( $format === true ) {
-		return number_format( $count, 0, '', ',' );
-	}
-	else {
-		return $count;	
-	}
 }
 
 /**
- * Returns total download count of all files
+ * Scan dir and return subdirs
  *
- * @return int
+ * @since  1.3
  */
-function dedo_get_total_count( $days = 0, $format = true, $cache = true ) {
-	global $wpdb, $dedo_options;
+function dedo_folder_scan( $dir ) {
+	// Check class exists
+	if( class_exists( 'RecursiveDirectoryIterator' ) ) {
+		// Setup return array
+		$return = array();
+
+		$iterator = new RecursiveDirectoryIterator( $dir );
+
+		// Loop through results and add uniques to return array
+		foreach( new RecursiveIteratorIterator( $iterator ) as $file ) {
+			if( !in_array( $file->getPath(), $return ) ) {	
+				$return[] = $file->getPath();
+			}
+		}
+
+		return $return;
+	}
 	
-	$cache_duration = $dedo_options['cache_duration'] * 60;
+	return false;
+}
+
+/**
+ * Get Total Downloads Count
+ *
+ * Returns the total download count of all files. The number of 
+ * days can be specified to limit the query.
+ *
+ * @since   1.0
+ * @param   int $days Number of days to query
+ * @return  string Downloads count
+ */
+function dedo_get_total_count( $days = 0 ) {
+	global $wpdb;
+	
+	// Get current time in WordPress
 	$current_time = current_time( 'mysql' );
 
+	// Validate days
+	$days = abs( intval( $days ) );
+
 	// Set correct SQL query
-	if( $days > 0 ) {
-		$sql = "SELECT COUNT(*) 
-				FROM `$wpdb->posts`
-				WHERE `post_type`  = 'dedo_log'
-				AND DATE_SUB( '$current_time', INTERVAL $days DAY ) <= `post_date`";
+	if ( $days > 0 ) {
+		$sql = "SELECT COUNT( $wpdb->posts.ID )
+				FROM $wpdb->posts
+				WHERE post_type  = 'dedo_log'
+				AND DATE_SUB( '$current_time', INTERVAL $days DAY ) <= post_date";
 	}
 	else {
-				$sql = "SELECT SUM(`meta_value`) FROM `$wpdb->postmeta` WHERE `meta_key` = '_dedo_file_count'";
+		$sql = "SELECT SUM( meta_value )
+				FROM $wpdb->postmeta
+				WHERE meta_key = '_dedo_file_count'";
 	}
 
-	// Check for cached data and set transient
-	if( ( $count = get_transient( 'delightful-downloads-total-count-days-' . $days ) ) === false || $cache === false ) {
-		$count = $wpdb->get_var( $sql );
-		
-		if( $cache_duration > 0 ) {
-			set_transient( 'delightful-downloads-total-count-days-' . $days, $count, $cache_duration );
-		}
-	}
-	
-	// Format number with commas
-	if( $format === true ) {
-		return number_format( $count, 0, '', ',' );
-	}
-	else {
-		return $count;	
-	}
+	return $wpdb->get_var( $sql );
 }
 
 /**
- * Basic crawler detection
+ * Get Total Downloads Filesize
  *
- * @since  1.2.1
+ * Returns the total filesize of all files.
+ *
+ * @since   1.3
+ * @return  string Downloads filesize
  */
-function dedo_detect_crawler() {
+function dedo_get_total_filesize() {
+	global $wpdb;
 
-	$crawlers = array( 'Googlebot', 'bingbot', 'msnbot', 'yahoo! slurp', 'ask jeeves', 'jeeves', 'teoma', '80legs' );
+	$sql = "SELECT SUM( meta_value )
+			FROM $wpdb->postmeta
+			WHERE meta_key = '_dedo_file_size'";
 
-	if( in_array( $_SERVER['HTTP_USER_AGENT'], $crawlers ) ) {
-		return true;
+	$return = $wpdb->get_var( $sql );
+
+	if ( $return == NULL ) {
+		return 0;
 	}
-	return false;
+
+	return $return;
+}
+
+/**
+ * Get Total Files
+ *
+ * Returns the total number of files.
+ *
+ * @since   1.3
+ * @return  string Total files
+ */
+function dedo_get_total_files() {
+	$total_files = wp_count_posts( 'dedo_download' );
+
+	return $total_files->publish;
+}
+
+/**
+ * Delete All Transients
+ *
+ * Deletes all transients created by Delightful Downloads
+ *
+ * @since   1.3
+ */
+function dedo_delete_all_transients() {
+	global $wpdb;
+
+	$sql = "DELETE FROM $wpdb->options
+			WHERE option_name LIKE '\_transient\_delightful-downloads%'
+			OR option_name LIKE '\_transient\_timeout\_delightful-downloads%'";
+
+	$wpdb->query( $sql );
 }

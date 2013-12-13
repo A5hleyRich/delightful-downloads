@@ -27,7 +27,7 @@ function dedo_download_post_type() {
 	    'not_found_in_trash' 	=> __( 'No downloads found in Trash', 'delightful-downloads' ), 
 	    'parent_item_colon' 	=> '',
 	    'menu_name' 			=> __( 'Downloads', 'delightful-downloads' ) 
-	    						),
+	),
     'public' 			=> false,
     'show_ui' 			=> true, 
     'show_in_menu' 		=> true, 
@@ -80,14 +80,31 @@ add_action( 'init', 'dedo_log_post_type' );
  * @return void
  */
 function dedo_download_column_headings( $columns ) {
-	return array(
-        'cb' 			=> '<input type="checkbox" />',
-        'title' 		=> __( 'Title', 'delightful-downloads' ),
-        'file'			=> __( 'File', 'delightful-downloads' ),
-        'shortcode' 	=> __( 'Shortcode', 'delightful-downloads' ),
-        'downloads' 	=> __( 'Downloads', 'delightful-downloads' ),
-        'date' 			=> __( 'Date', 'delightful-downloads' )
+	global $dedo_options;
+
+	$columns = array(
+        'cb' 							=> '<input type="checkbox" />',
+        'title' 						=> __( 'Title', 'delightful-downloads' ),
+        'file'							=> __( 'File', 'delightful-downloads' ),
+        'shortcode' 					=> __( 'Shortcode', 'delightful-downloads' ),
+        'downloads' 					=> __( 'Downloads', 'delightful-downloads' ),
+        'date' 							=> __( 'Date', 'delightful-downloads' )
     );
+
+	// If taxonomies is enabled add to columns array
+	if( $dedo_options['enable_taxonomies'] ) {
+		
+		$columns_taxonomies = array(
+			'taxonomy-ddownload_category' 	=> __( 'Categories', 'delightful-downloads' ),
+        	'taxonomy-ddownload_tag'		=> __( 'Tags', 'delightful-downloads' ),
+		);
+
+		// Splice and insert after shortcode column
+		$spliced = array_splice( $columns, 4 );
+		$columns = array_merge( $columns, $columns_taxonomies, $spliced );
+	}
+
+    return $columns;
 }
 add_filter( 'manage_dedo_download_posts_columns', 'dedo_download_column_headings' );
 
@@ -108,12 +125,12 @@ function dedo_download_column_contents( $column_name, $post_id ) {
 	
 	// Shortcode column
 	if( $column_name == 'shortcode' ) {
-		echo '[ddownload id=' . $post_id . ']';
+		echo '<code>[ddownload id="' . $post_id . '"]</code>';
 	}
 	
 	// Count column
 	else if( $column_name == 'downloads' ) {
-		echo get_post_meta( $post_id, '_dedo_file_count', true );
+		echo dedo_format_number( get_post_meta( $post_id, '_dedo_file_count', true ) );
 	}
 }
 add_action( 'manage_dedo_download_posts_custom_column', 'dedo_download_column_contents', 10, 2 );
@@ -160,8 +177,9 @@ function dedo_log_column_headings( $columns ) {
 	return array(
       	'cb' 			=> '<input type="checkbox" />',
         'ddownload' 	=> __( 'Download', 'delightful-downloads' ),
-        'ip'			=> __( 'IP Address', 'delightful-downloads' ),
         'dedo_author' 	=> __( 'User', 'delightful-downloads' ),
+        'ip'			=> __( 'IP Address', 'delightful-downloads' ),
+        'agent'			=> __( 'User Agent', 'delightful-downloads' ),
         'dedo_date' 	=> __( 'Date', 'delightful-downloads' )
     );
 }
@@ -179,13 +197,19 @@ function dedo_log_column_contents( $column_name, $post_id ) {
 	// Download column
 	if( $column_name == 'ddownload' ) {
 		$download_id = get_post_meta( $post_id, '_dedo_log_download', true );
-		echo '<a href="' . admin_url( 'post.php?post=' . $download_id . '&action=edit' ) . '">' . get_the_title( $download_id ) . '</a>';
+		echo '<a href="' . admin_url( 'edit.php?post_type=dedo_log&ddownload=' . $download_id  ) . '">' . get_the_title( $download_id ) . '</a>';
 	}
 	
 	// IP column
 	if( $column_name == 'ip' ) {
 		$ip_address = get_post_meta( $post_id, '_dedo_log_ip', true );
 		echo '<a href="' . admin_url( 'edit.php?post_type=dedo_log&ip_address=' . $ip_address  ) . '">' . $ip_address . '</a>';
+	}
+
+	// User Agent column
+	if( $column_name == 'agent' ) {
+		$user_agent = get_post_meta( $post_id, '_dedo_log_agent', true );
+		echo '<a href="' . admin_url( 'edit.php?post_type=dedo_log&user_agent=' . $user_agent  ) . '">' . $user_agent . '</a>';
 	}
 
 	// User column
@@ -214,11 +238,23 @@ add_action( 'manage_dedo_log_posts_custom_column', 'dedo_log_column_contents', 1
  * @return void
  */
 function dedo_log_column_sort( $query ) {
-	$ip_address = ( isset( $_GET['ip_address'] ) ? $_GET['ip_address'] : false );  
+	$ddownload = ( isset( $_GET['ddownload'] ) ? $_GET['ddownload'] : false );
+	$ip_address = ( isset( $_GET['ip_address'] ) ? $_GET['ip_address'] : false );
+	$user_agent = ( isset( $_GET['user_agent'] ) ? $_GET['user_agent'] : false );  
   
+	if( $ddownload ) {  
+        $query->set( 'meta_key', '_dedo_log_download' );
+        $query->set( 'meta_value', $ddownload );   
+    }
+
     if( $ip_address ) {  
         $query->set( 'meta_key', '_dedo_log_ip' );
         $query->set( 'meta_value', $ip_address );    
+    }
+
+    if( $user_agent ) {  
+        $query->set( 'meta_key', '_dedo_log_agent' );
+        $query->set( 'meta_value', $user_agent );    
     } 
 
 }

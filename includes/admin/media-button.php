@@ -15,9 +15,7 @@ if ( !defined( 'ABSPATH' ) ) exit;
  */
 function dedo_media_button( $context ) {
 	
-	if( get_post_type() != 'dedo_download' ) {
-		return $context . '<a href="#" id="dedo-media-button" class="button add-download" data-editor="content" title="Add Download"><span class="wp-media-buttons-icon"></span>Add Download</a>';
-	}	
+	return $context . '<a href="#" id="dedo-media-button" class="button add-download" data-editor="content" title="Add Download"><span class="wp-media-buttons-icon"></span>Add Download</a>';	
 }
 add_filter( 'media_buttons_context', 'dedo_media_button' );
 
@@ -41,52 +39,69 @@ function dedo_media_modal() {
 				<div class="left-panel">
 					<div class="dedo-download-toolbar">
 						<input type="search" id="dedo-download-search" class="search" placeholder="<?php _e( 'Search', 'delightful-downloads' ); ?>" />
-						<a href="#" id="dedo-total-count-button" class="button"><?php _e( 'Insert Total Download Count', 'delightful-downloads' ); ?></a>
 					</div>
 					<div class="dedo-download-list">
-						<ul id="selectable_list">
-							<?php
-							while ( $downloads->have_posts() ) {
-								$downloads->the_post();
-								$download_id = get_the_ID();
-								$download_size = dedo_human_filesize( get_post_meta( $download_id, '_dedo_file_size', true ) );
-								echo '<li data-ID="' .$download_id  . '"  data-size="' .$download_size  . '">';
-								echo '<strong>' . get_the_title() . ' <span>(' . __( 'ID:', 'delightful-downloads' ) . ' ' . $download_id . ')</span></strong>';
-								echo '<span class="download_meta">' . get_post_meta( $download_id, '_dedo_file_url', true ) . '</span>';
-								echo '</li>';
-							}
-							?>
-						</ul>
+						<table class="wp-list-table widefat" cellspacing="0">
+							<thead>
+								<tr>
+									<th scope="col" class="title_column"><?php _e( 'Title', 'delightful-downloads' ); ?></th>
+									<th scope="col" class="size_column"><?php _e( 'Size', 'delightful-downloads' ); ?></th>
+									<th scope="col" class="count_column"><?php _e( 'Downloads', 'delightful-downloads' ); ?></th>
+								</tr>
+							</thead>
+
+							<tbody id="the-list">
+<?php
+	while ( $downloads->have_posts() ) {
+		$downloads->the_post();
+		$download_id = get_the_ID();
+		$download_size = dedo_format_filesize( get_post_meta( $download_id, '_dedo_file_size', true ) );
+		$download_count = dedo_format_number( get_post_meta( $download_id, '_dedo_file_count', true ) );
+
+?>
+								<tr id="dedo-download-<?php echo $download_id; ?>" data-id="<?php echo $download_id; ?>" data-size="<?php echo $download_size; ?>" data-count="<?php echo $download_count; ?>">
+									<td class="title_column"><strong><?php the_title(); ?></strong></td>			
+									<td class="size_column"><?php echo $download_size; ?></td>
+									<td class="count_column"><?php echo $download_count; ?></td>
+								</tr>
+<?php
+	}
+?>	
+			
+							</tbody>
+						</table>
 					</div>
 				</div>
 				<div class="right-panel">
 					<div class="download-details" style="display: none">
 						<h3><?php _e( 'Download Details', 'delightful-downloads' ); ?></h3>
-						<div class="meta"></div>
+						<div class="meta">
+							<div class="title"><strong></strong></div>
+							<div class="count"><?php _e( 'Downloads:', 'delightful-downloads' ); ?> <span></span></div>
+							<div class="size"></div>
+						</div>
 						<label for="dedo-download-text"><?php _e( 'Text', 'delightful-downloads' ); ?>:</label>
-						<input type="text" name="dedo-download-text" id="dedo-download-text" value="<?php echo $dedo_options['default_text']; ?>"/>
+						<input type="text" name="dedo-download-text" id="dedo-download-text" placeholder="Default" />
 						<label for="dedo-download-style"><?php _e( 'Style', 'delightful-downloads' ); ?>:</label>
 						<select name="dedo-download-style" id="dedo-download-style">
+							<option value="dedo_default"><?php _e( 'Default', 'delightful-downloads' ); ?></option>
 							<?php
 							$styles = dedo_get_shortcode_styles();
-							$default_style = $dedo_options['default_style'];
 							
 							foreach( $styles as $key => $value ) {
-								$selected = ( $default_style == $key ? ' selected="selected"' : '' );
-								echo '<option value="' . $key . '" ' . $selected . '>' . $value . '</option>';	
+								echo '<option value="' . $key . '">' . $value['name'] . '</option>';	
 							}
 							?>
 						</select>
-						<div class="dedo-download-color-container">
+						<div class="dedo-download-color-container" style="display: none">
 							<label for="dedo-download-color"><?php _e( 'Color', 'delightful-downloads' ); ?>:</label>
 							<select name="dedo-download-color" id="dedo-download-color">
+								<option value="dedo_default"><?php _e( 'Default', 'delightful-downloads' ); ?></option>
 								<?php
-								$colors = dedo_get_shortcode_colors();
-								$default_color = $dedo_options['default_color'];
+								$colors = dedo_get_shortcode_buttons();
 
 								foreach( $colors as $key => $value ) {
-									$selected = ( $default_color == $key ? ' selected="selected"' : '' );
-									echo '<option value="' . $key . '" ' . $selected . '>' . $value . '</option>';	
+									echo '<option value="' . $key . '">' . $value['name'] . '</option>';	
 								}
 								?>
 							</select>

@@ -1,120 +1,83 @@
-/* Post Type Columns */
-.wp-list-table .column-downloads, 
-.wp-list-table .column-file, 
-.wp-list-table .column-shortcode, 
-.wp-list-table .column-ip, 
-.wp-list-table .column-dedo_author,
-.wp-list-table .column-dedo_date {
-	width: 15%;
-}
-
-/* Settings page */
-#dedo-settings-main {
-	float: left;
-	width: 65%;
-}
-
-#dedo-settings-sidebar {
-	float: right;
-	width: 30%;
-}
-
-#dedo-settings-sidebar .settings-widget {
-	margin-bottom: 20px;
-	padding: 10px;
-	background-color: #f5f5f5;
-	border: 1px solid #dfdfdf;
-	border-radius: 3px;
-}
-
-#dedo-settings-sidebar .settings-widget h4 {
-	margin-top: 0;
-}
-
 /* Download Modal Window */
-#dedo-download-modal .media-modal-content {
-	padding: 20px;
-}
-
 #dedo-download-modal .media-modal-content .media-frame-title {
-	position: static;
-	margin: -20px -20px 0 -20px;
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	height: 45px;
 	border-bottom: 1px solid #dfdfdf;
+	box-shadow: 0 4px 4px -4px rgba(0, 0, 0, 0.1);
+	z-index: 200;
 }
 
 .media-modal-content .left-panel {
 	position: absolute;
 	top: 45px;
 	bottom: 0;
-	left: 0;
-	width: 66%;
-	overflow: auto;
+	width: 100%;
+	overflow: hidden;
 }
 
 .media-modal-content .right-panel {
 	position: absolute;
-	top: 0;
+	top: 45px;
 	right: 0;
 	bottom: 0;
-	width: 20%;
-	padding: 45px 5%;
+	width: 267px;
+	padding: 20px 16px;
 	border-left: 1px solid #dfdfdf;
 	background-color: whiteSmoke;
 	overflow: auto;
 }
 
 .dedo-download-toolbar {
+	position: absolute;
+	top: 0;
+	right: 300px;
+	bottom: 0;
+	left: 0;
 	margin: 20px;
+	overflow: auto;
 }
 
 .dedo-download-toolbar input[type="search"] {
+	float: right;
 	font-family: sans-serif;
 	font-size: 12px;
 	padding: 4px;
 	line-height: 18px;	
 }
 
-.dedo-download-toolbar #dedo-total-count-button {
-	float: right;
-	height: 30px;
-	line-height: 30px;
-}
-
-.dedo-download-list ul {
-	margin: 0 20px;
-}
-
 .dedo-download-list {
-	margin: 20px 0;
+	position: absolute;
+	top: 50px;
+	right: 300px;
+	bottom: 0;
+	left: 0;
+	margin: 20px;
+	overflow: auto;
 }
 
-.dedo-download-list ul li {
-	margin: 10px 0;
-	padding: 5px;
-	border: 1px solid #dfdfdf;
+.dedo-download-list td {
+	padding-top: 12px;
+	padding-bottom: 12px;
 }
 
-.dedo-download-list ul li.ui-selected {
-	box-shadow: 0 0 0 1px white,0 0 0 5px #1E8CBE;
+.dedo-download-list tr:hover {
+	background-color: #fff;
 }
 
-.dedo-download-list strong span {
-	color: gray;
-}
-
-.dedo-download-list .download_meta {
-	display: block;
-	margin-top: 3px;
-	color: gray;
+.dedo-download-list tr.ui-selected {
+	background-color: #fff;
 }
 
 .right-panel .download-details h3 {
+	margin: 0 0 8px;
 	font-weight: bold;
 	text-transform: uppercase;
 	font-size: 12px;
 	color: #777;
-	text-shadow: 0 1px 0 white;
-	margin: 0 0 8px;	
+	text-shadow: 0 1px 0 white;	
 }
 
 .right-panel .download-details .meta {
@@ -127,6 +90,11 @@
 
 .right-panel .download-details .meta div {
 	color: #999;
+	line-height: 18px;
+}
+
+.right-panel .download-details .meta strong {
+	color: #000;
 }
 
 .right-panel .download-details label {
@@ -160,6 +128,16 @@
 	padding: 10px 0;
 	font-size: 16px;
 	text-align: center;
+}
+
+/* Taxonomy pages */
+.taxonomy-ddownload_category .row-actions .view, .taxonomy-ddownload_tag .row-actions .view {
+	display: none;
+}
+
+/* Add Download Page */
+.post-type-dedo_download .misc-pub-visibility {
+	display: none;
 }
 
 /* Meta Box File Buttons */
@@ -237,41 +215,17 @@ a#plupload-cancel-button:hover {
 }
 
 /* Menu Icon */
-#menu-posts-dedo_download .wp-menu-image {
-	background: transparent url("../images/menu.png") no-repeat;
-	background-position: 0 -35px !important;
-}
-
-#menu-posts-dedo_download:hover .wp-menu-image, #menu-posts-dedo_download.wp-has-current-submenu .wp-menu-image {
-	background-position: 0 -3px !important;
+#menu-posts-dedo_download .wp-menu-image:before {
+	content: "\f316" !important;
 }
 
 /* Media Button */
-#dedo-media-button {
-	padding-left: .4em;
-}
-
-#dedo-media-button span.wp-media-buttons-icon {
-	background: transparent url("../images/media-button.png") no-repeat;
-	background-position: -1px 0;
-}
-
-@media only screen and (-Webkit-min-device-pixel-ratio: 1.5),
-only screen and (-moz-min-device-pixel-ratio: 1.5),
-only screen and (-o-min-device-pixel-ratio: 3/2),
-only screen and (min-device-pixel-ratio: 1.5) {
-  
-	/* Menu Icon */
-	#menu-posts-dedo_download .wp-menu-image {
-		background-image: url("../images/menu@x2.png");
-		background-size: 28px 64px !important;
-	}
-  
-	/* Media Button */
-	#dedo-media-button span.wp-media-buttons-icon {
-		background-image: url("../images/media-button@x2.png");
-		background-size: 16px 16px !important;
-	}
+#dedo-media-button span.wp-media-buttons-icon:before {
+	content: "\f316" !important;
+	font: normal 18px/1 'dashicons';
+	speak: none;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
 }
 
 /* Dashboard */
@@ -325,7 +279,6 @@ only screen and (min-device-pixel-ratio: 1.5) {
 	text-align: right;
 	font-size: 18px;
 	width: 1%;
-	font-family: Georgia, "Times New Roman", "Bitstream Charter", Times, serif;
 }
 
 #dedo_dashboard_downloads td.t {
@@ -341,4 +294,21 @@ only screen and (min-device-pixel-ratio: 1.5) {
 
 #dedo_dashboard_downloads .dedo-version p {
 	margin-bottom: 0;
+}
+
+/* Settings page */
+.dedo_download_page_dedo_settings .description {
+	max-width: 600px;
+}
+
+.dedo-settings-textarea {
+	width: 100%;
+	max-width: 400px;
+	height: 200px;
+}
+
+/* Support Page */
+#dedo_support {
+	width: 100%;
+	height: 500px;
 }

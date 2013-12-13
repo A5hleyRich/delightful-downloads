@@ -32,14 +32,27 @@ jQuery( document ).ready( function( $ ){
 	
 	// File uploaded
 	uploader.bind( 'FileUploaded', function( up, file, response ) {
-		$( '#dedo-file-url' ).val( $.trim( response['response'] ) );
-		$( '#plupload-file-size' ).html( plupload.formatSize( file['size'] ) );
-		$( '#plupload-progress' ).slideUp();
+		response = $.parseJSON( response.response );
+
+ 		if( response.error && response.error.code ) {
+ 			uploader.trigger('Error', {
+            	code : response.error.code,
+            	message : response.error.message,
+            	details : response.details,
+            	file : file
+        	});
+ 		}
+ 		else {
+ 			$( '#dedo-file-url' ).val( $.trim( response.file.url ) );
+			$( '#plupload-file-size' ).html( plupload.formatSize( file['size'] ) );
+			$( '#plupload-progress' ).slideUp();
+ 		}
 	} );
 	
 	// Error
 	uploader.bind( 'Error', function( up, err ) {
 		$( '#plupload-error' ).show().html( err.message );
+		$( '#plupload-progress' ).slideUp();
 		
 		up.refresh();
 	} );

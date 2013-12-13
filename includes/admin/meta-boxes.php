@@ -12,9 +12,7 @@ if ( !defined( 'ABSPATH' ) ) exit;
  * @return void
  */
 function dedo_register_meta_boxes() {
-	// File
 	add_meta_box( 'dedo_file', __( 'File', 'delightful-downloads' ), 'dedo_meta_box_file', 'dedo_download', 'normal', 'high' );
-	// Stats
 	add_meta_box( 'dedo_stats', __( 'Download Stats', 'delightful-downloads' ), 'dedo_meta_box_stats', 'dedo_download', 'side', 'core' );
 }
 add_action( 'add_meta_boxes', 'dedo_register_meta_boxes' );
@@ -70,7 +68,7 @@ function dedo_meta_box_file( $post ) {
 	$filebrowser_init = array(
 		'root'		=> dedo_get_upload_dir( 'basedir' ) . '/',
 		'url'		=> dedo_get_upload_dir( 'baseurl' ) . '/',
-		'script'	=> DEDO_PLUGIN_URL . 'includes/js/jqueryFileTree/connectors/jqueryFileTree.php'
+		'script'	=> DEDO_PLUGIN_URL . 'assets/js/jqueryFileTree/connectors/jqueryFileTree.php'
 	);
 	
 	?>
@@ -107,7 +105,7 @@ function dedo_meta_box_file( $post ) {
 						<div class="hide-if-js">
 							<input type="file" name="dedo-async-upload" id="dedo-async-upload" />
 						</div>
-						<p class="description"><?php printf( __( 'Maximum upload file size: %s.', 'delightful-downloads' ), dedo_human_filesize( wp_max_upload_size() ) ); ?></p>
+						<p class="description"><?php printf( __( 'Maximum upload file size: %s.', 'delightful-downloads' ), dedo_format_filesize( wp_max_upload_size() ) ); ?></p>
 					</td>
 				</tr>
 				<tr valign="top">
@@ -115,7 +113,7 @@ function dedo_meta_box_file( $post ) {
 						<?php _e( 'File Size:', 'delightful-downloads' ); ?>
 					</th>
 					<td id="plupload-file-size">
-						<?php echo ($file_size !== '' ? dedo_human_filesize( $file_size ) : '-----' ); ?>
+						<?php echo ($file_size !== '' ? dedo_format_filesize( $file_size ) : '-----' ); ?>
 					</td>
 				</tr>
 			</tbody>
@@ -165,8 +163,8 @@ function dedo_meta_boxes_save( $post_id ) {
 		return;
 	}
 	
-	// Check for revision
-	if ( isset( $post->post_type ) && $post->post_type == 'revision' ) {
+	// Check for other post types
+	if ( isset( $post->post_type ) && $post->post_type != 'dedo_download' ) {
 		return;
 	}
 	
@@ -177,9 +175,9 @@ function dedo_meta_boxes_save( $post_id ) {
 	
 		// Upload the file
 		$file = wp_handle_upload( $_FILES['dedo-async-upload'], array( 'test_form' => false ) );
-	
+
 		// Check for success
-		if( $file ) {
+		if( isset( $file['url'] ) ) {
 			// Add/update post meta
 			update_post_meta( $post_id, '_dedo_file_url', $file['url'] );
 			update_post_meta( $post_id, '_dedo_file_size', $_FILES['dedo-async-upload']['size'] );
@@ -187,7 +185,7 @@ function dedo_meta_boxes_save( $post_id ) {
 		else {
 			// Display upload error
 			$notices = get_option( 'delightful-downloads-notices', array() );
-			$notices[] = '<div class="error"><p>' . __( 'There was an error when uploading the file. Please try again.', 'delightful-downloads' ) . '</p></div>';
+			$notices[] = '<div class="error"><p>' . $file['error'] . '</p></div>';
 			update_option( 'delightful-downloads-notices', $notices );
 		}
 	}
@@ -215,6 +213,9 @@ function dedo_meta_boxes_save( $post_id ) {
 	if( isset( $_POST['dedo_file_count'] ) ) {
 		update_post_meta( $post_id, '_dedo_file_count', strip_tags( trim( $_POST['dedo_file_count'] ) ) );
 	}
+
+	// Clear transients
+	dedo_delete_all_transients();
 }
 add_action( 'save_post', 'dedo_meta_boxes_save' );
 

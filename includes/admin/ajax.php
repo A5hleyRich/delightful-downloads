@@ -21,7 +21,7 @@ function dedo_download_upload_ajax() {
 	$file = wp_handle_upload( $_FILES['async-upload'], array( 'test_form'=> true, 'action' => 'dedo_download_upload' ) );
 	
 	// Check for success
-	if( $file ) {
+	if( isset( $file['url'] ) ) {
 		// Post ID
 		$post_id = $_REQUEST['post_id'];
 	
@@ -30,13 +30,11 @@ function dedo_download_upload_ajax() {
 		update_post_meta( $post_id, '_dedo_file_size', $_FILES['async-upload']['size'] );
 	
 		// Echo success response
-		echo $file['url'];
-		die();
+		die( '{"jsonrpc" : "2.0", "file" : {"url": "' . $file['url'] . '"}}' );
 	}	
 	else {
 		// Echo error message
-		echo $file['error'];
-		die();
+		die( '{"jsonrpc" : "2.0", "error" : {"code": 500, "message": "' . $file['error'] . '"}, "details" : "' . $file['error'] . '"}' );
 	}
 }
 add_action( 'wp_ajax_dedo_download_upload', 'dedo_download_upload_ajax' );
