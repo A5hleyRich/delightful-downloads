@@ -199,7 +199,7 @@ function dedo_shortcode_ddownload_list( $atts ) {
 	$query_args['posts_per_page'] = ( $limit == 0 ) ? -1 : $limit;
 
 	// Validate and set orderby
-	if ( !in_array( strtolower( $orderby ), array( 'title', 'date', 'downloads', 'filesize', 'random' ) ) ) {
+	if ( !in_array( strtolower( $orderby ), array( 'title', 'date', 'count', 'filesize', 'random' ) ) ) {
 		return '<strong>' . __( 'Invalid orderby attribute.', 'delightful-downloads' ) . '</strong>';
 	}
 	else {
@@ -210,7 +210,7 @@ function dedo_shortcode_ddownload_list( $atts ) {
 			case 'date':
 				$query_args['orderby'] = 'date';
 				break;
-			case 'downloads':
+			case 'count':
 				$query_args['meta_key'] = '_dedo_file_count';
 				$query_args['orderby'] = 'meta_value_num';
 				break;

@@ -106,9 +106,9 @@ function dedo_get_shortcode_lists() {
 	 		'name'				=> __( 'Title (Date)', 'delightful-downloads' ),
 	 		'format'			=> '<a href="%url%" title="%title% (%date%)" rel="nofollow">%title% (%date%)</a>'
 	 	),
-	 	'title_downloads'	=> array(
-	 		'name'				=> __( 'Title (Downloads)', 'delightful-downloads' ),
-	 		'format'			=> '<a href="%url%" title="%title% (Downloads: %downloads%)" rel="nofollow">%title% (Downloads: %downloads%)</a>'
+	 	'title_count'		=> array(
+	 		'name'				=> __( 'Title (Count)', 'delightful-downloads' ),
+	 		'format'			=> '<a href="%url%" title="%title% (Downloads: %count%)" rel="nofollow">%title% (Downloads: %count%)</a>'
 	 	),
 	 	'title_filesize'	=> array(
 	 		'name'				=> __( 'Title (Filesize)', 'delightful-downloads' ),

@@ -1,68 +1,168 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Delightful Downloads\n"
-"POT-Creation-Date: 2013-11-02 17:36-0000\n"
-"PO-Revision-Date: 2013-11-02 17:36-0000\n"
+"POT-Creation-Date: 2013-12-13 21:09-0000\n"
+"PO-Revision-Date: 2013-12-13 21:10-0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
+"Language: en_GB\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 1.5.7\n"
+"X-Generator: Poedit 1.6.2\n"
 "X-Poedit-KeywordsList: __;_e\n"
 "X-Poedit-Basepath: .\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Poedit-SearchPath-0: .\n"
 "X-Poedit-SearchPath-1: ..\n"
 
-#: ../delightful-downloads.php:64 ../includes/post-types.php:18
-#: ../includes/post-types.php:162
-msgid "Download"
+#: ../delightful-downloads.php:120 ../includes/admin/page-support.php:19
+#: ../includes/admin/page-support.php:44
+msgid "Support"
 msgstr ""
 
-#: ../includes/functions.php:200
+#: ../delightful-downloads.php:121 ../includes/admin/page-settings.php:19
+msgid "Settings"
+msgstr ""
+
+#: ../includes/cron.php:46
+msgid "Once Weekly"
+msgstr ""
+
+#: ../includes/functions.php:38
 msgid "Button"
 msgstr ""
 
-#: ../includes/functions.php:201
+#: ../includes/functions.php:42
 msgid "Link"
 msgstr ""
 
-#: ../includes/functions.php:202 ../includes/admin/media-button.php:66
-msgid "Text"
+#: ../includes/functions.php:46
+msgid "Plain Text"
 msgstr ""
 
-#: ../includes/functions.php:213
+#: ../includes/functions.php:62
 msgid "Black"
 msgstr ""
 
-#: ../includes/functions.php:214
+#: ../includes/functions.php:66
 msgid "Blue"
 msgstr ""
 
-#: ../includes/functions.php:215
+#: ../includes/functions.php:70
 msgid "Grey"
 msgstr ""
 
-#: ../includes/functions.php:216
+#: ../includes/functions.php:74
 msgid "Green"
 msgstr ""
 
-#: ../includes/functions.php:217
+#: ../includes/functions.php:78
 msgid "Purple"
 msgstr ""
 
-#: ../includes/functions.php:218
+#: ../includes/functions.php:82
 msgid "Red"
 msgstr ""
 
-#: ../includes/functions.php:219
+#: ../includes/functions.php:86
 msgid "Yellow"
 msgstr ""
 
+#: ../includes/functions.php:102 ../includes/post-types.php:87
+#: ../includes/admin/media-button.php:47
+msgid "Title"
+msgstr ""
+
+#: ../includes/functions.php:106
+msgid "Title (Date)"
+msgstr ""
+
+#: ../includes/functions.php:110
+msgid "Title (Count)"
+msgstr ""
+
+#: ../includes/functions.php:114
+msgid "Title (Filesize)"
+msgstr ""
+
+#: ../includes/options.php:20
+msgid "General"
+msgstr ""
+
+#: ../includes/options.php:21
+msgid "Shortcodes"
+msgstr ""
+
+#: ../includes/options.php:22 ../includes/admin/dashboard.php:15
+msgid "Statistics"
+msgstr ""
+
+#: ../includes/options.php:23
+msgid "Advanced"
+msgstr ""
+
+#: ../includes/options.php:37
+msgid "Categories and Tags"
+msgstr ""
+
+#: ../includes/options.php:43
+msgid "Members Download"
+msgstr ""
+
+#: ../includes/options.php:49
+msgid "Non-Members Redirect"
+msgstr ""
+
+#: ../includes/options.php:55
+msgid "Block User Agents"
+msgstr ""
+
+#: ../includes/options.php:61
+msgid "Default Text"
+msgstr ""
+
+#: ../includes/options.php:64 ../includes/post-types.php:18
+#: ../includes/post-types.php:179
+msgid "Download"
+msgstr ""
+
+#: ../includes/options.php:67
+msgid "Default Style"
+msgstr ""
+
+#: ../includes/options.php:73
+msgid "Default Button Style"
+msgstr ""
+
+#: ../includes/options.php:79
+msgid "Default List Style"
+msgstr ""
+
+#: ../includes/options.php:85
+msgid "Admin Downloads"
+msgstr ""
+
+#: ../includes/options.php:91
+msgid "Default CSS Styles"
+msgstr ""
+
+#: ../includes/options.php:97
+msgid "Cache Duration"
+msgstr ""
+
+#: ../includes/options.php:103
+msgid "Download Address"
+msgstr ""
+
+#: ../includes/options.php:109
+msgid "Pretty Permalinks"
+msgstr ""
+
 #: ../includes/post-types.php:17 ../includes/post-types.php:29
-#: ../includes/post-types.php:88 ../includes/admin/dashboard.php:19
-#: ../includes/admin/dashboard.php:49 ../includes/admin/dashboard.php:60
-#: ../includes/admin/dashboard.php:71 ../includes/admin/dashboard.php:82
+#: ../includes/post-types.php:90 ../includes/admin/dashboard.php:34
+#: ../includes/admin/dashboard.php:45 ../includes/admin/dashboard.php:56
+#: ../includes/admin/dashboard.php:67 ../includes/admin/media-button.php:49
 msgid "Downloads"
 msgstr ""
 
@@ -142,141 +242,253 @@ msgstr ""
 msgid "No logs found in Trash"
 msgstr ""
 
-#: ../includes/post-types.php:85
-msgid "Title"
-msgstr ""
-
-#: ../includes/post-types.php:86 ../includes/admin/meta-boxes.php:16
+#: ../includes/post-types.php:88 ../includes/admin/meta-boxes.php:15
 msgid "File"
 msgstr ""
 
-#: ../includes/post-types.php:87
+#: ../includes/post-types.php:89
 msgid "Shortcode"
 msgstr ""
 
-#: ../includes/post-types.php:89 ../includes/post-types.php:165
+#: ../includes/post-types.php:91 ../includes/post-types.php:183
 msgid "Date"
 msgstr ""
 
-#: ../includes/post-types.php:163
-msgid "IP Address"
+#: ../includes/post-types.php:98 ../includes/taxonomies.php:22
+msgid "Categories"
 msgstr ""
 
-#: ../includes/post-types.php:164
+#: ../includes/post-types.php:99 ../includes/taxonomies.php:43
+msgid "Tags"
+msgstr ""
+
+#: ../includes/post-types.php:180
 msgid "User"
 msgstr ""
 
-#: ../includes/post-types.php:196
+#: ../includes/post-types.php:181
+msgid "IP Address"
+msgstr ""
+
+#: ../includes/post-types.php:182
+msgid "User Agent"
+msgstr ""
+
+#: ../includes/post-types.php:220
 msgid "Anonymous"
 msgstr ""
 
-#: ../includes/process-download.php:116
+#: ../includes/process-download.php:121
 msgid "Server error, file cannot be opened!"
 msgstr ""
 
-#: ../includes/process-download.php:121
+#: ../includes/process-download.php:126
 msgid "File does not exist!"
 msgstr ""
 
-#: ../includes/process-download.php:126
+#: ../includes/process-download.php:131
 msgid "Invalid download."
 msgstr ""
 
-#: ../includes/process-download.php:141
+#: ../includes/process-download.php:136
+msgid "You are blocked from downloading this file!"
+msgstr ""
+
+#: ../includes/process-download.php:151
 msgid "Please login to download this file!"
 msgstr ""
 
-#: ../includes/shortcodes.php:28
-msgid "Download File"
-msgstr ""
-
-#: ../includes/shortcodes.php:37 ../includes/shortcodes.php:113
-#: ../includes/shortcodes.php:145
-msgid "No download ID provided."
-msgstr ""
-
-#: ../includes/shortcodes.php:69 ../includes/shortcodes.php:122
-#: ../includes/shortcodes.php:155
+#: ../includes/shortcodes.php:39 ../includes/shortcodes.php:113
+#: ../includes/shortcodes.php:148
 msgid "Invalid download ID."
 msgstr ""
 
-#: ../includes/admin/dashboard.php:30
-msgid "Statistics"
+#: ../includes/shortcodes.php:49 ../includes/shortcodes.php:300
+msgid "Invalid style attribute."
 msgstr ""
 
-#: ../includes/admin/dashboard.php:44
+#: ../includes/shortcodes.php:66
+msgid "Invalid button attribute."
+msgstr ""
+
+#: ../includes/shortcodes.php:203
+msgid "Invalid orderby attribute."
+msgstr ""
+
+#: ../includes/shortcodes.php:229
+msgid "Invalid order attribute."
+msgstr ""
+
+#: ../includes/shortcodes.php:237
+msgid "Invalid relation attribute."
+msgstr ""
+
+#: ../includes/shortcodes.php:331
+msgid "No downloads found."
+msgstr ""
+
+#: ../includes/taxonomies.php:20
+msgid "Download Categories"
+msgstr ""
+
+#: ../includes/taxonomies.php:21
+msgid "Download Category"
+msgstr ""
+
+#: ../includes/taxonomies.php:23
+msgid "All Categories"
+msgstr ""
+
+#: ../includes/taxonomies.php:24
+msgid "Edit Category"
+msgstr ""
+
+#: ../includes/taxonomies.php:25
+msgid "View Category"
+msgstr ""
+
+#: ../includes/taxonomies.php:26
+msgid "Update Category"
+msgstr ""
+
+#: ../includes/taxonomies.php:27
+msgid "Add New Category"
+msgstr ""
+
+#: ../includes/taxonomies.php:28
+msgid "New Category Name"
+msgstr ""
+
+#: ../includes/taxonomies.php:29
+msgid "Search Categories"
+msgstr ""
+
+#: ../includes/taxonomies.php:30
+msgid "Popular Categories"
+msgstr ""
+
+#: ../includes/taxonomies.php:41
+msgid "Download Tags"
+msgstr ""
+
+#: ../includes/taxonomies.php:42
+msgid "Download Tag"
+msgstr ""
+
+#: ../includes/taxonomies.php:44
+msgid "All Tags"
+msgstr ""
+
+#: ../includes/taxonomies.php:45
+msgid "Edit Tag"
+msgstr ""
+
+#: ../includes/taxonomies.php:46
+msgid "View Tag"
+msgstr ""
+
+#: ../includes/taxonomies.php:47
+msgid "Update Tag"
+msgstr ""
+
+#: ../includes/taxonomies.php:48
+msgid "Add New Tag"
+msgstr ""
+
+#: ../includes/taxonomies.php:49
+msgid "New Tag Name"
+msgstr ""
+
+#: ../includes/taxonomies.php:50
+msgid "Search Tags"
+msgstr ""
+
+#: ../includes/taxonomies.php:51
+msgid "Popular Tags"
+msgstr ""
+
+#: ../includes/admin/dashboard.php:29
 msgid "Last 24 Hours"
 msgstr ""
 
-#: ../includes/admin/dashboard.php:55
+#: ../includes/admin/dashboard.php:40
 msgid "All Time"
 msgstr ""
 
-#: ../includes/admin/dashboard.php:66
+#: ../includes/admin/dashboard.php:51
 msgid "Last 7 Days"
 msgstr ""
 
-#: ../includes/admin/dashboard.php:77
+#: ../includes/admin/dashboard.php:62
 msgid "Last 30 Days"
 msgstr ""
 
-#: ../includes/admin/dashboard.php:88
+#: ../includes/admin/dashboard.php:73
 msgid "You are using"
 msgstr ""
 
-#: ../includes/admin/media-button.php:39 ../includes/admin/media-button.php:94
+#: ../includes/admin/media-button.php:37
+#: ../includes/admin/media-button.php:109
 msgid "Insert Download"
 msgstr ""
 
-#: ../includes/admin/media-button.php:43
+#: ../includes/admin/media-button.php:41
 msgid "Search"
 msgstr ""
 
-#: ../includes/admin/media-button.php:44
-msgid "Insert Total Download Count"
+#: ../includes/admin/media-button.php:48
+msgid "Size"
 msgstr ""
 
-#: ../includes/admin/media-button.php:54
-msgid "ID:"
-msgstr ""
-
-#: ../includes/admin/media-button.php:64
+#: ../includes/admin/media-button.php:77
 msgid "Download Details"
 msgstr ""
 
-#: ../includes/admin/media-button.php:68
+#: ../includes/admin/media-button.php:80
+msgid "Downloads:"
+msgstr ""
+
+#: ../includes/admin/media-button.php:83
+msgid "Text"
+msgstr ""
+
+#: ../includes/admin/media-button.php:85
 msgid "Style"
 msgstr ""
 
-#: ../includes/admin/media-button.php:81
+#: ../includes/admin/media-button.php:87 ../includes/admin/media-button.php:99
+msgid "Default"
+msgstr ""
+
+#: ../includes/admin/media-button.php:97
 msgid "Color"
 msgstr ""
 
-#: ../includes/admin/media-button.php:95
+#: ../includes/admin/media-button.php:110
 msgid "Insert File Size"
 msgstr ""
 
-#: ../includes/admin/media-button.php:96
+#: ../includes/admin/media-button.php:111
 msgid "Insert Download Count"
 msgstr ""
 
-#: ../includes/admin/meta-boxes.php:18
+#: ../includes/admin/meta-boxes.php:16
 msgid "Download Stats"
 msgstr ""
 
-#: ../includes/admin/meta-boxes.php:58
+#: ../includes/admin/meta-boxes.php:56
 msgid "Allowed Files"
 msgstr ""
 
-#: ../includes/admin/meta-boxes.php:88
+#: ../includes/admin/meta-boxes.php:86
 msgid "File URL:"
 msgstr ""
 
-#: ../includes/admin/meta-boxes.php:91
+#: ../includes/admin/meta-boxes.php:89
 msgid "Enter file URL here"
 msgstr ""
 
-#: ../includes/admin/meta-boxes.php:92
+#: ../includes/admin/meta-boxes.php:90
 #, php-format
 msgid ""
 "You may manually enter a file URL here, for files that are already uploaded "
@@ -285,149 +497,119 @@ msgid ""
 "the file using the file browser, or upload a new file:"
 msgstr ""
 
-#: ../includes/admin/meta-boxes.php:95
+#: ../includes/admin/meta-boxes.php:93
 msgid "Upload File"
 msgstr ""
 
-#: ../includes/admin/meta-boxes.php:96
+#: ../includes/admin/meta-boxes.php:94
 msgid "Select Existing File"
 msgstr ""
 
-#: ../includes/admin/meta-boxes.php:110
+#: ../includes/admin/meta-boxes.php:108
 #, php-format
 msgid "Maximum upload file size: %s."
 msgstr ""
 
-#: ../includes/admin/meta-boxes.php:115
+#: ../includes/admin/meta-boxes.php:113
 msgid "File Size:"
 msgstr ""
 
-#: ../includes/admin/meta-boxes.php:142
+#: ../includes/admin/meta-boxes.php:140
 msgid "Count"
 msgstr ""
 
-#: ../includes/admin/meta-boxes.php:190
-msgid "There was an error when uploading the file. Please try again."
-msgstr ""
-
-#: ../includes/admin/meta-boxes.php:208
+#: ../includes/admin/meta-boxes.php:206
 #, php-format
 msgid ""
 "The file does not exist! Please check the URL and ensure it is within the "
 "WordPress directory structure. (For example: %s)"
 msgstr ""
 
-#: ../includes/admin/page-settings.php:15
-#: ../includes/admin/page-settings.php:98
-msgid "Settings"
-msgstr ""
-
-#: ../includes/admin/page-settings.php:28
-msgid "General"
-msgstr ""
-
-#: ../includes/admin/page-settings.php:29
-msgid "Shortcodes"
-msgstr ""
-
-#: ../includes/admin/page-settings.php:30
-msgid "Advanced"
-msgstr ""
-
-#: ../includes/admin/page-settings.php:31
-msgid "Uninstall"
-msgstr ""
-
-#: ../includes/admin/page-settings.php:34
-msgid "Members Download"
-msgstr ""
-
-#: ../includes/admin/page-settings.php:35
-msgid "Non-Members Redirect"
-msgstr ""
-
-#: ../includes/admin/page-settings.php:36
-msgid "Default CSS Styles"
-msgstr ""
-
-#: ../includes/admin/page-settings.php:37
-msgid "Default Text"
-msgstr ""
-
-#: ../includes/admin/page-settings.php:38
-msgid "Default Style"
-msgstr ""
-
-#: ../includes/admin/page-settings.php:39
-msgid "Default Color"
-msgstr ""
-
-#: ../includes/admin/page-settings.php:40
-msgid "Cache Duration"
-msgstr ""
-
-#: ../includes/admin/page-settings.php:41
-msgid "Reset Settings"
-msgstr ""
-
-#: ../includes/admin/page-settings.php:101
+#: ../includes/admin/page-settings.php:89
 msgid "Settings updated successfully."
 msgstr ""
 
-#: ../includes/admin/page-settings.php:115
-msgid "Support Delightful Downloads"
-msgstr ""
-
-#: ../includes/admin/page-settings.php:116
-msgid ""
-"A lot of time and effort has gone into developing Delightful Downloads. "
-"Please consider buying me a coffee to help support future development. Or, "
-"rate this plugin 5 stars on WordPress.org."
-msgstr ""
-
-#: ../includes/admin/page-settings.php:175
-msgid "Member Only"
-msgstr ""
-
-#: ../includes/admin/page-settings.php:177
-msgid "Allow only logged in users to download files."
-msgstr ""
-
-#: ../includes/admin/page-settings.php:200
-msgid ""
-"The page to redirect non-logged in users when attempting to download a file. "
-"If no page is selected a default error will be displayed."
-msgstr ""
-
-#: ../includes/admin/page-settings.php:216
-#: ../includes/admin/page-settings.php:301
+#: ../includes/admin/page-settings.php:126
+#: ../includes/admin/page-settings.php:288
+#: ../includes/admin/page-settings.php:333
 msgid "Enable"
 msgstr ""
 
-#: ../includes/admin/page-settings.php:218
+#: ../includes/admin/page-settings.php:128
+msgid "Check this option to allow downloads to be tagged or categorised."
+msgstr ""
+
+#: ../includes/admin/page-settings.php:143
+msgid "Member Only"
+msgstr ""
+
+#: ../includes/admin/page-settings.php:145
+msgid "Check this option to allow only logged in users to download files."
+msgstr ""
+
+#: ../includes/admin/page-settings.php:168
 msgid ""
-"Disable this option to remove the default button styling and the Delightful "
-"Downloads CSS file."
+"Select the page that a user should be redirected to if they try to download "
+"a file when not logged in and the Members Only option is checked. If no page "
+"is selected a generic error message will be displayed."
 msgstr ""
 
-#: ../includes/admin/page-settings.php:232
+#: ../includes/admin/page-settings.php:182
+msgid "Enter user agents to block from downloading files. One per line."
+msgstr ""
+
+#: ../includes/admin/page-settings.php:197
+msgid "Log Downloads"
+msgstr ""
+
+#: ../includes/admin/page-settings.php:199
+msgid "Check this option to log downloads by admins."
+msgstr ""
+
+#: ../includes/admin/page-settings.php:213
 msgid ""
-"The default text displayed on link and button styles shortcode. Use %title% "
-"to automatically insert download title."
+"Set the default text to display on button and link style outputs. This can "
+"be overwritten on a per-download basis using the 'text' attribute."
 msgstr ""
 
-#: ../includes/admin/page-settings.php:252
-msgid "The default display style."
+#: ../includes/admin/page-settings.php:233
+msgid ""
+"Choose the default output style for downloads. This can be overwritten on a "
+"per-download basis using the 'style' attribute."
 msgstr ""
 
-#: ../includes/admin/page-settings.php:272
-msgid "The default button color."
+#: ../includes/admin/page-settings.php:253
+msgid ""
+"Choose the default button style. This can be overwritten on a per-download "
+"basis using the 'button' attribute."
 msgstr ""
 
-#: ../includes/admin/page-settings.php:286
-msgid "The time in minutes to cache queries."
+#: ../includes/admin/page-settings.php:273
+msgid ""
+"Choose the default output style for downloads lists. This can be overwritten "
+"on a per-list basis using the 'style' attribute."
 msgstr ""
 
-#: ../includes/admin/page-settings.php:302
-msgid "Reset plugin settings on re-activation."
+#: ../includes/admin/page-settings.php:290
+msgid ""
+"Check this option to include the Delightful Downloads stylesheet on the "
+"front-end. If this option is disabled you must manually add the button CSS "
+"classes to your theme's CSS file."
+msgstr ""
+
+#: ../includes/admin/page-settings.php:318
+msgid ""
+"Set the URL for download links. This should be left as the default value, "
+"unless absolutely sure that it will not cause conflicts with existing "
+"permalinks or plugins."
+msgstr ""
+
+#: ../includes/admin/page-settings.php:335
+msgid "Check this option to enable pretty permalinks."
+msgstr ""
+
+#: ../includes/admin/page-support.php:45
+msgid ""
+"Please include the following information when requesting <a href=\"http://"
+"wordpress.org/support/plugin/delightful-downloads\">support</a>."
 msgstr ""

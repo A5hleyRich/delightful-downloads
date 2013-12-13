@@ -287,7 +287,7 @@ function dedo_settings_enable_css_field() {
 	echo '<input type="checkbox" name="delightful-downloads[enable_css]" value="1" ' . checked( $checked, 1, false ) . ' /> ';
 	echo __( 'Enable', 'delightful-downloads' );
 	echo '</label>';
-	echo '<p class="description">' . __( 'Check this option to include the Delightful Downloads stylesheet on the front-end. If this option is disabled you must manually add the button CSS classes to your theme’s CSS file.', 'delightful-downloads' ) . '</p>';
+	echo '<p class="description">' . __( 'Check this option to include the Delightful Downloads stylesheet on the front-end. If this option is disabled you must manually add the button CSS classes to your theme\'s CSS file.', 'delightful-downloads' ) . '</p>';
 }
 
 /**

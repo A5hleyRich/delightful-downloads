@@ -2,7 +2,7 @@
 Contributors: A5hleyRich
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=95AQB5DP83XAU
 Tags: download, manager, downloads, monitor, shortcode, delightful downloads, file, counter, tracking
-Requires at least: 3.5
+Requires at least: 3.8
 Tested up to: 3.8.1
 Stable tag: 1.3
 License: GPLv2 or later
@@ -12,21 +12,25 @@ A super-awesome downloads manager for WordPress.
 
 == Description ==
 
-Delightful Downloads is a super-awesome downloads manager for WordPress that allows you to easily add download buttons to posts and track download statistics.
-
-** For those updating from versions prior to version 1.2.1. Downloads uploaded manually must now be within the WordPress file structure (for example wp-content/uploads), any pre-existing files outside of the WordPress directory structure must be moved and the download URL updated. Sorry for any inconveniences caused. **
+Delightful Downloads is a super-awesome downloads manager for WordPress that allows you to easily add download links, buttons and download information to posts, pages and widget areas. Download statistics are tracked within the WordPress dashboard.
 
 = Features =
-+ File upload via WordPress admin.
-+ Settings page to set default options.
-+ Member only downloads with page redirect for non-logged in users.
-+ Shortcode to display text link or button.
-+ Shortcode to display downloads count and file size.
-+ Shortcode to display total blog downloads.
+
++ File upload via the WordPress admin area.
++ Shortcodes to display download links, buttons and download information within posts, pages and widget areas.
++ Shortcode to list downloads and customise output via attributes.
 + Editor button to automatically generate shortcodes.
-+ Various button styles included with the ability to customise through CSS.
-+ Add download buttons to sidebar widgets.
-+ Localization support.
++ Download statistics tracked within the WordPress dashboard.
++ Blocks users from accessing files directly.
++ Block bots from downloading files.
++ Member only downloads with page redirect for non-logged in users.
++ Various button styles included with the ability to add custom buttons.
++ Developer friendly.
++ Localisation support.
+
+= Documentation =
+
+The Delightful Downloads documentation can be found [here](http://ashleyrich.com/wordpress/plugins/delightful-downloads/documentation/ "Delightful Downloads Documentation").
 
 == Installation ==
 
@@ -34,31 +38,12 @@ Delightful Downloads is a super-awesome downloads manager for WordPress that all
 1. Activate the plugin through the 'Plugins' menu in WordPress.
 1. Go to Downloads > Settings and configure the options.
 
+Please refer to the [documentation](http://ashleyrich.com/wordpress/plugins/delightful-downloads/documentation/ "Delightful Downloads Documentation") for further instructions.
+
 == Frequently asked questions ==
 
-= How do I add a download link? =
+Please refer to the [FAQ](http://ashleyrich.com/wordpress/plugins/delightful-downloads/documentation/frequently-asked-questions/ "Delightful Downloads FAQ") section within the [documentation](http://ashleyrich.com/wordpress/plugins/delightful-downloads/documentation/ "Delightful Downloads Documentation").
 
-Use the shortcode [ddownload id=*], which can be generated using the shortcode generator.
-
-= How do I display a download file size? =
-
-Use the shortcode [ddownload_size id=*], which can be generated using the shortcode generator.
-
-= How do I display a download file count? =
-
-Use the shortcode [ddownload_count id=*], which can be generated using the shortcode generator.
-
-= How do I display my total blog downloads? =
-
-Use the shortcode [ddownload_total_count].
-
-= I clicked a download but the download count doesn't change? =
-
-Please ensure that you are not logged in as an admin as downloads by admins are not logged. 
-
-= Can I manually upload files? =
-
-Yes, simply upload them to your server anywhere within the WordPress file structure (the wp-contet/uploads directory is provided for user uploads). Once uploaded you can copy and paste the file URL into the Add New Download screen. Please note that files outside the WordPress directory structure will produce a file not found error.
 
 == Screenshots ==
 
