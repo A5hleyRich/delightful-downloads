@@ -128,3 +128,8 @@ Please refer to the [FAQ](http://ashleyrich.com/wordpress/plugins/delightful-dow
 
 = 1.0 =
 + Initial stable plugin release.
+
+== Upgrade Notice ==
+
+= 1.3 =
+Additional features and general improvements.
