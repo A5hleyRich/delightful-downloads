@@ -383,5 +383,8 @@ function dedo_validate_settings( $input ) {
 	 // Ensure download URL does not contain illegal characters
 	 $parsed['download_url'] = strtolower( preg_replace( '/[^A-Za-z0-9_-]/', '', $parsed['download_url'] ) );
 
+	 // Clear transients
+	dedo_delete_all_transients();
+
 	 return $parsed;
 }
