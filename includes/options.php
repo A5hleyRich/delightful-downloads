@@ -104,12 +104,6 @@ function dedo_get_options() {
 			'tab'		=> 'advanced',
 			'type'		=> 'text',
 			'default'	=> 'ddownload',
-		),
-		'download_url_rewrite'	=> array(
-			'name'		=> __( 'Pretty Permalinks', 'delightful-downloads' ),
-			'tab'		=> 'advanced',
-			'type'		=> 'check',
-			'default'	=> 0,
 		)
 	);
 

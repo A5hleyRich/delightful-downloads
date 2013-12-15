@@ -3,7 +3,7 @@
 Plugin Name: Delightful Downloads
 Plugin URI: http://wordpress.org/extend/plugins/delightful-downloads/
 Description: A super-awesome downloads manager for WordPress.
-Version: 1.3
+Version: 1.3.1
 Author: Ashley Rich
 Author URI: http://ashleyrich.com
 License: GPL2
@@ -35,7 +35,7 @@ if ( !defined( 'ABSPATH' ) ) exit;
  * Constants
  */
 if( !defined( 'DEDO_VERSION' ) )
-	define( 'DEDO_VERSION', '1.3' );
+	define( 'DEDO_VERSION', '1.3.1' );
 
 if( !defined( 'DEDO_PLUGIN_URL' ) )
 	define( 'DEDO_PLUGIN_URL', plugin_dir_url( __FILE__ ) );

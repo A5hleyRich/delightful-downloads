@@ -17,14 +17,8 @@ if ( !defined( 'ABSPATH' ) ) exit;
  */
 function dedo_download_link( $id ) {
 	 global $dedo_options;
-
-	 // Check if pretty permalinks is enabled and return correct addresss
-	 if( $dedo_options['download_url_rewrite'] ) {
-	 	return home_url( $dedo_options['download_url'] . '/' . $id );
-	 }
-	 else {
-	 	return home_url( '?' . $dedo_options['download_url'] . '=' . $id );
-	 }
+	 	
+	 return home_url( '?' . $dedo_options['download_url'] . '=' . $id );
 }
 
 /**

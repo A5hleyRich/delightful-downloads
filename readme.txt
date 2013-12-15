@@ -4,7 +4,7 @@ Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_i
 Tags: download, manager, downloads, monitor, shortcode, delightful downloads, file, counter, tracking
 Requires at least: 3.8
 Tested up to: 3.8.1
-Stable tag: 1.3
+Stable tag: 1.3.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -55,6 +55,10 @@ Please refer to the [FAQ](http://ashleyrich.com/wordpress/plugins/delightful-dow
 6. Settings screen.
 
 == Changelog ==
+
+= 1.3.1 =
++ Removed Pretty Permalinks option.
++ Fixed a bug that caused downloads to stop working.
 
 = 1.3 =
 + Added download tags and categories.
@@ -130,6 +134,9 @@ Please refer to the [FAQ](http://ashleyrich.com/wordpress/plugins/delightful-dow
 + Initial stable plugin release.
 
 == Upgrade Notice ==
+
+= 1.3.1 =
+Bug fixes.
 
 = 1.3 =
 Additional features and general improvements.

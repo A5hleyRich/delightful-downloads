@@ -54,11 +54,6 @@ function dedo_register_settings() {
 			'dedo_settings_' . $value['tab']
 		);
 	}
-
-	// Check for flush rewrite flag
-	if( delete_transient( 'delightful-downloads-flush-rewrite' ) ) {
-		flush_rewrite_rules();
-	}
 } 
 add_action( 'admin_init', 'dedo_register_settings' );
 
@@ -387,9 +382,6 @@ function dedo_validate_settings( $input ) {
 
 	 // Ensure download URL does not contain illegal characters
 	 $parsed['download_url'] = strtolower( preg_replace( '/[^A-Za-z0-9_-]/', '', $parsed['download_url'] ) );
-
-	 // Set flush rewrite flag
-	 set_transient( 'delightful-downloads-flush-rewrite', 'true', 60 * 60 );
 
 	 return $parsed;
 }

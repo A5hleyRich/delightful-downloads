@@ -20,13 +20,8 @@ function dedo_download_process() {
 	global $dedo_options;
 	
 	// Get download id
-	if( $dedo_options['download_url_rewrite'] ) {
-		$download_id = intval( get_query_var( $dedo_options['download_url'] ) );
-	}
-	else {
-		if( isset( $_GET[$dedo_options['download_url']] ) ) {
-			$download_id = intval( $_GET[$dedo_options['download_url']] );
-		}
+	if( isset( $_GET[$dedo_options['download_url']] ) ) {
+		$download_id = intval( $_GET[$dedo_options['download_url']] );
 	}
 	
 	// Check for file download
@@ -156,19 +151,4 @@ function dedo_download_process() {
 		return false;
 	}
 }
-add_action( 'template_redirect', 'dedo_download_process' );
-
-/**
- * Add rewrite rules
- *
- * @return  since 1.3
- */
-function dedo_rewrite_rules() {
-	global $dedo_options;
-
-	// Add rewrite rule if enabled
-	if( $dedo_options['download_url_rewrite'] ) {
-		add_rewrite_endpoint( $dedo_options['download_url'], EP_ALL );
-	}
-}
-add_action( 'init', 'dedo_rewrite_rules' );
+add_action( 'init', 'dedo_download_process', 0 );
