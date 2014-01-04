@@ -1,7 +1,11 @@
 <?php
 /**
- * @package Ajax
- */
+ * Delightful Downloads Ajax
+ *
+ * @package     Delightful Downloads
+ * @subpackage  Admin/Ajax
+ * @since       1.0
+*/
 
 // Exit if accessed directly
 if ( !defined( 'ABSPATH' ) ) exit;
@@ -9,7 +13,7 @@ if ( !defined( 'ABSPATH' ) ) exit;
 /**
  * Process Ajax upload file
  *
- * @return void
+ * @since  1.0
  */
 function dedo_download_upload_ajax() {
 	check_ajax_referer( 'dedo_download_upload' );
@@ -21,7 +25,7 @@ function dedo_download_upload_ajax() {
 	$file = wp_handle_upload( $_FILES['async-upload'], array( 'test_form'=> true, 'action' => 'dedo_download_upload' ) );
 	
 	// Check for success
-	if( isset( $file['url'] ) ) {
+	if ( isset( $file['url'] ) ) {
 		// Post ID
 		$post_id = $_REQUEST['post_id'];
 	

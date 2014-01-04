@@ -1,7 +1,11 @@
 <?php
 /**
- * @package Media Button
- */
+ * Delightful Downloads Media Button
+ *
+ * @package     Delightful Downloads
+ * @subpackage  Admin/Media Button
+ * @since       1.0
+*/
 
 // Exit if accessed directly
 if ( !defined( 'ABSPATH' ) ) exit;
@@ -9,9 +13,7 @@ if ( !defined( 'ABSPATH' ) ) exit;
 /**
  * Display Media Button
  *
- * @param string $content existing media buttons
- *
- * @return string $content + $output
+ * @since  1.0
  */
 function dedo_media_button( $context ) {
 	
@@ -22,7 +24,7 @@ add_filter( 'media_buttons_context', 'dedo_media_button' );
 /**
  * Add Modal Window to Footer
  *
- * @return void
+ * @since  1.0
  */
 function dedo_media_modal() {
 	global $dedo_options;
@@ -59,10 +61,10 @@ function dedo_media_modal() {
 		$download_count = dedo_format_number( get_post_meta( $download_id, '_dedo_file_count', true ) );
 
 ?>
-								<tr id="dedo-download-<?php echo $download_id; ?>" data-id="<?php echo $download_id; ?>" data-size="<?php echo $download_size; ?>" data-count="<?php echo $download_count; ?>">
+								<tr id="dedo-download-<?php echo esc_attr( $download_id ); ?>" data-id="<?php echo esc_attr( $download_id ); ?>" data-size="<?php echo esc_attr( $download_size ); ?>" data-count="<?php echo esc_attr( $download_count ); ?>">
 									<td class="title_column"><strong><?php the_title(); ?></strong></td>			
-									<td class="size_column"><?php echo $download_size; ?></td>
-									<td class="count_column"><?php echo $download_count; ?></td>
+									<td class="size_column"><?php echo esc_attr( $download_size ); ?></td>
+									<td class="count_column"><?php echo esc_attr( $download_count ); ?></td>
 								</tr>
 <?php
 	}
@@ -88,7 +90,7 @@ function dedo_media_modal() {
 							<?php
 							$styles = dedo_get_shortcode_styles();
 							
-							foreach( $styles as $key => $value ) {
+							foreach ( $styles as $key => $value ) {
 								echo '<option value="' . $key . '">' . $value['name'] . '</option>';	
 							}
 							?>
@@ -100,7 +102,7 @@ function dedo_media_modal() {
 								<?php
 								$colors = dedo_get_shortcode_buttons();
 
-								foreach( $colors as $key => $value ) {
+								foreach ( $colors as $key => $value ) {
 									echo '<option value="' . $key . '">' . $value['name'] . '</option>';	
 								}
 								?>
@@ -118,4 +120,4 @@ function dedo_media_modal() {
 	</div>
 	<?php
 }
-add_action( 'admin_footer', 'dedo_media_modal' );
+add_action( 'admin_footer', 'dedo_media_modal', 100 );

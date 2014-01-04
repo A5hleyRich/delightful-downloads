@@ -1,15 +1,19 @@
 <?php
 /**
- * @package Meta-Boxes
- */
+ * Delightful Downloads Metaboxes
+ *
+ * @package     Delightful Downloads
+ * @subpackage  Admin/Metaboxes
+ * @since       1.0
+*/
 
 // Exit if accessed directly
 if ( !defined( 'ABSPATH' ) ) exit;
 
 /**
- * Register meta boxes
+ * Register Meta Boxes
  *
- * @return void
+ * @since  1.0
  */
 function dedo_register_meta_boxes() {
 	add_meta_box( 'dedo_file', __( 'File', 'delightful-downloads' ), 'dedo_meta_box_file', 'dedo_download', 'normal', 'high' );
@@ -18,23 +22,21 @@ function dedo_register_meta_boxes() {
 add_action( 'add_meta_boxes', 'dedo_register_meta_boxes' );
 
 /**
- * Add correct enc type for non-ajax uploads
+ * Add Correct Enc Type
  *
- * @return void
+ * @since  1.0
  */
 function dedo_form_enctype() {
-	if( get_post_type() == 'dedo_download' ) {
+	if ( get_post_type() == 'dedo_download' ) {
 		echo ' enctype="multipart/form-data"';
 	}
 }
 add_action( 'post_edit_form_tag', 'dedo_form_enctype' );
 
 /**
- * Render file meta box
+ * Render File Metabox
  *
- * @param object $post current post object
- *
- * @return void
+ * @since  1.0
  */
 function dedo_meta_box_file( $post ) {
 	$file_url = get_post_meta( $post->ID, '_dedo_file_url', true );
@@ -86,7 +88,8 @@ function dedo_meta_box_file( $post ) {
 						<?php _e( 'File URL:', 'delightful-downloads' ); ?>
 					</th>
 					<td id="plupload-file">
-						<input type="text" name="dedo-file-url" id="dedo-file-url" value="<?php echo $file_url ?>" class="large-text" placeholder="<?php _e( 'Enter file URL here', 'delightful-downloads' ); ?>" />
+						<input type="text" name="dedo-file-url" id="dedo-file-url" value="<?php echo esc_attr( $file_url ); ?>" class="large-text" placeholder="<?php _e( 'Enter file URL here', 'delightful-downloads' ); ?>" />
+						<?php wp_nonce_field( 'ddownload_file_save', 'ddownload_file_save_nonce' ); ?>
 						<p class="description"><?php printf( __( 'You may manually enter a file URL here, for files that are already uploaded to the server. Please note that only files within the WordPress directory structure are allowed (for example: %s). Alternatively, you can browse to the file using the file browser, or upload a new file:', 'delightful-downloads' ), dedo_get_upload_dir( 'dedo_baseurl' ) ); ?></p>
 						<!-- Display with JS tuned on-->
 						<div class="hide-if-no-js">
@@ -125,9 +128,7 @@ function dedo_meta_box_file( $post ) {
 /**
  * Render stats meta box
  *
- * @param object $post current post object
- *
- * @return void
+ * @since  1.0
  */
 function dedo_meta_box_stats( $post ) {
 	$file_count = get_post_meta( $post->ID, '_dedo_file_count', true );
@@ -138,9 +139,10 @@ function dedo_meta_box_stats( $post ) {
 				<tr valign="top">
 					<th scope="row">
 						<label for="dedo_file_count"><?php _e( 'Count' , 'delightful-downloads' ); ?>:</label>
+						<?php wp_nonce_field( 'ddownload_stats_save', 'ddownload_stats_save_nonce' ); ?>
 					</th>
 					<td>
-						<input type="text" name="dedo_file_count" class="text-small" value="<?php echo ($file_count !== '' ? $file_count : 0 ); ?>" />
+						<input type="text" name="dedo_file_count" class="text-small" value="<?php echo ($file_count !== '' ? esc_attr( $file_count ) : 0 ); ?>" />
 					</td>
 				</tr>
 			</tbody>
@@ -153,9 +155,7 @@ function dedo_meta_box_stats( $post ) {
 /**
  * Save meta boxes
  *
- * @param int $post_id current post id
- *
- * @return void
+ * @since  1.0
  */
 function dedo_meta_boxes_save( $post_id ) {
 	// Check for autosave
@@ -167,9 +167,14 @@ function dedo_meta_boxes_save( $post_id ) {
 	if ( isset( $post->post_type ) && $post->post_type != 'dedo_download' ) {
 		return;
 	}
+
+	// Check user has permission
+	if ( !current_user_can( 'edit_post' ) ) {
+		return;
+	}
 	
 	// Handle no-ajax file uploads
-	if( isset( $_FILES['dedo-async-upload'] ) && $_FILES['dedo-async-upload']['size'] > 0 ) {
+	if ( isset( $_FILES['dedo-async-upload'] ) && $_FILES['dedo-async-upload']['size'] > 0 ) {
 		// Set upload dir
 		add_filter( 'upload_dir', 'dedo_set_upload_dir' );
 	
@@ -177,7 +182,7 @@ function dedo_meta_boxes_save( $post_id ) {
 		$file = wp_handle_upload( $_FILES['dedo-async-upload'], array( 'test_form' => false ) );
 
 		// Check for success
-		if( isset( $file['url'] ) ) {
+		if ( isset( $file['url'] ) ) {
 			// Add/update post meta
 			update_post_meta( $post_id, '_dedo_file_url', $file['url'] );
 			update_post_meta( $post_id, '_dedo_file_size', $_FILES['dedo-async-upload']['size'] );
@@ -191,27 +196,36 @@ function dedo_meta_boxes_save( $post_id ) {
 	}
 	// No file present, lets save post URL if isset
 	else {
-		if( isset( $_POST['dedo-file-url'] ) ) {
-			$file_url = trim( $_POST['dedo-file-url'] );
-			$file_path = dedo_url_to_absolute( $file_url );
-			
-			// Does file exist?
-			if( file_exists( $file_path ) ) {
-				update_post_meta( $post_id, '_dedo_file_url', $file_url );
-				update_post_meta( $post_id, '_dedo_file_size', filesize( $file_path ) );
-			}
-			else {
-				// Display file does not exist error
-				$notices = get_option( 'delightful-downloads-notices', array() );
-				$notices[] = '<div class="error"><p>' . sprintf( __( 'The file does not exist! Please check the URL and ensure it is within the WordPress directory structure. (For example: %s)', 'delightful-downloads' ), dedo_get_upload_dir( 'dedo_baseurl' ) ) . '</p></div>';
-				update_option( 'delightful-downloads-notices', $notices );
+		// Check for save stats nonce
+		if ( isset( $_POST['ddownload_file_save_nonce'] ) && wp_verify_nonce( $_POST['ddownload_file_save_nonce'], 'ddownload_file_save' ) ) {	
+			// Save file url
+			if ( isset( $_POST['dedo-file-url'] ) ) {
+				$file_url = trim( $_POST['dedo-file-url'] );
+				$file_path = dedo_url_to_absolute( $file_url );
+				
+				// Does file exist?
+				if ( file_exists( $file_path ) ) {
+					update_post_meta( $post_id, '_dedo_file_url', $file_url );
+					update_post_meta( $post_id, '_dedo_file_size', filesize( $file_path ) );
+				}
+				else {
+					// Display file does not exist error
+					$notices = get_option( 'delightful-downloads-notices', array() );
+					$notices[] = '<div class="error"><p>' . sprintf( __( 'The file does not exist! Please check the URL and ensure it is within the WordPress directory structure. (For example: %s)', 'delightful-downloads' ), dedo_get_upload_dir( 'dedo_baseurl' ) ) . '</p></div>';
+					update_option( 'delightful-downloads-notices', $notices );
+				}
 			}
 		}
 	}
 	
-	// Save download count
-	if( isset( $_POST['dedo_file_count'] ) ) {
-		update_post_meta( $post_id, '_dedo_file_count', strip_tags( trim( $_POST['dedo_file_count'] ) ) );
+	// Check for save stats nonce
+	if ( isset( $_POST['ddownload_stats_save_nonce'] ) && wp_verify_nonce( $_POST['ddownload_stats_save_nonce'], 'ddownload_stats_save' ) ) {
+		
+		// Save download count
+		if ( isset( $_POST['dedo_file_count'] ) ) {
+			update_post_meta( $post_id, '_dedo_file_count', strip_tags( trim( $_POST['dedo_file_count'] ) ) );
+		}
+
 	}
 
 	// Clear transients
@@ -222,13 +236,15 @@ add_action( 'save_post', 'dedo_meta_boxes_save' );
 /**
  * Display notice to user, resolves issue with post redirect
  *
- * @return void
+ * @since  1.0
  */
 function dedo_meta_boxes_notice() {
-	if( $notices = get_option( 'delightful-downloads-notices' ) ) {
-		foreach( $notices as $notice ) {
+	if ( $notices = get_option( 'delightful-downloads-notices' ) ) {
+		
+		foreach ( $notices as $notice ) {
 			echo $notice;
 		}
+
 		delete_option( 'delightful-downloads-notices' );
 	}
 }

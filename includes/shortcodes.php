@@ -3,7 +3,7 @@
  * Delightful Downloads Shortcodes
  *
  * @package     Delightful Downloads
- * @subpackage  Shortcodes
+ * @subpackage  Includes/Shortcodes
  * @since       1.0
 */
 
@@ -16,8 +16,6 @@ if ( !defined( 'ABSPATH' ) ) exit;
  * Outputs a single download based on user defined attributes.
  *
  * @since   1.0
- * @param   array $atts Shortcode attributes
- * @return  string Formatted single download
  */
 function dedo_shortcode_ddownload( $atts ) {
 	global $dedo_options;
@@ -95,8 +93,6 @@ add_shortcode( 'ddownload', 'dedo_shortcode_ddownload' );
  * Outputs the number of times a download has been downloaded.
  *
  * @since   1.0
- * @param   array $atts Shortcode attributes
- * @return  string Download count
  */
 function dedo_shortcode_ddownload_count( $atts ) {
 	
@@ -130,8 +126,6 @@ add_shortcode( 'ddownload_count', 'dedo_shortcode_ddownload_count' );
  * Output the filesize of a download.
  *
  * @since   1.0
- * @param   array $atts Shortcode attributes
- * @return  string Download filesize
  */
 function dedo_shortcode_ddownload_filesize( $atts ) {
 	
@@ -166,8 +160,6 @@ add_shortcode( 'ddownload_size', 'dedo_shortcode_ddownload_filesize' ); // Depre
  * Displays a list of downloads based on user defined attributes.
  *
  * @since   1.3
- * @param   array $atts Shortcode attributes
- * @return  string Downloads list
  */
 function dedo_shortcode_ddownload_list( $atts ) {
 	global $dedo_options;
@@ -348,8 +340,6 @@ add_shortcode( 'ddownload_list', 'dedo_shortcode_ddownload_list' );
  * Displays the total download count of all files.
  *
  * @since   1.0
- * @param   array $atts Shortcode attributes
- * @return  string Total downloads count
  */
 function dedo_shortcode_ddownload_total_count( $atts ) {
 	global $dedo_options;
@@ -401,8 +391,6 @@ add_shortcode( 'ddownload_total_count', 'dedo_shortcode_ddownload_total_count' )
  * Displays the total filesize of all files.
  *
  * @since   1.3
- * @param   array $atts Shortcode attributes
- * @return  string Total filesize
  */
 function dedo_shortcode_ddownload_total_filesize( $atts ) {
 	global $dedo_options;
@@ -450,8 +438,6 @@ add_shortcode( 'ddownload_total_filesize', 'dedo_shortcode_ddownload_total_files
  * Displays the total number of downloads.
  *
  * @since   1.3
- * @param   array $atts Shortcode attributes
- * @return  string Total downloads
  */
 function dedo_shortcode_ddownload_total_files( $atts ) {
 	global $dedo_options;

@@ -4,7 +4,7 @@ Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_i
 Tags: download, manager, downloads, monitor, shortcode, delightful downloads, file, counter, tracking
 Requires at least: 3.8
 Tested up to: 3.8.1
-Stable tag: 1.3.1.1
+Stable tag: 1.3.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -55,6 +55,16 @@ Please refer to the [FAQ](http://ashleyrich.com/wordpress/plugins/delightful-dow
 6. Settings screen.
 
 == Changelog ==
+
+= 1.3.2 =
++ Code refactor.
++ Improved shortcode generator visuals.
++ Improved dashboard widget so that only admins and editors can view it by default.
++ Improved logs so that only admins and editors can view them by default.
++ Removed post visibility from quick edit on the All Downloads screen.
++ Removed some error suppression from process-download.php.
++ Fixed a bug caused by a conflict with the TwitWord plugin.
++ Security fixes.
 
 = 1.3.1.1 =
 + Fixed localisation support.
@@ -138,8 +148,15 @@ Please refer to the [FAQ](http://ashleyrich.com/wordpress/plugins/delightful-dow
 
 == Upgrade Notice ==
 
+= 1.3.2 =
++ Security fixes.
++ Bug fixes.
+
+= 1.3.1.1 =
++ Bug fixes.
+
 = 1.3.1 =
-Bug fixes.
++ Bug fixes.
 
 = 1.3 =
-Additional features and general improvements.
++ Additional features and general improvements.

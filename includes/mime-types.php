@@ -3,7 +3,7 @@
  * Delightful Downloads Mime Types
  *
  * @package     Delightful Downloads
- * @subpackage  Mime Types
+ * @subpackage  Includes/Mime Types
  * @since       1.3
 */
 
@@ -16,7 +16,6 @@ if ( !defined( 'ABSPATH' ) ) exit;
  * Add additioanl mime types that WordPress is allowed to upload.
  *
  * @since   1.3
- * @return  array Mime types
  */
 function dedo_mime_types( $existing_mimes ) {
 
@@ -24,10 +23,7 @@ function dedo_mime_types( $existing_mimes ) {
 	$existing_mimes['psd']  = 'image/photoshop';
 	$existing_mimes['ai']  	= 'application/postscript';
 	$existing_mimes['eps']  = 'application/postscript';
-	$existing_mimes['pxm']  = 'application/octet-stream';
-	$existing_mimes['pxb']  = 'application/octet-stream';
-	$existing_mimes['pxg']  = 'application/xml';
-	$existing_mimes['pxs']  = 'application/octet-stream';
+	$existing_mimes['pxm']  = 'application/octet-stream'; // Pixelmator
 
 	// Ebooks
 	$existing_mimes['mobi']	= 'application/x-mobipocket-ebook';

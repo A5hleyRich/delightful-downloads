@@ -3,7 +3,7 @@
  * Delightful Downloads Scripts
  *
  * @package     Delightful Downloads
- * @subpackage  Scripts
+ * @subpackage  Includes/Scripts
  * @since       1.0
 */
 
@@ -11,11 +11,9 @@
 if ( !defined( 'ABSPATH' ) ) exit;
 
 /**
- * Register Scripts
+ * Register Scripts & Styles
  *
- * Register and enqueue front-end scripts and styles
- *
- * @since   1.0
+ * @since  1.0
  */
 function dedo_enqueue_scripts( $page ) {
 	global $dedo_options;
@@ -24,18 +22,16 @@ function dedo_enqueue_scripts( $page ) {
 	wp_register_style( 'dedo-css', DEDO_PLUGIN_URL . 'assets/css/delightful-downloads.css', '', '1.0', 'all' );
 	
 	// Enqueue frontend CSS if option is enabled
-	if( $dedo_options['enable_css'] ) {
+	if ( $dedo_options['enable_css'] ) {
 		wp_enqueue_style( 'dedo-css' );
 	}
 }
 add_action( 'wp_enqueue_scripts', 'dedo_enqueue_scripts' );
 
 /**
- * Register Admin Scripts
+ * Register Admin Scripts & Styles
  *
- * Register and enqueue back-end scripts and styles
- *
- * @since   1.0
+ * @since  1.0
  */
 function dedo_admin_enqueue_scripts( $page ) {
 	// Register scripts
@@ -52,7 +48,7 @@ function dedo_admin_enqueue_scripts( $page ) {
 	wp_enqueue_script( 'dedo-admin-js-media-button' );
 
 	// Enqueue on dedo_download post add/edit screen
-	if( in_array( $page, array( 'post.php', 'post-new.php', 'post-edit.php' ) ) && get_post_type() == 'dedo_download' ) {
+	if ( in_array( $page, array( 'post.php', 'post-new.php', 'post-edit.php' ) ) && get_post_type() == 'dedo_download' ) {
 		wp_enqueue_script( 'dedo-admin-js-post-download' );
 		wp_enqueue_script( 'jqueryFileTree' );
 		wp_enqueue_style( 'jqueryFileTree-css' );

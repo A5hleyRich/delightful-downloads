@@ -3,7 +3,7 @@
  * Delightful Downloads Page Support
  *
  * @package     Delightful Downloads
- * @subpackage  Functions/Page Support
+ * @subpackage  Admin/Page Support
  * @since       1.3
 */
 
@@ -11,7 +11,9 @@
 if ( !defined( 'ABSPATH' ) ) exit;
 
 /**
- * Register support page then hide it from the menu
+ * Register Support Page
+ *
+ * Hide it from the menu.
  *
  * @since  1.3
  */
@@ -22,7 +24,7 @@ function dedo_register_page_support() {
 add_action( 'admin_menu', 'dedo_register_page_support' );
 
 /**
- * Render support page
+ * Render Support Page
  *
  * @since  1.3
  */
@@ -49,43 +51,45 @@ function dedo_render_page_support() {
 
 ## Server Information ##
 
-Server:						<?php echo $_SERVER['SERVER_SOFTWARE'] . "\n"; ?>
-PHP Version:				<?php echo PHP_VERSION . "\n"; ?>
-MySQL Version:				<?php echo mysql_get_server_info() . "\n"; ?>
+Server: <?php echo $_SERVER['SERVER_SOFTWARE'] . "\n"; ?>
+PHP Version: <?php echo PHP_VERSION . "\n"; ?>
+MySQL Version: <?php echo mysql_get_server_info() . "\n"; ?>
 
-PHP Memory Limit:			<?php echo ini_get( 'memory_limit' ) . "\n"; ?>
-PHP Time Limit:				<?php echo ini_get( 'max_execution_time' ) . "\n"; ?>
-PHP Max Post Size:			<?php echo ini_get( 'post_max_size' ) . "\n"; ?>
-PHP Max Upload Size:		<?php echo ini_get( 'upload_max_filesize' ) . "\n"; ?>
+PHP Memory Limit: <?php echo ini_get( 'memory_limit' ) . "\n"; ?>
+PHP Time Limit: <?php echo ini_get( 'max_execution_time' ) . "\n"; ?>
+PHP Max Post Size: <?php echo ini_get( 'post_max_size' ) . "\n"; ?>
+PHP Max Upload Size: <?php echo ini_get( 'upload_max_filesize' ) . "\n"; ?>
 
 
 ## WordPress Information ##
 
-WordPress Version:			<?php echo get_bloginfo( 'version' ) . "\n"; ?>
-Multisite:					<?php echo is_multisite() ? 'Yes' . "\n" : 'No' . "\n" ?>
-Max Upload Size:			<?php echo dedo_format_filesize( wp_max_upload_size() ) . "\n"; ?>
+WordPress Version: <?php echo get_bloginfo( 'version' ) . "\n"; ?>
+Multisite: <?php echo is_multisite() ? 'Yes' . "\n" : 'No' . "\n" ?>
+Max Upload Size: <?php echo dedo_format_filesize( wp_max_upload_size() ) . "\n"; ?>
 
-Site Address:				<?php echo home_url() . "\n"; ?>
-WordPress Address:			<?php echo site_url() . "\n"; ?>
-Download Address:			<?php echo dedo_download_link( 1 ) . "\n"; ?>
+Site Address: <?php echo home_url() . "\n"; ?>
+WordPress Address: <?php echo site_url() . "\n"; ?>
+Download Address: <?php echo dedo_download_link( 1 ) . "\n"; ?>
 
-Active Theme:				<?php echo $theme->Name . " " . $theme->Version . "\n"; ?>
+Active Theme: <?php echo $theme->Name . " " . $theme->Version . "\n"; ?>
 
 Active Plugins:				
 
 <?php 
-foreach( $plugins as $key => $value ) {
-	if( in_array( $key, $active_plugins ) ) {
+foreach ( $plugins as $key => $value ) {
+	
+	if ( in_array( $key, $active_plugins ) ) {
 		echo $value['Name'] . ' ' . $value['Version'] . "\n";
 	}
+	
 }
 ?>
 
 
 ## Delightful Downloads Information ##
 
-Version:						<?php echo DEDO_VERSION . "\n"; ?>
-Prior Version:				<?php echo $prior_version . "\n"; ?>
+Version: <?php echo DEDO_VERSION . "\n"; ?>
+Prior Version: <?php echo $prior_version . "\n"; ?>
 		</textarea>
 	</div>
 	<?php

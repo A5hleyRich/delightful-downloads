@@ -3,7 +3,7 @@
  * Delightful Downloads Options
  *
  * @package     Delightful Downloads
- * @subpackage  Functions/Options
+ * @subpackage  Includes/Options
  * @since       1.3
 */
 
@@ -11,7 +11,7 @@
 if ( !defined( 'ABSPATH' ) ) exit;
 
 /**
- * Get registered tabs
+ * Get Registered Tabs
  *
  * @since  1.3
  */
@@ -27,7 +27,7 @@ function dedo_get_tabs() {
 }
 
 /**
- * Get registered options
+ * Get Registered Options
  *
  * @since  1.3
  */
@@ -111,7 +111,7 @@ function dedo_get_options() {
 }
 
 /**
- * Get default options
+ * Get Default Options
  *
  * @since  1.3
  */
@@ -121,7 +121,7 @@ function dedo_get_default_options() {
 	$options = dedo_get_options();
 
 	// Loop through and find default value
-	foreach( $options as $key => $value ) {
+	foreach ( $options as $key => $value ) {
 		$default_options[$key] = $value['default'];
 	}
 

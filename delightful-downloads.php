@@ -3,7 +3,7 @@
 Plugin Name: Delightful Downloads
 Plugin URI: http://wordpress.org/extend/plugins/delightful-downloads/
 Description: A super-awesome downloads manager for WordPress.
-Version: 1.3.1.1
+Version: 1.3.2
 Author: Ashley Rich
 Author URI: http://ashleyrich.com
 License: GPL2
@@ -24,108 +24,205 @@ along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 */
 
-/**
- * @package Main
- */
-
 // Exit if accessed directly
 if ( !defined( 'ABSPATH' ) ) exit;
 
 /**
- * Constants
- */
-if( !defined( 'DEDO_VERSION' ) )
-	define( 'DEDO_VERSION', '1.3.1.1' );
+ * Delightful Downloads
+ *
+ * @package  Delightful Downloads
+ * @since    1.3.2
+*/
+class Delightful_Downloads {
 
-if( !defined( 'DEDO_PLUGIN_URL' ) )
-	define( 'DEDO_PLUGIN_URL', plugin_dir_url( __FILE__ ) );
+	/**
+	 * Instance of this class.
+	 *
+	 * @since  1.3.2
+	 */
+	private static $instance = null;
 
-if( !defined( 'DEDO_PLUGIN_DIR' ) )
-	define( 'DEDO_PLUGIN_DIR', plugin_dir_path( __FILE__ ) );
+	/**
+	 * Initialize the plugin.
+	 *
+	 * @since  1.3.2
+	 */
+	private function __construct() {
 
-/**
- * Localization
- */
-function dedo_localization() {
-	load_textdomain( 'delightful-downloads', WP_LANG_DIR . '/delightful-downloads/delightful-downloads-' . get_locale() . '.mo' );
-	load_plugin_textdomain( 'delightful-downloads', false, dirname( plugin_basename( __FILE__ ) ) . '/languages/' );	
-}
-add_action( 'plugins_loaded', 'dedo_localization' );
+		// Setup plugin constants
+		self::setup_constants();
 
-/**
- * Options
- */
-global $dedo_options, $dedo_default_options;
+		// Load plugin text domain
+		self::load_plugin_textdomain();
 
-// Include options
-include_once( DEDO_PLUGIN_DIR . 'includes/options.php' );
+		// Setup plugin options
+		self::setup_options();
 
-// Set globals
-$dedo_default_options = dedo_get_default_options();
-$dedo_options = wp_parse_args( get_option( 'delightful-downloads' ), $dedo_default_options );
+		// Include plugin files
+		self::includes();
 
-/**
- * Include required plugin files
- */
-include_once( DEDO_PLUGIN_DIR . 'includes/cron.php' );
-include_once( DEDO_PLUGIN_DIR . 'includes/functions.php' );
-include_once( DEDO_PLUGIN_DIR . 'includes/mime-types.php' );
-include_once( DEDO_PLUGIN_DIR . 'includes/post-types.php' );
-include_once( DEDO_PLUGIN_DIR . 'includes/process-download.php' );
-include_once( DEDO_PLUGIN_DIR . 'includes/scripts.php' );
-include_once( DEDO_PLUGIN_DIR . 'includes/shortcodes.php' );
-include_once( DEDO_PLUGIN_DIR . 'includes/taxonomies.php' );
-if( is_admin() ) {
-	include_once( DEDO_PLUGIN_DIR . 'includes/admin/ajax.php' );
-	include_once( DEDO_PLUGIN_DIR . 'includes/admin/dashboard.php' );
-	include_once( DEDO_PLUGIN_DIR . 'includes/admin/media-button.php' );
-	include_once( DEDO_PLUGIN_DIR . 'includes/admin/meta-boxes.php' );
-	include_once( DEDO_PLUGIN_DIR . 'includes/admin/page-settings.php' );
-	include_once( DEDO_PLUGIN_DIR . 'includes/admin/page-support.php' );
-}
+		// Register activation/deactivation hooks
+		register_activation_hook( __FILE__, array( $this, 'activate' ) );
+		register_deactivation_hook( __FILE__, array( $this, 'deactivate' ) );
 
-/**
- * On activation
- */
-function dedo_activation() {
-	global $dedo_default_options;
-	
-	// Add version and prior version to database
-	if( $current_version = get_option( 'delightful-downloads-version' ) ) {
-		update_option( 'delightful-downloads-prior-version', $current_version );
+		// Register misc hooks
+		add_filter( 'plugin_action_links', array( $this, 'plugin_links' ), 10, 2 );
+
 	}
-	update_option( 'delightful-downloads-version', DEDO_VERSION );
 
-	// Add default options to database in no options exist
-	add_option( 'delightful-downloads', $dedo_default_options );
+	/**
+	 * Return an instance of this class.
+	 *
+	 * @since  1.3.2
+	 */
+	public static function get_instance() {
 
-	// Run folder protection
-	dedo_folder_protection();
-}
-register_activation_hook( __FILE__, 'dedo_activation' );
+			// If the single instance hasn't been set, set it now.
+			if ( null == self::$instance ) {
+				self::$instance = new self;
+			}
 
-/**
- * On deactivation
- */
-function dedo_deactivation() {
-	// Clear transients
-	dedo_delete_all_transients();
-}
-register_deactivation_hook( __FILE__, 'dedo_deactivation' );
+			return self::$instance;
 
-/**
- * Add plugin links
- */
-function dedo_plugin_links( $links, $file ) {
-	if( $file == plugin_basename(__FILE__) ) {
-		$plugin_links[] = '<a href="' . admin_url( 'edit.php?post_type=dedo_download&page=dedo_support' ) . '">' . __( 'Support', 'delightful-downloads' ) . '</a>';
-		$plugin_links[] = '<a href="' . admin_url( 'edit.php?post_type=dedo_download&page=dedo_settings' ) . '">' . __( 'Settings', 'delightful-downloads' ) . '</a>';
-	
-		foreach( $plugin_links as $plugin_link ) {
-			array_unshift( $links, $plugin_link );
+	}
+
+	/**
+	 * Setup plugin constants.
+	 *
+	 * @since  1.3.2
+	 */
+	private function setup_constants() {
+
+		if( !defined( 'DEDO_VERSION' ) ) {
+			define( 'DEDO_VERSION', '1.3.2' );
 		}
+
+		if( !defined( 'DEDO_PLUGIN_URL' ) ) {
+			define( 'DEDO_PLUGIN_URL', plugin_dir_url( __FILE__ ) );
+		}
+
+		if( !defined( 'DEDO_PLUGIN_DIR' ) ) {
+			define( 'DEDO_PLUGIN_DIR', plugin_dir_path( __FILE__ ) );			
+		}
+
 	}
 
-	return $links;
+	/**
+     * Load the plugin text domain.
+     *
+     * @since  1.3.2
+     */
+    private function load_plugin_textdomain() {
+
+		load_textdomain( 'delightful-downloads', WP_LANG_DIR . '/delightful-downloads/delightful-downloads-' . get_locale() . '.mo' );
+        load_plugin_textdomain( 'delightful-downloads', false, dirname( plugin_basename( __FILE__ ) ) . '/languages/' );        
+
+    }
+
+	/**
+	 * Setup plugin options.
+	 *
+	 * @since  1.3.2
+	 */
+	private function setup_options() {
+
+		global $dedo_options, $dedo_default_options;
+
+		// Include options file.
+		include_once( DEDO_PLUGIN_DIR . 'includes/options.php' );
+
+		// Set globals
+		$dedo_default_options = dedo_get_default_options();
+		$dedo_options = wp_parse_args( get_option( 'delightful-downloads' ), $dedo_default_options );
+
+	}    
+
+	/**
+	 * Include plugin files.
+	 *
+	 * @since  1.3.2
+	 */
+	private function includes() {
+
+		include_once( DEDO_PLUGIN_DIR . 'includes/cron.php' );
+		include_once( DEDO_PLUGIN_DIR . 'includes/functions.php' );
+		include_once( DEDO_PLUGIN_DIR . 'includes/mime-types.php' );
+		include_once( DEDO_PLUGIN_DIR . 'includes/post-types.php' );
+		include_once( DEDO_PLUGIN_DIR . 'includes/process-download.php' );
+		include_once( DEDO_PLUGIN_DIR . 'includes/scripts.php' );
+		include_once( DEDO_PLUGIN_DIR . 'includes/shortcodes.php' );
+		include_once( DEDO_PLUGIN_DIR . 'includes/taxonomies.php' );
+		
+		if ( is_admin() ) {
+			include_once( DEDO_PLUGIN_DIR . 'includes/admin/ajax.php' );
+			include_once( DEDO_PLUGIN_DIR . 'includes/admin/dashboard.php' );
+			include_once( DEDO_PLUGIN_DIR . 'includes/admin/media-button.php' );
+			include_once( DEDO_PLUGIN_DIR . 'includes/admin/meta-boxes.php' );
+			include_once( DEDO_PLUGIN_DIR . 'includes/admin/page-settings.php' );
+			include_once( DEDO_PLUGIN_DIR . 'includes/admin/page-support.php' );
+		}
+
+	}
+
+	/**
+	 * Activate plugin
+	 *
+	 * @since  1.3.2
+	 */
+	public function activate() {
+
+		global $dedo_default_options;
+	
+		// Add prior version to database if version already exists
+		if ( $current_version = get_option( 'delightful-downloads-version' ) ) {
+			update_option( 'delightful-downloads-prior-version', $current_version );
+		}
+
+		// Add current version to database
+		update_option( 'delightful-downloads-version', DEDO_VERSION );
+
+		// Add default options to database if no options exist
+		add_option( 'delightful-downloads', $dedo_default_options );
+
+		// Run folder protection
+		dedo_folder_protection();
+		
+	}
+
+	/**
+	 * Deactivate plugin
+	 *
+	 * @since  1.3.2
+	 */
+	public function deactivate() {
+
+		// Clear dedo transients
+		dedo_delete_all_transients();
+		
+	}
+
+	/**
+	 * Plugin Links.
+	 *
+	 * Add links below Delightful Downloads on the plugin screen.
+	 *
+	 * @since  1.3.2
+	 */
+	public function plugin_links( $links, $file ) {
+
+		if ( $file == plugin_basename( __FILE__ ) ) {
+			$plugin_links[] = '<a href="' . admin_url( 'edit.php?post_type=dedo_download&page=dedo_support' ) . '">' . __( 'Support', 'delightful-downloads' ) . '</a>';
+			$plugin_links[] = '<a href="' . admin_url( 'edit.php?post_type=dedo_download&page=dedo_settings' ) . '">' . __( 'Settings', 'delightful-downloads' ) . '</a>';
+		
+			foreach ( $plugin_links as $plugin_link ) {
+				array_unshift( $links, $plugin_link );
+			}
+		}
+
+		return $links;
+
+	} 
+
 }
-add_filter( 'plugin_action_links', 'dedo_plugin_links', 10, 2 );
+
+$delightful_downloads = Delightful_Downloads::get_instance();

@@ -56,11 +56,32 @@
   padding-top: 12px;
   padding-bottom: 12px;
 }
-.dedo-download-list tr:hover {
-  background-color: #fff;
+.dedo-download-list tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+.dedo-download-list tr.ui-selectee {
+  cursor: pointer;
 }
 .dedo-download-list tr.ui-selected {
-  background-color: #fff;
+  background-color: rgba(30, 140, 190, 0.2);
+}
+.admin-color-blue .dedo-download-list tr.ui-selected {
+  background-color: rgba(219, 152, 37, 0.2);
+}
+.admin-color-coffee .dedo-download-list tr.ui-selected {
+  background-color: rgba(199, 165, 137, 0.2);
+}
+.admin-color-ectoplasm .dedo-download-list tr.ui-selected {
+  background-color: rgba(137, 153, 58, 0.2);
+}
+.admin-color-midnight .dedo-download-list tr.ui-selected {
+  background-color: rgba(217, 44, 35, 0.2);
+}
+.admin-color-ocean .dedo-download-list tr.ui-selected {
+  background-color: rgba(158, 186, 160, 0.2);
+}
+.admin-color-sunrise .dedo-download-list tr.ui-selected {
+  background-color: rgba(221, 130, 59, 0.2);
 }
 .right-panel .download-details h3 {
   margin: 0 0 8px;
@@ -112,6 +133,17 @@
   padding: 10px 0;
   font-size: 16px;
   text-align: center;
+}
+/* All downloads screen */
+.post-type-dedo_download .view-switch {
+  display: none;
+}
+.post-type-dedo_download .inline-edit-group {
+  display: none;
+}
+/* All logs screen */
+.post-type-dedo_log .view-switch {
+  display: none;
 }
 /* Taxonomy pages */
 .taxonomy-ddownload_category .row-actions .view,
@@ -199,7 +231,7 @@ a#plupload-cancel-button:hover {
 }
 /* Dashboard */
 #dedo_dashboard_downloads .inside {
-  font-size: 12px;
+  font-size: 13px;
   padding-top: 20px;
 }
 #dedo_dashboard_downloads .table {
@@ -246,7 +278,6 @@ a#plupload-cancel-button:hover {
   width: 1%;
 }
 #dedo_dashboard_downloads td.t {
-  font-size: 12px;
   padding-right: 12px;
   padding-top: 6px;
 }

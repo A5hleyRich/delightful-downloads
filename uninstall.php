@@ -26,9 +26,11 @@ foreach ( $post_types as $post_type ) {
 	$posts = get_posts( array( 'post_type' => $post_type, 'post_status' => 'any', 'posts_per_page' => -1, 'fields' => 'ids' ) );
 
 	if ( !empty( $posts ) ) {
+		
 		foreach ( $posts as $post ) {
 			wp_delete_post( $post, true );
 		}
+		
 	}
 }
 
@@ -48,6 +50,7 @@ $taxonomies = array(
 );
 
 foreach ( $taxonomies as $taxonomy ) {
+	
 	$sql = "SELECT $wpdb->terms.term_id
 			FROM $wpdb->terms
 			INNER JOIN $wpdb->term_taxonomy ON $wpdb->terms.term_id = $wpdb->term_taxonomy.term_id
@@ -56,9 +59,11 @@ foreach ( $taxonomies as $taxonomy ) {
 	$terms = $wpdb->get_results( $sql );
 
 	if ( !empty( $terms ) ) {
+		
 		foreach ($terms as $term ) {
 			@wp_delete_term( $term->term_id, $taxonomy );
 		}
+
 	}
 }
 

@@ -1,7 +1,11 @@
 <?php
 /**
- * @package Dashboard
- */
+ * Delightful Downloads Dashboard
+ *
+ * @package     Delightful Downloads
+ * @subpackage  Admin/Dashboard
+ * @since       1.0
+*/
 
 // Exit if accessed directly
 if ( !defined( 'ABSPATH' ) ) exit;
@@ -9,19 +13,19 @@ if ( !defined( 'ABSPATH' ) ) exit;
 /**
  * Register dashboard widgets
  *
- * @return void
+ * @since  1.0
  */
 function dedo_register_dashboard_widgets() {
-	wp_add_dashboard_widget( 'dedo_dashboard_downloads', 'Delightful Downloads ' . __( 'Statistics', 'delightful-downloads' ), 'dedo_dashboard_downloads_widget' );
+	if ( current_user_can( apply_filters( 'dedo_cap_dashboard', 'edit_pages' ) ) ) {
+		wp_add_dashboard_widget( 'dedo_dashboard_downloads', 'Delightful Downloads ' . __( 'Statistics', 'delightful-downloads' ), 'dedo_dashboard_downloads_widget' );
+	}
 }
 add_action( 'wp_dashboard_setup', 'dedo_register_dashboard_widgets' );
 
 /**
  * Downloads Dashboard Widget
  *
- * @access      private
- * @since       1.0 
- * @return      void
+ * @since  1.0
 */
 function dedo_dashboard_downloads_widget() {
 	?>
@@ -30,8 +34,7 @@ function dedo_dashboard_downloads_widget() {
 		<table>
 			<tbody>
 				<tr>
-					<td class="b"><a href="edit.php?post_type=dedo_log"><?php echo dedo_format_number( dedo_get_total_count( 1 ) ); ?></a></td>
-					<td class="last t"><a href="edit.php?post_type=dedo_download"><?php _e( 'Downloads', 'delightful-downloads' ); ?></a></td>
+					<td class="last t"><a href="edit.php?post_type=dedo_download"><?php echo dedo_format_number( dedo_get_total_count( 1 ) ) . ' ' . __( 'Downloads', 'delightful-downloads' ); ?></a></td>
 				</tr>
 			</tbody>
 		</table>
@@ -41,8 +44,7 @@ function dedo_dashboard_downloads_widget() {
 		<table>
 			<tbody>
 				<tr>
-					<td class="b"><a href="edit.php?post_type=dedo_log"><?php echo dedo_format_number( dedo_get_total_count( 0 ) ); ?></a></td>
-					<td class="last t"><a href="edit.php?post_type=dedo_download"><?php _e( 'Downloads', 'delightful-downloads' ); ?></a></td>
+					<td class="last t"><a href="edit.php?post_type=dedo_download"><?php echo dedo_format_number( dedo_get_total_count( 0 ) ) . ' ' . __( 'Downloads', 'delightful-downloads' ); ?></a></td>
 				</tr>
 			</tbody>
 		</table>
@@ -52,8 +54,7 @@ function dedo_dashboard_downloads_widget() {
 		<table>
 			<tbody>
 				<tr>
-					<td class="b"><a href="edit.php?post_type=dedo_log"><?php echo dedo_format_number( dedo_get_total_count( 7 ) ); ?></a></td>
-					<td class="last t"><a href="edit.php?post_type=dedo_download"><?php _e( 'Downloads', 'delightful-downloads' ); ?></a></td>
+					<td class="last t"><a href="edit.php?post_type=dedo_download"><?php echo dedo_format_number( dedo_get_total_count( 7 ) ) . ' ' . __( 'Downloads', 'delightful-downloads' ); ?></a></td>
 				</tr>
 			</tbody>
 		</table>
@@ -63,8 +64,7 @@ function dedo_dashboard_downloads_widget() {
 		<table>
 			<tbody>
 				<tr>
-					<td class="b"><a href="edit.php?post_type=dedo_log"><?php echo dedo_format_number( dedo_get_total_count( 30 ) ); ?></a></td>
-					<td class="last t"><a href="edit.php?post_type=dedo_download"><?php _e( 'Downloads', 'delightful-downloads' ); ?></a></td>
+					<td class="last t"><a href="edit.php?post_type=dedo_download"><?php echo dedo_format_number( dedo_get_total_count( 30 ) ) . ' ' . __( 'Downloads', 'delightful-downloads' ); ?></a></td>
 				</tr>
 			</tbody>
 		</table>

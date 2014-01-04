@@ -3,7 +3,7 @@
  * Delightful Downloads Page Settings
  *
  * @package     Delightful Downloads
- * @subpackage  Functions/Page Settings
+ * @subpackage  Admin/Page Settings
  * @since       1.0
 */
 
@@ -11,7 +11,7 @@
 if ( !defined( 'ABSPATH' ) ) exit;
 
 /**
- * Register settings page
+ * Register Settings Page
  *
  * @since  1.3
  */
@@ -21,7 +21,7 @@ function dedo_register_page_settings() {
 add_action( 'admin_menu', 'dedo_register_page_settings' );
 
 /**
- * Register settings sections and fields
+ * Register Settings Sections and Fields
  *
  * @since  1.3
  */
@@ -35,17 +35,20 @@ function dedo_register_settings() {
 	register_setting( 'dedo_settings', 'delightful-downloads', 'dedo_validate_settings' ); 
 
 	// Register form sections
-	foreach( $registered_tabs as $key => $value ) {
+	foreach ( $registered_tabs as $key => $value ) {
+		
 		add_settings_section(
 			'dedo_settings_' . $key,
 			'',
 			function_exists( 'dedo_settings_' . $key . '_section' ) ? 'dedo_settings_' . $key . '_section' : 'dedo_settings_section',
 			'dedo_settings_' . $key
 		);
+
 	}
 	
 	// Register form fields
-	foreach( $registered_settings as $key => $value ) {
+	foreach ( $registered_settings as $key => $value ) {
+		
 		add_settings_field(
 			$key,
 			$value['name'],
@@ -53,12 +56,13 @@ function dedo_register_settings() {
 			'dedo_settings_' . $value['tab'],
 			'dedo_settings_' . $value['tab']
 		);
+
 	}
 } 
 add_action( 'admin_init', 'dedo_register_settings' );
 
 /**
- * Render settings page
+ * Render Settings Page
  *
  * @since  1.3
  */
@@ -74,7 +78,7 @@ function dedo_render_page_settings() {
 		<h2 class="nav-tab-wrapper">
 		<?php 
 			// Generate tabs
-			foreach( $registered_tabs as $key => $value ) {
+			foreach ( $registered_tabs as $key => $value ) {
 				echo '<a href="edit.php?post_type=dedo_download&page=dedo_settings&tab=' . $key . '" class="nav-tab ' . ( $active_tab == $key ? 'nav-tab-active' : '' ) . '">' . $value . '</a>';
    	 		} 
    	 	?>
@@ -100,7 +104,7 @@ function dedo_render_page_settings() {
 }
 
 /**
- * Render settings sections
+ * Render Settings Sections
  *
  * @since  1.3
  */
@@ -114,7 +118,7 @@ function dedo_settings_section() { return; }
 function dedo_settings_enable_taxonomies_field() {
 	global $dedo_options;
 	
-	$checked = $dedo_options['enable_taxonomies'];
+	$checked = absint( $dedo_options['enable_taxonomies'] );
 
 	echo '<label for="delightful-downloads[enable_taxonomies]">';
 	echo '<input type="checkbox" name="delightful-downloads[enable_taxonomies]" id="delightful-downloads-enable-taxonomies" value="1" ' . checked( $checked, 1, false ) . ' /> ';
@@ -131,7 +135,7 @@ function dedo_settings_enable_taxonomies_field() {
 function dedo_settings_members_only_field() {
 	global $dedo_options;
 	
-	$checked = $dedo_options['members_only'];
+	$checked = absint( $dedo_options['members_only'] );
 
 	echo '<label for="delightful-downloads[members_only]">';
 	echo '<input type="checkbox" name="delightful-downloads[members_only]" id="delightful-downloads-members-only" value="1" ' . checked( $checked, 1, false ) . ' /> ';
@@ -173,7 +177,7 @@ function dedo_settings_block_agents_field() {
 
 	$agents = $dedo_options['block_agents'];
 
-	echo '<textarea name="delightful-downloads[block_agents]" class="dedo-settings-textarea">' . $agents . '</textarea>';
+	echo '<textarea name="delightful-downloads[block_agents]" class="dedo-settings-textarea">' . esc_attr( $agents ) . '</textarea>';
 	echo '<p class="description">' . __( 'Enter user agents to block from downloading files. One per line.', 'delightful-downloads' ) . '</p>';
 }
 
@@ -185,7 +189,7 @@ function dedo_settings_block_agents_field() {
 function dedo_settings_log_admin_downloads_field() {
 global $dedo_options;
 	
-	$checked = $dedo_options['log_admin_downloads'];
+	$checked = absint( $dedo_options['log_admin_downloads'] );
 
 	echo '<label for="delightful-downloads[log_admin_downloads]">';
 	echo '<input type="checkbox" name="delightful-downloads[log_admin_downloads]" id="delightful-downloads-log-admin-downloads" value="1" ' . checked( $checked, 1, false ) . ' /> ';
@@ -204,7 +208,7 @@ function dedo_settings_default_text_field() {
 
 	$text = $dedo_options['default_text'];
 
-	echo '<input type="text" name="delightful-downloads[default_text]" value="' . $text . '" class="regular-text" />';
+	echo '<input type="text" name="delightful-downloads[default_text]" value="' . esc_attr( $text ) . '" class="regular-text" />';
 	echo '<p class="description">' . __( 'Set the default text to display on button and link style outputs. This can be overwritten on a per-download basis using the \'text\' attribute.', 'delightful-downloads' ) . ' <code>[ddownload id="123" text="Awesome Download"]</code></p>';
 }
 
@@ -220,7 +224,7 @@ function dedo_settings_default_style_field() {
 	$default_style = $dedo_options['default_style'];
 
 	echo '<select name="delightful-downloads[default_style]">';
-	foreach( $styles as $key => $value ) {
+	foreach ( $styles as $key => $value ) {
 		$selected = ( $default_style == $key ? ' selected="selected"' : '' );
 		echo '<option value="' . $key . '" ' . $selected . '>' . $value['name'] . '</option>';	
 	}
@@ -240,10 +244,12 @@ function dedo_settings_default_button_field() {
 	$default_color = $dedo_options['default_button'];
 
 	echo '<select name="delightful-downloads[default_button]">';
-	foreach( $colors as $key => $value ) {
+	
+	foreach ( $colors as $key => $value ) {
 		$selected = ( $default_color == $key ? ' selected="selected"' : '' );
 		echo '<option value="' . $key . '" ' . $selected . '>' . $value['name'] . '</option>';	
 	}
+
 	echo '</select>';
 	echo '<p class="description">' . __( 'Choose the default button style. This can be overwritten on a per-download basis using the \'button\' attribute.', 'delightful-downloads' ) . ' <code>[ddownload id="123" style="button" button="blue"]</code></p>';
 }
@@ -260,10 +266,12 @@ function dedo_settings_default_list_field() {
 	$default_list = $dedo_options['default_list'];
 
 	echo '<select name="delightful-downloads[default_list]">';
-	foreach( $lists as $key => $value ) {
+	
+	foreach ( $lists as $key => $value ) {
 		$selected = ( $default_list == $key ? ' selected="selected"' : '' );
 		echo '<option value="' . $key . '" ' . $selected . '>' . $value['name'] . '</option>';	
 	}
+
 	echo '</select>';
 	echo '<p class="description">' . __( 'Choose the default output style for downloads lists. This can be overwritten on a per-list basis using the \'style\' attribute.', 'delightful-downloads' ) . ' <code>[ddownloads_list style="title_filesize"]</code></p>';
 }
@@ -276,7 +284,7 @@ function dedo_settings_default_list_field() {
 function dedo_settings_enable_css_field() {
 	global $dedo_options;
 	
-	$checked = $dedo_options['enable_css'];
+	$checked = absint( $dedo_options['enable_css'] );
 
 	echo '<label for="delightful-downloads[enable_css]">';
 	echo '<input type="checkbox" name="delightful-downloads[enable_css]" value="1" ' . checked( $checked, 1, false ) . ' /> ';
@@ -295,7 +303,7 @@ function dedo_settings_cache_duration_field() {
 	
 	$cache_duration = $dedo_options['cache_duration'];
 
-	echo '<input type="number" name="delightful-downloads[cache_duration]" value="' . $cache_duration . '" min="0" class="small-text" />';
+	echo '<input type="number" name="delightful-downloads[cache_duration]" value="' . esc_attr( $cache_duration ) . '" min="0" class="small-text" />';
 	echo '<p class="description">' . __( sprintf( 'Set the time in minutes to cache database queries. This will affect how often the %s, %s and %s shortcodes update. It is not recommended to set this value to 0 as it can impede site performance.', '<code>[ddownload_count]</code>', '<code>[ddownload_total_count]</code>', '<code>[ddownload_list]</code>' ), 'delightful-downloads' ) . '</p>';
 }
 
@@ -309,25 +317,8 @@ function dedo_settings_download_url_field() {
 
 	$text = $dedo_options['download_url'];
 
-	echo '<input type="text" name="delightful-downloads[download_url]" value="' . $text . '" class="regular-text" />';
+	echo '<input type="text" name="delightful-downloads[download_url]" value="' . esc_attr( $text ) . '" class="regular-text" />';
 	echo '<p class="description">' . __( 'Set the URL for download links. This should be left as the default value, unless absolutely sure that it will not cause conflicts with existing permalinks or plugins.', 'delightful-downloads' ) . ' <code>' . dedo_download_link( 123 ) . '</code></p>';
-}
-
-/**
- * Render Download Address Rewrite field
- *
- * @since  1.3
- */
-function dedo_settings_download_url_rewrite_field() {
-	global $dedo_options;
-	
-	$checked = $dedo_options['download_url_rewrite'];
-
-	echo '<label for="delightful-downloads[download_url_rewrite]">';
-	echo '<input type="checkbox" name="delightful-downloads[download_url_rewrite]" value="1" ' . checked( $checked, 1, false ) . ' /> ';
-	echo __( 'Enable', 'delightful-downloads' );
-	echo '</label>';
-	echo '<p class="description">' . __( 'Check this option to enable pretty permalinks.', 'delightful-downloads' ) . '<code>' . home_url( '?' . $dedo_options['download_url'] . '=123' ) . '</code> becomes <code>' . home_url( $dedo_options['download_url'] . '/123' ) . '</code>.</p>';
 }
 
 /**
@@ -346,13 +337,16 @@ function dedo_validate_settings( $input ) {
 	 $registered_options = dedo_get_options();
 
 	 // Create a list of textfields and checkboxes on active tab
-	 foreach( $registered_options as $key => $value ) {
-	 	if( $value['tab'] == $tab && $value['type'] == 'text' ) {
+	 foreach ( $registered_options as $key => $value ) {
+	 	
+	 	if ( $value['tab'] == $tab && $value['type'] == 'text' ) {
 	 		$textfields[] = $key;
 	 	}
-	 	if( $value['tab'] == $tab && $value['type'] == 'check' ) {
+	 	
+	 	if ( $value['tab'] == $tab && $value['type'] == 'check' ) {
 	 		$checkboxes[] = $key;
 	 	}
+
 	 }
 
 	 // Parse so that settings not on the active tab keep their values
@@ -360,25 +354,30 @@ function dedo_validate_settings( $input ) {
 	 
 	 // Save empty text fields with default options
 	if ( isset( $textfields ) ) {	 
-		 foreach( $textfields as $textfield ) {
+		 
+		foreach ( $textfields as $textfield ) {
 			$parsed[$textfield] = trim( $input[$textfield] ) == '' ? $dedo_default_options[$textfield] : trim( $input[$textfield] );		 
-		 }
+		}
 	}
 	 
 	 // Save checkboxes
 	if ( isset( $checkboxes ) )	{ 
-		 foreach( $checkboxes as $checkbox ) {
-			 if( !isset( $input[$checkbox] ) ) {
+		 
+		 foreach ( $checkboxes as $checkbox ) {
+			 
+			 if ( !isset( $input[$checkbox] ) ) {
 				 $parsed[$checkbox] = 0;
 			 }
 			 else {
 				$parsed[$checkbox] = 1;	 
 			 }
+
 		 }
+
 	}
 
 	 // Ensure cache duration is a positive number only
-	 $parsed['cache_duration'] = abs( intval( $parsed['cache_duration'] ) );
+	 $parsed['cache_duration'] = absint( $parsed['cache_duration'] );
 
 	 // Ensure download URL does not contain illegal characters
 	 $parsed['download_url'] = strtolower( preg_replace( '/[^A-Za-z0-9_-]/', '', $parsed['download_url'] ) );
