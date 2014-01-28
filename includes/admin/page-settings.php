@@ -273,7 +273,7 @@ function dedo_settings_default_list_field() {
 	}
 
 	echo '</select>';
-	echo '<p class="description">' . __( 'Choose the default output style for downloads lists. This can be overwritten on a per-list basis using the \'style\' attribute.', 'delightful-downloads' ) . ' <code>[ddownloads_list style="title_filesize"]</code></p>';
+	echo '<p class="description">' . __( 'Choose the default output style for downloads lists. This can be overwritten on a per-list basis using the \'style\' attribute.', 'delightful-downloads' ) . ' <code>[ddownload_list style="title_filesize"]</code></p>';
 }
 
 /**

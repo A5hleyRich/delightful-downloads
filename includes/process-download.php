@@ -52,6 +52,8 @@ function dedo_download_process() {
 		// Check if user is blocked
 		if ( !dedo_download_blocked( $_SERVER['HTTP_USER_AGENT'] ) ) {
 			
+			do_action( 'ddownload_download_blocked', $download_id );
+
 			// User blocked, show error message
 			wp_die( __( 'You are blocked from downloading this file!', 'delightful-downloads' ) );
 		}
@@ -59,6 +61,8 @@ function dedo_download_process() {
 		// Check valid download
 		if ( !dedo_download_valid( $download_id ) ) {
 			
+			do_action( 'ddownload_download_invalid', $download_id );
+
 			// Provided ID is not a valid download, display error
 			wp_die( __( 'Invalid download.', 'delightful-downloads' ) );
 		}
@@ -79,7 +83,10 @@ function dedo_download_process() {
 			
 			// Server error
 			wp_die( __( 'Server error, file cannot be opened!', 'delightful-downloads' ) );
-		}	
+		}
+
+		// Stop page caching. Cause conflicts with WP Super Cache
+		define( 'DONOTCACHEPAGE', true );	
 
 		// Disable php notices, can cause corrupt downloads
 		@ini_set( 'display_errors', 0 );
