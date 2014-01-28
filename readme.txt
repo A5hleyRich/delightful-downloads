@@ -172,6 +172,9 @@ Please refer to the [FAQ](http://ashleyrich.com/wordpress/plugins/delightful-dow
 
 == Upgrade Notice ==
 
+= 1.3.3 =
+
++ Updated translations.
 
 = 1.3.2 =
 
