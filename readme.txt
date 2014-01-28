@@ -4,7 +4,7 @@ Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_i
 Tags: download, manager, downloads, monitor, shortcode, delightful downloads, file, counter, tracking
 Requires at least: 3.8
 Tested up to: 3.8.1
-Stable tag: 1.3.2
+Stable tag: 1.3.3
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -15,6 +15,7 @@ A super-awesome downloads manager for WordPress.
 Delightful Downloads is a super-awesome downloads manager for WordPress that allows you to easily add download links, buttons and download information to posts, pages and widget areas. Download statistics are tracked within the WordPress dashboard.
 
 = Features =
+
 
 + File upload via the WordPress admin area.
 + Shortcodes to display download links, buttons and download information within posts, pages and widget areas.
@@ -28,7 +29,13 @@ Delightful Downloads is a super-awesome downloads manager for WordPress that all
 + Developer friendly.
 + Localisation support.
 
+= Translations =
+
+
++ Russian (Credit - dobrodukh)
+
 = Documentation =
+
 
 The Delightful Downloads documentation can be found [here](http://ashleyrich.com/wordpress/plugins/delightful-downloads/documentation/ "Delightful Downloads Documentation").
 
@@ -56,7 +63,12 @@ Please refer to the [FAQ](http://ashleyrich.com/wordpress/plugins/delightful-dow
 
 == Changelog ==
 
+= 1.3.3 =
+
++ Added Russion translation.
+
 = 1.3.2 =
+
 + Code refactor.
 + Improved shortcode generator visuals.
 + Improved dashboard widget so that only admins and editors can view it by default.
@@ -67,13 +79,16 @@ Please refer to the [FAQ](http://ashleyrich.com/wordpress/plugins/delightful-dow
 + Security fixes.
 
 = 1.3.1.1 =
+
 + Fixed localisation support.
 
 = 1.3.1 =
+
 + Removed Pretty Permalinks option.
 + Fixed a bug that caused downloads to stop working.
 
 = 1.3 =
+
 + Added download tags and categories.
 + Added folder protection so that files can no longer be accessed directly.
 + Added the option to block user agents such as search bots.
@@ -90,9 +105,11 @@ Please refer to the [FAQ](http://ashleyrich.com/wordpress/plugins/delightful-dow
 + Improved Settings Screen.
 
 = 1.2.3 =
+
 + Fixed a bug that caused downloads to become corrupt when the NextGEN Gallery plugin was active.
 
 = 1.2.2 =
+
 + Added caching to the [ddownload_count] shortcode.
 + Added language template po and mo files.
 + Improved the Add Download screen with more descriptive help text.
@@ -102,6 +119,7 @@ Please refer to the [FAQ](http://ashleyrich.com/wordpress/plugins/delightful-dow
 + Fixed a bug that caused the Logs table to incorrectly show the author.
 
 = 1.2.1 =
+
 + Improved download links by adding rel="nofollow" to encourage Search Engines not to download files.
 + Improved the file browser so that it no longer shows hidden files.
 + Fixed a bug that caused menu images to not display.
@@ -112,6 +130,7 @@ Please refer to the [FAQ](http://ashleyrich.com/wordpress/plugins/delightful-dow
 + Removed text file error logging in preperation for improved statistics.
 
 = 1.2 =
+
 + Added dashboard widget.
 + Added an option to the settings screen to set the directory used in the file browser.
 + Added support options to settings screen.
@@ -120,13 +139,16 @@ Please refer to the [FAQ](http://ashleyrich.com/wordpress/plugins/delightful-dow
 + Fixed a bug that caused the incorrect time to display in the download logs.
 
 = 1.1.2 =
+
 + Fixes shortcode formatting.
 + Fixes a bug that caused the file browser to not load.
 
 = 1.1.1 =
+
 + Fixes headers already sent error.
 
 = 1.1 =
+
 + Downloads by admins are no longer logged or added to the file's download count.
 + Added the ability to search for downloads in the shortcode generator window.
 + Added ddownload_total_count shortcode button to the shortcode generator window.
@@ -141,22 +163,29 @@ Please refer to the [FAQ](http://ashleyrich.com/wordpress/plugins/delightful-dow
 + Fixed a bug in the download log screen that resulted in not being able to filter by ip address.
 
 = 1.0.1 =
+
 + Fixes a bug that caused the inability to add a download on the post screen.
 
 = 1.0 =
+
 + Initial stable plugin release.
 
 == Upgrade Notice ==
 
+
 = 1.3.2 =
+
 + Security fixes.
 + Bug fixes.
 
 = 1.3.1.1 =
+
 + Bug fixes.
 
 = 1.3.1 =
+
 + Bug fixes.
 
 = 1.3 =
+
 + Additional features and general improvements.
