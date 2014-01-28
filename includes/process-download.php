@@ -79,7 +79,10 @@ function dedo_download_process() {
 			
 			// Server error
 			wp_die( __( 'Server error, file cannot be opened!', 'delightful-downloads' ) );
-		}	
+		}
+
+		// Stop page caching. Cause conflicts with WP Super Cache
+		define( 'DONOTCACHEPAGE', true );	
 
 		// Disable php notices, can cause corrupt downloads
 		@ini_set( 'display_errors', 0 );
