@@ -1,0 +1,620 @@
+# Copyright (C) 2014 Delightful Downloads
+# This file is distributed under the same license as the Delightful Downloads package.
+msgid ""
+msgstr ""
+"Project-Id-Version: Delightful Downloads 1.3.2\n"
+"Report-Msgid-Bugs-To: http://wordpress.org/tag/delightful-downloads\n"
+"POT-Creation-Date: 2014-01-09 23:53:28+00:00\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"PO-Revision-Date: 2014-01-09 23:57-0000\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"X-Generator: Poedit 1.6.3\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Language: en_US\n"
+
+#: delightful-downloads.php:214 includes/admin/page-support.php:21
+#: includes/admin/page-support.php:46
+msgid "Support"
+msgstr ""
+
+#: delightful-downloads.php:215 includes/admin/page-settings.php:19
+msgid "Settings"
+msgstr ""
+
+#: includes/admin/dashboard.php:20 includes/options.php:22
+msgid "Statistics"
+msgstr ""
+
+#: includes/admin/dashboard.php:33
+msgid "Last 24 Hours"
+msgstr ""
+
+#: includes/admin/dashboard.php:37 includes/admin/dashboard.php:47
+#: includes/admin/dashboard.php:57 includes/admin/dashboard.php:67
+#: includes/admin/media-button.php:51 includes/post-types.php:21
+#: includes/post-types.php:33 includes/post-types.php:96
+msgid "Downloads"
+msgstr ""
+
+#: includes/admin/dashboard.php:43
+msgid "All Time"
+msgstr ""
+
+#: includes/admin/dashboard.php:53
+msgid "Last 7 Days"
+msgstr ""
+
+#: includes/admin/dashboard.php:63
+msgid "Last 30 Days"
+msgstr ""
+
+#: includes/admin/dashboard.php:73
+msgid "You are using"
+msgstr ""
+
+#: includes/admin/media-button.php:39 includes/admin/media-button.php:111
+msgid "Insert Download"
+msgstr ""
+
+#: includes/admin/media-button.php:43
+msgid "Search"
+msgstr ""
+
+#: includes/admin/media-button.php:49 includes/functions.php:102
+#: includes/post-types.php:93
+msgid "Title"
+msgstr ""
+
+#: includes/admin/media-button.php:50
+msgid "Size"
+msgstr ""
+
+#: includes/admin/media-button.php:79
+msgid "Download Details"
+msgstr ""
+
+#: includes/admin/media-button.php:82
+msgid "Downloads:"
+msgstr ""
+
+#: includes/admin/media-button.php:85
+msgid "Text"
+msgstr ""
+
+#: includes/admin/media-button.php:87
+msgid "Style"
+msgstr ""
+
+#: includes/admin/media-button.php:89 includes/admin/media-button.php:101
+msgid "Default"
+msgstr ""
+
+#: includes/admin/media-button.php:99
+msgid "Color"
+msgstr ""
+
+#: includes/admin/media-button.php:112
+msgid "Insert File Size"
+msgstr ""
+
+#: includes/admin/media-button.php:113
+msgid "Insert Download Count"
+msgstr ""
+
+#: includes/admin/meta-boxes.php:19 includes/post-types.php:94
+msgid "File"
+msgstr ""
+
+#: includes/admin/meta-boxes.php:20
+msgid "Download Stats"
+msgstr ""
+
+#: includes/admin/meta-boxes.php:58
+msgid "Allowed Files"
+msgstr ""
+
+#: includes/admin/meta-boxes.php:88
+msgid "File URL:"
+msgstr ""
+
+#: includes/admin/meta-boxes.php:91
+msgid "Enter file URL here"
+msgstr ""
+
+#: includes/admin/meta-boxes.php:93
+msgid ""
+"You may manually enter a file URL here, for files that are already uploaded "
+"to the server. Please note that only files within the WordPress directory "
+"structure are allowed (for example: %s). Alternatively, you can browse to "
+"the file using the file browser, or upload a new file:"
+msgstr ""
+
+#: includes/admin/meta-boxes.php:96
+msgid "Upload File"
+msgstr ""
+
+#: includes/admin/meta-boxes.php:97
+msgid "Select Existing File"
+msgstr ""
+
+#: includes/admin/meta-boxes.php:111
+msgid "Maximum upload file size: %s."
+msgstr ""
+
+#: includes/admin/meta-boxes.php:116
+msgid "File Size:"
+msgstr ""
+
+#: includes/admin/meta-boxes.php:141
+msgid "Count"
+msgstr ""
+
+#: includes/admin/meta-boxes.php:214
+msgid ""
+"The file does not exist! Please check the URL and ensure it is within the "
+"WordPress directory structure. (For example: %s)"
+msgstr ""
+
+#: includes/admin/page-settings.php:88
+msgid "Settings updated successfully."
+msgstr ""
+
+#: includes/admin/page-settings.php:125 includes/admin/page-settings.php:291
+msgid "Enable"
+msgstr ""
+
+#: includes/admin/page-settings.php:127
+msgid "Check this option to allow downloads to be tagged or categorised."
+msgstr ""
+
+#: includes/admin/page-settings.php:142
+msgid "Member Only"
+msgstr ""
+
+#: includes/admin/page-settings.php:144
+msgid "Check this option to allow only logged in users to download files."
+msgstr ""
+
+#: includes/admin/page-settings.php:167
+msgid ""
+"Select the page that a user should be redirected to if they try to download "
+"a file when not logged in and the Members Only option is checked. If no page "
+"is selected a generic error message will be displayed."
+msgstr ""
+
+#: includes/admin/page-settings.php:181
+msgid "Enter user agents to block from downloading files. One per line."
+msgstr ""
+
+#: includes/admin/page-settings.php:196
+msgid "Log Downloads"
+msgstr ""
+
+#: includes/admin/page-settings.php:198
+msgid "Check this option to log downloads by admins."
+msgstr ""
+
+#: includes/admin/page-settings.php:212
+msgid ""
+"Set the default text to display on button and link style outputs. This can "
+"be overwritten on a per-download basis using the 'text' attribute."
+msgstr ""
+
+#: includes/admin/page-settings.php:232
+msgid ""
+"Choose the default output style for downloads. This can be overwritten on a "
+"per-download basis using the 'style' attribute."
+msgstr ""
+
+#: includes/admin/page-settings.php:254
+msgid ""
+"Choose the default button style. This can be overwritten on a per-download "
+"basis using the 'button' attribute."
+msgstr ""
+
+#: includes/admin/page-settings.php:276
+msgid ""
+"Choose the default output style for downloads lists. This can be overwritten "
+"on a per-list basis using the 'style' attribute."
+msgstr ""
+
+#: includes/admin/page-settings.php:293
+msgid ""
+"Check this option to include the Delightful Downloads stylesheet on the "
+"front-end. If this option is disabled you must manually add the button CSS "
+"classes to your theme's CSS file."
+msgstr ""
+
+#: includes/admin/page-settings.php:321
+msgid ""
+"Set the URL for download links. This should be left as the default value, "
+"unless absolutely sure that it will not cause conflicts with existing "
+"permalinks or plugins."
+msgstr ""
+
+#: includes/admin/page-support.php:47
+msgid ""
+"Please include the following information when requesting <a href=\"http://"
+"wordpress.org/support/plugin/delightful-downloads\">support</a>."
+msgstr ""
+
+#: includes/cron.php:46
+msgid "Once Weekly"
+msgstr ""
+
+#: includes/functions.php:36
+msgid "Button"
+msgstr ""
+
+#: includes/functions.php:40
+msgid "Link"
+msgstr ""
+
+#: includes/functions.php:44
+msgid "Plain Text"
+msgstr ""
+
+#: includes/functions.php:61
+msgid "Black"
+msgstr ""
+
+#: includes/functions.php:65
+msgid "Blue"
+msgstr ""
+
+#: includes/functions.php:69
+msgid "Grey"
+msgstr ""
+
+#: includes/functions.php:73
+msgid "Green"
+msgstr ""
+
+#: includes/functions.php:77
+msgid "Purple"
+msgstr ""
+
+#: includes/functions.php:81
+msgid "Red"
+msgstr ""
+
+#: includes/functions.php:85
+msgid "Yellow"
+msgstr ""
+
+#: includes/functions.php:106
+msgid "Title (Date)"
+msgstr ""
+
+#: includes/functions.php:110
+msgid "Title (Count)"
+msgstr ""
+
+#: includes/functions.php:114
+msgid "Title (Filesize)"
+msgstr ""
+
+#: includes/options.php:20
+msgid "General"
+msgstr ""
+
+#: includes/options.php:21
+msgid "Shortcodes"
+msgstr ""
+
+#: includes/options.php:23
+msgid "Advanced"
+msgstr ""
+
+#: includes/options.php:37
+msgid "Categories and Tags"
+msgstr ""
+
+#: includes/options.php:43
+msgid "Members Download"
+msgstr ""
+
+#: includes/options.php:49
+msgid "Non-Members Redirect"
+msgstr ""
+
+#: includes/options.php:55
+msgid "Block User Agents"
+msgstr ""
+
+#: includes/options.php:61
+msgid "Default Text"
+msgstr ""
+
+#: includes/options.php:64 includes/post-types.php:22
+#: includes/post-types.php:176
+msgid "Download"
+msgstr ""
+
+#: includes/options.php:67
+msgid "Default Style"
+msgstr ""
+
+#: includes/options.php:73
+msgid "Default Button Style"
+msgstr ""
+
+#: includes/options.php:79
+msgid "Default List Style"
+msgstr ""
+
+#: includes/options.php:85
+msgid "Admin Downloads"
+msgstr ""
+
+#: includes/options.php:91
+msgid "Default CSS Styles"
+msgstr ""
+
+#: includes/options.php:97
+msgid "Cache Duration"
+msgstr ""
+
+#: includes/options.php:103
+msgid "Download Address"
+msgstr ""
+
+#: includes/post-types.php:23 includes/post-types.php:60
+msgid "Add New"
+msgstr ""
+
+#: includes/post-types.php:24
+msgid "Add New Download"
+msgstr ""
+
+#: includes/post-types.php:25
+msgid "Edit Download"
+msgstr ""
+
+#: includes/post-types.php:26
+msgid "New Download"
+msgstr ""
+
+#: includes/post-types.php:27
+msgid "All Downloads"
+msgstr ""
+
+#: includes/post-types.php:28
+msgid "View Download"
+msgstr ""
+
+#: includes/post-types.php:29
+msgid "Search Downloads"
+msgstr ""
+
+#: includes/post-types.php:30
+msgid "No downloads found"
+msgstr ""
+
+#: includes/post-types.php:31
+msgid "No downloads found in Trash"
+msgstr ""
+
+#: includes/post-types.php:58
+msgid "Download Logs"
+msgstr ""
+
+#: includes/post-types.php:59
+msgid "Log"
+msgstr ""
+
+#: includes/post-types.php:61
+msgid "Add New Log"
+msgstr ""
+
+#: includes/post-types.php:62
+msgid "Edit Log"
+msgstr ""
+
+#: includes/post-types.php:63
+msgid "New Log"
+msgstr ""
+
+#: includes/post-types.php:64 includes/post-types.php:70
+msgid "Logs"
+msgstr ""
+
+#: includes/post-types.php:65
+msgid "View Log"
+msgstr ""
+
+#: includes/post-types.php:66
+msgid "Search Logs"
+msgstr ""
+
+#: includes/post-types.php:67
+msgid "No logs found"
+msgstr ""
+
+#: includes/post-types.php:68
+msgid "No logs found in Trash"
+msgstr ""
+
+#: includes/post-types.php:95
+msgid "Shortcode"
+msgstr ""
+
+#: includes/post-types.php:97 includes/post-types.php:180
+msgid "Date"
+msgstr ""
+
+#: includes/post-types.php:104 includes/taxonomies.php:25
+msgid "Categories"
+msgstr ""
+
+#: includes/post-types.php:105 includes/taxonomies.php:49
+msgid "Tags"
+msgstr ""
+
+#: includes/post-types.php:177
+msgid "User"
+msgstr ""
+
+#: includes/post-types.php:178
+msgid "IP Address"
+msgstr ""
+
+#: includes/post-types.php:179
+msgid "User Agent"
+msgstr ""
+
+#: includes/post-types.php:215
+msgid "Anonymous"
+msgstr ""
+
+#: includes/process-download.php:48
+msgid "Please login to download this file!"
+msgstr ""
+
+#: includes/process-download.php:56
+msgid "You are blocked from downloading this file!"
+msgstr ""
+
+#: includes/process-download.php:63
+msgid "Invalid download."
+msgstr ""
+
+#: includes/process-download.php:74
+msgid "File does not exist!"
+msgstr ""
+
+#: includes/process-download.php:81
+msgid "Server error, file cannot be opened!"
+msgstr ""
+
+#: includes/shortcodes.php:37 includes/shortcodes.php:109
+#: includes/shortcodes.php:142
+msgid "Invalid download ID."
+msgstr ""
+
+#: includes/shortcodes.php:47 includes/shortcodes.php:292
+msgid "Invalid style attribute."
+msgstr ""
+
+#: includes/shortcodes.php:64
+msgid "Invalid button attribute."
+msgstr ""
+
+#: includes/shortcodes.php:195
+msgid "Invalid orderby attribute."
+msgstr ""
+
+#: includes/shortcodes.php:221
+msgid "Invalid order attribute."
+msgstr ""
+
+#: includes/shortcodes.php:229
+msgid "Invalid relation attribute."
+msgstr ""
+
+#: includes/shortcodes.php:323
+msgid "No downloads found."
+msgstr ""
+
+#: includes/taxonomies.php:23
+msgid "Download Categories"
+msgstr ""
+
+#: includes/taxonomies.php:24
+msgid "Download Category"
+msgstr ""
+
+#: includes/taxonomies.php:26
+msgid "All Categories"
+msgstr ""
+
+#: includes/taxonomies.php:27
+msgid "Edit Category"
+msgstr ""
+
+#: includes/taxonomies.php:28
+msgid "View Category"
+msgstr ""
+
+#: includes/taxonomies.php:29
+msgid "Update Category"
+msgstr ""
+
+#: includes/taxonomies.php:30
+msgid "Add New Category"
+msgstr ""
+
+#: includes/taxonomies.php:31
+msgid "New Category Name"
+msgstr ""
+
+#: includes/taxonomies.php:32
+msgid "Search Categories"
+msgstr ""
+
+#: includes/taxonomies.php:33
+msgid "Popular Categories"
+msgstr ""
+
+#: includes/taxonomies.php:47
+msgid "Download Tags"
+msgstr ""
+
+#: includes/taxonomies.php:48
+msgid "Download Tag"
+msgstr ""
+
+#: includes/taxonomies.php:50
+msgid "All Tags"
+msgstr ""
+
+#: includes/taxonomies.php:51
+msgid "Edit Tag"
+msgstr ""
+
+#: includes/taxonomies.php:52
+msgid "View Tag"
+msgstr ""
+
+#: includes/taxonomies.php:53
+msgid "Update Tag"
+msgstr ""
+
+#: includes/taxonomies.php:54
+msgid "Add New Tag"
+msgstr ""
+
+#: includes/taxonomies.php:55
+msgid "New Tag Name"
+msgstr ""
+
+#: includes/taxonomies.php:56
+msgid "Search Tags"
+msgstr ""
+
+#: includes/taxonomies.php:57
+msgid "Popular Tags"
+msgstr ""
+
+#. Plugin Name of the plugin/theme
+msgid "Delightful Downloads"
+msgstr ""
+
+#. Plugin URI of the plugin/theme
+msgid "http://wordpress.org/extend/plugins/delightful-downloads/"
+msgstr ""
+
+#. Description of the plugin/theme
+msgid "A super-awesome downloads manager for WordPress."
+msgstr ""
+
+#. Author of the plugin/theme
+msgid "Ashley Rich"
+msgstr ""
+
+#. Author URI of the plugin/theme
+msgid "http://ashleyrich.com"
+msgstr ""
