@@ -417,8 +417,10 @@ function dedo_folder_protection() {
 	$index = DEDO_PLUGIN_DIR . 'assets/default_files/index.php';
 	$htaccess = DEDO_PLUGIN_DIR . 'assets/default_files/.htaccess';
 
-	// Create upload dir if needed
-	wp_mkdir_p( $upload_dir );
+	// Create upload dir if needed, return on fail. Causes fatal error on activation otherwise
+	if ( !wp_mkdir_p( $upload_dir ) ) {
+		return;
+	}
 
 	// Check for root index.php
 	if ( !file_exists( $upload_dir . '/index.php' ) ) {

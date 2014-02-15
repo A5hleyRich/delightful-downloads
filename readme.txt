@@ -66,7 +66,7 @@ Please refer to the [FAQ](http://ashleyrich.com/wordpress/plugins/delightful-dow
 
 = 1.3.3 =
 
-* Added Russion translation.
+* Added Russian translation.
 
 = 1.3.2 =
 
@@ -127,8 +127,8 @@ Please refer to the [FAQ](http://ashleyrich.com/wordpress/plugins/delightful-dow
 * Fixed a bug that caused the file browser to not display.
 * Fixed a bug that caused a 'file does not exist' error due to subdomain.
 * Fixed a bug that caused a 'file does not exist' error when using non-standard port numbers for the host server.
-* Removed the option to manually specifiy an upload directory for the file browser.
-* Removed text file error logging in preperation for improved statistics.
+* Removed the option to manually specify an upload directory for the file browser.
+* Removed text file error logging in preparation for improved statistics.
 
 = 1.2 =
 
