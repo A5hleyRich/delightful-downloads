@@ -45,3 +45,8 @@ intermediate
 .idea
 cache
 .tx
+
+# Deploy Script #
+################
+
+deploy.sh
