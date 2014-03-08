@@ -1,7 +1,9 @@
 # Copyright (C) 2014 Delightful Downloads
 # This file is distributed under the same license as the Delightful Downloads package.
 # Translators:
-# websource <info@websource.li>, 2014
+# Calinou, 2014
+# Francois-Xavier Bénard <fxb@wp-translations.org>, 2014
+# jcbrebion <pro@jcbrebion.com>, 2014
 msgid ""
 msgstr ""
 "Project-Id-Version: Delightful Downloads\n"
@@ -9,123 +11,123 @@ msgstr ""
 "POT-Creation-Date: 2014-01-09 23:53:28+00:00\n"
 "PO-Revision-Date: 2014-03-08 16:08-0000\n"
 "Last-Translator: \n"
-"Language-Team: German (Germany) (http://www.transifex.com/projects/p/wp-"
-"translations/language/de_DE/)\n"
+"Language-Team: French (France) (http://www.transifex.com/projects/p/wp-"
+"translations/language/fr_FR/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: de_DE\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Language: fr_FR\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
 "X-Generator: Poedit 1.6.4\n"
 
 #: delightful-downloads.php:214 includes/admin/page-support.php:21
 #: includes/admin/page-support.php:46
 msgid "Support"
-msgstr "Support"
+msgstr "Aide"
 
 #: delightful-downloads.php:215 includes/admin/page-settings.php:19
 msgid "Settings"
-msgstr "Einstellungen"
+msgstr "Réglages"
 
 #: includes/admin/dashboard.php:20 includes/options.php:22
 msgid "Statistics"
-msgstr "Statistik"
+msgstr "Statistiques"
 
 #: includes/admin/dashboard.php:33
 msgid "Last 24 Hours"
-msgstr "In den letzten 24 Stunden"
+msgstr "Dernières 24 heures"
 
 #: includes/admin/dashboard.php:37 includes/admin/dashboard.php:47
 #: includes/admin/dashboard.php:57 includes/admin/dashboard.php:67
 #: includes/admin/media-button.php:51 includes/post-types.php:21
 #: includes/post-types.php:33 includes/post-types.php:96
 msgid "Downloads"
-msgstr "Downloads"
+msgstr "Téléchargements"
 
 #: includes/admin/dashboard.php:43
 msgid "All Time"
-msgstr "Immer"
+msgstr "Tout temps"
 
 #: includes/admin/dashboard.php:53
 msgid "Last 7 Days"
-msgstr "Letzte 7 Tage"
+msgstr "Derniers 7 jours"
 
 #: includes/admin/dashboard.php:63
 msgid "Last 30 Days"
-msgstr "Letzte 30 Tage"
+msgstr "Derniers 30 jours"
 
 #: includes/admin/dashboard.php:73
 msgid "You are using"
-msgstr "Sie nutzen"
+msgstr "Vous utilisez"
 
 #: includes/admin/media-button.php:39 includes/admin/media-button.php:111
 msgid "Insert Download"
-msgstr "Download einfügen"
+msgstr "Insérer téléchargement"
 
 #: includes/admin/media-button.php:43
 msgid "Search"
-msgstr "Suche"
+msgstr "Rechercher"
 
 #: includes/admin/media-button.php:49 includes/functions.php:102
 #: includes/post-types.php:93
 msgid "Title"
-msgstr "Titel"
+msgstr "Titre"
 
 #: includes/admin/media-button.php:50
 msgid "Size"
-msgstr "Größe"
+msgstr "Taille"
 
 #: includes/admin/media-button.php:79
 msgid "Download Details"
-msgstr "Download Details"
+msgstr "Détails du Téléchargement"
 
 #: includes/admin/media-button.php:82
 msgid "Downloads:"
-msgstr "Downloads:"
+msgstr "Téléchargements :"
 
 #: includes/admin/media-button.php:85
 msgid "Text"
-msgstr "Text"
+msgstr "Texte"
 
 #: includes/admin/media-button.php:87
 msgid "Style"
-msgstr "Stil"
+msgstr "Style"
 
 #: includes/admin/media-button.php:89 includes/admin/media-button.php:101
 msgid "Default"
-msgstr "Standard"
+msgstr "Valeur par défaut"
 
 #: includes/admin/media-button.php:99
 msgid "Color"
-msgstr "Farbe"
+msgstr "Couleur"
 
 #: includes/admin/media-button.php:112
 msgid "Insert File Size"
-msgstr "Dateigröße einfügen"
+msgstr "Insérer la taille du fichier"
 
 #: includes/admin/media-button.php:113
 msgid "Insert Download Count"
-msgstr "Download-Zähler einfügen"
+msgstr "Insérer le nombre de téléchargement"
 
 #: includes/admin/meta-boxes.php:19 includes/post-types.php:94
 msgid "File"
-msgstr "Datei"
+msgstr "Fichier"
 
 #: includes/admin/meta-boxes.php:20
 msgid "Download Stats"
-msgstr "Download-Statistik"
+msgstr "Statistique du téléchargement"
 
 #: includes/admin/meta-boxes.php:58
 msgid "Allowed Files"
-msgstr "Zugelassene Dateitypen"
+msgstr "Fichiers autorisés"
 
 #: includes/admin/meta-boxes.php:88
 msgid "File URL:"
-msgstr "Datei-URL:"
+msgstr "Adresse web du fichier&nbsp;:"
 
 #: includes/admin/meta-boxes.php:91
 msgid "Enter file URL here"
-msgstr "Geben Sie hier die URL ein"
+msgstr "Saisissez l&rsquo;adresse web du fichier ici"
 
 #: includes/admin/meta-boxes.php:93
 msgid ""
@@ -134,59 +136,63 @@ msgid ""
 "structure are allowed (for example: %s). Alternatively, you can browse to "
 "the file using the file browser, or upload a new file:"
 msgstr ""
-"Sie können auch manuell die URL für Dateien, die schon hochgeladen wurden, "
-"einfügen. Achten Sie darauf, daß nur Dateien innerhalb der Wordpress-"
-"Verzeichnisstruktur zugelassen sind (beispielsweise: %s). Sie können aber "
-"auch mit dem Browser nach der Datei suchen oder eine neue Datei hochladen."
+"Vous pouvez manuellement entrer une URL de fichier ici, pour les fichiers "
+"déjà téléchargés sur le serveur. Veuillez noter que seuls les fichiers issus "
+"de la structure de répertoire de WordPress sont autorisés (par exemple : "
+"%s). Alternativement, vous pouvez rechercher le fichier à l'aide de "
+"l'explorateur de fichiers, ou télécharger un nouveau fichier :"
 
 #: includes/admin/meta-boxes.php:96
 msgid "Upload File"
-msgstr "Datei hochladen"
+msgstr "Télécharger fichier"
 
 #: includes/admin/meta-boxes.php:97
 msgid "Select Existing File"
-msgstr "Hochgeladene Datei aussuchen"
+msgstr "Sélectionner un fichier existant"
 
 #: includes/admin/meta-boxes.php:111
 msgid "Maximum upload file size: %s."
-msgstr "Größte Upload-Datei-Größe: : %s."
+msgstr "Taille maximale d&rsquo;un fichier mis en ligne&nbsp;: %s."
 
 #: includes/admin/meta-boxes.php:116
 msgid "File Size:"
-msgstr "Dateigröße:"
+msgstr "Taille du fichier :"
 
 #: includes/admin/meta-boxes.php:141
 msgid "Count"
-msgstr "Zähler"
+msgstr "Compter"
 
 #: includes/admin/meta-boxes.php:214
 msgid ""
 "The file does not exist! Please check the URL and ensure it is within the "
 "WordPress directory structure. (For example: %s)"
 msgstr ""
-"Diese Datei gibt es nicht. Überprüfen Sie die URL und stellen Sie sicher, "
-"daß die Datei innerhalb der Wordpress-Verzeichnisstruktur existiert (zum "
-"Beispiel: : %s)."
+"Le fichier n'existe pas ! S'il vous plaît vérifiez l'URL et vérifiez être "
+"dans la structure de répertoire de WordPress. (Par exemple: %s)"
 
 #: includes/admin/page-settings.php:88
 msgid "Settings updated successfully."
-msgstr "Einstellungen wurden erfolgreich aktualisiert."
+msgstr "Réglages bien mis à jour"
 
 #: includes/admin/page-settings.php:125 includes/admin/page-settings.php:291
 msgid "Enable"
-msgstr "Aktivieren"
+msgstr "Activer"
 
 #: includes/admin/page-settings.php:127
 msgid "Check this option to allow downloads to be tagged or categorised."
-msgstr "Schlagworte und Kategorien für Downloads ermöglichen."
+msgstr ""
+"Cochez cette option pour autoriser la catégorisation et le tague des "
+"téléchargements."
 
 #: includes/admin/page-settings.php:142
 msgid "Member Only"
-msgstr "Nur für eingeloggte User"
+msgstr "Membre uniquement"
 
 #: includes/admin/page-settings.php:144
 msgid "Check this option to allow only logged in users to download files."
-msgstr "Nur eingeloggte User dürfen Dateien herunterladen."
+msgstr ""
+"Cochez cette case pour autoriser uniquement les utilisateurs connectés à "
+"télécharger des fichiers."
 
 #: includes/admin/page-settings.php:167
 msgid ""
@@ -194,58 +200,58 @@ msgid ""
 "a file when not logged in and the Members Only option is checked. If no page "
 "is selected a generic error message will be displayed."
 msgstr ""
-"Legen Sie die Seite fest, auf die Anwender umgeleitet werden, wenn sie eine "
-"Datei herunterladen möchten, die nur für eingeloggte User bereitsteht. Falls "
-"Sie hier keine Seite angeben, wird eine Fehlermeldung eingeblendet."
+"Sélectionnez la page vers laquelle les utilisateurs non enregistrés doivent "
+"être redirigés si l'option Membres uniquement est sélectionnée. Si aucune "
+"page n'est indiquée, un message d'erreur générique sera affiché."
 
 #: includes/admin/page-settings.php:181
 msgid "Enter user agents to block from downloading files. One per line."
 msgstr ""
-"Fügen Sie User Agents und Spider etc. hinzu, die Dateien nicht herunterladen "
-"dürfen. Ein Eintrag pro Zeile."
+"Entrez les agents utilisateurs pour lesquels le téléchargement sera "
+"interdit. Un par ligne."
 
 #: includes/admin/page-settings.php:196
 msgid "Log Downloads"
-msgstr "Downloads protokollieren"
+msgstr "Fichier journal des téléchargements"
 
 #: includes/admin/page-settings.php:198
 msgid "Check this option to log downloads by admins."
-msgstr "Ermöglichen Sie das Protokollieren der Downloads durch die Admins."
+msgstr ""
+"Cochez cette case pour mettre dans un journal les téléchargements par les "
+"administrateurs."
 
 #: includes/admin/page-settings.php:212
 msgid ""
 "Set the default text to display on button and link style outputs. This can "
 "be overwritten on a per-download basis using the 'text' attribute."
 msgstr ""
-"Standardtext für die Anzeige auf Buttons und in Download-Link-Texten. Diese "
-"Vorgabe kann bei jeder Download-Datei überschrieben werden, nutzen Sie dafür "
-"das 'text'-Attribut."
+"Définissez le texte par défaut à afficher sur le bouton et le style de la "
+"sortie des liens. Chaque téléchargement peut contourner cette valeur avec "
+"l'attribut « text »."
 
 #: includes/admin/page-settings.php:232
 msgid ""
 "Choose the default output style for downloads. This can be overwritten on a "
 "per-download basis using the 'style' attribute."
 msgstr ""
-"Legen Sie den Standard-Anzeige-Stil für Downloads fest. Diese Vorgabe kann "
-"bei jeder Download-Datei überschrieben werden, nutzen Sie dafür das 'style-"
-"Attribut."
+"Choisissez le style des listes de téléchargements par défaut. Chaque "
+"téléchargement peut contourner cette valeur avec l'attribut « style »."
 
 #: includes/admin/page-settings.php:254
 msgid ""
 "Choose the default button style. This can be overwritten on a per-download "
 "basis using the 'button' attribute."
 msgstr ""
-"Legen Sie den Standard-Stil für Buttons fest. Diese Vorgabe kann bei jeder "
-"Download-Datei überschrieben werden, nutzen Sie dafür das 'button-Attribut."
+"Choisissez le style de bouton par défaut. Chaque téléchargement peut "
+"contourner cette valeur avec l'attribut « button »."
 
 #: includes/admin/page-settings.php:276
 msgid ""
 "Choose the default output style for downloads lists. This can be overwritten "
 "on a per-list basis using the 'style' attribute."
 msgstr ""
-"Legen Sie den Standard-Anzeige-Stil für Downloads fest.  Diese Vorgabe kann "
-"bei jeder Download-Datei überschrieben werden, nutzen Sie dafür das 'style'-"
-"Attribut."
+"Choisissez le style des listes de téléchargements par défaut. Chaque liste "
+"peut contourner cette valeur avec l'attribut « style »."
 
 #: includes/admin/page-settings.php:293
 msgid ""
@@ -253,9 +259,9 @@ msgid ""
 "front-end. If this option is disabled you must manually add the button CSS "
 "classes to your theme's CSS file."
 msgstr ""
-"Das Stylesheet des Plugins \"Delightful Downloads\" im Frontend-Editor "
-"einbinden. Falls diese Option nicht aktiviert ist. müssen Sie selbst die "
-"Button-Classes zum Stylesheet Ihres Themes hinzufügen."
+"Cochez cette option pour inclure la feuille de style de Delightful "
+"Downloads. Si cette option n'est pas activée vous devez ajouter manuellement "
+"les classes css du bouton au fichier css de votre thème. "
 
 #: includes/admin/page-settings.php:321
 msgid ""
@@ -263,388 +269,388 @@ msgid ""
 "unless absolutely sure that it will not cause conflicts with existing "
 "permalinks or plugins."
 msgstr ""
-"Legen Sie die URL für die Download-Links fest. Achten Sie darauf, daß Sie "
-"dabei Konflikte mit anderen Plugins oder bestehenden Permalinks vermeiden, "
-"am besten belassen Sie den Standardwert."
+"Définir l'URL pour les liens de téléchargement. Ceci devrait être laissé "
+"comme la valeur par défaut, sauf si vous êtes vraiment sûr que cela ne "
+"causera pas de conflits avec les permaliens ou extensions existantes."
 
 #: includes/admin/page-support.php:47
 msgid ""
 "Please include the following information when requesting <a href=\"http://"
 "wordpress.org/support/plugin/delightful-downloads\">support</a>."
 msgstr ""
-"Fügen Sie die nachstehenden Informationen bei einer <a href=\"http://"
-"wordpress.org/support/plugin/delightful-downloads\">support-Anfrage</a> "
-"hinzu."
+"Veuillez inclure les informations suivantes, en anglais, en demandant du <a "
+"href=\"http://wordpress.org/support/plugin/delightful-downloads\">support</"
+"a>."
 
 #: includes/cron.php:46
 msgid "Once Weekly"
-msgstr "Wöchentlich"
+msgstr "Une fois par semaine"
 
 #: includes/functions.php:36
 msgid "Button"
-msgstr "Button"
+msgstr "Bouton"
 
 #: includes/functions.php:40
 msgid "Link"
-msgstr "Link"
+msgstr "Lien"
 
 #: includes/functions.php:44
 msgid "Plain Text"
-msgstr "Nur Text"
+msgstr "Texte brut"
 
 #: includes/functions.php:61
 msgid "Black"
-msgstr "Schwarz"
+msgstr "Noir"
 
 #: includes/functions.php:65
 msgid "Blue"
-msgstr "Blau"
+msgstr "Bleu"
 
 #: includes/functions.php:69
 msgid "Grey"
-msgstr "Grau"
+msgstr "Gris"
 
 #: includes/functions.php:73
 msgid "Green"
-msgstr "Grün"
+msgstr "Vert"
 
 #: includes/functions.php:77
 msgid "Purple"
-msgstr "Purpur"
+msgstr "Violet"
 
 #: includes/functions.php:81
 msgid "Red"
-msgstr "Rot"
+msgstr "Rouge"
 
 #: includes/functions.php:85
 msgid "Yellow"
-msgstr "Gelb"
+msgstr "Jaune"
 
 #: includes/functions.php:106
 msgid "Title (Date)"
-msgstr "Titel (Datum)"
+msgstr "Titre (Date)"
 
 #: includes/functions.php:110
 msgid "Title (Count)"
-msgstr "Titel (Zähler)"
+msgstr "Titre (compteur"
 
 #: includes/functions.php:114
 msgid "Title (Filesize)"
-msgstr "Titel (Dateigröße)"
+msgstr "Titre (taille du fichier)"
 
 #: includes/options.php:20
 msgid "General"
-msgstr "Allgemein"
+msgstr "Généraux"
 
 #: includes/options.php:21
 msgid "Shortcodes"
-msgstr "ShortCodes"
+msgstr "Raccourcis"
 
 #: includes/options.php:23
 msgid "Advanced"
-msgstr "Erweitert"
+msgstr "Avancé"
 
 #: includes/options.php:37
 msgid "Categories and Tags"
-msgstr "Kategorien und Schlagworte (Tags)"
+msgstr "Catégories et mots-clefs"
 
 #: includes/options.php:43
 msgid "Members Download"
-msgstr "Download für eingeloggte User"
+msgstr "Téléchargements par les membre"
 
 #: includes/options.php:49
 msgid "Non-Members Redirect"
-msgstr "Weiterleitung für nicht-eingeloggte User"
+msgstr "Redirections de non-membre"
 
 #: includes/options.php:55
 msgid "Block User Agents"
-msgstr "User-Agents (Bots etc.) blockieren"
+msgstr "Bloquer les agents utilisateur"
 
 #: includes/options.php:61
 msgid "Default Text"
-msgstr "Standard-Text"
+msgstr "Texte par défaut"
 
 #: includes/options.php:64 includes/post-types.php:22
 #: includes/post-types.php:176
 msgid "Download"
-msgstr "Download"
+msgstr "Téléchargement"
 
 #: includes/options.php:67
 msgid "Default Style"
-msgstr "Standard-Stil"
+msgstr "Style par défaut"
 
 #: includes/options.php:73
 msgid "Default Button Style"
-msgstr "Standard-Button-Stil"
+msgstr "Style par défaut du bouton"
 
 #: includes/options.php:79
 msgid "Default List Style"
-msgstr "Standard-Listen-Stil"
+msgstr "Style de liste par défaut"
 
 #: includes/options.php:85
 msgid "Admin Downloads"
-msgstr "Downloads verwalten"
+msgstr "Téléchargements par les adminsitrateurs"
 
 #: includes/options.php:91
 msgid "Default CSS Styles"
-msgstr "Standard-CSS-Stile"
+msgstr "Styles CSS par défaut"
 
 #: includes/options.php:97
 msgid "Cache Duration"
-msgstr "Vorhaltedauer des Cache-Speichers"
+msgstr "Durée du cache"
 
 #: includes/options.php:103
 msgid "Download Address"
-msgstr "Download-Adresse"
+msgstr "Adresse du téléchargement"
 
 #: includes/post-types.php:23 includes/post-types.php:60
 msgid "Add New"
-msgstr "Neuen Download hinzufügen"
+msgstr "Ajouter Nouveau"
 
 #: includes/post-types.php:24
 msgid "Add New Download"
-msgstr "Neuen Download hinzufügen"
+msgstr "Ajouter un téléchargement"
 
 #: includes/post-types.php:25
 msgid "Edit Download"
-msgstr "Download bearbeiten"
+msgstr "Modifier le téléchargement"
 
 #: includes/post-types.php:26
 msgid "New Download"
-msgstr "Neuer Download"
+msgstr "Nouveau téléchargement"
 
 #: includes/post-types.php:27
 msgid "All Downloads"
-msgstr "Alle Downloads"
+msgstr "Tous les téléchargements"
 
 #: includes/post-types.php:28
 msgid "View Download"
-msgstr "Downloads anzeigen"
+msgstr "Afficher le téléchargement"
 
 #: includes/post-types.php:29
 msgid "Search Downloads"
-msgstr "Downloads durchsuchen"
+msgstr "Rechercher des téléchargements"
 
 #: includes/post-types.php:30
 msgid "No downloads found"
-msgstr "Keine Downloads gefunden"
+msgstr "Aucun téléchargement trouvé"
 
 #: includes/post-types.php:31
 msgid "No downloads found in Trash"
-msgstr "Keine Downloads im Papierkorb gefunden"
+msgstr "Aucun téléchargement trouvé dans la corbeille"
 
 #: includes/post-types.php:58
 msgid "Download Logs"
-msgstr "Download-Protokolle"
+msgstr "Fichiers journaux des téléchargements"
 
 #: includes/post-types.php:59
 msgid "Log"
-msgstr "Logdatei"
+msgstr "Fichier journal"
 
 #: includes/post-types.php:61
 msgid "Add New Log"
-msgstr "Neue Logdatei "
+msgstr "Ajouter nouveau fichier journal"
 
 #: includes/post-types.php:62
 msgid "Edit Log"
-msgstr "Logdatei bearbeiten"
+msgstr "Modifier le fichier journal"
 
 #: includes/post-types.php:63
 msgid "New Log"
-msgstr "Neue Logdatei"
+msgstr "Nouveau journal"
 
 #: includes/post-types.php:64 includes/post-types.php:70
 msgid "Logs"
-msgstr "Logdateien"
+msgstr "Fichiers journaux"
 
 #: includes/post-types.php:65
 msgid "View Log"
-msgstr "Logdatei anzeigen"
+msgstr "Voir le fichier journal"
 
 #: includes/post-types.php:66
 msgid "Search Logs"
-msgstr "Logdateien durchsuchen"
+msgstr "Journaux de recherche"
 
 #: includes/post-types.php:67
 msgid "No logs found"
-msgstr "Keine Logdateien gefunden"
+msgstr "Pas de journaux trouvés"
 
 #: includes/post-types.php:68
 msgid "No logs found in Trash"
-msgstr "Keine Logdateien im Papierkorb gefunden"
+msgstr "Pas de journaux trouvés dans la corbeille"
 
 #: includes/post-types.php:95
 msgid "Shortcode"
-msgstr "ShortCode"
+msgstr "Raccourci"
 
 #: includes/post-types.php:97 includes/post-types.php:180
 msgid "Date"
-msgstr "Datum"
+msgstr "Date"
 
 #: includes/post-types.php:104 includes/taxonomies.php:25
 msgid "Categories"
-msgstr "Kategorien"
+msgstr "Catégories"
 
 #: includes/post-types.php:105 includes/taxonomies.php:49
 msgid "Tags"
-msgstr "Schlagworte (Tags)"
+msgstr "Mots-clefs"
 
 #: includes/post-types.php:177
 msgid "User"
-msgstr "User"
+msgstr "Utilisateur"
 
 #: includes/post-types.php:178
 msgid "IP Address"
-msgstr "IP-Adresse"
+msgstr "Adresse IP"
 
 #: includes/post-types.php:179
 msgid "User Agent"
-msgstr "User Agent (Spider, Bot etc.)"
+msgstr "Agent utilisateur"
 
 #: includes/post-types.php:215
 msgid "Anonymous"
-msgstr "Anonym"
+msgstr "Anonyme"
 
 #: includes/process-download.php:48
 msgid "Please login to download this file!"
-msgstr "Melden Sie sich an, um diese Datei herunterzuladen"
+msgstr "Veuillez vous connecter pour télécharger ce fichier !"
 
 #: includes/process-download.php:56
 msgid "You are blocked from downloading this file!"
-msgstr "Sie dürfen diese Datei nicht herunterladen!"
+msgstr "Interdiction pour vous de télécharger de fichier !"
 
 #: includes/process-download.php:63
 msgid "Invalid download."
-msgstr "Ungültiger Download."
+msgstr "Téléchargement invalide."
 
 #: includes/process-download.php:74
 msgid "File does not exist!"
-msgstr "Diese Datei gibt es nicht."
+msgstr "Le fichier n&rsquo;existe pas."
 
 #: includes/process-download.php:81
 msgid "Server error, file cannot be opened!"
-msgstr "Server-Fehler, die Datei konnte nicht geöffnet werden."
+msgstr "Erreur du serveur, le fichier n'a pas pu être ouvert!"
 
 #: includes/shortcodes.php:37 includes/shortcodes.php:109
 #: includes/shortcodes.php:142
 msgid "Invalid download ID."
-msgstr "Ungültige-Download-ID."
+msgstr "ID du téléchargement invalide."
 
 #: includes/shortcodes.php:47 includes/shortcodes.php:292
 msgid "Invalid style attribute."
-msgstr "Ungültiges Style-Attribut."
+msgstr "Attribut de style invalide."
 
 #: includes/shortcodes.php:64
 msgid "Invalid button attribute."
-msgstr "Ungültiges Button-Attribut."
+msgstr "Attribut button invalide."
 
 #: includes/shortcodes.php:195
 msgid "Invalid orderby attribute."
-msgstr "Ungültiges orderby-Attribut."
+msgstr "Attribut orderby invalide."
 
 #: includes/shortcodes.php:221
 msgid "Invalid order attribute."
-msgstr "Ungültiges order-Attribut."
+msgstr "Attribut order invalide."
 
 #: includes/shortcodes.php:229
 msgid "Invalid relation attribute."
-msgstr "Ungültiges relation-Attribut."
+msgstr "Attribut relation invalide."
 
 #: includes/shortcodes.php:323
 msgid "No downloads found."
-msgstr "Keine Downloads gefunden."
+msgstr "Aucun téléchargement trouvé."
 
 #: includes/taxonomies.php:23
 msgid "Download Categories"
-msgstr "Download-Kategorien"
+msgstr "Catégories de télécchargement"
 
 #: includes/taxonomies.php:24
 msgid "Download Category"
-msgstr "Download-Kategorie"
+msgstr "Catégories de téléchargement"
 
 #: includes/taxonomies.php:26
 msgid "All Categories"
-msgstr "Alle Kategorien"
+msgstr "Toutes les catégories"
 
 #: includes/taxonomies.php:27
 msgid "Edit Category"
-msgstr "Kategorie bearbeiten"
+msgstr "Modifier la catégorie"
 
 #: includes/taxonomies.php:28
 msgid "View Category"
-msgstr "Kategorie anzeigen"
+msgstr "Afficher la catégorie"
 
 #: includes/taxonomies.php:29
 msgid "Update Category"
-msgstr "Kategorie aktualisieren"
+msgstr "Mettre à jour la catégorie"
 
 #: includes/taxonomies.php:30
 msgid "Add New Category"
-msgstr "Neue Kategorie hinzufügen"
+msgstr "Ajouter une catégorie"
 
 #: includes/taxonomies.php:31
 msgid "New Category Name"
-msgstr "Neuer Kategorie-Name"
+msgstr "Nouveau nom de catégorie"
 
 #: includes/taxonomies.php:32
 msgid "Search Categories"
-msgstr "Kategorien durchsuchen"
+msgstr "Rechercher catégories"
 
 #: includes/taxonomies.php:33
 msgid "Popular Categories"
-msgstr "Populäre Kategorien"
+msgstr "Catégories populaires"
 
 #: includes/taxonomies.php:47
 msgid "Download Tags"
-msgstr "Download-Tags (Schlagworte)"
+msgstr "Mots-clefs de téléchargement"
 
 #: includes/taxonomies.php:48
 msgid "Download Tag"
-msgstr "Download-Tag"
+msgstr "Mot-clef de téléchargement"
 
 #: includes/taxonomies.php:50
 msgid "All Tags"
-msgstr "Alle Tags (Schlagworte)"
+msgstr "Tous les mots-clefs"
 
 #: includes/taxonomies.php:51
 msgid "Edit Tag"
-msgstr "Tags bearbeiten"
+msgstr "Modifier mot-clef"
 
 #: includes/taxonomies.php:52
 msgid "View Tag"
-msgstr "Tags anzeigen"
+msgstr "Voir le mot-clé"
 
 #: includes/taxonomies.php:53
 msgid "Update Tag"
-msgstr "Tags aktualisieren"
+msgstr "Mettre à jour mot-clef"
 
 #: includes/taxonomies.php:54
 msgid "Add New Tag"
-msgstr "Neuen Tag hinzufügen"
+msgstr "Ajouter nouveau mot-clef"
 
 #: includes/taxonomies.php:55
 msgid "New Tag Name"
-msgstr "Neuer Tag-Name"
+msgstr "Nouveau nom du mot-clef"
 
 #: includes/taxonomies.php:56
 msgid "Search Tags"
-msgstr "Tags durchsuchen"
+msgstr "Rechercher mots-clefs"
 
 #: includes/taxonomies.php:57
 msgid "Popular Tags"
-msgstr "Populäre Tags"
+msgstr "Mots-clés populaires"
 
 #. Plugin Name of the plugin/theme
 msgid "Delightful Downloads"
-msgstr ""
+msgstr "Delightful Downloads"
 
 #. Plugin URI of the plugin/theme
 msgid "http://wordpress.org/extend/plugins/delightful-downloads/"
-msgstr ""
+msgstr "http://wordpress.org/extend/plugins/delightful-downloads/"
 
 #. Description of the plugin/theme
 msgid "A super-awesome downloads manager for WordPress."
-msgstr ""
+msgstr "Un formidable gestionnaire de téléchargements pour WordPress."
 
 #. Author of the plugin/theme
 msgid "Ashley Rich"
