@@ -75,14 +75,15 @@ function dedo_render_page_settings() {
 	$active_tab = isset( $_GET['tab'] ) ? $_GET['tab'] : 'general'; ?>
 
 	<div class="wrap">
-		<h2 class="nav-tab-wrapper">
+		<h2><?php _e( 'Download Settings', 'delightful-downloads' ); ?></h2>
+		<h3 class="nav-tab-wrapper">
 		<?php 
 			// Generate tabs
 			foreach ( $registered_tabs as $key => $value ) {
 				echo '<a href="edit.php?post_type=dedo_download&page=dedo_settings&tab=' . $key . '" class="nav-tab ' . ( $active_tab == $key ? 'nav-tab-active' : '' ) . '">' . $value . '</a>';
    	 		} 
    	 	?>
-		</h2>
+		</h3>
 		<div id="dedo-settings-main">	
 			<?php if ( isset( $_GET['settings-updated'] ) ) {
 				echo '<div class="updated"><p>' . __( 'Settings updated successfully.', 'delightful-downloads' ) . '</p></div>';
