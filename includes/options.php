@@ -104,6 +104,12 @@ function dedo_get_options() {
 			'tab'		=> 'advanced',
 			'type'		=> 'text',
 			'default'	=> 'ddownload',
+		),
+		'uninstall'		=> array(
+			'name'		=> __( 'Uninstall', 'delightful-downloads' ),
+			'tab'		=> 'advanced',
+			'type'		=> 'check',
+			'default'	=> '0',
 		)
 	);
 
