@@ -55,6 +55,7 @@ Server: <?php echo $_SERVER['SERVER_SOFTWARE'] . "\n"; ?>
 PHP Version: <?php echo PHP_VERSION . "\n"; ?>
 MySQL Version: <?php echo mysql_get_server_info() . "\n"; ?>
 
+PHP Safe Mode: <?php echo ini_get( 'safe_mode' ) ? "Yes\n" : "No\n"; ?>
 PHP Memory Limit: <?php echo ini_get( 'memory_limit' ) . "\n"; ?>
 PHP Time Limit: <?php echo ini_get( 'max_execution_time' ) . "\n"; ?>
 PHP Max Post Size: <?php echo ini_get( 'post_max_size' ) . "\n"; ?>
