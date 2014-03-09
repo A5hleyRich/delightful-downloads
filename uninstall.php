@@ -19,6 +19,9 @@ global $wpdb, $dedo_options;
 // Check for complete uninstall
 if ( $dedo_options['uninstall'] ) {
 
+	// Disable max_execution_time, can take a while with legacy logs
+	set_time_limit( 0 );
+
 	// Delete post types
 	$post_types = array(
 		'dedo_download',
