@@ -46,9 +46,6 @@ function dedo_render_page_support() {
 		<h2>Delightful Downloads <?php _e( 'Support', 'delightful-downloads' ); ?></h2>
 		<p><?php _e( 'Please include the following information when requesting <a href="http://wordpress.org/support/plugin/delightful-downloads">support</a>.', 'delightful-downloads' ); ?></p>
 		<textarea id="dedo_support" readonly>
-### Delightful Downloads ###
-
-
 ## Server Information ##
 
 Server: <?php echo $_SERVER['SERVER_SOFTWARE'] . "\n"; ?>
@@ -72,9 +69,13 @@ Site Address: <?php echo home_url() . "\n"; ?>
 WordPress Address: <?php echo site_url() . "\n"; ?>
 Download Address: <?php echo dedo_download_link( 1 ) . "\n"; ?>
 
-Active Theme: <?php echo $theme->Name . " " . $theme->Version . "\n"; ?>
 
-Active Plugins:				
+## Active Theme ## 
+
+<?php echo $theme->Name . " " . $theme->Version . "\n"; ?>
+
+
+## Active Plugins ##			
 
 <?php 
 foreach ( $plugins as $key => $value ) {
