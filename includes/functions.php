@@ -145,7 +145,7 @@ function dedo_get_shortcode_lists() {
 
  	// date
  	if ( strpos( $string, '%date%' ) !== false ) {
- 		$value = get_the_time( 'F j, Y', $id );
+ 		$value = get_the_date( apply_filters( 'dedo_shortcode_date_format', '' ) );
  		$string = str_replace( '%date%', $value, $string );
  	}
 
