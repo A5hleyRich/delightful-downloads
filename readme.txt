@@ -30,6 +30,8 @@ Delightful Downloads is a super-awesome downloads manager for WordPress that all
 
 **Translations**
 
+* French
+* German
 * Russian (Credit - dobrodukh)
 
 **Documentation**
@@ -62,9 +64,11 @@ Please refer to the [FAQ](http://delightfulwp.com/delightful-downloads/faq/ "Del
 
 = 1.3.6 =
 
+* Date output in shortcodes now use the date format set in the WordPress settings screen under General.
 * Added complete uninstall option to the settings screen under the advanced tab.
 * Added French translation.
 * Added German translation.
+* Added filter to customise date in shortcode output.
 
 = 1.3.5 =
 
