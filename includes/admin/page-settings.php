@@ -323,6 +323,23 @@ function dedo_settings_download_url_field() {
 }
 
 /**
+ * Render Uninstall field
+ *
+ * @since  1.3.6
+ */
+function dedo_settings_uninstall_field() {
+	global $dedo_options;
+
+	$checked = absint( $dedo_options['uninstall'] );
+
+	echo '<label for="delightful-downloads[unistall]">';
+	echo '<input type="checkbox" name="delightful-downloads[uninstall]" value="1" ' . checked( $checked, 1, false ) . ' /> ';
+	echo __( 'Enable', 'delightful-downloads' );
+	echo '</label>';
+	echo '<p class="description">' . __( sprintf( 'Check this option to completely remove all data associated with Delightful Downloads when deleting the plugin. All downloads, categories, tags, logs and statistics will be removed. The uploaded files will remain in the %s directory.', '<code>wp-content/uploads/delightful-downloads</code>' ), 'delightful-downloads' ) . '</p>';
+}
+
+/**
  * Validate settings callback
  *
  * @since  1.3
