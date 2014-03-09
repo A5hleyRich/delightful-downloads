@@ -4,7 +4,7 @@ Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_i
 Tags: download, manager, downloads, monitor, shortcode, delightful downloads, file, counter, tracking
 Requires at least: 3.8
 Tested up to: 3.8.1
-Stable tag: 1.3.5
+Stable tag: 1.3.6
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -34,7 +34,7 @@ Delightful Downloads is a super-awesome downloads manager for WordPress that all
 
 **Documentation**
 
-The Delightful Downloads documentation can be found [here](http://ashleyrich.com/wordpress/plugins/delightful-downloads/documentation/ "Delightful Downloads Documentation").
+The Delightful Downloads documentation can be found [here](http://delightfulwp.com/delightful-downloads/documentation/ "Delightful Downloads Documentation").
 
 == Installation ==
 
@@ -42,11 +42,11 @@ The Delightful Downloads documentation can be found [here](http://ashleyrich.com
 1. Activate the plugin through the 'Plugins' menu in WordPress.
 1. Go to Downloads > Settings and configure the options.
 
-Please refer to the [documentation](http://ashleyrich.com/wordpress/plugins/delightful-downloads/documentation/ "Delightful Downloads Documentation") for further instructions.
+Please refer to the [documentation](http://delightfulwp.com/delightful-downloads/documentation/installation/ "Delightful Downloads Documentation") for further instructions.
 
 == Frequently asked questions ==
 
-Please refer to the [FAQ](http://ashleyrich.com/wordpress/plugins/delightful-downloads/documentation/frequently-asked-questions/ "Delightful Downloads FAQ") section within the [documentation](http://ashleyrich.com/wordpress/plugins/delightful-downloads/documentation/ "Delightful Downloads Documentation").
+Please refer to the [FAQ](http://delightfulwp.com/delightful-downloads/faq/ "Delightful Downloads FAQ") section within the [documentation](http://delightfulwp.com/delightful-downloads/documentation/ "Delightful Downloads Documentation").
 
 
 == Screenshots ==
@@ -59,6 +59,12 @@ Please refer to the [FAQ](http://ashleyrich.com/wordpress/plugins/delightful-dow
 6. Settings screen.
 
 == Changelog ==
+
+= 1.3.6 =
+
+* Added complete uninstall option to the settings screen under the advanced tab.
+* Added French translation.
+* Added German translation.
 
 = 1.3.5 =
 
@@ -179,6 +185,11 @@ Please refer to the [FAQ](http://ashleyrich.com/wordpress/plugins/delightful-dow
 * Initial stable plugin release.
 
 == Upgrade Notice ==
+
+= 1.3.6 =
+
+* General improvements.
+* Bug fixes.
 
 = 1.3.5 =
 

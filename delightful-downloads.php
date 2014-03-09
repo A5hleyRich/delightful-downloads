@@ -1,14 +1,14 @@
 <?php
 /*
 Plugin Name: Delightful Downloads
-Plugin URI: http://wordpress.org/extend/plugins/delightful-downloads/
+Plugin URI: http://delightfulwp.com/delightful-downloads/
 Description: A super-awesome downloads manager for WordPress.
-Version: 1.3.5
-Author: Ashley Rich
-Author URI: http://ashleyrich.com
+Version: 1.3.6
+Author: Delightful WP
+Author URI: http://delightfulwp.com
 License: GPL2
 
-Copyright 2013  Ashley Rich  (email : hello@ashleyrich.com)
+Copyright 2013  Delightful WP  (email : hello@delightfulwp.com)
 
 This program is free software; you can redistribute it and/or modify
 it under the terms of the GNU General Public License, version 2, as 
@@ -94,7 +94,7 @@ class Delightful_Downloads {
 	private function setup_constants() {
 
 		if( !defined( 'DEDO_VERSION' ) ) {
-			define( 'DEDO_VERSION', '1.3.5' );
+			define( 'DEDO_VERSION', '1.3.6' );
 		}
 
 		if( !defined( 'DEDO_PLUGIN_URL' ) ) {
