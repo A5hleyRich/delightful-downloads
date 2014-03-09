@@ -210,7 +210,6 @@ class Delightful_Downloads {
 	public function plugin_links( $links, $file ) {
 
 		if ( $file == plugin_basename( __FILE__ ) ) {
-			$plugin_links[] = '<a href="' . admin_url( 'edit.php?post_type=dedo_download&page=dedo_support' ) . '">' . __( 'Support', 'delightful-downloads' ) . '</a>';
 			$plugin_links[] = '<a href="' . admin_url( 'edit.php?post_type=dedo_download&page=dedo_settings' ) . '">' . __( 'Settings', 'delightful-downloads' ) . '</a>';
 		
 			foreach ( $plugin_links as $plugin_link ) {
