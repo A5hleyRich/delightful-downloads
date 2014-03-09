@@ -92,6 +92,14 @@ foreach ( $plugins as $key => $value ) {
 
 Version: <?php echo DEDO_VERSION . "\n"; ?>
 Prior Version: <?php echo $prior_version . "\n"; ?>
+
+<?php
+
+foreach ( $dedo_options as $key => $value ) {
+	echo $key . ": " . str_replace( "\n", "\t", $value ) . "\n";
+}
+
+?>
 		</textarea>
 	</div>
 	<?php
