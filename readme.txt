@@ -64,11 +64,11 @@ Please refer to the [FAQ](http://delightfulwp.com/delightful-downloads/faq/ "Del
 
 = 1.3.6 =
 
-* Date output in shortcodes now uses the date format set in the WordPress settings screen under General.
-* Support link removed from plugins page and Support screen merged into Settings screen.
+* Shortcodes date output now uses the date format set in the WordPress settings screen.
+* Support screen merged into Settings screen.
 * Added PHP safe mode check to Support screen.
-* Added filter to customise date in shortcode output.
-* Added complete uninstall option to the settings screen under the advanced tab.
+* Added filter to customise shortcode date format.
+* Added Complete Uninstall option to the settings screen under the advanced tab.
 * Added French translation.
 * Added German translation.
 
@@ -195,7 +195,6 @@ Please refer to the [FAQ](http://delightfulwp.com/delightful-downloads/faq/ "Del
 = 1.3.6 =
 
 * General improvements.
-* Bug fixes.
 
 = 1.3.5 =
 
