@@ -30,9 +30,9 @@ Delightful Downloads is a super-awesome downloads manager for WordPress that all
 
 **Translations**
 
-* French
-* German
-* Russian (Credit - dobrodukh)
+* French - [WP-Translations Community](http://wp-translations.org)
+* German - [Connie Müller-Gödecke](http://www.webdeerns.de)
+* Russian - dobrodukh
 
 **Documentation**
 
