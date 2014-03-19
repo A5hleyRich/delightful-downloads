@@ -70,7 +70,7 @@ Please refer to the [FAQ](http://delightfulwp.com/delightful-downloads/faq/ "Del
 * Added filter to customise shortcode date format.
 * Added Complete Uninstall option to the settings screen under the advanced tab.
 * Added French translation.
-* Added German translation.
+* Added German translation. 
 
 = 1.3.5 =
 
