@@ -4,7 +4,7 @@ Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_i
 Tags: download, manager, downloads, monitor, shortcode, delightful downloads, file, counter, tracking
 Requires at least: 3.8
 Tested up to: 3.8.1
-Stable tag: 1.3.6
+Stable tag: 1.3.7
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -61,6 +61,11 @@ Please refer to the [FAQ](http://delightfulwp.com/delightful-downloads/faq/ "Del
 6. Settings screen.
 
 == Changelog ==
+
+= 1.3.7 =
+
+* Removed trunk directory from distribution.
+* Fixed undefined variable warning in jQueryFileTree.
 
 = 1.3.6 =
 
@@ -191,6 +196,10 @@ Please refer to the [FAQ](http://delightfulwp.com/delightful-downloads/faq/ "Del
 * Initial stable plugin release.
 
 == Upgrade Notice ==
+
+= 1.3.7 =
+
+* Bug fixes.
 
 = 1.3.6 =
 
