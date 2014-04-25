@@ -90,8 +90,6 @@ function dedo_meta_box_file( $post ) {
 					<td id="plupload-file">
 						<input type="text" name="dedo-file-url" id="dedo-file-url" value="<?php echo esc_attr( $file_url ); ?>" class="large-text" placeholder="<?php _e( 'Enter file URL here', 'delightful-downloads' ); ?>" />
 						<?php wp_nonce_field( 'ddownload_file_save', 'ddownload_file_save_nonce' ); ?>
-						<p class="description"><?php printf( __( 'You may manually enter a file URL here, for files that are already uploaded to the server. Please note that only files within the WordPress directory structure are allowed (for example: %s). Alternatively, you can browse to the file using the file browser, or upload a new file:', 'delightful-downloads' ), dedo_get_upload_dir( 'dedo_baseurl' ) ); ?></p>
-						<!-- Display with JS tuned on-->
 						<div class="hide-if-no-js">
 							<input id="dedo-upload-button" type="button" value="<?php _e( 'Upload File', 'delightful-downloads' ); ?>" class="button" />
 							<input id="dedo-select-button" type="button" value="<?php _e( 'Select Existing File', 'delightful-downloads' ); ?>" class="button" />
@@ -103,10 +101,6 @@ function dedo_meta_box_file( $post ) {
 								</div>
 							</div>
 							<div id="dedo-file-browser" style="display: none"></div>
-						</div>
-						<!-- Display with JS tuned off-->
-						<div class="hide-if-js">
-							<input type="file" name="dedo-async-upload" id="dedo-async-upload" />
 						</div>
 						<p class="description"><?php printf( __( 'Maximum upload file size: %s.', 'delightful-downloads' ), dedo_format_filesize( wp_max_upload_size() ) ); ?></p>
 					</td>
@@ -173,47 +167,23 @@ function dedo_meta_boxes_save( $post_id ) {
 		return;
 	}
 	
-	// Handle no-ajax file uploads
-	if ( isset( $_FILES['dedo-async-upload'] ) && $_FILES['dedo-async-upload']['size'] > 0 ) {
-		// Set upload dir
-		add_filter( 'upload_dir', 'dedo_set_upload_dir' );
-	
-		// Upload the file
-		$file = wp_handle_upload( $_FILES['dedo-async-upload'], array( 'test_form' => false ) );
-
-		// Check for success
-		if ( isset( $file['url'] ) ) {
-			// Add/update post meta
-			update_post_meta( $post_id, '_dedo_file_url', $file['url'] );
-			update_post_meta( $post_id, '_dedo_file_size', $_FILES['dedo-async-upload']['size'] );
-		}
-		else {
-			// Display upload error
-			$notices = get_option( 'delightful-downloads-notices', array() );
-			$notices[] = '<div class="error"><p>' . $file['error'] . '</p></div>';
-			update_option( 'delightful-downloads-notices', $notices );
-		}
-	}
-	// No file present, lets save post URL if isset
-	else {
-		// Check for save stats nonce
-		if ( isset( $_POST['ddownload_file_save_nonce'] ) && wp_verify_nonce( $_POST['ddownload_file_save_nonce'], 'ddownload_file_save' ) ) {	
-			// Save file url
-			if ( isset( $_POST['dedo-file-url'] ) ) {
-				$file_url = trim( $_POST['dedo-file-url'] );
-				$file_path = dedo_url_to_absolute( $file_url );
-				
-				// Does file exist?
-				if ( file_exists( $file_path ) ) {
-					update_post_meta( $post_id, '_dedo_file_url', $file_url );
-					update_post_meta( $post_id, '_dedo_file_size', filesize( $file_path ) );
-				}
-				else {
-					// Display file does not exist error
-					$notices = get_option( 'delightful-downloads-notices', array() );
-					$notices[] = '<div class="error"><p>' . sprintf( __( 'The file does not exist! Please check the URL and ensure it is within the WordPress directory structure. (For example: %s)', 'delightful-downloads' ), dedo_get_upload_dir( 'dedo_baseurl' ) ) . '</p></div>';
-					update_option( 'delightful-downloads-notices', $notices );
-				}
+	// Check for save stats nonce
+	if ( isset( $_POST['ddownload_file_save_nonce'] ) && wp_verify_nonce( $_POST['ddownload_file_save_nonce'], 'ddownload_file_save' ) ) {	
+		// Save file url
+		if ( isset( $_POST['dedo-file-url'] ) ) {
+			$file_url = trim( $_POST['dedo-file-url'] );
+			$file_path = dedo_url_to_absolute( $file_url );
+			
+			// Does file exist?
+			if ( file_exists( $file_path ) ) {
+				update_post_meta( $post_id, '_dedo_file_url', $file_url );
+				update_post_meta( $post_id, '_dedo_file_size', filesize( $file_path ) );
+			}
+			else {
+				// Display file does not exist error
+				$notices = get_option( 'delightful-downloads-notices', array() );
+				$notices[] = '<div class="error"><p>' . sprintf( __( 'The file does not exist! Please check the URL and ensure it is within the WordPress directory structure. (For example: %s)', 'delightful-downloads' ), dedo_get_upload_dir( 'dedo_baseurl' ) ) . '</p></div>';
+				update_option( 'delightful-downloads-notices', $notices );
 			}
 		}
 	}
