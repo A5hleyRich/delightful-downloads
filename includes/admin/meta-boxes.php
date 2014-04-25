@@ -82,7 +82,10 @@ function dedo_meta_box_file( $post ) {
 	
 	<div id="plupload-container">
 		<label for="dedo-file-url"><?php _e( 'File URL:', 'delightful-downloads' ); ?></label>		
-		<input type="text" name="dedo-file-url" id="dedo-file-url" value="<?php echo esc_attr( $file_url ); ?>" class="large-text" placeholder="<?php _e( 'Upload or enter the file URL.', 'delightful-downloads' ); ?>" />
+		<div class="file-url-container">	
+			<input type="text" name="dedo-file-url" id="dedo-file-url" value="<?php echo esc_attr( $file_url ); ?>" class="large-text" placeholder="<?php _e( 'Upload or enter the file URL.', 'delightful-downloads' ); ?>" />
+			<span class="remove" style="display: none"><a href="#">Remove</a></span>
+		</div>
 		<?php wp_nonce_field( 'ddownload_file_save', 'ddownload_file_save_nonce' ); ?>
 		
 		<div id="plupload-file">
