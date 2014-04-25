@@ -108,12 +108,13 @@ function dedo_download_process() {
 		set_time_limit( 0 );
 
 		// Set headers
-		header( 'Pragma: public' );
-		header( 'Expires: -1' );
-		header( 'Cache-Control: public, must-revalidate, post-check=0, pre-check=0' );
-		header( 'Content-Disposition: attachment; filename="' . basename( $download_path ) . '"' );
-		header( 'Content-Type: ' . dedo_download_mime( $download_path ) );
-		header( 'Content-Length: ' . filesize( $download_path ) );
+		nocache_headers();
+		header( "X-Robots-Tag: noindex, nofollow", true );
+		header( "Content-Type: " . dedo_download_mime( $download_path ) );
+		header( "Content-Description: File Transfer" );
+		header( "Content-Disposition: attachment; filename=\"" . basename( $download_path ) . "\";" );
+		header( "Content-Transfer-Encoding: binary" );
+		header( "Content-Length: " . filesize( $download_path ) );
 
 		// Hook before download starts
 		do_action( 'ddownload_download_before', $download_id );
