@@ -25,7 +25,7 @@ jQuery( document ).ready( function( $ ){
 	// Init file browser
 	$( '#dedo-file-browser' ).fileTree( filebrowser_args, function( file ) {
 		var file_path = file.replace( filebrowser_args.root, filebrowser_args.url );
-		$( '#dedo-file-url' ).val( file_path );
+		$( '#dedo-file-url' ).val( file_path ).trigger( 'change' );
 	} );
 	
 	// Toggle file browser
