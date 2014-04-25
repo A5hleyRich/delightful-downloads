@@ -81,40 +81,23 @@ function dedo_meta_box_file( $post ) {
 	</script>
 	
 	<div id="plupload-container">
-		<table class="form-table">
-			<tbody>
-				<tr valign="top">
-					<th scope="row">
-						<?php _e( 'File URL:', 'delightful-downloads' ); ?>
-					</th>
-					<td id="plupload-file">
-						<input type="text" name="dedo-file-url" id="dedo-file-url" value="<?php echo esc_attr( $file_url ); ?>" class="large-text" placeholder="<?php _e( 'Enter file URL here', 'delightful-downloads' ); ?>" />
-						<?php wp_nonce_field( 'ddownload_file_save', 'ddownload_file_save_nonce' ); ?>
-						<div class="hide-if-no-js">
-							<input id="dedo-upload-button" type="button" value="<?php _e( 'Upload File', 'delightful-downloads' ); ?>" class="button" />
-							<input id="dedo-select-button" type="button" value="<?php _e( 'Select Existing File', 'delightful-downloads' ); ?>" class="button" />
-							<div id="dedo-file-upload">
-								<p id="plupload-error" class="error" style="display: none"></p>
-								<div id="plupload-progress" style="display: none">
-									<div class="bar" style="width: 0%"></div>
-									<div class="percent"><p>Uploading...</p></div>
-								</div>
-							</div>
-							<div id="dedo-file-browser" style="display: none"></div>
-						</div>
-						<p class="description"><?php printf( __( 'Maximum upload file size: %s.', 'delightful-downloads' ), dedo_format_filesize( wp_max_upload_size() ) ); ?></p>
-					</td>
-				</tr>
-				<tr valign="top">
-					<th scope="row">
-						<?php _e( 'File Size:', 'delightful-downloads' ); ?>
-					</th>
-					<td id="plupload-file-size">
-						<?php echo ($file_size !== '' ? dedo_format_filesize( $file_size ) : '-----' ); ?>
-					</td>
-				</tr>
-			</tbody>
-		</table>
+		<label for="dedo-file-url"><?php _e( 'File URL:', 'delightful-downloads' ); ?></label>		
+		<input type="text" name="dedo-file-url" id="dedo-file-url" value="<?php echo esc_attr( $file_url ); ?>" class="large-text" placeholder="<?php _e( 'Upload or enter the file URL.', 'delightful-downloads' ); ?>" />
+		<?php wp_nonce_field( 'ddownload_file_save', 'ddownload_file_save_nonce' ); ?>
+		
+		<div id="plupload-file">
+			<input id="dedo-upload-button" type="button" value="<?php _e( 'Upload File', 'delightful-downloads' ); ?>" class="button" />
+			<input id="dedo-select-button" type="button" value="<?php _e( 'Select Existing File', 'delightful-downloads' ); ?>" class="button" />
+			<span class="description"><?php printf( __( 'Maximum upload file size: %s.', 'delightful-downloads' ), dedo_format_filesize( wp_max_upload_size() ) ); ?></span>
+			<div id="dedo-file-upload">
+				<p id="plupload-error" class="error" style="display: none"></p>
+				<div id="plupload-progress" style="display: none">
+					<div class="bar" style="width: 50%"></div>
+					<div class="percent"><p>Uploading...</p></div>
+				</div>
+			</div>
+			<div id="dedo-file-browser" style="display: none"></div>
+		</div>
 	</div>
 	<?php
 }
