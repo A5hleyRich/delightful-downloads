@@ -34,6 +34,33 @@ function dedo_form_enctype() {
 add_action( 'post_edit_form_tag', 'dedo_form_enctype' );
 
 /**
+ * Add post type custom update messages
+ *
+ * @since  1.3.8
+ */
+function dedo_update_messages() {
+	global $post, $post_ID;
+
+	$messages['dedo_download'] = array(
+		0 => '', // Unused. Messages start at index 1.
+		1 => sprintf( __('Download updated. Use the %s shortcode to include it in posts or pages.', 'delightful-downloads'), '<code>[ddownload id="' . $post_ID . '"]</code>' ),
+		2 => __('Custom field updated.', 'delightful-downloads'),
+		3 => __('Custom field deleted.', 'delightful-downloads'),
+		4 => sprintf( __('Download updated. Use the %s shortcode to include it in posts or pages.', 'delightful-downloads'), '<code>[ddownload id="' . $post_ID . '"]</code>' ),
+		5 => isset($_GET['revision']) ? sprintf( __('Download restored to revision from %s', 'delightful-downloads'), wp_post_revision_title( (int) $_GET['revision'], false ) ) : false,
+		6 => sprintf( __('Download published. Use the %s shortcode to include it in posts or pages.', 'delightful-downloads'), '<code>[ddownload id="' . $post_ID . '"]</code>' ),
+		7 => __('Download saved.', 'delightful-downloads'),
+		8 => __('Download submitted.', 'delightful-downloads'),
+		9 => sprintf( __('Download scheduled for: <strong>%1$s</strong>.', 'delightful-downloads'),
+		  date_i18n( __( 'M j, Y @ G:i', 'delightful-downloads' ), strtotime( $post->post_date ) ) ),
+		10 => __('Download draft updated.', 'delightful-downloads'),
+	);
+
+	return $messages;
+}
+add_action( 'post_updated_messages', 'dedo_update_messages' );
+
+/**
  * Render File Metabox
  *
  * @since  1.0
