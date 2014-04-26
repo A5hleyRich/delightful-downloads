@@ -152,21 +152,12 @@ function dedo_meta_boxes_save( $post_id ) {
 	// Check for save stats nonce
 	if ( isset( $_POST['ddownload_file_save_nonce'] ) && wp_verify_nonce( $_POST['ddownload_file_save_nonce'], 'ddownload_file_save' ) ) {	
 		// Save file url
-		if ( isset( $_POST['dedo-file-url'] ) ) {
+		if ( trim( isset( $_POST['dedo-file-url'] ) ) ) {
 			$file_url = trim( $_POST['dedo-file-url'] );
 			$file_path = dedo_url_to_absolute( $file_url );
-			
-			// Does file exist?
-			if ( file_exists( $file_path ) ) {
-				update_post_meta( $post_id, '_dedo_file_url', $file_url );
-				update_post_meta( $post_id, '_dedo_file_size', filesize( $file_path ) );
-			}
-			else {
-				// Display file does not exist error
-				$notices = get_option( 'delightful-downloads-notices', array() );
-				$notices[] = '<div class="error"><p>' . sprintf( __( 'The file does not exist! Please check the URL and ensure it is within the WordPress directory structure. (For example: %s)', 'delightful-downloads' ), dedo_get_upload_dir( 'dedo_baseurl' ) ) . '</p></div>';
-				update_option( 'delightful-downloads-notices', $notices );
-			}
+
+			update_post_meta( $post_id, '_dedo_file_url', $file_url );
+			update_post_meta( $post_id, '_dedo_file_size', filesize( $file_path ) );
 		}
 	}
 	
@@ -184,20 +175,3 @@ function dedo_meta_boxes_save( $post_id ) {
 	dedo_delete_all_transients();
 }
 add_action( 'save_post', 'dedo_meta_boxes_save' );
-
-/**
- * Display notice to user, resolves issue with post redirect
- *
- * @since  1.0
- */
-function dedo_meta_boxes_notice() {
-	if ( $notices = get_option( 'delightful-downloads-notices' ) ) {
-		
-		foreach ( $notices as $notice ) {
-			echo $notice;
-		}
-
-		delete_option( 'delightful-downloads-notices' );
-	}
-}
-add_action( 'admin_notices', 'dedo_meta_boxes_notice' );
