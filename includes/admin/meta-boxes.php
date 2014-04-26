@@ -128,7 +128,7 @@ function dedo_meta_box_file( $post ) {
 			<div id="dedo-file-upload">
 				<p id="plupload-error" class="error" style="display: none"></p>
 				<div id="plupload-progress" style="display: none">
-					<div class="bar" style="width: 50%"></div>
+					<div class="bar" style="width: 0"></div>
 					<div class="percent"><p>Uploading...</p></div>
 				</div>
 			</div>
