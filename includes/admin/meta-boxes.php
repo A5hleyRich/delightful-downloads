@@ -80,11 +80,17 @@ function dedo_meta_box_file( $post ) {
 		var filebrowser_args = <?php echo json_encode( $filebrowser_init ); ?>;
 	</script>
 	
-	<div id="plupload-container">
-		<label for="dedo-file-url"><?php _e( 'File URL:', 'delightful-downloads' ); ?></label>		
-		<div class="file-url-container">	
-			<input type="text" name="dedo-file-url" id="dedo-file-url" value="<?php echo esc_attr( $file_url ); ?>" class="large-text" placeholder="<?php _e( 'Upload or enter the file URL.', 'delightful-downloads' ); ?>" />
-			<span class="remove" style="display: none"><a href="#">Remove</a></span>
+	<div id="plupload-container">	
+		<div class="file-container">	
+			<div class="file-url-container">
+				<label for="dedo-file-url"><?php _e( 'File URL:', 'delightful-downloads' ); ?></label>	
+				<input type="text" name="dedo-file-url" id="dedo-file-url" value="<?php echo esc_attr( $file_url ); ?>" class="large-text" placeholder="<?php _e( 'Upload or enter the file URL.', 'delightful-downloads' ); ?>" />
+				<span class="remove" style="display: none"><a href="#">Remove</a></span>
+			</div>
+			<div class="file-size-container">
+				<label>File Size:</label>
+				<p><?php echo dedo_format_filesize( $file_size ); ?></p>
+			</div>
 		</div>
 		<?php wp_nonce_field( 'ddownload_file_save', 'ddownload_file_save_nonce' ); ?>
 		

@@ -197,15 +197,35 @@
 		display: none;
 	}
 
+	.file-container {
+		overflow: hidden;
+	}
+
 	.file-url-container {
 		position: relative;
+		width: 80%;
+		float: left;
+		padding-right: 10px;
+		box-sizing: border-box;
 
 		.remove {
 			position: absolute;
-			top: 4px;
-			right: 0;
+			bottom: 4px;
+			right: 10px;
 			padding: 1px 5px;
 			background-color: #fff;
+		}
+	}
+
+	.file-size-container {
+		width: 20%;
+		float: left;
+		padding-left: 10px;
+		box-sizing: border-box;
+
+		p {
+			margin: 0;
+			line-height: 30px;
 		}
 	}
 
