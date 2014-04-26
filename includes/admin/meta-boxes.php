@@ -114,19 +114,9 @@ function dedo_meta_box_stats( $post ) {
 	$file_count = get_post_meta( $post->ID, '_dedo_file_count', true );
 	?>
 	<div id="dedo-file-stats-container">
-		<table class="form-table">
-			<tbody>
-				<tr valign="top">
-					<th scope="row">
-						<label for="dedo_file_count"><?php _e( 'Count' , 'delightful-downloads' ); ?>:</label>
-						<?php wp_nonce_field( 'ddownload_stats_save', 'ddownload_stats_save_nonce' ); ?>
-					</th>
-					<td>
-						<input type="text" name="dedo_file_count" class="text-small" value="<?php echo ($file_count !== '' ? esc_attr( $file_count ) : 0 ); ?>" />
-					</td>
-				</tr>
-			</tbody>
-		</table>
+		<label for="dedo_file_count"><?php _e( 'Count' , 'delightful-downloads' ); ?>:</label>
+		<?php wp_nonce_field( 'ddownload_stats_save', 'ddownload_stats_save_nonce' ); ?>
+		<input type="text" name="dedo_file_count" class="large-text" value="<?php echo ($file_count !== '' ? esc_attr( $file_count ) : 0 ); ?>" />
 	</div>
 	
 	<?php
