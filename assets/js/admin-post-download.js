@@ -18,6 +18,7 @@ jQuery( document ).ready( function( $ ){
 	// Clear URL
 	$( '.file-url-container .remove a' ).on( 'click', function( e ) {
 		$( '#dedo-file-url' ).val('');
+		$( '.file-size-container p' ).html( '' );
 		$(this).parent().hide();
 		e.preventDefault();
 	} );
@@ -66,7 +67,7 @@ jQuery( document ).ready( function( $ ){
  		}
  		else {
  			$( '#dedo-file-url' ).val( $.trim( response.file.url ) ).trigger( 'change' );
-			$( '#plupload-file-size' ).html( plupload.formatSize( file['size'] ) );
+			$( '.file-size-container p' ).html( plupload.formatSize( file['size'] ) );
 			$( '#plupload-progress' ).slideUp();
  		}
 	} );

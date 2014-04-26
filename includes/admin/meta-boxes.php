@@ -89,7 +89,7 @@ function dedo_meta_box_file( $post ) {
 			</div>
 			<div class="file-size-container">
 				<label>File Size:</label>
-				<p><?php echo dedo_format_filesize( $file_size ); ?></p>
+				<p><?php echo ( $file_size == 0 ) ? '' : dedo_format_filesize( $file_size ); ?></p>
 			</div>
 		</div>
 		<?php wp_nonce_field( 'ddownload_file_save', 'ddownload_file_save_nonce' ); ?>
