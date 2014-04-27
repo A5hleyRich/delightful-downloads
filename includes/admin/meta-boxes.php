@@ -115,7 +115,7 @@ function dedo_meta_box_file( $post ) {
 				<span class="remove" style="display: none"><a href="#">Remove</a></span>
 			</div>
 			<div class="file-size-container">
-				<p><?php echo ( $file_size == 0 ) ? '' : dedo_format_filesize( $file_size ); ?></p>
+				<p><?php echo ( $file_size == 0 ) ? __( '0 Bytes', 'delightful-downloads' ) : dedo_format_filesize( $file_size ); ?></p>
 			</div>
 		</div>
 		<?php wp_nonce_field( 'ddownload_file_save', 'ddownload_file_save_nonce' ); ?>
