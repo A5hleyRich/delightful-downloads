@@ -171,7 +171,7 @@ function dedo_meta_boxes_save( $post_id ) {
 	}
 
 	// Check user has permission
-	if ( !current_user_can( 'edit_post' ) ) {
+	if ( !current_user_can( 'edit_post', $post_id ) ) {
 		return;
 	}
 	

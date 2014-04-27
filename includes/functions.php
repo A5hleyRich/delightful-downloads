@@ -252,7 +252,7 @@ function dedo_download_log( $download_id ) {
 	$download_count = get_post_meta( $download_id, '_dedo_file_count', true );
 
 	// If is admin and log admin is false, do not log
-	if ( current_user_can( 'administrator' ) && !$dedo_options['log_admin_downloads'] ) {
+	if ( current_user_can( 'administrator', $download_id ) && !$dedo_options['log_admin_downloads'] ) {
 		return;
 	}
 
@@ -564,7 +564,7 @@ function dedo_delete_all_transients() {
 }
 
 /**
- * Gets absolute Path
+ * Get Absolute Path
  *
  * Searches various locations for download file.
  *
