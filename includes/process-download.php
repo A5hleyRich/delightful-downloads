@@ -26,14 +26,21 @@ function dedo_download_process() {
 		
 		// Ensure only positive int, else could be fishy!
 		$download_id = absint( $_GET[$dedo_options['download_url']] );
-	}
-	
-	// Check for file download
-	if ( isset( $download_id ) ) {
+
+		// Check valid download
+		if ( !dedo_download_valid( $download_id ) ) {
+			
+			do_action( 'ddownload_download_invalid', $download_id );
+
+			// Provided ID is not a valid download, display error
+			wp_die( __( 'Invalid download.', 'delightful-downloads' ) );
+		}
 
 		// Check user has download permissions
 		if ( !dedo_download_permission() ) {
 			
+			do_action( 'ddownload_download_permission', $download_id );
+
 			// Get redirect page if set, else display error instead
 			$members_redirect = $dedo_options['members_redirect'];
 			
@@ -58,31 +65,12 @@ function dedo_download_process() {
 			wp_die( __( 'You are blocked from downloading this file!', 'delightful-downloads' ) );
 		}
 
-		// Check valid download
-		if ( !dedo_download_valid( $download_id ) ) {
-			
-			do_action( 'ddownload_download_invalid', $download_id );
-
-			// Provided ID is not a valid download, display error
-			wp_die( __( 'Invalid download.', 'delightful-downloads' ) );
-		}
-
-		// Grab download info
+		// Grab download path/url
 		$download_url = get_post_meta( $download_id, '_dedo_file_url', true );
-		$download_path = dedo_url_to_absolute( $download_url );
-			
-		// Check file exists
-		if ( !file_exists( $download_path ) ) {
-			
-			// File not found, display message
-			wp_die( __( 'File does not exist!', 'delightful-downloads' ) );
-		}
 
-		// Try to open file, else display server error
-		if ( !$file = @fopen( $download_path, 'rb' ) ) {
-			
-			// Server error
-			wp_die( __( 'Server error, file cannot be opened!', 'delightful-downloads' ) );
+		if ( $download_url === '' ) {
+
+			wp_die( __( 'You must attach a file to download.', 'delightful-downloads' ) );
 		}
 
 		// Stop page caching. Cause conflicts with WP Super Cache
@@ -107,41 +95,60 @@ function dedo_download_process() {
 		// Disable max_execution_time
 		set_time_limit( 0 );
 
-		// Set headers
-		nocache_headers();
-		header( "X-Robots-Tag: noindex, nofollow", true );
-		header( "Content-Type: " . dedo_download_mime( $download_path ) );
-		header( "Content-Description: File Transfer" );
-		header( "Content-Disposition: attachment; filename=\"" . basename( $download_path ) . "\";" );
-		header( "Content-Transfer-Encoding: binary" );
-		header( "Content-Length: " . filesize( $download_path ) );
-
 		// Hook before download starts
 		do_action( 'ddownload_download_before', $download_id );
 
-		// Output file in chuncks
-		while ( !feof( $file ) ) {
-			
-			print fread( $file, 1024 * 1024 );
-			flush();
+		// Convert to path
+		if ( $download_path = dedo_get_abs_path( $download_url ) ) {
 
-			// Check conection, if lost close file and end loop
-			if ( connection_status() != 0 ) {
+			// Try to open file, else display server error
+			if ( !$file = @fopen( $download_path, 'rb' ) ) {
 				
-				fclose( $file );
-				exit();
+				// Server error
+				wp_die( __( 'Server error, file cannot be opened!', 'delightful-downloads' ) );
 			}
+
+			// Set headers
+			nocache_headers();
+			header( "X-Robots-Tag: noindex, nofollow", true );
+			header( "Content-Type: " . dedo_download_mime( $download_path ) );
+			header( "Content-Description: File Transfer" );
+			header( "Content-Disposition: attachment; filename=\"" . basename( $download_path ) . "\";" );
+			header( "Content-Transfer-Encoding: binary" );
+			header( "Content-Length: " . filesize( $download_path ) );
+
+			// Output file in chuncks
+			while ( !feof( $file ) ) {
+				
+				print fread( $file, 1024 * 1024 );
+				flush();
+
+				// Check conection, if lost close file and end loop
+				if ( connection_status() != 0 ) {
+					
+					fclose( $file );
+					exit();
+				}
+			}
+
+			// Reached end of file, close it. Job done!
+			fclose( $file );
+
+			// Hook when download complete
+			do_action( 'ddownload_download_complete', $download_id );
+			
+			// Done! Exit
+			exit();
+
+		}
+		else {
+			// No disoverable path, redirect to file
+			header( "Location: $download_url" );
 		}
 
-		// Reached end of file, close it. Job done!
-		fclose( $file );
 
-		// Hook when download complete
-		do_action( 'ddownload_download_complete', $download_id );
-		
-		// Done! Exit
-		exit();
 	}
+
 }
 add_action( 'init', 'dedo_download_process', 0 );
 
