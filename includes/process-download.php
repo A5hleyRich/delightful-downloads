@@ -68,9 +68,9 @@ function dedo_download_process() {
 		// Grab download path/url
 		$download_url = get_post_meta( $download_id, '_dedo_file_url', true );
 
-		if ( $download_url === '' ) {
+		if ( '' === $download_url ) {
 
-			wp_die( __( 'You must attach a file to download.', 'delightful-downloads' ) );
+			wp_die( __( 'You must attach a file to this download.', 'delightful-downloads' ) );
 		}
 
 		// Stop page caching. Cause conflicts with WP Super Cache
@@ -139,13 +139,13 @@ function dedo_download_process() {
 			
 			// Done! Exit
 			exit();
-
 		}
 		else {
+			
 			// No disoverable path, redirect to file
 			header( "Location: $download_url" );
+			exit();
 		}
-
 
 	}
 

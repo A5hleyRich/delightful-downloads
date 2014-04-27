@@ -180,7 +180,7 @@ function dedo_meta_boxes_save( $post_id ) {
 		// Save file url
 		if ( trim( isset( $_POST['dedo-file-url'] ) ) ) {
 			$file_url = trim( $_POST['dedo-file-url'] );
-			$file_path = dedo_url_to_absolute( $file_url );
+			$file_path = dedo_get_abs_path( $file_url );
 
 			update_post_meta( $post_id, '_dedo_file_url', $file_url );
 			update_post_meta( $post_id, '_dedo_file_size', filesize( $file_path ) );
