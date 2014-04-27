@@ -309,19 +309,6 @@ function dedo_download_filename( $path = '' ) {
 }
 
 /**
- * Convert file URL to absolute address
- *
- * @since  1.2.1
- */
-function dedo_url_to_absolute( $url ) {
-	
-	// Get URL of WordPress core files.
-	$root_url = trailingslashit( site_url() );
-
-	return str_replace( $root_url, ABSPATH, $url );
-}
-
-/**
  * Convert bytes to human readable format
  *
  * @since  1.0
@@ -574,4 +561,65 @@ function dedo_delete_all_transients() {
 		'\_transient\_timeout\_delightful-downloads%%' );
 
 	$wpdb->query( $sql );
+}
+
+/**
+ * Gets absolute Path
+ *
+ * Searches various locations for download file.
+ *
+ * It is always recommended that the file should be within /wp-content
+ * otherwise it can't be guaranteed that the file will be found.
+ *
+ * Also allows absolute path to store files outsite the document root.
+ *
+ * @since   1.3.8
+ */
+function dedo_get_abs_path( $requested_file ) {
+	
+	$parsed_file = parse_url( $requested_file );
+
+	// Check for absolute path
+	if ( ( !isset( $parsed_file['scheme'] ) || !in_array( $parsed_file['scheme'], array( 'http', 'https' ) ) ) && isset( $parsed_file['path'] ) && file_exists( $requested_file ) ) {
+		
+		return $requested_file;
+	}
+
+	// Falls within wp_content
+	else if ( strpos( $requested_file, WP_CONTENT_URL ) !== false ) {
+		$file_path = str_replace( WP_CONTENT_URL, WP_CONTENT_DIR, $requested_file );
+		
+		return realpath( $file_path );
+	}
+
+	// Falls in multisite
+	else if ( is_multisite() && !is_main_site() && strpos( $requested_file, network_site_url() ) !== false ) {
+		$site_url = trailingslashit( site_url() );
+		$file_path = str_replace( $site_url, ABSPATH, $requested_file );
+
+		$site_url = trailingslashit( network_site_url() );
+		$file_path = str_replace( $site_url, ABSPATH, $file_path );
+
+		return realpath( $file_path );
+	}
+
+	// Falls within WordPress directory structure
+	else if ( strpos( $requested_file, site_url() ) !== false ) {
+		$site_url = trailingslashit( site_url() );
+		$file_path = str_replace( $site_url, ABSPATH, $requested_file );
+
+		return realpath( $file_path );
+	}
+
+	// Falls outside WordPress structure but within document root.
+	else if ( file_exists( $_SERVER['DOCUMENT_ROOT'] . $parsed_file['path'] ) ) {
+		$file_path = $_SERVER['DOCUMENT_ROOT'] . $parsed_file['path'];
+		
+		return realpath( $file_path );
+	}
+
+	else {
+
+		return false;
+	}
 }
