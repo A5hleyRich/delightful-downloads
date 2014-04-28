@@ -92,6 +92,7 @@ function dedo_download_column_headings( $columns ) {
 		'cb' 				=> '<input type="checkbox" />',
 		'title' 			=> __( 'Title', 'delightful-downloads' ),
 		'file'				=> __( 'File', 'delightful-downloads' ),
+		'filesize'			=> __( 'File Size', 'delightful-downloads' ),
 		'shortcode' 		=> __( 'Shortcode', 'delightful-downloads' ),
 		'downloads' 		=> __( 'Downloads', 'delightful-downloads' ),
 		'date' 				=> __( 'Date', 'delightful-downloads' )
@@ -125,6 +126,11 @@ function dedo_download_column_contents( $column_name, $post_id ) {
 		$path = get_post_meta( $post_id, '_dedo_file_url', true );
 		echo esc_attr( dedo_download_filename( $path ) );
 	}
+
+	// Filesize column
+	if ( $column_name == 'filesize' ) {
+		echo esc_attr( dedo_format_filesize( get_post_meta( $post_id, '_dedo_file_size', true ) ) );
+	}
 	
 	// Shortcode column
 	if ( $column_name == 'shortcode' ) {
@@ -144,6 +150,7 @@ add_action( 'manage_dedo_download_posts_custom_column', 'dedo_download_column_co
  * @since  1.0
  */
 function dedo_download_column_sortable( $columns ) {
+	$columns['filesize'] = 'filesize';
 	$columns['downloads'] = 'downloads';
 
 	return $columns;
@@ -158,6 +165,11 @@ add_filter( 'manage_edit-dedo_download_sortable_columns', 'dedo_download_column_
 function dedo_download_column_orderby( $query ) {
 	$orderby = $query->get( 'orderby');  
   
+	if ( $orderby == 'filesize' ) {  
+		$query->set( 'meta_key', '_dedo_file_size' );  
+		$query->set( 'orderby', 'meta_value_num' );  
+	}
+
 	if ( $orderby == 'downloads' ) {  
 		$query->set( 'meta_key', '_dedo_file_count' );  
 		$query->set( 'orderby', 'meta_value_num' );  
