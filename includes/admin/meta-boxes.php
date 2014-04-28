@@ -67,7 +67,7 @@ add_action( 'post_updated_messages', 'dedo_update_messages' );
  */
 function dedo_meta_box_file( $post ) {
 	$file_url = get_post_meta( $post->ID, '_dedo_file_url', true );
-	$file_size = get_post_meta( $post->ID, '_dedo_file_size', true );
+	$file_size = size_format( get_post_meta( $post->ID, '_dedo_file_size', true ), 1 );
 	
 	global $post, $dedo_options;;
 	 
@@ -115,7 +115,7 @@ function dedo_meta_box_file( $post ) {
 				<span class="remove" style="display: none"><a href="#">Remove</a></span>
 			</div>
 			<div class="file-size-container">
-				<p><?php echo ( $file_size == 0 ) ? __( '0 Bytes', 'delightful-downloads' ) : dedo_format_filesize( $file_size ); ?></p>
+				<p><?php echo ( !$file_size ) ? __( 'Unkown', 'delightful-downloads' ) : $file_size; ?></p>
 			</div>
 		</div>
 		<?php wp_nonce_field( 'ddownload_file_save', 'ddownload_file_save_nonce' ); ?>
@@ -123,7 +123,7 @@ function dedo_meta_box_file( $post ) {
 		<div id="plupload-file">
 			<input id="dedo-upload-button" type="button" value="<?php _e( 'Upload File', 'delightful-downloads' ); ?>" class="button" />
 			<input id="dedo-select-button" type="button" value="<?php _e( 'Select Existing File', 'delightful-downloads' ); ?>" class="button" />
-			<span class="description"><?php printf( __( 'Maximum upload file size: %s.', 'delightful-downloads' ), dedo_format_filesize( wp_max_upload_size() ) ); ?></span>
+			<span class="description"><?php printf( __( 'Maximum upload file size: %s.', 'delightful-downloads' ), size_format( wp_max_upload_size(), 1 ) ); ?></span>
 			<div id="dedo-file-upload">
 				<p id="plupload-error" class="error" style="display: none"></p>
 				<div id="plupload-progress" style="display: none">
