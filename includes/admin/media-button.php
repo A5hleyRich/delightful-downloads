@@ -57,13 +57,13 @@ function dedo_media_modal() {
 	while ( $downloads->have_posts() ) {
 		$downloads->the_post();
 		$download_id = get_the_ID();
-		$download_size = dedo_format_filesize( get_post_meta( $download_id, '_dedo_file_size', true ) );
-		$download_count = dedo_format_number( get_post_meta( $download_id, '_dedo_file_count', true ) );
+		$download_size = size_format( get_post_meta( $download_id, '_dedo_file_size', true ), 1 );
+		$download_count = number_format_i18n( get_post_meta( $download_id, '_dedo_file_count', true ) );
 
 ?>
-								<tr id="dedo-download-<?php echo esc_attr( $download_id ); ?>" data-id="<?php echo esc_attr( $download_id ); ?>" data-size="<?php echo esc_attr( $download_size ); ?>" data-count="<?php echo esc_attr( $download_count ); ?>">
+								<tr id="dedo-download-<?php echo esc_attr( $download_id ); ?>" data-id="<?php echo esc_attr( $download_id ); ?>" data-size="<?php echo esc_attr( ( !$download_size ) ? __( 'Unknown', 'delightful-downloads' ) : $download_size ); ?>" data-count="<?php echo esc_attr( $download_count ); ?>">
 									<td class="title_column"><strong><?php the_title(); ?></strong></td>			
-									<td class="size_column"><?php echo esc_attr( $download_size ); ?></td>
+									<td class="size_column"><?php echo esc_attr( ( !$download_size ) ? __( 'Unknown', 'delightful-downloads' ) : $download_size ); ?></td>
 									<td class="count_column"><?php echo esc_attr( $download_count ); ?></td>
 								</tr>
 <?php
