@@ -296,49 +296,49 @@ function dedo_download_mime( $path ) {
 	return $filetype['type'];
 }
 
-/**
- * Get file name from path
- *
- * @since  1.0
- */
-function dedo_download_filename( $path = '' ) {
-	// Strip path, leave filename and extension
-	$file = explode( '/', $path );
+// /**
+//  * Get file name from path
+//  *
+//  * @since  1.0
+//  */
+// function dedo_download_filename( $path = '' ) {
+// 	// Strip path, leave filename and extension
+// 	$file = explode( '/', $path );
 	
-	return end( $file );
-}
+// 	return end( $file );
+// }
 
-/**
- * Convert bytes to human readable format
- *
- * @since  1.0
- */
-function dedo_format_filesize( $bytes ) {
-	//Check a number was sent
-    if ( !empty( $bytes ) && $bytes != 0 ) {
+// *
+//  * Convert bytes to human readable format
+//  *
+//  * @since  1.0
+ 
+// function dedo_format_filesize( $bytes ) {
+// 	//Check a number was sent
+//     if ( !empty( $bytes ) && $bytes != 0 ) {
 
-        //Set text sizes
-        $s = array( 'Bytes', 'KB', 'MB', 'GB', 'TB', 'PB' );
-        $e = floor( log( absint( $bytes ) ) / log( 1024 ) );
+//         //Set text sizes
+//         $s = array( 'Bytes', 'KB', 'MB', 'GB', 'TB', 'PB' );
+//         $e = floor( log( absint( $bytes ) ) / log( 1024 ) );
 
-        //Create output to 1 decimal place and return complete output
-        $output = sprintf( '%.1f '.$s[$e], ( $bytes / pow( 1024, floor( $e ) ) ) );
-        return $output;
-    }
-    else {
-    	return '0 Bytes';
-    }
-}
+//         //Create output to 1 decimal place and return complete output
+//         $output = sprintf( '%.1f '.$s[$e], ( $bytes / pow( 1024, floor( $e ) ) ) );
+//         return $output;
+//     }
+//     else {
+//     	return '0 Bytes';
+//     }
+// }
 
-/**
- * Format Numbers
- *
- * @since  1.0
- */
-function dedo_format_number( $number ) {
+// /**
+//  * Format Numbers
+//  *
+//  * @since  1.0
+//  */
+// function dedo_format_number( $number ) {
 	
-    return number_format( $number, 0, '', ',' );
-}
+//     return number_format( $number, 0, '', ',' );
+// }
 
 /**
  * Return various upload dirs/urls for Delightful Downloads.

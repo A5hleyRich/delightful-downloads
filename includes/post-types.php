@@ -123,23 +123,29 @@ add_filter( 'manage_dedo_download_posts_columns', 'dedo_download_column_headings
 function dedo_download_column_contents( $column_name, $post_id ) {
 	// File column
 	if ( $column_name == 'file' ) {
+		
 		$path = get_post_meta( $post_id, '_dedo_file_url', true );
-		echo esc_attr( dedo_download_filename( $path ) );
+		echo esc_attr( basename( $path ) );
 	}
 
 	// Filesize column
 	if ( $column_name == 'filesize' ) {
-		echo esc_attr( dedo_format_filesize( get_post_meta( $post_id, '_dedo_file_size', true ) ) );
+		
+		$file_size = size_format( get_post_meta( $post_id, '_dedo_file_size', true ), 1 );
+		echo esc_attr( ( !$file_size ) ? __( 'Unknown' , 'delightful-downloads' ) : $file_size );
 	}
 	
 	// Shortcode column
 	if ( $column_name == 'shortcode' ) {
+		
 		echo '<code>[ddownload id="' . esc_attr( $post_id ) . '"]</code>';
 	}
 	
 	// Count column
 	if ( $column_name == 'downloads' ) {
-		echo esc_attr( dedo_format_number( get_post_meta( $post_id, '_dedo_file_count', true ) ) );
+		
+		$count = number_format_i18n( get_post_meta( $post_id, '_dedo_file_count', true ) );
+		echo esc_attr( $count );
 	}
 }
 add_action( 'manage_dedo_download_posts_custom_column', 'dedo_download_column_contents', 10, 2 );
