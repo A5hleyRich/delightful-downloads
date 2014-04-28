@@ -34,7 +34,7 @@ function dedo_dashboard_downloads_widget() {
 		<table>
 			<tbody>
 				<tr>
-					<td class="last t"><a href="edit.php?post_type=dedo_download"><?php echo dedo_format_number( dedo_get_total_count( 1 ) ) . ' ' . __( 'Downloads', 'delightful-downloads' ); ?></a></td>
+					<td class="last t"><a href="edit.php?post_type=dedo_download"><?php echo number_format_i18n( dedo_get_total_count( 1 ) ) . ' ' . __( 'Downloads', 'delightful-downloads' ); ?></a></td>
 				</tr>
 			</tbody>
 		</table>
@@ -44,7 +44,7 @@ function dedo_dashboard_downloads_widget() {
 		<table>
 			<tbody>
 				<tr>
-					<td class="last t"><a href="edit.php?post_type=dedo_download"><?php echo dedo_format_number( dedo_get_total_count( 0 ) ) . ' ' . __( 'Downloads', 'delightful-downloads' ); ?></a></td>
+					<td class="last t"><a href="edit.php?post_type=dedo_download"><?php echo number_format_i18n( dedo_get_total_count( 0 ) ) . ' ' . __( 'Downloads', 'delightful-downloads' ); ?></a></td>
 				</tr>
 			</tbody>
 		</table>
@@ -54,7 +54,7 @@ function dedo_dashboard_downloads_widget() {
 		<table>
 			<tbody>
 				<tr>
-					<td class="last t"><a href="edit.php?post_type=dedo_download"><?php echo dedo_format_number( dedo_get_total_count( 7 ) ) . ' ' . __( 'Downloads', 'delightful-downloads' ); ?></a></td>
+					<td class="last t"><a href="edit.php?post_type=dedo_download"><?php echo number_format_i18n( dedo_get_total_count( 7 ) ) . ' ' . __( 'Downloads', 'delightful-downloads' ); ?></a></td>
 				</tr>
 			</tbody>
 		</table>
@@ -64,7 +64,7 @@ function dedo_dashboard_downloads_widget() {
 		<table>
 			<tbody>
 				<tr>
-					<td class="last t"><a href="edit.php?post_type=dedo_download"><?php echo dedo_format_number( dedo_get_total_count( 30 ) ) . ' ' . __( 'Downloads', 'delightful-downloads' ); ?></a></td>
+					<td class="last t"><a href="edit.php?post_type=dedo_download"><?php echo number_format_i18n( dedo_get_total_count( 30 ) ) . ' ' . __( 'Downloads', 'delightful-downloads' ); ?></a></td>
 				</tr>
 			</tbody>
 		</table>
