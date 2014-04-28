@@ -125,13 +125,16 @@ PHP Max Upload Size: <?php echo ini_get( 'upload_max_filesize' ) . "\n"; ?>
 ## WordPress Information ##
 
 WordPress Version: <?php echo get_bloginfo( 'version' ) . "\n"; ?>
-Multisite: <?php echo is_multisite() ? 'Yes' . "\n" : 'No' . "\n" ?>
-Max Upload Size: <?php echo dedo_format_filesize( wp_max_upload_size() ) . "\n"; ?>
+Multisite: <?php echo ( is_multisite() ) ? 'Yes' . "\n" : 'No' . "\n" ?>
+Max Upload Size: <?php echo size_format( wp_max_upload_size(), 1 ) . "\n"; ?>
 
 Site Address: <?php echo home_url() . "\n"; ?>
 WordPress Address: <?php echo site_url() . "\n"; ?>
 Download Address: <?php echo dedo_download_link( 1 ) . "\n"; ?>
 
+<?php echo ( defined('UPLOADS') ? 'Upload Directory: ' . UPLOADS . "\n" : '' ); ?>
+Directory (wp-content): <?php echo ( defined('WP_CONTENT_DIR') ? WP_CONTENT_DIR . "\n" : '' ); ?>
+URL (wp-content): <?php echo ( defined('WP_CONTENT_URL') ? WP_CONTENT_URL . "\n" : '' ); ?>
 
 ## Active Theme ## 
 
