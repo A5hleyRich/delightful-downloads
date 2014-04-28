@@ -179,7 +179,7 @@ function dedo_meta_boxes_save( $post_id ) {
 	if ( isset( $_POST['ddownload_file_save_nonce'] ) && wp_verify_nonce( $_POST['ddownload_file_save_nonce'], 'ddownload_file_save' ) ) {	
 		
 		// Save file url
-		if ( trim( isset( $_POST['dedo-file-url'] ) ) ) {
+		if ( isset( $_POST['dedo-file-url'] ) && !empty( $_POST['dedo-file-url'] ) ) {
 			
 			$file_url = trim( $_POST['dedo-file-url'] );
 			
@@ -187,7 +187,7 @@ function dedo_meta_boxes_save( $post_id ) {
 
 				// No file found locally, attempt to get file size from remote
 				$response = get_headers( $file_url, 1 );
-				$file_size = ( isset( $response['Content-Length'] ) ) ? $response['Content-Length'] : '';
+				$file_size = ( isset( $response['Content-Length'] ) ) ? $response['Content-Length'] : 0;
 			}
 			else {
 				
@@ -196,6 +196,10 @@ function dedo_meta_boxes_save( $post_id ) {
 
 			update_post_meta( $post_id, '_dedo_file_url', $file_url );
 			update_post_meta( $post_id, '_dedo_file_size', $file_size );
+		}
+		else {
+			update_post_meta( $post_id, '_dedo_file_url', '' );
+			update_post_meta( $post_id, '_dedo_file_size', 0 );
 		}
 	}
 	

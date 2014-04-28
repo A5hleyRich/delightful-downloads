@@ -93,8 +93,8 @@ function dedo_download_column_headings( $columns ) {
 		'title' 			=> __( 'Title', 'delightful-downloads' ),
 		'file'				=> __( 'File', 'delightful-downloads' ),
 		'filesize'			=> __( 'File Size', 'delightful-downloads' ),
-		'shortcode' 		=> __( 'Shortcode', 'delightful-downloads' ),
 		'downloads' 		=> __( 'Downloads', 'delightful-downloads' ),
+		'shortcode' 		=> __( 'Shortcode', 'delightful-downloads' ),
 		'date' 				=> __( 'Date', 'delightful-downloads' )
 	);
 
