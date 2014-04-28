@@ -4,7 +4,7 @@ Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_i
 Tags: download, manager, downloads, monitor, shortcode, delightful downloads, file, counter, tracking
 Requires at least: 3.8
 Tested up to: 3.8.1
-Stable tag: 1.3.7
+Stable tag: 1.3.8
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -61,6 +61,15 @@ Please refer to the [FAQ](http://delightfulwp.com/delightful-downloads/faq/ "Del
 6. Settings screen.
 
 == Changelog ==
+
+= 1.3.8 =
+
+* Cleaned up the Add Downloads screen.
+* Added file size to the All Downloads screen.
+* Added the ability to add offsite (remote) files for download.
+* Added the ability to link to files using the absolute server path.
+* Removed a few deprecated functions in favor of core WordPress functions.
+* Fixed file not found bug.
 
 = 1.3.7 =
 
