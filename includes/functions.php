@@ -217,7 +217,10 @@ function dedo_download_blocked( $current_agent ) {
 
 	foreach ( $user_agents as $user_agent ) {
 		
-		if ( strpos( $current_agent, $user_agent ) ) {
+		$current_agent = trim( strtolower( $current_agent ) );
+		$user_agent = trim( strtolower( $user_agent ) );
+
+		if ( false !== strpos( $current_agent, $user_agent ) ) {
 			return false;
 		}	
 	}

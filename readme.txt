@@ -70,6 +70,7 @@ Please refer to the [FAQ](http://delightfulwp.com/delightful-downloads/faq/ "Del
 * Added the ability to link to files using the absolute server path.
 * Removed a few deprecated functions in favor of core WordPress functions.
 * Fixed file not found bug.
+* Fixed block user agents bug.
 
 = 1.3.7 =
 
