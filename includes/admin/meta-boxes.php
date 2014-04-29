@@ -187,20 +187,31 @@ function dedo_meta_boxes_save( $post_id ) {
 
 				// No file found locally, attempt to get file size from remote
 				$response = get_headers( $file_url, 1 );
-				$file_size = ( isset( $response['Content-Length'] ) ) ? $response['Content-Length'] : 0;
+				
+				if ( 'HTTP/1.1 404 Not Found' !== $response[0] && isset( $response['Content-Length'] )  ) {
+					
+					$file_size = $response['Content-Length'];
+				}
+				else {
+
+					$file_size = 0;
+				}
+
 			}
 			else {
 				
 				$file_size = filesize( $file_path );
 			}
 
-			update_post_meta( $post_id, '_dedo_file_url', $file_url );
-			update_post_meta( $post_id, '_dedo_file_size', $file_size );
 		}
 		else {
-			update_post_meta( $post_id, '_dedo_file_url', '' );
-			update_post_meta( $post_id, '_dedo_file_size', 0 );
+			
+			$file_size = 0;
+			$file_url = '';
 		}
+
+		update_post_meta( $post_id, '_dedo_file_url', $file_url );
+		update_post_meta( $post_id, '_dedo_file_size', $file_size );
 	}
 	
 	// Check for save stats nonce
