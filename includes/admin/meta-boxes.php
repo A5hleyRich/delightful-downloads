@@ -38,7 +38,7 @@ add_action( 'post_edit_form_tag', 'dedo_form_enctype' );
  *
  * @since  1.3.8
  */
-function dedo_update_messages() {
+function dedo_update_messages( $messages ) {
 	global $post, $post_ID;
 
 	$messages['dedo_download'] = array(
