@@ -11,20 +11,6 @@
 if ( !defined( 'ABSPATH' ) ) exit;
 
 /**
- * Download Link
- *
- * Generate download link based on provided id.
- *
- * @since  1.0
- */
-function dedo_download_link( $id ) {
-	 global $dedo_options;
-	 
-	 $output = esc_html( home_url( '?' . $dedo_options['download_url'] . '=' . $id ) );
-	 return apply_filters( 'dedo_download_link', $output );
-}
-
-/**
  * Shortcode Styles
  *
  * @since  1.0
@@ -161,8 +147,40 @@ function dedo_get_shortcode_lists() {
  		$string = str_replace( '%count%', $value, $string );
  	}
 
+ 	// file name
+ 	if ( strpos( $string, '%filename%' ) !== false ) {
+ 		$value = dedo_get_file_name( get_post_meta( $id, '_dedo_file_url', true ) );
+ 		$string = str_replace( '%filename%', $value, $string );
+ 	}
+
+ 	// file extension
+ 	if ( strpos( $string, '%ext%' ) !== false ) {
+ 		$value = strtoupper( dedo_get_file_ext( get_post_meta( $id, '_dedo_file_url', true ) ) );
+ 		$string = str_replace( '%ext%', $value, $string );
+ 	}
+
+ 	 // file mime
+ 	if ( strpos( $string, '%mime%' ) !== false ) {
+ 		$value = dedo_get_file_mime( get_post_meta( $id, '_dedo_file_url', true ) );
+ 		$string = str_replace( '%mime%', $value, $string );
+ 	}
+
  	return apply_filters( 'dedo_search_replace_wildcards', $string, $id );
  }
+
+/**
+ * Download Link
+ *
+ * Generate download link based on provided id.
+ *
+ * @since  1.0
+ */
+function dedo_download_link( $id ) {
+	 global $dedo_options;
+	 
+	 $output = esc_html( home_url( '?' . $dedo_options['download_url'] . '=' . $id ) );
+	 return apply_filters( 'dedo_download_link', $output );
+}
 
 /**
  * Check for valid download
@@ -625,4 +643,55 @@ function dedo_get_abs_path( $requested_file ) {
 
 		return false;
 	}
+}
+
+/**
+ * Get File Name
+ *
+ * Strips the filename from a URL or path.
+ *
+ * @since   1.3.8
+ *
+ * @param string $path File path/url of filename.
+ * @return string Value of file name with extension.
+ */
+function dedo_get_file_name( $path ) {
+
+	return basename( $path );
+}
+
+/**
+ * Get File Mime
+ *
+ * Get the file mime type from the file path using WordPress
+ * built in filetype check.
+ *
+ * @since   1.3.8
+ *
+ * @param string $path File path/url of filename.
+ * @return string Value of file mime.
+ */
+function dedo_get_file_mime( $path ) {
+	
+	$file = wp_check_filetype( $path );
+
+	return $file['type'];
+}
+
+/**
+ * Get File Extension
+ *
+ * Get the file extension from the file path using WordPress
+ * built in filetype check.
+ *
+ * @since   1.3.8
+ *
+ * @param string $path File path/url of filename.
+ * @return string Value of file extension.
+ */
+function dedo_get_file_ext( $path ) {
+	
+	$file = wp_check_filetype( $path );
+	
+	return $file['ext'];
 }
