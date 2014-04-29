@@ -114,7 +114,7 @@ function dedo_shortcode_ddownload_count( $atts ) {
 
 	// Get downloads and format
 	$downloads = get_post_meta( $id, '_dedo_file_count', true );
-	$output = ( $format == true ) ? dedo_format_number( $downloads ) : $downloads;
+	$output = ( $format == true ) ? number_format_i18n( $downloads ) : $downloads;
 
 	return apply_filters( 'dedo_shortcode_ddownload_count', $output );
 }
@@ -147,7 +147,7 @@ function dedo_shortcode_ddownload_filesize( $atts ) {
 
 	// Get filesize and format
 	$filesize = get_post_meta( $id, '_dedo_file_size', true );
-	$output = ( $format == true ) ? dedo_format_filesize( $filesize ) : $filesize;
+	$output = ( $format == true ) ? size_format( $filesize, 1 ) : $filesize;
 
 	return apply_filters( 'dedo_shortcode_ddownload_filesize', $output );
 }
@@ -378,7 +378,7 @@ function dedo_shortcode_ddownload_total_count( $atts ) {
 
 	// Format and return
 	if ( $format ) {
-		$total_count = dedo_format_number( $total_count );
+		$total_count = number_format_i18n( $total_count );
 	}
 
 	return apply_filters( 'dedo_shortcode_ddownload_total_count', $total_count );
@@ -425,7 +425,7 @@ function dedo_shortcode_ddownload_total_filesize( $atts ) {
 
 	// Format and return
 	if ( $format ) {
-		$total_filesize = dedo_format_filesize( $total_filesize );
+		$total_filesize = size_format( $total_filesize, 1 );
 	}
 
 	return apply_filters( 'dedo_shortcode_ddownload_total_filesize', $total_filesize );
@@ -472,7 +472,7 @@ function dedo_shortcode_ddownload_total_files( $atts ) {
 
 	// Format and return
 	if ( $format ) {
-		$total_files = dedo_format_number( $total_files );
+		$total_files = number_format_i18n( $total_files );
 	}
 
 	return apply_filters( 'dedo_shortcode_ddownload_total_files', $total_files );

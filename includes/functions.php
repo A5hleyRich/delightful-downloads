@@ -97,8 +97,12 @@ function dedo_get_shortcode_lists() {
 	 		'format'			=> '<a href="%url%" title="%title% (Downloads: %count%)" rel="nofollow">%title% (Downloads: %count%)</a>'
 	 	),
 	 	'title_filesize'	=> array(
-	 		'name'				=> __( 'Title (Filesize)', 'delightful-downloads' ),
+	 		'name'				=> __( 'Title (File size)', 'delightful-downloads' ),
 	 		'format'			=> '<a href="%url%" title="%title% (%filesize%)" rel="nofollow">%title% (%filesize%)</a>'
+	 	),
+	 	'title_ext_filesize'=> array(
+	 		'name'				=> __( 'Title (Extension, File size)', 'delightful-downloads' ),
+	 		'format'			=> '<a href="%url%" title="%title% (%ext%, %filesize%)" rel="nofollow">%title% (%ext%, %filesize%)</a>'
 	 	)
 	);
 
@@ -137,13 +141,13 @@ function dedo_get_shortcode_lists() {
 
  	// filesize
  	if ( strpos( $string, '%filesize%' ) !== false ) {
- 		$value = dedo_format_filesize( get_post_meta( $id, '_dedo_file_size', true ) );
+ 		$value = size_format( get_post_meta( $id, '_dedo_file_size', true ), 1 );
  		$string = str_replace( '%filesize%', $value, $string );
  	}
 
  	// downloads
  	if ( strpos( $string, '%count%' ) !== false ) {
- 		$value = dedo_format_number( get_post_meta( $id, '_dedo_file_count', true ) );
+ 		$value = number_format_i18n( get_post_meta( $id, '_dedo_file_count', true ) );
  		$string = str_replace( '%count%', $value, $string );
  	}
 
@@ -316,50 +320,6 @@ function dedo_download_mime( $path ) {
 	
 	return $filetype['type'];
 }
-
-// /**
-//  * Get file name from path
-//  *
-//  * @since  1.0
-//  */
-// function dedo_download_filename( $path = '' ) {
-// 	// Strip path, leave filename and extension
-// 	$file = explode( '/', $path );
-	
-// 	return end( $file );
-// }
-
-// *
-//  * Convert bytes to human readable format
-//  *
-//  * @since  1.0
- 
-// function dedo_format_filesize( $bytes ) {
-// 	//Check a number was sent
-//     if ( !empty( $bytes ) && $bytes != 0 ) {
-
-//         //Set text sizes
-//         $s = array( 'Bytes', 'KB', 'MB', 'GB', 'TB', 'PB' );
-//         $e = floor( log( absint( $bytes ) ) / log( 1024 ) );
-
-//         //Create output to 1 decimal place and return complete output
-//         $output = sprintf( '%.1f '.$s[$e], ( $bytes / pow( 1024, floor( $e ) ) ) );
-//         return $output;
-//     }
-//     else {
-//     	return '0 Bytes';
-//     }
-// }
-
-// /**
-//  * Format Numbers
-//  *
-//  * @since  1.0
-//  */
-// function dedo_format_number( $number ) {
-	
-//     return number_format( $number, 0, '', ',' );
-// }
 
 /**
  * Return various upload dirs/urls for Delightful Downloads.
