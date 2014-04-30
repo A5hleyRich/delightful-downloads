@@ -18,7 +18,15 @@ if ( !defined( 'ABSPATH' ) ) exit;
  * @since   1.0
  */
 function dedo_shortcode_ddownload( $atts ) {
-	global $dedo_options;
+	
+	/**
+	 * Use get option again so that WPML can filter default text
+	 * for translation, get_option() is cached so should not
+	 * affect performance.
+	 *
+	 */
+	global $dedo_default_options;
+	$dedo_options = wp_parse_args( get_option( 'delightful-downloads' ), $dedo_default_options );
 
 	// Attributes
 	extract( shortcode_atts(
