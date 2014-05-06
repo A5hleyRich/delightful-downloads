@@ -74,11 +74,11 @@ Please refer to the [FAQ](http://delightfulwp.com/delightful-downloads/faq/ "Del
 * Added the ability to add files using an absolute server path.
 * Added %filename%, %ext% and %mime% wildcards.
 * Added new ddownload_list output style - Title (Extension, File size).
-* Added compatibilty with WPML.
+* Added compatibility with WPML.
 * Fixed Settings screen input labels.
 * Fixed file not found bug.
 * Fixed block user agents bug.
-* Removed deprecated functions in favor of core WordPress functions.
+* Removed deprecated functions in favour of core WordPress functions.
 
 = 1.3.7 =
 
