@@ -90,7 +90,9 @@ function dedo_download_process() {
 		@session_write_close();
 		
 		// Disable nested buffering.... 3 hours of head scratching!!
-		for ( $i = 0; $i < ob_get_level(); $i++ ) { @ob_end_clean(); }
+		do {
+			@ob_end_clean();
+		} while ( ob_get_level() > 0 );
 		
 		// Disable max_execution_time
 		set_time_limit( 0 );
