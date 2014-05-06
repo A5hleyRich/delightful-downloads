@@ -2,8 +2,8 @@
 Contributors: A5hleyRich
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=95AQB5DP83XAU
 Tags: download, manager, downloads, monitor, shortcode, delightful downloads, file, counter, tracking
-Requires at least: 3.8
-Tested up to: 3.8.1
+Requires at least: 3.9
+Tested up to: 3.9
 Stable tag: 1.3.8
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -38,6 +38,10 @@ Delightful Downloads is a super-awesome downloads manager for WordPress that all
 
 The Delightful Downloads documentation can be found [here](http://delightfulwp.com/delightful-downloads/documentation/ "Delightful Downloads Documentation").
 
+**Requirements**
+
+To add and manage downloads via the WordPress Administration screens, you must have a [modern web browser](http://browsehappy.com/ "Browse Happy") with JavaScript enabled.
+
 == Installation ==
 
 1. Upload `delightful-downloads` to the `/wp-content/plugins/` directory.
@@ -65,12 +69,16 @@ Please refer to the [FAQ](http://delightfulwp.com/delightful-downloads/faq/ "Del
 = 1.3.8 =
 
 * Cleaned up the Add Downloads screen.
-* Added file size to the All Downloads screen.
-* Added the ability to add offsite (remote) files for download.
-* Added the ability to link to files using the absolute server path.
-* Removed a few deprecated functions in favor of core WordPress functions.
+* Added file size column to the All Downloads screen.
+* Added the ability to add offsite (remote) files.
+* Added the ability to add files using an absolute server path.
+* Added %filename%, %ext% and %mime% wildcards.
+* Added new ddownload_list output style - Title (Extension, File size).
+* Added compatibilty with WPML.
+* Fixed Settings screen input labels.
 * Fixed file not found bug.
 * Fixed block user agents bug.
+* Removed deprecated functions in favor of core WordPress functions.
 
 = 1.3.7 =
 
@@ -206,6 +214,11 @@ Please refer to the [FAQ](http://delightfulwp.com/delightful-downloads/faq/ "Del
 * Initial stable plugin release.
 
 == Upgrade Notice ==
+
+= 1.3.8 =
+
+* Bug fixes.
+* General improvements.
 
 = 1.3.7 =
 
