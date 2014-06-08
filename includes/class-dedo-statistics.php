@@ -14,14 +14,6 @@ if ( !defined( 'ABSPATH' ) ) exit;
 class DEDO_Statistics {
 
 	/**
-	 * The custom database table name.
-	 *
-	 * @access public
-	 * @since 1.4
-	 */
-	public $table = 'ddownload_statistics';
-
-	/**
 	 *	Init statistics class.
 	 *
 	 * @access public
@@ -33,7 +25,7 @@ class DEDO_Statistics {
 		global $wpdb;
 
 		// Add custom table to wpdb.
-		$wpdb->ddownload_statistics = $wpdb->prefix . $this->table;
+		$wpdb->ddownload_statistics = $wpdb->prefix . 'ddownload_statistics';
 
 	}
 
