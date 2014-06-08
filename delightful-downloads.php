@@ -171,8 +171,11 @@ class Delightful_Downloads {
 	 */
 	public function activate() {
 
-		global $dedo_default_options;
+		global $dedo_default_options, $dedo_statistics;
 	
+		// Install database table
+		$dedo_statistics->setup_table();
+
 		// Add prior version to database if version already exists
 		if ( $current_version = get_option( 'delightful-downloads-version' ) ) {
 			update_option( 'delightful-downloads-prior-version', $current_version );
