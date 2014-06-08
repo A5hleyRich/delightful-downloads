@@ -43,7 +43,7 @@ class DEDO_Statistics {
 		$sql = "
 			CREATE TABLE $wpdb->ddownload_statistics (
 				ID bigint(20) unsigned NOT NULL AUTO_INCREMENT,
-				status varchar(7) NOT NULL DEFAULT 'success',
+				status varchar(3) NOT NULL DEFAULT 'suc',
 				date datetime NOT NULL,
 				post_id bigint(20) unsigned NOT NULL,
 				user_id bigint(20) unsigned NOT NULL DEFAULT '0',

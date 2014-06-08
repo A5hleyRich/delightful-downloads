@@ -2,9 +2,9 @@
 Contributors: A5hleyRich
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=95AQB5DP83XAU
 Tags: download, manager, downloads, monitor, shortcode, delightful downloads, file, counter, tracking
-Requires at least: 3.9
-Tested up to: 3.9
-Stable tag: 1.3.8
+Requires at least: 3.9.1
+Tested up to: 3.9.1
+Stable tag: 1.4
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
