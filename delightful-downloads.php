@@ -160,6 +160,7 @@ class Delightful_Downloads {
 			include_once( DEDO_PLUGIN_DIR . 'includes/admin/media-button.php' );
 			include_once( DEDO_PLUGIN_DIR . 'includes/admin/meta-boxes.php' );
 			include_once( DEDO_PLUGIN_DIR . 'includes/admin/page-settings.php' );
+			include_once( DEDO_PLUGIN_DIR . 'includes/admin/upgrades.php' );
 		}
 
 	}
@@ -175,14 +176,6 @@ class Delightful_Downloads {
 	
 		// Install database table
 		$dedo_statistics->setup_table();
-
-		// Add prior version to database if version already exists
-		if ( $current_version = get_option( 'delightful-downloads-version' ) ) {
-			update_option( 'delightful-downloads-prior-version', $current_version );
-		}
-
-		// Add current version to database
-		update_option( 'delightful-downloads-version', DEDO_VERSION );
 
 		// Add default options to database if no options exist
 		add_option( 'delightful-downloads', $dedo_default_options );
