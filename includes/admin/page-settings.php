@@ -286,6 +286,20 @@ global $dedo_options;
 }
 
 /**
+ * Render grace period field
+ *
+ * @since  1.4
+ */
+function dedo_settings_grace_period_field() {
+	global $dedo_options;
+
+	$grace_period = $dedo_options['grace_period'];
+
+	echo '<input type="number" name="delightful-downloads[grace_period]" value="' . esc_attr( $grace_period ) . '" min="0" class="small-text" />';
+	echo '<p class="description">' . __( 'Set the time in minutes before creating an additional log when the user tries to download the same file multiple times.', 'delightful-downloads' ) . '</p>';
+}
+
+/**
  * Render default text field
  *
  * @since  1.3
@@ -480,11 +494,13 @@ function dedo_validate_settings( $input ) {
 
 	}
 
-	 // Ensure cache duration is a positive number only
-	 $parsed['cache_duration'] = absint( $parsed['cache_duration'] );
+	// Ensure values are positive ints only
+	foreach ( array( 'grace_period', 'auto_delete', 'cache_duration' ) as $field ) {
+		$parsed[$field] = absint( $parsed[$field] );
+	}
 
-	 // Ensure download URL does not contain illegal characters
-	 $parsed['download_url'] = strtolower( preg_replace( '/[^A-Za-z0-9_-]/', '', $parsed['download_url'] ) );
+	// Ensure download URL does not contain illegal characters
+	$parsed['download_url'] = strtolower( preg_replace( '/[^A-Za-z0-9_-]/', '', $parsed['download_url'] ) );
 
 	 // Clear transients
 	dedo_delete_all_transients();

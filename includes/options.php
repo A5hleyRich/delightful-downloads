@@ -88,6 +88,12 @@ function dedo_get_options() {
 			'type'		=> 'check',
 			'default'	=> 0
 		),
+		'grace_period'	=> array(
+			'name'		=> __( 'Grace Period', 'delightful-downloads' ),
+			'tab'		=> 'statistics',
+			'type'		=> 'text',
+			'default'	=> 5
+		),
 		'enable_css'		=> array(
 			'name'		=> __( 'Default CSS Styles', 'delightful-downloads' ),
 			'tab'		=> 'advanced',
