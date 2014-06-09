@@ -100,11 +100,7 @@ class DEDO_Statistics {
 		// Hook before log
 		do_action( 'ddownload_insert_log_before', $log );
 
-		// Check if we are logging events by admins
-		if ( current_user_can( 'administrator' ) && !$dedo_options['log_admin_downloads'] ) {
-			return;
-		}
-
+		// Build log array
 		$defaults = array(
 			'post_id'	=> 0,
 			'status'	=> 'success',
@@ -115,6 +111,34 @@ class DEDO_Statistics {
 		);
 
 		$log = wp_parse_args( $log, $defaults );
+
+		// Check if we are logging events by admins
+		if ( current_user_can( 'administrator' ) && !$dedo_options['log_admin_downloads'] ) {
+			return;
+		}
+
+		// Do we have a grace period?
+		if ( $dedo_options['grace_period'] > 0 ) {
+
+			// Check for recent log of same download and status within grace period
+			$sql = $wpdb->prepare( "
+				SELECT ID FROM $wpdb->ddownload_statistics
+				WHERE status = %s
+					AND post_id = %d
+					AND date > DATE_SUB(%s, INTERVAL %d MINUTE)
+					AND user_ip = %s
+			",
+			$log['status'],
+			$log['post_id'],
+			$log['date'],
+			$dedo_options['grace_period'],
+			inet_pton( $log['ip_address'] ) );
+
+			// Query and exit if found
+			if ( $wpdb->query( $sql ) ) {
+				return;
+			}
+		}
 
 		// Prepare sql query
 		$sql = $wpdb->prepare( "
@@ -130,7 +154,7 @@ class DEDO_Statistics {
 		);
 
 		// Run and update count if successfull and for success status only
-		if ( $wpdb->query( $sql ) && 'success' == $status ) {
+		if ( $wpdb->query( $sql ) && 'success' == $log['status'] ) {
 			
 			$count = get_post_meta( $log['post_id'], '_dedo_file_count', true );
 			update_post_meta( $log['post_id'], '_dedo_file_count', ++$count );
