@@ -73,7 +73,6 @@ class DEDO_Statistics {
 	 * @return void
 	 */
 	public function save_success( $download_id ) {
-
 		// Hook before log
 		do_action( 'ddownload_save_success_before', $download_id );
 
@@ -86,7 +85,6 @@ class DEDO_Statistics {
 
 		// Hook after log
 		do_action( 'ddownload_save_success_after', $download_id );
-
 	}
 
 	/**
@@ -97,10 +95,15 @@ class DEDO_Statistics {
 	 * @return void
 	 */
 	public function insert_log( $log ) {
-		global $wpdb;
+		global $wpdb, $dedo_options;
 
 		// Hook before log
 		do_action( 'ddownload_insert_log_before', $log );
+
+		// Check if we are logging events by admins
+		if ( current_user_can( 'administrator' ) && !$dedo_options['log_admin_downloads'] ) {
+			return;
+		}
 
 		$defaults = array(
 			'post_id'	=> 0,
@@ -131,12 +134,10 @@ class DEDO_Statistics {
 			
 			$count = get_post_meta( $log['post_id'], '_dedo_file_count', true );
 			update_post_meta( $log['post_id'], '_dedo_file_count', ++$count );
-
 		}
 
 		// Hook after log
 		do_action( 'ddownload_insert_log_after', $log );
-
 	}
 
 }
