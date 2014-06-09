@@ -33,7 +33,7 @@ function dedo_check_upgrades() {
 	// Update version numbers
 	if ( $version !== DEDO_VERSION ) {
 		
-		// Previous version installed so save prior version
+		// Previous version installed, save prior version to db
 		if ( false !== $version ) {
 			update_option( 'delightful-downloads-prior-version', $version );
 		}
