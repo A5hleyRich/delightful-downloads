@@ -27,6 +27,9 @@ class DEDO_Statistics {
 		// Add custom table to wpdb.
 		$wpdb->ddownload_statistics = $wpdb->prefix . 'ddownload_statistics';
 
+		// Hooks
+		add_action( 'ddownload_download_before', array( $this, 'save_success' ), 10, 1 );
+
 	}
 
 	/**
@@ -37,7 +40,6 @@ class DEDO_Statistics {
 	 * @return void
 	 */
 	public function setup_table() {
-
 		global $wpdb;
 
 		$sql = "
@@ -61,6 +63,80 @@ class DEDO_Statistics {
 		require_once( ABSPATH . 'wp-admin/includes/upgrade.php' );
 
 		dbDelta( $sql );
+	}
+
+	/**
+	 * Save success log.
+	 *
+	 * @access public
+	 * @since 1.4
+	 * @return void
+	 */
+	public function save_success( $download_id ) {
+
+		// Hook before log
+		do_action( 'ddownload_save_success_before', $download_id );
+
+		$log = array(
+			'status'	=> 'success',
+			'post_id'	=> $download_id
+		);
+
+		$this->insert_log( $log );
+
+		// Hook after log
+		do_action( 'ddownload_save_success_after', $download_id );
+
+	}
+
+	/**
+	 * Insert log into database.
+	 *
+	 * @access public
+	 * @since 1.4
+	 * @return void
+	 */
+	public function insert_log( $log ) {
+		global $wpdb;
+
+		// Hook before log
+		do_action( 'ddownload_insert_log_before', $log );
+
+		$defaults = array(
+			'post_id'	=> 0,
+			'status'	=> 'success',
+			'date'		=> current_time( 'mysql' ),
+			'user_id'	=> get_current_user_id(),
+			'ip_address'=> dedo_download_ip(),
+			'agent'		=> sanitize_text_field( $_SERVER['HTTP_USER_AGENT'] )	
+		);
+
+		$log = wp_parse_args( $log, $defaults );
+
+		// Prepare sql query
+		$sql = $wpdb->prepare( "
+				INSERT INTO $wpdb->ddownload_statistics (status, post_id, date, user_id, user_ip, user_agent)
+				VALUES (%s, %d, %s, %d, %s, %s)
+			",
+			$log['status'],
+			$log['post_id'],
+			$log['date'],
+			$log['user_id'],
+			inet_pton( $log['ip_address'] ),
+			$log['agent'] 
+		);
+
+		// Run and update count if successfull and for success status only
+		if ( $wpdb->query( $sql ) && 'success' == $status ) {
+			
+			$count = get_post_meta( $log['post_id'], '_dedo_file_count', true );
+			update_post_meta( $log['post_id'], '_dedo_file_count', ++$count );
+
+		}
+
+		// Hook after log
+		do_action( 'ddownload_insert_log_after', $log );
+
 	}
 
 }

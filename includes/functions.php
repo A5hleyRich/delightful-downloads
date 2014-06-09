@@ -299,12 +299,17 @@ function dedo_download_log( $download_id ) {
  * @since  1.0
  */
 function dedo_download_ip() {
-	if ( isset( $_SERVER[ 'REMOTE_ADDR' ] ) ) {
-		return sanitize_text_field( $_SERVER[ 'REMOTE_ADDR' ] );
-	}
+	if ( !empty( $_SERVER['HTTP_CLIENT_IP'] ) ) {
+		$ip_address = sanitize_text_field( $_SERVER['HTTP_CLIENT_IP'] );
+	} 
+	elseif ( !empty( $_SERVER['HTTP_X_FORWARDED_FOR'] ) ) {
+		$ip_address = sanitize_text_field( $_SERVER['HTTP_X_FORWARDED_FOR'] );
+	} 
 	else {
-		return '0.0.0.0';
+		$ip_address = sanitize_text_field( $_SERVER['REMOTE_ADDR'] );
 	}
+
+	return $ip_address;
 }
 
 /**
