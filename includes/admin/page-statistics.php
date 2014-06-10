@@ -33,13 +33,16 @@ add_action( 'admin_menu', 'dedo_register_page_statistics', 5 );
 function dedo_render_page_statistics() {
 	
 	?>
-
 	<div class="wrap">
 		<h2><?php _e( 'Download Statistics', 'delightful-downloads' ); ?></h2>
 
 		<div id="dedo-settings-main">	
+			<?php do_action( 'ddownload_statistics_header' ); ?>
+			
 			<?php $table = new DEDO_List_table(); ?>
 			<?php $table->display(); ?>
+
+			<?php do_action( 'ddownload_statistics_footer' ); ?>
 		</div>
 	</div>
 	<?php
