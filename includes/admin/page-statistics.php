@@ -33,13 +33,8 @@ function dedo_render_page_statistics() {
 		<h2><?php _e( 'Download Statistics', 'delightful-downloads' ); ?></h2>
 
 		<div id="dedo-settings-main">	
-			
 			<?php $table = new DEDO_List_table(); ?>
-
-			<?php //$table->views(); ?>
-			<?php //$table->search_box(); ?>
 			<?php $table->display(); ?>
-			
 		</div>
 	</div>
 	<?php

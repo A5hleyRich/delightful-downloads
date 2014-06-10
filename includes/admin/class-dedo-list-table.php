@@ -150,10 +150,12 @@ class DEDO_List_Table extends WP_List_Table {
 				$user = get_user_by( 'id', $item->user_id );
 
 				if ( false === $user ) {
-					return __( 'Anonymous', 'delightful-downloads' );
+					return __( 'Non-member', 'delightful-downloads' );
 				}
 				else {
-					return $user->display_name;
+					$output = '<a href="' . get_edit_user_link( $user->ID ) . '">' . $user->display_name . '</a>';
+					$output .= '<br>' . $user->user_email;
+					return $output;
 				}
 				break;
 
@@ -162,7 +164,7 @@ class DEDO_List_Table extends WP_List_Table {
 				break;
 
 			case 'user_agent':
-				return $item->user_agent;
+				return esc_attr( $item->user_agent );
 				break;
 
 			case 'date':
