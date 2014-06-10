@@ -18,7 +18,7 @@ if ( !defined( 'ABSPATH' ) ) exit;
 function dedo_register_page_settings() {
 	add_submenu_page( 'edit.php?post_type=dedo_download', 'Delightful Downloads ' . __( 'Settings', 'delightful-downloads' ), __( 'Settings', 'delightful-downloads' ), 'manage_options', 'dedo_settings', 'dedo_render_page_settings' );
 }
-add_action( 'admin_menu', 'dedo_register_page_settings' );
+add_action( 'admin_menu', 'dedo_register_page_settings', 10 );
 
 /**
  * Register Settings Sections and Fields
