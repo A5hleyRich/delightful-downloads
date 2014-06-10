@@ -171,7 +171,7 @@ class DEDO_Statistics {
 	 * @since 1.4
 	 * @return boolean
 	 */
-	public function delete_table( $log ) {
+	public function delete_table() {
 		global $wpdb;
 
 		// Only admins allowed to remove table
@@ -179,9 +179,9 @@ class DEDO_Statistics {
 			return;
 		}
 
-		$sql = "DROP TABLE $wpdb->ddownload_statistics";
+		$sql = "DROP TABLE IF EXISTS $wpdb->ddownload_statistics";
 
-		return $wpdb-query( $sql );
+		return $wpdb->query( $sql );
 	}	
 
 }
