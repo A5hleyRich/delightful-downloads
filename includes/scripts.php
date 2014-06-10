@@ -35,10 +35,11 @@ add_action( 'wp_enqueue_scripts', 'dedo_enqueue_scripts' );
  */
 function dedo_admin_enqueue_scripts( $page ) {
 	// Register scripts
+	wp_register_script( 'dedo-admin-js-legacy-logs', DEDO_PLUGIN_URL . 'assets/js/admin-legacy-logs.js', array( 'jquery' ), '1.0', true ); // 1.4 upgrade
 	wp_register_script( 'dedo-admin-js-media-button', DEDO_PLUGIN_URL . 'assets/js/admin-media-button.js', array( 'jquery', 'jquery-ui-selectable' ), '1.0', true );
 	wp_register_script( 'dedo-admin-js-post-download', DEDO_PLUGIN_URL . 'assets/js/admin-post-download.js', array( 'jquery', 'plupload-all' ), '1.0', true );
 	wp_register_script( 'jqueryFileTree', DEDO_PLUGIN_URL . 'assets/js/jqueryFileTree/jqueryFileTree.js', array( 'jquery' ), '1.01', true );
-	
+
 	// Register styles
 	wp_register_style( 'dedo-css-admin', DEDO_PLUGIN_URL . 'assets/css/delightful-downloads-admin.css', '', '1.0', 'all' );
 	wp_register_style( 'jqueryFileTree-css', DEDO_PLUGIN_URL . 'assets/js/jqueryFileTree/jqueryFileTree.css', '', '1.0', 'all' );

@@ -123,8 +123,8 @@ jQuery( document ).ready( function( $ ) {
 	};
 	
 	// Init and pass options from migrate.php wp_localize_script()
-	if ( 'undefined' !== typeof dedo_admin_tools_migrate ) {
-		DEDO_Migrate_Legacy_Logs.init( dedo_admin_tools_migrate );
+	if ( 'undefined' !== typeof dedo_admin_logs_migrate ) {
+		DEDO_Migrate_Legacy_Logs.init( dedo_admin_logs_migrate );
 	}
 
 } );

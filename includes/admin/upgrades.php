@@ -78,8 +78,11 @@ function dedo_upgrade_notices() {
 			return;
 		}
 
+		// Enqueue our migration JS
+		wp_enqueue_script( 'dedo-admin-js-legacy-logs' );
+
 		// Output ajax url object
-		wp_localize_script( 'dedo-admin-tools-js', 'dedo_admin_tools_migrate', array(
+		wp_localize_script( 'dedo-admin-js-legacy-logs', 'dedo_admin_logs_migrate', array(
 			'ajaxurl'		=> admin_url( 'admin-ajax.php', isset( $_SERVER['HTTPS'] ) ? 'https://' : 'http://' ),
 			'action'		=> 'dedo_migrate_logs',
 			'nonce'			=> wp_create_nonce( 'dedo_migrate_logs' ),
@@ -89,7 +92,7 @@ function dedo_upgrade_notices() {
 		) );
 
 		?>
-		<div class="error">
+		<div id="dedo_migrate_message" class="error">
 			<p><?php echo sprintf( __( 'You have %s logs from an older version of Delightful Downloads.', 'delightful-downloads' ), '<strong id="dedo_migrate_count">' .  $legacy_logs . '</strong>' ); ?></p>
 			<p>
 				<input type="button" id="dedo_migrate_button" name="dedo_migrate" value="<?php _e( 'Migrate', 'delightful-downloads' ); ?>" class="button button-primary"/>
@@ -185,7 +188,7 @@ function dedo_migrate_logs_ajax() {
 			$log['download_id'],
 			$log['date'],
 			$log['user'],
-			$log['user_ip'],
+			inet_pton( $log['user_ip'] ),
 			$log['user_agent'] );
 
 			if ( $wpdb->query( $sql ) ) {
@@ -198,11 +201,12 @@ function dedo_migrate_logs_ajax() {
 		}
 
 		// Update legacy log flag
-		update_option( 'delightful-downloads-legacy-logs', $total_logs );
-	}
-	else {
-		// All logs remove. Delete flag
-		delete_option( 'delightful-downloads-legacy-logs' );
+		if ( $total_logs > 0 ) {
+			update_option( 'delightful-downloads-legacy-logs', $total_logs );
+		}
+		else {
+			delete_option( 'delightful-downloads-legacy-logs' );
+		}
 	}
 
 	// Return success
