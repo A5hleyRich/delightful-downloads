@@ -34,6 +34,11 @@ function dedo_render_page_statistics() {
 
 		<div id="dedo-settings-main">	
 			
+			<?php $table = new DEDO_List_table(); ?>
+
+			<?php //$table->views(); ?>
+			<?php //$table->search_box(); ?>
+			<?php $table->display(); ?>
 			
 		</div>
 	</div>
