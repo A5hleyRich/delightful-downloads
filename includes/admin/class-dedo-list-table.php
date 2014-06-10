@@ -65,30 +65,25 @@ class DEDO_List_Table extends WP_List_Table {
 	public function prepare_items() {
 		
 		global $wpdb;
-		
-		// Setup columns
-		$columns = $this->get_columns();
-		$hidden = array();
-		$sortable = array();
 
 		// Column headers
-		$this->_column_headers = array( $columns, $hidden, $sortable );
+		$this->_column_headers = array( $this->get_columns(), array(), array() );
 
-		// get the current user ID used to retrieve per_page from screen options
+		// Get the current user ID used to retrieve per_page from screen options
 		$user = get_current_user_id();
 
-		// get the current admin screen
+		// Get the current admin screen
 		$screen = get_current_screen();
 
-		// retrieve the "per_page" option
+		// Retrieve the "per_page" option
 		$screen_option = $screen->get_option( 'per_page', 'option' );
 
-		// retrieve the value of the option stored for the current user
+		// Retrieve the value of the option stored for the current user
 		$per_page = get_user_meta( $user, $screen_option, true );
 		
 		if ( empty ( $per_page) || $per_page < 1 ) {
 			
-			// get the default value if none is set
+			// Get the default value if none is set
 			$per_page = $screen->get_option( 'per_page', 'default' );
 		}
 		
@@ -114,17 +109,14 @@ class DEDO_List_Table extends WP_List_Table {
 		$sql = $wpdb->prepare( "
 			SELECT * FROM $wpdb->ddownload_statistics 
 			WHERE status = %s
-			ORDER BY %s %s
+			ORDER BY date DESC
 			LIMIT %d OFFSET %d
 		",
 		'success', // WHERE status
-		'date', // ORDER BY
-		'DESC', // ORDER
 		$per_page, // LIMIT
 		( $current_page - 1 ) * $per_page ); // OFFSET
 
 		$this->items = $wpdb->get_results( $sql );
-
 	}
 
 	/**
@@ -135,7 +127,9 @@ class DEDO_List_Table extends WP_List_Table {
 	 * @return void
 	 */
 	public function column_default( $item, $column_name ) {
+		
 		switch( $column_name ) {
+			
 			case 'download':
 				
 				return '<a href="' . get_edit_post_link( $item->post_id ) . '">' . get_the_title( $item->post_id ) . '</a>';
@@ -174,6 +168,13 @@ class DEDO_List_Table extends WP_List_Table {
 		}
 	}
 
+	/**
+	 *	No Items
+	 *
+	 * @access public
+	 * @since 1.4
+	 * @return void
+	 */
 	public function no_items() {
 		_e( 'No download logs found.', 'delightful-downloads' );
 	}
