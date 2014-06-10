@@ -4,7 +4,7 @@ jQuery( document ).ready( function( $ ) {
 	 * Migrate Legacy Logs
 	 *
 	 * Handles the migration of legacy logs on the 
-	 * tools screen.
+	 * statistics screen.
 	 */
 	var DEDO_Migrate_Legacy_Logs = {
 
