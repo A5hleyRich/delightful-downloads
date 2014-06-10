@@ -49,7 +49,7 @@ class DEDO_List_Table extends WP_List_Table {
 			'user'			=> __( 'User', 'delightful-downloads' ),
 			'ip_address'	=> __( 'IP Address', 'delightful-downloads' ),
 			'user_agent'	=> __( 'User Agent', 'delightful-downloads' ),
-			'date'			=> __( 'Date', 'delightful-downloads' ),
+			'dedo_date'		=> __( 'Date', 'delightful-downloads' ),
 		);
 
 		return $columns;
@@ -143,10 +143,12 @@ class DEDO_List_Table extends WP_List_Table {
 	public function column_default( $item, $column_name ) {
 		switch( $column_name ) {
 			case 'download':
-				return get_the_title( $item->post_id );
+				
+				return '<a href="' . get_edit_post_link( $item->post_id ) . '">' . get_the_title( $item->post_id ) . '</a>';
 				break;
 
 			case 'user':
+				
 				$user = get_user_by( 'id', $item->user_id );
 
 				if ( false === $user ) {
@@ -160,15 +162,20 @@ class DEDO_List_Table extends WP_List_Table {
 				break;
 
 			case 'ip_address':
+				
 				return inet_ntop( $item->user_ip );
 				break;
 
 			case 'user_agent':
+				
 				return esc_attr( $item->user_agent );
 				break;
 
-			case 'date':
-				return $item->date;
+			case 'dedo_date':
+				
+				$output = human_time_diff( mysql2date( 'U', $item->date ), current_time( 'timestamp' ) ) . ' ago<br />';
+				$output .= mysql2date( get_option( 'date_format' ), $item->date ) . ' at ' . mysql2date( get_option( 'time_format' ), $item->date );
+				return $output;
 				break;
 		}
 	}
