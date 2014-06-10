@@ -106,30 +106,36 @@ class DEDO_List_Table extends WP_List_Table {
 		// Column headers
 		$this->_column_headers = array( $columns, $hidden, $sortable );
 
+		// Posts per page
+		$per_page = 20;
+		$current_page = $this->get_pagenum();
+
 		// Get logs
 		$sql = $wpdb->prepare( "
 			SELECT * FROM $wpdb->ddownload_statistics 
+			WHERE status = %s
 			ORDER BY date DESC
-		" );
+			LIMIT %d OFFSET %d
+		",
+		'success',
+		$per_page,
+		( $current_page - 1 ) * $per_page );
 
 		$this->items = $wpdb->get_results( $sql );
 
 		// Count logs
 		$sql = $wpdb->prepare( "
 			SELECT COUNT(ID) FROM $wpdb->ddownload_statistics
-			WHERE status = 'success'
-		" );
+			WHERE status = %s
+		", 
+		'success' );
 		
 		$total_logs = $wpdb->get_var( $sql );
-
-		// Posts per page
-		$per_page = 20;
 
 		// Pagination
 		$this->set_pagination_args( array(
 			'total_items' => $total_logs,
-			'per_page'    => $per_page,
-			'total_pages' => ceil( $total_logs / $per_page )
+			'per_page'    => $per_page
 		) );
 	}
 
