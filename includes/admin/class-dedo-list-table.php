@@ -106,8 +106,25 @@ class DEDO_List_Table extends WP_List_Table {
 		// Column headers
 		$this->_column_headers = array( $columns, $hidden, $sortable );
 
-		// Posts per page
-		$per_page = 20;
+		// get the current user ID used to retrieve per_page from screen options
+		$user = get_current_user_id();
+
+		// get the current admin screen
+		$screen = get_current_screen();
+
+		// retrieve the "per_page" option
+		$screen_option = $screen->get_option( 'per_page', 'option' );
+
+		// retrieve the value of the option stored for the current user
+		$per_page = get_user_meta( $user, $screen_option, true );
+		
+		if ( empty ( $per_page) || $per_page < 1 ) {
+			
+			// get the default value if none is set
+			$per_page = $screen->get_option( 'per_page', 'default' );
+		}
+		
+		// Get current page
 		$current_page = $this->get_pagenum();
 
 		// Get logs
