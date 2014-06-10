@@ -14,7 +14,7 @@ if ( !defined( 'WP_UNINSTALL_PLUGIN' ) ) exit;
 include_once( 'delightful-downloads.php' ); 
 
 // Globals
-global $wpdb, $dedo_options;
+global $wpdb, $dedo_options, $dedo_statistics;
 
 // Check for complete uninstall
 if ( $dedo_options['uninstall'] ) {
@@ -25,7 +25,7 @@ if ( $dedo_options['uninstall'] ) {
 	// Delete post types
 	$post_types = array(
 		'dedo_download',
-		'dedo_log'
+		'dedo_log' // Deprecated
 	);
 
 	foreach ( $post_types as $post_type ) {
@@ -72,6 +72,9 @@ if ( $dedo_options['uninstall'] ) {
 
 		}
 	}
+
+	// Delete statistics table
+	$dedo_statistics->delete_table();
 
 	// Delete options
 	delete_option( 'delightful-downloads' );

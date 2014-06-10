@@ -164,6 +164,26 @@ class DEDO_Statistics {
 		do_action( 'ddownload_insert_log_after', $log );
 	}
 
+	/**
+	 * Delete statistics table.
+	 *
+	 * @access public
+	 * @since 1.4
+	 * @return boolean
+	 */
+	public function delete_table( $log ) {
+		global $wpdb;
+
+		// Only admins allowed to remove table
+		if ( !current_user_can( 'administrator' ) ) {
+			return;
+		}
+
+		$sql = "DROP TABLE $wpdb->ddownload_statistics";
+
+		return $wpdb-query( $sql );
+	}	
+
 }
 
 // Initiate the logging system
