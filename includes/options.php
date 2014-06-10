@@ -92,7 +92,7 @@ function dedo_get_options() {
 			'name'		=> __( 'Grace Period', 'delightful-downloads' ),
 			'tab'		=> 'statistics',
 			'type'		=> 'text',
-			'default'	=> 5
+			'default'	=> 3
 		),
 		'enable_css'		=> array(
 			'name'		=> __( 'Default CSS Styles', 'delightful-downloads' ),
