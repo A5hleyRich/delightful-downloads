@@ -56,38 +56,6 @@ class DEDO_List_Table extends WP_List_Table {
 	}
 
 	/**
-	 *	Get Hidden Columns
-	 *
-	 * @access public
-	 * @since 1.4
-	 * @return array
-	 */
-	public function get_hidden_columns() {
-
-		return array();
-	}
-
-	/**
-	 *	Get Sortable Columns
-	 *
-	 * @access public
-	 * @since 1.4
-	 * @return array
-	 */
-	public function get_sortable_columns() {
-
-		// $sortable = array(
-		// 	'download',
-		// 	'user',
-		// 	'ip_address',
-		// 	'user_agent',
-		// 	'date'
-		// );
-
-		// return $sortable;
-	}
-
-	/**
 	 *	Prepare Items
 	 *
 	 * @access public
@@ -100,8 +68,8 @@ class DEDO_List_Table extends WP_List_Table {
 		
 		// Setup columns
 		$columns = $this->get_columns();
-		$hidden = $this->get_hidden_columns();
-		$sortable = $this->get_sortable_columns();
+		$hidden = array();
+		$sortable = array();
 
 		// Column headers
 		$this->_column_headers = array( $columns, $hidden, $sortable );
@@ -127,19 +95,6 @@ class DEDO_List_Table extends WP_List_Table {
 		// Get current page
 		$current_page = $this->get_pagenum();
 
-		// Get logs
-		$sql = $wpdb->prepare( "
-			SELECT * FROM $wpdb->ddownload_statistics 
-			WHERE status = %s
-			ORDER BY date DESC
-			LIMIT %d OFFSET %d
-		",
-		'success',
-		$per_page,
-		( $current_page - 1 ) * $per_page );
-
-		$this->items = $wpdb->get_results( $sql );
-
 		// Count logs
 		$sql = $wpdb->prepare( "
 			SELECT COUNT(ID) FROM $wpdb->ddownload_statistics
@@ -154,6 +109,22 @@ class DEDO_List_Table extends WP_List_Table {
 			'total_items' => $total_logs,
 			'per_page'    => $per_page
 		) );
+
+		// Get logs
+		$sql = $wpdb->prepare( "
+			SELECT * FROM $wpdb->ddownload_statistics 
+			WHERE status = %s
+			ORDER BY %s %s
+			LIMIT %d OFFSET %d
+		",
+		'success', // WHERE status
+		'date', // ORDER BY
+		'DESC', // ORDER
+		$per_page, // LIMIT
+		( $current_page - 1 ) * $per_page ); // OFFSET
+
+		$this->items = $wpdb->get_results( $sql );
+
 	}
 
 	/**
