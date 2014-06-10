@@ -266,34 +266,6 @@ function dedo_get_agents() {
 }
 
 /**
- * Log Download
- *
- * @since  1.0
- */
-function dedo_download_log( $download_id ) {
-	global $dedo_options;
-
-	// Get current download count
-	$download_count = get_post_meta( $download_id, '_dedo_file_count', true );
-
-	// If is admin and log admin is false, do not log
-	if ( current_user_can( 'administrator', $download_id ) && !$dedo_options['log_admin_downloads'] ) {
-		return;
-	}
-
-	// Update download count
-	update_post_meta( $download_id, '_dedo_file_count', ++$download_count );
-
-	// Add log post type
-	if ( $download_log = wp_insert_post( array( 'post_type' => 'dedo_log', 'post_author' => get_current_user_id() ) ) ) {
-		// Add meta data if log sucessfully created
-		update_post_meta( $download_log, '_dedo_log_download', $download_id );
-		update_post_meta( $download_log, '_dedo_log_ip', dedo_download_ip() );
-		update_post_meta( $download_log, '_dedo_log_agent', sanitize_text_field( $_SERVER['HTTP_USER_AGENT'] ) );
-	}
-}
-
-/**
  * Get users IP Address
  *
  * @since  1.0

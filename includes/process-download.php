@@ -153,6 +153,3 @@ function dedo_download_process() {
 
 }
 add_action( 'init', 'dedo_download_process', 0 );
-
-// Add log once download complete.
-// add_action( 'ddownload_download_before', 'dedo_download_log', 10, 1 );
