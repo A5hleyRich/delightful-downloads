@@ -75,7 +75,9 @@ function dedo_render_page_settings() {
 	$active_tab = isset( $_GET['tab'] ) ? $_GET['tab'] : 'general'; ?>
 
 	<div class="wrap">
-		<h2><?php _e( 'Download Settings', 'delightful-downloads' ); ?></h2>
+		<h2><?php _e( 'Download Settings', 'delightful-downloads' ); ?>
+			<a href="<?php echo admin_url( 'edit.php?post_type=dedo_download&page=dedo_settings&action=reset_defaults' ) ?>" class="add-new-h2"><?php _e( 'Reset Defaults', 'delightful-downloads' ); ?></a>
+		</h2>
 		<h3 class="nav-tab-wrapper">
 		<?php 
 			// Generate tabs
@@ -189,6 +191,28 @@ foreach ( $dedo_options as $key => $value ) {
 	</div>
 	<?php
 }
+
+/**
+ * Settings Page Actions
+ *
+ * @since  1.4
+ */
+function dedo_settings_actions() {
+
+	//Only perform on settings page, when form not submitted
+	if ( isset( $_GET['page'] ) && 'dedo_settings' == $_GET['page'] && !isset( $_POST['option_page'] ) ) {
+
+		// Reset default settings
+		if( isset( $_GET['action'] ) && 'reset_defaults' == $_GET['action'] ) {
+			
+			global $dedo_default_options;
+
+			delete_option( 'delightful-downloads' );
+			add_option( 'delightful-downloads', $dedo_default_options );
+		}
+	}
+}
+add_action( 'init', 'dedo_settings_actions', 1 );
 
 /**
  * Render Settings Sections

@@ -157,6 +157,7 @@ class Delightful_Downloads {
 		if ( is_admin() ) {
 			include_once( DEDO_PLUGIN_DIR . 'includes/admin/ajax.php' );
 			include_once( DEDO_PLUGIN_DIR . 'includes/admin/class-dedo-list-table.php' );
+			include_once( DEDO_PLUGIN_DIR . 'includes/admin/class-dedo-notices.php' );
 			include_once( DEDO_PLUGIN_DIR . 'includes/admin/dashboard.php' );
 			include_once( DEDO_PLUGIN_DIR . 'includes/admin/media-button.php' );
 			include_once( DEDO_PLUGIN_DIR . 'includes/admin/meta-boxes.php' );

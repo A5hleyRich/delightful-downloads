@@ -63,23 +63,19 @@ function dedo_statistics_actions() {
 		// Empty statistics
 		if( isset( $_GET['action'] ) && 'empty_logs' == $_GET['action'] ) {
 			
-			global $dedo_statistics;
+			global $dedo_statistics, $dedo_notices;
 
 			$result = $dedo_statistics->empty_table();
 
 			if ( false === $result ) {
 
 				// Error
-				add_action( 'admin_notices', function() {
-					printf( '<div class="error"><p>%s</p></div>', __( 'Logs could not be deleted.', 'delightful-downloads' ) );
-				} );
+				$dedo_notices->add( 'error', __( 'Logs could not be deleted.', 'delightful-downloads' ) );
 			}
 			else {
 
 				// Success
-				add_action( 'admin_notices', function() {
-					printf( '<div class="updated"><p>%s</p></div>', __( 'Logs deleted successfully.', 'delightful-downloads' ) );
-				} );
+				$dedo_notices->add( 'updated', __( 'Logs deleted successfully.', 'delightful-downloads' ) );
 			}
 		}
 	}
