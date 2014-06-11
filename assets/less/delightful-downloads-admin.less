@@ -355,70 +355,31 @@
 }
 
 /* Dashboard */
-#dedo_dashboard_downloads .inside {
-	font-size: 13px;
-	padding-top: 20px;
-}
+#ddownload-count {
 
-#dedo_dashboard_downloads .table {
-	position: relative;
-	margin: 0;
-	padding: 0;
-	border-top: 1px solid #ececec;
-	width: 45%;
-}
+	ul {
+		overflow: hidden;
 
-#dedo_dashboard_downloads .table_today, #dedo_dashboard_downloads .table_last7 {
-	float: left;
-	clear: left;
-}
+		li {
+			box-sizing: border-box;
+			width: 50%;
+			float: left;
+			margin-bottom: 20px;
+			font-size: 28px;
+			line-height: 28px;
 
-#dedo_dashboard_downloads .table_alltime, #dedo_dashboard_downloads .table_last30 {
-	float: right;
-	clear: right;
-}
+			strong {
+				display: block;
+				font-weight: 800;
+				color: #777;
+			}
 
-#dedo_dashboard_downloads .table_last7, #dedo_dashboard_downloads .table_last30 {
-	margin-top: 40px;
-}
-
-#dedo_dashboard_downloads .sub, #dedo_dashboard_downloads .version {
-	margin: -12px;
-}
-
-#dedo_dashboard_downloads .sub {
-	position: absolute;
-	top: -17px;
-	left: 15px;
-	padding: 5px 0 15px;
-	color: #8f8f8f;
-	font-size: 14px;
-}
-
-#dedo_dashboard_downloads table td {
-	padding: 3px 0;
-	white-space: nowrap;
-}
-
-#dedo_dashboard_downloads td.b {
-	padding-right: 6px;
-	text-align: right;
-	font-size: 18px;
-	width: 1%;
-}
-
-#dedo_dashboard_downloads td.t {
-	padding-right: 12px;
-	padding-top: 6px;
-}
-
-#dedo_dashboard_downloads .dedo-version {
-	padding: 6px 0 0;
-	clear: both;
-}
-
-#dedo_dashboard_downloads .dedo-version p {
-	margin-bottom: 0;
+			span {
+				display: block;
+				font-size: 13px;
+			}
+		}
+	}
 }
 
 /* Settings page */
