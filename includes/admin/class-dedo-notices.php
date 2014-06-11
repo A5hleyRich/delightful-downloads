@@ -67,6 +67,8 @@ class DEDO_Notices {
 		);
 
 		array_push( $this->notices, $value );
+
+		update_option( 'delightful-downloads-notices', $this->notices );
 	}
 
 	/**

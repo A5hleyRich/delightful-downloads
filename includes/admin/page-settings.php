@@ -200,19 +200,26 @@ foreach ( $dedo_options as $key => $value ) {
 function dedo_settings_actions() {
 
 	//Only perform on settings page, when form not submitted
-	if ( isset( $_GET['page'] ) && 'dedo_settings' == $_GET['page'] && !isset( $_POST['option_page'] ) ) {
+	if ( isset( $_GET['page'] ) && 'dedo_settings' == $_GET['page'] ) {
 
 		// Reset default settings
 		if( isset( $_GET['action'] ) && 'reset_defaults' == $_GET['action'] ) {
 			
-			global $dedo_default_options;
+			global $dedo_default_options, $dedo_notices;
 
 			delete_option( 'delightful-downloads' );
 			add_option( 'delightful-downloads', $dedo_default_options );
+
+			// Add success notice
+			$dedo_notices->add( 'updated', __( 'Default settings reset successfully.', 'delightful-downloads' ) );
+
+			// Redirect page to remove action from URL
+			wp_redirect( admin_url( 'edit.php?post_type=dedo_download&page=dedo_settings' ) );
+			exit();
 		}
 	}
 }
-add_action( 'init', 'dedo_settings_actions', 1 );
+add_action( 'init', 'dedo_settings_actions' );
 
 /**
  * Render Settings Sections

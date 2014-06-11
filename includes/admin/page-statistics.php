@@ -77,10 +77,14 @@ function dedo_statistics_actions() {
 				// Success
 				$dedo_notices->add( 'updated', __( 'Logs deleted successfully.', 'delightful-downloads' ) );
 			}
+
+			// Redirect page to remove action from URL
+			wp_redirect( admin_url( 'edit.php?post_type=dedo_download&page=dedo_statistics' ) );
+			exit();
 		}
 	}
 }
-add_action( 'init', 'dedo_statistics_actions', 1 );
+add_action( 'init', 'dedo_statistics_actions' );
 
 /**
  * Statistics Sreen Options
