@@ -132,7 +132,17 @@ class DEDO_List_Table extends WP_List_Table {
 			
 			case 'download':
 				
-				return '<a href="' . get_edit_post_link( $item->post_id ) . '">' . get_the_title( $item->post_id ) . '</a>';
+				$title = get_the_title( $item->post_id );
+
+				if ( '' === $title ) {
+					
+					return __( 'Unknown', 'delightful-downloads' );
+				}
+				else {
+					
+					return '<a href="' . get_edit_post_link( $item->post_id ) . '">' . get_the_title( $item->post_id ) . '</a>';
+				}
+
 				break;
 
 			case 'user':

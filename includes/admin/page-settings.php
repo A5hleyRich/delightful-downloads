@@ -76,7 +76,7 @@ function dedo_render_page_settings() {
 
 	<div class="wrap">
 		<h2><?php _e( 'Download Settings', 'delightful-downloads' ); ?>
-			<a href="<?php echo admin_url( 'edit.php?post_type=dedo_download&page=dedo_settings&action=reset_defaults' ) ?>" class="add-new-h2"><?php _e( 'Reset Defaults', 'delightful-downloads' ); ?></a>
+			<a href="<?php echo admin_url( 'edit.php?post_type=dedo_download&page=dedo_settings&action=reset_defaults' ) ?>" class="add-new-h2 dedo_confirm_action" data-confirm="<?php _e( 'You are about to reset the download settings.', 'delightful-downloads' ); ?>"><?php _e( 'Reset Defaults', 'delightful-downloads' ); ?></a>
 		</h2>
 		<h3 class="nav-tab-wrapper">
 		<?php 
