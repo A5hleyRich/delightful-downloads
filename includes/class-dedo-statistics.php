@@ -169,7 +169,7 @@ class DEDO_Statistics {
 	 *
 	 * @access public
 	 * @since 1.4
-	 * @return boolean
+	 * @return int/boolean (rows affected or false on error)
 	 */
 	public function empty_table() {
 		
@@ -190,7 +190,7 @@ class DEDO_Statistics {
 	 *
 	 * @access public
 	 * @since 1.4
-	 * @return boolean
+	 * @return int/boolean (rows affected or false on error)
 	 */
 	public function delete_table() {
 		
