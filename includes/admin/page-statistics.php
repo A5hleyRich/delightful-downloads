@@ -34,7 +34,9 @@ function dedo_render_page_statistics() {
 	
 	?>
 	<div class="wrap">
-		<h2><?php _e( 'Download Statistics', 'delightful-downloads' ); ?></h2>
+		<h2><?php _e( 'Download Statistics', 'delightful-downloads' ); ?>
+			<a href="<?php echo admin_url( 'edit.php?post_type=dedo_download&page=dedo_statistics&action=empty_logs' ) ?>" class="add-new-h2"><?php _e( 'Empty Logs', 'delightful-downloads' ); ?></a>
+		</h2>
 
 		<div id="dedo-settings-main">	
 			<?php do_action( 'ddownload_statistics_header' ); ?>
@@ -47,6 +49,27 @@ function dedo_render_page_statistics() {
 	</div>
 	<?php
 }
+
+/**
+ * Statistics Page Actions
+ *
+ * @since  1.4
+ */
+function dedo_statistics_actions() {
+
+	//Only perform on statistics page
+	if ( isset( $_GET['page'] ) && 'dedo_statistics' == $_GET['page'] ) {
+
+		// Export Statistics
+		if( isset( $_GET['action'] ) && 'empty_logs' == $_GET['action'] ) {
+			
+			global $dedo_statistics;
+
+			$dedo_statistics->empty_table();
+		}
+	}
+}
+add_action( 'init', 'dedo_statistics_actions', 1 );
 
 /**
  * Statistics Sreen Options

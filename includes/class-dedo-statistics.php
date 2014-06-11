@@ -165,13 +165,35 @@ class DEDO_Statistics {
 	}
 
 	/**
-	 * Delete statistics table.
+	 * Empty Statistics Table.
+	 *
+	 * @access public
+	 * @since 1.4
+	 * @return boolean
+	 */
+	public function empty_table() {
+		
+		global $wpdb;
+
+		// Only admins allowed to empty table
+		if ( !current_user_can( 'administrator' ) ) {
+			return;
+		}
+
+		$sql = "TRUNCATE TABLE $wpdb->ddownload_statistics";
+
+		return $wpdb->query( $sql );
+	}
+
+	/**
+	 * Delete Statistics Table.
 	 *
 	 * @access public
 	 * @since 1.4
 	 * @return boolean
 	 */
 	public function delete_table() {
+		
 		global $wpdb;
 
 		// Only admins allowed to remove table
