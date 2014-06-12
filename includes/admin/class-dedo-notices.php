@@ -13,10 +13,17 @@ if ( !defined( 'ABSPATH' ) ) exit;
 
 class DEDO_Notices {
 
+	/**
+	 * Notices
+	 *
+	 * @var array
+	 * @access private
+	 * @since 1.4
+	 */
 	private $notices = array();
 
 	/**
-	 * Init Notices Class
+	 * Init Notices
 	 *
 	 * @access public
 	 * @since 1.4
@@ -27,7 +34,7 @@ class DEDO_Notices {
 		// Get notices
 		add_action( 'plugins_loaded', array( $this, 'get' ) );
 
-		// Auto display notices
+		// Display notices
 		add_action( 'admin_notices', array( $this, 'display' ) );
 	}
 
@@ -53,7 +60,7 @@ class DEDO_Notices {
 	/**
 	 * Add
 	 *
-	 * Add a new notice to option.
+	 * Add a new notice to notice array.
 	 *
 	 * @access public
 	 * @since 1.4
@@ -74,8 +81,7 @@ class DEDO_Notices {
 	/**
 	 * Display
 	 *
-	 * Check for admin notices stored in option,
-	 * display them and delete once displayed.
+	 * Display admin notices.
 	 *
 	 * @access public
 	 * @since 1.4
@@ -98,6 +104,7 @@ class DEDO_Notices {
 			delete_option( 'delightful-downloads-notices' );
 		}
 	}
+
 }
 
 // Initiate admin notices
