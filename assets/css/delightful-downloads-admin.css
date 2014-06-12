@@ -283,25 +283,86 @@
   -moz-osx-font-smoothing: grayscale;
 }
 /* Dashboard */
+#ddownload-count {
+  margin: -11px 0 0;
+}
 #ddownload-count ul {
+  margin: 0;
   overflow: hidden;
 }
 #ddownload-count ul li {
-  box-sizing: border-box;
+  display: block;
+  margin: 0;
+  padding: 20px 0;
   width: 50%;
   float: left;
-  margin-bottom: 20px;
-  font-size: 28px;
-  line-height: 28px;
+  box-sizing: border-box;
+  text-align: center;
 }
 #ddownload-count ul li strong {
   display: block;
-  font-weight: 800;
-  color: #777;
+  font-weight: 700;
+  font-size: 28px;
+  line-height: 28px;
 }
 #ddownload-count ul li span {
   display: block;
-  font-size: 13px;
+  margin-top: 6px;
+  color: #777;
+}
+#ddownload-count ul li:nth-of-type(odd) {
+  border-right: 1px solid #eee;
+}
+#ddownload-count ul li:nth-of-type(-n+2) {
+  padding-top: 40px;
+}
+#ddownload-count ul li:nth-of-type(n+3) {
+  padding-bottom: 40px;
+}
+#ddownload-popular {
+  margin: 0;
+}
+#ddownload-popular h4 {
+  position: relative;
+  margin: 0 -12px;
+  padding: 8px 12px;
+  border-top: 1px solid #eee;
+  border-bottom: 1px solid #eee;
+}
+#ddownload-popular ol {
+  margin: 0 -12px;
+  list-style-position: inside;
+}
+#ddownload-popular ol li {
+  margin: 0;
+  color: #777;
+}
+#ddownload-popular ol li a {
+  display: block;
+  padding: 8px 12px;
+}
+#ddownload-popular ol li .count,
+#ddownload-popular ol li .percentage {
+  float: right;
+}
+#ddownload-popular ol li:hover {
+  background: #f2f2f2;
+}
+#ddownload-popular ol li:nth-child(odd) {
+  background: #fafafa;
+}
+#ddownload-popular ol li:nth-child(odd):hover {
+  background: #f7f7f7;
+}
+#ddownload-popular .sub {
+  margin: 0 -12px;
+  padding: 11px 12px 0;
+  border-top: 1px solid #eee;
+  overflow: hidden;
+  line-height: 30px;
+}
+#ddownload-popular .sub a {
+  float: right;
 }
 /* Settings page */
 .dedo_download_page_dedo_settings .description {

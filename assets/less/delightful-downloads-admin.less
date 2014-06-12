@@ -356,28 +356,105 @@
 
 /* Dashboard */
 #ddownload-count {
+	margin: -11px 0 0;
 
 	ul {
+		margin: 0;
 		overflow: hidden;
 
 		li {
-			box-sizing: border-box;
+			display: block;
+			margin: 0;
+			padding: 20px 0;
 			width: 50%;
 			float: left;
-			margin-bottom: 20px;
-			font-size: 28px;
-			line-height: 28px;
+			box-sizing: border-box;
+			text-align: center;
+			
 
 			strong {
 				display: block;
-				font-weight: 800;
-				color: #777;
+				font-weight: 700;
+				font-size: 28px;
+				line-height: 28px;
 			}
 
 			span {
 				display: block;
-				font-size: 13px;
+				margin-top: 6px;
+				color: #777;
 			}
+		}
+
+		li:nth-of-type(odd) {
+			border-right: 1px solid #eee;
+		}
+
+		li:nth-of-type(-n+2) {
+			padding-top: 40px;
+		}
+
+		li:nth-of-type(n+3) {
+			padding-bottom: 40px;
+		}
+	}
+}
+
+#ddownload-popular {
+	margin: 0;
+
+	h4 {
+		position: relative;
+		margin: 0 -12px;
+		padding: 8px 12px;
+		border-top: 1px solid #eee;
+		border-bottom: 1px solid #eee;
+	}
+
+	ol {
+		margin: 0 -12px;
+		list-style-position: inside;
+
+		li {
+			margin: 0;
+			color: #777;
+
+			a {
+				display: block;
+				padding: 8px 12px;
+			}
+
+			.count, .percentage {
+				float: right;
+			}
+
+			&:hover {
+				background: darken(#fff, 5%);
+			}
+		}
+
+		li:nth-child(odd) {
+			background: #fafafa;
+
+			&:hover {
+				background: darken(#fafafa, 1%);
+			}
+		}
+	}
+
+	.sub{
+		margin: 0 -12px;
+		padding: 11px 12px 0;
+		border-top: 1px solid #eee;
+		overflow: hidden;
+		line-height: 30px;
+	
+		a {
+			float: right;
+		}
+
+		select {
+			// float: right;
 		}
 	}
 }
