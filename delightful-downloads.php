@@ -144,6 +144,7 @@ class Delightful_Downloads {
 	 */
 	private function includes() {
 
+		include_once( DEDO_PLUGIN_DIR . 'includes/class-dedo-logging.php' );
 		include_once( DEDO_PLUGIN_DIR . 'includes/class-dedo-statistics.php' );
 		include_once( DEDO_PLUGIN_DIR . 'includes/cron.php' );
 		include_once( DEDO_PLUGIN_DIR . 'includes/functions.php' );
