@@ -31,23 +31,25 @@ add_action( 'wp_dashboard_setup', 'dedo_register_dashboard_widgets' );
 */
 function dedo_dashboard_downloads_widget() {
 	
+	global $dedo_statistics;
+
 	?>
 	<div id="ddownload-count">
 		<ul>
 			<li>
-				<strong>8,047</strong>
+				<strong><?php echo number_format_i18n( $dedo_statistics->count_downloads( 1 ) ); ?></strong>
 				<span><?php _e( 'Last 24 Hours', 'delightful-downloads' ); ?></span>
 			</li>
 			<li>
-				<strong>56,012</strong>
+				<strong><?php echo number_format_i18n( $dedo_statistics->count_downloads( 7 ) ); ?></strong>
 				<span><?php _e( 'Last 7 Days', 'delightful-downloads' ); ?></span>
 			</li>
 			<li>
-				<strong>121,349</strong>
+				<strong><?php echo number_format_i18n( $dedo_statistics->count_downloads( 30 ) ); ?></strong>
 				<span><?php _e( 'Last 30 Days', 'delightful-downloads' ); ?></span>
 			</li>
 			<li>
-				<strong>1,759,567</strong>
+				<strong><?php echo number_format_i18n( $dedo_statistics->count_downloads() ); ?></strong>
 				<span><?php _e( 'All Time', 'delightful-downloads' ); ?></span>
 			</li>
 		</ul>

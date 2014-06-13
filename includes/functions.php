@@ -418,49 +418,6 @@ function dedo_folder_scan( $dir ) {
 }
 
 /**
- * Get Total Downloads Count
- *
- * Returns the total download count of all files. The number of 
- * days can be specified to limit the query.
- *
- * @since   1.0
- */
-function dedo_get_total_count( $days = 0 ) {
-	global $wpdb;
-	
-	// Get current time in WordPress
-	$current_time = current_time( 'mysql' );
-
-	// Validate days
-	$days = absint( $days );
-
-	// Set correct SQL query
-	if ( $days > 0 ) {
-		$sql = $wpdb->prepare( "
-			SELECT COUNT( $wpdb->posts.ID )
-			FROM $wpdb->posts
-			WHERE post_type  = %s
-			AND DATE_SUB( %s, INTERVAL %d DAY ) <= post_date
-			", 
-			'dedo_log', 
-			$current_time, 
-			$days 
-		);
-	}
-	else {
-		$sql = $wpdb->prepare( "
-			SELECT SUM( meta_value )
-			FROM $wpdb->postmeta
-			WHERE meta_key = %s
-			", 
-			'_dedo_file_count' 
-		);
-	}
-
-	return $wpdb->get_var( $sql );
-}
-
-/**
  * Get Total Downloads Filesize
  *
  * Returns the total filesize of all files.

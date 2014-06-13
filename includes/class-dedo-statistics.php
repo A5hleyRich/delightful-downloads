@@ -29,6 +29,112 @@ class DEDO_Statistics {
 	}
 
 	/**
+	 * Count Downloads
+	 *
+	 * Count total downloads for all/single downloads/download. If a date range is set
+	 * the statistics table is used. If not, the meta keys are used.
+	 *
+	 * @access public
+	 * @since 1.4
+	 * @return string
+	 */
+	public function count_downloads( $days = false, $download_id = false, $start_date = false, $end_date = false ) {
+
+		global $wpdb;
+
+		// Days set, convert to start date and pass to count_logs
+		if ( $days ) {
+
+			$start_date = $this->convert_days_date( $days );
+		}
+
+		if ( $start_date ) {
+
+			$result = $this->count_logs( $download_id, $start_date, $end_date );
+		}
+		else {
+
+			// Set query
+			$sql = $wpdb->prepare( "
+				SELECT SUM(meta_value)
+				FROM $wpdb->postmeta
+				WHERE meta_key = %s
+			",
+			'_dedo_file_count' );
+
+			// Append download id
+			if ( $download_id ) {
+
+				$sql .= $wpdb->prepare( " AND post_id = %d", $download_id );
+			}
+
+			$result = $wpdb->get_var( $sql );
+		}
+
+		return ( $result === NULL ) ? 0 : $result;
+	}
+
+	/**
+	 * Count Logs
+	 *
+	 * Count logs from statistics table.
+	 *
+	 * @access public
+	 * @since 1.4
+	 * @return string
+	 */
+	public function count_logs( $download_id = false, $start_date = false, $end_date = false, $status = 'success' ) {
+
+		global $wpdb;
+
+		// Set main SQL query
+		$sql = $wpdb->prepare( "
+			SELECT COUNT(ID)
+			FROM $wpdb->ddownload_statistics
+			WHERE status = %s
+		",
+		$status );
+
+		// Append download id
+		if ( $download_id ) {
+
+			$sql .= $wpdb->prepare( " AND post_id = %d", absint( $download_id ) );
+		}
+
+		// Append start date
+		if ( $start_date ) {
+
+			$sql .= $wpdb->prepare( " AND date >= %s", $start_date );
+		}
+
+		// Append end date
+		if ( $end_date ) {
+
+			$sql .= $wpdb->prepare( " AND date <= %s", $end_date );
+		}
+
+		$result = $wpdb->get_var( $sql );
+		return ( $result === NULL ) ? 0 : $result;
+	}
+
+	/**
+	 * Convert Days Date
+	 *
+	 * Converts number of days into current date - days.
+	 *
+	 * @access public
+	 * @since 1.4
+	 * @return string
+	 */
+	public function convert_days_date( $days ) {
+
+		$now = current_time( 'timestamp' );
+		$timestamp = strtotime( '-' . $days . ' days', $now );
+
+		return date( 'Y-m-d H:i:s', $timestamp );
+	}	
+
+	/**
 	 * Setup Statistics Table
 	 *
 	 * @access public
@@ -36,6 +142,7 @@ class DEDO_Statistics {
 	 * @return void
 	 */
 	public function setup_table() {
+		
 		global $wpdb;
 
 		$sql = "
@@ -107,3 +214,9 @@ class DEDO_Statistics {
 
 // Initiate the logging system
 $GLOBALS['dedo_statistics'] = new DEDO_Statistics();
+
+
+
+global $dedo_statistics;
+
+// echo $dedo_statistics->convert_days_date( 7 );
