@@ -74,8 +74,7 @@ function dedo_dashboard_downloads_widget() {
 			</li>
 		</ol>
 		<div class="sub">	
-			<a href="<?php echo admin_url( 'edit.php?post_type=dedo_download&page=dedo_statistics' ); ?>"><?php _e( 'View Statistics', 'delightful-downloads' ); ?></a>
-			<select>
+			<select class="popular-dropdown">
 				<option><?php _e( 'Last 24 Hours', 'delightful-downloads' ); ?></option>
 				<option><?php _e( 'Last 7 Days', 'delightful-downloads' ); ?></option>
 				<option><?php _e( 'Last 30 Days', 'delightful-downloads' ); ?></option>

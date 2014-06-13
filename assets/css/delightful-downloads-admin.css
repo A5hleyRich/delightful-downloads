@@ -361,7 +361,7 @@
   overflow: hidden;
   line-height: 30px;
 }
-#ddownload-popular .sub a {
+#ddownload-popular .sub .popular-dropdown {
   float: right;
 }
 /* Settings page */
