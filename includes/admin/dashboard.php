@@ -56,29 +56,37 @@ function dedo_dashboard_downloads_widget() {
 	</div>
 	<div id="ddownload-popular">
 		<h4><?php _e( 'Popular Downloads', 'delightful-downloads' ); ?></h4>
-		<ol>
-			<li>
-				<a href="#">Dolor Fermentum Malesuada<span class="count">1,896</span></a>
-			</li>
-			<li>
-				<a href="#">Dolor Fermentum Malesuada<span class="count">1,156</span></a>
-			</li>
-			<li>
-				<a href="#">Dolor Fermentum Malesuada<span class="count">1,001</span></a>
-			</li>
-			<li>
-				<a href="#">Dolor Fermentum Malesuada<span class="count">863</span></a>
-			</li>
-			<li>
-				<a href="#">Dolor Fermentum Malesuada<span class="count">501</span></a>
-			</li>
-		</ol>
+		
+		<?php
+
+		$popular_downloads = $dedo_statistics->get_popular_downloads();
+
+		if ( !empty( $popular_downloads ) ) {
+
+			echo '<ol>';
+
+			foreach ( $popular_downloads as $popular_download ) {
+
+				echo '<li>';
+				echo '<a href="' . get_edit_post_link( $popular_download['ID'] ) . '">' . $popular_download['title'] . ' <span class="count">' . number_format_i18n( $popular_download['downloads'] ) . '</span></a>';
+				echo '</li>';
+			}
+
+			echo '</ol>';
+		}
+		else {
+
+			echo '<p>' . __( 'There are no popular downloads yet!', 'delightful-downloads' ) . '</p>';
+		}
+
+		?>
+
 		<div class="sub">	
 			<select class="popular-dropdown">
-				<option><?php _e( 'Last 24 Hours', 'delightful-downloads' ); ?></option>
-				<option><?php _e( 'Last 7 Days', 'delightful-downloads' ); ?></option>
-				<option><?php _e( 'Last 30 Days', 'delightful-downloads' ); ?></option>
-				<option><?php _e( 'All Time', 'delightful-downloads' ); ?></option>
+				<option value="1"><?php _e( 'Last 24 Hours', 'delightful-downloads' ); ?></option>
+				<option value="7"><?php _e( 'Last 7 Days', 'delightful-downloads' ); ?></option>
+				<option value="30"><?php _e( 'Last 30 Days', 'delightful-downloads' ); ?></option>
+				<option value="0" selected="selected"><?php _e( 'All Time', 'delightful-downloads' ); ?></option>
 			</select>
 		</div>
 	</div>

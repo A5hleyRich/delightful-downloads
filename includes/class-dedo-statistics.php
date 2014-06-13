@@ -48,7 +48,7 @@ class DEDO_Statistics {
 			$start_date = $this->convert_days_date( $days );
 		}
 
-		if ( $start_date ) {
+		if ( $start_date || $end_date ) {
 
 			$result = $this->count_logs( $download_id, $start_date, $end_date, 'success' );
 		}
@@ -88,10 +88,10 @@ class DEDO_Statistics {
 		global $wpdb;
 
 		// Set main SQL query
-		$sql = $wpdb->prepare( "
+		$sql = "
 			SELECT COUNT(ID)
 			FROM $wpdb->ddownload_statistics
-		" );
+		";
 
 		// Append where clause for status
 		if ( $status ) {
@@ -127,9 +127,79 @@ class DEDO_Statistics {
 	}
 
 	/**
+	 * Get Popular Downloads
+	 *
+	 * Get popular downloads and order by download count,
+	 * if date supplied use statistics table, else use download meta.
+	 *
+	 * Selecting by date range is slow. Use responsibly until a faster
+	 * method is found.
+	 *
+	 * @access public
+	 * @since 1.4
+	 * @return array
+	 */
+	function get_popular_downloads( $start_date = false, $end_date = false, $limit = 5 ) {
+
+		global $wpdb;
+
+		if ( $start_date || $end_date ) {
+
+			// Use statistics table
+			$sql = $wpdb->prepare( "
+				SELECT $wpdb->ddownload_statistics.post_id AS ID, $wpdb->posts.post_title AS title, COUNT($wpdb->ddownload_statistics.ID) AS downloads
+				FROM $wpdb->ddownload_statistics
+				LEFT JOIN $wpdb->posts
+					ON $wpdb->ddownload_statistics.post_id = $wpdb->posts.ID
+				WHERE $wpdb->ddownload_statistics.status = %s
+			",
+			'success' );
+
+			// Append start date
+			if ( $start_date ) {
+
+				$sql .= $wpdb->prepare( " AND date >= %s", $start_date );
+			}
+
+			// Append end date
+			if ( $end_date ) {
+
+				$sql .= $wpdb->prepare( " AND date <= %s", $end_date );
+			}
+
+			// Append group by, order by and limit
+			$sql .= $wpdb->prepare( "
+				GROUP BY $wpdb->ddownload_statistics.post_id
+				ORDER BY downloads DESC
+				LIMIT %d
+			",
+			$limit );
+		}
+		else {
+
+			// Use download meta
+			$sql = $wpdb->prepare( "
+				SELECT $wpdb->posts.ID AS ID, $wpdb->posts.post_title AS title, $wpdb->postmeta.meta_value AS downloads
+				FROM $wpdb->posts
+				LEFT JOIN $wpdb->postmeta
+					ON $wpdb->posts.ID = $wpdb->postmeta.post_id
+				WHERE $wpdb->posts.post_status = %s
+					AND meta_key = %s
+				ORDER BY CAST( $wpdb->postmeta.meta_value AS unsigned ) DESC
+				LIMIT %d
+			",
+			'publish',
+			'_dedo_file_count',
+			$limit );
+		}
+
+		return $wpdb->get_results( $sql, ARRAY_A );
+	}
+
+	/**
 	 * Convert Days Date
 	 *
-	 * Converts number of days into current date - days.
+	 * Converts number of days into current date minus days.
 	 *
 	 * @access public
 	 * @since 1.4
@@ -219,9 +289,3 @@ class DEDO_Statistics {
 
 // Initiate the logging system
 $GLOBALS['dedo_statistics'] = new DEDO_Statistics();
-
-
-
-global $dedo_statistics;
-
-// echo $dedo_statistics->count_downloads( 7 );
