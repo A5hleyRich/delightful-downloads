@@ -50,7 +50,7 @@ class DEDO_Statistics {
 
 		if ( $start_date ) {
 
-			$result = $this->count_logs( $download_id, $start_date, $end_date );
+			$result = $this->count_logs( $download_id, $start_date, $end_date, 'success' );
 		}
 		else {
 
@@ -83,7 +83,7 @@ class DEDO_Statistics {
 	 * @since 1.4
 	 * @return string
 	 */
-	public function count_logs( $download_id = false, $start_date = false, $end_date = false, $status = 'success' ) {
+	public function count_logs( $download_id = false, $start_date = false, $end_date = false, $status = false ) {
 
 		global $wpdb;
 
@@ -91,14 +91,22 @@ class DEDO_Statistics {
 		$sql = $wpdb->prepare( "
 			SELECT COUNT(ID)
 			FROM $wpdb->ddownload_statistics
-			WHERE status = %s
-		",
-		$status );
+		" );
+
+		// Append where clause for status
+		if ( $status ) {
+
+			$sql .= $wpdb->prepare( " WHERE status = %s", $status );
+		}
+		else {
+
+			$sql .= $wpdb->prepare( " WHERE 1 = %d", 1 );
+		}
 
 		// Append download id
 		if ( $download_id ) {
 
-			$sql .= $wpdb->prepare( " AND post_id = %d", absint( $download_id ) );
+			$sql .= $wpdb->prepare( " AND post_id = %d", $download_id );
 		}
 
 		// Append start date
@@ -114,6 +122,7 @@ class DEDO_Statistics {
 		}
 
 		$result = $wpdb->get_var( $sql );
+		
 		return ( $result === NULL ) ? 0 : $result;
 	}
 
@@ -219,4 +228,4 @@ $GLOBALS['dedo_statistics'] = new DEDO_Statistics();
 
 global $dedo_statistics;
 
-// echo $dedo_statistics->convert_days_date( 7 );
+// echo $dedo_statistics->count_downloads( 7 );
