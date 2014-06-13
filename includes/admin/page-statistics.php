@@ -19,8 +19,9 @@ function dedo_register_page_statistics() {
 	
 	global $dedo_statistics_page;
 
-	$dedo_statistics_page = add_submenu_page( 'edit.php?post_type=dedo_download', __( 'Download Statistics', 'delightful-downloads' ), __( 'Statistics', 'delightful-downloads' ), 'manage_options', 'dedo_statistics', 'dedo_render_page_statistics' );
+	$dedo_statistics_page = add_submenu_page( 'edit.php?post_type=dedo_download', __( 'Download Logs', 'delightful-downloads' ), __( 'Logs', 'delightful-downloads' ), 'manage_options', 'dedo_statistics', 'dedo_render_page_statistics' );
 
+	// Hook for screen options dropdown
 	add_action( "load-$dedo_statistics_page", 'dedo_statistics_screen_options' );
 }
 add_action( 'admin_menu', 'dedo_register_page_statistics', 5 );
@@ -34,7 +35,7 @@ function dedo_render_page_statistics() {
 	
 	?>
 	<div class="wrap">
-		<h2><?php _e( 'Download Statistics', 'delightful-downloads' ); ?>
+		<h2><?php _e( 'Download Logs', 'delightful-downloads' ); ?>
 			<a href="<?php echo admin_url( 'edit.php?post_type=dedo_download&page=dedo_statistics&action=empty_logs' ) ?>" class="add-new-h2 dedo_confirm_action" data-confirm="<?php _e( 'You are about to permanently delete the download logs.', 'delightful-downloads' ); ?>"><?php _e( 'Empty Logs', 'delightful-downloads' ); ?></a>
 		</h2>
 
