@@ -163,11 +163,7 @@ class DEDO_Statistics {
 				user_id bigint(20) unsigned NOT NULL DEFAULT '0',
 				user_ip varbinary(16) NOT NULL,
 				user_agent varchar(255) NOT NULL,
-			PRIMARY KEY  (ID),
-			KEY status (status),
-			KEY date (date),
-			KEY post_id (post_id),
-			KEY user_ip (user_ip)
+			PRIMARY KEY  (ID)
 			) DEFAULT CHARSET=$wpdb->charset;
 		";
 
