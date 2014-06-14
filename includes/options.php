@@ -92,7 +92,7 @@ function dedo_get_options() {
 			'name'		=> __( 'Grace Period', 'delightful-downloads' ),
 			'tab'		=> 'statistics',
 			'type'		=> 'text',
-			'default'	=> 3
+			'default'	=> 5
 		),
 		'enable_css'		=> array(
 			'name'		=> __( 'Default CSS Styles', 'delightful-downloads' ),
@@ -104,7 +104,7 @@ function dedo_get_options() {
 			'name'		=> __( 'Cache Duration', 'delightful-downloads' ),
 			'tab'		=> 'advanced',
 			'type'		=> 'text',
-			'default'	=> 10,
+			'default'	=> 15,
 		),
 		'download_url'		=> array(
 			'name'		=> __( 'Download Address', 'delightful-downloads' ),
