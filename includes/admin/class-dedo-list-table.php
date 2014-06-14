@@ -64,7 +64,7 @@ class DEDO_List_Table extends WP_List_Table {
 	 */
 	public function prepare_items() {
 		
-		global $wpdb;
+		global $wpdb, $dedo_statistics;
 
 		// Column headers
 		$this->_column_headers = array( $this->get_columns(), array(), array() );
@@ -91,13 +91,7 @@ class DEDO_List_Table extends WP_List_Table {
 		$current_page = $this->get_pagenum();
 
 		// Count logs
-		$sql = $wpdb->prepare( "
-			SELECT COUNT(ID) FROM $wpdb->ddownload_statistics
-			WHERE status = %s
-		", 
-		'success' );
-		
-		$total_logs = $wpdb->get_var( $sql );
+		$total_logs = $dedo_statistics->count_logs( false, false, false, 'success' );
 
 		// Pagination
 		$this->set_pagination_args( array(
