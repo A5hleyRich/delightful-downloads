@@ -34,24 +34,31 @@ class DEDO_Statistics {
 	 * Count total downloads for all/single downloads/download. If a date range is set
 	 * the statistics table is used. If not, the meta keys are used.
 	 *
+	 * Data is cached in transients.
+	 *
 	 * @access public
 	 * @since 1.4
 	 * @return string
 	 */
-	public function count_downloads( $days = false, $download_id = false, $start_date = false, $end_date = false ) {
+	public function count_downloads( $days = 0, $download_id = 0, $cache = true ) {
 
 		global $wpdb;
+
+		// First check for cached data
+		$key = 'dedo_downloads_days' . $days . 'id' . $download_id;
+
+		if ( true == $cache && false !== ( $cached_data = dedo_get_cache( $key ) ) ) {
+
+			return $cached_data;
+		}
 
 		// Days set, convert to start date and pass to count_logs
 		if ( $days ) {
 
 			$start_date = $this->convert_days_date( $days );
+			$result = $this->count_logs( $download_id, $start_date, false, 'success' );
 		}
-
-		if ( $start_date || $end_date ) {
-
-			$result = $this->count_logs( $download_id, $start_date, $end_date, 'success' );
-		}
+		// No days set, sum up file count meta_value
 		else {
 
 			// Set query
@@ -70,6 +77,9 @@ class DEDO_Statistics {
 
 			$result = $wpdb->get_var( $sql );
 		}
+
+		// Save to cache
+		dedo_set_cache( $key, $result );
 
 		return ( $result === NULL ) ? 0 : $result;
 	}
@@ -122,78 +132,86 @@ class DEDO_Statistics {
 		}
 
 		$result = $wpdb->get_var( $sql );
-		
+
 		return ( $result === NULL ) ? 0 : $result;
 	}
 
 	/**
 	 * Get Popular Downloads
 	 *
-	 * Get popular downloads and order by download count,
-	 * if date supplied use statistics table, else use download meta.
+	 * Get popular downloads and order by download count.
+	 * If days supplied use statistics table, else use download meta.
 	 *
-	 * Selecting by date range is slow. Use responsibly until a faster
-	 * method is found.
-	 *
+	 * Selecting by days is slow. Use responsibly!
+	 * 
 	 * @access public
 	 * @since 1.4
 	 * @return array
 	 */
-	function get_popular_downloads( $start_date = false, $end_date = false, $limit = 5 ) {
+	function get_popular_downloads( $days = 0, $limit = 5, $cache = true ) {
 
 		global $wpdb;
 
-		if ( $start_date || $end_date ) {
+		// First check for cached data
+		$key = 'dedo_popular_days' . $days . 'limit' . $limit;
 
-			// Use statistics table
+		if ( true == $cache && false !== ( $cached_data = dedo_get_cache( $key ) ) ) {
+
+			return $cached_data;
+		}
+
+		// Days set, convet to start date and use statistics table
+		if ( $days ) {
+
+			$start_date = $this->convert_days_date( $days );
+
 			$sql = $wpdb->prepare( "
-				SELECT $wpdb->ddownload_statistics.post_id AS ID, $wpdb->posts.post_title AS title, COUNT($wpdb->ddownload_statistics.ID) AS downloads
+				SELECT $wpdb->ddownload_statistics.post_id AS ID, COUNT( $wpdb->ddownload_statistics.ID ) AS downloads
 				FROM $wpdb->ddownload_statistics
-				LEFT JOIN $wpdb->posts
-					ON $wpdb->ddownload_statistics.post_id = $wpdb->posts.ID
 				WHERE $wpdb->ddownload_statistics.status = %s
-			",
-			'success' );
-
-			// Append start date
-			if ( $start_date ) {
-
-				$sql .= $wpdb->prepare( " AND date >= %s", $start_date );
-			}
-
-			// Append end date
-			if ( $end_date ) {
-
-				$sql .= $wpdb->prepare( " AND date <= %s", $end_date );
-			}
-
-			// Append group by, order by and limit
-			$sql .= $wpdb->prepare( "
+					AND $wpdb->ddownload_statistics.date >= %s
 				GROUP BY $wpdb->ddownload_statistics.post_id
 				ORDER BY downloads DESC
 				LIMIT %d
 			",
+			'success',
+			$start_date,
 			$limit );
+
+			$result = $wpdb->get_results( $sql, ARRAY_A );
+
+			// Get title for each download
+			foreach ( $result as $key2 => $value ) {
+
+				$result[$key2]['title'] = get_the_title( $result[$key2]['ID'] );
+			}
 		}
+		// User meta_value file_count
 		else {
 
-			// Use download meta
 			$sql = $wpdb->prepare( "
 				SELECT $wpdb->posts.ID AS ID, $wpdb->posts.post_title AS title, $wpdb->postmeta.meta_value AS downloads
 				FROM $wpdb->posts
 				LEFT JOIN $wpdb->postmeta
 					ON $wpdb->posts.ID = $wpdb->postmeta.post_id
-				WHERE $wpdb->posts.post_status = %s
+				WHERE $wpdb->posts.post_type = %s
+					AND $wpdb->posts.post_status = %s
 					AND meta_key = %s
 				ORDER BY CAST( $wpdb->postmeta.meta_value AS unsigned ) DESC
 				LIMIT %d
 			",
+			'dedo_download',
 			'publish',
 			'_dedo_file_count',
 			$limit );
+
+			$result = $wpdb->get_results( $sql, ARRAY_A );
 		}
 
-		return $wpdb->get_results( $sql, ARRAY_A );
+		// Save to cache
+		dedo_set_cache( $key, $result );
+
+		return $result;
 	}
 
 	/**

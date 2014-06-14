@@ -589,3 +589,45 @@ function dedo_get_file_ext( $path ) {
 	
 	return $file['ext'];
 }
+
+/**
+ * Get Cache
+ *
+ * Check for cached SQL result in transients.
+ *
+ * @since   1.4
+ *
+ * @param string $sql Prepared SQL statement.
+ * @return mixed Mixed result or false on failure.
+ */
+function dedo_get_cache( $key ) {
+	
+	global $dedo_options;
+
+	if ( $dedo_options['cache_duration'] > 0 ) {
+
+		return get_transient( $key );
+	}
+
+	return false;
+}
+
+/**
+ * Set Cache
+ *
+ * Cache SQL result in transients.
+ *
+ * @since   1.4
+ *
+ * @param string $sql Prepared SQL statement.
+ * @return void
+ */
+function dedo_set_cache( $key, $result ) {
+	
+	global $dedo_options;
+
+	if ( $dedo_options['cache_duration'] > 0 ) {
+
+		set_transient( $key, $result, $dedo_options['cache_duration'] * 60 );
+	}
+}
