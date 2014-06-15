@@ -359,10 +359,15 @@
   padding: 11px 12px 0;
   border-top: 1px solid #eee;
   overflow: hidden;
-  line-height: 30px;
 }
-#ddownload-popular .sub .popular-dropdown {
+#ddownload-popular .sub #popular-downloads-dropdown,
+#ddownload-popular .sub .spinner {
   float: right;
+}
+#ddownload-popular .sub .error {
+  margin: 0;
+  line-height: 28px;
+  color: #dd3d36;
 }
 /* Settings page */
 .dedo_download_page_dedo_settings .description {

@@ -59,11 +59,19 @@ function dedo_dashboard_downloads_widget() {
 		
 		<?php
 
+		// Supply options for popular downloads dropdown
+		wp_localize_script( 'dedo-admin-js-global', 'DEDOPopularDownloads', array(
+			'ajaxURL'		=> admin_url( 'admin-ajax.php', isset( $_SERVER['HTTPS'] ) ? 'https://' : 'http://' ),
+			'action'		=> 'dedo_popular_downloads',
+			'nonce'			=> wp_create_nonce( 'dedo_popular_downloads' ),
+			'errorText'		=> __( 'Popular downloads could not be retrieved.', 'delightful-downloads' )
+		) );
+
 		$popular_downloads = $dedo_statistics->get_popular_downloads();
 
 		if ( !empty( $popular_downloads ) ) {
 
-			echo '<ol>';
+			echo '<ol id="popular-downloads">';
 
 			foreach ( $popular_downloads as $popular_download ) {
 
@@ -80,16 +88,61 @@ function dedo_dashboard_downloads_widget() {
 		}
 
 		?>
-
-		<div class="sub">	
-			<select class="popular-dropdown">
+		
+		<div class="sub">
+			<select id="popular-downloads-dropdown">
 				<option value="1"><?php _e( 'Last 24 Hours', 'delightful-downloads' ); ?></option>
 				<option value="7"><?php _e( 'Last 7 Days', 'delightful-downloads' ); ?></option>
 				<option value="30"><?php _e( 'Last 30 Days', 'delightful-downloads' ); ?></option>
 				<option value="0" selected="selected"><?php _e( 'All Time', 'delightful-downloads' ); ?></option>
 			</select>
+			<span class="spinner"></span>
+			<p class="error" style="display: none"></p>
 		</div>
 	</div>
 	
 	<?php
 }
+
+/**
+ * Popular Downloads Ajax
+ *
+ * @since  1.4
+*/
+function dedo_popular_downloads_ajax() {
+
+	global $dedo_statistics;
+
+	// Check for nonce and permission
+	if ( !check_ajax_referer( 'dedo_popular_downloads', 'nonce', false ) || !current_user_can( apply_filters( 'dedo_cap_dashboard', 'edit_pages' ) ) ) {
+		
+		echo json_encode( array(
+			'status'	=> 'error',
+			'content'	=> __( 'Failed security check!', 'delightful-downloads' )
+		) );
+
+		die();
+	}
+
+	// Get days from request
+	$days = absint( $_REQUEST['days'] );
+
+	// Get popular downloads
+	$result = $dedo_statistics->get_popular_downloads( $days );
+
+	// Add download URL to array of results
+	foreach ( $result as $key => $value ) {
+
+		$result[$key]['downloads'] = number_format_i18n( $value['downloads'] );
+		$result[$key]['url'] = get_edit_post_link( $value['ID'] );
+	}
+
+	// Return success and data
+	echo json_encode( array (
+		'status'	=> 'success',
+		'content'	=> $result
+	) );
+
+	die();
+}
+add_action( 'wp_ajax_dedo_popular_downloads', 'dedo_popular_downloads_ajax' );
