@@ -94,9 +94,9 @@ function dedo_upgrade_notices() {
 		?>
 		<div id="dedo_migrate_message" class="error">
 			<p><?php echo sprintf( __( 'You have %s logs from an older version of Delightful Downloads.', 'delightful-downloads' ), '<strong id="dedo_migrate_count">' .  $legacy_logs . '</strong>' ); ?></p>
-			<p>
-				<input type="button" id="dedo_migrate_button" name="dedo_migrate" value="<?php _e( 'Migrate', 'delightful-downloads' ); ?>" class="button button-primary"/>
-				<span class="spinner" style="float: none"></span>
+			<p style="overflow: hidden;">
+				<input type="button" id="dedo_migrate_button" name="dedo_migrate" value="<?php _e( 'Migrate', 'delightful-downloads' ); ?>" class="button button-primary" style="float: left;" />
+				<span class="spinner" style="float: left; margin-left: 10px;"></span>
 			</p>
 			<noscript>
 				<p class="description"><?php _e( 'JavaScript must be enabled to migrate legacy logs.', 'delightful-downloads' ); ?></p>
