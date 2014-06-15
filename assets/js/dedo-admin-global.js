@@ -37,6 +37,10 @@ jQuery( document ).ready( function( $ ) {
 	 */
 	var DEDO_Dashboard = {
 
+		// Store options from serialized WP array
+		options: {},
+
+		// Cache DOM objects
 		$popularDownloadsDropdown: $( '#popular-downloads-dropdown' ),
 		$popularDownloadsSpinner: $( '#ddownload-popular .spinner' ),
 		$popularDownloadsError: $( '#ddownload-popular .error' ),
@@ -46,6 +50,7 @@ jQuery( document ).ready( function( $ ) {
 			this.popularDownloadsChange();
 		},
 
+		// Add event handler to popular downloads dropdown
 		popularDownloadsChange: function() {
 			
 			this.$popularDownloadsDropdown.on( 'change', function() {
@@ -53,6 +58,7 @@ jQuery( document ).ready( function( $ ) {
 			} );
 		},
 
+		// Send query to WP, retrieving top 5 downloads
 		popularDownloadsGet: function( value ) {
 			
 			var self = this;
@@ -79,6 +85,7 @@ jQuery( document ).ready( function( $ ) {
 
 		},
 
+		// Update popular downloads on screen
 		popularDownloadsSuccess: function( response ) {
 
 			// Hide error 
@@ -112,11 +119,13 @@ jQuery( document ).ready( function( $ ) {
 				});
 				
 			}
+			// Request returned error
 			else {
 				this.popularDownloadsError();
 			}
 		},
 
+		// Show error message
 		popularDownloadsError: function() {
 
 			// Show error
@@ -124,6 +133,7 @@ jQuery( document ).ready( function( $ ) {
 		}
 	};
 	
+	// Init Dashboard if serialized WP array available
 	if ( 'undefined' !== typeof DEDOPopularDownloads ) {
 		DEDO_Dashboard.init( DEDOPopularDownloads );
 	}
