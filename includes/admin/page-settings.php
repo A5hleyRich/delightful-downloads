@@ -95,7 +95,7 @@ function dedo_render_page_settings() {
 
 			if ( 'support' == $active_tab ) {
 
-global $dedo_options;
+global $wpdb, $dedo_options;
 
 // Get current theme data
 $theme = wp_get_theme();
@@ -115,7 +115,7 @@ $prior_version = get_option( 'delightful-downloads-prior-version' );
 
 Server: <?php echo $_SERVER['SERVER_SOFTWARE'] . "\n"; ?>
 PHP Version: <?php echo PHP_VERSION . "\n"; ?>
-MySQL Version: <?php echo mysql_get_server_info() . "\n"; ?>
+MySQL Version: <?php echo $wpdb->db_version() . "\n"; ?>
 
 PHP Safe Mode: <?php echo ini_get( 'safe_mode' ) ? "Yes\n" : "No\n"; ?>
 PHP Memory Limit: <?php echo ini_get( 'memory_limit' ) . "\n"; ?>
