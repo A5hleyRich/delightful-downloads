@@ -6,7 +6,10 @@ jQuery( document ).ready( function( $ ) {
 	 * Handles the migration of legacy logs on the 
 	 * statistics screen.
 	 */
-	var DEDO_Migrate_Legacy_Logs = {
+	var DEDO_Legacy_Logs = {
+
+		// Store options from WP serialized array
+		options: {},
 
 		migrateContainer : $( '#dedo_migrate_message' ),
 		migrateButton: $( '#dedo_migrate_button' ),
@@ -124,7 +127,7 @@ jQuery( document ).ready( function( $ ) {
 	
 	// Init and pass options from migrate.php wp_localize_script()
 	if ( 'undefined' !== typeof dedo_admin_logs_migrate ) {
-		DEDO_Migrate_Legacy_Logs.init( dedo_admin_logs_migrate );
+		DEDO_Legacy_Logs.init( dedo_admin_logs_migrate );
 	}
 
 } );

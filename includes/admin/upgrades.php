@@ -124,14 +124,11 @@ function dedo_migrate_logs_ajax() {
 	if ( !check_ajax_referer( 'dedo_migrate_logs', 'nonce', false ) || !current_user_can( 'manage_options' ) ) {
 		echo json_encode( array(
 			'status'	=> 'error',
-			'content'	=> 'Failed security check!'
+			'content'	=> __( 'Failed security check!', 'delightful-downloads' )
 		) );
 
 		die();
 	}
-
-	// Get name of new statistics table
-	$statistics_table = $wpdb->prefix . 'ddownload_statistics';
 
 	// Disable max_execution_time
 	set_time_limit( 0 );
@@ -182,7 +179,7 @@ function dedo_migrate_logs_ajax() {
 		foreach ( $logs as $log ) {
 
 			$sql = $wpdb->prepare( "
-				INSERT INTO $statistics_table (post_id, date, user_id, user_ip, user_agent)
+				INSERT INTO $wpdb->ddownload_statistics (post_id, date, user_id, user_ip, user_agent)
 				VALUES (%d, %s, %d, %s, %s)
 			",
 			$log['download_id'],
