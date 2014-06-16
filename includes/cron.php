@@ -16,6 +16,12 @@ if ( !defined( 'ABSPATH' ) ) exit;
  * @since  1.3
  */
 function dedo_cron_register() {
+	
+	// Daily
+	if ( !wp_next_scheduled( 'dedo_cron_daily' ) ) {
+		wp_schedule_event( current_time( 'timestamp' ), 'daily', 'dedo_cron_daily' );
+	}	
+
 	// Weekly
 	if ( !wp_next_scheduled( 'dedo_cron_weekly' ) ) {
 		wp_schedule_event( current_time( 'timestamp' ), 'weekly', 'dedo_cron_weekly' );
@@ -24,11 +30,33 @@ function dedo_cron_register() {
 add_action( 'admin_init', 'dedo_cron_register' );
 
 /**
+ * Daily Events
+ *
+ * @since  1.4
+ */
+function dedo_cron_daily() {
+
+	global $dedo_options, $dedo_statistics;
+
+	// Delete old logs
+	if ( $dedo_options['auto_delete'] > 0 ) {
+
+		$date = $dedo_statistics->convert_days_date( $dedo_options['auto_delete'] );
+		$limit = apply_filters( 'dedo_cron_delete_limit', 1000 );
+
+		$dedo_statistics->delete_logs( false, $date, $limit );
+	}
+
+}
+add_action( 'dedo_cron_daily', 'dedo_cron_daily' );
+
+/**
  * Weekly Events
  *
  * @since  1.3
  */
 function dedo_cron_weekly() {
+	
 	// Run folder protection
 	dedo_folder_protection();
 }

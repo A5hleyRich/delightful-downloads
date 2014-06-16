@@ -215,6 +215,54 @@ class DEDO_Statistics {
 	}
 
 	/**
+	 * Delete Logs
+	 *
+	 * Delete logs, oldest first.
+	 *
+	 * @access public
+	 * @since 1.4
+	 * @return string
+	 */
+	public function delete_logs( $start_date = false, $end_date = false, $limit = false, $status = false ) {
+
+		global $wpdb;
+
+		$sql = "
+			DELETE FROM $wpdb->ddownload_statistics
+			WHERE 1 = 1
+		";
+
+		// Append start date
+		if ( $start_date ) {
+
+			$sql .= $wpdb->prepare( " AND date > %s", $start_date );
+		}
+
+		// Append start date
+		if ( $end_date ) {
+
+			$sql .= $wpdb->prepare( " AND date < %s", $end_date );
+		}
+
+		// Append status
+		if ( $status ) {
+
+			$sql .= $wpdb->prepare( " AND status = %s", $status );
+		}
+
+		// Append orderby
+		$sql .= " ORDER BY date ASC";
+
+		// Append limit
+		if ( $limit ) {
+
+			$sql .= $wpdb->prepare( " LIMIT %d", $limit );
+		}
+
+		return $wpdb->query( $sql );
+	}
+
+	/**
 	 * Convert Days Date
 	 *
 	 * Converts number of days into current date minus days.
