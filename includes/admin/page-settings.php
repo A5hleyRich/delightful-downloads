@@ -300,37 +300,6 @@ function dedo_settings_block_agents_field() {
 }
 
 /**
- * Render log admin downloads field
- *
- * @since  1.3
- */
-function dedo_settings_log_admin_downloads_field() {
-global $dedo_options;
-	
-	$checked = absint( $dedo_options['log_admin_downloads'] );
-
-	echo '<label for="delightful-downloads[log_admin_downloads]">';
-	echo '<input type="checkbox" name="delightful-downloads[log_admin_downloads]" id="delightful-downloads[log_admin_downloads]" value="1" ' . checked( $checked, 1, false ) . ' /> ';
-	echo __( 'Log Downloads', 'delightful-downloads' );
-	echo '</label>';
-	echo '<p class="description">' . __( 'Check this option to log downloads by admins.', 'delightful-downloads' ) . '</p>';
-}
-
-/**
- * Render grace period field
- *
- * @since  1.4
- */
-function dedo_settings_grace_period_field() {
-	global $dedo_options;
-
-	$grace_period = $dedo_options['grace_period'];
-
-	echo '<input type="number" name="delightful-downloads[grace_period]" value="' . esc_attr( $grace_period ) . '" min="0" class="small-text" />';
-	echo '<p class="description">' . __( 'Set the time in minutes before creating an additional log when the user tries to download the same file multiple times.', 'delightful-downloads' ) . '</p>';
-}
-
-/**
  * Render default text field
  *
  * @since  1.3
@@ -406,6 +375,51 @@ function dedo_settings_default_list_field() {
 
 	echo '</select>';
 	echo '<p class="description">' . __( 'Choose the default output style for downloads lists. This can be overwritten on a per-list basis using the \'style\' attribute.', 'delightful-downloads' ) . ' <code>[ddownload_list style="title_filesize"]</code></p>';
+}
+
+/**
+ * Render log admin downloads field
+ *
+ * @since  1.3
+ */
+function dedo_settings_log_admin_downloads_field() {
+global $dedo_options;
+	
+	$checked = absint( $dedo_options['log_admin_downloads'] );
+
+	echo '<label for="delightful-downloads[log_admin_downloads]">';
+	echo '<input type="checkbox" name="delightful-downloads[log_admin_downloads]" id="delightful-downloads[log_admin_downloads]" value="1" ' . checked( $checked, 1, false ) . ' /> ';
+	echo __( 'Log Downloads', 'delightful-downloads' );
+	echo '</label>';
+	echo '<p class="description">' . __( 'Check this option to log downloads by admins.', 'delightful-downloads' ) . '</p>';
+}
+
+/**
+ * Render grace period field
+ *
+ * @since  1.4
+ */
+function dedo_settings_grace_period_field() {
+	global $dedo_options;
+
+	$grace_period = $dedo_options['grace_period'];
+
+	echo '<input type="number" name="delightful-downloads[grace_period]" value="' . esc_attr( $grace_period ) . '" min="0" class="small-text" />';
+	echo '<p class="description">' . __( 'Set the time in minutes before creating an additional log when the user tries to download the same file multiple times.', 'delightful-downloads' ) . '</p>';
+}
+
+/**
+ * Render auto delete field
+ *
+ * @since  1.4
+ */
+function dedo_settings_auto_delete_field() {
+	global $dedo_options;
+
+	$auto_delete = $dedo_options['auto_delete'];
+
+	echo '<input type="number" name="delightful-downloads[auto_delete]" value="' . esc_attr( $auto_delete ) . '" min="0" class="small-text" />';
+	echo '<p class="description">' . __( 'Set the time in days for how long logs should be kept.', 'delightful-downloads' ) . '</p>';
 }
 
 /**

@@ -94,6 +94,12 @@ function dedo_get_options() {
 			'type'		=> 'text',
 			'default'	=> 5
 		),
+		'auto_delete'	=> array(
+			'name'		=> __( 'Auto Delete', 'delightful-downloads' ),
+			'tab'		=> 'statistics',
+			'type'		=> 'text',
+			'default'	=> 0
+		),
 		'enable_css'		=> array(
 			'name'		=> __( 'Default CSS Styles', 'delightful-downloads' ),
 			'tab'		=> 'advanced',
