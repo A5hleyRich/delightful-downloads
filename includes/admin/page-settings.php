@@ -405,7 +405,7 @@ function dedo_settings_grace_period_field() {
 	$grace_period = $dedo_options['grace_period'];
 
 	echo '<input type="number" name="delightful-downloads[grace_period]" value="' . esc_attr( $grace_period ) . '" min="0" class="small-text" />';
-	echo '<p class="description">' . __( 'Set the time in minutes before creating an additional log when the user tries to download the same file multiple times.', 'delightful-downloads' ) . '</p>';
+	echo '<p class="description">' . __( 'Set the time in minutes before creating an additional log when the user tries to download the same file multiple times (0 to disable).', 'delightful-downloads' ) . '</p>';
 }
 
 /**
@@ -419,7 +419,7 @@ function dedo_settings_auto_delete_field() {
 	$auto_delete = $dedo_options['auto_delete'];
 
 	echo '<input type="number" name="delightful-downloads[auto_delete]" value="' . esc_attr( $auto_delete ) . '" min="0" class="small-text" />';
-	echo '<p class="description">' . __( 'Set the time in days for how long logs should be kept.', 'delightful-downloads' ) . '</p>';
+	echo '<p class="description">' . __( 'Set the amount of days that logs should be kept (0 to disable). Logs older than the specified value will be deleted once a day.', 'delightful-downloads' ) . '</p>';
 }
 
 /**
@@ -450,7 +450,7 @@ function dedo_settings_cache_duration_field() {
 	$cache_duration = $dedo_options['cache_duration'];
 
 	echo '<input type="number" name="delightful-downloads[cache_duration]" value="' . esc_attr( $cache_duration ) . '" min="0" class="small-text" />';
-	echo '<p class="description">' . __( sprintf( 'Set the time in minutes to cache database queries. This will affect how often the %s, %s and %s shortcodes update. It is not recommended to set this value to 0 as it can impede site performance.', '<code>[ddownload_count]</code>', '<code>[ddownload_total_count]</code>', '<code>[ddownload_list]</code>' ), 'delightful-downloads' ) . '</p>';
+	echo '<p class="description">' . __( sprintf( 'Set the time in minutes to cache database queries (0 to disable). This will affect how often the %s, %s and %s shortcodes update. It is not recommended to set this value to 0 as it can impede site performance.', '<code>[ddownload_count]</code>', '<code>[ddownload_total_count]</code>', '<code>[ddownload_list]</code>' ), 'delightful-downloads' ) . '</p>';
 }
 
 /**
