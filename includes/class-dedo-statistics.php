@@ -40,9 +40,16 @@ class DEDO_Statistics {
 	 * @since 1.4
 	 * @return string
 	 */
-	public function count_downloads( $days = 0, $download_id = 0, $cache = true ) {
+	public function count_downloads( $args = array() ) {
 
 		global $wpdb;
+
+		// Parse arguments with defaults
+		extract( wp_parse_args( $args, array(
+			'days'			=> 0,
+			'download_id'	=> 0,
+			'cache'			=> true
+		) ) );
 
 		// First check for cached data
 		$key = 'dedo_downloads_days' . $days . 'id' . $download_id;
