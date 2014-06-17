@@ -57,7 +57,7 @@ class DEDO_Statistics {
 		$dedo_cache = new DEDO_Cache( $key );
 
 		// Check for cached data
-		if ( true == $cache && false !== ( $cached_data = $dedo_cache->get( $key ) ) ) {
+		if ( true == $cache && false !== ( $cached_data = $dedo_cache->get() ) ) {
 
 			return $cached_data;
 		}
@@ -94,7 +94,10 @@ class DEDO_Statistics {
 		}
 
 		// Save to cache
-		$dedo_cache->set( $result );
+		if ( true == $cache ) {
+			
+			$dedo_cache->set( $result );
+		}
 
 		return ( $result === NULL ) ? 0 : $result;
 	}
@@ -188,7 +191,7 @@ class DEDO_Statistics {
 		$dedo_cache = new DEDO_Cache( $key );
 
 		// Check for cached data
-		if ( true == $cache && false !== ( $cached_data = $dedo_cache->get( $key ) ) ) {
+		if ( true == $cache && false !== ( $cached_data = $dedo_cache->get() ) ) {
 
 			return $cached_data;
 		}
@@ -242,7 +245,10 @@ class DEDO_Statistics {
 		}
 
 		// Save to cache
-		$dedo_cache->set( $result );
+		if ( true == $cache ) {
+			
+			$dedo_cache->set( $result );
+		}
 
 		return $result;
 	}
