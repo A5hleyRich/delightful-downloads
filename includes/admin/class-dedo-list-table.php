@@ -91,7 +91,7 @@ class DEDO_List_Table extends WP_List_Table {
 		$current_page = $this->get_pagenum();
 
 		// Count logs
-		$total_logs = $dedo_statistics->count_logs( false, false, false, 'success' );
+		$total_logs = $dedo_statistics->count_logs( array( 'status' => 'success' ) );
 
 		// Pagination
 		$this->set_pagination_args( array(

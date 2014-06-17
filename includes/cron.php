@@ -44,7 +44,7 @@ function dedo_cron_daily() {
 		$date = $dedo_statistics->convert_days_date( $dedo_options['auto_delete'] );
 		$limit = apply_filters( 'dedo_cron_delete_limit', 1000 );
 
-		$dedo_statistics->delete_logs( false, $date, $limit );
+		$dedo_statistics->delete_logs( array( 'end_date' => $date, 'limit' => $limit ) );
 	}
 
 }

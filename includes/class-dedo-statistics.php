@@ -66,7 +66,12 @@ class DEDO_Statistics {
 		if ( $days ) {
 
 			$start_date = $this->convert_days_date( $days );
-			$result = $this->count_logs( $download_id, $start_date, false, 'success' );
+			
+			$result = $this->count_logs( array( 
+				'download_id' => $download_id, 
+				'start_date' => $start_date, 
+				'status' => 'success' 
+			) );
 		}
 		// No days set, sum up file count meta_value
 		else {
@@ -103,9 +108,17 @@ class DEDO_Statistics {
 	 * @since 1.4
 	 * @return string
 	 */
-	public function count_logs( $download_id = false, $start_date = false, $end_date = false, $status = false ) {
+	public function count_logs( $args = array() ) {
 
 		global $wpdb;
+
+		// Parse arguments with defaults
+		extract( wp_parse_args( $args, array(
+			'download_id'	=> false,
+			'start_date'	=> false,
+			'end_date'		=> false,
+			'status'		=> false
+		) ) );
 
 		// Set main SQL query
 		$sql = "
@@ -158,9 +171,16 @@ class DEDO_Statistics {
 	 * @since 1.4
 	 * @return array
 	 */
-	function get_popular_downloads( $days = 0, $limit = 5, $cache = true ) {
+	function get_popular_downloads( $args = array() ) {
 
 		global $wpdb;
+
+		// Parse arguments with defaults
+		extract( wp_parse_args( $args, array(
+			'days'		=> false,
+			'limit'		=> 5,
+			'cache'		=> true
+		) ) );
 
 		// Create cache key
 		$key = 'dedo_popular_days' . absint( $days ) . 'limit' . absint( $limit );
@@ -236,9 +256,17 @@ class DEDO_Statistics {
 	 * @since 1.4
 	 * @return string
 	 */
-	public function delete_logs( $start_date = false, $end_date = false, $limit = false, $status = false ) {
+	public function delete_logs( $args = array() ) {
 
 		global $wpdb;
+
+		// Parse arguments with defaults
+		extract( wp_parse_args( $args, array(
+			'start_date'	=> false,
+			'end_date'		=> false,
+			'limit'			=> false,
+			'status'		=> false
+		) ) );
 
 		$sql = "
 			DELETE FROM $wpdb->ddownload_statistics

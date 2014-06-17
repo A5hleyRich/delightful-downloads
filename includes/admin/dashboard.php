@@ -67,7 +67,7 @@ function dedo_dashboard_downloads_widget() {
 		
 		<?php
 
-		$popular_downloads = $dedo_statistics->get_popular_downloads( 0, 5, false );
+		$popular_downloads = $dedo_statistics->get_popular_downloads( array( 'limit' => 5, 'cache' => false ) );
 
 		if ( !empty( $popular_downloads ) ) {
 
@@ -126,10 +126,10 @@ function dedo_count_downloads_ajax() {
 
 	// Get counts
 	$result = array(
-		'ddownload-count-1' 	=> number_format_i18n( $dedo_statistics->count_downloads( array( 'days' => 1 ) ) ),
-		'ddownload-count-7' 	=> number_format_i18n( $dedo_statistics->count_downloads( array( 'days' => 7 ) ) ),
-		'ddownload-count-30'	=> number_format_i18n( $dedo_statistics->count_downloads( array( 'days' => 30 ) ) ),
-		'ddownload-count-0'		=> number_format_i18n( $dedo_statistics->count_downloads( array( 'days' => 0 ) ) )
+		'ddownload-count-1' 	=> number_format_i18n( $dedo_statistics->count_downloads( array( 'days' => 1, 'cache' => false ) ) ),
+		'ddownload-count-7' 	=> number_format_i18n( $dedo_statistics->count_downloads( array( 'days' => 7, 'cache' => false ) ) ),
+		'ddownload-count-30'	=> number_format_i18n( $dedo_statistics->count_downloads( array( 'days' => 30, 'cache' => false ) ) ),
+		'ddownload-count-0'		=> number_format_i18n( $dedo_statistics->count_downloads( array( 'days' => 0, 'cache' => false ) ) )
 	);
 
 	// Return success and data
@@ -166,7 +166,7 @@ function dedo_popular_downloads_ajax() {
 	$days = absint( $_REQUEST['days'] );
 
 	// Get popular downloads
-	$result = $dedo_statistics->get_popular_downloads( $days, 5, false );
+	$result = $dedo_statistics->get_popular_downloads( array( 'days' => $days, 'limit' => 5, 'cache' => false ) );
 
 	// Add download URL to array of results
 	foreach ( $result as $key => $value ) {
