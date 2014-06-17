@@ -1,17 +1,20 @@
 # 
 # Translators:
+# Calinou, 2014
+# FxB <fxb@wp-translations.org>, 2014
+# Jean-Christophe Brebion <pro@jcbrebion.com>, 2014
 msgid ""
 msgstr ""
 "Project-Id-Version: Delightful Downloads\n"
 "POT-Creation-Date: 2014-06-17 12:35-0000\n"
 "PO-Revision-Date: 2014-06-17 11:40+0000\n"
 "Last-Translator: Ashley Rich <hello@ashleyrich.com>\n"
-"Language-Team: Russian (Russia) (http://www.transifex.com/projects/p/delightful-downloads/language/ru_RU/)\n"
+"Language-Team: Italian (Italy) (http://www.transifex.com/projects/p/delightful-downloads/language/it_IT/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: ru_RU\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"Language: it_IT\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: Poedit 1.6.5\n"
 "X-Poedit-Basepath: ..\n"
 "X-Poedit-KeywordsList: __;_e;_n:1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;esc_attr__;esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c;_n_noop:1,2;_nx_noop:3c,1,2;__ngettext_noop:1,2\n"
@@ -20,37 +23,37 @@ msgstr ""
 
 #: delightful-downloads.php:214 includes/admin/page-settings.php:19
 msgid "Settings"
-msgstr "Настройки"
+msgstr "Impostazioni"
 
 #: includes/admin/class-dedo-list-table.php:30
 msgid "Log"
-msgstr "Лог"
+msgstr "Log"
 
 #: includes/admin/class-dedo-list-table.php:31
 #: includes/admin/page-statistics.php:22
 msgid "Logs"
-msgstr "Логи"
+msgstr "Logs"
 
 #: includes/admin/class-dedo-list-table.php:48 includes/options.php:65
 #: includes/post-types.php:22
 msgid "Download"
-msgstr "Скачать"
+msgstr "Download"
 
 #: includes/admin/class-dedo-list-table.php:49
 msgid "User"
-msgstr "Пользователь"
+msgstr "Utente"
 
 #: includes/admin/class-dedo-list-table.php:50
 msgid "IP Address"
-msgstr "IP адрес"
+msgstr "Indirizzo IP"
 
 #: includes/admin/class-dedo-list-table.php:51
 msgid "User Agent"
-msgstr "Имя пользователя"
+msgstr "User Agent"
 
 #: includes/admin/class-dedo-list-table.php:52 includes/post-types.php:65
 msgid "Date"
-msgstr "Дата"
+msgstr "Data"
 
 #: includes/admin/class-dedo-list-table.php:133
 #: includes/admin/media-button.php:64 includes/admin/media-button.php:66
@@ -76,19 +79,19 @@ msgstr ""
 
 #: includes/admin/dashboard.php:49 includes/admin/dashboard.php:94
 msgid "Last 24 Hours"
-msgstr "За 24 часа"
+msgstr "Ultime 24 ore"
 
 #: includes/admin/dashboard.php:53 includes/admin/dashboard.php:95
 msgid "Last 7 Days"
-msgstr "За 7 дней"
+msgstr "Ultimi 7 giorni"
 
 #: includes/admin/dashboard.php:57 includes/admin/dashboard.php:96
 msgid "Last 30 Days"
-msgstr "За 30 дней"
+msgstr "Ultimi 30 giorni"
 
 #: includes/admin/dashboard.php:61 includes/admin/dashboard.php:97
 msgid "All Time"
-msgstr "За все время"
+msgstr "Tutto il tempo"
 
 #: includes/admin/dashboard.php:66
 msgid "Popular Downloads"
@@ -105,65 +108,65 @@ msgstr ""
 
 #: includes/admin/media-button.php:39 includes/admin/media-button.php:111
 msgid "Insert Download"
-msgstr "Вставить Загрузку"
+msgstr "Inserisci download"
 
 #: includes/admin/media-button.php:43
 msgid "Search"
-msgstr "Поиск"
+msgstr "Cerca"
 
 #: includes/admin/media-button.php:49 includes/functions.php:88
 #: includes/post-types.php:60
 msgid "Title"
-msgstr "Заголовок"
+msgstr "Titolo"
 
 #: includes/admin/media-button.php:50
 msgid "Size"
-msgstr "Размер"
+msgstr "Dimensione"
 
 #: includes/admin/media-button.php:51 includes/post-types.php:21
 #: includes/post-types.php:33 includes/post-types.php:63
 msgid "Downloads"
-msgstr "Загрузки"
+msgstr "Downloads"
 
 #: includes/admin/media-button.php:79
 msgid "Download Details"
-msgstr "Детали загрузки"
+msgstr "Dettagli download"
 
 #: includes/admin/media-button.php:82
 msgid "Downloads:"
-msgstr "Загрузок:"
+msgstr "Downloads:"
 
 #: includes/admin/media-button.php:85
 msgid "Text"
-msgstr "Текст"
+msgstr "Testo"
 
 #: includes/admin/media-button.php:87
 msgid "Style"
-msgstr "Стиль"
+msgstr "Stile"
 
 #: includes/admin/media-button.php:89 includes/admin/media-button.php:101
 msgid "Default"
-msgstr "По умолчанию"
+msgstr "Predefinito"
 
 #: includes/admin/media-button.php:99
 msgid "Color"
-msgstr "Цвет"
+msgstr "Colore"
 
 #: includes/admin/media-button.php:112
 msgid "Insert File Size"
-msgstr "Вставить размер файла"
+msgstr "Inserisci dimensione file"
 
 #: includes/admin/media-button.php:113
 msgid "Insert Download Count"
-msgstr "Вставить счетчик скачиваний"
+msgstr "Inserisci numero di downloads"
 
 #: includes/admin/meta-boxes.php:19 includes/post-types.php:61
 msgid "File"
-msgstr "Файл"
+msgstr "File"
 
 #: includes/admin/meta-boxes.php:20
 msgid "Download Stats"
-msgstr "Статистика скачиваний"
+msgstr "Statistiche download"
 
 #: includes/admin/meta-boxes.php:46 includes/admin/meta-boxes.php:49
 #, php-format
@@ -173,11 +176,11 @@ msgstr ""
 
 #: includes/admin/meta-boxes.php:47
 msgid "Custom field updated."
-msgstr "Поле изменено."
+msgstr "Campo personalizzato aggiornato."
 
 #: includes/admin/meta-boxes.php:48
 msgid "Custom field deleted."
-msgstr "Поле удалено."
+msgstr "Campo personalizzato cancellato."
 
 #: includes/admin/meta-boxes.php:50
 #, php-format
@@ -205,7 +208,7 @@ msgstr ""
 
 #: includes/admin/meta-boxes.php:55
 msgid "M j, Y @ G:i"
-msgstr "d.m.Y H:i"
+msgstr "j F Y @ H:i"
 
 #: includes/admin/meta-boxes.php:56
 msgid "Download draft updated."
@@ -213,11 +216,11 @@ msgstr ""
 
 #: includes/admin/meta-boxes.php:85
 msgid "Allowed Files"
-msgstr "Разрешенных Файлов"
+msgstr "File consentiti"
 
 #: includes/admin/meta-boxes.php:111
 msgid "File URL:"
-msgstr "Файл URL:"
+msgstr "File URL:"
 
 #: includes/admin/meta-boxes.php:114
 msgid "Upload or enter the file URL."
@@ -229,20 +232,20 @@ msgstr ""
 
 #: includes/admin/meta-boxes.php:124
 msgid "Upload File"
-msgstr "Загрузить файл"
+msgstr "Carica file"
 
 #: includes/admin/meta-boxes.php:125
 msgid "Select Existing File"
-msgstr "Выбрать существующий файл"
+msgstr "Seleziona un file esistente"
 
 #: includes/admin/meta-boxes.php:126
 #, php-format
 msgid "Maximum upload file size: %s."
-msgstr "Максимальный размер файла: %s."
+msgstr "Dimensione massima del file: %s."
 
 #: includes/admin/meta-boxes.php:149
 msgid "Count"
-msgstr "Счетчик"
+msgstr "Numero"
 
 #: includes/admin/page-settings.php:19 includes/admin/page-settings.php:79
 msgid "Download Settings"
@@ -258,7 +261,7 @@ msgstr ""
 
 #: includes/admin/page-settings.php:85
 msgid "Settings updated successfully."
-msgstr "Настройки обновлены успешно."
+msgstr "Impostazioni aggiornate con successo."
 
 #: includes/admin/page-settings.php:198
 msgid "Help and Support"
@@ -306,62 +309,62 @@ msgstr ""
 #: includes/admin/page-settings.php:263 includes/admin/page-settings.php:457
 #: includes/admin/page-settings.php:502
 msgid "Enable"
-msgstr "Включено"
+msgstr "Abilita"
 
 #: includes/admin/page-settings.php:265
 msgid "Check this option to allow downloads to be tagged or categorised."
-msgstr "Установите этот флажок, чтобы разрешить загрузку с тегами или категориями."
+msgstr "Solo Membri"
 
 #: includes/admin/page-settings.php:280
 msgid "Member Only"
-msgstr "Зарегистрированных только"
+msgstr "Solo Membri"
 
 #: includes/admin/page-settings.php:282
 msgid "Check this option to allow only logged in users to download files."
-msgstr "Установите эту опцию, чтобы разрешить только для зарегистрированных пользователей загружать файлы."
+msgstr "Selezionare questa opzione per consentire solo agli utenti registrati di scaricare file."
 
 #: includes/admin/page-settings.php:305
 msgid ""
 "Select the page that a user should be redirected to if they try to download "
 "a file when not logged in and the Members Only option is checked. If no page"
 " is selected a generic error message will be displayed."
-msgstr "Выберите страницу, на которую пользователь должен быть перенаправлен в случае, если до попытки загрузить файл, не был выполнен вход в систему. Если не выбрана страница, будет отображаться сообщение об ошибке."
+msgstr "Selezionare la pagina ove un utente deve essere reindirizzato se tenta di scaricare un file quando non loggato e l'opzione Solo Membri è selezionata. Se non si seleziona nessuna pagina verrà visualizzato un messaggio di errore generico."
 
 #: includes/admin/page-settings.php:319
 msgid "Enter user agents to block from downloading files. One per line."
-msgstr "Введите пользователей для блокирования. По одному в каждой строке."
+msgstr "Inserire gli user agent per bloccare il download di file. Uno per linea."
 
 #: includes/admin/page-settings.php:333
 msgid ""
 "Set the default text to display on button and link style outputs. This can "
 "be overwritten on a per-download basis using the 'text' attribute."
-msgstr "Установить по умолчанию текст, отображаемый на кнопке и стиль ссылок."
+msgstr "Impostare il testo predefinito da visualizzare su pulsanti e link. Questa impostazione può essere sovrascritta per ciascun download utilizzando l'attributo 'testo'."
 
 #: includes/admin/page-settings.php:353
 msgid ""
 "Choose the default output style for downloads. This can be overwritten on a "
 "per-download basis using the 'style' attribute."
-msgstr "Выберите по умолчанию стиль вывода кнопок для загрузки."
+msgstr "Scegliere lo stile predefinito per i downloads. Questa impostazione può essere sovrascritta per ciascun download utilizzando l'attributo 'testo'."
 
 #: includes/admin/page-settings.php:375
 msgid ""
 "Choose the default button style. This can be overwritten on a per-download "
 "basis using the 'button' attribute."
-msgstr "Выбрать стиль кнопки по умолчанию."
+msgstr "Scegliere lo stile predefinito del pulsante. Questa impostazione può essere sovrascritta per ciascun download utilizzando l'attributo 'pulsante'."
 
 #: includes/admin/page-settings.php:397
 msgid ""
 "Choose the default output style for downloads lists. This can be overwritten"
 " on a per-list basis using the 'style' attribute."
-msgstr "Выберите по умолчанию стиль вывода загрузки для  списков. "
+msgstr "Scegliere lo stile predefinito per l'elenco dei downloads. Questa impostazione può essere sovrascritta per ciascun elenco utilizzando l'attributo 'stile'."
 
 #: includes/admin/page-settings.php:412
 msgid "Log Downloads"
-msgstr "Лог скачиваний"
+msgstr "Log downloads"
 
 #: includes/admin/page-settings.php:414
 msgid "Check this option to log downloads by admins."
-msgstr "Установите эту опцию, чтобы вести журнал (лог) для администраторов."
+msgstr "Seleziona questa opzione per fare il log dei downloads dagli admins."
 
 #: includes/admin/page-settings.php:428
 msgid ""
@@ -380,19 +383,19 @@ msgid ""
 "Check this option to include the Delightful Downloads stylesheet on the "
 "front-end. If this option is disabled you must manually add the button CSS "
 "classes to your theme's CSS file."
-msgstr "Установите этот параметр, чтобы включить Delightful Downloads стиль. Если эта опция отключена, вы должны вручную добавить CSS классы для вашей темы."
+msgstr "Selezionare questa opzione per includere il foglio di stile Delightful Downloads sul front-end. Se questa opzione è disabilitata è necessario aggiungere manualmente le classi CSS al file CSS del vostro tema."
 
 #: includes/admin/page-settings.php:487
 msgid ""
 "Set the URL for download links. This should be left as the default value, "
 "unless absolutely sure that it will not cause conflicts with existing "
 "permalinks or plugins."
-msgstr "Задайте URL для ссылки на скачивание. Это должно быть перенесено как значение по умолчанию, если только вы не уверены, что оно не будет вызывать постоянные конфликты с существующими или подключаемыми модулями."
+msgstr "Impostare l'URL per link di download. Questo dovrebbe essere lasciato come il valore predefinito, se non assolutamente certi che non causerà conflitti con permalinks o plugin esistenti."
 
 #: includes/admin/page-statistics.php:22 includes/admin/page-statistics.php:38
 #: includes/admin/page-statistics.php:107
 msgid "Download Logs"
-msgstr "Логи скачиваний"
+msgstr "Scarica Log"
 
 #: includes/admin/page-statistics.php:39
 msgid "You are about to permanently delete the download logs."
@@ -433,55 +436,55 @@ msgstr ""
 
 #: includes/cron.php:74
 msgid "Once Weekly"
-msgstr "Один раз в неделю"
+msgstr "Una volta a settimana"
 
 #: includes/functions.php:22
 msgid "Button"
-msgstr "Кнопка"
+msgstr "Pulsante"
 
 #: includes/functions.php:26
 msgid "Link"
-msgstr "Ссылка"
+msgstr "Link"
 
 #: includes/functions.php:30
 msgid "Plain Text"
-msgstr "Обычный текст"
+msgstr "Testo"
 
 #: includes/functions.php:47
 msgid "Black"
-msgstr "Черная"
+msgstr "Nero"
 
 #: includes/functions.php:51
 msgid "Blue"
-msgstr "Синяя"
+msgstr "Blu"
 
 #: includes/functions.php:55
 msgid "Grey"
-msgstr "Серая"
+msgstr "Grigio"
 
 #: includes/functions.php:59
 msgid "Green"
-msgstr "Зеленая"
+msgstr "Verde"
 
 #: includes/functions.php:63
 msgid "Purple"
-msgstr "Фиолетовая"
+msgstr "Viola"
 
 #: includes/functions.php:67
 msgid "Red"
-msgstr "Красная"
+msgstr "Rosso"
 
 #: includes/functions.php:71
 msgid "Yellow"
-msgstr "Жёлтая"
+msgstr "Giallo"
 
 #: includes/functions.php:92
 msgid "Title (Date)"
-msgstr "Заголовок (Дата)"
+msgstr "Titolo (Data)"
 
 #: includes/functions.php:96
 msgid "Title (Count)"
-msgstr "Заголовок (Счетчик)"
+msgstr "Titolo (Numero)"
 
 #: includes/functions.php:100
 msgid "Title (File size)"
@@ -493,59 +496,59 @@ msgstr ""
 
 #: includes/options.php:20
 msgid "General"
-msgstr "Главные"
+msgstr "Generale"
 
 #: includes/options.php:21
 msgid "Shortcodes"
-msgstr "Шорткоды"
+msgstr "Scorciatoie"
 
 #: includes/options.php:22
 msgid "Statistics"
-msgstr "Статистика"
+msgstr "Statistiche"
 
 #: includes/options.php:23
 msgid "Advanced"
-msgstr "Расширенные"
+msgstr "Avanzate"
 
 #: includes/options.php:24
 msgid "Support"
-msgstr "Поддержка"
+msgstr "Supporto"
 
 #: includes/options.php:38
 msgid "Categories and Tags"
-msgstr "Категории и теги"
+msgstr "Categorie e tag"
 
 #: includes/options.php:44
 msgid "Members Download"
-msgstr "Скачивание для зарегистрированных"
+msgstr "Download Membri"
 
 #: includes/options.php:50
 msgid "Non-Members Redirect"
-msgstr "Перенаправление для не зарегистрированных"
+msgstr "Reindirizzamento Non-Membri"
 
 #: includes/options.php:56
 msgid "Block User Agents"
-msgstr "Блокировать имена пользователей"
+msgstr "Blocco User Agent"
 
 #: includes/options.php:62
 msgid "Default Text"
-msgstr "Текст по умолчанию"
+msgstr "Testo predefinito"
 
 #: includes/options.php:68
 msgid "Default Style"
-msgstr "Стиль по умолчанию"
+msgstr "Stile predefinito"
 
 #: includes/options.php:74
 msgid "Default Button Style"
-msgstr "Стиль кнопки по умолчанию"
+msgstr "Stile predefinito pulsante"
 
 #: includes/options.php:80
 msgid "Default List Style"
-msgstr "Стиль списка по умолчанию"
+msgstr "Stile predefinito elenco"
 
 #: includes/options.php:86
 msgid "Admin Downloads"
-msgstr "Администрирование скачиваний"
+msgstr "Downloads Admin"
 
 #: includes/options.php:92
 msgid "Grace Period"
@@ -557,15 +560,15 @@ msgstr ""
 
 #: includes/options.php:104
 msgid "Default CSS Styles"
-msgstr "По умолчанию CSS Styles"
+msgstr "Stile CSS predefinito"
 
 #: includes/options.php:110
 msgid "Cache Duration"
-msgstr "Срок Действия Кэша"
+msgstr "Durata cache"
 
 #: includes/options.php:116
 msgid "Download Address"
-msgstr "Адрес загрузки"
+msgstr "Indirizzo download"
 
 #: includes/options.php:122
 msgid "Complete Uninstall"
@@ -573,39 +576,39 @@ msgstr ""
 
 #: includes/post-types.php:23
 msgid "Add New"
-msgstr "Добавить новую"
+msgstr "Aggiungi nuovo"
 
 #: includes/post-types.php:24
 msgid "Add New Download"
-msgstr "Добавить новую загрузку"
+msgstr "Aggiungi nuovo download"
 
 #: includes/post-types.php:25
 msgid "Edit Download"
-msgstr "Редактировать загрузку"
+msgstr "Modifica download"
 
 #: includes/post-types.php:26
 msgid "New Download"
-msgstr "Новая загрузка"
+msgstr "Nuovo download"
 
 #: includes/post-types.php:27
 msgid "All Downloads"
-msgstr "Все загрузки"
+msgstr "Tutti i downloads"
 
 #: includes/post-types.php:28
 msgid "View Download"
-msgstr "Просмотр загрузок"
+msgstr "Visualizza download"
 
 #: includes/post-types.php:29
 msgid "Search Downloads"
-msgstr "Искать загрузки"
+msgstr "Cerca downloads"
 
 #: includes/post-types.php:30
 msgid "No downloads found"
-msgstr "Загрузок не найдено"
+msgstr "Nessun download trovato"
 
 #: includes/post-types.php:31
 msgid "No downloads found in Trash"
-msgstr "Загрузок в корзине не найдено"
+msgstr "Nessun download trovato nel Cestino"
 
 #: includes/post-types.php:62
 msgid "File Size"
@@ -613,27 +616,27 @@ msgstr ""
 
 #: includes/post-types.php:64
 msgid "Shortcode"
-msgstr "Шорткод"
+msgstr "Scorciatoia"
 
 #: includes/post-types.php:72 includes/taxonomies.php:25
 msgid "Categories"
-msgstr "Категории"
+msgstr "Categorie"
 
 #: includes/post-types.php:73 includes/taxonomies.php:49
 msgid "Tags"
-msgstr "Теги"
+msgstr "Tags"
 
 #: includes/process-download.php:36
 msgid "Invalid download."
-msgstr "Не верное скачивание."
+msgstr "Download non valido."
 
 #: includes/process-download.php:55
 msgid "Please login to download this file!"
-msgstr "Пожалуйста войдите на сайт для скачивания!"
+msgstr "Effettua il login per scaricare questo file!"
 
 #: includes/process-download.php:65
 msgid "You are blocked from downloading this file!"
-msgstr "Скачивание файла заблокировано!"
+msgstr "Non sei abilitato al download di questo file!"
 
 #: includes/process-download.php:73
 msgid "You must attach a file to this download."
@@ -641,113 +644,113 @@ msgstr ""
 
 #: includes/process-download.php:110
 msgid "Server error, file cannot be opened!"
-msgstr "Ошибка сервера, файл не найден!"
+msgstr "Errore del server, il file non può essere aperto!"
 
 #: includes/shortcodes.php:45 includes/shortcodes.php:117
 #: includes/shortcodes.php:150
 msgid "Invalid download ID."
-msgstr "Не правильный ID."
+msgstr "ID download non valido."
 
 #: includes/shortcodes.php:55 includes/shortcodes.php:300
 msgid "Invalid style attribute."
-msgstr "Не правильный стиль атрибута."
+msgstr "Attributo Stile non valido"
 
 #: includes/shortcodes.php:72
 msgid "Invalid button attribute."
-msgstr "Не правильный атрибут кнопки."
+msgstr "Attributo Pulsante non valido."
 
 #: includes/shortcodes.php:203
 msgid "Invalid orderby attribute."
-msgstr "Не правильный атрибут действия."
+msgstr "Attributo Ordina Per non valido."
 
 #: includes/shortcodes.php:229
 msgid "Invalid order attribute."
-msgstr "Не правильный атрибут"
+msgstr "Attributo Ordinamento non valido."
 
 #: includes/shortcodes.php:237
 msgid "Invalid relation attribute."
-msgstr "Устаревший атрибут."
+msgstr "Attributo Relazione non valido."
 
 #: includes/shortcodes.php:331
 msgid "No downloads found."
-msgstr "Скачиваний не найдено."
+msgstr "Nessun download trovato."
 
 #: includes/taxonomies.php:23
 msgid "Download Categories"
-msgstr "Категории загрузки"
+msgstr "Categorie"
 
 #: includes/taxonomies.php:24
 msgid "Download Category"
-msgstr "Категория загрузки"
+msgstr "Categoria"
 
 #: includes/taxonomies.php:26
 msgid "All Categories"
-msgstr "Все категории"
+msgstr "Tutte le categorie"
 
 #: includes/taxonomies.php:27
 msgid "Edit Category"
-msgstr "редактировать категорию"
+msgstr "Modifica categoria"
 
 #: includes/taxonomies.php:28
 msgid "View Category"
-msgstr "Смотреть категорию"
+msgstr "Visualizza categoria"
 
 #: includes/taxonomies.php:29
 msgid "Update Category"
-msgstr "Обновить категорию"
+msgstr "Aggiorna categoria"
 
 #: includes/taxonomies.php:30
 msgid "Add New Category"
-msgstr "Добавить новую категорию"
+msgstr "Aggiungi nuova categoria"
 
 #: includes/taxonomies.php:31
 msgid "New Category Name"
-msgstr "Имя новой категории"
+msgstr "Nuov nome categoria"
 
 #: includes/taxonomies.php:32
 msgid "Search Categories"
-msgstr "Искать категорию"
+msgstr "Cerca categorie"
 
 #: includes/taxonomies.php:33
 msgid "Popular Categories"
-msgstr "Популярные категории"
+msgstr "Più utilizzate"
 
 #: includes/taxonomies.php:47
 msgid "Download Tags"
-msgstr "Теги загрузок"
+msgstr "Tag"
 
 #: includes/taxonomies.php:48
 msgid "Download Tag"
-msgstr "Тег загрузки"
+msgstr "Tag"
 
 #: includes/taxonomies.php:50
 msgid "All Tags"
-msgstr "Все теги"
+msgstr "Tutti i tag"
 
 #: includes/taxonomies.php:51
 msgid "Edit Tag"
-msgstr "Редактировать тег"
+msgstr "Modifica tag"
 
 #: includes/taxonomies.php:52
 msgid "View Tag"
-msgstr "Смотреть тег"
+msgstr "Visualizza tag"
 
 #: includes/taxonomies.php:53
 msgid "Update Tag"
-msgstr "Обновить тег"
+msgstr "Aggiorna tag"
 
 #: includes/taxonomies.php:54
 msgid "Add New Tag"
-msgstr "Добавить новый тег"
+msgstr "Aggiungi nuovo tag"
 
 #: includes/taxonomies.php:55
 msgid "New Tag Name"
-msgstr "Имя нового тега"
+msgstr "Nuovo nome tag"
 
 #: includes/taxonomies.php:56
 msgid "Search Tags"
-msgstr "Искать теги"
+msgstr "Cerca tag"
 
 #: includes/taxonomies.php:57
 msgid "Popular Tags"
-msgstr "Популярные теги"
+msgstr "Più utilizzati"
