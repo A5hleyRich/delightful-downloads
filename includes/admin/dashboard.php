@@ -126,10 +126,10 @@ function dedo_count_downloads_ajax() {
 
 	// Get counts
 	$result = array(
-		'ddownload-count-1' 	=> number_format_i18n( $dedo_statistics->count_downloads( 1, false, false ) ),
-		'ddownload-count-7' 	=> number_format_i18n( $dedo_statistics->count_downloads( 7, false, false ) ),
-		'ddownload-count-30'	=> number_format_i18n( $dedo_statistics->count_downloads( 30, false, false ) ),
-		'ddownload-count-0'		=> number_format_i18n( $dedo_statistics->count_downloads( 0, false, false ) )
+		'ddownload-count-1' 	=> number_format_i18n( $dedo_statistics->count_downloads( array( 'days' => 1 ) ) ),
+		'ddownload-count-7' 	=> number_format_i18n( $dedo_statistics->count_downloads( array( 'days' => 7 ) ) ),
+		'ddownload-count-30'	=> number_format_i18n( $dedo_statistics->count_downloads( array( 'days' => 30 ) ) ),
+		'ddownload-count-0'		=> number_format_i18n( $dedo_statistics->count_downloads( array( 'days' => 0 ) ) )
 	);
 
 	// Return success and data
