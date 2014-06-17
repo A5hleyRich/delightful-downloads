@@ -33,24 +33,32 @@ function dedo_dashboard_downloads_widget() {
 	
 	global $dedo_statistics;
 
+	// Supply options for popular downloads dropdown
+	wp_localize_script( 'dedo-admin-js-global', 'DEDODashboardOptions', array(
+		'ajaxURL'		=> admin_url( 'admin-ajax.php', isset( $_SERVER['HTTPS'] ) ? 'https://' : 'http://' ),
+		'nonce'			=> wp_create_nonce( 'dedo_dashboard' ),
+		'errorText'		=> __( 'Download statistics could not be retrieved.', 'delightful-downloads' )
+	) );
+
 	?>
+
 	<div id="ddownload-count">
 		<ul>
-			<li>
-				<strong><?php echo number_format_i18n( $dedo_statistics->count_downloads( 1 ) ); ?></strong>
-				<span><?php _e( 'Last 24 Hours', 'delightful-downloads' ); ?></span>
+			<li id="ddownload-count-1" style="opacity: 0">
+				<span class="count">0</span>
+				<span class="label"><?php _e( 'Last 24 Hours', 'delightful-downloads' ); ?></span>
 			</li>
-			<li>
-				<strong><?php echo number_format_i18n( $dedo_statistics->count_downloads( 7 ) ); ?></strong>
-				<span><?php _e( 'Last 7 Days', 'delightful-downloads' ); ?></span>
+			<li id="ddownload-count-7" style="opacity: 0">
+				<span class="count">0</span>
+				<span class="label"><?php _e( 'Last 7 Days', 'delightful-downloads' ); ?></span>
 			</li>
-			<li>
-				<strong><?php echo number_format_i18n( $dedo_statistics->count_downloads( 30 ) ); ?></strong>
-				<span><?php _e( 'Last 30 Days', 'delightful-downloads' ); ?></span>
+			<li id="ddownload-count-30" style="opacity: 0">
+				<span class="count">0</span>
+				<span class="label"><?php _e( 'Last 30 Days', 'delightful-downloads' ); ?></span>
 			</li>
-			<li>
-				<strong><?php echo number_format_i18n( $dedo_statistics->count_downloads() ); ?></strong>
-				<span><?php _e( 'All Time', 'delightful-downloads' ); ?></span>
+			<li id="ddownload-count-0" style="opacity: 0">
+				<span class="count">0</span>
+				<span class="label"><?php _e( 'All Time', 'delightful-downloads' ); ?></span>
 			</li>
 		</ul>
 	</div>
@@ -59,15 +67,7 @@ function dedo_dashboard_downloads_widget() {
 		
 		<?php
 
-		// Supply options for popular downloads dropdown
-		wp_localize_script( 'dedo-admin-js-global', 'DEDOPopularDownloads', array(
-			'ajaxURL'		=> admin_url( 'admin-ajax.php', isset( $_SERVER['HTTPS'] ) ? 'https://' : 'http://' ),
-			'action'		=> 'dedo_popular_downloads',
-			'nonce'			=> wp_create_nonce( 'dedo_popular_downloads' ),
-			'errorText'		=> __( 'Popular downloads could not be retrieved.', 'delightful-downloads' )
-		) );
-
-		$popular_downloads = $dedo_statistics->get_popular_downloads();
+		$popular_downloads = $dedo_statistics->get_popular_downloads( 0, 5, false );
 
 		if ( !empty( $popular_downloads ) ) {
 
@@ -105,6 +105,44 @@ function dedo_dashboard_downloads_widget() {
 }
 
 /**
+ * Count Downloads Ajax
+ *
+ * @since  1.4
+*/
+function dedo_count_downloads_ajax() {
+
+	global $dedo_statistics;
+
+	// Check for nonce and permission
+	if ( !check_ajax_referer( 'dedo_dashboard', 'nonce', false ) || !current_user_can( apply_filters( 'dedo_cap_dashboard', 'edit_pages' ) ) ) {
+		
+		echo json_encode( array(
+			'status'	=> 'error',
+			'content'	=> __( 'Failed security check!', 'delightful-downloads' )
+		) );
+
+		die();
+	}
+
+	// Get counts
+	$result = array(
+		'ddownload-count-1' 	=> number_format_i18n( $dedo_statistics->count_downloads( 1, false, false ) ),
+		'ddownload-count-7' 	=> number_format_i18n( $dedo_statistics->count_downloads( 7, false, false ) ),
+		'ddownload-count-30'	=> number_format_i18n( $dedo_statistics->count_downloads( 30, false, false ) ),
+		'ddownload-count-0'		=> number_format_i18n( $dedo_statistics->count_downloads( 0, false, false ) )
+	);
+
+	// Return success and data
+	echo json_encode( array (
+		'status'	=> 'success',
+		'content'	=> $result
+	) );
+
+	die();
+}
+add_action( 'wp_ajax_dedo_count_downloads', 'dedo_count_downloads_ajax' );
+
+/**
  * Popular Downloads Ajax
  *
  * @since  1.4
@@ -114,7 +152,7 @@ function dedo_popular_downloads_ajax() {
 	global $dedo_statistics;
 
 	// Check for nonce and permission
-	if ( !check_ajax_referer( 'dedo_popular_downloads', 'nonce', false ) || !current_user_can( apply_filters( 'dedo_cap_dashboard', 'edit_pages' ) ) ) {
+	if ( !check_ajax_referer( 'dedo_dashboard', 'nonce', false ) || !current_user_can( apply_filters( 'dedo_cap_dashboard', 'edit_pages' ) ) ) {
 		
 		echo json_encode( array(
 			'status'	=> 'error',
@@ -128,7 +166,7 @@ function dedo_popular_downloads_ajax() {
 	$days = absint( $_REQUEST['days'] );
 
 	// Get popular downloads
-	$result = $dedo_statistics->get_popular_downloads( $days );
+	$result = $dedo_statistics->get_popular_downloads( $days, 5, false );
 
 	// Add download URL to array of results
 	foreach ( $result as $key => $value ) {

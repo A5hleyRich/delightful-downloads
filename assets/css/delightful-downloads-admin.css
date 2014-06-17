@@ -299,19 +299,19 @@
   box-sizing: border-box;
   text-align: center;
 }
-#ddownload-count ul li strong {
+#ddownload-count ul li .count {
   display: block;
   font-weight: 700;
   font-size: 28px;
   line-height: 28px;
 }
-#ddownload-count ul li span {
+#ddownload-count ul li .label {
   display: block;
   margin-top: 6px;
   color: #777;
 }
 #ddownload-count ul li:nth-of-type(odd) {
-  border-right: 1px solid #eee;
+  border-right: 1px dotted #eee;
 }
 #ddownload-count ul li:nth-of-type(-n+2) {
   padding-top: 40px;

@@ -46,8 +46,52 @@ jQuery( document ).ready( function( $ ) {
 		$popularDownloadsError: $( '#ddownload-popular .error' ),
 
 		init: function( options ) {
+			
 			this.options = options;
+			this.countDownloadsGet();
 			this.popularDownloadsChange();
+		},
+
+		// Get download counts
+		countDownloadsGet: function() {
+
+			var self = this;
+
+			// Send ajax request
+			$.ajax( {
+				url: self.options.ajaxURL,
+				data: {
+					action: 'dedo_count_downloads',
+					nonce: self.options.nonce,
+				},
+				dataType: 'json',
+				success: function( response ) {
+					self.countDownloadsSuccess( response );
+				},
+				error: function() {
+					self.downloadsError();
+				}
+			} );
+		},
+
+		countDownloadsSuccess: function( response ) {
+
+			// Request successful
+			if ( 'success' === response.status ) {
+
+				$.each( response.content, function( key, value) {
+					// Update display
+					$( '#' + key + ' .count' ).text( value );
+				} );
+
+				// Fade in counts list
+				$( '#ddownload-count li' ).fadeTo( 600, 1 );
+				
+			}
+			// Request returned error
+			else {
+				this.downloadsError();
+			}
 		},
 
 		// Add event handler to popular downloads dropdown
@@ -70,7 +114,7 @@ jQuery( document ).ready( function( $ ) {
 			$.ajax( {
 				url: self.options.ajaxURL,
 				data: {
-					action: self.options.action,
+					action: 'dedo_popular_downloads',
 					nonce: self.options.nonce,
 					days: value
 				},
@@ -79,7 +123,7 @@ jQuery( document ).ready( function( $ ) {
 					self.popularDownloadsSuccess( response );
 				},
 				error: function() {
-					self.popularDownloadsError();
+					self.downloadsError();
 				}
 			} );
 
@@ -121,12 +165,12 @@ jQuery( document ).ready( function( $ ) {
 			}
 			// Request returned error
 			else {
-				this.popularDownloadsError();
+				this.downloadsError();
 			}
 		},
 
 		// Show error message
-		popularDownloadsError: function() {
+		downloadsError: function() {
 
 			// Show error
 			this.$popularDownloadsError.text( this.options.errorText ).fadeIn( 300 );
@@ -134,8 +178,8 @@ jQuery( document ).ready( function( $ ) {
 	};
 	
 	// Init Dashboard if serialized WP array available
-	if ( 'undefined' !== typeof DEDOPopularDownloads ) {
-		DEDO_Dashboard.init( DEDOPopularDownloads );
+	if ( 'undefined' !== typeof DEDODashboardOptions ) {
+		DEDO_Dashboard.init( DEDODashboardOptions );
 	}
 
 } );
