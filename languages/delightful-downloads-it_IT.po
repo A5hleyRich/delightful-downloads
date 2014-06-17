@@ -1,4 +1,4 @@
-# 
+#
 # Translators:
 # Calinou, 2014
 # FxB <fxb@wp-translations.org>, 2014
@@ -7,9 +7,10 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Delightful Downloads\n"
 "POT-Creation-Date: 2014-06-17 12:35-0000\n"
-"PO-Revision-Date: 2014-06-17 11:40+0000\n"
-"Last-Translator: Ashley Rich <hello@ashleyrich.com>\n"
-"Language-Team: Italian (Italy) (http://www.transifex.com/projects/p/delightful-downloads/language/it_IT/)\n"
+"PO-Revision-Date: 2014-06-17 12:45-0000\n"
+"Last-Translator: \n"
+"Language-Team: Italian (Italy) (http://www.transifex.com/projects/p/"
+"delightful-downloads/language/it_IT/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -17,9 +18,11 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: Poedit 1.6.5\n"
 "X-Poedit-Basepath: ..\n"
-"X-Poedit-KeywordsList: __;_e;_n:1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;esc_attr__;esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c;_n_noop:1,2;_nx_noop:3c,1,2;__ngettext_noop:1,2\n"
-"X-Poedit-SearchPath-0: .\n"
+"X-Poedit-KeywordsList: __;_e;_n:1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;esc_attr__;"
+"esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c;_n_noop:1,2;"
+"_nx_noop:3c,1,2;__ngettext_noop:1,2\n"
 "X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-SearchPath-0: .\n"
 
 #: delightful-downloads.php:214 includes/admin/page-settings.php:19
 msgid "Settings"
@@ -170,8 +173,7 @@ msgstr "Statistiche download"
 
 #: includes/admin/meta-boxes.php:46 includes/admin/meta-boxes.php:49
 #, php-format
-msgid ""
-"Download updated. Use the %s shortcode to include it in posts or pages."
+msgid "Download updated. Use the %s shortcode to include it in posts or pages."
 msgstr ""
 
 #: includes/admin/meta-boxes.php:47
@@ -321,42 +323,59 @@ msgstr "Solo Membri"
 
 #: includes/admin/page-settings.php:282
 msgid "Check this option to allow only logged in users to download files."
-msgstr "Selezionare questa opzione per consentire solo agli utenti registrati di scaricare file."
+msgstr ""
+"Selezionare questa opzione per consentire solo agli utenti registrati di "
+"scaricare file."
 
 #: includes/admin/page-settings.php:305
 msgid ""
 "Select the page that a user should be redirected to if they try to download "
-"a file when not logged in and the Members Only option is checked. If no page"
-" is selected a generic error message will be displayed."
-msgstr "Selezionare la pagina ove un utente deve essere reindirizzato se tenta di scaricare un file quando non loggato e l'opzione Solo Membri è selezionata. Se non si seleziona nessuna pagina verrà visualizzato un messaggio di errore generico."
+"a file when not logged in and the Members Only option is checked. If no page "
+"is selected a generic error message will be displayed."
+msgstr ""
+"Selezionare la pagina ove un utente deve essere reindirizzato se tenta di "
+"scaricare un file quando non loggato e l'opzione Solo Membri è selezionata. "
+"Se non si seleziona nessuna pagina verrà visualizzato un messaggio di errore "
+"generico."
 
 #: includes/admin/page-settings.php:319
 msgid "Enter user agents to block from downloading files. One per line."
-msgstr "Inserire gli user agent per bloccare il download di file. Uno per linea."
+msgstr ""
+"Inserire gli user agent per bloccare il download di file. Uno per linea."
 
 #: includes/admin/page-settings.php:333
 msgid ""
 "Set the default text to display on button and link style outputs. This can "
 "be overwritten on a per-download basis using the 'text' attribute."
-msgstr "Impostare il testo predefinito da visualizzare su pulsanti e link. Questa impostazione può essere sovrascritta per ciascun download utilizzando l'attributo 'testo'."
+msgstr ""
+"Impostare il testo predefinito da visualizzare su pulsanti e link. Questa "
+"impostazione può essere sovrascritta per ciascun download utilizzando "
+"l'attributo 'testo'."
 
 #: includes/admin/page-settings.php:353
 msgid ""
 "Choose the default output style for downloads. This can be overwritten on a "
 "per-download basis using the 'style' attribute."
-msgstr "Scegliere lo stile predefinito per i downloads. Questa impostazione può essere sovrascritta per ciascun download utilizzando l'attributo 'testo'."
+msgstr ""
+"Scegliere lo stile predefinito per i downloads. Questa impostazione può "
+"essere sovrascritta per ciascun download utilizzando l'attributo 'testo'."
 
 #: includes/admin/page-settings.php:375
 msgid ""
 "Choose the default button style. This can be overwritten on a per-download "
 "basis using the 'button' attribute."
-msgstr "Scegliere lo stile predefinito del pulsante. Questa impostazione può essere sovrascritta per ciascun download utilizzando l'attributo 'pulsante'."
+msgstr ""
+"Scegliere lo stile predefinito del pulsante. Questa impostazione può essere "
+"sovrascritta per ciascun download utilizzando l'attributo 'pulsante'."
 
 #: includes/admin/page-settings.php:397
 msgid ""
-"Choose the default output style for downloads lists. This can be overwritten"
-" on a per-list basis using the 'style' attribute."
-msgstr "Scegliere lo stile predefinito per l'elenco dei downloads. Questa impostazione può essere sovrascritta per ciascun elenco utilizzando l'attributo 'stile'."
+"Choose the default output style for downloads lists. This can be overwritten "
+"on a per-list basis using the 'style' attribute."
+msgstr ""
+"Scegliere lo stile predefinito per l'elenco dei downloads. Questa "
+"impostazione può essere sovrascritta per ciascun elenco utilizzando "
+"l'attributo 'stile'."
 
 #: includes/admin/page-settings.php:412
 msgid "Log Downloads"
@@ -383,14 +402,20 @@ msgid ""
 "Check this option to include the Delightful Downloads stylesheet on the "
 "front-end. If this option is disabled you must manually add the button CSS "
 "classes to your theme's CSS file."
-msgstr "Selezionare questa opzione per includere il foglio di stile Delightful Downloads sul front-end. Se questa opzione è disabilitata è necessario aggiungere manualmente le classi CSS al file CSS del vostro tema."
+msgstr ""
+"Selezionare questa opzione per includere il foglio di stile Delightful "
+"Downloads sul front-end. Se questa opzione è disabilitata è necessario "
+"aggiungere manualmente le classi CSS al file CSS del vostro tema."
 
 #: includes/admin/page-settings.php:487
 msgid ""
 "Set the URL for download links. This should be left as the default value, "
 "unless absolutely sure that it will not cause conflicts with existing "
 "permalinks or plugins."
-msgstr "Impostare l'URL per link di download. Questo dovrebbe essere lasciato come il valore predefinito, se non assolutamente certi che non causerà conflitti con permalinks o plugin esistenti."
+msgstr ""
+"Impostare l'URL per link di download. Questo dovrebbe essere lasciato come "
+"il valore predefinito, se non assolutamente certi che non causerà conflitti "
+"con permalinks o plugin esistenti."
 
 #: includes/admin/page-statistics.php:22 includes/admin/page-statistics.php:38
 #: includes/admin/page-statistics.php:107

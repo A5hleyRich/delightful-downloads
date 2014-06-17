@@ -1,4 +1,4 @@
-# 
+#
 # Translators:
 # Calinou, 2014
 # FxB <fxb@wp-translations.org>, 2014
@@ -7,9 +7,10 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Delightful Downloads\n"
 "POT-Creation-Date: 2014-06-17 12:35-0000\n"
-"PO-Revision-Date: 2014-06-17 11:40+0000\n"
-"Last-Translator: Ashley Rich <hello@ashleyrich.com>\n"
-"Language-Team: French (France) (http://www.transifex.com/projects/p/delightful-downloads/language/fr_FR/)\n"
+"PO-Revision-Date: 2014-06-17 12:43-0000\n"
+"Last-Translator: \n"
+"Language-Team: French (France) (http://www.transifex.com/projects/p/"
+"delightful-downloads/language/fr_FR/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -17,9 +18,11 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 "X-Generator: Poedit 1.6.5\n"
 "X-Poedit-Basepath: ..\n"
-"X-Poedit-KeywordsList: __;_e;_n:1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;esc_attr__;esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c;_n_noop:1,2;_nx_noop:3c,1,2;__ngettext_noop:1,2\n"
-"X-Poedit-SearchPath-0: .\n"
+"X-Poedit-KeywordsList: __;_e;_n:1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;esc_attr__;"
+"esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c;_n_noop:1,2;"
+"_nx_noop:3c,1,2;__ngettext_noop:1,2\n"
 "X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-SearchPath-0: .\n"
 
 #: delightful-downloads.php:214 includes/admin/page-settings.php:19
 msgid "Settings"
@@ -170,8 +173,7 @@ msgstr "Statistique du téléchargement"
 
 #: includes/admin/meta-boxes.php:46 includes/admin/meta-boxes.php:49
 #, php-format
-msgid ""
-"Download updated. Use the %s shortcode to include it in posts or pages."
+msgid "Download updated. Use the %s shortcode to include it in posts or pages."
 msgstr ""
 
 #: includes/admin/meta-boxes.php:47
@@ -313,7 +315,9 @@ msgstr "Activer"
 
 #: includes/admin/page-settings.php:265
 msgid "Check this option to allow downloads to be tagged or categorised."
-msgstr "Cochez cette option pour autoriser la catégorisation et le tague des téléchargements."
+msgstr ""
+"Cochez cette option pour autoriser la catégorisation et le tague des "
+"téléchargements."
 
 #: includes/admin/page-settings.php:280
 msgid "Member Only"
@@ -321,42 +325,58 @@ msgstr "Membre uniquement"
 
 #: includes/admin/page-settings.php:282
 msgid "Check this option to allow only logged in users to download files."
-msgstr "Cochez cette case pour autoriser uniquement les utilisateurs connectés à télécharger des fichiers."
+msgstr ""
+"Cochez cette case pour autoriser uniquement les utilisateurs connectés à "
+"télécharger des fichiers."
 
 #: includes/admin/page-settings.php:305
 msgid ""
 "Select the page that a user should be redirected to if they try to download "
-"a file when not logged in and the Members Only option is checked. If no page"
-" is selected a generic error message will be displayed."
-msgstr "Sélectionnez la page vers laquelle les utilisateurs non enregistrés doivent être redirigés si l'option Membres uniquement est sélectionnée. Si aucune page n'est indiquée, un message d'erreur générique sera affiché."
+"a file when not logged in and the Members Only option is checked. If no page "
+"is selected a generic error message will be displayed."
+msgstr ""
+"Sélectionnez la page vers laquelle les utilisateurs non enregistrés doivent "
+"être redirigés si l'option Membres uniquement est sélectionnée. Si aucune "
+"page n'est indiquée, un message d'erreur générique sera affiché."
 
 #: includes/admin/page-settings.php:319
 msgid "Enter user agents to block from downloading files. One per line."
-msgstr "Entrez les agents utilisateurs pour lesquels le téléchargement sera interdit. Un par ligne."
+msgstr ""
+"Entrez les agents utilisateurs pour lesquels le téléchargement sera "
+"interdit. Un par ligne."
 
 #: includes/admin/page-settings.php:333
 msgid ""
 "Set the default text to display on button and link style outputs. This can "
 "be overwritten on a per-download basis using the 'text' attribute."
-msgstr "Définissez le texte par défaut à afficher sur le bouton et le style de la sortie des liens. Chaque téléchargement peut contourner cette valeur avec l'attribut « text »."
+msgstr ""
+"Définissez le texte par défaut à afficher sur le bouton et le style de la "
+"sortie des liens. Chaque téléchargement peut contourner cette valeur avec "
+"l'attribut « text »."
 
 #: includes/admin/page-settings.php:353
 msgid ""
 "Choose the default output style for downloads. This can be overwritten on a "
 "per-download basis using the 'style' attribute."
-msgstr "Choisissez le style des listes de téléchargements par défaut. Chaque téléchargement peut contourner cette valeur avec l'attribut « style »."
+msgstr ""
+"Choisissez le style des listes de téléchargements par défaut. Chaque "
+"téléchargement peut contourner cette valeur avec l'attribut « style »."
 
 #: includes/admin/page-settings.php:375
 msgid ""
 "Choose the default button style. This can be overwritten on a per-download "
 "basis using the 'button' attribute."
-msgstr "Choisissez le style de bouton par défaut. Chaque téléchargement peut contourner cette valeur avec l'attribut « button »."
+msgstr ""
+"Choisissez le style de bouton par défaut. Chaque téléchargement peut "
+"contourner cette valeur avec l'attribut « button »."
 
 #: includes/admin/page-settings.php:397
 msgid ""
-"Choose the default output style for downloads lists. This can be overwritten"
-" on a per-list basis using the 'style' attribute."
-msgstr "Choisissez le style des listes de téléchargements par défaut. Chaque liste peut contourner cette valeur avec l'attribut « style »."
+"Choose the default output style for downloads lists. This can be overwritten "
+"on a per-list basis using the 'style' attribute."
+msgstr ""
+"Choisissez le style des listes de téléchargements par défaut. Chaque liste "
+"peut contourner cette valeur avec l'attribut « style »."
 
 #: includes/admin/page-settings.php:412
 msgid "Log Downloads"
@@ -364,7 +384,9 @@ msgstr "Fichier journal des téléchargements"
 
 #: includes/admin/page-settings.php:414
 msgid "Check this option to log downloads by admins."
-msgstr "Cochez cette case pour mettre dans un journal les téléchargements par les administrateurs."
+msgstr ""
+"Cochez cette case pour mettre dans un journal les téléchargements par les "
+"administrateurs."
 
 #: includes/admin/page-settings.php:428
 msgid ""
@@ -383,14 +405,20 @@ msgid ""
 "Check this option to include the Delightful Downloads stylesheet on the "
 "front-end. If this option is disabled you must manually add the button CSS "
 "classes to your theme's CSS file."
-msgstr "Cochez cette option pour inclure la feuille de style de Delightful Downloads. Si cette option n'est pas activée vous devez ajouter manuellement les classes css du bouton au fichier css de votre thème. "
+msgstr ""
+"Cochez cette option pour inclure la feuille de style de Delightful "
+"Downloads. Si cette option n'est pas activée vous devez ajouter manuellement "
+"les classes css du bouton au fichier css de votre thème. "
 
 #: includes/admin/page-settings.php:487
 msgid ""
 "Set the URL for download links. This should be left as the default value, "
 "unless absolutely sure that it will not cause conflicts with existing "
 "permalinks or plugins."
-msgstr "Définir l'URL pour les liens de téléchargement. Ceci devrait être laissé comme la valeur par défaut, sauf si vous êtes vraiment sûr que cela ne causera pas de conflits avec les permaliens ou extensions existantes."
+msgstr ""
+"Définir l'URL pour les liens de téléchargement. Ceci devrait être laissé "
+"comme la valeur par défaut, sauf si vous êtes vraiment sûr que cela ne "
+"causera pas de conflits avec les permaliens ou extensions existantes."
 
 #: includes/admin/page-statistics.php:22 includes/admin/page-statistics.php:38
 #: includes/admin/page-statistics.php:107

@@ -1,4 +1,4 @@
-# 
+#
 # Translators:
 # Christian <christian.lehberger@googlemail.com>, 2014
 # WebSource <info@websource.li>, 2014
@@ -6,9 +6,10 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Delightful Downloads\n"
 "POT-Creation-Date: 2014-06-17 12:35-0000\n"
-"PO-Revision-Date: 2014-06-17 11:40+0000\n"
-"Last-Translator: Ashley Rich <hello@ashleyrich.com>\n"
-"Language-Team: German (Germany) (http://www.transifex.com/projects/p/delightful-downloads/language/de_DE/)\n"
+"PO-Revision-Date: 2014-06-17 12:43-0000\n"
+"Last-Translator: \n"
+"Language-Team: German (Germany) (http://www.transifex.com/projects/p/"
+"delightful-downloads/language/de_DE/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -16,9 +17,11 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: Poedit 1.6.5\n"
 "X-Poedit-Basepath: ..\n"
-"X-Poedit-KeywordsList: __;_e;_n:1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;esc_attr__;esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c;_n_noop:1,2;_nx_noop:3c,1,2;__ngettext_noop:1,2\n"
-"X-Poedit-SearchPath-0: .\n"
+"X-Poedit-KeywordsList: __;_e;_n:1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;esc_attr__;"
+"esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c;_n_noop:1,2;"
+"_nx_noop:3c,1,2;__ngettext_noop:1,2\n"
 "X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-SearchPath-0: .\n"
 
 #: delightful-downloads.php:214 includes/admin/page-settings.php:19
 msgid "Settings"
@@ -169,8 +172,7 @@ msgstr "Download-Statistik"
 
 #: includes/admin/meta-boxes.php:46 includes/admin/meta-boxes.php:49
 #, php-format
-msgid ""
-"Download updated. Use the %s shortcode to include it in posts or pages."
+msgid "Download updated. Use the %s shortcode to include it in posts or pages."
 msgstr ""
 
 #: includes/admin/meta-boxes.php:47
@@ -325,37 +327,53 @@ msgstr "Nur eingeloggte User dürfen Dateien herunterladen."
 #: includes/admin/page-settings.php:305
 msgid ""
 "Select the page that a user should be redirected to if they try to download "
-"a file when not logged in and the Members Only option is checked. If no page"
-" is selected a generic error message will be displayed."
-msgstr "Legen Sie die Seite fest, auf die Anwender umgeleitet werden, wenn sie eine Datei herunterladen möchten, die nur für eingeloggte User bereitsteht. Falls Sie hier keine Seite angeben, wird eine Fehlermeldung eingeblendet."
+"a file when not logged in and the Members Only option is checked. If no page "
+"is selected a generic error message will be displayed."
+msgstr ""
+"Legen Sie die Seite fest, auf die Anwender umgeleitet werden, wenn sie eine "
+"Datei herunterladen möchten, die nur für eingeloggte User bereitsteht. Falls "
+"Sie hier keine Seite angeben, wird eine Fehlermeldung eingeblendet."
 
 #: includes/admin/page-settings.php:319
 msgid "Enter user agents to block from downloading files. One per line."
-msgstr "Fügen Sie User Agents und Spider etc. hinzu, die Dateien nicht herunterladen dürfen. Ein Eintrag pro Zeile."
+msgstr ""
+"Fügen Sie User Agents und Spider etc. hinzu, die Dateien nicht herunterladen "
+"dürfen. Ein Eintrag pro Zeile."
 
 #: includes/admin/page-settings.php:333
 msgid ""
 "Set the default text to display on button and link style outputs. This can "
 "be overwritten on a per-download basis using the 'text' attribute."
-msgstr "Standardtext für die Anzeige auf Buttons und in Download-Link-Texten. Diese Vorgabe kann bei jeder Download-Datei überschrieben werden, nutzen Sie dafür das 'text'-Attribut."
+msgstr ""
+"Standardtext für die Anzeige auf Buttons und in Download-Link-Texten. Diese "
+"Vorgabe kann bei jeder Download-Datei überschrieben werden, nutzen Sie dafür "
+"das 'text'-Attribut."
 
 #: includes/admin/page-settings.php:353
 msgid ""
 "Choose the default output style for downloads. This can be overwritten on a "
 "per-download basis using the 'style' attribute."
-msgstr "Legen Sie den Standard-Anzeige-Stil für Downloads fest. Diese Vorgabe kann bei jeder Download-Datei überschrieben werden, nutzen Sie dafür das 'style-Attribut."
+msgstr ""
+"Legen Sie den Standard-Anzeige-Stil für Downloads fest. Diese Vorgabe kann "
+"bei jeder Download-Datei überschrieben werden, nutzen Sie dafür das 'style-"
+"Attribut."
 
 #: includes/admin/page-settings.php:375
 msgid ""
 "Choose the default button style. This can be overwritten on a per-download "
 "basis using the 'button' attribute."
-msgstr "Legen Sie den Standard-Stil für Buttons fest. Diese Vorgabe kann bei jeder Download-Datei überschrieben werden, nutzen Sie dafür das 'button-Attribut."
+msgstr ""
+"Legen Sie den Standard-Stil für Buttons fest. Diese Vorgabe kann bei jeder "
+"Download-Datei überschrieben werden, nutzen Sie dafür das 'button-Attribut."
 
 #: includes/admin/page-settings.php:397
 msgid ""
-"Choose the default output style for downloads lists. This can be overwritten"
-" on a per-list basis using the 'style' attribute."
-msgstr "Legen Sie den Standard-Anzeige-Stil für Downloads fest.  Diese Vorgabe kann bei jeder Download-Datei überschrieben werden, nutzen Sie dafür das 'style'-Attribut."
+"Choose the default output style for downloads lists. This can be overwritten "
+"on a per-list basis using the 'style' attribute."
+msgstr ""
+"Legen Sie den Standard-Anzeige-Stil für Downloads fest.  Diese Vorgabe kann "
+"bei jeder Download-Datei überschrieben werden, nutzen Sie dafür das 'style'-"
+"Attribut."
 
 #: includes/admin/page-settings.php:412
 msgid "Log Downloads"
@@ -382,14 +400,20 @@ msgid ""
 "Check this option to include the Delightful Downloads stylesheet on the "
 "front-end. If this option is disabled you must manually add the button CSS "
 "classes to your theme's CSS file."
-msgstr "Das Stylesheet des Plugins \"Delightful Downloads\" im Frontend-Editor einbinden. Falls diese Option nicht aktiviert ist. müssen Sie selbst die Button-Classes zum Stylesheet Ihres Themes hinzufügen."
+msgstr ""
+"Das Stylesheet des Plugins \"Delightful Downloads\" im Frontend-Editor "
+"einbinden. Falls diese Option nicht aktiviert ist. müssen Sie selbst die "
+"Button-Classes zum Stylesheet Ihres Themes hinzufügen."
 
 #: includes/admin/page-settings.php:487
 msgid ""
 "Set the URL for download links. This should be left as the default value, "
 "unless absolutely sure that it will not cause conflicts with existing "
 "permalinks or plugins."
-msgstr "Legen Sie die URL für die Download-Links fest. Achten Sie darauf, daß Sie dabei Konflikte mit anderen Plugins oder bestehenden Permalinks vermeiden, am besten belassen Sie den Standardwert."
+msgstr ""
+"Legen Sie die URL für die Download-Links fest. Achten Sie darauf, daß Sie "
+"dabei Konflikte mit anderen Plugins oder bestehenden Permalinks vermeiden, "
+"am besten belassen Sie den Standardwert."
 
 #: includes/admin/page-statistics.php:22 includes/admin/page-statistics.php:38
 #: includes/admin/page-statistics.php:107
