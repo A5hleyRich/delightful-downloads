@@ -35,6 +35,16 @@ class DEDO_Cache {
 	 */
 	private $cache_duration;
 
+	/**
+	 * Cache Key
+	 *
+	 * Unique key for data.
+	 *
+	 * @var string
+	 * @access private
+	 * @since 1.4
+	 */
+	private $key;
 
 	/**
 	 * Cached
@@ -54,14 +64,15 @@ class DEDO_Cache {
 	 *
 	 * @return void
 	 */
-	public function __construct() {
+	public function __construct( $key ) {
 
 		global $dedo_options;
 
 		if ( $dedo_options['cache_duration'] > 0 ) {
 
 			$this->cache_enabled = true;
-			$this->cache_duration = $dedo_options['cache_duration'];
+			$this->cache_duration = $dedo_options['cache_duration'] * 60;
+			$this->key = $key;
 		}
 	}
 	/**
@@ -74,9 +85,9 @@ class DEDO_Cache {
 	 * @param string $sql Prepared SQL statement.
 	 * @return mixed Mixed result or false on failure.
 	 */
-	public function get( $key ) {
+	public function get() {
 
-		if ( $this->cache_enabled && false !== ( $data = get_transient( $key ) ) ) {
+		if ( true === $this->cache_enabled && false !== ( $data = get_transient( $this->key ) ) ) {
 
 			// Set cached flag
 			$this->cached = true;
@@ -98,15 +109,12 @@ class DEDO_Cache {
 	 * @param string $sql Prepared SQL statement.
 	 * @return void
 	 */
-	public function set( $key, $result ) {
+	public function set( $result ) {
 
 		if ( true === $this->cache_enabled && false === $this->cached  ) {
 
 			// Save transient
-			set_transient( $key, $result, $this->cache_duration );
-
-			// Set cached flag
-			$this->cached = true;
+			set_transient( $this->key, $result, $this->cache_duration );
 		}
 	}
 

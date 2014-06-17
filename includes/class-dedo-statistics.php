@@ -46,15 +46,18 @@ class DEDO_Statistics {
 
 		// Parse arguments with defaults
 		extract( wp_parse_args( $args, array(
-			'days'			=> 0,
-			'download_id'	=> 0,
+			'days'			=> false,
+			'download_id'	=> false,
 			'cache'			=> true
 		) ) );
 
-		// First check for cached data
-		$key = 'dedo_downloads_days' . $days . 'id' . $download_id;
+		// Create cache key
+		$key = 'dedo_count_days' . absint( $days ) . 'id' . absint( $download_id );
 
-		if ( true == $cache && false !== ( $cached_data = dedo_get_cache( $key ) ) ) {
+		$dedo_cache = new DEDO_Cache( $key );
+
+		// Check for cached data
+		if ( true == $cache && false !== ( $cached_data = $dedo_cache->get( $key ) ) ) {
 
 			return $cached_data;
 		}
@@ -86,7 +89,7 @@ class DEDO_Statistics {
 		}
 
 		// Save to cache
-		dedo_set_cache( $key, $result );
+		$dedo_cache->set( $result );
 
 		return ( $result === NULL ) ? 0 : $result;
 	}
@@ -159,10 +162,13 @@ class DEDO_Statistics {
 
 		global $wpdb;
 
-		// First check for cached data
-		$key = 'dedo_popular_days' . $days . 'limit' . $limit;
+		// Create cache key
+		$key = 'dedo_popular_days' . absint( $days ) . 'limit' . absint( $limit );
 
-		if ( true == $cache && false !== ( $cached_data = dedo_get_cache( $key ) ) ) {
+		$dedo_cache = new DEDO_Cache( $key );
+
+		// Check for cached data
+		if ( true == $cache && false !== ( $cached_data = $dedo_cache->get( $key ) ) ) {
 
 			return $cached_data;
 		}
@@ -216,7 +222,7 @@ class DEDO_Statistics {
 		}
 
 		// Save to cache
-		dedo_set_cache( $key, $result );
+		$dedo_cache->set( $result );
 
 		return $result;
 	}
