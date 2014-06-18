@@ -185,6 +185,9 @@ class Delightful_Downloads {
 		// Add default options to database if no options exist
 		add_option( 'delightful-downloads', $dedo_default_options );
 
+		// Add option for admin notices
+		add_option( 'delightful-downloads-notices', array() );
+
 		// Run folder protection
 		dedo_folder_protection();
 		

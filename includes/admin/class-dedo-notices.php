@@ -100,8 +100,8 @@ class DEDO_Notices {
 				unset( $this->notices[$key] );
 			}
 
-			// Update option
-			delete_option( 'delightful-downloads-notices' );
+			// Update option, option kept so as to auto load on each admin request
+			update_option( 'delightful-downloads-notices', $this->notices );
 		}
 	}
 

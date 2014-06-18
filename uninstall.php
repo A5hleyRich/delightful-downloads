@@ -83,5 +83,6 @@ if ( $dedo_options['uninstall'] ) {
 	delete_option( 'delightful-downloads' );
 	delete_option( 'delightful-downloads-version' );
 	delete_option( 'delightful-downloads-prior-version' );
+	delete_option( 'delightful-downloads-notices' );
 
 }

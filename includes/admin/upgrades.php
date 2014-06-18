@@ -47,6 +47,9 @@ function dedo_check_upgrades() {
 		if ( $result > 0 ) {
 			add_option( 'delightful-downloads-legacy-logs', $result );
 		}
+
+		// Add new option for admin notices
+		add_option( 'delightful-downloads-notices', array() );
 	}
 
 	// Update version numbers
