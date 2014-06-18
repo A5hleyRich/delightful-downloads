@@ -42,7 +42,7 @@ function dedo_download_post_type() {
 		'supports' 			=> apply_filters( 'dedo_ddownload_supports', array( 'title' ) )
 	); 
 
-	register_post_type( 'dedo_download', $args );
+	register_post_type( 'dedo_download', apply_filters( 'dedo_ddownload_args', $args ) );
 
 }
 add_action( 'init', 'dedo_download_post_type' );
