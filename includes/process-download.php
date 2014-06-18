@@ -89,10 +89,23 @@ function dedo_download_process() {
 		// Close sessions, which can sometimes cause buffering errors??
 		@session_write_close();
 		
-		// Disable nested buffering.... 3 hours of head scratching!!
-		do {
-			@ob_end_clean();
-		} while ( ob_get_level() > 0 );
+		/**
+		 * Output Buffering
+		 *
+		 * The majority of servers work when clearing output buffering.
+		 * If you get corrupt or blank downloads try the following:
+		 *
+		 * Disable by adding the following, to your theme's functions.php file:
+		 * 
+		 * add_filter( 'dedo_clear_output_buffers', '__return_false' );
+		 *
+		 */
+		if ( apply_filters( 'dedo_clear_output_buffers', true ) ) {
+			
+			do {
+				@ob_end_clean();
+			} while ( ob_get_level() > 0 );
+		}
 		
 		// Disable max_execution_time
 		set_time_limit( 0 );
@@ -117,7 +130,7 @@ function dedo_download_process() {
 			header( "Content-Description: File Transfer" );
 			header( "Content-Disposition: attachment; filename=\"" . basename( $download_path ) . "\";" );
 			header( "Content-Transfer-Encoding: binary" );
-			header( "Content-Length: " . filesize( $download_path ) );
+			header( "Content-Length: " . @filesize( $download_path ) ); // filesize causes blank downloads on Windows servers
 
 			// Output file in chuncks
 			while ( !feof( $file ) ) {
