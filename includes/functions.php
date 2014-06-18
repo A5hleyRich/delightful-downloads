@@ -418,30 +418,30 @@ function dedo_folder_scan( $dir ) {
 }
 
 /**
- * Get Total Downloads Filesize
+ * Get Downloads Filesize
  *
  * Returns the total filesize of all files.
  *
  * @since   1.3
  */
-function dedo_get_total_filesize() {
+function dedo_get_filesize( $download_id = false ) {
 	global $wpdb;
 
 	$sql = $wpdb->prepare( "
 		SELECT SUM( meta_value )
 		FROM $wpdb->postmeta
 		WHERE meta_key = %s
-		", 
-		'_dedo_file_size' 
-	);
+	", 
+	'_dedo_file_size' );
+
+	if ( $download_id ) {
+
+		$sql .= $wpdb->prepare( " AND post_id = %d", $download_id );
+	}
 
 	$return = $wpdb->get_var( $sql );
 
-	if ( $return == NULL ) {
-		return 0;
-	}
-
-	return $return;
+	return ( NULL !== $return ) ? $return : 0;
 }
 
 /**
