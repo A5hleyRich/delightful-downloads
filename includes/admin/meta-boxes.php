@@ -223,8 +223,5 @@ function dedo_meta_boxes_save( $post_id ) {
 		}
 
 	}
-
-	// Clear transients
-	dedo_delete_all_transients();
 }
 add_action( 'save_post', 'dedo_meta_boxes_save' );

@@ -458,9 +458,13 @@ function dedo_delete_all_transients() {
 		DELETE FROM $wpdb->options
 		WHERE option_name LIKE %s
 		OR option_name LIKE %s
+		OR option_name LIKE %s
+		OR option_name LIKE %s
 		", 
 		'\_transient\_delightful-downloads%%', 
-		'\_transient\_timeout\_delightful-downloads%%' );
+		'\_transient\_timeout\_delightful-downloads%%',
+		'\_transient\_dedo%%',
+		'\_transient\_timeout\_dedo%%' );
 
 	$wpdb->query( $sql );
 }

@@ -199,7 +199,6 @@ class Delightful_Downloads {
 
 		// Clear dedo transients
 		dedo_delete_all_transients();
-		
 	}
 
 	/**

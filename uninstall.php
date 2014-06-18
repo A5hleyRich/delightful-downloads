@@ -16,6 +16,9 @@ include_once( 'delightful-downloads.php' );
 // Globals
 global $wpdb, $dedo_options, $dedo_statistics;
 
+// Clear transients
+dedo_delete_all_transients();
+
 // Check for complete uninstall
 if ( $dedo_options['uninstall'] ) {
 
