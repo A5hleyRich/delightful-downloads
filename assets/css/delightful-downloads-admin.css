@@ -186,6 +186,7 @@
 }
 .post-type-dedo_download #dedo-file-url {
   width: 100%;
+  padding-right: 60px;
   box-sizing: border-box;
 }
 .post-type-dedo_download .remove a {
