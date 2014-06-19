@@ -394,16 +394,21 @@
   color: #dd3d36;
 }
 /* Settings page */
+.dedo_download_page_dedo_settings .nav-tab-wrapper {
+  margin-bottom: 0;
+}
 .dedo_download_page_dedo_settings #dedo-settings-main {
   float: left;
   width: 75%;
   padding-right: 20px;
+  padding-top: 1em;
   box-sizing: border-box;
 }
 .dedo_download_page_dedo_settings #dedo-settings-sidebar {
   float: left;
   width: 25%;
   border-left: 1px solid #ccc;
+  padding-top: 1em;
   padding-left: 20px;
   box-sizing: border-box;
 }
