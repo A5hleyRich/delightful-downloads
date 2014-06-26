@@ -37,7 +37,8 @@ function dedo_dashboard_downloads_widget() {
 	wp_localize_script( 'dedo-admin-js-global', 'DEDODashboardOptions', array(
 		'ajaxURL'		=> admin_url( 'admin-ajax.php', isset( $_SERVER['HTTPS'] ) ? 'https://' : 'http://' ),
 		'nonce'			=> wp_create_nonce( 'dedo_dashboard' ),
-		'errorText'		=> __( 'Download statistics could not be retrieved.', 'delightful-downloads' )
+		'errorText'		=> __( 'Download statistics could not be retrieved.', 'delightful-downloads' ),
+		'noResultsText'	=> __( 'There are no popular downloads yet!', 'delightful-downloads' )
 	) );
 
 	?>

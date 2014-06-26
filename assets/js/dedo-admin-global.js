@@ -141,17 +141,28 @@ jQuery( document ).ready( function( $ ) {
 			// Request successful
 			if ( 'success' === response.status ) {
 				
-				var output = '<ol id="popular-downloads" style="display: none;">';
+				var output;
 
-				// Success, build list
-				$.each( response.content, function( key, value) {
-				
-					output += '<li>';
-					output += '<a href="' + value.url + '">' + value.title + ' <span class="count">' + value.downloads + '</span></a>';
-					output += '</li>';
-				} );
+				// Results returned
+				if ( response.content.length > 0 ) {
 
-				output += '</ol>';
+					output = '<ol id="popular-downloads" style="display: none;">';
+
+					// Success, build list
+					$.each( response.content, function( key, value) {
+					
+						output += '<li>';
+						output += '<a href="' + value.url + '">' + value.title + ' <span class="count">' + value.downloads + '</span></a>';
+						output += '</li>';
+					} );
+
+					output += '</ol>';
+
+				}
+				else {
+
+					output = '<p id="popular-downloads" style="display: none;">' + this.options.noResultsText + '</p>';
+				}
 
 				// Slide out and remove old list
 				$( '#popular-downloads' ).slideUp( 300, function() {
