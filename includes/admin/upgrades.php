@@ -96,7 +96,7 @@ function dedo_upgrade_notices() {
 
 		?>
 		<div id="dedo_migrate_message" class="error">
-			<p><?php echo sprintf( __( 'You have %s logs from an older version of Delightful Downloads.', 'delightful-downloads' ), '<strong id="dedo_migrate_count">' .  $legacy_logs . '</strong>' ); ?></p>
+			<p><?php echo sprintf( __( 'You have %s logs from an older version of Delightful Downloads. %sPlease make a backup of your database before migrating!%s', 'delightful-downloads' ), '<strong id="dedo_migrate_count">' .  $legacy_logs . '</strong>', '<p><strong>', '</strong></p>' ); ?></p>
 			<p style="overflow: hidden;">
 				<input type="button" id="dedo_migrate_button" name="dedo_migrate" value="<?php _e( 'Migrate', 'delightful-downloads' ); ?>" class="button button-primary" style="float: left;" />
 				<span class="spinner" style="float: left; margin-left: 10px;"></span>
