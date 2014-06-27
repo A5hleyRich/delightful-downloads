@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Delightful Downloads\n"
-"POT-Creation-Date: 2014-06-17 12:35-0000\n"
-"PO-Revision-Date: 2014-06-17 12:35-0000\n"
+"POT-Creation-Date: 2014-06-27 12:07-0000\n"
+"PO-Revision-Date: 2014-06-27 12:07-0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: en_US\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Poedit-SearchPath-0: .\n"
 
-#: delightful-downloads.php:214 includes/admin/page-settings.php:19
+#: delightful-downloads.php:217 includes/admin/page-settings.php:19
 msgid "Settings"
 msgstr ""
 
@@ -74,32 +74,32 @@ msgstr ""
 msgid "Download statistics could not be retrieved."
 msgstr ""
 
-#: includes/admin/dashboard.php:49 includes/admin/dashboard.php:94
-msgid "Last 24 Hours"
-msgstr ""
-
-#: includes/admin/dashboard.php:53 includes/admin/dashboard.php:95
-msgid "Last 7 Days"
-msgstr ""
-
-#: includes/admin/dashboard.php:57 includes/admin/dashboard.php:96
-msgid "Last 30 Days"
-msgstr ""
-
-#: includes/admin/dashboard.php:61 includes/admin/dashboard.php:97
-msgid "All Time"
-msgstr ""
-
-#: includes/admin/dashboard.php:66
-msgid "Popular Downloads"
-msgstr ""
-
-#: includes/admin/dashboard.php:87
+#: includes/admin/dashboard.php:41 includes/admin/dashboard.php:88
 msgid "There are no popular downloads yet!"
 msgstr ""
 
-#: includes/admin/dashboard.php:121 includes/admin/dashboard.php:159
-#: includes/admin/upgrades.php:127
+#: includes/admin/dashboard.php:50 includes/admin/dashboard.php:95
+msgid "Last 24 Hours"
+msgstr ""
+
+#: includes/admin/dashboard.php:54 includes/admin/dashboard.php:96
+msgid "Last 7 Days"
+msgstr ""
+
+#: includes/admin/dashboard.php:58 includes/admin/dashboard.php:97
+msgid "Last 30 Days"
+msgstr ""
+
+#: includes/admin/dashboard.php:62 includes/admin/dashboard.php:98
+msgid "All Time"
+msgstr ""
+
+#: includes/admin/dashboard.php:67
+msgid "Popular Downloads"
+msgstr ""
+
+#: includes/admin/dashboard.php:122 includes/admin/dashboard.php:160
+#: includes/admin/upgrades.php:140
 msgid "Failed security check!"
 msgstr ""
 
@@ -409,24 +409,30 @@ msgstr ""
 msgid "Logs deleted successfully."
 msgstr ""
 
-#: includes/admin/upgrades.php:89 includes/admin/upgrades.php:98
+#: includes/admin/upgrades.php:55
+msgid "Delightful Downloads updated to version 1.4."
+msgstr ""
+
+#: includes/admin/upgrades.php:102 includes/admin/upgrades.php:111
 msgid "Migrate"
 msgstr ""
 
-#: includes/admin/upgrades.php:90
+#: includes/admin/upgrades.php:103
 msgid "Stop"
 msgstr ""
 
-#: includes/admin/upgrades.php:91
+#: includes/admin/upgrades.php:104
 msgid "The migration could not start due to an error."
 msgstr ""
 
-#: includes/admin/upgrades.php:96
+#: includes/admin/upgrades.php:109
 #, php-format
-msgid "You have %s logs from an older version of Delightful Downloads."
+msgid ""
+"You have %s logs from an older version of Delightful Downloads. %sPlease "
+"make a backup of your database before migrating!%s"
 msgstr ""
 
-#: includes/admin/upgrades.php:102
+#: includes/admin/upgrades.php:115
 msgid "JavaScript must be enabled to migrate legacy logs."
 msgstr ""
 
@@ -638,36 +644,36 @@ msgstr ""
 msgid "You must attach a file to this download."
 msgstr ""
 
-#: includes/process-download.php:110
+#: includes/process-download.php:123
 msgid "Server error, file cannot be opened!"
 msgstr ""
 
-#: includes/shortcodes.php:45 includes/shortcodes.php:117
-#: includes/shortcodes.php:150
+#: includes/shortcodes.php:46 includes/shortcodes.php:332
+#: includes/shortcodes.php:396
 msgid "Invalid download ID."
 msgstr ""
 
-#: includes/shortcodes.php:55 includes/shortcodes.php:300
+#: includes/shortcodes.php:58 includes/shortcodes.php:251
 msgid "Invalid style attribute."
 msgstr ""
 
-#: includes/shortcodes.php:72
+#: includes/shortcodes.php:79
 msgid "Invalid button attribute."
 msgstr ""
 
-#: includes/shortcodes.php:203
+#: includes/shortcodes.php:144
 msgid "Invalid orderby attribute."
 msgstr ""
 
-#: includes/shortcodes.php:229
+#: includes/shortcodes.php:175
 msgid "Invalid order attribute."
 msgstr ""
 
-#: includes/shortcodes.php:237
+#: includes/shortcodes.php:184
 msgid "Invalid relation attribute."
 msgstr ""
 
-#: includes/shortcodes.php:331
+#: includes/shortcodes.php:298
 msgid "No downloads found."
 msgstr ""
 

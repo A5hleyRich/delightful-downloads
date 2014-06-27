@@ -1,4 +1,4 @@
-#
+# 
 # Translators:
 # Calinou, 2014
 # FxB <fxb@wp-translations.org>, 2014
@@ -6,11 +6,10 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Delightful Downloads\n"
-"POT-Creation-Date: 2014-06-17 12:35-0000\n"
-"PO-Revision-Date: 2014-06-17 12:43-0000\n"
-"Last-Translator: \n"
-"Language-Team: French (France) (http://www.transifex.com/projects/p/"
-"delightful-downloads/language/fr_FR/)\n"
+"POT-Creation-Date: 2014-06-27 12:07-0000\n"
+"PO-Revision-Date: 2014-06-27 11:08+0000\n"
+"Last-Translator: Ashley Rich <hello@ashleyrich.com>\n"
+"Language-Team: French (France) (http://www.transifex.com/projects/p/delightful-downloads/language/fr_FR/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -18,13 +17,11 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 "X-Generator: Poedit 1.6.5\n"
 "X-Poedit-Basepath: ..\n"
-"X-Poedit-KeywordsList: __;_e;_n:1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;esc_attr__;"
-"esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c;_n_noop:1,2;"
-"_nx_noop:3c,1,2;__ngettext_noop:1,2\n"
-"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-KeywordsList: __;_e;_n:1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;esc_attr__;esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c;_n_noop:1,2;_nx_noop:3c,1,2;__ngettext_noop:1,2\n"
 "X-Poedit-SearchPath-0: .\n"
+"X-Poedit-SourceCharset: UTF-8\n"
 
-#: delightful-downloads.php:214 includes/admin/page-settings.php:19
+#: delightful-downloads.php:217 includes/admin/page-settings.php:19
 msgid "Settings"
 msgstr "Réglages"
 
@@ -66,48 +63,48 @@ msgstr "Inconnu"
 
 #: includes/admin/class-dedo-list-table.php:147
 msgid "Non-member"
-msgstr ""
+msgstr "Non-membre"
 
 #: includes/admin/class-dedo-list-table.php:183
 msgid "No download logs found."
-msgstr ""
+msgstr "Aucun journal de téléchargement trouvé."
 
 #: includes/admin/dashboard.php:22
 msgid "Download Statistics"
-msgstr ""
+msgstr "Statistiques de téléchargement"
 
 #: includes/admin/dashboard.php:40
 msgid "Download statistics could not be retrieved."
-msgstr ""
+msgstr "Impossible de récupérer les statistiques de téléchargement."
 
-#: includes/admin/dashboard.php:49 includes/admin/dashboard.php:94
+#: includes/admin/dashboard.php:41 includes/admin/dashboard.php:88
+msgid "There are no popular downloads yet!"
+msgstr "Il n'y a encore aucun téléchargement populaire !"
+
+#: includes/admin/dashboard.php:50 includes/admin/dashboard.php:95
 msgid "Last 24 Hours"
 msgstr "Dernières 24 heures"
 
-#: includes/admin/dashboard.php:53 includes/admin/dashboard.php:95
+#: includes/admin/dashboard.php:54 includes/admin/dashboard.php:96
 msgid "Last 7 Days"
 msgstr "Derniers 7 jours"
 
-#: includes/admin/dashboard.php:57 includes/admin/dashboard.php:96
+#: includes/admin/dashboard.php:58 includes/admin/dashboard.php:97
 msgid "Last 30 Days"
 msgstr "Derniers 30 jours"
 
-#: includes/admin/dashboard.php:61 includes/admin/dashboard.php:97
+#: includes/admin/dashboard.php:62 includes/admin/dashboard.php:98
 msgid "All Time"
 msgstr "Tout temps"
 
-#: includes/admin/dashboard.php:66
+#: includes/admin/dashboard.php:67
 msgid "Popular Downloads"
-msgstr ""
+msgstr "Téléchargements populaires"
 
-#: includes/admin/dashboard.php:87
-msgid "There are no popular downloads yet!"
-msgstr ""
-
-#: includes/admin/dashboard.php:121 includes/admin/dashboard.php:159
-#: includes/admin/upgrades.php:127
+#: includes/admin/dashboard.php:122 includes/admin/dashboard.php:160
+#: includes/admin/upgrades.php:140
 msgid "Failed security check!"
-msgstr ""
+msgstr "Échec de la vérification de sécurité !"
 
 #: includes/admin/media-button.php:39 includes/admin/media-button.php:111
 msgid "Insert Download"
@@ -173,8 +170,9 @@ msgstr "Statistique du téléchargement"
 
 #: includes/admin/meta-boxes.php:46 includes/admin/meta-boxes.php:49
 #, php-format
-msgid "Download updated. Use the %s shortcode to include it in posts or pages."
-msgstr ""
+msgid ""
+"Download updated. Use the %s shortcode to include it in posts or pages."
+msgstr "Téléchargement mis à jour. Utiliser le raccourci %s pour l'inclure dans vos articles ou pages."
 
 #: includes/admin/meta-boxes.php:47
 msgid "Custom field updated."
@@ -187,26 +185,26 @@ msgstr "Champ personnalisé supprimé."
 #: includes/admin/meta-boxes.php:50
 #, php-format
 msgid "Download restored to revision from %s"
-msgstr ""
+msgstr "Téléchargement restauré depuis la révision du %s"
 
 #: includes/admin/meta-boxes.php:51
 #, php-format
 msgid ""
 "Download published. Use the %s shortcode to include it in posts or pages."
-msgstr ""
+msgstr "Téléchargement publié. Utiliser le raccourci %s pour l'inclure dans vos articles ou pages."
 
 #: includes/admin/meta-boxes.php:52
 msgid "Download saved."
-msgstr ""
+msgstr "Téléchargement sauvegardé."
 
 #: includes/admin/meta-boxes.php:53
 msgid "Download submitted."
-msgstr ""
+msgstr "Téléchargement envoyé."
 
 #: includes/admin/meta-boxes.php:54
 #, php-format
 msgid "Download scheduled for: <strong>%1$s</strong>."
-msgstr ""
+msgstr "Téléchargement programmé pour le: <strong>%1$s</strong>."
 
 #: includes/admin/meta-boxes.php:55
 msgid "M j, Y @ G:i"
@@ -214,7 +212,7 @@ msgstr "j F Y \\à G \\h i \\m"
 
 #: includes/admin/meta-boxes.php:56
 msgid "Download draft updated."
-msgstr ""
+msgstr "Brouillon du téléchargement mis à jour."
 
 #: includes/admin/meta-boxes.php:85
 msgid "Allowed Files"
@@ -226,11 +224,11 @@ msgstr "Adresse web du fichier&nbsp;:"
 
 #: includes/admin/meta-boxes.php:114
 msgid "Upload or enter the file URL."
-msgstr ""
+msgstr "Télécharger ou entrer l'url du fichier."
 
 #: includes/admin/meta-boxes.php:118
 msgid "Unkown"
-msgstr ""
+msgstr "Inconnu"
 
 #: includes/admin/meta-boxes.php:124
 msgid "Upload File"
@@ -251,15 +249,15 @@ msgstr "Compter"
 
 #: includes/admin/page-settings.php:19 includes/admin/page-settings.php:79
 msgid "Download Settings"
-msgstr ""
+msgstr "Réglages du téléchargement"
 
 #: includes/admin/page-settings.php:80
 msgid "You are about to reset the download settings."
-msgstr ""
+msgstr "Vous êtes sur le point de réinitialiser les paramètres du téléchargement."
 
 #: includes/admin/page-settings.php:80
 msgid "Reset Defaults"
-msgstr ""
+msgstr "Réinitialiser les paramètres par défaut"
 
 #: includes/admin/page-settings.php:85
 msgid "Settings updated successfully."
@@ -267,18 +265,18 @@ msgstr "Réglages bien mis à jour"
 
 #: includes/admin/page-settings.php:198
 msgid "Help and Support"
-msgstr ""
+msgstr "Aide & Support"
 
 #: includes/admin/page-settings.php:199
 #, php-format
 msgid ""
 "Please take a moment to look at the %sdocumentation%s. If you are still "
 "having issues, please leave a %ssupport request%s."
-msgstr ""
+msgstr "S'il vous plaît prenez un moment pour lire la %sdocumentation%s. Si vous rencontrez toujours des problèmes, veuillez laisser une %sdemande de support%s."
 
 #: includes/admin/page-settings.php:201
 msgid "Share the Love"
-msgstr ""
+msgstr "Partager votre amour"
 
 #: includes/admin/page-settings.php:202
 #, php-format
@@ -286,27 +284,27 @@ msgid ""
 "Enjoy Delightful Downloads? Please consider %sdonating%s a few dollars, to "
 "help support future development. Alternatively, a %splugin review%s is "
 "always appreciated."
-msgstr ""
+msgstr "Vous aimez Delightful Downloads ? Vous pouvez faire un %sdon%s de quelques dollars, pour aider à soutenir les prochains développements. Par ailleurs, un bon %savis sur l'extension%s est toujours le bienvenu."
 
 #: includes/admin/page-settings.php:204
 msgid "About the Developer"
-msgstr ""
+msgstr "À propos du développeur"
 
 #: includes/admin/page-settings.php:205
 #, php-format
 msgid ""
 "Hey there! I'm %sAshley Rich%s, a freelance web designer and WordPress "
 "developer based in the West Midlands, England."
-msgstr ""
+msgstr "Salut tout le monde ! Je suis %sAshley Rich%s un web designer freelance et développeur WordPress basé dans les West Midlands en Angleterre."
 
 #: includes/admin/page-settings.php:206
 #, php-format
 msgid "%sTwitter%s"
-msgstr ""
+msgstr "%sTwitter%s"
 
 #: includes/admin/page-settings.php:234
 msgid "Default settings reset successfully."
-msgstr ""
+msgstr "Paramètres par défaut réinitialisés avec succès."
 
 #: includes/admin/page-settings.php:263 includes/admin/page-settings.php:457
 #: includes/admin/page-settings.php:502
@@ -315,9 +313,7 @@ msgstr "Activer"
 
 #: includes/admin/page-settings.php:265
 msgid "Check this option to allow downloads to be tagged or categorised."
-msgstr ""
-"Cochez cette option pour autoriser la catégorisation et le tague des "
-"téléchargements."
+msgstr "Cochez cette option pour autoriser la catégorisation et le tague des téléchargements."
 
 #: includes/admin/page-settings.php:280
 msgid "Member Only"
@@ -325,58 +321,42 @@ msgstr "Membre uniquement"
 
 #: includes/admin/page-settings.php:282
 msgid "Check this option to allow only logged in users to download files."
-msgstr ""
-"Cochez cette case pour autoriser uniquement les utilisateurs connectés à "
-"télécharger des fichiers."
+msgstr "Cochez cette case pour autoriser uniquement les utilisateurs connectés à télécharger des fichiers."
 
 #: includes/admin/page-settings.php:305
 msgid ""
 "Select the page that a user should be redirected to if they try to download "
-"a file when not logged in and the Members Only option is checked. If no page "
-"is selected a generic error message will be displayed."
-msgstr ""
-"Sélectionnez la page vers laquelle les utilisateurs non enregistrés doivent "
-"être redirigés si l'option Membres uniquement est sélectionnée. Si aucune "
-"page n'est indiquée, un message d'erreur générique sera affiché."
+"a file when not logged in and the Members Only option is checked. If no page"
+" is selected a generic error message will be displayed."
+msgstr "Sélectionnez la page vers laquelle les utilisateurs non enregistrés doivent être redirigés si l'option Membres uniquement est sélectionnée. Si aucune page n'est indiquée, un message d'erreur générique sera affiché."
 
 #: includes/admin/page-settings.php:319
 msgid "Enter user agents to block from downloading files. One per line."
-msgstr ""
-"Entrez les agents utilisateurs pour lesquels le téléchargement sera "
-"interdit. Un par ligne."
+msgstr "Entrez les agents utilisateurs pour lesquels le téléchargement sera interdit. Un par ligne."
 
 #: includes/admin/page-settings.php:333
 msgid ""
 "Set the default text to display on button and link style outputs. This can "
 "be overwritten on a per-download basis using the 'text' attribute."
-msgstr ""
-"Définissez le texte par défaut à afficher sur le bouton et le style de la "
-"sortie des liens. Chaque téléchargement peut contourner cette valeur avec "
-"l'attribut « text »."
+msgstr "Définissez le texte par défaut à afficher sur le bouton et le style de la sortie des liens. Chaque téléchargement peut contourner cette valeur avec l'attribut « text »."
 
 #: includes/admin/page-settings.php:353
 msgid ""
 "Choose the default output style for downloads. This can be overwritten on a "
 "per-download basis using the 'style' attribute."
-msgstr ""
-"Choisissez le style des listes de téléchargements par défaut. Chaque "
-"téléchargement peut contourner cette valeur avec l'attribut « style »."
+msgstr "Choisissez le style des listes de téléchargements par défaut. Chaque téléchargement peut contourner cette valeur avec l'attribut « style »."
 
 #: includes/admin/page-settings.php:375
 msgid ""
 "Choose the default button style. This can be overwritten on a per-download "
 "basis using the 'button' attribute."
-msgstr ""
-"Choisissez le style de bouton par défaut. Chaque téléchargement peut "
-"contourner cette valeur avec l'attribut « button »."
+msgstr "Choisissez le style de bouton par défaut. Chaque téléchargement peut contourner cette valeur avec l'attribut « button »."
 
 #: includes/admin/page-settings.php:397
 msgid ""
-"Choose the default output style for downloads lists. This can be overwritten "
-"on a per-list basis using the 'style' attribute."
-msgstr ""
-"Choisissez le style des listes de téléchargements par défaut. Chaque liste "
-"peut contourner cette valeur avec l'attribut « style »."
+"Choose the default output style for downloads lists. This can be overwritten"
+" on a per-list basis using the 'style' attribute."
+msgstr "Choisissez le style des listes de téléchargements par défaut. Chaque liste peut contourner cette valeur avec l'attribut « style »."
 
 #: includes/admin/page-settings.php:412
 msgid "Log Downloads"
@@ -384,41 +364,33 @@ msgstr "Fichier journal des téléchargements"
 
 #: includes/admin/page-settings.php:414
 msgid "Check this option to log downloads by admins."
-msgstr ""
-"Cochez cette case pour mettre dans un journal les téléchargements par les "
-"administrateurs."
+msgstr "Cochez cette case pour mettre dans un journal les téléchargements par les administrateurs."
 
 #: includes/admin/page-settings.php:428
 msgid ""
 "Set the time in minutes before creating an additional log when the user "
 "tries to download the same file multiple times (0 to disable)."
-msgstr ""
+msgstr "Régler le temps en minutes avant de créer un journal supplémentaire lorsque l'utilisateur tente de télécharger le même fichier plusieurs fois (0 pour désactiver)."
 
 #: includes/admin/page-settings.php:442
 msgid ""
 "Set the amount of days that logs should be kept (0 to disable). Logs older "
 "than the specified value will be deleted once a day."
-msgstr ""
+msgstr "Régler le nombre de jours de conservation des journaux (0 pour désactiver). Les journaux antérieurs à la valeur spécifiée seront supprimés une fois par jour."
 
 #: includes/admin/page-settings.php:459
 msgid ""
 "Check this option to include the Delightful Downloads stylesheet on the "
 "front-end. If this option is disabled you must manually add the button CSS "
 "classes to your theme's CSS file."
-msgstr ""
-"Cochez cette option pour inclure la feuille de style de Delightful "
-"Downloads. Si cette option n'est pas activée vous devez ajouter manuellement "
-"les classes css du bouton au fichier css de votre thème. "
+msgstr "Cochez cette option pour inclure la feuille de style de Delightful Downloads. Si cette option n'est pas activée vous devez ajouter manuellement les classes css du bouton au fichier css de votre thème. "
 
 #: includes/admin/page-settings.php:487
 msgid ""
 "Set the URL for download links. This should be left as the default value, "
 "unless absolutely sure that it will not cause conflicts with existing "
 "permalinks or plugins."
-msgstr ""
-"Définir l'URL pour les liens de téléchargement. Ceci devrait être laissé "
-"comme la valeur par défaut, sauf si vous êtes vraiment sûr que cela ne "
-"causera pas de conflits avec les permaliens ou extensions existantes."
+msgstr "Définir l'URL pour les liens de téléchargement. Ceci devrait être laissé comme la valeur par défaut, sauf si vous êtes vraiment sûr que cela ne causera pas de conflits avec les permaliens ou extensions existantes."
 
 #: includes/admin/page-statistics.php:22 includes/admin/page-statistics.php:38
 #: includes/admin/page-statistics.php:107
@@ -427,40 +399,46 @@ msgstr "Fichiers journaux des téléchargements"
 
 #: includes/admin/page-statistics.php:39
 msgid "You are about to permanently delete the download logs."
-msgstr ""
+msgstr "Vous êtes sur le point de supprimer définitivement les journaux des téléchargements."
 
 #: includes/admin/page-statistics.php:39
 msgid "Empty Logs"
-msgstr ""
+msgstr "Vider les journaux"
 
 #: includes/admin/page-statistics.php:74
 msgid "Logs could not be deleted."
-msgstr ""
+msgstr "Les journaux n'ont pas pu être supprimé. "
 
 #: includes/admin/page-statistics.php:79
 msgid "Logs deleted successfully."
+msgstr "Journaux supprimés avec succès."
+
+#: includes/admin/upgrades.php:55
+msgid "Delightful Downloads updated to version 1.4."
 msgstr ""
 
-#: includes/admin/upgrades.php:89 includes/admin/upgrades.php:98
+#: includes/admin/upgrades.php:102 includes/admin/upgrades.php:111
 msgid "Migrate"
-msgstr ""
+msgstr "Migrer"
 
-#: includes/admin/upgrades.php:90
+#: includes/admin/upgrades.php:103
 msgid "Stop"
-msgstr ""
+msgstr "Arrêter"
 
-#: includes/admin/upgrades.php:91
+#: includes/admin/upgrades.php:104
 msgid "The migration could not start due to an error."
-msgstr ""
+msgstr "La migration n&rsquo;a pu être démarrée suite à une erreur."
 
-#: includes/admin/upgrades.php:96
+#: includes/admin/upgrades.php:109
 #, php-format
-msgid "You have %s logs from an older version of Delightful Downloads."
+msgid ""
+"You have %s logs from an older version of Delightful Downloads. %sPlease "
+"make a backup of your database before migrating!%s"
 msgstr ""
 
-#: includes/admin/upgrades.php:102
+#: includes/admin/upgrades.php:115
 msgid "JavaScript must be enabled to migrate legacy logs."
-msgstr ""
+msgstr "JavaScript doit être activé pour pouvoir migrer les journaux."
 
 #: includes/cron.php:74
 msgid "Once Weekly"
@@ -516,11 +494,11 @@ msgstr "Titre (compteur"
 
 #: includes/functions.php:100
 msgid "Title (File size)"
-msgstr ""
+msgstr "Titre (Taille du fichier)"
 
 #: includes/functions.php:104
 msgid "Title (Extension, File size)"
-msgstr ""
+msgstr "Titre (Extension, taille du fichier)"
 
 #: includes/options.php:20
 msgid "General"
@@ -580,11 +558,11 @@ msgstr "Téléchargements par les adminsitrateurs"
 
 #: includes/options.php:92
 msgid "Grace Period"
-msgstr ""
+msgstr "Délai de grâce"
 
 #: includes/options.php:98
 msgid "Auto Delete"
-msgstr ""
+msgstr "Suppression auto"
 
 #: includes/options.php:104
 msgid "Default CSS Styles"
@@ -600,7 +578,7 @@ msgstr "Adresse du téléchargement"
 
 #: includes/options.php:122
 msgid "Complete Uninstall"
-msgstr ""
+msgstr "Terminer la désinstallation"
 
 #: includes/post-types.php:23
 msgid "Add New"
@@ -668,38 +646,38 @@ msgstr "Interdiction pour vous de télécharger de fichier !"
 
 #: includes/process-download.php:73
 msgid "You must attach a file to this download."
-msgstr ""
+msgstr "Vous devez joindre un fichier à ce téléchargement."
 
-#: includes/process-download.php:110
+#: includes/process-download.php:123
 msgid "Server error, file cannot be opened!"
 msgstr "Erreur du serveur, le fichier n'a pas pu être ouvert!"
 
-#: includes/shortcodes.php:45 includes/shortcodes.php:117
-#: includes/shortcodes.php:150
+#: includes/shortcodes.php:46 includes/shortcodes.php:332
+#: includes/shortcodes.php:396
 msgid "Invalid download ID."
 msgstr "ID du téléchargement invalide."
 
-#: includes/shortcodes.php:55 includes/shortcodes.php:300
+#: includes/shortcodes.php:58 includes/shortcodes.php:251
 msgid "Invalid style attribute."
 msgstr "Attribut de style invalide."
 
-#: includes/shortcodes.php:72
+#: includes/shortcodes.php:79
 msgid "Invalid button attribute."
 msgstr "Attribut button invalide."
 
-#: includes/shortcodes.php:203
+#: includes/shortcodes.php:144
 msgid "Invalid orderby attribute."
 msgstr "Attribut orderby invalide."
 
-#: includes/shortcodes.php:229
+#: includes/shortcodes.php:175
 msgid "Invalid order attribute."
 msgstr "Attribut order invalide."
 
-#: includes/shortcodes.php:237
+#: includes/shortcodes.php:184
 msgid "Invalid relation attribute."
 msgstr "Attribut relation invalide."
 
-#: includes/shortcodes.php:331
+#: includes/shortcodes.php:298
 msgid "No downloads found."
 msgstr "Aucun téléchargement trouvé."
 

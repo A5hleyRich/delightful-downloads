@@ -1,28 +1,24 @@
-#
+# 
 # Translators:
 msgid ""
 msgstr ""
 "Project-Id-Version: Delightful Downloads\n"
-"POT-Creation-Date: 2014-06-17 12:35-0000\n"
-"PO-Revision-Date: 2014-06-17 12:44-0000\n"
-"Last-Translator: \n"
-"Language-Team: Russian (Russia) (http://www.transifex.com/projects/p/"
-"delightful-downloads/language/ru_RU/)\n"
+"POT-Creation-Date: 2014-06-27 12:07-0000\n"
+"PO-Revision-Date: 2014-06-27 11:08+0000\n"
+"Last-Translator: Ashley Rich <hello@ashleyrich.com>\n"
+"Language-Team: Russian (Russia) (http://www.transifex.com/projects/p/delightful-downloads/language/ru_RU/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Language: ru_RU\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
-"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 "X-Generator: Poedit 1.6.5\n"
 "X-Poedit-Basepath: ..\n"
-"X-Poedit-KeywordsList: __;_e;_n:1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;esc_attr__;"
-"esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c;_n_noop:1,2;"
-"_nx_noop:3c,1,2;__ngettext_noop:1,2\n"
-"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-KeywordsList: __;_e;_n:1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;esc_attr__;esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c;_n_noop:1,2;_nx_noop:3c,1,2;__ngettext_noop:1,2\n"
 "X-Poedit-SearchPath-0: .\n"
+"X-Poedit-SourceCharset: UTF-8\n"
 
-#: delightful-downloads.php:214 includes/admin/page-settings.php:19
+#: delightful-downloads.php:217 includes/admin/page-settings.php:19
 msgid "Settings"
 msgstr "Настройки"
 
@@ -78,32 +74,32 @@ msgstr ""
 msgid "Download statistics could not be retrieved."
 msgstr ""
 
-#: includes/admin/dashboard.php:49 includes/admin/dashboard.php:94
-msgid "Last 24 Hours"
-msgstr "За 24 часа"
-
-#: includes/admin/dashboard.php:53 includes/admin/dashboard.php:95
-msgid "Last 7 Days"
-msgstr "За 7 дней"
-
-#: includes/admin/dashboard.php:57 includes/admin/dashboard.php:96
-msgid "Last 30 Days"
-msgstr "За 30 дней"
-
-#: includes/admin/dashboard.php:61 includes/admin/dashboard.php:97
-msgid "All Time"
-msgstr "За все время"
-
-#: includes/admin/dashboard.php:66
-msgid "Popular Downloads"
-msgstr ""
-
-#: includes/admin/dashboard.php:87
+#: includes/admin/dashboard.php:41 includes/admin/dashboard.php:88
 msgid "There are no popular downloads yet!"
 msgstr ""
 
-#: includes/admin/dashboard.php:121 includes/admin/dashboard.php:159
-#: includes/admin/upgrades.php:127
+#: includes/admin/dashboard.php:50 includes/admin/dashboard.php:95
+msgid "Last 24 Hours"
+msgstr "За 24 часа"
+
+#: includes/admin/dashboard.php:54 includes/admin/dashboard.php:96
+msgid "Last 7 Days"
+msgstr "За 7 дней"
+
+#: includes/admin/dashboard.php:58 includes/admin/dashboard.php:97
+msgid "Last 30 Days"
+msgstr "За 30 дней"
+
+#: includes/admin/dashboard.php:62 includes/admin/dashboard.php:98
+msgid "All Time"
+msgstr "За все время"
+
+#: includes/admin/dashboard.php:67
+msgid "Popular Downloads"
+msgstr ""
+
+#: includes/admin/dashboard.php:122 includes/admin/dashboard.php:160
+#: includes/admin/upgrades.php:140
 msgid "Failed security check!"
 msgstr ""
 
@@ -171,7 +167,8 @@ msgstr "Статистика скачиваний"
 
 #: includes/admin/meta-boxes.php:46 includes/admin/meta-boxes.php:49
 #, php-format
-msgid "Download updated. Use the %s shortcode to include it in posts or pages."
+msgid ""
+"Download updated. Use the %s shortcode to include it in posts or pages."
 msgstr ""
 
 #: includes/admin/meta-boxes.php:47
@@ -313,8 +310,7 @@ msgstr "Включено"
 
 #: includes/admin/page-settings.php:265
 msgid "Check this option to allow downloads to be tagged or categorised."
-msgstr ""
-"Установите этот флажок, чтобы разрешить загрузку с тегами или категориями."
+msgstr "Установите этот флажок, чтобы разрешить загрузку с тегами или категориями."
 
 #: includes/admin/page-settings.php:280
 msgid "Member Only"
@@ -322,19 +318,14 @@ msgstr "Зарегистрированных только"
 
 #: includes/admin/page-settings.php:282
 msgid "Check this option to allow only logged in users to download files."
-msgstr ""
-"Установите эту опцию, чтобы разрешить только для зарегистрированных "
-"пользователей загружать файлы."
+msgstr "Установите эту опцию, чтобы разрешить только для зарегистрированных пользователей загружать файлы."
 
 #: includes/admin/page-settings.php:305
 msgid ""
 "Select the page that a user should be redirected to if they try to download "
-"a file when not logged in and the Members Only option is checked. If no page "
-"is selected a generic error message will be displayed."
-msgstr ""
-"Выберите страницу, на которую пользователь должен быть перенаправлен в "
-"случае, если до попытки загрузить файл, не был выполнен вход в систему. Если "
-"не выбрана страница, будет отображаться сообщение об ошибке."
+"a file when not logged in and the Members Only option is checked. If no page"
+" is selected a generic error message will be displayed."
+msgstr "Выберите страницу, на которую пользователь должен быть перенаправлен в случае, если до попытки загрузить файл, не был выполнен вход в систему. Если не выбрана страница, будет отображаться сообщение об ошибке."
 
 #: includes/admin/page-settings.php:319
 msgid "Enter user agents to block from downloading files. One per line."
@@ -360,8 +351,8 @@ msgstr "Выбрать стиль кнопки по умолчанию."
 
 #: includes/admin/page-settings.php:397
 msgid ""
-"Choose the default output style for downloads lists. This can be overwritten "
-"on a per-list basis using the 'style' attribute."
+"Choose the default output style for downloads lists. This can be overwritten"
+" on a per-list basis using the 'style' attribute."
 msgstr "Выберите по умолчанию стиль вывода загрузки для  списков. "
 
 #: includes/admin/page-settings.php:412
@@ -389,19 +380,14 @@ msgid ""
 "Check this option to include the Delightful Downloads stylesheet on the "
 "front-end. If this option is disabled you must manually add the button CSS "
 "classes to your theme's CSS file."
-msgstr ""
-"Установите этот параметр, чтобы включить Delightful Downloads стиль. Если "
-"эта опция отключена, вы должны вручную добавить CSS классы для вашей темы."
+msgstr "Установите этот параметр, чтобы включить Delightful Downloads стиль. Если эта опция отключена, вы должны вручную добавить CSS классы для вашей темы."
 
 #: includes/admin/page-settings.php:487
 msgid ""
 "Set the URL for download links. This should be left as the default value, "
 "unless absolutely sure that it will not cause conflicts with existing "
 "permalinks or plugins."
-msgstr ""
-"Задайте URL для ссылки на скачивание. Это должно быть перенесено как "
-"значение по умолчанию, если только вы не уверены, что оно не будет вызывать "
-"постоянные конфликты с существующими или подключаемыми модулями."
+msgstr "Задайте URL для ссылки на скачивание. Это должно быть перенесено как значение по умолчанию, если только вы не уверены, что оно не будет вызывать постоянные конфликты с существующими или подключаемыми модулями."
 
 #: includes/admin/page-statistics.php:22 includes/admin/page-statistics.php:38
 #: includes/admin/page-statistics.php:107
@@ -424,24 +410,30 @@ msgstr ""
 msgid "Logs deleted successfully."
 msgstr ""
 
-#: includes/admin/upgrades.php:89 includes/admin/upgrades.php:98
+#: includes/admin/upgrades.php:55
+msgid "Delightful Downloads updated to version 1.4."
+msgstr ""
+
+#: includes/admin/upgrades.php:102 includes/admin/upgrades.php:111
 msgid "Migrate"
 msgstr ""
 
-#: includes/admin/upgrades.php:90
+#: includes/admin/upgrades.php:103
 msgid "Stop"
 msgstr ""
 
-#: includes/admin/upgrades.php:91
+#: includes/admin/upgrades.php:104
 msgid "The migration could not start due to an error."
 msgstr ""
 
-#: includes/admin/upgrades.php:96
+#: includes/admin/upgrades.php:109
 #, php-format
-msgid "You have %s logs from an older version of Delightful Downloads."
+msgid ""
+"You have %s logs from an older version of Delightful Downloads. %sPlease "
+"make a backup of your database before migrating!%s"
 msgstr ""
 
-#: includes/admin/upgrades.php:102
+#: includes/admin/upgrades.php:115
 msgid "JavaScript must be enabled to migrate legacy logs."
 msgstr ""
 
@@ -653,36 +645,36 @@ msgstr "Скачивание файла заблокировано!"
 msgid "You must attach a file to this download."
 msgstr ""
 
-#: includes/process-download.php:110
+#: includes/process-download.php:123
 msgid "Server error, file cannot be opened!"
 msgstr "Ошибка сервера, файл не найден!"
 
-#: includes/shortcodes.php:45 includes/shortcodes.php:117
-#: includes/shortcodes.php:150
+#: includes/shortcodes.php:46 includes/shortcodes.php:332
+#: includes/shortcodes.php:396
 msgid "Invalid download ID."
 msgstr "Не правильный ID."
 
-#: includes/shortcodes.php:55 includes/shortcodes.php:300
+#: includes/shortcodes.php:58 includes/shortcodes.php:251
 msgid "Invalid style attribute."
 msgstr "Не правильный стиль атрибута."
 
-#: includes/shortcodes.php:72
+#: includes/shortcodes.php:79
 msgid "Invalid button attribute."
 msgstr "Не правильный атрибут кнопки."
 
-#: includes/shortcodes.php:203
+#: includes/shortcodes.php:144
 msgid "Invalid orderby attribute."
 msgstr "Не правильный атрибут действия."
 
-#: includes/shortcodes.php:229
+#: includes/shortcodes.php:175
 msgid "Invalid order attribute."
 msgstr "Не правильный атрибут"
 
-#: includes/shortcodes.php:237
+#: includes/shortcodes.php:184
 msgid "Invalid relation attribute."
 msgstr "Устаревший атрибут."
 
-#: includes/shortcodes.php:331
+#: includes/shortcodes.php:298
 msgid "No downloads found."
 msgstr "Скачиваний не найдено."
 

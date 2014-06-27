@@ -1,15 +1,14 @@
-#
+# 
 # Translators:
 # Christian <christian.lehberger@googlemail.com>, 2014
 # WebSource <info@websource.li>, 2014
 msgid ""
 msgstr ""
 "Project-Id-Version: Delightful Downloads\n"
-"POT-Creation-Date: 2014-06-17 12:35-0000\n"
-"PO-Revision-Date: 2014-06-17 12:43-0000\n"
-"Last-Translator: \n"
-"Language-Team: German (Germany) (http://www.transifex.com/projects/p/"
-"delightful-downloads/language/de_DE/)\n"
+"POT-Creation-Date: 2014-06-27 12:07-0000\n"
+"PO-Revision-Date: 2014-06-27 11:08+0000\n"
+"Last-Translator: Ashley Rich <hello@ashleyrich.com>\n"
+"Language-Team: German (Germany) (http://www.transifex.com/projects/p/delightful-downloads/language/de_DE/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -17,13 +16,11 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: Poedit 1.6.5\n"
 "X-Poedit-Basepath: ..\n"
-"X-Poedit-KeywordsList: __;_e;_n:1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;esc_attr__;"
-"esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c;_n_noop:1,2;"
-"_nx_noop:3c,1,2;__ngettext_noop:1,2\n"
-"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-KeywordsList: __;_e;_n:1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;esc_attr__;esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c;_n_noop:1,2;_nx_noop:3c,1,2;__ngettext_noop:1,2\n"
 "X-Poedit-SearchPath-0: .\n"
+"X-Poedit-SourceCharset: UTF-8\n"
 
-#: delightful-downloads.php:214 includes/admin/page-settings.php:19
+#: delightful-downloads.php:217 includes/admin/page-settings.php:19
 msgid "Settings"
 msgstr "Einstellungen"
 
@@ -79,32 +76,32 @@ msgstr ""
 msgid "Download statistics could not be retrieved."
 msgstr ""
 
-#: includes/admin/dashboard.php:49 includes/admin/dashboard.php:94
-msgid "Last 24 Hours"
-msgstr "In den letzten 24 Stunden"
-
-#: includes/admin/dashboard.php:53 includes/admin/dashboard.php:95
-msgid "Last 7 Days"
-msgstr "Letzte 7 Tage"
-
-#: includes/admin/dashboard.php:57 includes/admin/dashboard.php:96
-msgid "Last 30 Days"
-msgstr "Letzte 30 Tage"
-
-#: includes/admin/dashboard.php:61 includes/admin/dashboard.php:97
-msgid "All Time"
-msgstr "Immer"
-
-#: includes/admin/dashboard.php:66
-msgid "Popular Downloads"
-msgstr ""
-
-#: includes/admin/dashboard.php:87
+#: includes/admin/dashboard.php:41 includes/admin/dashboard.php:88
 msgid "There are no popular downloads yet!"
 msgstr ""
 
-#: includes/admin/dashboard.php:121 includes/admin/dashboard.php:159
-#: includes/admin/upgrades.php:127
+#: includes/admin/dashboard.php:50 includes/admin/dashboard.php:95
+msgid "Last 24 Hours"
+msgstr "In den letzten 24 Stunden"
+
+#: includes/admin/dashboard.php:54 includes/admin/dashboard.php:96
+msgid "Last 7 Days"
+msgstr "Letzte 7 Tage"
+
+#: includes/admin/dashboard.php:58 includes/admin/dashboard.php:97
+msgid "Last 30 Days"
+msgstr "Letzte 30 Tage"
+
+#: includes/admin/dashboard.php:62 includes/admin/dashboard.php:98
+msgid "All Time"
+msgstr "Immer"
+
+#: includes/admin/dashboard.php:67
+msgid "Popular Downloads"
+msgstr ""
+
+#: includes/admin/dashboard.php:122 includes/admin/dashboard.php:160
+#: includes/admin/upgrades.php:140
 msgid "Failed security check!"
 msgstr ""
 
@@ -172,7 +169,8 @@ msgstr "Download-Statistik"
 
 #: includes/admin/meta-boxes.php:46 includes/admin/meta-boxes.php:49
 #, php-format
-msgid "Download updated. Use the %s shortcode to include it in posts or pages."
+msgid ""
+"Download updated. Use the %s shortcode to include it in posts or pages."
 msgstr ""
 
 #: includes/admin/meta-boxes.php:47
@@ -327,53 +325,37 @@ msgstr "Nur eingeloggte User dürfen Dateien herunterladen."
 #: includes/admin/page-settings.php:305
 msgid ""
 "Select the page that a user should be redirected to if they try to download "
-"a file when not logged in and the Members Only option is checked. If no page "
-"is selected a generic error message will be displayed."
-msgstr ""
-"Legen Sie die Seite fest, auf die Anwender umgeleitet werden, wenn sie eine "
-"Datei herunterladen möchten, die nur für eingeloggte User bereitsteht. Falls "
-"Sie hier keine Seite angeben, wird eine Fehlermeldung eingeblendet."
+"a file when not logged in and the Members Only option is checked. If no page"
+" is selected a generic error message will be displayed."
+msgstr "Legen Sie die Seite fest, auf die Anwender umgeleitet werden, wenn sie eine Datei herunterladen möchten, die nur für eingeloggte User bereitsteht. Falls Sie hier keine Seite angeben, wird eine Fehlermeldung eingeblendet."
 
 #: includes/admin/page-settings.php:319
 msgid "Enter user agents to block from downloading files. One per line."
-msgstr ""
-"Fügen Sie User Agents und Spider etc. hinzu, die Dateien nicht herunterladen "
-"dürfen. Ein Eintrag pro Zeile."
+msgstr "Fügen Sie User Agents und Spider etc. hinzu, die Dateien nicht herunterladen dürfen. Ein Eintrag pro Zeile."
 
 #: includes/admin/page-settings.php:333
 msgid ""
 "Set the default text to display on button and link style outputs. This can "
 "be overwritten on a per-download basis using the 'text' attribute."
-msgstr ""
-"Standardtext für die Anzeige auf Buttons und in Download-Link-Texten. Diese "
-"Vorgabe kann bei jeder Download-Datei überschrieben werden, nutzen Sie dafür "
-"das 'text'-Attribut."
+msgstr "Standardtext für die Anzeige auf Buttons und in Download-Link-Texten. Diese Vorgabe kann bei jeder Download-Datei überschrieben werden, nutzen Sie dafür das 'text'-Attribut."
 
 #: includes/admin/page-settings.php:353
 msgid ""
 "Choose the default output style for downloads. This can be overwritten on a "
 "per-download basis using the 'style' attribute."
-msgstr ""
-"Legen Sie den Standard-Anzeige-Stil für Downloads fest. Diese Vorgabe kann "
-"bei jeder Download-Datei überschrieben werden, nutzen Sie dafür das 'style-"
-"Attribut."
+msgstr "Legen Sie den Standard-Anzeige-Stil für Downloads fest. Diese Vorgabe kann bei jeder Download-Datei überschrieben werden, nutzen Sie dafür das 'style-Attribut."
 
 #: includes/admin/page-settings.php:375
 msgid ""
 "Choose the default button style. This can be overwritten on a per-download "
 "basis using the 'button' attribute."
-msgstr ""
-"Legen Sie den Standard-Stil für Buttons fest. Diese Vorgabe kann bei jeder "
-"Download-Datei überschrieben werden, nutzen Sie dafür das 'button-Attribut."
+msgstr "Legen Sie den Standard-Stil für Buttons fest. Diese Vorgabe kann bei jeder Download-Datei überschrieben werden, nutzen Sie dafür das 'button-Attribut."
 
 #: includes/admin/page-settings.php:397
 msgid ""
-"Choose the default output style for downloads lists. This can be overwritten "
-"on a per-list basis using the 'style' attribute."
-msgstr ""
-"Legen Sie den Standard-Anzeige-Stil für Downloads fest.  Diese Vorgabe kann "
-"bei jeder Download-Datei überschrieben werden, nutzen Sie dafür das 'style'-"
-"Attribut."
+"Choose the default output style for downloads lists. This can be overwritten"
+" on a per-list basis using the 'style' attribute."
+msgstr "Legen Sie den Standard-Anzeige-Stil für Downloads fest.  Diese Vorgabe kann bei jeder Download-Datei überschrieben werden, nutzen Sie dafür das 'style'-Attribut."
 
 #: includes/admin/page-settings.php:412
 msgid "Log Downloads"
@@ -400,20 +382,14 @@ msgid ""
 "Check this option to include the Delightful Downloads stylesheet on the "
 "front-end. If this option is disabled you must manually add the button CSS "
 "classes to your theme's CSS file."
-msgstr ""
-"Das Stylesheet des Plugins \"Delightful Downloads\" im Frontend-Editor "
-"einbinden. Falls diese Option nicht aktiviert ist. müssen Sie selbst die "
-"Button-Classes zum Stylesheet Ihres Themes hinzufügen."
+msgstr "Das Stylesheet des Plugins \"Delightful Downloads\" im Frontend-Editor einbinden. Falls diese Option nicht aktiviert ist. müssen Sie selbst die Button-Classes zum Stylesheet Ihres Themes hinzufügen."
 
 #: includes/admin/page-settings.php:487
 msgid ""
 "Set the URL for download links. This should be left as the default value, "
 "unless absolutely sure that it will not cause conflicts with existing "
 "permalinks or plugins."
-msgstr ""
-"Legen Sie die URL für die Download-Links fest. Achten Sie darauf, daß Sie "
-"dabei Konflikte mit anderen Plugins oder bestehenden Permalinks vermeiden, "
-"am besten belassen Sie den Standardwert."
+msgstr "Legen Sie die URL für die Download-Links fest. Achten Sie darauf, daß Sie dabei Konflikte mit anderen Plugins oder bestehenden Permalinks vermeiden, am besten belassen Sie den Standardwert."
 
 #: includes/admin/page-statistics.php:22 includes/admin/page-statistics.php:38
 #: includes/admin/page-statistics.php:107
@@ -436,24 +412,30 @@ msgstr ""
 msgid "Logs deleted successfully."
 msgstr ""
 
-#: includes/admin/upgrades.php:89 includes/admin/upgrades.php:98
+#: includes/admin/upgrades.php:55
+msgid "Delightful Downloads updated to version 1.4."
+msgstr ""
+
+#: includes/admin/upgrades.php:102 includes/admin/upgrades.php:111
 msgid "Migrate"
 msgstr ""
 
-#: includes/admin/upgrades.php:90
+#: includes/admin/upgrades.php:103
 msgid "Stop"
 msgstr ""
 
-#: includes/admin/upgrades.php:91
+#: includes/admin/upgrades.php:104
 msgid "The migration could not start due to an error."
 msgstr ""
 
-#: includes/admin/upgrades.php:96
+#: includes/admin/upgrades.php:109
 #, php-format
-msgid "You have %s logs from an older version of Delightful Downloads."
+msgid ""
+"You have %s logs from an older version of Delightful Downloads. %sPlease "
+"make a backup of your database before migrating!%s"
 msgstr ""
 
-#: includes/admin/upgrades.php:102
+#: includes/admin/upgrades.php:115
 msgid "JavaScript must be enabled to migrate legacy logs."
 msgstr ""
 
@@ -665,36 +647,36 @@ msgstr "Sie dürfen diese Datei nicht herunterladen!"
 msgid "You must attach a file to this download."
 msgstr ""
 
-#: includes/process-download.php:110
+#: includes/process-download.php:123
 msgid "Server error, file cannot be opened!"
 msgstr "Server-Fehler, die Datei konnte nicht geöffnet werden."
 
-#: includes/shortcodes.php:45 includes/shortcodes.php:117
-#: includes/shortcodes.php:150
+#: includes/shortcodes.php:46 includes/shortcodes.php:332
+#: includes/shortcodes.php:396
 msgid "Invalid download ID."
 msgstr "Ungültige-Download-ID."
 
-#: includes/shortcodes.php:55 includes/shortcodes.php:300
+#: includes/shortcodes.php:58 includes/shortcodes.php:251
 msgid "Invalid style attribute."
 msgstr "Ungültiges Style-Attribut."
 
-#: includes/shortcodes.php:72
+#: includes/shortcodes.php:79
 msgid "Invalid button attribute."
 msgstr "Ungültiges Button-Attribut."
 
-#: includes/shortcodes.php:203
+#: includes/shortcodes.php:144
 msgid "Invalid orderby attribute."
 msgstr "Ungültiges orderby-Attribut."
 
-#: includes/shortcodes.php:229
+#: includes/shortcodes.php:175
 msgid "Invalid order attribute."
 msgstr "Ungültiges order-Attribut."
 
-#: includes/shortcodes.php:237
+#: includes/shortcodes.php:184
 msgid "Invalid relation attribute."
 msgstr "Ungültiges relation-Attribut."
 
-#: includes/shortcodes.php:331
+#: includes/shortcodes.php:298
 msgid "No downloads found."
 msgstr "Keine Downloads gefunden."
 
