@@ -30,9 +30,14 @@ Delightful Downloads is a super-awesome downloads manager for WordPress that all
 
 **Translations**
 
-* French - [WP-Translations Community](http://wp-translations.org)
-* German - [Connie Müller-Gödecke](http://www.webdeerns.de)
-* Russian - dobrodukh
+Thanks to all of the WP-Translations Team Members.
+
+* Français (French (France)),
+* Deutsch (German) - [Connie Müller-Gödecke](http://www.webdeerns.de),
+* Italiano (Italian),
+* Русский (Russian) - dobrodukh,
+
+Don't see yours yet? Join our community and make it happen! [WP-Translations.org](http://wp-translations.org)
 
 **Documentation**
 
@@ -65,6 +70,21 @@ Please refer to the [FAQ](http://delightfulwp.com/delightful-downloads/faq/ "Del
 6. Settings screen.
 
 == Changelog ==
+
+= 1.4 =
+
+* Improved statistics and logging with custom database table.
+* Improved dashboard widget.
+* Added the option to set a grace period when creating new logs, which can be found on the settings screen, under the statistics tab.
+* Added the option to automatically delete old logs, which can be found on the settings screen, under the statistics tab.
+* Added migrate legacy logs button to the logs screen.
+* Added reset default settings button to the settings screen.
+* Added empty logs button to the logs screen.
+* Added help and support sidebar to the settings screen.
+* Added Italian language.
+* Merged shortcodes for easier use.
+* Fixed deprecated MySQL function.
+* Fixed blank and corrupt downloads bug.
 
 = 1.3.8 =
 
@@ -214,6 +234,11 @@ Please refer to the [FAQ](http://delightfulwp.com/delightful-downloads/faq/ "Del
 * Initial stable plugin release.
 
 == Upgrade Notice ==
+
+= 1.4 =
+
+* Bug fixes.
+* General improvements.
 
 = 1.3.8 =
 
