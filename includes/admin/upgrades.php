@@ -29,7 +29,7 @@ function dedo_check_upgrades() {
 	*/
 	if ( version_compare( $version, '1.4', '<' ) ) {
 		
-		global $wpdb;
+		global $wpdb, $dedo_notices;
 
 		// Setup new table structure
 		$dedo_statistics->setup_table();
@@ -50,6 +50,16 @@ function dedo_check_upgrades() {
 
 		// Add new option for admin notices
 		add_option( 'delightful-downloads-notices', array() );
+
+		// Add upgrade notice
+		$message = __( 'Delightful Downloads updated to version 1.4.', 'delightful-downloads' );
+
+		if ( get_option( 'delightful-downloads-legacy-logs' ) ) {
+			
+			$message .=  ' ' . __( sprintf( 'Please visit the %slogs screen%s to migrate your download statistics.', '<a href="' . admin_url( 'edit.php?post_type=dedo_download&page=dedo_statistics' ) . '">', '</a>' ), 'delightful-downloads' );
+		}
+
+		$dedo_notices->add( 'updated', $message );
 	}
 
 	// Update version numbers
@@ -71,7 +81,7 @@ add_action( 'plugins_loaded', 'dedo_check_upgrades' );
  *
  * @since  1.4
  */
-function dedo_upgrade_notices() {
+function dedo_upgrade_notices_1_4() {
 
 	// Only show on statistics page
 	if ( isset( $_GET['page'] ) && 'dedo_statistics' == $_GET['page'] ) {
@@ -108,7 +118,7 @@ function dedo_upgrade_notices() {
 		<?php
 	}
 }
-add_action( 'admin_notices', 'dedo_upgrade_notices' );
+add_action( 'admin_notices', 'dedo_upgrade_notices_1_4' );
 
 /**
  * 1.4 Migrate Legacy Logs
