@@ -80,67 +80,152 @@ function dedo_render_page_settings() {
 			<a href="<?php echo admin_url( 'edit.php?post_type=dedo_download&page=dedo_settings&action=reset_defaults' ) ?>" class="add-new-h2 dedo_confirm_action" data-confirm="<?php _e( 'You are about to reset the download settings.', 'delightful-downloads' ); ?>"><?php _e( 'Reset Defaults', 'delightful-downloads' ); ?></a>
 		</h2>
 		
-		<?php 
-			if ( isset( $_GET['settings-updated'] ) ) {
-				echo '<div class="updated"><p>' . __( 'Settings updated successfully.', 'delightful-downloads' ) . '</p></div>';
-			} 
-		?>
+		<?php if ( isset( $_GET['settings-updated'] ) ) {
+				
+			echo '<div class="updated"><p>' . __( 'Settings updated successfully.', 'delightful-downloads' ) . '</p></div>';
+		} ?>
 
 		<h3 id="dedo-settings-tabs" class="nav-tab-wrapper">
-		<?php 
-			// Generate tabs
+			
+			<?php // Generate tabs
+			
 			foreach ( $registered_tabs as $key => $value ) {
+				
 				echo '<a href="#dedo-settings-tab-' . $key . '" class="nav-tab ' . ( $active_tab == $key ? 'nav-tab-active' : '' ) . '">' . $value . '</a>';
-   	 		} 
-   	 	?>
+   	 		} ?>
+
 		</h3>	
 
 		<div id="dedo-settings-main" <?php echo ( !apply_filters( 'dedo_admin_sidebar', true ) ) ? 'style="float: none; width: 100%; padding-right: 0;"' : ''; ?>>	
 
 			<form action="options.php" method="post">
 					
-					<?php 
-						// Setup fields
-						settings_fields( 'dedo_settings' );
-
-						// Display correct fields
-						foreach ( $registered_tabs as $key => $value ) {
-
-							$active_class = ( $key === $active_tab ) ? 'active' : '';
-
-							echo '<section id="dedo-settings-tab-' . $key . '" class="dedo-settings-tab ' . $active_class . '">';
-							
-							if ( 'support' === $key ) {
-
-								//dedo_render_part_support();
-							}
-							else {
-
-								do_settings_sections( 'dedo_settings_' . $key );
-							}
-
-							echo '</section>';
-						}
-						
-						// Submit button
-						submit_button();
-					?>
-
-				</form>
-
+				<?php // Setup fields
 				
+				settings_fields( 'dedo_settings' );
+
+				// Display correct fields
+				foreach ( $registered_tabs as $key => $value ) {
+
+					$active_class = ( $key === $active_tab ) ? 'active' : '';
+
+					echo '<section id="dedo-settings-tab-' . $key . '" class="dedo-settings-tab ' . $active_class . '">';
+					
+					if ( 'support' === $key ) {
+
+						dedo_render_part_support();
+					}
+					else {
+
+						do_settings_sections( 'dedo_settings_' . $key );
+					}
+
+					echo '</section>';
+				}
+				
+				// Submit button
+				submit_button(); ?>
+
+			</form>
+	
 		</div>
 
 		<?php dedo_render_part_sidebar(); ?>
 
 	</div>
+	
 	<?php
+}
+
+/**
+ * Render Support Section
+ *
+ * @since  1.5
+ */
+function dedo_render_part_support() {
+
+	global $wpdb, $dedo_options;
+
+	// Get current theme data
+	$theme = wp_get_theme();
+
+	// Get active plugins
+	$plugins = get_plugins();
+	$active_plugins = get_option( 'active_plugins', array() );
+
+	// Prior version
+	$prior_version = get_option( 'delightful-downloads-prior-version' );
+	?>
+
+	<textarea id="dedo_support" readonly>
+
+## Server Information ##
+
+Server: <?php echo $_SERVER['SERVER_SOFTWARE'] . "\n"; ?>
+PHP Version: <?php echo PHP_VERSION . "\n"; ?>
+MySQL Version: <?php echo $wpdb->db_version() . "\n"; ?>
+
+PHP Safe Mode: <?php echo ini_get( 'safe_mode' ) ? "Yes\n" : "No\n"; ?>
+PHP Memory Limit: <?php echo ini_get( 'memory_limit' ) . "\n"; ?>
+PHP Time Limit: <?php echo ini_get( 'max_execution_time' ) . "\n"; ?>
+PHP Max Post Size: <?php echo ini_get( 'post_max_size' ) . "\n"; ?>
+PHP Max Upload Size: <?php echo ini_get( 'upload_max_filesize' ) . "\n"; ?>
+
+
+## WordPress Information ##
+
+WordPress Version: <?php echo get_bloginfo( 'version' ) . "\n"; ?>
+Multisite: <?php echo ( is_multisite() ) ? 'Yes' . "\n" : 'No' . "\n" ?>
+Max Upload Size: <?php echo size_format( wp_max_upload_size(), 1 ) . "\n"; ?>
+
+Site Address: <?php echo home_url() . "\n"; ?>
+WordPress Address: <?php echo site_url() . "\n"; ?>
+Download Address: <?php echo dedo_download_link( 1 ) . "\n"; ?>
+
+<?php echo ( defined('UPLOADS') ? 'Upload Directory: ' . UPLOADS . "\n" : '' ); ?>
+Directory (wp-content): <?php echo ( defined('WP_CONTENT_DIR') ? WP_CONTENT_DIR . "\n" : '' ); ?>
+URL (wp-content): <?php echo ( defined('WP_CONTENT_URL') ? WP_CONTENT_URL . "\n" : '' ); ?>
+
+## Active Theme ## 
+
+<?php echo $theme->Name . " " . $theme->Version . "\n"; ?>
+
+
+## Active Plugins ##			
+
+<?php 
+foreach ( $plugins as $key => $value ) {
+	
+	if ( in_array( $key, $active_plugins ) ) {
+		echo $value['Name'] . ' ' . $value['Version'] . "\n";
+	}
+	
+}
+?>
+
+
+## Delightful Downloads Information ##
+
+Version: <?php echo DEDO_VERSION . "\n"; ?>
+Prior Version: <?php echo $prior_version . "\n"; ?>
+
+<?php
+
+foreach ( $dedo_options as $key => $value ) {
+	echo $key . ": " . $value . "\n";
+}
+
+?>
+	</textarea>
+
+	<?php
+
 }
 
 /**
  * Render Sidebar
  *
- * @since  1.3
+ * @since  1.5
  */
 function dedo_render_part_sidebar() {
 
