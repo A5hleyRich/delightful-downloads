@@ -31,7 +31,7 @@ jQuery( document ).ready( function( $ ) {
 	/**
 	 * Dashboard
 	 *
-	 * Updates dashboard popular downloads.
+	 * Updates dashboard widget.
 	 *
 	 * @since  1.4
 	 */
@@ -192,5 +192,44 @@ jQuery( document ).ready( function( $ ) {
 	if ( 'undefined' !== typeof DEDODashboardOptions ) {
 		DEDO_Dashboard.init( DEDODashboardOptions );
 	}
+
+	/**
+	 * Settings
+	 *
+	 * Settings tabs.
+	 *
+	 * @since  1.5
+	 */
+	var DEDO_Settings = {
+
+		init: function() {
+			this.settingsTabs();
+		},
+
+		settingsTabs: function() {
+			
+			// Hide non active tabs
+			$( '#dedo-settings-main .dedo-settings-tab:not(.active)' ).hide();
+
+			// Show tabs on click
+			$( '#dedo-settings-tabs a' ).on( 'click', function( e ) {
+
+				var $cachedTab = $( this );
+
+				// Update tab state
+				$( $cachedTab ).addClass( 'nav-tab-active' ).siblings( '.nav-tab' ).removeClass( 'nav-tab-active' );
+
+				// Show/hide form section
+				$( $cachedTab.attr( 'href' ) ).siblings( '.dedo-settings-tab:visible' ).hide( 0, function() {
+
+					$( $cachedTab.attr( 'href' ) ).fadeIn( 300 );
+				} );
+
+				e.preventDefault();
+			} );
+		}
+	};
+
+	DEDO_Settings.init();
 
 } );

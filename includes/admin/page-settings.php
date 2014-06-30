@@ -86,130 +86,80 @@ function dedo_render_page_settings() {
 			} 
 		?>
 
-		<h3 class="nav-tab-wrapper">
+		<h3 id="dedo-settings-tabs" class="nav-tab-wrapper">
 		<?php 
 			// Generate tabs
 			foreach ( $registered_tabs as $key => $value ) {
-				echo '<a href="edit.php?post_type=dedo_download&page=dedo_settings&tab=' . $key . '" class="nav-tab ' . ( $active_tab == $key ? 'nav-tab-active' : '' ) . '">' . $value . '</a>';
+				echo '<a href="#dedo-settings-tab-' . $key . '" class="nav-tab ' . ( $active_tab == $key ? 'nav-tab-active' : '' ) . '">' . $value . '</a>';
    	 		} 
    	 	?>
 		</h3>	
 
 		<div id="dedo-settings-main" <?php echo ( !apply_filters( 'dedo_admin_sidebar', true ) ) ? 'style="float: none; width: 100%; padding-right: 0;"' : ''; ?>>	
-			<?php
 
-			if ( 'support' == $active_tab ) {
-
-global $wpdb, $dedo_options;
-
-// Get current theme data
-$theme = wp_get_theme();
-
-// Get active plugins
-$plugins = get_plugins();
-$active_plugins = get_option( 'active_plugins', array() );
-
-// Prior version
-$prior_version = get_option( 'delightful-downloads-prior-version' );
-?>
-
-<textarea id="dedo_support" readonly>
-
-## Server Information ##
-
-Server: <?php echo $_SERVER['SERVER_SOFTWARE'] . "\n"; ?>
-PHP Version: <?php echo PHP_VERSION . "\n"; ?>
-MySQL Version: <?php echo $wpdb->db_version() . "\n"; ?>
-
-PHP Safe Mode: <?php echo ini_get( 'safe_mode' ) ? "Yes\n" : "No\n"; ?>
-PHP Memory Limit: <?php echo ini_get( 'memory_limit' ) . "\n"; ?>
-PHP Time Limit: <?php echo ini_get( 'max_execution_time' ) . "\n"; ?>
-PHP Max Post Size: <?php echo ini_get( 'post_max_size' ) . "\n"; ?>
-PHP Max Upload Size: <?php echo ini_get( 'upload_max_filesize' ) . "\n"; ?>
-
-
-## WordPress Information ##
-
-WordPress Version: <?php echo get_bloginfo( 'version' ) . "\n"; ?>
-Multisite: <?php echo ( is_multisite() ) ? 'Yes' . "\n" : 'No' . "\n" ?>
-Max Upload Size: <?php echo size_format( wp_max_upload_size(), 1 ) . "\n"; ?>
-
-Site Address: <?php echo home_url() . "\n"; ?>
-WordPress Address: <?php echo site_url() . "\n"; ?>
-Download Address: <?php echo dedo_download_link( 1 ) . "\n"; ?>
-
-<?php echo ( defined('UPLOADS') ? 'Upload Directory: ' . UPLOADS . "\n" : '' ); ?>
-Directory (wp-content): <?php echo ( defined('WP_CONTENT_DIR') ? WP_CONTENT_DIR . "\n" : '' ); ?>
-URL (wp-content): <?php echo ( defined('WP_CONTENT_URL') ? WP_CONTENT_URL . "\n" : '' ); ?>
-
-## Active Theme ## 
-
-<?php echo $theme->Name . " " . $theme->Version . "\n"; ?>
-
-
-## Active Plugins ##			
-
-<?php 
-foreach ( $plugins as $key => $value ) {
-	
-	if ( in_array( $key, $active_plugins ) ) {
-		echo $value['Name'] . ' ' . $value['Version'] . "\n";
-	}
-	
-}
-?>
-
-
-## Delightful Downloads Information ##
-
-Version: <?php echo DEDO_VERSION . "\n"; ?>
-Prior Version: <?php echo $prior_version . "\n"; ?>
-
-<?php
-
-foreach ( $dedo_options as $key => $value ) {
-	echo $key . ": " . str_replace( "\n", "\t", $value ) . "\n";
-}
-
-?>
-</textarea> <?php
-
-			}
-			else { ?>
-
-				<form action="options.php" method="post">
+			<form action="options.php" method="post">
+					
 					<?php 
 						// Setup fields
 						settings_fields( 'dedo_settings' );
 
 						// Display correct fields
-						do_settings_sections( 'dedo_settings_' . $active_tab );
-						
-						submit_button();
+						foreach ( $registered_tabs as $key => $value ) {
 
-			} ?>
+							$active_class = ( $key === $active_tab ) ? 'active' : '';
+
+							echo '<section id="dedo-settings-tab-' . $key . '" class="dedo-settings-tab ' . $active_class . '">';
+							
+							if ( 'support' === $key ) {
+
+								//dedo_render_part_support();
+							}
+							else {
+
+								do_settings_sections( 'dedo_settings_' . $key );
+							}
+
+							echo '</section>';
+						}
+						
+						// Submit button
+						submit_button();
+					?>
 
 				</form>
+
+				
 		</div>
 
-		<?php if ( apply_filters( 'dedo_admin_sidebar', true ) ) : ?>
-
-			<div id="dedo-settings-sidebar">
-				<h4><?php _e( 'Help and Support', 'delightful-downloads' ); ?></h4>
-				<p><?php printf( __( 'Please take a moment to look at the %sdocumentation%s. If you are still having issues, please leave a %ssupport request%s.', 'delightful-downloads' ), '<a href="http://delightfulwp.com/delightful-downloads/documentation/">', '</a>', '<a href="http://delightfulwp.com/contact/?reason=support">', '</a>' ); ?></p>
-				
-				<h4><?php _e( 'Share the Love', 'delightful-downloads' ); ?></h4>
-				<p><?php printf( __( 'Enjoy Delightful Downloads? Please consider %sdonating%s a few dollars, to help support future development. Alternatively, a %splugin review%s is always appreciated.', 'delightful-downloads' ), '<a href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&amp;hosted_button_id=95AQB5DP83XAU">', '</a>', '<a href="http://wordpress.org/support/view/plugin-reviews/delightful-downloads">', '</a>' ); ?></p>
-
-				<h4><?php _e( 'About the Developer', 'delightful-downloads' ); ?></h4>
-				<p><?php printf( __( 'Hey there! I\'m %sAshley Rich%s, a freelance web designer and WordPress developer based in the West Midlands, England.', 'delightful-downloads' ), '<a href="http://ashleyrich.com">', '</a>' ); ?></p>
-				<p><?php printf( __( '%sTwitter%s', 'delightful-downloads' ), '<a href="//twitter.com/A5hleyRich">', '</a>' ); ?></p>
-			</div>
-
-		<?php endif; ?>
+		<?php dedo_render_part_sidebar(); ?>
 
 	</div>
 	<?php
+}
+
+/**
+ * Render Sidebar
+ *
+ * @since  1.3
+ */
+function dedo_render_part_sidebar() {
+
+	if ( apply_filters( 'dedo_admin_sidebar', true ) ) : ?>
+
+		<div id="dedo-settings-sidebar">
+			<h4><?php _e( 'Help and Support', 'delightful-downloads' ); ?></h4>
+			<p><?php printf( __( 'Please take a moment to look at the %sdocumentation%s. If you are still having issues, please leave a %ssupport request%s.', 'delightful-downloads' ), '<a href="http://delightfulwp.com/delightful-downloads/documentation/">', '</a>', '<a href="http://delightfulwp.com/contact/?reason=support">', '</a>' ); ?></p>
+			
+			<h4><?php _e( 'Share the Love', 'delightful-downloads' ); ?></h4>
+			<p><?php printf( __( 'Enjoy Delightful Downloads? Please consider %sdonating%s a few dollars, to help support future development. Alternatively, a %splugin review%s is always appreciated.', 'delightful-downloads' ), '<a href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&amp;hosted_button_id=95AQB5DP83XAU">', '</a>', '<a href="http://wordpress.org/support/view/plugin-reviews/delightful-downloads">', '</a>' ); ?></p>
+
+			<h4><?php _e( 'About the Developer', 'delightful-downloads' ); ?></h4>
+			<p><?php printf( __( 'Hey there! I\'m %sAshley Rich%s, a freelance web designer and WordPress developer based in the West Midlands, England.', 'delightful-downloads' ), '<a href="http://ashleyrich.com">', '</a>' ); ?></p>
+			<p><?php printf( __( '%sTwitter%s', 'delightful-downloads' ), '<a href="//twitter.com/A5hleyRich">', '</a>' ); ?></p>
+		</div>
+
+	<?php endif;
+
 }
 
 /**
