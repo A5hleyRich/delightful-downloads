@@ -77,6 +77,7 @@ function dedo_render_page_settings() {
 	<div class="wrap">
 		
 		<h2><?php _e( 'Download Settings', 'delightful-downloads' ); ?>
+			<a href="<?php echo admin_url( 'edit.php?post_type=dedo_download&page=dedo_settings&action=export' ) ?>" class="add-new-h2"><?php _e( 'Export', 'delightful-downloads' ); ?></a>
 			<a href="<?php echo admin_url( 'edit.php?post_type=dedo_download&page=dedo_settings&action=reset_defaults' ) ?>" class="add-new-h2 dedo_confirm_action" data-confirm="<?php _e( 'You are about to reset the download settings.', 'delightful-downloads' ); ?>"><?php _e( 'Reset Defaults', 'delightful-downloads' ); ?></a>
 		</h2>
 		
@@ -246,35 +247,6 @@ function dedo_render_part_sidebar() {
 	<?php endif;
 
 }
-
-/**
- * Settings Page Actions
- *
- * @since  1.4
- */
-function dedo_settings_actions() {
-
-	//Only perform on settings page, when form not submitted
-	if ( isset( $_GET['page'] ) && 'dedo_settings' == $_GET['page'] ) {
-
-		// Reset default settings
-		if( isset( $_GET['action'] ) && 'reset_defaults' == $_GET['action'] ) {
-			
-			global $dedo_default_options, $dedo_notices;
-
-			delete_option( 'delightful-downloads' );
-			add_option( 'delightful-downloads', $dedo_default_options );
-
-			// Add success notice
-			$dedo_notices->add( 'updated', __( 'Default settings reset successfully.', 'delightful-downloads' ) );
-
-			// Redirect page to remove action from URL
-			wp_redirect( admin_url( 'edit.php?post_type=dedo_download&page=dedo_settings' ) );
-			exit();
-		}
-	}
-}
-add_action( 'init', 'dedo_settings_actions' );
 
 /**
  * Render Settings Sections
@@ -606,4 +578,82 @@ function dedo_validate_settings( $input ) {
 	dedo_delete_all_transients();
 
 	 return $parsed;
+}
+
+/**
+ * Settings Page Actions
+ *
+ * @since  1.4
+ */
+function dedo_settings_actions() {
+
+	//Only perform on settings page, when form not submitted
+	if ( isset( $_GET['page'] ) && 'dedo_settings' == $_GET['page'] ) {
+
+		// Export
+		if( isset( $_GET['action'] ) && 'export' == $_GET['action'] ) {
+
+			dedo_settings_actions_export();
+		}
+		// Reset default settings
+		else if( isset( $_GET['action'] ) && 'reset_defaults' == $_GET['action'] ) {
+			
+			dedo_settings_actions_reset();
+		}
+
+	}
+}
+add_action( 'init', 'dedo_settings_actions', 0 );
+
+/**
+ * Settings Page Actions Export
+ *
+ * @since  1.5
+ */
+function dedo_settings_actions_export() {
+
+	global $dedo_options;
+
+	// Set filename
+	$filename = 'delightful-downloads-' . date( 'Ymd' ) . '.json';
+
+	// Output headers so that the file is downloaded
+	nocache_headers();
+	header( 'Content-Type: application/json; charset=utf-8' );
+	header( 'Content-Disposition: attachment; filename=' . $filename );
+	header( 'Expires: 0' );
+
+	echo json_encode( $dedo_options );	
+
+	die();
+}
+
+/**
+ * Settings Page Actions Import
+ *
+ * @since  1.5
+ */
+function dedo_settings_actions_import() {
+
+	
+}
+
+/**
+ * Settings Page Actions Reset
+ *
+ * @since  1.5
+ */
+function dedo_settings_actions_reset() {
+
+	global $dedo_default_options, $dedo_notices;
+
+	delete_option( 'delightful-downloads' );
+	add_option( 'delightful-downloads', $dedo_default_options );
+
+	// Add success notice
+	$dedo_notices->add( 'updated', __( 'Default settings reset successfully.', 'delightful-downloads' ) );
+
+	// Redirect page to remove action from URL
+	wp_redirect( admin_url( 'edit.php?post_type=dedo_download&page=dedo_settings' ) );
+	exit();	
 }
