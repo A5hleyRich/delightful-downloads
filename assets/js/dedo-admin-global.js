@@ -286,7 +286,7 @@ jQuery( document ).ready( function( $ ) {
 				// Show/hide form section
 				$( $cachedTab.attr( 'href' ) ).siblings( '.dedo-settings-tab:visible' ).hide( 0, function() {
 
-					$( $cachedTab.attr( 'href' ) ).fadeIn( 300 );
+					$( $cachedTab.attr( 'href' ) ).show();
 				} );
 
 				e.preventDefault();
