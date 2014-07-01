@@ -36,7 +36,7 @@ function dedo_render_page_statistics() {
 	?>
 	<div class="wrap">
 		<h2><?php _e( 'Download Logs', 'delightful-downloads' ); ?>
-			<a href="<?php echo admin_url( 'edit.php?post_type=dedo_download&page=dedo_statistics&action=empty_logs' ) ?>" class="add-new-h2 dedo_confirm_action" data-confirm="<?php _e( 'You are about to permanently delete the download logs.', 'delightful-downloads' ); ?>"><?php _e( 'Empty Logs', 'delightful-downloads' ); ?></a>
+			<a href="<?php echo wp_nonce_url( admin_url( 'edit.php?post_type=dedo_download&page=dedo_statistics&action=empty_logs' ), 'dedo_empty_logs', 'dedo_empty_logs_nonce' ); ?>" class="add-new-h2 dedo_confirm_action" data-confirm="<?php _e( 'You are about to permanently delete the download logs.', 'delightful-downloads' ); ?>"><?php _e( 'Empty Logs', 'delightful-downloads' ); ?></a>
 		</h2>
 
 		<div id="dedo-settings-main">	
@@ -66,6 +66,15 @@ function dedo_statistics_actions() {
 			
 			global $dedo_statistics, $dedo_notices;
 
+			// Verfiy nonce
+			check_admin_referer( 'dedo_empty_logs', 'dedo_empty_logs_nonce' );
+
+			// Admins only
+			if ( !current_user_can( 'manage_options' ) ) {
+
+				return;
+			}
+
 			$result = $dedo_statistics->empty_table();
 
 			if ( false === $result ) {
@@ -85,7 +94,7 @@ function dedo_statistics_actions() {
 		}
 	}
 }
-add_action( 'init', 'dedo_statistics_actions' );
+add_action( 'init', 'dedo_statistics_actions', 0 );
 
 /**
  * Statistics Sreen Options
