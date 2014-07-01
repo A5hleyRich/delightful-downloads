@@ -397,6 +397,13 @@
 .dedo_download_page_dedo_settings .nav-tab-wrapper {
   margin-bottom: 0;
 }
+.dedo_download_page_dedo_settings .nav-tab-wrapper .nav-tab {
+  border-bottom: 1px solid #ccc;
+  /* Fix tab jumping */
+}
+.dedo_download_page_dedo_settings .nav-tab-wrapper .nav-tab-active {
+  border-bottom: 1px solid #f1f1f1;
+}
 .dedo_download_page_dedo_settings #dedo-settings-main {
   float: left;
   width: 75%;
