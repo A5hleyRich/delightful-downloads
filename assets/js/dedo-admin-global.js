@@ -10,10 +10,12 @@ jQuery( document ).ready( function( $ ) {
 	var DEDO_Admin = {
 
 		init: function() {
+			
 			this.confirmAction();
 		},
 
 		confirmAction: function() {
+			
 			var $confirmAction = $( '.dedo_confirm_action' );
 
 			$confirmAction.on( 'click', function( e ) {
@@ -27,6 +29,68 @@ jQuery( document ).ready( function( $ ) {
 	};
 
 	DEDO_Admin.init();
+
+	/**
+	 * Modal
+	 *
+	 * Handle modals.
+	 *
+	 * @since  1.5
+	 */
+	var DEDO_Modal = {
+
+		// Store current modal
+		modal: null,
+
+		init: function() {
+			
+			this.listenerModal();
+		},
+
+		listenerModal: function() {
+
+			self = this;
+
+			// Show modal
+			$( '.dedo-modal-action' ).on( 'click', function( e ) {
+
+				self.modal = $( this ).attr( 'href' );
+
+				self.showModal();
+				e.preventDefault();
+			} );
+
+			// Close modal
+			$( 'body' ).on( 'click', '.dedo-modal-close, #dedo-modal-background', function( e ) {
+
+				self.closeModal();
+				e.preventDefault();
+			} );
+		},
+
+		showModal: function( modal ) {
+
+			// Add background
+			$( 'body' ).append( $( '<div id="dedo-modal-background" style="display: none">Test</div>' ).fadeTo( 300, .7 ) );
+
+			// Display modal
+			$( this.modal ).fadeIn( 300 );			
+		},
+
+		closeModal: function() {
+
+			// Fade and remove background
+			$( '#dedo-modal-background' ).fadeOut( 300, function() {
+
+				this.remove();
+			} );
+
+			// Hide modal window
+			$( this.modal ).fadeOut( 300 );
+		}
+	};
+
+	DEDO_Modal.init();
 
 	/**
 	 * Dashboard

@@ -77,6 +77,7 @@ function dedo_render_page_settings() {
 	<div class="wrap">
 		
 		<h2><?php _e( 'Download Settings', 'delightful-downloads' ); ?>
+			<a href="#dedo-settings-import" class="add-new-h2 dedo-modal-action"><?php _e( 'Import', 'delightful-downloads' ); ?></a>
 			<a href="<?php echo admin_url( 'edit.php?post_type=dedo_download&page=dedo_settings&action=export' ) ?>" class="add-new-h2"><?php _e( 'Export', 'delightful-downloads' ); ?></a>
 			<a href="<?php echo admin_url( 'edit.php?post_type=dedo_download&page=dedo_settings&action=reset_defaults' ) ?>" class="add-new-h2 dedo_confirm_action" data-confirm="<?php _e( 'You are about to reset the download settings.', 'delightful-downloads' ); ?>"><?php _e( 'Reset Defaults', 'delightful-downloads' ); ?></a>
 		</h2>
@@ -579,6 +580,43 @@ function dedo_validate_settings( $input ) {
 
 	 return $parsed;
 }
+
+/**
+ * Render Import Modal
+ *
+ * @since  1.5
+ */
+function dedo_render_part_import() {
+
+	// Ensure only added on settings screen	
+	$screen = get_current_screen();
+
+	if ( 'dedo_download_page_dedo_settings' !== $screen->id ) {
+
+		return;
+	}
+
+	?>
+
+	<div id="dedo-settings-import" class="dedo-modal" style="display: none; width: 400px; left: 50%; margin-left: -200px;">
+		<a href="#" class="dedo-modal-close" title="Close"><span class="media-modal-icon"></span></a>
+		<div class="media-modal-content">
+			<h1><?php _e( 'Import Settings', 'delightful-downloads' ); ?></h1>
+			<p><?php _e( 'Select a Delightful Downloads settings file to import:', 'delightful-downloads' ); ?></p>
+			<form method="post" enctype="multipart/form-data" action="<?php echo admin_url( 'edit.php?post_type=dedo_download&page=dedo_settings&action=import' ); ?>">
+				<p><input type="file" name="json_file"/></p>
+				<p>
+					<?php wp_nonce_field( 'dedo_import_settings','dedo_import_settings_nonce' ); ?>
+					<input type="submit" value="<?php _e( 'Import', 'delightful-downloads' ); ?>" class="button button-primary"/>
+				</p>
+			</form>
+		</div>
+	</div>
+
+	<?php
+
+}
+add_action( 'admin_footer', 'dedo_render_part_import' );
 
 /**
  * Settings Page Actions
