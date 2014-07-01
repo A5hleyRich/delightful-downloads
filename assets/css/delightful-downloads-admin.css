@@ -412,12 +412,8 @@
   padding-left: 20px;
   box-sizing: border-box;
 }
-.dedo_download_page_dedo_settings .description {
-  max-width: 500px;
-}
 .dedo-settings-textarea {
   width: 100%;
-  max-width: 400px;
   height: 200px;
 }
 /* Support Page */
