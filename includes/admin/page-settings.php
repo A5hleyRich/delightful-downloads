@@ -78,8 +78,8 @@ function dedo_render_page_settings() {
 		
 		<h2><?php _e( 'Download Settings', 'delightful-downloads' ); ?>
 			<a href="#dedo-settings-import" class="add-new-h2 dedo-modal-action"><?php _e( 'Import', 'delightful-downloads' ); ?></a>
-			<a href="<?php echo admin_url( 'edit.php?post_type=dedo_download&page=dedo_settings&action=export' ) ?>" class="add-new-h2"><?php _e( 'Export', 'delightful-downloads' ); ?></a>
-			<a href="<?php echo admin_url( 'edit.php?post_type=dedo_download&page=dedo_settings&action=reset_defaults' ) ?>" class="add-new-h2 dedo_confirm_action" data-confirm="<?php _e( 'You are about to reset the download settings.', 'delightful-downloads' ); ?>"><?php _e( 'Reset Defaults', 'delightful-downloads' ); ?></a>
+			<a href="<?php echo wp_nonce_url( admin_url( 'edit.php?post_type=dedo_download&page=dedo_settings&action=export' ), 'dedo_export_settings', 'dedo_export_settings_nonce' ) ?>" class="add-new-h2"><?php _e( 'Export', 'delightful-downloads' ); ?></a>
+			<a href="<?php echo wp_nonce_url( admin_url( 'edit.php?post_type=dedo_download&page=dedo_settings&action=reset_defaults' ), 'dedo_reset_settings', 'dedo_reset_settings_nonce' ) ?>" class="add-new-h2 dedo_confirm_action" data-confirm="<?php _e( 'You are about to reset the download settings.', 'delightful-downloads' ); ?>"><?php _e( 'Reset Defaults', 'delightful-downloads' ); ?></a>
 		</h2>
 		
 		<?php if ( isset( $_GET['settings-updated'] ) ) {
@@ -705,6 +705,15 @@ function dedo_settings_actions_export() {
 
 	global $dedo_options;
 
+	// Verfiy nonce
+	check_admin_referer( 'dedo_export_settings', 'dedo_export_settings_nonce' );
+
+	// Admins only
+	if ( !current_user_can( 'manage_options' ) ) {
+
+		return;
+	}
+
 	// Set filename
 	$filename = 'delightful-downloads-' . date( 'Ymd' ) . '.json';
 
@@ -727,6 +736,15 @@ function dedo_settings_actions_export() {
 function dedo_settings_actions_reset() {
 
 	global $dedo_default_options, $dedo_notices;
+
+	// Verfiy nonce
+	check_admin_referer( 'dedo_reset_settings', 'dedo_reset_settings_nonce' );
+
+	// Admins only
+	if ( !current_user_can( 'manage_options' ) ) {
+
+		return;
+	}
 
 	delete_option( 'delightful-downloads' );
 	add_option( 'delightful-downloads', $dedo_default_options );
