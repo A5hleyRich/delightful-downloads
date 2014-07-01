@@ -628,8 +628,13 @@ function dedo_settings_actions() {
 	//Only perform on settings page, when form not submitted
 	if ( isset( $_GET['page'] ) && 'dedo_settings' == $_GET['page'] ) {
 
+		// Import
+		if( isset( $_GET['action'] ) && 'import' == $_GET['action'] ) {
+
+			dedo_settings_actions_import();
+		}
 		// Export
-		if( isset( $_GET['action'] ) && 'export' == $_GET['action'] ) {
+		else if( isset( $_GET['action'] ) && 'export' == $_GET['action'] ) {
 
 			dedo_settings_actions_export();
 		}
@@ -642,6 +647,54 @@ function dedo_settings_actions() {
 	}
 }
 add_action( 'init', 'dedo_settings_actions', 0 );
+
+/**
+ * Settings Page Actions Import
+ *
+ * @since  1.5
+ */
+function dedo_settings_actions_import() {
+
+	global $dedo_notices;
+
+	// Verfiy nonce
+	check_admin_referer( 'dedo_import_settings', 'dedo_import_settings_nonce' );
+
+	// Admins only
+	if ( !current_user_can( 'manage_options' ) ) {
+
+		return;
+	}
+
+	// Check file is uploaded
+	if ( isset( $_FILES['json_file'] ) && $_FILES['json_file']['size'] > 0 ) {
+
+		// Check file extension
+		if ( 'json' !== dedo_get_file_ext( $_FILES['json_file']['name'] ) ) {
+
+			$dedo_notices->add( 'error', __( 'Invalid settings file.', 'delightful-downloads' ) );
+
+			return;
+		}
+
+		// Import and display success
+		$import = json_decode( file_get_contents( $_FILES['json_file']['tmp_name'] ), true );
+
+		update_option( 'delightful-downloads', $import );
+
+		$dedo_notices->add( 'updated', __( 'Settings have been successfully imported.', 'delightful-downloads' ) );
+
+		// Redirect page to remove action from URL
+		wp_redirect( admin_url( 'edit.php?post_type=dedo_download&page=dedo_settings' ) );
+		exit();	
+	}
+	else {
+
+		$dedo_notices->add( 'error', __( 'No file uploaded.', 'delightful-downloads' ) );
+
+		return;
+	}
+}
 
 /**
  * Settings Page Actions Export
@@ -664,16 +717,6 @@ function dedo_settings_actions_export() {
 	echo json_encode( $dedo_options );	
 
 	die();
-}
-
-/**
- * Settings Page Actions Import
- *
- * @since  1.5
- */
-function dedo_settings_actions_import() {
-
-	
 }
 
 /**
