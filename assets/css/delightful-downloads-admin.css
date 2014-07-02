@@ -518,6 +518,33 @@
 #dedo-upload-modal #dedo-drag-drop-area .drag-drop-info {
   font-size: 20px;
 }
+/* Progress Bar */
+#dedo-progress-bar {
+  position: relative;
+  margin: 1em 0;
+  width: 100%;
+  height: 60px;
+  background: #fcfcfc;
+  border: 1px solid #000;
+}
+#dedo-progress-bar #dedo-progress-percent {
+  background: #000;
+  height: 60px;
+  opacity: .5;
+}
+#dedo-progress-bar #dedo-progress-text {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 60px;
+  font-size: 20px;
+  line-height: 60px;
+  text-align: center;
+}
+#dedo-progress-error {
+  color: red;
+  font-style: italic;
+}
 /* Existing Modal */
 #dedo-select-modal #dedo-file-browser {
   box-sizing: border-box;
@@ -550,4 +577,86 @@
   display: block;
   width: 100%;
   height: auto;
+}
+/* Theme Colors
+--------------------------------------------- */
+/* Fresh (Default) */
+.admin-color-fresh #ddownload-count .count {
+  color: #04a4cc;
+}
+.admin-color-fresh #dedo-progress-bar {
+  border-color: #04a4cc;
+}
+.admin-color-fresh #dedo-progress-bar #dedo-progress-percent {
+  background: #04a4cc;
+}
+/* Light */
+.admin-color-light #ddownload-count .count {
+  color: #04a4cc;
+}
+.admin-color-light #dedo-progress-bar {
+  border-color: #04a4cc;
+}
+.admin-color-light #dedo-progress-bar #dedo-progress-percent {
+  background: #04a4cc;
+}
+/* Blue */
+.admin-color-blue #ddownload-count .count {
+  color: #52accc;
+}
+.admin-color-blue #dedo-progress-bar {
+  border-color: #52accc;
+}
+.admin-color-blue #dedo-progress-bar #dedo-progress-percent {
+  background: #52accc;
+}
+/* Coffee */
+.admin-color-coffee #ddownload-count .count {
+  color: #c7a589;
+}
+.admin-color-coffee #dedo-progress-bar {
+  border-color: #c7a589;
+}
+.admin-color-coffee #dedo-progress-bar #dedo-progress-percent {
+  background: #c7a589;
+}
+/* Ectoplasm */
+.admin-color-ectoplasm #ddownload-count .count {
+  color: #a3b745;
+}
+.admin-color-ectoplasm #dedo-progress-bar {
+  border-color: #a3b745;
+}
+.admin-color-ectoplasm #dedo-progress-bar #dedo-progress-percent {
+  background: #a3b745;
+}
+/* Midnight */
+.admin-color-midnight #ddownload-count .count {
+  color: #e14d43;
+}
+.admin-color-midnight #dedo-progress-bar {
+  border-color: #e14d43;
+}
+.admin-color-midnight #dedo-progress-bar #dedo-progress-percent {
+  background: #e14d43;
+}
+/* Ocean */
+.admin-color-ocean #ddownload-count .count {
+  color: #9ebaa0;
+}
+.admin-color-ocean #dedo-progress-bar {
+  border-color: #9ebaa0;
+}
+.admin-color-ocean #dedo-progress-bar #dedo-progress-percent {
+  background: #9ebaa0;
+}
+/* Sunrise */
+.admin-color-sunrise #ddownload-count .count {
+  color: #dd823b;
+}
+.admin-color-sunrise #dedo-progress-bar {
+  border-color: #dd823b;
+}
+.admin-color-sunrise #dedo-progress-bar #dedo-progress-percent {
+  background: #dd823b;
 }

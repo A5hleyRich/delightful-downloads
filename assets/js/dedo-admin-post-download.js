@@ -26,12 +26,13 @@ jQuery( document ).ready( function( $ ){
 	// Init pluploader
 	var uploader = new plupload.Uploader( plupload_args );
 	
+	uploader.init();
+
 	 // File added to queue
 	uploader.bind('FilesAdded', function( up, file ) {
-		console.log( 'File added!' );
-
-		// $( '#plupload-error' ).hide();
-		// $( '#plupload-progress' ).slideDown();
+		
+		$( '#dedo-progress-error' ).hide();
+		$( '#dedo-progress-bar' ).slideDown( 900 );
 		
 		up.refresh();
 		up.start();
@@ -40,39 +41,47 @@ jQuery( document ).ready( function( $ ){
 	// Progress bar
 	uploader.bind( 'UploadProgress', function( up, file ) {
 		
-		// $( '#plupload-progress .bar' ).css( 'width', file.percent + '%' );
-		// $( '#plupload-progress .percent' ).html( '<p>' + file.percent + '%</p>' );
+		$( '#dedo-progress-bar #dedo-progress-percent' ).css( 'width', file.percent + '%' );
+		$( '#dedo-progress-bar #dedo-progress-text' ).html( file.percent + '%' );
 	} );	
 	
 	// File uploaded
 	uploader.bind( 'FileUploaded', function( up, file, response ) {
-		response = $.parseJSON( response.response );
+
+		var response = $.parseJSON( response.response );
 
  		if( response.error && response.error.code ) {
+ 			
  			uploader.trigger('Error', {
             	code : response.error.code,
             	message : response.error.message,
-            	details : response.details,
             	file : file
         	});
  		}
  		else {
  			
- 		// 	$( '#dedo-file-url' ).val( $.trim( response.file.url ) ).trigger( 'change' );
-			// $( '.file-size-container p' ).html( plupload.formatSize( file['size'] ) );
-			// $( '#plupload-progress' ).slideUp();
+	 		console.log( $.trim( response.file.url ) );
+	 		
+	 		// Close modal and hide progress bar
+	 		$( '#dedo-progress-bar' ).slideUp( 900, function() {
+
+	 			$( 'body' ).trigger( 'closeModal' );
+	 		} );
+
  		}
 	} );
 	
 	// Error
 	uploader.bind( 'Error', function( up, err ) {
 		
-		// $( '#plupload-error' ).show().html( err.message );
-		// $( '#plupload-progress' ).slideUp();
+		console.log( err.message );
+
+		$( '#dedo-progress-bar' ).hide( 0, function() {
+
+			$( '#dedo-progress-error' ). html( '<p>' + err.message + '</p>' ).show();
+		} );
 		
 		up.refresh();
 	} );
-
-	uploader.init();
 
 } );

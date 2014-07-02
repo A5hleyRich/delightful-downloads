@@ -16,8 +16,13 @@ if ( !defined( 'ABSPATH' ) ) exit;
  * @since  1.0
  */
 function dedo_download_upload_ajax() {
-	check_ajax_referer( 'dedo_download_upload' );
 	
+	if ( !check_ajax_referer( 'dedo_download_upload', false, false ) ) {
+
+		// Echo error message
+		die( '{ "jsonrpc" : "2.0", "error" : {"code": 500, "message": "' . __( 'Failed security checks!', 'delightful-downloads' ) . '" } }' );
+	}
+
 	// Set upload dir
 	add_filter( 'upload_dir', 'dedo_set_upload_dir' );
 	
