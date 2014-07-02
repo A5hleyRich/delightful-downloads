@@ -503,8 +503,23 @@
   padding: 16px 0;
   font-size: 16px;
 }
+/* Upload Modal */
+#dedo-upload-modal #dedo-drag-drop-area {
+  margin-top: 1em;
+  padding: 40px;
+  border: 4px dashed #bbb;
+}
+#dedo-upload-modal #dedo-drag-drop-area p {
+  margin: 5px 0;
+  font-size: 14px;
+  text-align: center;
+  color: #aaa;
+}
+#dedo-upload-modal #dedo-drag-drop-area .drag-drop-info {
+  font-size: 20px;
+}
 /* Existing Modal */
-#dedo-file-browser {
+#dedo-select-modal #dedo-file-browser {
   box-sizing: border-box;
   width: 99%;
   max-height: 200px;

@@ -98,6 +98,8 @@ function dedo_meta_box_download( $post ) {
  */
 function dedo_render_part_upload() {
 
+	global $post;
+
 	// Ensure only added on add/edit screen
 	$screen = get_current_screen();
 
@@ -106,13 +108,46 @@ function dedo_render_part_upload() {
 		return;
 	}
 
+	$plupload_init = array(
+		'runtimes'            => 'html5, silverlight, flash, html4',
+		'browse_button'       => 'dedo-upload-button',
+		'container'           => 'dedo-upload-container',
+		'drop_element'		  => 'dedo-drag-drop-area',
+		'file_data_name'      => 'async-upload',            
+		'multiple_queues'     => false,
+		'multi_selection'	  => false,
+		'max_file_size'       => wp_max_upload_size() . 'b',
+		'url'                 => admin_url( 'admin-ajax.php' ),
+		'flash_swf_url'       => includes_url( 'js/plupload/plupload.flash.swf' ),
+		'silverlight_xap_url' => includes_url( 'js/plupload/plupload.silverlight.xap' ),
+		'filters'             => array( array( 'title' => __( 'Allowed Files' ), 'extensions' => '*' ) ),
+		'multipart'           => true,
+		'urlstream_upload'    => true,
+
+		// additional post data to send to our ajax hook
+		'multipart_params'    => array(
+			'_ajax_nonce' 		=> wp_create_nonce( 'dedo_download_upload' ),
+			'action'      		=> 'dedo_download_upload',
+			'post_id'			=> $post->ID
+		)
+	);
+
 	?>
 
-	<div id="dedo-upload-modal" class="dedo-modal" style="display: none; width: 40%; left: 50%; margin-left: -20%;">
+	<script type="text/javascript">
+		var plupload_args = <?php echo json_encode( $plupload_init ); ?>;
+	</script>
+
+	<div id="dedo-upload-modal" class="dedo-modal" style="display: block; width: 40%; left: 50%; margin-left: -20%;">
 		<a href="#" class="dedo-modal-close" title="Close"><span class="media-modal-icon"></span></a>
-		<div class="dedo-modal-content">
+		<div id="dedo-upload-container" class="dedo-modal-content">
 			<h1><?php _e( 'Upload File', 'delightful-downloads' ); ?></h1>
-			<p><?php _e( 'Select a Delightful Downloads settings file to import:', 'delightful-downloads' ); ?></p>
+			<div id="dedo-drag-drop-area">
+				<p class="drag-drop-info"><?php _e( 'Drop file here', 'delightful-downloads' ); ?></p>
+				<p><?php _e( 'or', 'delightful-downloads' ); ?></p>
+				<p class="drag-drop-button"><input id="dedo-upload-button" type="button" value="<?php _e( 'Select File', 'delightful-downloads' ); ?>" class="button" />
+			</div>
+			<p><?php printf( __( 'Maximum upload file size: %s.', 'delightful-downloads' ), size_format( wp_max_upload_size(), 1 ) ); ?></p>
 			
 		</div>
 	</div>
