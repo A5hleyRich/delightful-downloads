@@ -98,10 +98,10 @@ function dedo_meta_box_download( $post ) {
  */
 function dedo_render_part_upload() {
 
-	// Ensure only added on settings screen	
+	// Ensure only added on add/edit screen
 	$screen = get_current_screen();
 
-	if ( 'edit.php?post_type=dedo_download' !== $screen->parent_file ) {
+	if ( 'post' !== $screen->base || 'dedo_download' !== $screen->post_type ) {
 
 		return;
 	}
@@ -129,10 +129,10 @@ add_action( 'admin_footer', 'dedo_render_part_upload' );
  */
 function dedo_render_part_select() {
 
-	// Ensure only added on settings screen	
+	// Ensure only added on add/edit screen
 	$screen = get_current_screen();
 
-	if ( 'edit.php?post_type=dedo_download' !== $screen->parent_file ) {
+	if ( 'post' !== $screen->base || 'dedo_download' !== $screen->post_type ) {
 
 		return;
 	}
@@ -141,8 +141,7 @@ function dedo_render_part_select() {
 	$filebrowser_init = array(
 		'root'			=> dedo_get_upload_dir( 'basedir' ) . '/',
 		'url'			=> dedo_get_upload_dir( 'baseurl' ) . '/',
-		'script'		=> DEDO_PLUGIN_URL . 'assets/js/jqueryFileTree/connectors/jqueryFileTree.php',
-		'multiFolder'	=> true
+		'script'		=> DEDO_PLUGIN_URL . 'assets/js/jqueryFileTree/connectors/jqueryFileTree.php'
 	);
 
 	?>
@@ -155,11 +154,16 @@ function dedo_render_part_select() {
 		<a href="#" class="dedo-modal-close" title="Close"><span class="media-modal-icon"></span></a>
 		<div class="dedo-modal-content">
 			<h1><?php _e( 'Existing File', 'delightful-downloads' ); ?></h1>
-			<label for="dedo-select-url"><?php _e( 'Enter a URL:', 'delightful-downloads' ); ?></label>
-			<input name="dedo-select-url" id="dedo-select-url" type="url" class="large-text" placeholder="File URL..." />
-			
-			<p><?php _e( 'Select a file:', 'delightful-downloads' ); ?></p>
-			<div id="dedo-file-browser"></div>
+			<p><?php _e( 'Manaully enter a file URL, or use the file browser.', 'delightful-downloads' ); ?></p>
+			<p>	
+				<input name="dedo-select-url" id="dedo-select-url" type="url" class="large-text" placeholder="<?php _e( 'File path or URL...', 'delightful-downloads' ); ?>" />
+			</p>
+			<p>
+				<div id="dedo-file-browser"><p><?php _e( 'Loading...', 'delightful-downloads' ); ?></p></div>
+			</p>
+			<p>
+				<a href="#" id="dedo-select-done" class="button button-primary">Done</a>
+			</p>
 		</div>
 	</div>
 

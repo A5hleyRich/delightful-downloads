@@ -25,14 +25,29 @@ jQuery( document ).ready( function( $ ){
 
 	// Init file browser
 	$( '#dedo-file-browser' ).fileTree( filebrowser_args, function( file ) {
+		
+		// User clicked file
 		var file_path = file.replace( filebrowser_args.root, filebrowser_args.url );
-		$( '#dedo-file-url' ).val( file_path ).trigger( 'change' );
+		
+		// Update url field
+		$( '#dedo-select-url' ).val( file_path ).trigger( 'change' );
+	} );
+
+	// Done with existing file modal
+	$( '#dedo-select-done' ).on( 'click', function( e ) {
+
+		var url = $( '#dedo-select-url' ).val();
+
+		// Close modal and save URL
+		if ( url.length > 0 ) {
+
+			console.log( url );
+		}
+
+		$( 'body' ).trigger( 'closeModal' );
 	} );
 	
-	// // Toggle file browser
-	// $( '#dedo-select-button' ).click( function() {
-	// 	$( '#dedo-file-browser' ).slideToggle();
-	// } );
+
 	
 	// // Init pluploader
 	// var uploader = new plupload.Uploader( plupload_args );

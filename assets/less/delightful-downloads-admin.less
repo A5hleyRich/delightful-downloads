@@ -533,7 +533,8 @@
 	resize: vertical;
 }
 
-/* Admin Modal Windows */
+/* Admin Modal Windows
+--------------------------------------------- */
 .dedo-modal {
 	position: fixed;
 	top: 60px;
@@ -548,7 +549,7 @@
 	.dedo-modal-close {
 		position: absolute;
 		text-decoration: none;
-		top: 5px;
+		top: 12px;
 		right: 10px;
 		width: 30px;
 		height: 30px;
@@ -598,6 +599,9 @@
 	z-index: 15999;
 }
 
+/* Add/Edit Download Screen
+--------------------------------------------- */
+
 /* Admin Add Download */
  #dedo-new-download {
  	padding: 60px;
@@ -615,8 +619,17 @@
 
 /* Existing Modal */
 #dedo-file-browser {
-	max-height: 300px;
+	box-sizing: border-box;
+	width: 99%;
+	max-height: 200px;
+	margin: 1px;
+	background: #fcfcfc;
 	overflow: auto;
+	-webkit-box-shadow: inset 0 1px 2px rgba(0,0,0,0.07);
+	-moz-box-shadow: inset 0 1px 2px rgba(0,0,0,0.07);
+	-o-box-shadow: inset 0 1px 2px rgba(0,0,0,0.07);
+	box-shadow: inset 0 1px 2px rgba(0,0,0,0.07);
+
 }
 
 /* Existing Download */

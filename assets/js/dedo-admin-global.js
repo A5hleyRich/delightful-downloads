@@ -44,10 +44,12 @@ jQuery( document ).ready( function( $ ) {
 
 		init: function() {
 			
-			this.listenerModal();
+			this.clickEvents();
+			this.showModal();
+			this.closeModal();
 		},
 
-		listenerModal: function() {
+		clickEvents: function() {
 
 			self = this;
 
@@ -56,37 +58,45 @@ jQuery( document ).ready( function( $ ) {
 
 				self.modal = $( this ).attr( 'href' );
 
-				self.showModal();
+				$( 'body' ).trigger( 'openModal' );
 				e.preventDefault();
 			} );
 
 			// Close modal
 			$( 'body' ).on( 'click', '.dedo-modal-close, #dedo-modal-background', function( e ) {
 
-				self.closeModal();
+				$( 'body' ).trigger( 'closeModal' );
 				e.preventDefault();
 			} );
 		},
 
 		showModal: function( modal ) {
 
-			// Add background
-			$( 'body' ).append( $( '<div id="dedo-modal-background" style="display: none">Test</div>' ).fadeTo( 300, .7 ) );
+			self = this;
 
-			// Display modal
-			$( this.modal ).fadeIn( 300 );			
+			$( 'body' ).on( 'openModal', function() {
+				
+				// Add background
+				$( 'body' ).append( $( '<div id="dedo-modal-background" style="display: none">Test</div>' ).fadeTo( 300, .7 ) );
+
+				// Display modal
+				$( self.modal ).fadeIn( 300 );
+			} );
 		},
 
 		closeModal: function() {
 
-			// Fade and remove background
-			$( '#dedo-modal-background' ).fadeOut( 300, function() {
+			$( 'body' ).on( 'closeModal', function() {
 
-				this.remove();
+				// Fade and remove background
+				$( '#dedo-modal-background' ).fadeOut( 300, function() {
+
+					this.remove();
+				} );
+
+				// Hide modal window
+				$( '.dedo-modal' ).fadeOut( 300 );
 			} );
-
-			// Hide modal window
-			$( this.modal ).fadeOut( 300 );
 		}
 	};
 
