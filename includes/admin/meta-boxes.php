@@ -16,8 +16,8 @@ if ( !defined( 'ABSPATH' ) ) exit;
  * @since  1.0
  */
 function dedo_register_meta_boxes() {
-	add_meta_box( 'dedo_file', __( 'File', 'delightful-downloads' ), 'dedo_meta_box_file', 'dedo_download', 'normal', 'high' );
-	add_meta_box( 'dedo_stats', __( 'Download Stats', 'delightful-downloads' ), 'dedo_meta_box_stats', 'dedo_download', 'side', 'core' );
+	add_meta_box( 'dedo_download', __( 'Download', 'delightful-downloads' ), 'dedo_meta_box_download', 'dedo_download', 'normal', 'high' );
+	// add_meta_box( 'dedo_stats', __( 'Download Stats', 'delightful-downloads' ), 'dedo_meta_box_stats', 'dedo_download', 'side', 'core' );
 }
 add_action( 'add_meta_boxes', 'dedo_register_meta_boxes' );
 
@@ -61,81 +61,112 @@ function dedo_update_messages( $messages ) {
 add_action( 'post_updated_messages', 'dedo_update_messages' );
 
 /**
- * Render File Metabox
+ * Render Download Metabox
  *
- * @since  1.0
+ * @since  1.5
  */
-function dedo_meta_box_file( $post ) {
+function dedo_meta_box_download( $post ) {
+	
 	$file_url = get_post_meta( $post->ID, '_dedo_file_url', true );
 	$file_size = size_format( get_post_meta( $post->ID, '_dedo_file_size', true ), 1 );
 	
-	global $post, $dedo_options;;
-	 
-	$plupload_init = array(
-		'runtimes'            => 'html5, silverlight, flash, html4',
-		'browse_button'       => 'dedo-upload-button',
-		'container'           => 'plupload-container',
-		'file_data_name'      => 'async-upload',            
-		'multiple_queues'     => false,
-		'multi_selection'	  => false,
-		'max_file_size'       => wp_max_upload_size() . 'b',
-		'url'                 => admin_url( 'admin-ajax.php' ),
-		'flash_swf_url'       => includes_url( 'js/plupload/plupload.flash.swf' ),
-		'silverlight_xap_url' => includes_url( 'js/plupload/plupload.silverlight.xap' ),
-		'filters'             => array( array( 'title' => __( 'Allowed Files' ), 'extensions' => '*' ) ),
-		'multipart'           => true,
-		'urlstream_upload'    => true,
-	
-		// additional post data to send to our ajax hook
-		'multipart_params'    => array(
-			'_ajax_nonce' 		=> wp_create_nonce( 'dedo_download_upload' ),
-			'action'      		=> 'dedo_download_upload',
-			'post_id'			=> $post->ID
-		),
-	);
-	
-	$filebrowser_init = array(
-		'root'		=> dedo_get_upload_dir( 'basedir' ) . '/',
-		'url'		=> dedo_get_upload_dir( 'baseurl' ) . '/',
-		'script'	=> DEDO_PLUGIN_URL . 'assets/js/jqueryFileTree/connectors/jqueryFileTree.php'
-	);
-	
 	?>
 	
-	<script type="text/javascript">
-		var plupload_args = <?php echo json_encode( $plupload_init ); ?>;
-		var filebrowser_args = <?php echo json_encode( $filebrowser_init ); ?>;
-	</script>
-	
-	<div id="plupload-container">	
-		<label for="dedo-file-url"><?php _e( 'File URL:', 'delightful-downloads' ); ?></label>
-		<div class="file-container">
-			<div class="file-url-container">
-				<input type="text" name="dedo-file-url" id="dedo-file-url" value="<?php echo esc_attr( $file_url ); ?>" class="large-text" placeholder="<?php _e( 'Upload or enter the file URL.', 'delightful-downloads' ); ?>" />
-				<span class="remove" style="display: none"><a href="#">Remove</a></span>
-			</div>
-			<div class="file-size-container">
-				<p><?php echo ( !$file_size ) ? __( 'Unkown', 'delightful-downloads' ) : $file_size; ?></p>
-			</div>
+	<div id="dedo-new-download" style="display: block;">		
+		<a href="#dedo-upload-modal" class="button dedo-modal-action"><?php _e( 'Upload File', 'delightful-downloads' ); ?></a>
+		<a href="#dedo-select-modal" class="button dedo-modal-action"><?php _e( 'Existing File', 'delightful-downloads' ); ?></a>
+	</div>
+
+	<div id="dedo-existing-download" style="display: none;">		
+		<div class="left-column">
+			<img src="#" id="dedo-download-icon">
+			<a href="#dedo-delete-modal" class="button delete"><?php _e( 'Delete File', 'delightful-downloads' ); ?></a>
 		</div>
-		<?php wp_nonce_field( 'ddownload_file_save', 'ddownload_file_save_nonce' ); ?>
-		
-		<div id="plupload-file">
-			<input id="dedo-upload-button" type="button" value="<?php _e( 'Upload File', 'delightful-downloads' ); ?>" class="button" />
-			<input id="dedo-select-button" type="button" value="<?php _e( 'Select Existing File', 'delightful-downloads' ); ?>" class="button" />
-			<span class="description"><?php printf( __( 'Maximum upload file size: %s.', 'delightful-downloads' ), size_format( wp_max_upload_size(), 1 ) ); ?></span>
-			<div id="dedo-file-upload">
-				<p id="plupload-error" class="error" style="display: none"></p>
-				<div id="plupload-progress" style="display: none">
-					<div class="bar" style="width: 0"></div>
-					<div class="percent"><p>Uploading...</p></div>
-				</div>
-			</div>
-			<div id="dedo-file-browser" style="display: none"></div>
+		<div class="right-column">
+			test
 		</div>
 	</div>
+
 	<?php
+	
 }
+
+/**
+ * Render Upload Modal
+ *
+ * @since  1.5
+ */
+function dedo_render_part_upload() {
+
+	// Ensure only added on settings screen	
+	$screen = get_current_screen();
+
+	if ( 'edit.php?post_type=dedo_download' !== $screen->parent_file ) {
+
+		return;
+	}
+
+	?>
+
+	<div id="dedo-upload-modal" class="dedo-modal" style="display: none; width: 40%; left: 50%; margin-left: -20%;">
+		<a href="#" class="dedo-modal-close" title="Close"><span class="media-modal-icon"></span></a>
+		<div class="dedo-modal-content">
+			<h1><?php _e( 'Upload File', 'delightful-downloads' ); ?></h1>
+			<p><?php _e( 'Select a Delightful Downloads settings file to import:', 'delightful-downloads' ); ?></p>
+			
+		</div>
+	</div>
+
+	<?php
+
+}
+add_action( 'admin_footer', 'dedo_render_part_upload' );
+
+/**
+ * Render Select Modal
+ *
+ * @since  1.5
+ */
+function dedo_render_part_select() {
+
+	// Ensure only added on settings screen	
+	$screen = get_current_screen();
+
+	if ( 'edit.php?post_type=dedo_download' !== $screen->parent_file ) {
+
+		return;
+	}
+
+	// File browser args
+	$filebrowser_init = array(
+		'root'			=> dedo_get_upload_dir( 'basedir' ) . '/',
+		'url'			=> dedo_get_upload_dir( 'baseurl' ) . '/',
+		'script'		=> DEDO_PLUGIN_URL . 'assets/js/jqueryFileTree/connectors/jqueryFileTree.php',
+		'multiFolder'	=> true
+	);
+
+	?>
+
+	<script type="text/javascript">
+		var filebrowser_args = <?php echo json_encode( $filebrowser_init ); ?>;
+	</script>
+
+	<div id="dedo-select-modal" class="dedo-modal" style="display: none; width: 40%; left: 50%; margin-left: -20%;">
+		<a href="#" class="dedo-modal-close" title="Close"><span class="media-modal-icon"></span></a>
+		<div class="dedo-modal-content">
+			<h1><?php _e( 'Existing File', 'delightful-downloads' ); ?></h1>
+			<label for="dedo-select-url"><?php _e( 'Enter a URL:', 'delightful-downloads' ); ?></label>
+			<input name="dedo-select-url" id="dedo-select-url" type="url" class="large-text" placeholder="File URL..." />
+			
+			<p><?php _e( 'Select a file:', 'delightful-downloads' ); ?></p>
+			<div id="dedo-file-browser"></div>
+		</div>
+	</div>
+
+	<?php
+
+}
+add_action( 'admin_footer', 'dedo_render_part_select' );
 
 /**
  * Render stats meta box

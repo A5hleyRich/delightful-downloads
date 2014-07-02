@@ -487,3 +487,41 @@
   opacity: .7;
   z-index: 15999;
 }
+/* Admin Add Download */
+#dedo-new-download {
+  padding: 60px;
+  text-align: center;
+}
+#dedo-new-download .button {
+  display: inline-block;
+  width: 180px;
+  margin: 10px 5px;
+  height: auto;
+  padding: 16px 0;
+  font-size: 16px;
+}
+/* Existing Modal */
+#dedo-file-browser {
+  max-height: 300px;
+  overflow: auto;
+}
+/* Existing Download */
+#dedo-existing-download {
+  padding: 20px 0;
+  overflow: hidden;
+}
+#dedo-existing-download .left-column {
+  float: left;
+  width: 25%;
+}
+#dedo-existing-download .right-column {
+  float: left;
+  box-sizing: border-box;
+  width: 75%;
+  padding-left: 20px;
+}
+#dedo-existing-download #dedo-download-icon {
+  display: block;
+  width: 100%;
+  height: auto;
+}
