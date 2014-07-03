@@ -69,22 +69,43 @@ function dedo_meta_box_download( $post ) {
 	
 	$file_url = get_post_meta( $post->ID, '_dedo_file_url', true );
 	$file_size = size_format( get_post_meta( $post->ID, '_dedo_file_size', true ), 1 );
+	$file_name = dedo_get_file_name( $file_url );
 	
 	?>
 	
-	<div id="dedo-new-download" style="display: block;">		
+	<div id="dedo-new-download" style="<?php echo ( !$file_url ) ? 'display: block;' : 'display: none;'; ?>">		
 		<a href="#dedo-upload-modal" class="button dedo-modal-action"><?php _e( 'Upload File', 'delightful-downloads' ); ?></a>
 		<a href="#dedo-select-modal" class="button dedo-modal-action"><?php _e( 'Existing File', 'delightful-downloads' ); ?></a>
 	</div>
 
-	<div id="dedo-existing-download" style="display: none;">		
-		<div class="left-column">
-			<img src="#" id="dedo-download-icon">
-			<a href="#dedo-delete-modal" class="button delete"><?php _e( 'Delete File', 'delightful-downloads' ); ?></a>
-		</div>
-		<div class="right-column">
-			test
-		</div>
+	<div id="dedo-existing-download" style="<?php echo ( $file_url ) ? 'display: block;' : 'display: none;'; ?>">		
+		<table class="widefat">
+			<thead>
+				<tr>
+					<th width="20%"><?php _e( 'File Name', 'delightful-downloads' ); ?></th>
+					<th width="60%"><?php _e( 'URL or Path', 'delightful-downloads' ); ?></th>
+					<th width="15%"><?php _e( 'Size', 'delightful-downloads' ); ?></th>
+					<th width="5%"><?php //_e( 'Delete', 'delightful-downloads' ); ?></th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td class="file-name">
+						<a href="<?php echo esc_attr( dedo_download_link( $post->ID ) ); ?>" title="<?php echo esc_attr( __( sprintf( 'Download %s', $file_name ), 'delightful-downloads' ) ); ?>"><?php echo $file_name; ?></a>
+						<span class="status success" title="Test"></span>
+					</td>
+					<td class="file-url">
+						<input type="text" id="dedo-file-url" name="dedo-file-url" class="large-text" value="<?php echo esc_attr( $file_url ); ?>" />
+					</td>
+					<td class="file-size">
+						<?php echo $file_size; ?>
+					</td>
+					<td class="file-delete">
+						<a href="#" id="dedo-remove-button" class="delete" title="<?php _e( 'Delete', 'delightful-downloads' ); ?>"></a>
+					</td>
+				</tr>
+			</tbody>
+		</table>
 	</div>
 
 	<?php
@@ -138,7 +159,7 @@ function dedo_render_part_upload() {
 		var plupload_args = <?php echo json_encode( $plupload_init ); ?>;
 	</script>
 
-	<div id="dedo-upload-modal" class="dedo-modal" style="display: block; width: 40%; left: 50%; margin-left: -20%;">
+	<div id="dedo-upload-modal" class="dedo-modal" style="display: none; width: 40%; left: 50%; margin-left: -20%;">
 		<a href="#" class="dedo-modal-close" title="Close"><span class="media-modal-icon"></span></a>
 		<div id="dedo-upload-container" class="dedo-modal-content">
 			<h1><?php _e( 'Upload File', 'delightful-downloads' ); ?></h1>

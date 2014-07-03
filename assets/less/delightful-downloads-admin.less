@@ -172,173 +172,9 @@
 	}
 }
 
-/* All logs screen */
-.post-type-dedo_log {
-
-	// Hide excerpt views
-	.view-switch {
-		display: none;
-	}
-}
-
 /* Taxonomy pages */
 .taxonomy-ddownload_category .row-actions .view, .taxonomy-ddownload_tag .row-actions .view {
 	display: none;
-}
-
-/* Add Download Page */
-.post-type-dedo_download {
-	
-	#titlediv {
-		margin-bottom: 20px;
-	}
-
-	.misc-pub-visibility {
-		display: none;
-	}
-
-	.file-container {
-		overflow: hidden;
-	}
-
-	.file-url-container {
-		position: relative;
-		width: 85%;
-		float: left;
-		padding-right: 10px;
-		box-sizing: border-box;
-
-		.remove {
-			position: absolute;
-			bottom: 4px;
-			right: 10px;
-			padding: 1px 5px;
-			background-color: #fff;
-		}
-	}
-
-	.file-size-container {
-		width: 15%;
-		float: left;
-		padding-left: 10px;
-		box-sizing: border-box;
-
-		p {
-			margin: 0;
-			line-height: 30px;
-		}
-	}
-
-	#dedo-file-url {
-		width: 100%;
-		padding-right: 60px;
-		box-sizing: border-box;
-	}
-
-	.remove {
-
-		a {
-			color: #a00;
-			text-decoration: none;
-
-			&:hover {
-				color: #f00;
-			}
-		}
-	}
-
-	span.description {
-		display: inline-block;
-		height: 28px;
-		line-height: 28px;
-		color: #666;
-	}
-
-	#plupload-file {
-		margin-top: 10px;
-
-		input[type="button"] {
-			margin-right: 10px;
-		}
-	}
-}
-
-/* Meta Box File Progress */
-#plupload-progress {
-	position: relative;
-	margin-top: 10px;
-	box-sizing: border-box;
-	width: 100%;
-	height: 30px;
-	border: 1px solid #ddd;
-}
-
-#plupload-progress .bar {
-	height: 28px;
-}
-
-.admin-color-blue #plupload-progress .bar {
-	background-color: rgba(219, 152, 37, .25);
-}
-
-.admin-color-coffee #plupload-progress .bar {
-	background-color: rgba(199, 165, 137, .25);
-}
-
-.admin-color-ectoplasm #plupload-progress .bar {
-	background-color: rgba(137, 153, 58, .25);
-}
-
-.admin-color-midnight #plupload-progress .bar {
-	background-color: rgba(217, 44, 35, .25);
-}
-
-.admin-color-ocean #plupload-progress .bar {
-	background-color: rgba(158, 186, 160, .25);
-}
-
-.admin-color-sunrise #plupload-progress .bar {
-	background-color: rgba(221, 130, 59, .25);
-}
-
-#plupload-progress .percent {
-	position: absolute;
-	top: 0;
-	left: 0;
-	width: 100%;
-	height: 30px;
-	text-align: center;
-
-	p {
-		line-height: 30px;
-		color: #666;
-	}
-}
-
-#plupload-progress .percent p {
-	margin: 0;
-}
-
-/* Meta Box File Success */
-#plupload-container .success {
-	color: green;
-}
-
-#plupload-container .error {
-	color: red;
-}
-
-#dedo-file-browser {
-	position: relative;
-	margin: 10px 0;
-	padding: 10px;
-	background-color: #fff;
-	border: 1px solid #dfdfdf;
-}
-
-#dedo-file-browser-close {
-	display: inline-block;
-	color: #f00;
 }
 
 /* Menu Icon */
@@ -599,8 +435,20 @@
 	z-index: 15999;
 }
 
+
 /* Add/Edit Download Screen
 --------------------------------------------- */
+
+.post-type-dedo_download {
+	
+	#titlediv {
+		margin-bottom: 20px;
+	}
+
+	.misc-pub-visibility {
+		display: none;
+	}
+}
 
 /* Admin Add Download */
  #dedo-new-download {
@@ -677,6 +525,8 @@
 		width: 99%;
 		max-height: 200px;
 		margin: 1px;
+		padding: 10px;
+		border: 1px solid #ddd;
 		background: #fcfcfc;
 		overflow: auto;
 		-webkit-box-shadow: inset 0 1px 2px rgba(0,0,0,0.07);
@@ -687,45 +537,67 @@
 	}
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
 /* Existing Download */
 #dedo-existing-download {
- 	padding: 20px 0;
+ 	padding: 20px 0 0;
  	overflow: hidden;
 
-	.left-column {
-		float: left;
-		width: 25%;
+	td {
+		position: relative;
+		line-height: 28px;
+
+		input[type="text"] {
+			width: 100%;
+		}
 	}
 
-	.right-column {
-		float: left;
-		box-sizing: border-box;
-		width: 75%;
-		padding-left: 20px;
+	.file-name {
+		padding-right: 25px;
 	}
 
-	#dedo-download-icon {
+	/* Status */
+	span.status {
+		position: absolute;
+		top: 16px;
+		right: 10px;
 		display: block;
-		width: 100%;
-		height: auto;
+		margin: -4px 0 0;
+		width: 15px;
+		height: 15px;
+		background-image: none;
 	}
 
-	.button.delete {
-
+	span.status:before {
+		content: '\f147';
+		font: normal 20px/1 'dashicons';
+		color: #0a0;
+		speak: none;
+		-webkit-font-smoothing: antialiased;
+		-moz-osx-font-smoothing: grayscale;
 	}
 
+	/* Delete Button */
+	.delete {
+		display: block;
+		margin: -2px 0 0;
+		width: 15px;
+		height: 15px;
+		background-image: none;
+	}
+
+	.delete:before {
+		content: '\f335';
+		font: normal 20px/1 'dashicons';
+		speak: none;
+		vertical-align: middle;
+		-webkit-font-smoothing: antialiased;
+		-moz-osx-font-smoothing: grayscale;
+		color: #a00;
+	}
+
+	.delete:hover:before {
+		color: #f00;
+	}
 	
 }
 
