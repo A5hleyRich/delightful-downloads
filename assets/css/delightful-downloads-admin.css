@@ -445,47 +445,35 @@
 #dedo-existing-download {
   padding: 20px 0 0;
   overflow: hidden;
-  /* Status */
-  /* Delete Button */
+  /* Table Cells */
 }
+#dedo-existing-download th,
 #dedo-existing-download td {
-  position: relative;
-  line-height: 28px;
+  display: table-cell;
+  vertical-align: middle;
 }
-#dedo-existing-download td input[type="text"] {
+#dedo-existing-download .file-status,
+#dedo-existing-download .file-delete {
+  width: 20px;
+}
+#dedo-existing-download .file-url input[type="text"] {
   width: 100%;
 }
-#dedo-existing-download .file-name {
-  padding-right: 25px;
-}
-#dedo-existing-download span.status {
-  position: absolute;
-  top: 16px;
-  right: 10px;
-  display: block;
-  margin: -4px 0 0;
-  width: 15px;
-  height: 15px;
-  background-image: none;
+#dedo-existing-download .file-size {
+  width: 10%;
 }
 #dedo-existing-download span.status:before {
   content: '\f147';
-  font: normal 20px/1 'dashicons';
+  font: normal 20px 'dashicons';
   color: #0a0;
   speak: none;
+  vertical-align: middle;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
-#dedo-existing-download .delete {
-  display: block;
-  margin: -2px 0 0;
-  width: 15px;
-  height: 15px;
-  background-image: none;
-}
 #dedo-existing-download .delete:before {
   content: '\f335';
-  font: normal 20px/1 'dashicons';
+  font: normal 20px 'dashicons';
   speak: none;
   vertical-align: middle;
   -webkit-font-smoothing: antialiased;

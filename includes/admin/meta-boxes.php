@@ -82,19 +82,19 @@ function dedo_meta_box_download( $post ) {
 		<table class="widefat">
 			<thead>
 				<tr>
-					<th width="20%"><?php _e( 'File Name', 'delightful-downloads' ); ?></th>
-					<th width="60%"><?php _e( 'URL or Path', 'delightful-downloads' ); ?></th>
-					<th width="15%"><?php _e( 'Size', 'delightful-downloads' ); ?></th>
-					<th width="5%"><?php //_e( 'Delete', 'delightful-downloads' ); ?></th>
+					<th class="file-status"><?php //_e( 'File Status', 'delightful-downloads' ); ?></th>
+					<th class="file-url"><?php _e( 'URL or Path', 'delightful-downloads' ); ?></th>
+					<th class="file-size"><?php _e( 'Size', 'delightful-downloads' ); ?></th>
+					<th class="file-delete"><?php //_e( 'Delete', 'delightful-downloads' ); ?></th>
 				</tr>
 			</thead>
 			<tbody>
 				<tr>
-					<td class="file-name">
-						<a href="<?php echo esc_attr( dedo_download_link( $post->ID ) ); ?>" title="<?php echo esc_attr( __( sprintf( 'Download %s', $file_name ), 'delightful-downloads' ) ); ?>"><?php echo $file_name; ?></a>
+					<td class="file-status">
 						<span class="status success" title="Test"></span>
 					</td>
 					<td class="file-url">
+						<?php wp_nonce_field( 'ddownload_file_save', 'ddownload_file_save_nonce' ); ?>
 						<input type="text" id="dedo-file-url" name="dedo-file-url" class="large-text" value="<?php echo esc_attr( $file_url ); ?>" />
 					</td>
 					<td class="file-size">

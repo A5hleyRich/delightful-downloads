@@ -542,52 +542,37 @@
  	padding: 20px 0 0;
  	overflow: hidden;
 
-	td {
-		position: relative;
-		line-height: 28px;
-
-		input[type="text"] {
-			width: 100%;
-		}
+	/* Table Cells */
+	th, td {
+		display: table-cell;
+		vertical-align: middle;
 	}
 
-	.file-name {
-		padding-right: 25px;
+	.file-status, .file-delete {
+		width: 20px;
 	}
 
-	/* Status */
-	span.status {
-		position: absolute;
-		top: 16px;
-		right: 10px;
-		display: block;
-		margin: -4px 0 0;
-		width: 15px;
-		height: 15px;
-		background-image: none;
+	.file-url input[type="text"] {
+		width: 100%;
+	}
+
+	.file-size {
+		width: 10%;
 	}
 
 	span.status:before {
 		content: '\f147';
-		font: normal 20px/1 'dashicons';
+		font: normal 20px 'dashicons';
 		color: #0a0;
 		speak: none;
+		vertical-align: middle;
 		-webkit-font-smoothing: antialiased;
 		-moz-osx-font-smoothing: grayscale;
 	}
 
-	/* Delete Button */
-	.delete {
-		display: block;
-		margin: -2px 0 0;
-		width: 15px;
-		height: 15px;
-		background-image: none;
-	}
-
 	.delete:before {
 		content: '\f335';
-		font: normal 20px/1 'dashicons';
+		font: normal 20px 'dashicons';
 		speak: none;
 		vertical-align: middle;
 		-webkit-font-smoothing: antialiased;
