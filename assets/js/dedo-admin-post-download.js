@@ -74,17 +74,19 @@ jQuery( document ).ready( function( $ ){
 	// Upload File Modal
 	DEDO_Upload_Modal = {
 
+		uploader: {},
+
 		init: function() {
 			// Init pluploader
-			var uploader = new plupload.Uploader( plupload_args );
-			uploader.init();
+			this.uploader = new plupload.Uploader( plupload_args );
+			this.uploader.init();
 
 			this.uploadListeners();
 		},
 
 		uploadListeners: function() {
 			// File added to queue
-			uploader.bind('FilesAdded', function( up, file ) {
+			this.uploader.bind('FilesAdded', function( up, file ) {
 				$( '#dedo-progress-error' ).hide();
 				$( '#dedo-progress-bar' ).slideDown( 900 );
 				
@@ -93,17 +95,17 @@ jQuery( document ).ready( function( $ ){
 			} );
 			
 			// Progress bar
-			uploader.bind( 'UploadProgress', function( up, file ) {
+			this.uploader.bind( 'UploadProgress', function( up, file ) {
 				$( '#dedo-progress-bar #dedo-progress-percent' ).css( 'width', file.percent + '%' );
 				$( '#dedo-progress-bar #dedo-progress-text' ).html( file.percent + '%' );
 			} );	
 			
 			// File uploaded
-			uploader.bind( 'FileUploaded', function( up, file, response ) {
+			this.uploader.bind( 'FileUploaded', function( up, file, response ) {
 				var response = $.parseJSON( response.response );
 
 		 		if( response.error && response.error.code ) {
-		 			uploader.trigger('Error', {
+		 			this.uploader.trigger('Error', {
 		            	code : response.error.code,
 		            	message : response.error.message,
 		            	file : file
@@ -121,7 +123,7 @@ jQuery( document ).ready( function( $ ){
 			} );
 			
 			// Error
-			uploader.bind( 'Error', function( up, err ) {
+			this.uploader.bind( 'Error', function( up, err ) {
 				$( '#dedo-progress-bar' ).hide( 0, function() {
 					$( '#dedo-progress-error' ). html( '<p>' + err.message + '</p>' ).show();
 				} );

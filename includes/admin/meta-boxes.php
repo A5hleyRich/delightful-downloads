@@ -104,6 +104,36 @@ function dedo_meta_box_download( $post ) {
 						<a href="#" id="dedo-remove-button" class="delete" title="<?php _e( 'Delete', 'delightful-downloads' ); ?>"></a>
 					</td>
 				</tr>
+				<tr>
+					<td class="file-status">
+						<span class="spinner" title="Test"></span>
+					</td>
+					<td class="file-url">
+						<?php wp_nonce_field( 'ddownload_file_save', 'ddownload_file_save_nonce' ); ?>
+						<input type="text" id="dedo-file-url" name="dedo-file-url" class="large-text" value="<?php echo esc_attr( $file_url ); ?>" />
+					</td>
+					<td class="file-size">
+						<?php echo $file_size; ?>
+					</td>
+					<td class="file-delete">
+						<a href="#" id="dedo-remove-button" class="delete" title="<?php _e( 'Delete', 'delightful-downloads' ); ?>"></a>
+					</td>
+				</tr>
+				<tr>
+					<td class="file-status">
+						<span class="status warning" title="Test"></span>
+					</td>
+					<td class="file-url">
+						<?php wp_nonce_field( 'ddownload_file_save', 'ddownload_file_save_nonce' ); ?>
+						<input type="text" id="dedo-file-url" name="dedo-file-url" class="large-text" value="<?php echo esc_attr( $file_url ); ?>" />
+					</td>
+					<td class="file-size">
+						<?php echo $file_size; ?>
+					</td>
+					<td class="file-delete">
+						<a href="#" id="dedo-remove-button" class="delete" title="<?php _e( 'Delete', 'delightful-downloads' ); ?>"></a>
+					</td>
+				</tr>
 			</tbody>
 		</table>
 	</div>

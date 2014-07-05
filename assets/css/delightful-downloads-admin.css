@@ -455,6 +455,7 @@
 #dedo-existing-download .file-status,
 #dedo-existing-download .file-delete {
   width: 20px;
+  text-align: center;
 }
 #dedo-existing-download .file-url input[type="text"] {
   width: 100%;
@@ -463,13 +464,28 @@
   width: 10%;
 }
 #dedo-existing-download span.status:before {
-  content: '\f147';
   font: normal 20px 'dashicons';
-  color: #0a0;
   speak: none;
   vertical-align: middle;
+  text-align: center;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+#dedo-existing-download span.status.success:before {
+  content: '\f147';
+  color: #0a0;
+}
+#dedo-existing-download span.status.warning:before {
+  content: '\f348';
+  font-size: 17px;
+  color: #ffba00;
+}
+#dedo-existing-download .spinner {
+  display: block;
+  width: 15px;
+  height: 15px;
+  -webkit-background-size: 15px 15px;
+  background-size: 15px 15px;
 }
 #dedo-existing-download .delete:before {
   content: '\f335';

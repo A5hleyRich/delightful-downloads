@@ -550,6 +550,7 @@
 
 	.file-status, .file-delete {
 		width: 20px;
+		text-align: center;
 	}
 
 	.file-url input[type="text"] {
@@ -561,13 +562,31 @@
 	}
 
 	span.status:before {
-		content: '\f147';
 		font: normal 20px 'dashicons';
-		color: #0a0;
 		speak: none;
 		vertical-align: middle;
+		text-align: center;
 		-webkit-font-smoothing: antialiased;
 		-moz-osx-font-smoothing: grayscale;
+	}
+
+	span.status.success:before {
+		content: '\f147';
+		color: #0a0;
+	}
+
+	span.status.warning:before {
+		content: '\f348';
+		font-size: 17px;
+		color: #ffba00;
+	}
+
+	.spinner {
+		display: block;
+		width: 15px;
+		height: 15px;
+		-webkit-background-size: 15px 15px;
+		background-size: 15px 15px;
 	}
 
 	.delete:before {
