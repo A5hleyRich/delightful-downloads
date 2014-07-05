@@ -65,11 +65,22 @@ add_action( 'post_updated_messages', 'dedo_update_messages' );
  * @since  1.5
  */
 function dedo_meta_box_download( $post ) {
-	
 	$file_url = get_post_meta( $post->ID, '_dedo_file_url', true );
 	$file_size = size_format( get_post_meta( $post->ID, '_dedo_file_size', true ), 1 );
 	
+	$args = array(
+		'ajaxURL'		=> admin_url( 'admin-ajax.php', isset( $_SERVER['HTTPS'] ) ? 'https://' : 'http://' ),
+		'nonce' 	=> wp_create_nonce( 'dedo_download_update_status' ),
+		'action'      	=> 'dedo_download_update_status'
+	);
+
 	?>
+
+	<script type="text/javascript">
+		var updateStatusArgs = <?php echo json_encode( $args ); ?>;
+	</script>
+
+	<?php wp_nonce_field( 'ddownload_file_save', 'ddownload_file_save_nonce' ); ?>
 	
 	<div id="dedo-new-download" style="<?php echo ( !$file_url ) ? 'display: block;' : 'display: none;'; ?>">		
 		<a href="#dedo-upload-modal" class="button dedo-modal-action"><?php _e( 'Upload File', 'delightful-downloads' ); ?></a>
@@ -109,7 +120,6 @@ function dedo_meta_box_download( $post ) {
 						<span class="status success" title="Test"></span>
 					</td>
 					<td class="file-url">
-						<?php wp_nonce_field( 'ddownload_file_save', 'ddownload_file_save_nonce' ); ?>
 						<input type="text" name="dedo-file-url[0]" class="large-text" value="<?php echo esc_attr( $file_url ); ?>" />
 					</td>
 					<td class="file-size">
@@ -143,7 +153,6 @@ function dedo_render_part_upload() {
 	$screen = get_current_screen();
 
 	if ( 'post' !== $screen->base || 'dedo_download' !== $screen->post_type ) {
-
 		return;
 	}
 
@@ -248,6 +257,44 @@ function dedo_render_part_select() {
 
 }
 add_action( 'admin_footer', 'dedo_render_part_select' );
+
+/**
+ * Update Status Ajax
+ *
+ * @since  1.5
+*/
+function dedo_download_update_status_ajax() {
+
+	global $dedo_statistics;
+
+	// Check for nonce and permission
+	if ( !check_ajax_referer( 'dedo_download_update_status', 'nonce', false ) || !current_user_can( apply_filters( 'dedo_cap_add_new', 'edit_pages' ) ) ) {
+		
+		echo json_encode( array(
+			'status'	=> 'error',
+			'content'	=> __( 'Failed security check!', 'delightful-downloads' )
+		) );
+
+		die();
+	}
+
+	if( $result = dedo_get_file_status( $_REQUEST['url'] ) ) {
+		// Exists
+		echo json_encode( array (
+			'status'	=> 'success',
+			'content'	=> $result
+		) );
+	}
+	else {
+		echo json_encode( array (
+			'status'	=> 'error',
+			'content'	=> __( 'File not accessible!', 'delightful-downloads' )
+		) );
+	}
+
+	die();
+}
+add_action( 'wp_ajax_dedo_download_update_status', 'dedo_download_update_status_ajax' );
 
 /**
  * Save meta boxes

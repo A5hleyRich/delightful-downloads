@@ -3,9 +3,13 @@ jQuery( document ).ready( function( $ ){
 	// Main Add/Edit Download Screen
 	DEDO_Admin_Download = {
 
+		options: {},
+
 		currentFiles: 0,
 
-		init: function() {
+		init: function( options ) {
+			this.options = options;
+
 			this.updateFileCount();
 			this.eventListeners();
 		},
@@ -65,7 +69,6 @@ jQuery( document ).ready( function( $ ){
 
 		updateFileCount: function() {
 			this.currentFiles = $( '.dedo-single-file' ).not( '.template' ).length;
-			console.log( this.currentFiles );
 		},
 
 		updateInputNames: function() {
@@ -75,9 +78,35 @@ jQuery( document ).ready( function( $ ){
 		},
 
 		updateStatus: function( row ) {
+			var self = this;
 			var url = $( row ).find( '.file-url input[type="text"]' ).val();
 
-			console.log( url );
+			$.ajax( {
+				
+				url: self.options.ajaxURL,
+				
+				data: {
+					action: self.options.action,
+					nonce: self.options.nonce,
+					url: url
+				},
+				
+				dataType: 'json',
+				
+				success: function( response ) {
+					if ( response.status == 'success' ) {
+						// Change status icon and file size
+						$( row ).find( '.file-status' ).html( '<span class="status success"></span>' );
+						$( row ).find( '.file-size' ).html( response.content.size );
+					}
+					else {
+						// Change status icon
+						$( row ).find( '.file-status' ).html( '<span class="status warning"></span>' );
+						$( row ).find( '.file-size' ).html( '--' );
+					}
+				}
+
+			} );
 		}
 
 	};
@@ -178,7 +207,7 @@ jQuery( document ).ready( function( $ ){
 
 	}
 
-	DEDO_Admin_Download.init();
+	DEDO_Admin_Download.init( updateStatusArgs );
 	DEDO_Existing_Modal.init();
 	DEDO_Upload_Modal.init();
 

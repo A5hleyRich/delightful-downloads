@@ -488,14 +488,14 @@ function dedo_get_abs_path( $requested_file ) {
 	// Check for absolute path
 	if ( ( !isset( $parsed_file['scheme'] ) || !in_array( $parsed_file['scheme'], array( 'http', 'https' ) ) ) && isset( $parsed_file['path'] ) && file_exists( $requested_file ) ) {
 		
-		return $requested_file;
+		$file = $requested_file;
 	}
 
 	// Falls within wp_content
 	else if ( strpos( $requested_file, WP_CONTENT_URL ) !== false ) {
 		$file_path = str_replace( WP_CONTENT_URL, WP_CONTENT_DIR, $requested_file );
 		
-		return realpath( $file_path );
+		$file = realpath( $file_path );
 	}
 
 	// Falls in multisite
@@ -506,7 +506,7 @@ function dedo_get_abs_path( $requested_file ) {
 		$site_url = trailingslashit( network_site_url() );
 		$file_path = str_replace( $site_url, ABSPATH, $file_path );
 
-		return realpath( $file_path );
+		$file = realpath( $file_path );
 	}
 
 	// Falls within WordPress directory structure
@@ -514,18 +514,21 @@ function dedo_get_abs_path( $requested_file ) {
 		$site_url = trailingslashit( site_url() );
 		$file_path = str_replace( $site_url, ABSPATH, $requested_file );
 
-		return realpath( $file_path );
+		$file = realpath( $file_path );
 	}
 
 	// Falls outside WordPress structure but within document root.
-	else if ( file_exists( $_SERVER['DOCUMENT_ROOT'] . $parsed_file['path'] ) ) {
+	else if ( strpos( $requested_file, site_url() ) && file_exists( $_SERVER['DOCUMENT_ROOT'] . $parsed_file['path'] ) ) {
 		$file_path = $_SERVER['DOCUMENT_ROOT'] . $parsed_file['path'];
 		
-		return realpath( $file_path );
+		$file = realpath( $file_path );
 	}
 
+	// Checks file exists
+	if ( isset( $file ) && is_file( $file ) ) {
+		return $file;
+	}
 	else {
-
 		return false;
 	}
 }
@@ -579,4 +582,38 @@ function dedo_get_file_ext( $path ) {
 	$file = wp_check_filetype( $path );
 	
 	return $file['ext'];
+}
+
+/**
+ * Get File Status
+ *
+ * Checks whether a file is accessible, either locally or remotely.
+ *
+ * @since   1.5
+ *
+ * @param string $url File path/url of filename.
+ * @return boolean/array.
+ */
+function dedo_get_file_status( $url ) {
+	// Check locally
+	if( $file = dedo_get_abs_path( $url ) ) {
+		$type = 'local';
+		$size = size_format( @filesize( $file ), 1 );
+	}
+	else {
+		$response = @get_headers( $url, 1 );
+
+		if ( ( false === $response || 'HTTP/1.1 404 Not Found' == $response[0] || 'HTTP/1.1 403 Forbidden' == $response[0] ) || !isset( $response['Content-Length'] ) ) {		
+			return false;
+		}
+		else {
+			$type = 'remote';
+			$size = size_format( $response['Content-Length'], 1 );
+		}
+	}
+
+	return array(
+		'type'	=> $type,
+		'size'	=> $size
+	);
 }
