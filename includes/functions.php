@@ -598,7 +598,7 @@ function dedo_get_file_status( $url ) {
 	// Check locally
 	if( $file = dedo_get_abs_path( $url ) ) {
 		$type = 'local';
-		$size = size_format( @filesize( $file ), 1 );
+		$size = @filesize( $file );
 	}
 	else {
 		$response = @get_headers( $url, 1 );
@@ -608,7 +608,7 @@ function dedo_get_file_status( $url ) {
 		}
 		else {
 			$type = 'remote';
-			$size = size_format( $response['Content-Length'], 1 );
+			$size = $response['Content-Length'];
 		}
 	}
 

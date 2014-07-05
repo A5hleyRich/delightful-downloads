@@ -67,7 +67,8 @@ add_action( 'post_updated_messages', 'dedo_update_messages' );
 function dedo_meta_box_download( $post ) {
 	$file_url = get_post_meta( $post->ID, '_dedo_file_url', true );
 	$file_size = size_format( get_post_meta( $post->ID, '_dedo_file_size', true ), 1 );
-	
+	$file = get_post_meta( $post->ID, '_dedo_file', true );
+
 	$args = array(
 		'ajaxURL'		=> admin_url( 'admin-ajax.php', isset( $_SERVER['HTTPS'] ) ? 'https://' : 'http://' ),
 		'nonce' 	=> wp_create_nonce( 'dedo_download_update_status' ),
@@ -113,27 +114,42 @@ function dedo_meta_box_download( $post ) {
 					</td>
 				</tr>
 
-				<?php if ( $file_url ) : ?>
+				<?php if ( $file['files'] ) : ?>
+					<?php foreach ( $file['files'] as $key => $value ) : ?>
+						<?php $file_status = dedo_get_file_status( $file['files'][$key]['url'] ); ?>
+						
+						<tr class="dedo-single-file">
+							<td class="file-status">
+								<?php if ( $file_status ) : ?>
+									<span class="status success" title="Test"></span>
+								<?php else : ?>
+									<span class="status warning" title="Test"></span>
+								<?php endif; ?>
+							</td>
+							<td class="file-url">
+								<input type="text" name="dedo-file-url[<?php echo $key; ?>]" class="large-text" value="<?php echo esc_attr( $file['files'][$key]['url'] ); ?>" />
+							</td>
+							<td class="file-size">
+								<?php if ( $file_status ) : ?>
+									<?php echo size_format( $file['files'][$key]['file_size'], 1 ) ?>
+								<?php else : ?>
+									--
+								<?php endif; ?>
+							</td>
+							<td class="file-delete">
+								<a href="#" class="delete" title="<?php _e( 'Delete', 'delightful-downloads' ); ?>"></a>
+							</td>
+						</tr>
 
-				<tr class="dedo-single-file">
-					<td class="file-status">
-						<span class="status success" title="Test"></span>
-					</td>
-					<td class="file-url">
-						<input type="text" name="dedo-file-url[0]" class="large-text" value="<?php echo esc_attr( $file_url ); ?>" />
-					</td>
-					<td class="file-size">
-						<?php echo $file_size; ?>
-					</td>
-					<td class="file-delete">
-						<a href="#" class="delete" title="<?php _e( 'Delete', 'delightful-downloads' ); ?>"></a>
-					</td>
-				</tr>
-
+					<?php endforeach; ?>
 				<?php endif; ?>
 
 			</tbody>
 		</table>
+		<div id="dedo-multi-buttons">	
+			<a href="#dedo-upload-modal" class="button dedo-modal-action"><?php _e( 'Upload File', 'delightful-downloads' ); ?></a>
+			<a href="#dedo-select-modal" class="button dedo-modal-action"><?php _e( 'Existing File', 'delightful-downloads' ); ?></a>
+		</div>
 	</div>
 
 	<?php
@@ -279,6 +295,9 @@ function dedo_download_update_status_ajax() {
 	}
 
 	if( $result = dedo_get_file_status( $_REQUEST['url'] ) ) {
+		// Format filesize
+		$result['size'] = size_format( $result['size'], 1 );
+
 		// Exists
 		echo json_encode( array (
 			'status'	=> 'success',
@@ -317,53 +336,32 @@ function dedo_meta_boxes_save( $post_id ) {
 		return;
 	}
 	
-	// Check for save stats nonce
+	// Check for file nonce
 	if ( isset( $_POST['ddownload_file_save_nonce'] ) && wp_verify_nonce( $_POST['ddownload_file_save_nonce'], 'ddownload_file_save' ) ) {	
 		
+		// Get original meta
+		$file = get_post_meta( $post_id, '_dedo_file', true );
+
 		// Save file url
 		if ( isset( $_POST['dedo-file-url'] ) && !empty( $_POST['dedo-file-url'] ) ) {
-			
-			$file_url = trim( $_POST['dedo-file-url'] );
-			
-			if ( !$file_path = dedo_get_abs_path( $file_url ) ) {
 
-				// No file found locally, attempt to get file size from remote
-				$response = get_headers( $file_url, 1 );
-				
-				if ( 'HTTP/1.1 404 Not Found' !== $response[0] && isset( $response['Content-Length'] )  ) {
-					
-					$file_size = $response['Content-Length'];
+			$file['files'] = array();
+
+			foreach ( $_POST['dedo-file-url'] as $file_url ) {
+				$file_url = trim( $file_url );
+
+				if ( $file_status = dedo_get_file_status( $file_url ) ) {
+					$file['files'][] = array(
+						'type'		=> $file_status['type'],
+						'url'		=> $file_url,
+						'file_size'	=> $file_status['size']
+					);
 				}
-				else {
-
-					$file_size = 0;
-				}
-
-			}
-			else {
-				
-				$file_size = filesize( $file_path );
 			}
 
+			// delete_post_meta( $post_id, '_dedo_file' );
+			update_post_meta( $post_id, '_dedo_file', $file );
 		}
-		else {
-			
-			$file_size = 0;
-			$file_url = '';
-		}
-
-		update_post_meta( $post_id, '_dedo_file_url', $file_url );
-		update_post_meta( $post_id, '_dedo_file_size', $file_size );
-	}
-	
-	// Check for save stats nonce
-	if ( isset( $_POST['ddownload_stats_save_nonce'] ) && wp_verify_nonce( $_POST['ddownload_stats_save_nonce'], 'ddownload_stats_save' ) ) {
-		
-		// Save download count
-		if ( isset( $_POST['dedo_file_count'] ) ) {
-			update_post_meta( $post_id, '_dedo_file_count', strip_tags( trim( $_POST['dedo_file_count'] ) ) );
-		}
-
 	}
 }
 add_action( 'save_post', 'dedo_meta_boxes_save' );

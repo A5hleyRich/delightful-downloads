@@ -502,10 +502,10 @@
   color: #f00;
 }
 #dedo-existing-download #dedo-multi-buttons {
-  margin-bottom: 0;
+  margin-top: 1em;
 }
 #dedo-existing-download #dedo-multi-buttons .button {
-  margin-right: 10px;
+  margin-right: 1em;
 }
 /* Theme Colors
 --------------------------------------------- */
