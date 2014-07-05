@@ -7,11 +7,16 @@ jQuery( document ).ready( function( $ ){
 
 		init: function() {
 			this.updateFileCount();
-			this.clickListeners();
+			this.eventListeners();
 		},
 
-		clickListeners: function() {
+		eventListeners: function() {
 			var self = this;
+
+			// URL manualy update
+			$( 'body' ).on( 'change', '.dedo-single-file .file-url input[type="text"]', function() {
+				self.updateStatus( $( this ).parents( 'tr.dedo-single-file' ) );
+			} );
 
 			// Delete
 			$( 'body' ).on( 'click', '.dedo-single-file .delete', function() {
@@ -26,6 +31,7 @@ jQuery( document ).ready( function( $ ){
 
 			this.updateFileCount();
 			this.updateInputNames();
+			this.updateStatus( newRow );
 			this.toggleViews();
 		},
 
@@ -66,6 +72,12 @@ jQuery( document ).ready( function( $ ){
 			$( '.dedo-single-file .file-url input[type="text"]' ).not( '.template' ).each( function( index ) {
 				$( this ).attr( 'name', 'dedo-file-url[' + index + ']' );
 			} );
+		},
+
+		updateStatus: function( row ) {
+			var url = $( row ).find( '.file-url input[type="text"]' ).val();
+
+			console.log( url );
 		}
 
 	};

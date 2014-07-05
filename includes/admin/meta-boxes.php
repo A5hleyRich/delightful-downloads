@@ -80,7 +80,7 @@ function dedo_meta_box_download( $post ) {
 		<table class="widefat">
 			<thead>
 				<tr>
-					<th class="file-status"><?php //_e( 'File Status', 'delightful-downloads' ); ?></th>
+					<th class="file-status"><?php //_e( 'Status', 'delightful-downloads' ); ?></th>
 					<th class="file-url"><?php _e( 'URL or Path', 'delightful-downloads' ); ?></th>
 					<th class="file-size"><?php _e( 'Size', 'delightful-downloads' ); ?></th>
 					<th class="file-delete"><?php //_e( 'Delete', 'delightful-downloads' ); ?></th>
