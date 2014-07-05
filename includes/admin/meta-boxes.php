@@ -17,7 +17,6 @@ if ( !defined( 'ABSPATH' ) ) exit;
  */
 function dedo_register_meta_boxes() {
 	add_meta_box( 'dedo_download', __( 'Download', 'delightful-downloads' ), 'dedo_meta_box_download', 'dedo_download', 'normal', 'high' );
-	// add_meta_box( 'dedo_stats', __( 'Download Stats', 'delightful-downloads' ), 'dedo_meta_box_stats', 'dedo_download', 'side', 'core' );
 }
 add_action( 'add_meta_boxes', 'dedo_register_meta_boxes' );
 
@@ -234,13 +233,13 @@ function dedo_render_part_select() {
 			<h1><?php _e( 'Existing File', 'delightful-downloads' ); ?></h1>
 			<p><?php _e( 'Manaully enter a file URL, or use the file browser.', 'delightful-downloads' ); ?></p>
 			<p>	
-				<input name="dedo-select-url" id="dedo-select-url" type="url" class="large-text" placeholder="<?php _e( 'File path or URL...', 'delightful-downloads' ); ?>" />
+				<input name="dedo-select-url" id="dedo-select-url" type="url" class="large-text" placeholder="<?php _e( 'File URL or path...', 'delightful-downloads' ); ?>" />
 			</p>
 			<p>
 				<div id="dedo-file-browser"><p><?php _e( 'Loading...', 'delightful-downloads' ); ?></p></div>
 			</p>
 			<p>
-				<a href="#" id="dedo-select-done" class="button button-primary">Done</a>
+				<a href="#" id="dedo-select-done" class="button button-primary"><?php _e( 'Confirm', 'delightful-downloads' ); ?></a>
 			</p>
 		</div>
 	</div>
@@ -249,23 +248,6 @@ function dedo_render_part_select() {
 
 }
 add_action( 'admin_footer', 'dedo_render_part_select' );
-
-/**
- * Render stats meta box
- *
- * @since  1.0
- */
-function dedo_meta_box_stats( $post ) {
-	$file_count = get_post_meta( $post->ID, '_dedo_file_count', true );
-	?>
-	<div id="dedo-file-stats-container">
-		<label for="dedo_file_count"><?php _e( 'Count' , 'delightful-downloads' ); ?>:</label>
-		<?php wp_nonce_field( 'ddownload_stats_save', 'ddownload_stats_save_nonce' ); ?>
-		<input type="text" name="dedo_file_count" class="large-text" value="<?php echo ($file_count !== '' ? esc_attr( $file_count ) : 0 ); ?>" />
-	</div>
-	
-	<?php
-}
 
 /**
  * Save meta boxes
