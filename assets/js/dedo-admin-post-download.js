@@ -3,7 +3,10 @@ jQuery( document ).ready( function( $ ){
 	// Main Add/Edit Download Screen
 	DEDO_Admin_Download = {
 
+		currentFiles: 0,
+
 		init: function() {
+			this.updateFileCount();
 			this.clickListeners();
 		},
 
@@ -11,28 +14,57 @@ jQuery( document ).ready( function( $ ){
 			var self = this;
 
 			// Delete
-			$( '#dedo-remove-button' ).on( 'click', function() {
-				self.deleteFile();
+			$( 'body' ).on( 'click', '.dedo-single-file .delete', function() {
+				self.deleteFile( this );
 			} );
 		},
 
 		addFile: function( url ) {
-			// Update text field
-			$( '#dedo-file-url' ).val( url );
+			var newRow = $( '.dedo-single-file.template' ).clone();
+			$( newRow ).find( 'input[type="text"]' ).val( url );
+			$( newRow ).appendTo( '#dedo-file-container' ).removeClass( 'template' ).show()
+
+			this.updateFileCount();
+			this.updateInputNames();
 			this.toggleViews();
 		},
 
-		deleteFile: function() {
-			// Update text field
-			$( '#dedo-file-url' ).val( '' );
+		deleteFile: function( item ) {
+			// Get parent row
+			var $parent = $( item ).parents( 'tr.dedo-single-file' );
+
+			// Remove table row
+			$parent.remove();
+			
+			this.updateFileCount();
+			this.updateInputNames();
 			this.toggleViews();
 		},
 
 		toggleViews: function() {
-			// Fade add/existing view
-			$( '#dedo-new-download' ).toggle( 0, function() {
-				// Show existing view
-				$( '#dedo-existing-download' ).toggle();
+			if ( this.currentFiles != 0 ) {
+				// Fade add/existing view
+				$( '#dedo-new-download' ).hide( 0, function() {
+					// Show existing view
+					$( '#dedo-existing-download' ).show();
+				} );
+			}
+			else {
+				$( '#dedo-existing-download' ).hide( 0, function() {
+					// Show existing view
+					$( '#dedo-new-download' ).show();
+				} );
+			}
+		},
+
+		updateFileCount: function() {
+			this.currentFiles = $( '.dedo-single-file' ).not( '.template' ).length;
+			console.log( this.currentFiles );
+		},
+
+		updateInputNames: function() {
+			$( '.dedo-single-file .file-url input[type="text"]' ).not( '.template' ).each( function( index ) {
+				$( this ).attr( 'name', 'dedo-file-url[' + index + ']' );
 			} );
 		}
 

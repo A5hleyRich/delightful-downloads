@@ -69,7 +69,6 @@ function dedo_meta_box_download( $post ) {
 	
 	$file_url = get_post_meta( $post->ID, '_dedo_file_url', true );
 	$file_size = size_format( get_post_meta( $post->ID, '_dedo_file_size', true ), 1 );
-	$file_name = dedo_get_file_name( $file_url );
 	
 	?>
 	
@@ -88,52 +87,42 @@ function dedo_meta_box_download( $post ) {
 					<th class="file-delete"><?php //_e( 'Delete', 'delightful-downloads' ); ?></th>
 				</tr>
 			</thead>
-			<tbody>
-				<tr>
+			<tbody id="dedo-file-container">
+				<tr class="dedo-single-file template" style="display: none;">
+					<td class="file-status">
+						<span class="spinner"></span>
+					</td>
+					<td class="file-url">
+						<input type="text" class="large-text" value="" />
+					</td>
+					<td class="file-size">
+						--
+					</td>
+					<td class="file-delete">
+						<a href="#" class="delete" title="<?php _e( 'Delete', 'delightful-downloads' ); ?>"></a>
+					</td>
+				</tr>
+
+				<?php if ( $file_url ) : ?>
+
+				<tr class="dedo-single-file">
 					<td class="file-status">
 						<span class="status success" title="Test"></span>
 					</td>
 					<td class="file-url">
 						<?php wp_nonce_field( 'ddownload_file_save', 'ddownload_file_save_nonce' ); ?>
-						<input type="text" id="dedo-file-url" name="dedo-file-url" class="large-text" value="<?php echo esc_attr( $file_url ); ?>" />
+						<input type="text" name="dedo-file-url[0]" class="large-text" value="<?php echo esc_attr( $file_url ); ?>" />
 					</td>
 					<td class="file-size">
 						<?php echo $file_size; ?>
 					</td>
 					<td class="file-delete">
-						<a href="#" id="dedo-remove-button" class="delete" title="<?php _e( 'Delete', 'delightful-downloads' ); ?>"></a>
+						<a href="#" class="delete" title="<?php _e( 'Delete', 'delightful-downloads' ); ?>"></a>
 					</td>
 				</tr>
-				<tr>
-					<td class="file-status">
-						<span class="spinner" title="Test"></span>
-					</td>
-					<td class="file-url">
-						<?php wp_nonce_field( 'ddownload_file_save', 'ddownload_file_save_nonce' ); ?>
-						<input type="text" id="dedo-file-url" name="dedo-file-url" class="large-text" value="<?php echo esc_attr( $file_url ); ?>" />
-					</td>
-					<td class="file-size">
-						<?php echo $file_size; ?>
-					</td>
-					<td class="file-delete">
-						<a href="#" id="dedo-remove-button" class="delete" title="<?php _e( 'Delete', 'delightful-downloads' ); ?>"></a>
-					</td>
-				</tr>
-				<tr>
-					<td class="file-status">
-						<span class="status warning" title="Test"></span>
-					</td>
-					<td class="file-url">
-						<?php wp_nonce_field( 'ddownload_file_save', 'ddownload_file_save_nonce' ); ?>
-						<input type="text" id="dedo-file-url" name="dedo-file-url" class="large-text" value="<?php echo esc_attr( $file_url ); ?>" />
-					</td>
-					<td class="file-size">
-						<?php echo $file_size; ?>
-					</td>
-					<td class="file-delete">
-						<a href="#" id="dedo-remove-button" class="delete" title="<?php _e( 'Delete', 'delightful-downloads' ); ?>"></a>
-					</td>
-				</tr>
+
+				<?php endif; ?>
+
 			</tbody>
 		</table>
 	</div>
@@ -223,7 +212,6 @@ function dedo_render_part_select() {
 	$screen = get_current_screen();
 
 	if ( 'post' !== $screen->base || 'dedo_download' !== $screen->post_type ) {
-
 		return;
 	}
 

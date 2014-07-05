@@ -499,6 +499,12 @@
 #dedo-existing-download .delete:hover:before {
   color: #f00;
 }
+#dedo-existing-download #dedo-multi-buttons {
+  margin-bottom: 0;
+}
+#dedo-existing-download #dedo-multi-buttons .button {
+  margin-right: 10px;
+}
 /* Theme Colors
 --------------------------------------------- */
 /* Fresh (Default) */
