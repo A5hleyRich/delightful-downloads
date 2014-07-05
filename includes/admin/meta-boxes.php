@@ -121,9 +121,9 @@ function dedo_meta_box_download( $post ) {
 						<tr class="dedo-single-file">
 							<td class="file-status">
 								<?php if ( $file_status ) : ?>
-									<span class="status success" title="Test"></span>
+									<span class="status success"></span>
 								<?php else : ?>
-									<span class="status warning" title="Test"></span>
+									<span class="status warning"></span>
 								<?php endif; ?>
 							</td>
 							<td class="file-url">
@@ -146,10 +146,14 @@ function dedo_meta_box_download( $post ) {
 
 			</tbody>
 		</table>
+		
+		<?php if ( apply_filters( 'dedo_multiple_uploads', false ) ) : ?>
 		<div id="dedo-multi-buttons">	
 			<a href="#dedo-upload-modal" class="button dedo-modal-action"><?php _e( 'Upload File', 'delightful-downloads' ); ?></a>
 			<a href="#dedo-select-modal" class="button dedo-modal-action"><?php _e( 'Existing File', 'delightful-downloads' ); ?></a>
 		</div>
+		<?php endif; ?>
+
 	</div>
 
 	<?php
