@@ -83,12 +83,12 @@ function dedo_meta_box_download( $post ) {
 
 	<?php wp_nonce_field( 'ddownload_file_save', 'ddownload_file_save_nonce' ); ?>
 	
-	<div id="dedo-new-download" style="<?php echo ( !$file_url ) ? 'display: block;' : 'display: none;'; ?>">		
+	<div id="dedo-new-download" style="<?php echo ( !$file['files'] ) ? 'display: block;' : 'display: none;'; ?>">		
 		<a href="#dedo-upload-modal" class="button dedo-modal-action"><?php _e( 'Upload File', 'delightful-downloads' ); ?></a>
 		<a href="#dedo-select-modal" class="button dedo-modal-action"><?php _e( 'Existing File', 'delightful-downloads' ); ?></a>
 	</div>
 
-	<div id="dedo-existing-download" style="<?php echo ( $file_url ) ? 'display: block;' : 'display: none;'; ?>">		
+	<div id="dedo-existing-download" style="<?php echo ( $file['files'] ) ? 'display: block;' : 'display: none;'; ?>">		
 		<table class="widefat">
 			<thead>
 				<tr>
@@ -289,7 +289,6 @@ function dedo_download_update_status_ajax() {
 
 	// Check for nonce and permission
 	if ( !check_ajax_referer( 'dedo_download_update_status', 'nonce', false ) || !current_user_can( apply_filters( 'dedo_cap_add_new', 'edit_pages' ) ) ) {
-		
 		echo json_encode( array(
 			'status'	=> 'error',
 			'content'	=> __( 'Failed security check!', 'delightful-downloads' )
@@ -342,7 +341,6 @@ function dedo_meta_boxes_save( $post_id ) {
 	
 	// Check for file nonce
 	if ( isset( $_POST['ddownload_file_save_nonce'] ) && wp_verify_nonce( $_POST['ddownload_file_save_nonce'], 'ddownload_file_save' ) ) {	
-		
 		// Get original meta
 		$file = get_post_meta( $post_id, '_dedo_file', true );
 

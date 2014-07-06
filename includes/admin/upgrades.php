@@ -17,49 +17,14 @@ if ( !defined( 'ABSPATH' ) ) exit;
  * @since  1.4
  */
 function dedo_check_upgrades() {
-	global $dedo_statistics;
-
 	$version = get_option( 'delightful-downloads-version' );
 
-	/**
-	 * Version 1.4
-	 *
-	 * Add custom database structure for download statistics and
-	 * check for legacy logs.
-	*/
 	if ( version_compare( $version, '1.4', '<' ) ) {
-		
-		global $wpdb, $dedo_notices;
+		dedo_upgrade_1_4();
+	}
 
-		// Setup new table structure
-		$dedo_statistics->setup_table();
-
-		// Check for legacy logs
-		$sql = $wpdb->prepare( "
-			SELECT COUNT(ID) FROM $wpdb->posts
-			WHERE post_type = %s
-		",
-		'dedo_log' );
-
-		$result = $wpdb->get_var( $sql );
-
-		// Add flag to options table
-		if ( $result > 0 ) {
-			add_option( 'delightful-downloads-legacy-logs', $result );
-		}
-
-		// Add new option for admin notices
-		add_option( 'delightful-downloads-notices', array() );
-
-		// Add upgrade notice
-		$message = __( 'Delightful Downloads updated to version 1.4.', 'delightful-downloads' );
-
-		if ( get_option( 'delightful-downloads-legacy-logs' ) ) {
-			
-			$message .=  ' ' . __( sprintf( 'Please visit the %slogs screen%s to migrate your download statistics.', '<a href="' . admin_url( 'edit.php?post_type=dedo_download&page=dedo_statistics' ) . '">', '</a>' ), 'delightful-downloads' );
-		}
-
-		$dedo_notices->add( 'updated', $message );
+	if ( version_compare( $version, '1.5', '<' ) ) {
+		dedo_upgrade_1_5();
 	}
 
 	// Update version numbers
@@ -75,6 +40,107 @@ function dedo_check_upgrades() {
 
 }
 add_action( 'plugins_loaded', 'dedo_check_upgrades' );
+
+/**
+ * Version 1.4
+ *
+ * Add custom database structure for download statistics and
+ * check for legacy logs.
+ *
+ * @since  1.4
+ */
+function dedo_upgrade_1_4() {
+	global $dedo_statistics, $wpdb, $dedo_notices;
+
+	// Setup new table structure
+	$dedo_statistics->setup_table();
+
+	// Check for legacy logs
+	$sql = $wpdb->prepare( "
+		SELECT COUNT(ID) FROM $wpdb->posts
+		WHERE post_type = %s
+	",
+	'dedo_log' );
+
+	$result = $wpdb->get_var( $sql );
+
+	// Add flag to options table
+	if ( $result > 0 ) {
+		add_option( 'delightful-downloads-legacy-logs', $result );
+	}
+
+	// Add new option for admin notices
+	add_option( 'delightful-downloads-notices', array() );
+
+	// Add upgrade notice
+	$message = __( 'Delightful Downloads updated to version 1.4.', 'delightful-downloads' );
+
+	if ( get_option( 'delightful-downloads-legacy-logs' ) ) {
+		
+		$message .=  ' ' . __( sprintf( 'Please visit the %slogs screen%s to migrate your download statistics.', '<a href="' . admin_url( 'edit.php?post_type=dedo_download&page=dedo_statistics' ) . '">', '</a>' ), 'delightful-downloads' );
+	}
+
+	$dedo_notices->add( 'updated', $message );
+}
+
+/**
+ * Version 1.5
+ *
+ * Convert download post meta to serialized array.
+ * Add members only download on a per download basis.
+ *
+ * @since  1.5
+ */
+function dedo_upgrade_1_5() {
+	global $wpdb, $dedo_options;
+
+	// Select downloads and meta values
+	$sql = $wpdb->prepare( "
+		SELECT $wpdb->posts.ID,
+			   file_url.meta_value AS file_url,
+			   file_size.meta_value AS file_size
+		FROM $wpdb->posts
+		LEFT JOIN $wpdb->postmeta file_url
+			ON $wpdb->posts.ID = file_url.post_id
+			AND file_url.meta_key = %s
+		LEFT JOIN $wpdb->postmeta file_size
+			ON $wpdb->posts.ID = file_size.post_id
+			AND file_size.meta_key = %s
+		WHERE post_type = %s
+			AND post_status != %s
+	",
+	'_dedo_file_url',
+	'_dedo_file_size',
+	'dedo_download',
+	'auto-draft' );
+
+	$results = $wpdb->get_results( $sql, ARRAY_A );
+
+	foreach ( $results as $result ) {
+		// Setup serialized array
+		$file = array(
+			'download_url'	=> $result['file_url'],
+			'download_size'	=> $result['file_size'],
+			'options'		=> array(
+				'members_only'	=> $dedo_options['members_only'],
+				'redirect'		=> 0
+			)
+		);
+
+		// Save new serialized array
+		update_post_meta( $result['ID'], '_dedo_file', $file );
+	}
+
+	// Cleanup old post meta
+	$sql = $wpdb->prepare( "
+		DELETE FROM $wpdb->postmeta
+		WHERE meta_key = %s OR meta_key = %s 
+	",
+	'_dedo_file_url',
+	'_dedo_file_size' );
+
+	$result = $wpdb->query( $sql );
+}
 
 /**
  * 1.4 Admin Notices
