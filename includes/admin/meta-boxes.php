@@ -65,14 +65,12 @@ add_action( 'post_updated_messages', 'dedo_update_messages' );
  * @since  1.5
  */
 function dedo_meta_box_download( $post ) {
-	$file_url = get_post_meta( $post->ID, '_dedo_file_url', true );
-	$file_size = size_format( get_post_meta( $post->ID, '_dedo_file_size', true ), 1 );
 	$file = get_post_meta( $post->ID, '_dedo_file', true );
 
 	$args = array(
-		'ajaxURL'		=> admin_url( 'admin-ajax.php', isset( $_SERVER['HTTPS'] ) ? 'https://' : 'http://' ),
+		'ajaxURL'	=> admin_url( 'admin-ajax.php', isset( $_SERVER['HTTPS'] ) ? 'https://' : 'http://' ),
 		'nonce' 	=> wp_create_nonce( 'dedo_download_update_status' ),
-		'action'      	=> 'dedo_download_update_status'
+		'action'    => 'dedo_download_update_status'
 	);
 
 	?>
@@ -83,12 +81,12 @@ function dedo_meta_box_download( $post ) {
 
 	<?php wp_nonce_field( 'ddownload_file_save', 'ddownload_file_save_nonce' ); ?>
 	
-	<div id="dedo-new-download" style="<?php echo ( !$file['files'] ) ? 'display: block;' : 'display: none;'; ?>">		
+	<div id="dedo-new-download" style="<?php echo ( !$file['download_url'] ) ? 'display: block;' : 'display: none;'; ?>">		
 		<a href="#dedo-upload-modal" class="button dedo-modal-action"><?php _e( 'Upload File', 'delightful-downloads' ); ?></a>
 		<a href="#dedo-select-modal" class="button dedo-modal-action"><?php _e( 'Existing File', 'delightful-downloads' ); ?></a>
 	</div>
 
-	<div id="dedo-existing-download" style="<?php echo ( $file['files'] ) ? 'display: block;' : 'display: none;'; ?>">		
+	<div id="dedo-existing-download" style="<?php echo ( $file['download_url'] ) ? 'display: block;' : 'display: none;'; ?>">		
 		<table class="widefat">
 			<thead>
 				<tr>
@@ -319,7 +317,7 @@ function dedo_download_update_status_ajax() {
 add_action( 'wp_ajax_dedo_download_update_status', 'dedo_download_update_status_ajax' );
 
 /**
- * Save meta boxes
+ * Save Meta Boxes
  *
  * @since  1.0
  */
@@ -354,9 +352,8 @@ function dedo_meta_boxes_save( $post_id ) {
 
 				if ( $file_status = dedo_get_file_status( $file_url ) ) {
 					$file['files'][] = array(
-						'type'		=> $file_status['type'],
 						'url'		=> $file_url,
-						'file_size'	=> $file_status['size']
+						'size'	=> $file_status['size']
 					);
 				}
 			}
