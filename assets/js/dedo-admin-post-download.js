@@ -12,6 +12,13 @@ jQuery( document ).ready( function( $ ){
 
 			this.updateFileCount();
 			this.eventListeners();
+
+			var self = this;
+
+			// Get initial file status
+			$( '.dedo-single-file' ).not( '.template' ).each( function() {
+				self.updateStatus( this );
+			} );
 		},
 
 		eventListeners: function() {
@@ -72,7 +79,7 @@ jQuery( document ).ready( function( $ ){
 		},
 
 		updateInputNames: function() {
-			$( '.dedo-single-file .file-url input[type="text"]' ).not( '.template' ).each( function( index ) {
+			$( '.dedo-single-file' ).not( '.template' ).find( '.file-url input[type="text"]' ).each( function( index ) {
 				$( this ).attr( 'name', 'dedo-file-url[' + index + ']' );
 			} );
 		},
@@ -80,6 +87,9 @@ jQuery( document ).ready( function( $ ){
 		updateStatus: function( row ) {
 			var self = this;
 			var url = $( row ).find( '.file-url input[type="text"]' ).val();
+
+			// Set loading spinner
+			$( row ).find( '.file-status' ).html( '<span class="spinner"></span>' );
 
 			$.ajax( {
 				
@@ -94,9 +104,9 @@ jQuery( document ).ready( function( $ ){
 				dataType: 'json',
 				
 				success: function( response ) {
-					if ( response.status == 'success' ) {
+					if ( 'success' == response.status ) {
 						// Change status icon and file size
-						$( row ).find( '.file-status' ).html( '<span class="status success"></span>' );
+						$( row ).find( '.file-status' ).html( '<span class="status ' + response.content.type + '"></span>' );
 						$( row ).find( '.file-size' ).html( response.content.size );
 					}
 					else {
@@ -132,11 +142,7 @@ jQuery( document ).ready( function( $ ){
 			// Done with existing file modal
 			$( '#dedo-select-done' ).on( 'click', function( e ) {
 				var url = $( '#dedo-select-url' ).val();
-
-				// Close modal and save URL
-				if ( url.length > 0 ) {
-					DEDO_Admin_Download.addFile( url );
-				}
+				DEDO_Admin_Download.addFile( url );
 
 				$( 'body' ).trigger( 'closeModal' );
 			} );

@@ -570,19 +570,26 @@
 		-moz-osx-font-smoothing: grayscale;
 	}
 
-	span.status.success:before {
+	span.status.local:before {
 		content: '\f147';
+		font-size: 20px;
+		color: #0a0;
+	}
+
+	span.status.remote:before {
+		content: '\f103';
+		font-size: 14px;
 		color: #0a0;
 	}
 
 	span.status.warning:before {
 		content: '\f348';
-		font-size: 17px;
+		font-size: 16px;
 		color: #ffba00;
 	}
 
 	.spinner {
-		display: block;
+		display: inline-block;
 		float: none;
 		width: 15px;
 		height: 15px;

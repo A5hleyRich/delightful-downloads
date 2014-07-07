@@ -81,12 +81,12 @@ function dedo_meta_box_download( $post ) {
 
 	<?php wp_nonce_field( 'ddownload_file_save', 'ddownload_file_save_nonce' ); ?>
 	
-	<div id="dedo-new-download" style="<?php echo ( !$file['download_url'] ) ? 'display: block;' : 'display: none;'; ?>">		
+	<div id="dedo-new-download" style="<?php echo ( !isset( $file['files'] ) || empty( $file['files'] ) ) ? 'display: block;' : 'display: none;'; ?>">		
 		<a href="#dedo-upload-modal" class="button dedo-modal-action"><?php _e( 'Upload File', 'delightful-downloads' ); ?></a>
 		<a href="#dedo-select-modal" class="button dedo-modal-action"><?php _e( 'Existing File', 'delightful-downloads' ); ?></a>
 	</div>
 
-	<div id="dedo-existing-download" style="<?php echo ( $file['download_url'] ) ? 'display: block;' : 'display: none;'; ?>">		
+	<div id="dedo-existing-download" style="<?php echo ( isset( $file['files'] ) && !empty( $file['files'] ) ) ? 'display: block;' : 'display: none;'; ?>">		
 		<table class="widefat">
 			<thead>
 				<tr>
@@ -114,22 +114,17 @@ function dedo_meta_box_download( $post ) {
 
 				<?php if ( $file['files'] ) : ?>
 					<?php foreach ( $file['files'] as $key => $value ) : ?>
-						<?php $file_status = dedo_get_file_status( $file['files'][$key]['url'] ); ?>
 						
 						<tr class="dedo-single-file">
 							<td class="file-status">
-								<?php if ( $file_status ) : ?>
-									<span class="status success"></span>
-								<?php else : ?>
-									<span class="status warning"></span>
-								<?php endif; ?>
+								<span class="spinner"></span>
 							</td>
 							<td class="file-url">
 								<input type="text" name="dedo-file-url[<?php echo $key; ?>]" class="large-text" value="<?php echo esc_attr( $file['files'][$key]['url'] ); ?>" />
 							</td>
 							<td class="file-size">
-								<?php if ( $file_status ) : ?>
-									<?php echo size_format( $file['files'][$key]['file_size'], 1 ) ?>
+								<?php if ( $file['files'][$key]['size'] ) : ?>
+									<?php echo size_format( $file['files'][$key]['size'], 1 ) ?>
 								<?php else : ?>
 									--
 								<?php endif; ?>
@@ -145,7 +140,7 @@ function dedo_meta_box_download( $post ) {
 			</tbody>
 		</table>
 		
-		<?php if ( apply_filters( 'dedo_multiple_uploads', false ) ) : ?>
+		<?php if ( apply_filters( 'dedo_multiple_uploads', true ) ) : ?>
 		<div id="dedo-multi-buttons">	
 			<a href="#dedo-upload-modal" class="button dedo-modal-action"><?php _e( 'Upload File', 'delightful-downloads' ); ?></a>
 			<a href="#dedo-select-modal" class="button dedo-modal-action"><?php _e( 'Existing File', 'delightful-downloads' ); ?></a>
@@ -295,7 +290,7 @@ function dedo_download_update_status_ajax() {
 		die();
 	}
 
-	if( $result = dedo_get_file_status( $_REQUEST['url'] ) ) {
+	if( $result = dedo_get_file_status( trim( $_REQUEST['url'] ) ) ) {
 		// Format filesize
 		$result['size'] = size_format( $result['size'], 1 );
 
@@ -343,24 +338,19 @@ function dedo_meta_boxes_save( $post_id ) {
 		$file = get_post_meta( $post_id, '_dedo_file', true );
 
 		// Save file url
-		if ( isset( $_POST['dedo-file-url'] ) && !empty( $_POST['dedo-file-url'] ) ) {
+		$file['files'] = array();
 
-			$file['files'] = array();
+		foreach ( $_POST['dedo-file-url'] as $file_url ) {
+			$file_url = trim( $file_url );
+			$file_status = dedo_get_file_status( $file_url );
 
-			foreach ( $_POST['dedo-file-url'] as $file_url ) {
-				$file_url = trim( $file_url );
-
-				if ( $file_status = dedo_get_file_status( $file_url ) ) {
-					$file['files'][] = array(
-						'url'		=> $file_url,
-						'size'	=> $file_status['size']
-					);
-				}
-			}
-
-			// delete_post_meta( $post_id, '_dedo_file' );
-			update_post_meta( $post_id, '_dedo_file', $file );
+			$file['files'][] = array(
+				'url'		=> $file_url,
+				'size'	=> $file_status['size']
+			);
 		}
+
+		update_post_meta( $post_id, '_dedo_file', $file );
 	}
 }
 add_action( 'save_post', 'dedo_meta_boxes_save' );
