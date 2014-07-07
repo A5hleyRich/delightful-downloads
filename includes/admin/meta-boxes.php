@@ -112,7 +112,7 @@ function dedo_meta_box_download( $post ) {
 					</td>
 				</tr>
 
-				<?php if ( $file['files'] ) : ?>
+				<?php if ( !empty( $file['files'] ) ) : ?>
 					<?php foreach ( $file['files'] as $key => $value ) : ?>
 						
 						<tr class="dedo-single-file">
@@ -345,9 +345,21 @@ function dedo_meta_boxes_save( $post_id ) {
 			$file_status = dedo_get_file_status( $file_url );
 
 			$file['files'][] = array(
-				'url'		=> $file_url,
-				'size'	=> $file_status['size']
+				'url'	=> $file_url,
+				'size'	=> $file_status['size'],
+				'type'	=> $file_status['type']
 			);
+		}
+
+		// Set correct download URL
+		if ( count( $file['files'] > 0 ) ) {
+			do_action( 'ddownload_save_download_url_before', $file );
+
+			// Defaults to first item
+			$file['download_url'] = $file['files'][0]['url'];
+			$file['download_size'] = $file['files'][0]['size'];
+
+			do_action( 'ddownload_save_download_url_after', $file );
 		}
 
 		update_post_meta( $post_id, '_dedo_file', $file );

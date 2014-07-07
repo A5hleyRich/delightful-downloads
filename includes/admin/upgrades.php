@@ -124,6 +124,7 @@ function dedo_upgrade_1_5() {
 			'files'			=> array( array(
 				'url'			=> $result['file_url'],
 				'size'			=> $result['file_size'],
+				'type'			=> ''
 			) ),
 			'options'		=> array(
 				'members_only'	=> $dedo_options['members_only'],
