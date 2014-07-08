@@ -291,6 +291,16 @@ function dedo_download_update_status_ajax() {
 	}
 
 	if( $result = dedo_get_file_status( trim( $_REQUEST['url'] ) ) ) {
+		// Cache remote file sizes, for 15 mins
+		if ( 'remote' === $result['type'] ) {
+			$cached_remotes = get_transient( 'dedo_remote_file_sizes' );
+
+			if ( false === $cached_remotes || !isset( $cached_remotes[esc_url_raw( $_REQUEST['url'] )] ) ) {
+				$cached_remotes[esc_url_raw( $_REQUEST['url'] )] = $result['size'];
+				set_transient( 'dedo_remote_file_sizes', $cached_remotes, 900 );
+			}
+		}
+
 		// Format filesize
 		$result['size'] = size_format( $result['size'], 1 );
 
@@ -337,13 +347,25 @@ function dedo_meta_boxes_save( $post_id ) {
 		// Get original meta
 		$file = get_post_meta( $post_id, '_dedo_file', true );
 
+		// Get cached remote file sizes
+		$cached_remotes = get_transient( 'dedo_remote_file_sizes' );
+
 		// Save file url
 		$file['files'] = array();
 
 		foreach ( $_POST['dedo-file-url'] as $file_url ) {
 			$file_url = trim( $file_url );
-			$file_status = dedo_get_file_status( $file_url );
+			
+			// Check for cached or get size
+			if ( false === $cached_remotes || !isset( $cached_remotes[esc_url_raw( $file_url )] ) ) {
+				$file_status = dedo_get_file_status( $file_url );
+			}
+			else {
+				$file_status['size'] = $cached_remotes[esc_url_raw( $file_url )];
+				$file_status['type'] = 'remote';
+			}
 
+			// Build files array
 			$file['files'][] = array(
 				'url'	=> $file_url,
 				'size'	=> $file_status['size'],

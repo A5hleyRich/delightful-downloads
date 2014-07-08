@@ -463,8 +463,8 @@ function dedo_delete_all_transients() {
 		", 
 		'\_transient\_delightful-downloads%%', 
 		'\_transient\_timeout\_delightful-downloads%%',
-		'\_transient\_dedo%%',
-		'\_transient\_timeout\_dedo%%' );
+		'\_transient\_dedo_%%',
+		'\_transient\_timeout\_dedo_%%' );
 
 	$wpdb->query( $sql );
 }
