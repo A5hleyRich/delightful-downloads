@@ -121,6 +121,7 @@ function dedo_upgrade_1_5() {
 		$file = array(
 			'download_url'	=> $result['file_url'],
 			'download_size'	=> $result['file_size'],
+			'download_type'	=> '',
 			'files'			=> array( array(
 				'url'			=> $result['file_url'],
 				'size'			=> $result['file_size'],

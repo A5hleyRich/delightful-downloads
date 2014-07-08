@@ -351,18 +351,20 @@ function dedo_meta_boxes_save( $post_id ) {
 			);
 		}
 
+		$download = array();
+
 		// Set correct download URL
 		if ( count( $file['files'] > 0 ) ) {
-			do_action( 'ddownload_save_download_url_before', $file );
-
 			// Defaults to first item
-			$file['download_url'] = $file['files'][0]['url'];
-			$file['download_size'] = $file['files'][0]['size'];
-
-			do_action( 'ddownload_save_download_url_after', $file );
+			$download = apply_filters( 'dedo_save_download_url', array(
+				'download_url' 	=> $file['files'][0]['url'],
+				'download_size' => $file['files'][0]['size'],
+				'download_type' => $file['files'][0]['type'],
+			), $file );
 		}
 
-		update_post_meta( $post_id, '_dedo_file', $file );
+		// Join arrays and save
+		update_post_meta( $post_id, '_dedo_file', $download + $file );
 	}
 }
 add_action( 'save_post', 'dedo_meta_boxes_save' );
