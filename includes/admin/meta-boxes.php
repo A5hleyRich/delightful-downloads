@@ -140,7 +140,7 @@ function dedo_meta_box_download( $post ) {
 			</tbody>
 		</table>
 		
-		<?php if ( apply_filters( 'dedo_multiple_uploads', true ) ) : ?>
+		<?php if ( apply_filters( 'dedo_multiple_uploads', false ) ) : ?>
 		<div id="dedo-multi-buttons">	
 			<a href="#dedo-upload-modal" class="button dedo-modal-action"><?php _e( 'Upload File', 'delightful-downloads' ); ?></a>
 			<a href="#dedo-select-modal" class="button dedo-modal-action"><?php _e( 'Existing File', 'delightful-downloads' ); ?></a>
