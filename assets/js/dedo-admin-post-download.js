@@ -126,7 +126,8 @@ jQuery( document ).ready( function( $ ){
 
 		init: function() {
 			this.fileBrowser();
-			this.confirm();	
+			this.confirm();
+			this.focus();
 		},
 
 		fileBrowser: function() {
@@ -145,6 +146,12 @@ jQuery( document ).ready( function( $ ){
 				DEDO_Admin_Download.addFile( url );
 
 				$( 'body' ).trigger( 'closeModal' );
+			} );
+		},
+
+		focus: function() {
+			$( '.dedo-modal-action.select-existing' ).on( 'click', function() {
+				$( '#dedo-select-url' ).focus();
 			} );
 		}
 

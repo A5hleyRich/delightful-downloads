@@ -83,7 +83,7 @@ function dedo_meta_box_download( $post ) {
 	
 	<div id="dedo-new-download" style="<?php echo ( !isset( $file['files'] ) || empty( $file['files'] ) ) ? 'display: block;' : 'display: none;'; ?>">		
 		<a href="#dedo-upload-modal" class="button dedo-modal-action"><?php _e( 'Upload File', 'delightful-downloads' ); ?></a>
-		<a href="#dedo-select-modal" class="button dedo-modal-action"><?php _e( 'Existing File', 'delightful-downloads' ); ?></a>
+		<a href="#dedo-select-modal" class="button dedo-modal-action select-existing"><?php _e( 'Existing File', 'delightful-downloads' ); ?></a>
 	</div>
 
 	<div id="dedo-existing-download" style="<?php echo ( isset( $file['files'] ) && !empty( $file['files'] ) ) ? 'display: block;' : 'display: none;'; ?>">		
@@ -143,7 +143,7 @@ function dedo_meta_box_download( $post ) {
 		<?php if ( apply_filters( 'dedo_multiple_uploads', false ) ) : ?>
 		<div id="dedo-multi-buttons">	
 			<a href="#dedo-upload-modal" class="button dedo-modal-action"><?php _e( 'Upload File', 'delightful-downloads' ); ?></a>
-			<a href="#dedo-select-modal" class="button dedo-modal-action"><?php _e( 'Existing File', 'delightful-downloads' ); ?></a>
+			<a href="#dedo-select-modal" class="button dedo-modal-action select-existing"><?php _e( 'Existing File', 'delightful-downloads' ); ?></a>
 		</div>
 		<?php endif; ?>
 

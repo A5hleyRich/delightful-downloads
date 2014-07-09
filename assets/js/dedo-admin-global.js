@@ -77,7 +77,7 @@ jQuery( document ).ready( function( $ ) {
 			$( 'body' ).on( 'openModal', function() {
 				
 				// Add background
-				$( 'body' ).append( $( '<div id="dedo-modal-background" style="display: none">Test</div>' ).fadeTo( 300, .7 ) );
+				$( 'body' ).append( $( '<div id="dedo-modal-background" style="display: none"></div>' ).fadeTo( 300, .7 ) );
 
 				// Display modal
 				$( self.modal ).fadeIn( 300 );
