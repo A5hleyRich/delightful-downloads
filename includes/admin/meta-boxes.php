@@ -210,8 +210,8 @@ function dedo_render_part_upload() {
 			</div>
 			<p><?php printf( __( 'Maximum upload file size: %s.', 'delightful-downloads' ), size_format( wp_max_upload_size(), 1 ) ); ?></p>
 			<div id="dedo-progress-bar" style="display: none">
-				<div id="dedo-progress-percent" style="width: 50%;"></div>
-				<div id="dedo-progress-text">50%</div>
+				<div id="dedo-progress-percent" style="width: 0%;"></div>
+				<div id="dedo-progress-text">0%</div>
 			</div>
 			<div id="dedo-progress-error" style="display: none"></div>
 		</div>
