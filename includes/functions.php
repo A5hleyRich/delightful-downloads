@@ -358,22 +358,18 @@ function dedo_folder_protection() {
 	// Get delightful downloads upload base path
 	$upload_dir = dedo_get_upload_dir( 'dedo_basedir' );
 
-	// Default files
-	$index = DEDO_PLUGIN_DIR . 'assets/default_files/index.php';
-	$htaccess = DEDO_PLUGIN_DIR . 'assets/default_files/.htaccess';
-
 	// Create upload dir if needed, return on fail. Causes fatal error on activation otherwise
 	if ( !wp_mkdir_p( $upload_dir ) ) {
 		return;
 	}
 
 	// Check for root index.php
-	if ( !file_exists( $upload_dir . '/index.php' ) ) {
-		@copy( $index, $upload_dir . '/index.php' );
+	if ( !file_exists( $upload_dir . '/index.php' ) && wp_is_writable( $upload_dir ) ) {
+		@file_put_contents( $upload_dir . '/index.php', '<?php' . PHP_EOL . '// You shall not pass!' );
 	}
 
 	// Check for root .htaccess
-	if ( !file_exists( $upload_dir . '/.htaccess' ) ) {
+	if ( !file_exists( $upload_dir . '/.htaccess' ) && wp_is_writable( $upload_dir ) ) {
 		@copy( $htaccess, $upload_dir . '/.htaccess' );
 	}
 
@@ -388,6 +384,7 @@ function dedo_folder_protection() {
 
 	}
 }
+add_action( 'init', 'dedo_folder_protection' );
 
 /**
  * Scan dir and return subdirs
