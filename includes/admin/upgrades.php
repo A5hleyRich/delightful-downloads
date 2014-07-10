@@ -134,7 +134,7 @@ function dedo_upgrade_1_5() {
 		);
 
 		// Save new serialized array
-		update_post_meta( $result['ID'], '_dedo_file', $file );
+		add_post_meta( $result['ID'], '_dedo_file', $file, true );
 	}
 
 	// Cleanup old post meta
