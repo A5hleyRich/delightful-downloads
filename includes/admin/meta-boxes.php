@@ -81,64 +81,22 @@ function dedo_meta_box_download( $post ) {
 
 	<?php wp_nonce_field( 'ddownload_file_save', 'ddownload_file_save_nonce' ); ?>
 	
-	<div id="dedo-new-download" style="<?php echo ( !isset( $file['files'] ) || empty( $file['files'] ) ) ? 'display: block;' : 'display: none;'; ?>">		
+	<div id="dedo-new-download" style="<?php echo ( !isset( $file['download_url'] ) || empty( $file['download_url'] ) ) ? 'display: block;' : 'display: none;'; ?>">		
 		<a href="#dedo-upload-modal" class="button dedo-modal-action"><?php _e( 'Upload File', 'delightful-downloads' ); ?></a>
 		<a href="#dedo-select-modal" class="button dedo-modal-action select-existing"><?php _e( 'Existing File', 'delightful-downloads' ); ?></a>
 	</div>
 
-	<div id="dedo-existing-download" style="<?php echo ( isset( $file['files'] ) && !empty( $file['files'] ) ) ? 'display: block;' : 'display: none;'; ?>">		
-		<table class="widefat">
-			<thead>
-				<tr>
-					<th class="file-status"><?php //_e( 'Status', 'delightful-downloads' ); ?></th>
-					<th class="file-url"><?php _e( 'URL or Path', 'delightful-downloads' ); ?></th>
-					<th class="file-size"><?php _e( 'Size', 'delightful-downloads' ); ?></th>
-					<th class="file-delete"><?php //_e( 'Delete', 'delightful-downloads' ); ?></th>
-				</tr>
-			</thead>
-			<tbody id="dedo-file-container">
-				<tr class="dedo-single-file template" style="display: none;">
-					<td class="file-status">
-						<span class="spinner"></span>
-					</td>
-					<td class="file-url">
-						<input type="text" class="large-text" value="" />
-					</td>
-					<td class="file-size">
-						--
-					</td>
-					<td class="file-delete">
-						<a href="#" class="delete" title="<?php _e( 'Delete', 'delightful-downloads' ); ?>"></a>
-					</td>
-				</tr>
-
-				<?php if ( !empty( $file['files'] ) ) : ?>
-					<?php foreach ( $file['files'] as $key => $value ) : ?>
-						
-						<tr class="dedo-single-file">
-							<td class="file-status">
-								<span class="spinner"></span>
-							</td>
-							<td class="file-url">
-								<input type="text" name="dedo-file-url[<?php echo $key; ?>]" class="large-text" value="<?php echo esc_attr( $file['files'][$key]['url'] ); ?>" />
-							</td>
-							<td class="file-size">
-								<?php if ( $file['files'][$key]['size'] ) : ?>
-									<?php echo size_format( $file['files'][$key]['size'], 1 ) ?>
-								<?php else : ?>
-									--
-								<?php endif; ?>
-							</td>
-							<td class="file-delete">
-								<a href="#" class="delete" title="<?php _e( 'Delete', 'delightful-downloads' ); ?>"></a>
-							</td>
-						</tr>
-
-					<?php endforeach; ?>
-				<?php endif; ?>
-
-			</tbody>
-		</table>
+	<div id="dedo-existing-download" style="<?php echo ( isset( $file['download_url'] ) && !empty( $file['download_url'] ) ) ? 'display: block;' : 'display: none;'; ?>">		
+		<div class="file-icon">	
+			<img src="<?php echo DEDO_PLUGIN_URL . './assets/icons/zip.png'; ?>" />
+		</div>
+		<div class="file-name">delightful-downloads.zip</div>
+		<div class="file-size">1.0 MB</div>
+		<div class="file-actions">
+			<a href="#" id="dedo-edit" title="<?php _e( 'Edit', 'delightful-downloads' ); ?>"></a>
+			<a href="#" id="dedo-delete" title="<?php _e( 'Delete', 'delightful-downloads' ); ?>"></a>
+			<input type="text" name="dedo-file-url" id="dedo-file-url" class="large-text" value="" placeholder="<?php _e( 'File URL or path...', 'delightful-downloads' ); ?>" style="display: none;" />
+		</div>
 	</div>
 
 	<?php

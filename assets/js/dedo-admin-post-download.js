@@ -5,56 +5,46 @@ jQuery( document ).ready( function( $ ){
 
 		options: {},
 
-		currentFiles: 0,
-
 		init: function( options ) {
 			this.options = options;
-
-			this.updateFileCount();
 			this.eventListeners();
-
-			var self = this;
-
-			// Get initial file status
-			$( '.dedo-single-file' ).not( '.template' ).each( function() {
-				self.updateStatus( this );
-			} );
+			// this.updateStatus();
 		},
 
 		eventListeners: function() {
 			var self = this;
 
 			// URL manualy update
-			$( 'body' ).on( 'change', '.dedo-single-file .file-url input[type="text"]', function() {
-				self.updateStatus( $( this ).parents( 'tr.dedo-single-file' ) );
+			$( 'body' ).on( 'change', '#dedo-file-url', function() {
+				// self.updateStatus( $( this ).parents( 'tr.dedo-single-file' ) );
+			} );
+
+			// Edit
+			$( 'body' ).on( 'click', '#dedo-edit', function( e ) {
+				self.editFile();
+				e.preventDefault();
 			} );
 
 			// Delete
-			$( 'body' ).on( 'click', '.dedo-single-file .delete', function() {
-				self.deleteFile( this );
+			$( 'body' ).on( 'click', '#dedo-delete', function( e ) {
+				self.deleteFile();
+				e.preventDefault();
 			} );
 		},
 
 		addFile: function( url ) {
-			var newRow = $( '.dedo-single-file.template' ).clone();
-			$( newRow ).find( 'input[type="text"]' ).val( url );
-			$( newRow ).appendTo( '#dedo-file-container' ).removeClass( 'template' ).show()
-
-			this.updateFileCount();
-			this.updateInputNames();
-			this.updateStatus( newRow );
+			$( '#dedo-file-url' ).val( url );
+			
+			// this.updateStatus();
 			this.toggleViews();
 		},
 
-		deleteFile: function( item ) {
-			// Get parent row
-			var $parent = $( item ).parents( 'tr.dedo-single-file' );
+		editFile: function() {
+			$( '#dedo-file-url' ).toggle();
+		},
 
-			// Remove table row
-			$parent.remove();
-			
-			this.updateFileCount();
-			this.updateInputNames();
+		deleteFile: function() {
+			$( '#dedo-file-url' ).val( '' );
 			this.toggleViews();
 		},
 
@@ -72,16 +62,6 @@ jQuery( document ).ready( function( $ ){
 					$( '#dedo-new-download' ).show();
 				} );
 			}
-		},
-
-		updateFileCount: function() {
-			this.currentFiles = $( '.dedo-single-file' ).not( '.template' ).length;
-		},
-
-		updateInputNames: function() {
-			$( '.dedo-single-file' ).not( '.template' ).find( '.file-url input[type="text"]' ).each( function( index ) {
-				$( this ).attr( 'name', 'dedo-file-url[' + index + ']' );
-			} );
 		},
 
 		updateStatus: function( row ) {
