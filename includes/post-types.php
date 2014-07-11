@@ -92,10 +92,8 @@ function dedo_download_column_contents( $column_name, $post_id ) {
 
 	// File column
 	if ( $column_name == 'file' ) {
-		if ( !empty( $file['download_url'] ) ) {
-			echo esc_attr( basename( $file['download_url'] ) );
-			echo ( !$file['download_type'] ) ? '' : ' (' . ucfirst( $file['download_type'] . ' ' . __( 'File', 'delightful-downloads' ) ) . ')';		
-		}
+		$file_url = basename( $file['download_url'] );
+		echo esc_attr( ( !$file_url ) ? '--' : $file_url );
 	}
 
 	// Filesize column
