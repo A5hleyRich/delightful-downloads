@@ -19,6 +19,9 @@ if ( !defined( 'ABSPATH' ) ) exit;
  */
 function dedo_mime_types( $existing_mimes ) {
 
+	// Developer
+	$existing_mimes['php']	= 'php';
+
 	// Image editors
 	$existing_mimes['psd']  = 'image/photoshop';
 	$existing_mimes['ai']  	= 'application/postscript';

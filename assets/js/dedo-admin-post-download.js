@@ -8,7 +8,7 @@ jQuery( document ).ready( function( $ ){
 		init: function( options ) {
 			this.options = options;
 			this.eventListeners();
-			// this.updateStatus();
+			this.updateStatus();
 		},
 
 		eventListeners: function() {
@@ -28,12 +28,19 @@ jQuery( document ).ready( function( $ ){
 
 		addFile: function( url ) {
 			$( '#dedo-file-url' ).val( url );
+			
+			// Set default states
+			$( '.file-icon img' ).attr( 'src', this.options.default_icon );
+			$( '.file-name' ).html( '--' );
+			$( '.file-size' ).html( '--' );
+
 			this.updateStatus();
 			this.toggleViews();
 		},
 
 		deleteFile: function() {
 			$( '#dedo-file-url' ).val( '' );
+			this.updateStatus();
 			this.toggleViews();
 		},
 
@@ -55,10 +62,10 @@ jQuery( document ).ready( function( $ ){
 
 		updateStatus: function() {
 			var self = this;
-			var url = $( '.file-url input[type="text"]' ).val();
+			var url = $( '#dedo-file-url' ).val();
 
-			// Set loading spinner
-			$( row ).find( '.file-status' ).html( '<span class="spinner"></span>' );
+			// Show loading spinner
+			$( '.file-status .status' ).removeClass( 'local remote warning' ).addClass( 'spinner' );
 
 			$.ajax( {
 				
@@ -73,15 +80,17 @@ jQuery( document ).ready( function( $ ){
 				dataType: 'json',
 				
 				success: function( response ) {
+					$( '.file-name' ).html( response.content.filename );
+					
 					if ( 'success' == response.status ) {
-						// Change status icon and file size
-						$( row ).find( '.file-status' ).html( '<span class="status ' + response.content.type + '"></span>' );
-						$( row ).find( '.file-size' ).html( response.content.size );
+						// Update file details
+						$( '.file-icon img' ).attr( 'src', response.content.icon );
+						$( '.file-size' ).html( response.content.size );
+						$( '.file-status .status' ).removeClass( 'spinner' ).addClass( response.content.type );
 					}
 					else {
 						// Change status icon
-						$( row ).find( '.file-status' ).html( '<span class="status warning"></span>' );
-						$( row ).find( '.file-size' ).html( '--' );
+						$( '.file-status .status' ).removeClass( 'spinner' ).addClass( 'warning' );
 					}
 				}
 
@@ -197,6 +206,8 @@ jQuery( document ).ready( function( $ ){
 				DEDO_Admin_Download.addFile( url );
 
 				$( 'body' ).trigger( 'closeModal' );
+
+				e.preventDefault();
 			} );
 		},
 

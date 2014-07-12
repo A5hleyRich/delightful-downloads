@@ -73,9 +73,10 @@ function dedo_meta_box_download( $post ) {
 
 	// Update status args
 	$status_args = array(
-		'ajaxURL'	=> admin_url( 'admin-ajax.php', isset( $_SERVER['HTTPS'] ) ? 'https://' : 'http://' ),
-		'nonce' 	=> wp_create_nonce( 'dedo_download_update_status' ),
-		'action'    => 'dedo_download_update_status'
+		'ajaxURL'		=> admin_url( 'admin-ajax.php', isset( $_SERVER['HTTPS'] ) ? 'https://' : 'http://' ),
+		'nonce' 		=> wp_create_nonce( 'dedo_download_update_status' ),
+		'action'    	=> 'dedo_download_update_status',
+		'default_icon'	=> dedo_get_file_icon( 'default' )
 	);
 
 	// Plupload args
@@ -121,15 +122,23 @@ function dedo_meta_box_download( $post ) {
 		<a href="#dedo-select-modal" class="button dedo-modal-action select-existing"><?php _e( 'Existing File', 'delightful-downloads' ); ?></a>
 	</div>
 	<div id="dedo-existing-download" style="<?php echo ( isset( $file_url ) && !empty( $file_url ) ) ? 'display: block;' : 'display: none;'; ?>">		
-		<div class="file-icon">	
-			<img src="<?php echo DEDO_PLUGIN_URL . './assets/icons/zip.png'; ?>" />
-			<!-- <span class="status warning"> -->
+		<div class="left-panel">
+			<div class="file-icon">	
+				<img src="<?php echo dedo_get_file_icon( $file_url ); ?>" />
+			</div>
+			<div class="file-name"><?php echo dedo_get_file_name( $file_url ); ?></div>
+			<div class="file-size"><?php echo $file_size; ?></div>
+			<div class="file-status">
+				<span class="status spinner"></span>
+			</div>
 		</div>
-		<div class="file-name"><?php echo dedo_get_file_name( $file_url ); ?><span class="status spinner"></span></div>
-		<div class="file-size"><?php echo $file_size; ?></div>
-		<div class="file-actions">
-			<a href="#dedo-select-modal" class="dedo-modal-action" id="dedo-edit" title="<?php _e( 'Edit', 'delightful-downloads' ); ?>"></a>
-			<a href="#" id="dedo-delete" title="<?php _e( 'Delete', 'delightful-downloads' ); ?>"></a>
+		<div class="right-panel">
+			Nullam id dolor id nibh ultricies vehicula ut id elit. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Curabitur blandit tempus porttitor. Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Donec id elit non mi porta gravida at eget metus.
+		</div>
+		<div class="footer">
+			<span><?php _e( 'Replace File:', 'delightful-downloads' ); ?></span>
+			<a href="#dedo-upload-modal" class="button dedo-modal-action"><?php _e( 'Upload', 'delightful-downloads' ); ?></a>
+			<a href="#dedo-select-modal" class="button dedo-modal-action select-existing"><?php _e( 'Select Existing', 'delightful-downloads' ); ?></a>
 		</div>
 	</div>
 
@@ -200,19 +209,23 @@ function dedo_download_update_status_ajax() {
 		die();
 	}
 
-	if( $result = dedo_get_file_status( trim( $_REQUEST['url'] ) ) ) {
+	$file_url = trim( $_REQUEST['url'] );
+
+	if( $result = dedo_get_file_status( $file_url ) ) {
 		// Cache remote file sizes, for 15 mins
 		if ( 'remote' === $result['type'] ) {
 			$cached_remotes = get_transient( 'dedo_remote_file_sizes' );
 
-			if ( false === $cached_remotes || !isset( $cached_remotes[esc_url_raw( $_REQUEST['url'] )] ) ) {
-				$cached_remotes[esc_url_raw( $_REQUEST['url'] )] = $result['size'];
+			if ( false === $cached_remotes || !isset( $cached_remotes[esc_url_raw( $file_url )] ) ) {
+				$cached_remotes[esc_url_raw( $file_url )] = $result['size'];
 				set_transient( 'dedo_remote_file_sizes', $cached_remotes, 900 );
 			}
 		}
 
-		// Format filesize
+		// Add extra data to result
 		$result['size'] = size_format( $result['size'], 1 );
+		$result['icon']	= dedo_get_file_icon( $file_url );
+		$result['filename'] = dedo_get_file_name( $file_url );
 
 		// Exists
 		echo json_encode( array (
@@ -221,9 +234,11 @@ function dedo_download_update_status_ajax() {
 		) );
 	}
 	else {
+		$result['filename'] = dedo_get_file_name( $file_url );
+
 		echo json_encode( array (
 			'status'	=> 'error',
-			'content'	=> __( 'File not accessible!', 'delightful-downloads' )
+			'content'	=> $result
 		) );
 	}
 
@@ -254,49 +269,26 @@ function dedo_meta_boxes_save( $post_id ) {
 	
 	// Check for file nonce
 	if ( isset( $_POST['ddownload_file_save_nonce'] ) && wp_verify_nonce( $_POST['ddownload_file_save_nonce'], 'ddownload_file_save' ) ) {	
-		// Get original meta
+
 		$file = get_post_meta( $post_id, '_dedo_file', true );
+		$file_url = trim( $_POST['dedo-file-url'] );
 
 		// Get cached remote file sizes
 		$cached_remotes = get_transient( 'dedo_remote_file_sizes' );
-
-		// Save file url
-		$file['files'] = array();
-
-		foreach ( $_POST['dedo-file-url'] as $file_url ) {
-			$file_url = trim( $file_url );
-			
-			// Check for cached or get size
-			if ( false === $cached_remotes || !isset( $cached_remotes[esc_url_raw( $file_url )] ) ) {
-				$file_status = dedo_get_file_status( $file_url );
-			}
-			else {
-				$file_status['size'] = $cached_remotes[esc_url_raw( $file_url )];
-				$file_status['type'] = 'remote';
-			}
-
-			// Build files array
-			$file['files'][] = array(
-				'url'	=> $file_url,
-				'size'	=> $file_status['size'],
-				'type'	=> $file_status['type']
-			);
+		
+		// Check for cached remote file size
+		if ( false === $cached_remotes || !isset( $cached_remotes[esc_url_raw( $file_url )] ) ) {
+			$new_file = dedo_get_file_status( $file_url );
+		}
+		else {
+			$new_file['size'] = $cached_remotes[esc_url_raw( $file_url )];
 		}
 
-		$download = array();
+		// Save new value
+		$file['download_url'] = $file_url;
+		$file['download_size'] = $new_file['size'];
 
-		// Set correct download URL
-		if ( count( $file['files'] > 0 ) ) {
-			// Defaults to first item
-			$download = apply_filters( 'dedo_save_download_url', array(
-				'download_url' 	=> $file['files'][0]['url'],
-				'download_size' => $file['files'][0]['size'],
-				'download_type' => $file['files'][0]['type'],
-			), $file );
-		}
-
-		// Join arrays and save
-		update_post_meta( $post_id, '_dedo_file', $download + $file );
+		update_post_meta( $post_id, '_dedo_file', $file );
 	}
 }
 add_action( 'save_post', 'dedo_meta_boxes_save' );

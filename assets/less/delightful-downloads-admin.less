@@ -415,18 +415,47 @@
 
 /* Existing Download */
 #dedo-existing-download {
- 	padding: 60px 0;
+ 	margin: -6px -12px -12px;
  	overflow: hidden;
- 	text-align: center;
+
+ 	.left-panel, .right-panel {
+ 		float: left;
+ 		box-sizing: border-box;
+ 		padding: 20px;
+ 		width: 50%;
+ 	}
+
+ 	.left-panel {
+ 		margin-right: -1px;
+ 		border-right: 1px solid #ddd;
+ 		text-align: center;
+ 	}
+
+ 	.right-panel {
+ 		border-left: 1px solid #ddd;
+ 	}
+
+ 	.footer {
+		padding: 10px 12px;
+		border-top: 1px solid #ddd;
+		background: #f5f5f5;
+		clear: both;
+
+		span {
+			display: inline-block;
+			margin-right: 10px;
+			line-height: 28px;
+		}
+
+		.button {
+			margin-right: 5px;
+		}
+ 	}
 
  	.file-icon {
-		position: relative;
 		width: 125px;
 		height: 125px;
 		margin: 0 auto 1.4em;
-		background: url("/wp-admin/images/spinner-2x.gif") no-repeat;
-		background-size: 20px 20px;
-		background-position: center;
 
 	 	img {
 	 		display: block;
@@ -434,50 +463,6 @@
 	 		height: 128px;
 	 		margin: 0;
 	 	}
-
-	 	.status {
- 			position: absolute;
- 			display: inline-block;
- 			width: 25px;
- 			height: 25px;
- 			bottom: -8px;
- 			right: 8px;
- 			background-color: #0a0;
- 			border-radius: 50%;
- 		}
-
- 		 .status:before {
-			display: block;
-			height: 25px;
-			width: 25px;
-			font: normal 20px 'dashicons';
-			speak: none;
-			line-height: 25px;
-			text-align: center;
-			color: #fff;
-			-webkit-font-smoothing: antialiased;
-			-moz-osx-font-smoothing: grayscale;
-		}
-
-		.status.local:before {
-			content: '\f147';
-			font-size: 20px;
-		}
-
-		.status.remote:before {
-			content: '\f103';
-			font-size: 14px;
-		}
-
-		.status.warning {
-			background: #ffba00;
-		}
-
-		.status.warning:before {
-			content: '\f348';
-			font-size: 16px;
-		}
-
 	 }
 
  	.file-name {
@@ -490,35 +475,38 @@
  		color: #666;
  	}
 
- 	.file-actions {
+ 	.file-status {
 
-		a {
-			text-decoration: none;
-		}
+ 		.status {
+ 			display: inline-block;
+ 			float: none;
+ 		}
 
-	 	#dedo-edit:before {
-			content: '\f464';
-			font: normal 22px 'dashicons';
+ 		 .status:before {
+			font: normal 20px 'dashicons';
 			speak: none;
-			vertical-align: middle;
+			text-align: center;
 			-webkit-font-smoothing: antialiased;
 			-moz-osx-font-smoothing: grayscale;
 		}
 
-	 	#dedo-delete:before {
-			content: '\f158';
-			font: normal 22px 'dashicons';
-			speak: none;
-			vertical-align: middle;
-			-webkit-font-smoothing: antialiased;
-			-moz-osx-font-smoothing: grayscale;
-			color: #a00;
+		.status.local:before {
+			content: '\f147';
+			font-size: 22px;
+			color: #0a0;
 		}
 
-		#dedo-delete:hover:before {
-			color: #f00;
+		.status.remote:before {
+			content: '\f103';
+			font-size: 16px;
+			color: #0a0;
 		}
 
+		.status.warning:before {
+			content: '\f348';
+			font-size: 18px;
+			color: #ffba00;
+		}
  	}
 	
 }
