@@ -354,7 +354,7 @@
 #dedo-existing-download .right-panel {
   float: left;
   box-sizing: border-box;
-  padding: 20px;
+  padding: 40px 20px;
   width: 50%;
 }
 #dedo-existing-download .left-panel {

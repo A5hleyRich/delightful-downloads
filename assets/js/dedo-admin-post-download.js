@@ -14,11 +14,6 @@ jQuery( document ).ready( function( $ ){
 		eventListeners: function() {
 			var self = this;
 
-			//URL manualy update
-			$( 'body' ).on( 'change', '#dedo-file-url', function() {
-				self.updateStatus();
-			} );
-
 			// Delete
 			$( 'body' ).on( 'click', '#dedo-delete', function( e ) {
 				self.deleteFile();
