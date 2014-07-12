@@ -14,15 +14,9 @@ jQuery( document ).ready( function( $ ){
 		eventListeners: function() {
 			var self = this;
 
-			// URL manualy update
+			//URL manualy update
 			$( 'body' ).on( 'change', '#dedo-file-url', function() {
-				// self.updateStatus( $( this ).parents( 'tr.dedo-single-file' ) );
-			} );
-
-			// Edit
-			$( 'body' ).on( 'click', '#dedo-edit', function( e ) {
-				self.editFile();
-				e.preventDefault();
+				self.updateStatus();
 			} );
 
 			// Delete
@@ -34,13 +28,8 @@ jQuery( document ).ready( function( $ ){
 
 		addFile: function( url ) {
 			$( '#dedo-file-url' ).val( url );
-			
-			// this.updateStatus();
+			this.updateStatus();
 			this.toggleViews();
-		},
-
-		editFile: function() {
-			$( '#dedo-file-url' ).toggle();
 		},
 
 		deleteFile: function() {
@@ -49,7 +38,7 @@ jQuery( document ).ready( function( $ ){
 		},
 
 		toggleViews: function() {
-			if ( this.currentFiles != 0 ) {
+			if ( '' != $( '#dedo-file-url' ).val() ) {
 				// Fade add/existing view
 				$( '#dedo-new-download' ).hide( 0, function() {
 					// Show existing view
@@ -58,15 +47,15 @@ jQuery( document ).ready( function( $ ){
 			}
 			else {
 				$( '#dedo-existing-download' ).hide( 0, function() {
-					// Show existing view
+					// Show new view
 					$( '#dedo-new-download' ).show();
 				} );
 			}
 		},
 
-		updateStatus: function( row ) {
+		updateStatus: function() {
 			var self = this;
-			var url = $( row ).find( '.file-url input[type="text"]' ).val();
+			var url = $( '.file-url input[type="text"]' ).val();
 
 			// Set loading spinner
 			$( row ).find( '.file-status' ).html( '<span class="spinner"></span>' );
@@ -101,60 +90,33 @@ jQuery( document ).ready( function( $ ){
 
 	};
 
-	// Existing File Modal
-	DEDO_Existing_Modal = {
-
-		init: function() {
-			this.fileBrowser();
-			this.confirm();
-			this.focus();
-		},
-
-		fileBrowser: function() {
-			// Init file browser
-			$( '#dedo-file-browser' ).fileTree( filebrowser_args, function( file ) {
-				// User clicked file, update URL field
-				var file_path = file.replace( filebrowser_args.root, filebrowser_args.url );
-				$( '#dedo-select-url' ).val( file_path );
-			} );
-		},
-
-		confirm: function() {
-			// Done with existing file modal
-			$( '#dedo-select-done' ).on( 'click', function( e ) {
-				var url = $( '#dedo-select-url' ).val();
-				DEDO_Admin_Download.addFile( url );
-
-				$( 'body' ).trigger( 'closeModal' );
-			} );
-		},
-
-		focus: function() {
-			$( '.dedo-modal-action.select-existing' ).on( 'click', function() {
-				$( '#dedo-select-url' ).focus();
-			} );
-		}
-
-	};
-
 	// Upload File Modal
 	DEDO_Upload_Modal = {
 
+		$progress: 			$( '#dedo-progress-bar' ),
+		$progressPercent: 	$( '#dedo-progress-percent' ),
+		$progressText: 		$( '#dedo-progress-text' ),
+		$progressError: 	$( '#dedo-progress-error' ),
+
 		uploader: {},
 
-		init: function() {
+		init: function( options ) {
+			this.options = options;
+
 			// Init pluploader
-			this.uploader = new plupload.Uploader( plupload_args );
+			this.uploader = new plupload.Uploader( this.options );
 			this.uploader.init();
 
 			this.uploadListeners();
 		},
 
 		uploadListeners: function() {
+			var self = this;
+
 			// File added to queue
-			this.uploader.bind('FilesAdded', function( up, file ) {
-				$( '#dedo-progress-error' ).hide();
-				$( '#dedo-progress-bar' ).slideDown( 900 );
+			this.uploader.bind( 'FilesAdded', function( up, file ) {
+				self.$progressError.hide();
+				self.$progress.slideDown( 900 );
 				
 				up.refresh();
 				up.start();
@@ -162,8 +124,8 @@ jQuery( document ).ready( function( $ ){
 			
 			// Progress bar
 			this.uploader.bind( 'UploadProgress', function( up, file ) {
-				$( '#dedo-progress-bar #dedo-progress-percent' ).css( 'width', file.percent + '%' );
-				$( '#dedo-progress-bar #dedo-progress-text' ).html( file.percent + '%' );
+				self.$progressPercent.css( 'width', file.percent + '%' );
+				self.$progressText.html( file.percent + '%' );
 			} );	
 			
 			// File uploaded
@@ -181,7 +143,7 @@ jQuery( document ).ready( function( $ ){
 			 		DEDO_Admin_Download.addFile( response.file.url );
 			 		
 			 		// Close modal and hide progress bar
-			 		$( '#dedo-progress-bar' ).slideUp( 900, function() {
+			 		self.$progress.slideUp( 900, function() {
 			 			$( 'body' ).trigger( 'closeModal' );
 			 		} );
 
@@ -190,8 +152,8 @@ jQuery( document ).ready( function( $ ){
 			
 			// Error
 			this.uploader.bind( 'Error', function( up, err ) {
-				$( '#dedo-progress-bar' ).hide( 0, function() {
-					$( '#dedo-progress-error' ). html( '<p>' + err.message + '</p>' ).show();
+				self.$progress.hide( 0, function() {
+					self.$progressError. html( '<p>' + err.message + '</p>' ).show();
 				} );
 				
 				up.refresh();
@@ -200,8 +162,56 @@ jQuery( document ).ready( function( $ ){
 
 	}
 
+	// Existing File Modal
+	DEDO_Existing_Modal = {
+		
+		$file_url: 	$( '#dedo-file-url' ),
+		$confirm: 	$( '#dedo-select-done' ),
+
+		options: {},
+
+		init: function( options ) {
+			this.options = options;
+			this.fileBrowser();
+			this.confirm();
+			this.focus();
+		},
+
+		fileBrowser: function() {
+			var self = this;
+
+			// Init file browser
+			$( '#dedo-file-browser' ).fileTree( this.options, function( file ) {
+				// User clicked file, update URL field
+				var file_path = file.replace( self.options.root, self.options.url );
+				self.$file_url.val( file_path );
+			} );
+		},
+
+		confirm: function() {
+			var self = this;
+
+			// Done with existing file modal
+			self.$confirm.on( 'click', function( e ) {
+				var url = self.$file_url.val();
+				DEDO_Admin_Download.addFile( url );
+
+				$( 'body' ).trigger( 'closeModal' );
+			} );
+		},
+
+		focus: function() {
+			var self = this;
+
+			$( '.dedo-modal-action.select-existing' ).on( 'click', function() {
+				self.$file_url.focus();
+			} );
+		}
+
+	};
+
 	DEDO_Admin_Download.init( updateStatusArgs );
-	DEDO_Existing_Modal.init();
-	DEDO_Upload_Modal.init();
+	DEDO_Upload_Modal.init( pluploadArgs );
+	DEDO_Existing_Modal.init( fileBrowserArgs );
 
 } );

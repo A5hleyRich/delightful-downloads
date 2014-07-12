@@ -65,61 +65,21 @@ add_action( 'post_updated_messages', 'dedo_update_messages' );
  * @since  1.5
  */
 function dedo_meta_box_download( $post ) {
-	$file = get_post_meta( $post->ID, '_dedo_file', true );
+	global $post;
 
-	$args = array(
+	$file = get_post_meta( $post->ID, '_dedo_file', true );
+	$file_url = ( isset( $file['download_url'] ) ? $file['download_url'] : '' );
+	$file_size = ( isset( $file['download_size'] ) ? size_format( $file['download_size'], 1 ) : '' );
+
+	// Update status args
+	$status_args = array(
 		'ajaxURL'	=> admin_url( 'admin-ajax.php', isset( $_SERVER['HTTPS'] ) ? 'https://' : 'http://' ),
 		'nonce' 	=> wp_create_nonce( 'dedo_download_update_status' ),
 		'action'    => 'dedo_download_update_status'
 	);
 
-	?>
-
-	<script type="text/javascript">
-		var updateStatusArgs = <?php echo json_encode( $args ); ?>;
-	</script>
-
-	<?php wp_nonce_field( 'ddownload_file_save', 'ddownload_file_save_nonce' ); ?>
-	
-	<div id="dedo-new-download" style="<?php echo ( !isset( $file['download_url'] ) || empty( $file['download_url'] ) ) ? 'display: block;' : 'display: none;'; ?>">		
-		<a href="#dedo-upload-modal" class="button dedo-modal-action"><?php _e( 'Upload File', 'delightful-downloads' ); ?></a>
-		<a href="#dedo-select-modal" class="button dedo-modal-action select-existing"><?php _e( 'Existing File', 'delightful-downloads' ); ?></a>
-	</div>
-
-	<div id="dedo-existing-download" style="<?php echo ( isset( $file['download_url'] ) && !empty( $file['download_url'] ) ) ? 'display: block;' : 'display: none;'; ?>">		
-		<div class="file-icon">	
-			<img src="<?php echo DEDO_PLUGIN_URL . './assets/icons/zip.png'; ?>" />
-		</div>
-		<div class="file-name">delightful-downloads.zip</div>
-		<div class="file-size">1.0 MB</div>
-		<div class="file-actions">
-			<a href="#" id="dedo-edit" title="<?php _e( 'Edit', 'delightful-downloads' ); ?>"></a>
-			<a href="#" id="dedo-delete" title="<?php _e( 'Delete', 'delightful-downloads' ); ?>"></a>
-			<input type="text" name="dedo-file-url" id="dedo-file-url" class="large-text" value="" placeholder="<?php _e( 'File URL or path...', 'delightful-downloads' ); ?>" style="display: none;" />
-		</div>
-	</div>
-
-	<?php
-	
-}
-
-/**
- * Render Upload Modal
- *
- * @since  1.5
- */
-function dedo_render_part_upload() {
-
-	global $post;
-
-	// Ensure only added on add/edit screen
-	$screen = get_current_screen();
-
-	if ( 'post' !== $screen->base || 'dedo_download' !== $screen->post_type ) {
-		return;
-	}
-
-	$plupload_init = array(
+	// Plupload args
+	$plupload_args = array(
 		'runtimes'            => 'html5, silverlight, flash, html4',
 		'browse_button'       => 'dedo-upload-button',
 		'container'           => 'dedo-upload-container',
@@ -143,10 +103,38 @@ function dedo_render_part_upload() {
 		)
 	);
 
+	// File browser args
+	$file_browser_args = array(
+		'root'			=> dedo_get_upload_dir( 'basedir' ) . '/',
+		'url'			=> dedo_get_upload_dir( 'baseurl' ) . '/',
+		'script'		=> DEDO_PLUGIN_URL . 'assets/js/jqueryFileTree/connectors/jqueryFileTree.php'
+	);
+
 	?>
 
 	<script type="text/javascript">
-		var plupload_args = <?php echo json_encode( $plupload_init ); ?>;
+		var updateStatusArgs = <?php echo json_encode( $status_args ); ?>;
+	</script>
+	
+	<div id="dedo-new-download" style="<?php echo ( !isset( $file_url ) || empty( $file_url ) ) ? 'display: block;' : 'display: none;'; ?>">		
+		<a href="#dedo-upload-modal" class="button dedo-modal-action"><?php _e( 'Upload File', 'delightful-downloads' ); ?></a>
+		<a href="#dedo-select-modal" class="button dedo-modal-action select-existing"><?php _e( 'Existing File', 'delightful-downloads' ); ?></a>
+	</div>
+	<div id="dedo-existing-download" style="<?php echo ( isset( $file_url ) && !empty( $file_url ) ) ? 'display: block;' : 'display: none;'; ?>">		
+		<div class="file-icon">	
+			<img src="<?php echo DEDO_PLUGIN_URL . './assets/icons/zip.png'; ?>" />
+			<!-- <span class="status warning"> -->
+		</div>
+		<div class="file-name"><?php echo dedo_get_file_name( $file_url ); ?><span class="status spinner"></span></div>
+		<div class="file-size"><?php echo $file_size; ?></div>
+		<div class="file-actions">
+			<a href="#dedo-select-modal" class="dedo-modal-action" id="dedo-edit" title="<?php _e( 'Edit', 'delightful-downloads' ); ?>"></a>
+			<a href="#" id="dedo-delete" title="<?php _e( 'Delete', 'delightful-downloads' ); ?>"></a>
+		</div>
+	</div>
+
+	<script type="text/javascript">
+		var pluploadArgs = <?php echo json_encode( $plupload_args ); ?>;
 	</script>
 
 	<div id="dedo-upload-modal" class="dedo-modal" style="display: none; width: 40%; left: 50%; margin-left: -20%;">
@@ -167,36 +155,8 @@ function dedo_render_part_upload() {
 		</div>
 	</div>
 
-	<?php
-
-}
-add_action( 'admin_footer', 'dedo_render_part_upload' );
-
-/**
- * Render Select Modal
- *
- * @since  1.5
- */
-function dedo_render_part_select() {
-
-	// Ensure only added on add/edit screen
-	$screen = get_current_screen();
-
-	if ( 'post' !== $screen->base || 'dedo_download' !== $screen->post_type ) {
-		return;
-	}
-
-	// File browser args
-	$filebrowser_init = array(
-		'root'			=> dedo_get_upload_dir( 'basedir' ) . '/',
-		'url'			=> dedo_get_upload_dir( 'baseurl' ) . '/',
-		'script'		=> DEDO_PLUGIN_URL . 'assets/js/jqueryFileTree/connectors/jqueryFileTree.php'
-	);
-
-	?>
-
 	<script type="text/javascript">
-		var filebrowser_args = <?php echo json_encode( $filebrowser_init ); ?>;
+		var fileBrowserArgs = <?php echo json_encode( $file_browser_args ); ?>;
 	</script>
 
 	<div id="dedo-select-modal" class="dedo-modal" style="display: none; width: 40%; left: 50%; margin-left: -20%;">
@@ -205,7 +165,8 @@ function dedo_render_part_select() {
 			<h1><?php _e( 'Existing File', 'delightful-downloads' ); ?></h1>
 			<p><?php _e( 'Manaully enter a file URL, or use the file browser.', 'delightful-downloads' ); ?></p>
 			<p>	
-				<input name="dedo-select-url" id="dedo-select-url" type="url" class="large-text" placeholder="<?php _e( 'File URL or path...', 'delightful-downloads' ); ?>" />
+				<?php wp_nonce_field( 'ddownload_file_save', 'ddownload_file_save_nonce' ); ?>
+				<input name="dedo-file-url" id="dedo-file-url" type="text" class="large-text" value="<?php echo $file_url; ?>" placeholder="<?php _e( 'File URL or path...', 'delightful-downloads' ); ?>" />
 			</p>
 			<p>
 				<div id="dedo-file-browser"><p><?php _e( 'Loading...', 'delightful-downloads' ); ?></p></div>
@@ -217,9 +178,8 @@ function dedo_render_part_select() {
 	</div>
 
 	<?php
-
+	
 }
-add_action( 'admin_footer', 'dedo_render_part_select' );
 
 /**
  * Update Status Ajax

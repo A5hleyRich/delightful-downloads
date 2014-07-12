@@ -345,6 +345,95 @@
   padding: 16px 0;
   font-size: 16px;
 }
+/* Existing Download */
+#dedo-existing-download {
+  padding: 60px 0;
+  overflow: hidden;
+  text-align: center;
+}
+#dedo-existing-download .file-icon {
+  position: relative;
+  width: 125px;
+  height: 125px;
+  margin: 0 auto 1.4em;
+  background: url("/wp-admin/images/spinner-2x.gif") no-repeat;
+  background-size: 20px 20px;
+  background-position: center;
+}
+#dedo-existing-download .file-icon img {
+  display: block;
+  width: 128px;
+  height: 128px;
+  margin: 0;
+}
+#dedo-existing-download .file-icon .status {
+  position: absolute;
+  display: inline-block;
+  width: 25px;
+  height: 25px;
+  bottom: -8px;
+  right: 8px;
+  background-color: #0a0;
+  border-radius: 50%;
+}
+#dedo-existing-download .file-icon .status:before {
+  display: block;
+  height: 25px;
+  width: 25px;
+  font: normal 20px 'dashicons';
+  speak: none;
+  line-height: 25px;
+  text-align: center;
+  color: #fff;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+#dedo-existing-download .file-icon .status.local:before {
+  content: '\f147';
+  font-size: 20px;
+}
+#dedo-existing-download .file-icon .status.remote:before {
+  content: '\f103';
+  font-size: 14px;
+}
+#dedo-existing-download .file-icon .status.warning {
+  background: #ffba00;
+}
+#dedo-existing-download .file-icon .status.warning:before {
+  content: '\f348';
+  font-size: 16px;
+}
+#dedo-existing-download .file-name {
+  position: relative;
+  font-weight: bold;
+}
+#dedo-existing-download .file-size {
+  margin-bottom: 1.4em;
+  color: #666;
+}
+#dedo-existing-download .file-actions a {
+  text-decoration: none;
+}
+#dedo-existing-download .file-actions #dedo-edit:before {
+  content: '\f464';
+  font: normal 22px 'dashicons';
+  speak: none;
+  vertical-align: middle;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+#dedo-existing-download .file-actions #dedo-delete:before {
+  content: '\f158';
+  font: normal 22px 'dashicons';
+  speak: none;
+  vertical-align: middle;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  color: #a00;
+}
+#dedo-existing-download .file-actions #dedo-delete:hover:before {
+  color: #f00;
+}
 /* Upload Modal */
 #dedo-upload-modal #dedo-drag-drop-area {
   margin-top: 1em;
@@ -388,6 +477,9 @@
   font-style: italic;
 }
 /* Existing Modal */
+#dedo-select-modal #dedo-file-url {
+  padding: 5px 5px 6px;
+}
 #dedo-select-modal #dedo-file-browser {
   box-sizing: border-box;
   width: 99%;
@@ -401,94 +493,6 @@
   -moz-box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.07);
   -o-box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.07);
   box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.07);
-}
-/* Existing Download */
-#dedo-existing-download {
-  padding: 60px 0;
-  overflow: hidden;
-  text-align: center;
-}
-#dedo-existing-download .file-icon {
-  margin-bottom: 1.4em;
-}
-#dedo-existing-download .file-icon img {
-  display: block;
-  width: 256px;
-  margin: 0 auto;
-}
-#dedo-existing-download .file-name {
-  font-weight: bold;
-}
-#dedo-existing-download .file-size {
-  margin-bottom: 1.4em;
-  color: #666;
-}
-#dedo-existing-download .file-actions a {
-  text-decoration: none;
-}
-#dedo-existing-download .file-actions #dedo-edit:before {
-  content: '\f464';
-  font: normal 22px 'dashicons';
-  speak: none;
-  vertical-align: middle;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-#dedo-existing-download .file-actions #dedo-delete:before {
-  content: '\f158';
-  font: normal 22px 'dashicons';
-  speak: none;
-  vertical-align: middle;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  color: #a00;
-}
-#dedo-existing-download .file-actions #dedo-delete:hover:before {
-  color: #f00;
-}
-#dedo-existing-download .file-actions #dedo-file-url {
-  display: block;
-  margin: 1.4em auto 0;
-  width: 80%;
-  text-align: center;
-}
-#dedo-existing-download span.status:before {
-  font: normal 20px 'dashicons';
-  speak: none;
-  vertical-align: middle;
-  text-align: center;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-#dedo-existing-download span.status.local:before {
-  content: '\f147';
-  font-size: 20px;
-  color: #0a0;
-}
-#dedo-existing-download span.status.remote:before {
-  content: '\f103';
-  font-size: 14px;
-  color: #0a0;
-}
-#dedo-existing-download span.status.warning:before {
-  content: '\f348';
-  font-size: 16px;
-  color: #ffba00;
-}
-#dedo-existing-download .spinner {
-  display: inline-block;
-  float: none;
-  width: 15px;
-  height: 15px;
-  margin: 0;
-  -webkit-background-size: 15px 15px;
-  background-size: 15px 15px;
-}
-#dedo-existing-download #dedo-multi-buttons {
-  margin-top: 1em;
-}
-#dedo-existing-download #dedo-multi-buttons .button {
-  margin-right: 1em;
 }
 /* Theme Colors
 --------------------------------------------- */

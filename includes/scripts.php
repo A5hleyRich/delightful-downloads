@@ -38,7 +38,7 @@ function dedo_admin_enqueue_scripts( $page ) {
 	wp_register_script( 'dedo-admin-js-global', DEDO_PLUGIN_URL . 'assets/js/dedo-admin-global.js', array( 'jquery' ), DEDO_VERSION, true );
 	wp_register_script( 'dedo-admin-js-legacy-logs', DEDO_PLUGIN_URL . 'assets/js/dedo-admin-legacy-logs.js', array( 'jquery' ), DEDO_VERSION, true ); // 1.4 upgrade
 	wp_register_script( 'dedo-admin-js-media-button', DEDO_PLUGIN_URL . 'assets/js/dedo-admin-media-button.js', array( 'jquery', 'jquery-ui-selectable' ), DEDO_VERSION, true );
-	wp_register_script( 'dedo-admin-js-post-download', DEDO_PLUGIN_URL . 'assets/js/dedo-admin-post-download.js', array( 'jquery', 'plupload-all' ), DEDO_VERSION, true );
+	wp_register_script( 'dedo-admin-js-post-download', DEDO_PLUGIN_URL . 'assets/js/dedo-admin-post-download.js', array( 'jquery', 'plupload-all', 'jqueryFileTree' ), DEDO_VERSION, true );
 	wp_register_script( 'jqueryFileTree', DEDO_PLUGIN_URL . 'assets/js/jqueryFileTree/jqueryFileTree.js', array( 'jquery' ), DEDO_VERSION, true );
 
 	// Register styles
@@ -53,7 +53,6 @@ function dedo_admin_enqueue_scripts( $page ) {
 	// Enqueue on dedo_download post add/edit screen
 	if ( in_array( $page, array( 'post.php', 'post-new.php', 'post-edit.php' ) ) && get_post_type() == 'dedo_download' ) {
 		wp_enqueue_script( 'dedo-admin-js-post-download' );
-		wp_enqueue_script( 'jqueryFileTree' );
 		wp_enqueue_style( 'jqueryFileTree-css' );
 	}
 }
