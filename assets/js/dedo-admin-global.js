@@ -43,14 +43,15 @@ jQuery( document ).ready( function( $ ) {
 		modal: null,
 
 		init: function() {
-			
-			this.clickEvents();
-			this.showModal();
-			this.closeModal();
+			// Check for modals and init
+			if ( $( '.dedo-modal' )[0] ) {
+				this.eventListeners();
+				this.showModal();
+				this.closeModal();
+			}
 		},
 
-		clickEvents: function() {
-
+		eventListeners: function() {
 			self = this;
 
 			// Show modal
@@ -65,8 +66,18 @@ jQuery( document ).ready( function( $ ) {
 			// Close modal
 			$( 'body' ).on( 'click', '.dedo-modal-close, #dedo-modal-background', function( e ) {
 
+				self.modal = null;
+
 				$( 'body' ).trigger( 'closeModal' );
 				e.preventDefault();
+			} );
+
+			// Escape key
+			$( 'body' ).on( 'keyup', function( e ) {
+
+				if ( 27 == e.keyCode ) {
+					$( 'body' ).trigger( 'closeModal' );
+				}
 			} );
 		},
 
