@@ -15,7 +15,7 @@ jQuery( document ).ready( function( $ ){
 			var self = this;
 
 			// Members redirect
-			$( document ).on( 'change', '[name="dedo_members_only"]', function( e ) {
+			$( document ).on( 'change', '[name="members_only"]', function( e ) {
 				if ( 1 == $( this ).val() ) {
 					$( '#dedo-members-only-redirect' ).show();
 				}

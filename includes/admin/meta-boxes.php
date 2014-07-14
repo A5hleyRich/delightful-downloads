@@ -142,7 +142,7 @@ function dedo_meta_box_download( $post ) {
 							<?php _e( 'Download Count', 'delightful-downloads' ); ?>
 						</th>
 						<td>
-							<input name="dedo_download_count" id="dedo_download_count" class="regular-text" type="number" value="<?php echo $file_count; ?>" />
+							<input name="download_count" id="download_count" class="regular-text" type="number" value="<?php echo $file_count; ?>" />
 							<p class="description"><?php _e( 'The number of times this file has been downloaded.' ); ?></p>
 						</td>
 					</tr>
@@ -152,9 +152,9 @@ function dedo_meta_box_download( $post ) {
 							<?php _e( 'Members Only', 'delightful-downloads' ); ?>
 						</th>
 						<td>
-							<label for="dedo_members_only_true"><input name="dedo_members_only" id="dedo_members_only_true" type="radio" value="1" <?php echo ( 1 === $members_only ) ? 'checked' : ''; ?> /> <?php _e( 'Yes', 'delightful-downloads' ); ?></label>
-							<label for="dedo_members_only_false"><input name="dedo_members_only" id="dedo_members_only_false" type="radio" value="0" <?php echo ( 0 === $members_only ) ? 'checked' : ''; ?> /> <?php _e( 'No', 'delightful-downloads' ); ?></label>
-							<label for="dedo_members_only_inherit"><input name="dedo_members_only" id="dedo_members_only_inherit" type="radio" value <?php echo ( '' === $members_only ) ? 'checked' : ''; ?> /> <?php _e( 'Inherit', 'delightful-downloads' ); ?></label>
+							<label for="members_only_true"><input name="members_only" id="members_only_true" type="radio" value="1" <?php echo ( 1 === $members_only ) ? 'checked' : ''; ?> /> <?php _e( 'Yes', 'delightful-downloads' ); ?></label>
+							<label for="members_only_false"><input name="members_only" id="members_only_false" type="radio" value="0" <?php echo ( 0 === $members_only ) ? 'checked' : ''; ?> /> <?php _e( 'No', 'delightful-downloads' ); ?></label>
+							<label for="members_only_inherit"><input name="members_only" id="members_only_inherit" type="radio" value <?php echo ( '' === $members_only ) ? 'checked' : ''; ?> /> <?php _e( 'Inherit', 'delightful-downloads' ); ?></label>
 							<p class="description"><?php _e( 'Allow only logged in users to download this file.' ); ?></p>
 						</td>
 					</tr>
@@ -166,7 +166,7 @@ function dedo_meta_box_download( $post ) {
 						<td>
 							<?php // Output select input
 								$args = array(
-									'name'						=> 'dedo_members_redirect',
+									'name'						=> 'members_redirect',
 									'depth'						=> 0,
 									'selected'					=> $members_redirect,
 									'show_option_none'			=> __( 'Inherit', 'delightful-downloads' ),
@@ -193,9 +193,9 @@ function dedo_meta_box_download( $post ) {
 							<?php _e( 'Open In Browser', 'delightful-downloads' ); ?>
 						</th>
 						<td>
-							<label for="dedo_open_browser_true"><input name="dedo_open_browser" id="dedo_open_browser_true" type="radio" value="1" <?php echo ( 1 === $open_browser ) ? 'checked' : ''; ?> /> <?php _e( 'Yes', 'delightful-downloads' ); ?></label>
-							<label for="dedo_open_browser_false"><input name="dedo_open_browser" id="dedo_open_browser_false" type="radio" value="0" <?php echo ( 0 === $open_browser ) ? 'checked' : ''; ?> /> <?php _e( 'No', 'delightful-downloads' ); ?></label>
-							<label for="dedo_open_browser_inherit"><input name="dedo_open_browser" id="dedo_open_browser_inherit" type="radio" value <?php echo ( '' === $open_browser ) ? 'checked' : ''; ?> /> <?php _e( 'Inherit', 'delightful-downloads' ); ?></label>
+							<label for="open_browser_true"><input name="open_browser" id="open_browser_true" type="radio" value="1" <?php echo ( 1 === $open_browser ) ? 'checked' : ''; ?> /> <?php _e( 'Yes', 'delightful-downloads' ); ?></label>
+							<label for="open_browser_false"><input name="open_browser" id="open_browser_false" type="radio" value="0" <?php echo ( 0 === $open_browser ) ? 'checked' : ''; ?> /> <?php _e( 'No', 'delightful-downloads' ); ?></label>
+							<label for="open_browser_inherit"><input name="open_browser" id="open_browser_inherit" type="radio" value <?php echo ( '' === $open_browser ) ? 'checked' : ''; ?> /> <?php _e( 'Inherit', 'delightful-downloads' ); ?></label>
 							<p class="description"><?php _e( 'This file will attempt to open in the browser window.', 'delightful-downloads' ); ?></p>
 						</td>
 					</tr>
@@ -354,36 +354,29 @@ function dedo_meta_boxes_save( $post_id ) {
 		$file['download_url'] = $file_url;
 		$file['download_size'] = $new_file['size'];
 
-		// Members only
-		if ( isset( $_POST['dedo_members_only'] ) && '' !== $_POST['dedo_members_only'] ) {
-			$file['options']['members_only'] = absint( $_POST['dedo_members_only'] );
-		}
-		else {
-			unset( $file['options']['members_only'] );
-		}
+		// Set file options
+		$options = array(
+			'members_only',
+			'members_redirect',
+			'open_browser'
+		);
 
-		// Members redirect
-		if ( isset( $_POST['dedo_members_redirect'] ) && '' !== $_POST['dedo_members_redirect'] ) {
-			$file['options']['members_redirect'] = absint( $_POST['dedo_members_redirect'] );
-		}
-		else {
-			unset( $file['options']['members_redirect'] );
-		}
-
-		// Open in browser
-		if ( isset( $_POST['dedo_open_browser'] ) && '' !== $_POST['dedo_open_browser'] ) {
-			$file['options']['open_browser'] = absint( $_POST['dedo_open_browser'] );
-		}
-		else {
-			unset( $file['options']['open_browser'] );
+		// Loop through and save to file array
+		foreach ( $options as $option ) {
+			if ( isset( $_POST[$option] ) && '' !== $_POST[$option] ) {
+				$file['options'][$option] = absint( $_POST[$option] );
+			}
+			else {
+				unset( $file['options'][$option] );
+			}
 		}
 
 		// Save file meta
 		update_post_meta( $post_id, '_dedo_file', $file );
 
 		// Save download count
-		if ( isset( $_POST['dedo_download_count'] ) && !empty( trim( $_POST['dedo_download_count'] ) ) ) {
-			update_post_meta( $post_id, '_dedo_file_count', trim( $_POST['dedo_download_count'] ) );
+		if ( isset( $_POST['download_count'] ) && !empty( trim( $_POST['download_count'] ) ) ) {
+			update_post_meta( $post_id, '_dedo_file_count', trim( $_POST['download_count'] ) );
 		}
 	}
 }
