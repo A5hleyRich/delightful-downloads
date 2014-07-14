@@ -154,12 +154,12 @@ function dedo_meta_box_download( $post ) {
 						<td>
 							<label for="dedo_members_only_true"><input name="dedo_members_only" id="dedo_members_only_true" type="radio" value="1" <?php echo ( 1 === $members_only ) ? 'checked' : ''; ?> /> <?php _e( 'Yes', 'delightful-downloads' ); ?></label>
 							<label for="dedo_members_only_false"><input name="dedo_members_only" id="dedo_members_only_false" type="radio" value="0" <?php echo ( 0 === $members_only ) ? 'checked' : ''; ?> /> <?php _e( 'No', 'delightful-downloads' ); ?></label>
-							<label for="dedo_members_only_inherit"><input name="dedo_members_only" id="dedo_members_only_inherit" type="radio" <?php echo ( '' === $members_only ) ? 'checked' : ''; ?> /> <?php _e( 'Inherit', 'delightful-downloads' ); ?></label>
+							<label for="dedo_members_only_inherit"><input name="dedo_members_only" id="dedo_members_only_inherit" type="radio" value <?php echo ( '' === $members_only ) ? 'checked' : ''; ?> /> <?php _e( 'Inherit', 'delightful-downloads' ); ?></label>
 							<p class="description"><?php _e( 'Allow only logged in users to download this file.' ); ?></p>
 						</td>
 					</tr>
 					<?php $members_redirect = ( isset( $file['options']['members_redirect'] ) ? $file['options']['members_redirect'] : '' ); ?>
-					<tr id="dedo-members-only-redirect" <?php echo ( !$members_redirect ) ? 'style="display: none;"' : ''; ?>>
+					<tr id="dedo-members-only-redirect" <?php echo ( 1 !== $members_only ) ? 'style="display: none;"' : ''; ?>>
 						<th scope="row">
 							<?php _e( 'Non-Members', 'delightful-downloads' ); ?>
 						</th>
@@ -195,7 +195,7 @@ function dedo_meta_box_download( $post ) {
 						<td>
 							<label for="dedo_open_browser_true"><input name="dedo_open_browser" id="dedo_open_browser_true" type="radio" value="1" <?php echo ( 1 === $open_browser ) ? 'checked' : ''; ?> /> <?php _e( 'Yes', 'delightful-downloads' ); ?></label>
 							<label for="dedo_open_browser_false"><input name="dedo_open_browser" id="dedo_open_browser_false" type="radio" value="0" <?php echo ( 0 === $open_browser ) ? 'checked' : ''; ?> /> <?php _e( 'No', 'delightful-downloads' ); ?></label>
-							<label for="dedo_open_browser_inherit"><input name="dedo_open_browser" id="dedo_open_browser_inherit" type="radio" <?php echo ( '' === $open_browser ) ? 'checked' : ''; ?> /> <?php _e( 'Inherit', 'delightful-downloads' ); ?></label>
+							<label for="dedo_open_browser_inherit"><input name="dedo_open_browser" id="dedo_open_browser_inherit" type="radio" value <?php echo ( '' === $open_browser ) ? 'checked' : ''; ?> /> <?php _e( 'Inherit', 'delightful-downloads' ); ?></label>
 							<p class="description"><?php _e( 'This file will attempt to open in the browser window.', 'delightful-downloads' ); ?></p>
 						</td>
 					</tr>
@@ -350,11 +350,41 @@ function dedo_meta_boxes_save( $post_id ) {
 			$new_file['size'] = $cached_remotes[esc_url_raw( $file_url )];
 		}
 
-		// Save new value
+		// File url and size
 		$file['download_url'] = $file_url;
 		$file['download_size'] = $new_file['size'];
 
+		// Members only
+		if ( isset( $_POST['dedo_members_only'] ) && '' !== $_POST['dedo_members_only'] ) {
+			$file['options']['members_only'] = absint( $_POST['dedo_members_only'] );
+		}
+		else {
+			unset( $file['options']['members_only'] );
+		}
+
+		// Members redirect
+		if ( isset( $_POST['dedo_members_redirect'] ) && '' !== $_POST['dedo_members_redirect'] ) {
+			$file['options']['members_redirect'] = absint( $_POST['dedo_members_redirect'] );
+		}
+		else {
+			unset( $file['options']['members_redirect'] );
+		}
+
+		// Open in browser
+		if ( isset( $_POST['dedo_open_browser'] ) && '' !== $_POST['dedo_open_browser'] ) {
+			$file['options']['open_browser'] = absint( $_POST['dedo_open_browser'] );
+		}
+		else {
+			unset( $file['options']['open_browser'] );
+		}
+
+		// Save file meta
 		update_post_meta( $post_id, '_dedo_file', $file );
+
+		// Save download count
+		if ( isset( $_POST['dedo_download_count'] ) && !empty( trim( $_POST['dedo_download_count'] ) ) ) {
+			update_post_meta( $post_id, '_dedo_file_count', trim( $_POST['dedo_download_count'] ) );
+		}
 	}
 }
 add_action( 'save_post', 'dedo_meta_boxes_save' );
