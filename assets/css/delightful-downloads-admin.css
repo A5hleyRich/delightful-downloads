@@ -265,6 +265,9 @@
   height: 500px;
   resize: vertical;
 }
+.dedo-sub-option {
+  margin-top: 20px;
+}
 /* Admin Modal Windows
 --------------------------------------------- */
 .dedo-modal {
@@ -354,7 +357,7 @@
 #dedo-existing-download .right-panel {
   float: left;
   box-sizing: border-box;
-  padding: 40px 20px;
+  padding: 20px;
   width: 50%;
 }
 #dedo-existing-download .left-panel {
@@ -370,11 +373,6 @@
   border-top: 1px solid #ddd;
   background: #f5f5f5;
   clear: both;
-}
-#dedo-existing-download .footer span {
-  display: inline-block;
-  margin-right: 10px;
-  line-height: 28px;
 }
 #dedo-existing-download .footer .button {
   margin-right: 5px;
@@ -423,6 +421,24 @@
   content: '\f348';
   font-size: 18px;
   color: #ffba00;
+}
+#dedo-existing-download .form-table {
+  margin: -20px 0;
+}
+#dedo-existing-download .form-table th {
+  width: auto;
+  padding-right: 30px;
+  white-space: nowrap;
+}
+#dedo-existing-download .form-table td {
+  width: 100%;
+  padding-right: 0;
+}
+#dedo-existing-download .form-table .regular-text {
+  width: 100px;
+}
+#dedo-existing-download .form-table label {
+  margin-right: 12px;
 }
 /* Upload Modal */
 #dedo-upload-modal #dedo-drag-drop-area {

@@ -121,10 +121,7 @@ function dedo_upgrade_1_5() {
 		$file = array(
 			'download_url'	=> $result['file_url'],
 			'download_size'	=> $result['file_size'],
-			'options'		=> array(
-				'members_only'	=> $dedo_options['members_only'],
-				'redirect'		=> 0
-			)
+			'options'		=> array()
 		);
 
 		// Save new serialized array

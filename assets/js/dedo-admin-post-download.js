@@ -14,10 +14,14 @@ jQuery( document ).ready( function( $ ){
 		eventListeners: function() {
 			var self = this;
 
-			// Delete
-			$( 'body' ).on( 'click', '#dedo-delete', function( e ) {
-				self.deleteFile();
-				e.preventDefault();
+			// Members redirect
+			$( document ).on( 'change', '[name="dedo_members_only"]', function( e ) {
+				if ( 1 == $( this ).val() ) {
+					$( '#dedo-members-only-redirect' ).show();
+				}
+				else {
+					$( '#dedo-members-only-redirect' ).hide();
+				}
 			} );
 		},
 

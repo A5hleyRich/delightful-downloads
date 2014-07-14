@@ -133,10 +133,76 @@ function dedo_meta_box_download( $post ) {
 			</div>
 		</div>
 		<div class="right-panel">
-			Nullam id dolor id nibh ultricies vehicula ut id elit. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Curabitur blandit tempus porttitor. Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Donec id elit non mi porta gravida at eget metus.
+			<table class="form-table">
+				<tbody>
+					<?php $file_count = get_post_meta( $post->ID, '_dedo_file_count', true ); ?>
+					<?php $file_count = ( !$file_count ) ? 0 : $file_count; ?>
+					<tr>
+						<th scope="row">
+							<?php _e( 'Download Count', 'delightful-downloads' ); ?>
+						</th>
+						<td>
+							<input name="dedo_download_count" id="dedo_download_count" class="regular-text" type="number" value="<?php echo $file_count; ?>" />
+							<p class="description"><?php _e( 'The number of times this file has been downloaded.' ); ?></p>
+						</td>
+					</tr>
+					<?php $members_only = ( isset( $file['options']['members_only'] ) ? $file['options']['members_only'] : '' ); ?>
+					<tr>
+						<th scope="row">
+							<?php _e( 'Members Only', 'delightful-downloads' ); ?>
+						</th>
+						<td>
+							<label for="dedo_members_only_true"><input name="dedo_members_only" id="dedo_members_only_true" type="radio" value="1" <?php echo ( 1 === $members_only ) ? 'checked' : ''; ?> /> <?php _e( 'Yes', 'delightful-downloads' ); ?></label>
+							<label for="dedo_members_only_false"><input name="dedo_members_only" id="dedo_members_only_false" type="radio" value="0" <?php echo ( 0 === $members_only ) ? 'checked' : ''; ?> /> <?php _e( 'No', 'delightful-downloads' ); ?></label>
+							<label for="dedo_members_only_inherit"><input name="dedo_members_only" id="dedo_members_only_inherit" type="radio" <?php echo ( '' === $members_only ) ? 'checked' : ''; ?> /> <?php _e( 'Inherit', 'delightful-downloads' ); ?></label>
+							<p class="description"><?php _e( 'Allow only logged in users to download this file.' ); ?></p>
+						</td>
+					</tr>
+					<?php $members_redirect = ( isset( $file['options']['members_redirect'] ) ? $file['options']['members_redirect'] : '' ); ?>
+					<tr id="dedo-members-only-redirect" <?php echo ( !$members_redirect ) ? 'style="display: none;"' : ''; ?>>
+						<th scope="row">
+							<?php _e( 'Non-Members', 'delightful-downloads' ); ?>
+						</th>
+						<td>
+							<?php // Output select input
+								$args = array(
+									'name'						=> 'dedo_members_redirect',
+									'depth'						=> 0,
+									'selected'					=> $members_redirect,
+									'show_option_none'			=> __( 'Inherit', 'delightful-downloads' ),
+									'show_option_none_value'	=> '',
+									'echo'						=> 0
+								);
+								
+								$list = wp_dropdown_pages( $args );
+
+								// Add option groups
+								$list = explode( '<option value="">' . __( 'Inherit', 'delightful-downloads' ) . '</option>', $list );
+								$list = implode( '<optgroup label="' . __( 'Global', 'delightful-downloads' ) . '"><option value="">' . __( 'Inherit', 'delightful-downloads' ) . '</option></optgroup><optgroup label="' . __( 'Pages', 'delightful-downloads' ) . '">', $list );
+								$list = explode( '</select>', $list );
+								$list = implode( '</optgroup></select>', $list );
+
+								echo $list;
+							?>
+							<p class="description"><?php _e( 'The page to redirect non-members.' ); ?></p>
+						</td>
+					</tr>
+					<?php $open_browser = ( isset( $file['options']['open_browser'] ) ? $file['options']['open_browser'] : '' ); ?>
+					<tr>
+						<th scope="row">
+							<?php _e( 'Open In Browser', 'delightful-downloads' ); ?>
+						</th>
+						<td>
+							<label for="dedo_open_browser_true"><input name="dedo_open_browser" id="dedo_open_browser_true" type="radio" value="1" <?php echo ( 1 === $open_browser ) ? 'checked' : ''; ?> /> <?php _e( 'Yes', 'delightful-downloads' ); ?></label>
+							<label for="dedo_open_browser_false"><input name="dedo_open_browser" id="dedo_open_browser_false" type="radio" value="0" <?php echo ( 0 === $open_browser ) ? 'checked' : ''; ?> /> <?php _e( 'No', 'delightful-downloads' ); ?></label>
+							<label for="dedo_open_browser_inherit"><input name="dedo_open_browser" id="dedo_open_browser_inherit" type="radio" <?php echo ( '' === $open_browser ) ? 'checked' : ''; ?> /> <?php _e( 'Inherit', 'delightful-downloads' ); ?></label>
+							<p class="description"><?php _e( 'This file will attempt to open in the browser window.', 'delightful-downloads' ); ?></p>
+						</td>
+					</tr>
+				</tbody>
+			</table>
 		</div>
 		<div class="footer">
-			<span><?php _e( 'Replace File:', 'delightful-downloads' ); ?></span>
 			<a href="#dedo-upload-modal" class="button dedo-modal-action"><?php _e( 'Upload', 'delightful-downloads' ); ?></a>
 			<a href="#dedo-select-modal" class="button dedo-modal-action select-existing"><?php _e( 'Select Existing', 'delightful-downloads' ); ?></a>
 		</div>
