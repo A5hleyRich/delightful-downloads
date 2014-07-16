@@ -37,19 +37,25 @@ function dedo_get_options() {
 		'enable_taxonomies'	=> array(
 			'name'		=> __( 'Categories and Tags', 'delightful-downloads' ),
 			'tab'		=> 'general',
-			'type'		=> 'check',
+			'type'		=> 'radio',
 			'default'	=> 1
 		),
 		'members_only'		=> array(
-			'name'		=> __( 'Members Download', 'delightful-downloads' ),
+			'name'		=> __( 'Members Only', 'delightful-downloads' ),
 			'tab'		=> 'general',
-			'type'		=> 'check',
+			'type'		=> 'radio',
 			'default'	=> 0
 		),
-		'members_redirect'	=> array(
-			'name'		=> __( 'Non-Members Redirect', 'delightful-downloads' ),
+		// 'members_redirect'	=> array(
+		// 	'name'		=> __( 'Non-Members Redirect', 'delightful-downloads' ),
+		// 	'tab'		=> 'general',
+		// 	'type'		=> 'dropdown',
+		// 	'default'	=> 0
+		// ),
+		'open_browser'		=> array(
+			'name'		=> __( 'Open in Browser', 'delightful-downloads' ),
 			'tab'		=> 'general',
-			'type'		=> 'dropdown',
+			'type'		=> 'radio',
 			'default'	=> 0
 		),
 		'block_agents'	=> array(
@@ -83,9 +89,9 @@ function dedo_get_options() {
 			'default'	=> 'title'
 		),
 		'log_admin_downloads'	=> array(
-			'name'		=> __( 'Admin Downloads', 'delightful-downloads' ),
+			'name'		=> __( 'Admin Events', 'delightful-downloads' ),
 			'tab'		=> 'statistics',
-			'type'		=> 'check',
+			'type'		=> 'radio',
 			'default'	=> 0
 		),
 		'grace_period'	=> array(
@@ -101,13 +107,13 @@ function dedo_get_options() {
 			'default'	=> 0
 		),
 		'enable_css'		=> array(
-			'name'		=> __( 'Default CSS Styles', 'delightful-downloads' ),
+			'name'		=> __( 'Output CSS', 'delightful-downloads' ),
 			'tab'		=> 'advanced',
 			'type'		=> 'check',
 			'default'	=> 1,
 		),
 		'cache_duration'	=> array(
-			'name'		=> __( 'Cache Duration', 'delightful-downloads' ),
+			'name'		=> __( 'Cache', 'delightful-downloads' ),
 			'tab'		=> 'advanced',
 			'type'		=> 'text',
 			'default'	=> 15,
