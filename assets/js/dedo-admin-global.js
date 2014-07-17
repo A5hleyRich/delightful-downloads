@@ -292,13 +292,11 @@ jQuery( document ).ready( function( $ ) {
 		},
 
 		settingsTabs: function() {
-			
 			// Hide non active tabs
 			$( '#dedo-settings-main .dedo-settings-tab:not(.active)' ).hide();
 
 			// Show tabs on click
 			$( '#dedo-settings-tabs a' ).on( 'click', function( e ) {
-
 				var $cachedTab = $( this );
 
 				// Update tab state
@@ -306,9 +304,13 @@ jQuery( document ).ready( function( $ ) {
 
 				// Show/hide form section
 				$( $cachedTab.attr( 'href' ) ).siblings( '.dedo-settings-tab:visible' ).hide( 0, function() {
-
 					$( $cachedTab.attr( 'href' ) ).show();
 				} );
+
+				// Add tab to refer, so page redirects to tab on save
+				$( 'input[name="_wp_http_referer"]' ).val( function( i, value ) {
+					return value.replace( /&tab=[a-zA-z]+/g, '' ) + '&tab=' + $cachedTab.attr( 'href' ).replace( '#dedo-settings-tab-', '' );
+				} )
 
 				e.preventDefault();
 			} );

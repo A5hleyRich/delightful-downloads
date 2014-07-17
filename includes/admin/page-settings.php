@@ -101,25 +101,20 @@ function dedo_render_page_settings() {
 
 		<div id="dedo-settings-main" <?php echo ( !apply_filters( 'dedo_admin_sidebar', true ) ) ? 'style="float: none; width: 100%; padding-right: 0;"' : ''; ?>>	
 
-			<form action="options.php" method="post">
-					
+			<form action="options.php" method="post">	
 				<?php // Setup fields
-				
 				settings_fields( 'dedo_settings' );
 
 				// Display correct fields
 				foreach ( $registered_tabs as $key => $value ) {
-
 					$active_class = ( $key === $active_tab ) ? 'active' : '';
 
 					echo '<section id="dedo-settings-tab-' . $key . '" class="dedo-settings-tab ' . $active_class . '">';
 					
 					if ( 'support' === $key ) {
-
 						dedo_render_part_support();
 					}
 					else {
-
 						do_settings_sections( 'dedo_settings_' . $key );
 					}
 
@@ -128,7 +123,6 @@ function dedo_render_page_settings() {
 				
 				// Submit button
 				submit_button(); ?>
-
 			</form>
 	
 		</div>
