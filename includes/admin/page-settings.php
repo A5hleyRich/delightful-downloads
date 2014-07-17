@@ -72,7 +72,8 @@ function dedo_render_page_settings() {
 	$registered_tabs = dedo_get_tabs();
 
 	// Get current tab
-	$active_tab = isset( $_GET['tab'] ) ? $_GET['tab'] : 'general'; ?>
+	$active_tab = isset( $_GET['tab'] ) ? $_GET['tab'] : 'general'; 
+	?>
 
 	<div class="wrap">
 		
@@ -293,8 +294,8 @@ function dedo_settings_members_only_field() {
 	$args = array(
 		'name'						=> 'delightful-downloads[members_redirect]',
 		'selected'					=> $selected,
-		'show_option_none'			=> 'Select...',
-		'show_option_none_value'	=> 0
+		'show_option_none'			=> __( 'No Page (Generic Error)', 'delightful-downloads' ),
+		'option_none_value'			=> 0
 	); ?>
 	
 	<div class="dedo-sub-option">
@@ -463,7 +464,7 @@ function dedo_settings_auto_delete_field() {
 	<label for="auto_delete_toggle_false"><input name="delightful-downloads[auto_delete_toggle]" id="auto_delete_toggle_false" type="radio" value="0" <?php echo ( 0 === $auto_delete ) ? 'checked' : ''; ?> /> <?php _e( 'No', 'delightful-downloads' ); ?></label>
 	<p class="description"><?php _e( 'Automatically delete logs older than a given time period.', 'delightful-downloads' ); ?></p>
 	<div class="dedo-sub-option">
-		<input type="number" name="delightful-downloads[auto_delete]" value="<?php echo esc_attr( $auto_delete ); ?>" min="1" class="small-text" />
+		<input type="number" name="delightful-downloads[auto_delete]" value="<?php echo esc_attr( $auto_delete ); ?>" min="0" class="small-text" />
 		<p class="description"><?php _e( 'The time in days.', 'delightful-downloads' ); ?></p>
 	</div>
 	<?php
@@ -499,7 +500,7 @@ function dedo_settings_cache_duration_field() {
 	<label for="cache_duration_toggle_false"><input name="delightful-downloads[cache_duration_toggle]" id="cache_duration_toggle_false" type="radio" value="0" <?php echo ( 0 === $cache_duration ) ? 'checked' : ''; ?> /> <?php _e( 'No', 'delightful-downloads' ); ?></label>
 	<p class="description"><?php _e( 'Cache database queries that are expensive to generate.', 'delightful-downloads' ); ?></p>
 	<div class="dedo-sub-option">
-		<input type="number" name="delightful-downloads[cache_duration]" value="<?php echo esc_attr( $cache_duration ); ?>" min="1" class="small-text" />
+		<input type="number" name="delightful-downloads[cache_duration]" value="<?php echo esc_attr( $cache_duration ); ?>" min="0" class="small-text" />
 		<p class="description"><?php _e( 'The time in minutes.', 'delightful-downloads' ); ?></p>
 	</div>
 	<?php
@@ -541,67 +542,25 @@ function dedo_settings_uninstall_field() {
  * @since  1.3
  */
 function dedo_validate_settings( $input ) {
-	 global $dedo_options, $dedo_default_options;
+	global $dedo_options, $dedo_default_options;
 
-	 // Get referer tab
-	 parse_str( $_POST['_wp_http_referer'], $referer );
-	 $tab = isset( $referer['tab'] ) ? $referer['tab'] : 'general';
+	// Registered options
+	$options = dedo_get_options();
 
-	 // Get registered options
-	 $registered_options = dedo_get_options();
-
-	 // Create a list of textfields and checkboxes on active tab
-	 foreach ( $registered_options as $key => $value ) {
-	 	
-	 	if ( $value['tab'] == $tab && $value['type'] == 'text' ) {
-	 		$textfields[] = $key;
-	 	}
-	 	
-	 	if ( $value['tab'] == $tab && $value['type'] == 'check' ) {
-	 		$checkboxes[] = $key;
-	 	}
-
-	 }
-
-	 // Parse so that settings not on the active tab keep their values
-	 $parsed = wp_parse_args( $input, $dedo_options );
-	 
-	 // Save empty text fields with default options
-	if ( isset( $textfields ) ) {	 
-		 
-		foreach ( $textfields as $textfield ) {
-			$parsed[$textfield] = trim( $input[$textfield] ) == '' ? $dedo_default_options[$textfield] : trim( $input[$textfield] );		 
+	// Ensure text fields are not blank
+	foreach( $options as $key => $value ) {
+		if ( 'text' === $options[$key]['type'] && '' === trim( $input[$key] ) ) {
+			$input[$key] = $dedo_default_options[$key];
 		}
 	}
 	 
-	 // Save checkboxes
-	if ( isset( $checkboxes ) )	{ 
-		 
-		 foreach ( $checkboxes as $checkbox ) {
-			 
-			 if ( !isset( $input[$checkbox] ) ) {
-				 $parsed[$checkbox] = 0;
-			 }
-			 else {
-				$parsed[$checkbox] = 1;	 
-			 }
-
-		 }
-
-	}
-
-	// Ensure values are positive ints only
-	foreach ( array( 'grace_period', 'auto_delete', 'cache_duration' ) as $field ) {
-		$parsed[$field] = absint( $parsed[$field] );
-	}
-
 	// Ensure download URL does not contain illegal characters
-	$parsed['download_url'] = strtolower( preg_replace( '/[^A-Za-z0-9_-]/', '', $parsed['download_url'] ) );
+	$input['download_url'] = strtolower( preg_replace( '/[^A-Za-z0-9_-]/', '', $input['download_url'] ) );
 
-	 // Clear transients
+	// Clear transients
 	dedo_delete_all_transients();
 
-	 return $parsed;
+	return $input;
 }
 
 /**

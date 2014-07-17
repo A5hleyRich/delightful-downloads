@@ -109,7 +109,7 @@ function dedo_get_options() {
 		'enable_css'		=> array(
 			'name'		=> __( 'Output CSS', 'delightful-downloads' ),
 			'tab'		=> 'advanced',
-			'type'		=> 'check',
+			'type'		=> 'radio',
 			'default'	=> 1,
 		),
 		'cache_duration'	=> array(
@@ -127,7 +127,7 @@ function dedo_get_options() {
 		'uninstall'		=> array(
 			'name'		=> __( 'Complete Uninstall', 'delightful-downloads' ),
 			'tab'		=> 'advanced',
-			'type'		=> 'check',
+			'type'		=> 'radio',
 			'default'	=> '0',
 		)
 	);
