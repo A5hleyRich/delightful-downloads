@@ -292,9 +292,6 @@ jQuery( document ).ready( function( $ ) {
 		},
 
 		settingsTabs: function() {
-			// Hide non active tabs
-			$( '#dedo-settings-main .dedo-settings-tab:not(.active)' ).hide();
-
 			// Show tabs on click
 			$( '#dedo-settings-tabs a' ).on( 'click', function( e ) {
 				var $cachedTab = $( this );

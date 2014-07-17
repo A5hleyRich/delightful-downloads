@@ -108,17 +108,22 @@ function dedo_render_page_settings() {
 				// Display correct fields
 				foreach ( $registered_tabs as $key => $value ) {
 					$active_class = ( $key === $active_tab ) ? 'active' : '';
+					?>
 
-					echo '<section id="dedo-settings-tab-' . $key . '" class="dedo-settings-tab ' . $active_class . '">';
-					
-					if ( 'support' === $key ) {
-						dedo_render_part_support();
-					}
-					else {
-						do_settings_sections( 'dedo_settings_' . $key );
-					}
+					<section id="dedo-settings-tab-<?php echo $key; ?>" class="dedo-settings-tab <?php echo $active_class; ?>" style="<?php echo ( '' === $active_class ) ? 'display: none;' : ''; ?>">
+						<?php 
 
-					echo '</section>';
+						if ( 'support' === $key ) {
+							dedo_render_part_support();
+						}
+						else {
+							do_settings_sections( 'dedo_settings_' . $key );
+						}
+
+						?>
+					</section>
+
+					<?php
 				}
 				
 				// Submit button
