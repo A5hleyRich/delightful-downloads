@@ -284,7 +284,7 @@ function dedo_settings_members_only_field() {
 
 	<label for="members_only_true"><input name="delightful-downloads[members_only]" id="members_only_true" type="radio" value="1" <?php echo ( 1 === $checked ) ? 'checked' : ''; ?> /> <?php _e( 'Yes', 'delightful-downloads' ); ?></label>
 	<label for="members_only_false"><input name="delightful-downloads[members_only]" id="members_only_false" type="radio" value="0" <?php echo ( 0 === $checked ) ? 'checked' : ''; ?> /> <?php _e( 'No', 'delightful-downloads' ); ?></label>
-	<p class="description"><?php _e( 'Allow only logged in users to download this file. This can be overridden on a per-download basis.', 'delightful-downloads' ); ?></p>
+	<p class="description"><?php _e( 'Allow only logged in users to download files. This can be overridden on a per-download basis.', 'delightful-downloads' ); ?></p>
 	<?php
 	// Default selected item
 	$selected = $dedo_options['members_only_redirect'];

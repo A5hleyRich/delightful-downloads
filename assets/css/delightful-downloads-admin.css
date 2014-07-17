@@ -443,6 +443,9 @@
 #dedo-existing-download .form-table label {
   margin-right: 12px;
 }
+#dedo-existing-download .dedo-sub-option {
+  margin-top: 30px;
+}
 /* Upload Modal */
 #dedo-upload-modal #dedo-drag-drop-area {
   margin-top: 1em;

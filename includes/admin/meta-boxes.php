@@ -147,6 +147,7 @@ function dedo_meta_box_download( $post ) {
 						</td>
 					</tr>
 					<?php $members_only = ( isset( $file['options']['members_only'] ) ? $file['options']['members_only'] : '' ); ?>
+					<?php $members_only_redirect = ( isset( $file['options']['members_only_redirect'] ) ? $file['options']['members_only_redirect'] : '' ); ?>
 					<tr>
 						<th scope="row">
 							<?php _e( 'Members Only', 'delightful-downloads' ); ?>
@@ -156,21 +157,15 @@ function dedo_meta_box_download( $post ) {
 							<label for="members_only_false"><input name="members_only" id="members_only_false" type="radio" value="0" <?php echo ( 0 === $members_only ) ? 'checked' : ''; ?> /> <?php _e( 'No', 'delightful-downloads' ); ?></label>
 							<label for="members_only_inherit"><input name="members_only" id="members_only_inherit" type="radio" value <?php echo ( '' === $members_only ) ? 'checked' : ''; ?> /> <?php _e( 'Inherit', 'delightful-downloads' ); ?></label>
 							<p class="description"><?php _e( 'Allow only logged in users to download this file.' ); ?></p>
-						</td>
-					</tr>
-					<?php $members_redirect = ( isset( $file['options']['members_redirect'] ) ? $file['options']['members_redirect'] : '' ); ?>
-					<tr id="dedo-members-only-redirect" <?php echo ( 1 !== $members_only ) ? 'style="display: none;"' : ''; ?>>
-						<th scope="row">
-							<?php _e( 'Non-Members', 'delightful-downloads' ); ?>
-						</th>
-						<td>
-							<?php // Output select input
+							<div id="members_only_sub" class="dedo-sub-option" style="<?php echo ( 0 === $members_only ) ? 'display: none;' : ''; ?>">
+								<?php 
+
 								$args = array(
-									'name'						=> 'members_redirect',
+									'name'						=> 'members_only_redirect',
 									'depth'						=> 0,
-									'selected'					=> $members_redirect,
+									'selected'					=> $members_only_redirect,
 									'show_option_none'			=> __( 'Inherit', 'delightful-downloads' ),
-									'option_none_value'	=> 		'',
+									'option_none_value'			=> 		'',
 									'echo'						=> 0
 								);
 								
@@ -182,9 +177,11 @@ function dedo_meta_box_download( $post ) {
 								$list = explode( '</select>', $list );
 								$list = implode( '</optgroup></select>', $list );
 
-								echo $list;
-							?>
-							<p class="description"><?php _e( 'The page to redirect non-members.' ); ?></p>
+								echo $list; 
+								?>
+
+								<p class="description"><?php _e( 'The page to redirect non-members.' ); ?></p>
+							</div>
 						</td>
 					</tr>
 					<?php $open_browser = ( isset( $file['options']['open_browser'] ) ? $file['options']['open_browser'] : '' ); ?>
@@ -357,7 +354,7 @@ function dedo_meta_boxes_save( $post_id ) {
 		// Set file options
 		$options = array(
 			'members_only',
-			'members_redirect',
+			'members_only_redirect',
 			'open_browser'
 		);
 
