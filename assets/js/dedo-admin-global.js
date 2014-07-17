@@ -289,6 +289,7 @@ jQuery( document ).ready( function( $ ) {
 
 		init: function() {
 			this.settingsTabs();
+			this.toggleOptions();
 		},
 
 		settingsTabs: function() {
@@ -311,6 +312,22 @@ jQuery( document ).ready( function( $ ) {
 
 				e.preventDefault();
 			} );
+		},
+
+		toggleOptions: function() {
+			var toggles = [ 'grace_period', 'auto_delete', 'cache' ];
+
+			$( toggles ).each( function( index, value ) {
+				$( document ).on( 'change', '[name="delightful-downloads[' + value + ']"]', function( e ) {
+					// Toggle sub menu
+					if ( 1 == $( this ).val() ) {
+						$( '#' + value + '_sub' ).show();
+					}
+					else {
+						$( '#' + value + '_sub' ).hide();
+					}
+				} );
+			} )
 		}
 	};
 

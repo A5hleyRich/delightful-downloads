@@ -87,12 +87,12 @@ function dedo_upgrade_1_4() {
  * Version 1.5
  *
  * Convert download post meta to serialized array.
- * Add members only download on a per download basis.
+ * Update options.
  *
  * @since  1.5
  */
 function dedo_upgrade_1_5() {
-	global $wpdb, $dedo_options;
+	global $wpdb, $dedo_options, $dedo_notices;
 
 	// Select downloads and meta values
 	$sql = $wpdb->prepare( "
@@ -120,8 +120,7 @@ function dedo_upgrade_1_5() {
 		// Setup serialized array
 		$file = array(
 			'download_url'	=> $result['file_url'],
-			'download_size'	=> $result['file_size'],
-			'options'		=> array()
+			'download_size'	=> $result['file_size']
 		);
 
 		// Save new serialized array
@@ -137,6 +136,13 @@ function dedo_upgrade_1_5() {
 	'_dedo_file_size' );
 
 	$result = $wpdb->query( $sql );
+
+	// Update options
+	$new_options = wp_parse_args( $dedo_options, dedo_get_default_options() );
+	update_option( 'delightful-downloads', $new_options );
+
+	// Add upgrade notice
+	$dedo_notices->add( 'updated', __( 'Delightful Downloads updated to version 1.5.', 'delightful-downloads' ) );
 }
 
 /**

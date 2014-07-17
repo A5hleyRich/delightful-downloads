@@ -287,11 +287,11 @@ function dedo_settings_members_only_field() {
 	<p class="description"><?php _e( 'Allow only logged in users to download this file. This can be overridden on a per-download basis.', 'delightful-downloads' ); ?></p>
 	<?php
 	// Default selected item
-	$selected = $dedo_options['members_redirect'];
+	$selected = $dedo_options['members_only_redirect'];
 	
 	// Output select input
 	$args = array(
-		'name'						=> 'delightful-downloads[members_redirect]',
+		'name'						=> 'delightful-downloads[members_only_redirect]',
 		'selected'					=> $selected,
 		'show_option_none'			=> __( 'No Page (Generic Error)', 'delightful-downloads' ),
 		'option_none_value'			=> 0
@@ -437,13 +437,14 @@ function dedo_settings_log_admin_downloads_field() {
 function dedo_settings_grace_period_field() {
 	global $dedo_options;
 	$grace_period = $dedo_options['grace_period'];
+	$duration = $dedo_options['grace_period_duration'];
 	?>
 	
-	<label for="grace_period_toggle_true"><input name="delightful-downloads[grace_period_toggle]" id="grace_period_toggle_true" type="radio" value="1" <?php echo ( 0 < $grace_period ) ? 'checked' : ''; ?> /> <?php _e( 'Yes', 'delightful-downloads' ); ?></label>
-	<label for="grace_period_toggle_false"><input name="delightful-downloads[grace_period_toggle]" id="grace_period_toggle_false" type="radio" value="0" <?php echo ( 0 === $grace_period ) ? 'checked' : ''; ?> /> <?php _e( 'No', 'delightful-downloads' ); ?></label>
+	<label for="grace_period_toggle_true"><input name="delightful-downloads[grace_period]" id="grace_period_toggle_true" type="radio" value="1" <?php echo ( 1 == $grace_period ) ? 'checked' : ''; ?> /> <?php _e( 'Yes', 'delightful-downloads' ); ?></label>
+	<label for="grace_period_toggle_false"><input name="delightful-downloads[grace_period]" id="grace_period_toggle_false" type="radio" value="0" <?php echo ( 0 == $grace_period ) ? 'checked' : ''; ?> /> <?php _e( 'No', 'delightful-downloads' ); ?></label>
 	<p class="description"><?php _e( 'Stop multiple logs of the same type from being saved, in a given time period.', 'delightful-downloads' ); ?></p>
-	<div class="dedo-sub-option">
-		<input type="number" name="delightful-downloads[grace_period]" value="<?php echo esc_attr( $grace_period ); ?>" min="1" class="small-text" />
+	<div id="grace_period_sub" class="dedo-sub-option" style="<?php echo ( $grace_period == 1 ) ? 'display: block;' : 'display: none;';?> ">
+		<input type="number" name="delightful-downloads[grace_period_duration]" value="<?php echo esc_attr( $duration ); ?>" min="1" class="small-text" />
 		<p class="description"><?php _e( 'The time in minutes.', 'delightful-downloads' ); ?></p>
 	</div>
 	<?php
@@ -457,13 +458,14 @@ function dedo_settings_grace_period_field() {
 function dedo_settings_auto_delete_field() {
 	global $dedo_options;
 	$auto_delete = $dedo_options['auto_delete'];
+	$duration = $dedo_options['auto_delete_duration'];
 	?>
 	
-	<label for="auto_delete_toggle_true"><input name="delightful-downloads[auto_delete_toggle]" id="auto_delete_toggle_true" type="radio" value="1" <?php echo ( 0 < $auto_delete ) ? 'checked' : ''; ?> /> <?php _e( 'Yes', 'delightful-downloads' ); ?></label>
-	<label for="auto_delete_toggle_false"><input name="delightful-downloads[auto_delete_toggle]" id="auto_delete_toggle_false" type="radio" value="0" <?php echo ( 0 === $auto_delete ) ? 'checked' : ''; ?> /> <?php _e( 'No', 'delightful-downloads' ); ?></label>
+	<label for="auto_delete_toggle_true"><input name="delightful-downloads[auto_delete]" id="auto_delete_toggle_true" type="radio" value="1" <?php echo ( 1 == $auto_delete ) ? 'checked' : ''; ?> /> <?php _e( 'Yes', 'delightful-downloads' ); ?></label>
+	<label for="auto_delete_toggle_false"><input name="delightful-downloads[auto_delete]" id="auto_delete_toggle_false" type="radio" value="0" <?php echo ( 0 == $auto_delete ) ? 'checked' : ''; ?> /> <?php _e( 'No', 'delightful-downloads' ); ?></label>
 	<p class="description"><?php _e( 'Automatically delete logs older than a given time period.', 'delightful-downloads' ); ?></p>
-	<div class="dedo-sub-option">
-		<input type="number" name="delightful-downloads[auto_delete]" value="<?php echo esc_attr( $auto_delete ); ?>" min="0" class="small-text" />
+	<div id="auto_delete_sub" class="dedo-sub-option" style="<?php echo ( $auto_delete == 1 ) ? 'display: block;' : 'display: none;';?> ">
+		<input type="number" name="delightful-downloads[auto_delete_duration]" value="<?php echo esc_attr( $duration ); ?>" min="1" class="small-text" />
 		<p class="description"><?php _e( 'The time in days.', 'delightful-downloads' ); ?></p>
 	</div>
 	<?php
@@ -490,16 +492,17 @@ function dedo_settings_enable_css_field() {
  *
  * @since  1.3
  */
-function dedo_settings_cache_duration_field() {
+function dedo_settings_cache_field() {
 	global $dedo_options;
-	$cache_duration = $dedo_options['cache_duration'];
+	$cache = $dedo_options['cache'];
+	$duration = $dedo_options['cache_duration'];
 	?>
 
-	<label for="cache_duration_toggle_true"><input name="delightful-downloads[cache_duration_toggle]" id="cache_duration_toggle_true" type="radio" value="1" <?php echo ( 0 < $cache_duration ) ? 'checked' : ''; ?> /> <?php _e( 'Yes', 'delightful-downloads' ); ?></label>
-	<label for="cache_duration_toggle_false"><input name="delightful-downloads[cache_duration_toggle]" id="cache_duration_toggle_false" type="radio" value="0" <?php echo ( 0 === $cache_duration ) ? 'checked' : ''; ?> /> <?php _e( 'No', 'delightful-downloads' ); ?></label>
+	<label for="cache_toggle_true"><input name="delightful-downloads[cache]" id="cache_toggle_true" type="radio" value="1" <?php echo ( 1 == $cache ) ? 'checked' : ''; ?> /> <?php _e( 'Yes', 'delightful-downloads' ); ?></label>
+	<label for="cache_toggle_false"><input name="delightful-downloads[cache]" id="cache_toggle_false" type="radio" value="0" <?php echo ( 0 == $cache ) ? 'checked' : ''; ?> /> <?php _e( 'No', 'delightful-downloads' ); ?></label>
 	<p class="description"><?php _e( 'Cache database queries that are expensive to generate.', 'delightful-downloads' ); ?></p>
-	<div class="dedo-sub-option">
-		<input type="number" name="delightful-downloads[cache_duration]" value="<?php echo esc_attr( $cache_duration ); ?>" min="0" class="small-text" />
+	<div id="cache_sub" class="dedo-sub-option" style="<?php echo ( $cache == 1 ) ? 'display: block;' : 'display: none;';?> ">
+		<input type="number" name="delightful-downloads[cache_duration]" value="<?php echo esc_attr( $duration ); ?>" min="1" class="small-text" />
 		<p class="description"><?php _e( 'The time in minutes.', 'delightful-downloads' ); ?></p>
 	</div>
 	<?php

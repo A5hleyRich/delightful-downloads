@@ -44,14 +44,11 @@ function dedo_get_options() {
 			'name'		=> __( 'Members Only', 'delightful-downloads' ),
 			'tab'		=> 'general',
 			'type'		=> 'radio',
-			'default'	=> 0
+			'default'	=> 0,
+			'sub_option'=> array(
+				'redirect'	=> 0,
+			)
 		),
-		// 'members_redirect'	=> array(
-		// 	'name'		=> __( 'Non-Members Redirect', 'delightful-downloads' ),
-		// 	'tab'		=> 'general',
-		// 	'type'		=> 'dropdown',
-		// 	'default'	=> 0
-		// ),
 		'open_browser'		=> array(
 			'name'		=> __( 'Open in Browser', 'delightful-downloads' ),
 			'tab'		=> 'general',
@@ -94,17 +91,23 @@ function dedo_get_options() {
 			'type'		=> 'radio',
 			'default'	=> 0
 		),
-		'grace_period'	=> array(
+		'grace_period'		=> array(
 			'name'		=> __( 'Grace Period', 'delightful-downloads' ),
 			'tab'		=> 'statistics',
 			'type'		=> 'text',
-			'default'	=> 3
+			'default'	=> 1,
+			'sub_option'=> array(
+				'duration'	=> 3
+			)
 		),
-		'auto_delete'	=> array(
+		'auto_delete'		=> array(
 			'name'		=> __( 'Auto Delete', 'delightful-downloads' ),
 			'tab'		=> 'statistics',
 			'type'		=> 'text',
-			'default'	=> 0
+			'default'	=> 0,
+			'sub_option'=> array(
+				'duration'	=> 90
+			)
 		),
 		'enable_css'		=> array(
 			'name'		=> __( 'Output CSS', 'delightful-downloads' ),
@@ -112,11 +115,14 @@ function dedo_get_options() {
 			'type'		=> 'radio',
 			'default'	=> 1,
 		),
-		'cache_duration'	=> array(
+		'cache'				=> array(
 			'name'		=> __( 'Cache', 'delightful-downloads' ),
 			'tab'		=> 'advanced',
 			'type'		=> 'text',
-			'default'	=> 15,
+			'default'	=> 1,
+			'sub_option'=> array(
+				'duration'	=> 15
+			)
 		),
 		'download_url'		=> array(
 			'name'		=> __( 'Download Address', 'delightful-downloads' ),
@@ -148,6 +154,13 @@ function dedo_get_default_options() {
 	// Loop through and find default value
 	foreach ( $options as $key => $value ) {
 		$default_options[$key] = $value['default'];
+
+		// Add sub options
+		if ( isset( $value['sub_option'] ) ) {
+			foreach ( $value['sub_option'] as $key2 => $value2 ) {
+				$default_options[$key . '_' . $key2] = $value2;
+			}
+		}
 	}
 
 	return $default_options;
