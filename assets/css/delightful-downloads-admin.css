@@ -120,6 +120,24 @@
 .post-type-dedo_download .view-switch {
   display: none;
 }
+.post-type-dedo_download .inline-edit-col-left,
+.post-type-dedo_download .inline-edit-col-right {
+  float: none !important;
+  width: 50% !important;
+  margin-top: 0 !important;
+}
+.post-type-dedo_download .inline-edit-col-left .inline-edit-col,
+.post-type-dedo_download .inline-edit-col-right .inline-edit-col {
+  border: none !important;
+}
+.post-type-dedo_download .inline-edit-save a.save {
+  float: none !important;
+  margin-left: 1em;
+}
+.post-type-dedo_download .inline-edit-group em,
+.post-type-dedo_download .inline-edit-group .inline-edit-private {
+  display: none;
+}
 /* Taxonomy pages */
 .taxonomy-ddownload_category .row-actions .view,
 .taxonomy-ddownload_tag .row-actions .view {
@@ -331,6 +349,13 @@
 --------------------------------------------- */
 .post-type-dedo_download #titlediv {
   margin-bottom: 20px;
+}
+.post-type-dedo_download #post-visibility-select p {
+  margin-top: 0;
+}
+.post-type-dedo_download #visibility-radio-private,
+.post-type-dedo_download label[for="visibility-radio-private"] {
+  display: none;
 }
 /* Admin Add Download */
 #dedo-new-download {

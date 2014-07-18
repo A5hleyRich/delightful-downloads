@@ -141,6 +141,30 @@
 	.view-switch {
 		display: none;
 	}
+
+	// Align quick edit columns
+	.inline-edit-col-left, .inline-edit-col-right {
+		float: none !important;
+		width: 50% !important;
+		margin-top: 0 !important;
+
+		.inline-edit-col {
+			border: none !important;
+		}
+	}
+
+	.inline-edit-save a.save {
+		float: none !important;
+		margin-left: 1em;
+	}
+
+	// Hide post visibility on quick edit
+	.inline-edit-group {
+
+		em, .inline-edit-private {
+			display: none;
+		}
+	}
 }
 
 /* Taxonomy pages */
@@ -397,6 +421,15 @@
 	
 	#titlediv {
 		margin-bottom: 20px;
+	}
+
+	#post-visibility-select p {
+		margin-top: 0;
+	}
+
+	// Hide protected visibility
+	#visibility-radio-private, label[for="visibility-radio-private"] {
+		display: none;
 	}
 }
 
