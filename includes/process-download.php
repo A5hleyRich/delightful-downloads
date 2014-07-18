@@ -66,6 +66,11 @@ function dedo_download_process() {
 			}
 		}
 
+		// Password protected
+		if ( post_password_required( $download_id ) ) {
+			wp_die( get_the_password_form( $download_id ), __( 'Password Required', 'delightful-downloads' ) );
+		}
+
 		// Empty file urls not allowed
 		if ( '' === $download_url ) {
 			wp_die( __( 'You must attach a file to this download.', 'delightful-downloads' ) );

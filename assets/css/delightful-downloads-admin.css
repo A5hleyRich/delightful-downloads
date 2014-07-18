@@ -120,9 +120,6 @@
 .post-type-dedo_download .view-switch {
   display: none;
 }
-.post-type-dedo_download .inline-edit-group {
-  display: none;
-}
 /* Taxonomy pages */
 .taxonomy-ddownload_category .row-actions .view,
 .taxonomy-ddownload_tag .row-actions .view {
@@ -334,9 +331,6 @@
 --------------------------------------------- */
 .post-type-dedo_download #titlediv {
   margin-bottom: 20px;
-}
-.post-type-dedo_download .misc-pub-visibility {
-  display: none;
 }
 /* Admin Add Download */
 #dedo-new-download {
