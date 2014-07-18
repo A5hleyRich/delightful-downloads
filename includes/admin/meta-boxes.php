@@ -67,9 +67,16 @@ add_action( 'post_updated_messages', 'dedo_update_messages' );
 function dedo_meta_box_download( $post ) {
 	global $post;
 
-	$file = get_post_meta( $post->ID, '_dedo_file', true );
-	$file_url = ( isset( $file['download_url'] ) ? $file['download_url'] : '' );
-	$file_size = ( isset( $file['download_size'] ) ? size_format( $file['download_size'], 1 ) : '' );
+	$file_url = get_post_meta( $post->ID, '_dedo_file_url', true );
+	$file_url = ( false != $file_url ) ? $file_url : '';
+	
+	$file_size = get_post_meta( $post->ID, '_dedo_file_size', true );
+	$file_size = ( false != $file_size ) ? size_format( $file_size, 1 ) : '';
+	
+	$file_count = get_post_meta( $post->ID, '_dedo_file_count', true );
+	$file_count = ( false != $file_count ) ? $file_count : 0;
+
+	$file_options = get_post_meta( $post->ID, '_dedo_file_options', true );
 
 	// Update status args
 	$status_args = array(
@@ -135,19 +142,17 @@ function dedo_meta_box_download( $post ) {
 		<div class="right-panel">
 			<table class="form-table">
 				<tbody>
-					<?php $file_count = get_post_meta( $post->ID, '_dedo_file_count', true ); ?>
-					<?php $file_count = ( !$file_count ) ? 0 : $file_count; ?>
 					<tr>
 						<th scope="row">
 							<?php _e( 'Download Count', 'delightful-downloads' ); ?>
 						</th>
 						<td>
-							<input name="download_count" id="download_count" class="regular-text" type="number" value="<?php echo $file_count; ?>" />
+							<input name="download_count" id="download_count" class="regular-text" type="number" min="0" value="<?php echo $file_count; ?>" />
 							<p class="description"><?php _e( 'The number of times this file has been downloaded.' ); ?></p>
 						</td>
 					</tr>
-					<?php $members_only = ( isset( $file['options']['members_only'] ) ? $file['options']['members_only'] : '' ); ?>
-					<?php $members_only_redirect = ( isset( $file['options']['members_only_redirect'] ) ? $file['options']['members_only_redirect'] : '' ); ?>
+					<?php $members_only = ( isset( $file_options['members_only'] ) ? $file_options['members_only'] : '' ); ?>
+					<?php $members_only_redirect = ( isset( $file_options['members_only_redirect'] ) ? $file_options['members_only_redirect'] : '' ); ?>
 					<tr>
 						<th scope="row">
 							<?php _e( 'Members Only', 'delightful-downloads' ); ?>
@@ -184,7 +189,7 @@ function dedo_meta_box_download( $post ) {
 							</div>
 						</td>
 					</tr>
-					<?php $open_browser = ( isset( $file['options']['open_browser'] ) ? $file['options']['open_browser'] : '' ); ?>
+					<?php $open_browser = ( isset( $file_options['open_browser'] ) ? $file_options['open_browser'] : '' ); ?>
 					<tr>
 						<th scope="row">
 							<?php _e( 'Open In Browser', 'delightful-downloads' ); ?>
@@ -333,48 +338,57 @@ function dedo_meta_boxes_save( $post_id ) {
 	// Check for file nonce
 	if ( isset( $_POST['ddownload_file_save_nonce'] ) && wp_verify_nonce( $_POST['ddownload_file_save_nonce'], 'ddownload_file_save' ) ) {	
 
-		$file = get_post_meta( $post_id, '_dedo_file', true );
 		$file_url = trim( $_POST['dedo-file-url'] );
 
-		// Get cached remote file sizes
+		/**
+		 * Get cached remote file sizes
+		 *
+		 * Ajax grabs the remote file size on each file update, it makes sense to cache
+		 * the value and use it here. Otherwise, the user has to wait for headers to return
+		 * when saving a file.
+		 */
 		$cached_remotes = get_transient( 'dedo_remote_file_sizes' );
 		
 		// Check for cached remote file size
 		if ( false === $cached_remotes || !isset( $cached_remotes[esc_url_raw( $file_url )] ) ) {
-			$new_file = dedo_get_file_status( $file_url );
+			$file = dedo_get_file_status( $file_url );
+			$file_size = $file['size'];
 		}
 		else {
-			$new_file['size'] = $cached_remotes[esc_url_raw( $file_url )];
+			$file_size = $cached_remotes[esc_url_raw( $file_url )];
 		}
 
-		// File url and size
-		$file['download_url'] = $file_url;
-		$file['download_size'] = $new_file['size'];
+		// Save file url and size
+		update_post_meta( $post_id, '_dedo_file_url', $file_url );
+		update_post_meta( $post_id, '_dedo_file_size', $file_size );
+
+		// Save download count
+		if ( isset( $_POST['download_count'] ) && '' !== trim( $_POST['download_count'] ) ) {
+			update_post_meta( $post_id, '_dedo_file_count', trim( $_POST['download_count'] ) );
+		}
+
+		// Get current file options
+		$file_options = get_post_meta( $post_id, '_dedo_file_options', true );
+		$file_options = ( false == $file_options ) ? array() : $file_options;
 
 		// Set file options
-		$options = array(
+		$default_options = array(
 			'members_only',
 			'members_only_redirect',
 			'open_browser'
 		);
 
 		// Loop through and save to file array
-		foreach ( $options as $option ) {
+		foreach ( $default_options as $option ) {
 			if ( isset( $_POST[$option] ) && '' !== $_POST[$option] ) {
-				$file['options'][$option] = absint( $_POST[$option] );
+				$file_options[$option] = absint( $_POST[$option] );
 			}
 			else {
-				unset( $file['options'][$option] );
+				unset( $file_options[$option] );
 			}
 		}
 
-		// Save file meta
-		update_post_meta( $post_id, '_dedo_file', $file );
-
-		// Save download count
-		if ( isset( $_POST['download_count'] ) && !empty( trim( $_POST['download_count'] ) ) ) {
-			update_post_meta( $post_id, '_dedo_file_count', trim( $_POST['download_count'] ) );
-		}
+		update_post_meta( $post_id, '_dedo_file_options', $file_options );
 	}
 }
 add_action( 'save_post', 'dedo_meta_boxes_save' );

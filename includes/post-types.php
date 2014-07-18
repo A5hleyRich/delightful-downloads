@@ -88,17 +88,17 @@ add_filter( 'manage_dedo_download_posts_columns', 'dedo_download_column_headings
  * @since  1.0
  */
 function dedo_download_column_contents( $column_name, $post_id ) {
-	$file = get_post_meta( $post_id, '_dedo_file', true );
-
 	// File column
 	if ( $column_name == 'file' ) {
-		$file_url = basename( $file['download_url'] );
+		$file_url = get_post_meta( $post_id, '_dedo_file_url', true );
+		$file_url = dedo_get_file_name( $file_url );
 		echo esc_attr( ( !$file_url ) ? '--' : $file_url );
 	}
 
 	// Filesize column
 	if ( $column_name == 'filesize' ) {
-		$file_size = size_format( $file['download_size'], 1 );
+		$file_size = get_post_meta( $post_id, '_dedo_file_size', true );
+		$file_size = ( !$file_size) ? 0 : size_format( $file_size, 1 );
 		echo esc_attr( ( !$file_size ) ? '--' : $file_size );
 	}
 	
@@ -109,8 +109,9 @@ function dedo_download_column_contents( $column_name, $post_id ) {
 	
 	// Count column
 	if ( $column_name == 'downloads' ) {
-		$count = ( $count = get_post_meta( $post_id, '_dedo_file_count', true ) ) ? $count : 0;
-		echo number_format_i18n( esc_attr( $count ) );
+		$count = get_post_meta( $post_id, '_dedo_file_count', true );
+		$count = ( !$count ) ? 0 : number_format_i18n( $count );
+		echo esc_attr( $count );
 	}
 }
 add_action( 'manage_dedo_download_posts_custom_column', 'dedo_download_column_contents', 10, 2 );

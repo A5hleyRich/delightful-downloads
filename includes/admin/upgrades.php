@@ -86,56 +86,12 @@ function dedo_upgrade_1_4() {
 /**
  * Version 1.5
  *
- * Convert download post meta to serialized array.
- * Update options.
+ * Update options with new sub-options.
  *
  * @since  1.5
  */
 function dedo_upgrade_1_5() {
-	global $wpdb, $dedo_options, $dedo_notices;
-
-	// Select downloads and meta values
-	$sql = $wpdb->prepare( "
-		SELECT $wpdb->posts.ID,
-			   file_url.meta_value AS file_url,
-			   file_size.meta_value AS file_size
-		FROM $wpdb->posts
-		LEFT JOIN $wpdb->postmeta file_url
-			ON $wpdb->posts.ID = file_url.post_id
-			AND file_url.meta_key = %s
-		LEFT JOIN $wpdb->postmeta file_size
-			ON $wpdb->posts.ID = file_size.post_id
-			AND file_size.meta_key = %s
-		WHERE post_type = %s
-			AND post_status != %s
-	",
-	'_dedo_file_url',
-	'_dedo_file_size',
-	'dedo_download',
-	'auto-draft' );
-
-	$results = $wpdb->get_results( $sql, ARRAY_A );
-
-	foreach ( $results as $result ) {
-		// Setup serialized array
-		$file = array(
-			'download_url'	=> $result['file_url'],
-			'download_size'	=> $result['file_size']
-		);
-
-		// Save new serialized array
-		add_post_meta( $result['ID'], '_dedo_file', $file, true );
-	}
-
-	// Cleanup old post meta
-	$sql = $wpdb->prepare( "
-		DELETE FROM $wpdb->postmeta
-		WHERE meta_key = %s OR meta_key = %s 
-	",
-	'_dedo_file_url',
-	'_dedo_file_size' );
-
-	$result = $wpdb->query( $sql );
+	global $dedo_options, $dedo_notices;
 
 	// Update options
 	$new_options = wp_parse_args( $dedo_options, dedo_get_default_options() );
