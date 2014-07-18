@@ -170,7 +170,7 @@ function dedo_meta_box_download( $post ) {
 									'depth'						=> 0,
 									'selected'					=> $members_only_redirect,
 									'show_option_none'			=> __( 'Inherit', 'delightful-downloads' ),
-									'option_none_value'			=> 		'',
+									'option_none_value'			=> 	'',
 									'echo'						=> 0
 								);
 								

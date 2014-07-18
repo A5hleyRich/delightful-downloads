@@ -208,13 +208,18 @@ function dedo_download_valid( $download_id ) {
  *
  * @since  1.0
  */
-function dedo_download_permission() {
+function dedo_download_permission( $options ) {
 	global $dedo_options;
-	
-	$members_only = $dedo_options['members_only'];
-	
+
+	// First check per-download settings, else revert to global setting
+	if ( isset( $options['members_only'] ) ) {
+		$members_only = $options['members_only'];
+	}
+	else {
+		$members_only = $dedo_options['members_only'];
+	}
+
 	if ( $members_only ) {
-		
 		// Check user is logged in
 		if ( is_user_logged_in() ) {
 			return true;
@@ -222,7 +227,6 @@ function dedo_download_permission() {
 		else {
 			return false;
 		}
-
 	}
 
 	return true;

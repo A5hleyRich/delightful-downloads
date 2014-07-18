@@ -29,47 +29,45 @@ function dedo_download_process() {
 
 		// Check valid download
 		if ( !dedo_download_valid( $download_id ) ) {
-			
 			do_action( 'ddownload_download_invalid', $download_id );
-
-			// Provided ID is not a valid download, display error
 			wp_die( __( 'Invalid download.', 'delightful-downloads' ) );
 		}
 
-		// Check user has download permissions
-		if ( !dedo_download_permission() ) {
-			
-			do_action( 'ddownload_download_permission', $download_id );
+		// Check blocked user agents
+		if ( !dedo_download_blocked( $_SERVER['HTTP_USER_AGENT'] ) ) {
+			do_action( 'ddownload_download_blocked', $download_id );
+			wp_die( __( 'You are blocked from downloading this file!', 'delightful-downloads' ) );
+		}
 
-			// Get redirect page if set, else display error instead
-			$members_redirect = $dedo_options['members_redirect'];
+		// Get file meta
+		$download_url = get_post_meta( $download_id, '_dedo_file_url', true );
+		$options = get_post_meta( $download_id, '_dedo_file_options', true );
+
+		// Check for members only
+		if ( !dedo_download_permission( $options ) ) {
+			do_action( 'ddownload_download_permission', $download_id );
 			
-			if ( $location = get_permalink( $members_redirect ) ) {
-				
+			// Get redirect location
+			if ( isset( $options['members_only_redirect'] ) ) {
+				$location = $options['members_only_redirect'];
+			}
+			else {
+				$location = $dedo_options['members_only_redirect'];
+			}
+
+			// Try to redirect
+			if ( $location = get_permalink( $location ) ) {
 				wp_redirect( $location );
 				exit();
 			}
 			else {
-				
 				// Invalid page provided, show error message
 				wp_die( __( 'Please login to download this file!', 'delightful-downloads' ) );	
 			}
 		}
 
-		// Check if user is blocked
-		if ( !dedo_download_blocked( $_SERVER['HTTP_USER_AGENT'] ) ) {
-			
-			do_action( 'ddownload_download_blocked', $download_id );
-
-			// User blocked, show error message
-			wp_die( __( 'You are blocked from downloading this file!', 'delightful-downloads' ) );
-		}
-
-		// Grab download path/url
-		$download_url = get_post_meta( $download_id, '_dedo_file_url', true );
-
+		// Empty file urls not allowed
 		if ( '' === $download_url ) {
-
 			wp_die( __( 'You must attach a file to this download.', 'delightful-downloads' ) );
 		}
 
