@@ -318,6 +318,7 @@ function dedo_settings_open_browser_field() {
 	<label for="open_browser_true"><input name="delightful-downloads[open_browser]" id="open_browser_true" type="radio" value="1" <?php echo ( 1 === $checked ) ? 'checked' : ''; ?> /> <?php _e( 'Yes', 'delightful-downloads' ); ?></label>
 	<label for="open_browser_false"><input name="delightful-downloads[open_browser]" id="open_browser_false" type="radio" value="0" <?php echo ( 0 === $checked ) ? 'checked' : ''; ?> /> <?php _e( 'No', 'delightful-downloads' ); ?></label>
 	<p class="description"><?php _e( 'Attempt to open files in the browser window. This can be overridden on a per-download basis.', 'delightful-downloads' ); ?></p>
+	<p class="description dedo-important"><?php _e( 'For files located within the Delightful Downloads upload directory, set folder protection to \'No\', which can be found under the advanced tab.', 'delightful-downloads' ); ?></p>
 	<?php
 }
 
@@ -442,10 +443,10 @@ function dedo_settings_grace_period_field() {
 	
 	<label for="grace_period_toggle_true"><input name="delightful-downloads[grace_period]" id="grace_period_toggle_true" type="radio" value="1" <?php echo ( 1 == $grace_period ) ? 'checked' : ''; ?> /> <?php _e( 'Yes', 'delightful-downloads' ); ?></label>
 	<label for="grace_period_toggle_false"><input name="delightful-downloads[grace_period]" id="grace_period_toggle_false" type="radio" value="0" <?php echo ( 0 == $grace_period ) ? 'checked' : ''; ?> /> <?php _e( 'No', 'delightful-downloads' ); ?></label>
-	<p class="description"><?php _e( 'Stop multiple logs of the same type from being saved, in a given time period.', 'delightful-downloads' ); ?></p>
+	<p class="description"><?php _e( 'Stop multiple logs of the same type from being saved, in quick succession.', 'delightful-downloads' ); ?></p>
 	<div id="grace_period_sub" class="dedo-sub-option" style="<?php echo ( $grace_period == 1 ) ? 'display: block;' : 'display: none;';?> ">
 		<input type="number" name="delightful-downloads[grace_period_duration]" value="<?php echo esc_attr( $duration ); ?>" min="1" class="small-text" />
-		<p class="description"><?php _e( 'The time in minutes.', 'delightful-downloads' ); ?></p>
+		<p class="description"><?php _e( 'The time in minutes before creating a new log.', 'delightful-downloads' ); ?></p>
 	</div>
 	<?php
 }
@@ -463,10 +464,10 @@ function dedo_settings_auto_delete_field() {
 	
 	<label for="auto_delete_toggle_true"><input name="delightful-downloads[auto_delete]" id="auto_delete_toggle_true" type="radio" value="1" <?php echo ( 1 == $auto_delete ) ? 'checked' : ''; ?> /> <?php _e( 'Yes', 'delightful-downloads' ); ?></label>
 	<label for="auto_delete_toggle_false"><input name="delightful-downloads[auto_delete]" id="auto_delete_toggle_false" type="radio" value="0" <?php echo ( 0 == $auto_delete ) ? 'checked' : ''; ?> /> <?php _e( 'No', 'delightful-downloads' ); ?></label>
-	<p class="description"><?php _e( 'Automatically delete logs older than a given time period.', 'delightful-downloads' ); ?></p>
+	<p class="description"><?php _e( 'Automatically delete old logs.', 'delightful-downloads' ); ?></p>
 	<div id="auto_delete_sub" class="dedo-sub-option" style="<?php echo ( $auto_delete == 1 ) ? 'display: block;' : 'display: none;';?> ">
 		<input type="number" name="delightful-downloads[auto_delete_duration]" value="<?php echo esc_attr( $duration ); ?>" min="1" class="small-text" />
-		<p class="description"><?php _e( 'The time in days.', 'delightful-downloads' ); ?></p>
+		<p class="description"><?php _e( 'The time in days to keep logs.', 'delightful-downloads' ); ?></p>
 	</div>
 	<?php
 }
@@ -503,7 +504,7 @@ function dedo_settings_cache_field() {
 	<p class="description"><?php _e( 'Cache database queries that are expensive to generate.', 'delightful-downloads' ); ?></p>
 	<div id="cache_sub" class="dedo-sub-option" style="<?php echo ( $cache == 1 ) ? 'display: block;' : 'display: none;';?> ">
 		<input type="number" name="delightful-downloads[cache_duration]" value="<?php echo esc_attr( $duration ); ?>" min="1" class="small-text" />
-		<p class="description"><?php _e( 'The time in minutes.', 'delightful-downloads' ); ?></p>
+		<p class="description"><?php _e( 'The time in minutes to cache queries.', 'delightful-downloads' ); ?></p>
 	</div>
 	<?php
 }
@@ -519,7 +520,23 @@ function dedo_settings_download_url_field() {
 	$text = $dedo_options['download_url'];
 
 	echo '<input type="text" name="delightful-downloads[download_url]" value="' . esc_attr( $text ) . '" class="regular-text" />';
-	echo '<p class="description">' . __( 'Set the URL for download links. This should be left as the default value, unless absolutely sure that it will not cause conflicts with existing permalinks or plugins.', 'delightful-downloads' ) . ' <code>' . dedo_download_link( 123 ) . '</code></p>';
+	echo '<p class="description">' . __( 'The URL for download links.', 'delightful-downloads' ) . ' <code>' . dedo_download_link( 123 ) . '</code></p>';
+}
+
+/**
+ * Render Folder Protection field
+ *
+ * @since  1.5
+ */
+function dedo_settings_folder_protection_field() {
+	global $dedo_options;
+	$checked = absint( $dedo_options['folder_protection'] );
+	?>
+
+	<label for="folder_protection_true"><input name="delightful-downloads[folder_protection]" id="folder_protection_true" type="radio" value="1" <?php echo ( 1 === $checked ) ? 'checked' : ''; ?> /> <?php _e( 'Yes', 'delightful-downloads' ); ?></label>
+	<label for="folder_protection_false"><input name="delightful-downloads[folder_protection]" id="folder_protection_false" type="radio" value="0" <?php echo ( 0 === $checked ) ? 'checked' : ''; ?> /> <?php _e( 'No', 'delightful-downloads' ); ?></label>
+	<p class="description"><?php _e( 'Stop direct access to uploaded files, within the Delightful Downloads upload directory.', 'delightful-downloads' ); ?></p>
+	<?php
 }
 
 /**
@@ -534,7 +551,7 @@ function dedo_settings_uninstall_field() {
 
 	<label for="uninstall_true"><input name="delightful-downloads[uninstall]" id="uninstall_true" type="radio" value="1" <?php echo ( 1 === $checked ) ? 'checked' : ''; ?> /> <?php _e( 'Yes', 'delightful-downloads' ); ?></label>
 	<label for="uninstall_false"><input name="delightful-downloads[uninstall]" id="uninstall_false" type="radio" value="0" <?php echo ( 0 === $checked ) ? 'checked' : ''; ?> /> <?php _e( 'No', 'delightful-downloads' ); ?></label>
-	<p class="description"><?php _e( 'Completely remove all data associated with Delightful Downloads when deleting the plugin. All downloads, categories, tags and statistics will be removed.', 'delightful-downloads' ); ?></p>
+	<p class="description"><?php _e( 'Completely remove all data associated with Delightful Downloads, when uninstalling the plugin. All downloads, categories, tags and statistics will be removed.', 'delightful-downloads' ); ?></p>
 	<?php
 }
 

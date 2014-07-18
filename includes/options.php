@@ -130,11 +130,17 @@ function dedo_get_options() {
 			'type'		=> 'text',
 			'default'	=> 'ddownload',
 		),
+		'folder_protection'	=> array(
+			'name'		=> __( 'Folder Protection', 'delightful-downloads' ),
+			'tab'		=> 'advanced',
+			'type'		=> 'radio',
+			'default'	=> 1
+		),
 		'uninstall'		=> array(
 			'name'		=> __( 'Complete Uninstall', 'delightful-downloads' ),
 			'tab'		=> 'advanced',
 			'type'		=> 'radio',
-			'default'	=> '0',
+			'default'	=> 0
 		)
 	);
 

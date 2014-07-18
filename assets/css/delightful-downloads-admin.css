@@ -244,7 +244,8 @@
   line-height: 28px;
   color: #dd3d36;
 }
-/* Settings page */
+/* Settings Page
+--------------------------------------------- */
 .dedo_download_page_dedo_settings .nav-tab-wrapper {
   margin-bottom: 0;
 }
@@ -260,6 +261,12 @@
 }
 .dedo_download_page_dedo_settings label {
   margin-right: 12px;
+}
+.dedo_download_page_dedo_settings .description {
+  max-width: 600px;
+}
+.dedo_download_page_dedo_settings .description + .description {
+  margin-top: 1em;
 }
 .dedo_download_page_dedo_settings #dedo-settings-main {
   float: left;
