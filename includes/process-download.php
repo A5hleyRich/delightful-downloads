@@ -48,12 +48,7 @@ function dedo_download_process() {
 			do_action( 'ddownload_download_permission', $download_id );
 			
 			// Get redirect location
-			if ( isset( $options['members_only_redirect'] ) ) {
-				$location = $options['members_only_redirect'];
-			}
-			else {
-				$location = $dedo_options['members_only_redirect'];
-			}
+			$location = ( isset( $options['members_only_redirect'] ) ) ? $options['members_only_redirect'] : $dedo_options['members_only_redirect'];
 
 			// Try to redirect
 			if ( $location = get_permalink( $location ) ) {
@@ -115,6 +110,14 @@ function dedo_download_process() {
 
 		// Hook before download starts
 		do_action( 'ddownload_download_before', $download_id );
+
+		// Open in browser
+		$open_browser = ( isset( $options['open_browser'] ) ) ? $options['open_browser'] : $dedo_options['open_browser'];
+
+		if ( $open_browser ) {
+			header( "Location: $download_url" );
+			exit();
+		}
 
 		// Convert to path
 		if ( $download_path = dedo_get_abs_path( $download_url ) ) {

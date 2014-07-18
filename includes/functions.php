@@ -212,12 +212,7 @@ function dedo_download_permission( $options ) {
 	global $dedo_options;
 
 	// First check per-download settings, else revert to global setting
-	if ( isset( $options['members_only'] ) ) {
-		$members_only = $options['members_only'];
-	}
-	else {
-		$members_only = $dedo_options['members_only'];
-	}
+	$members_only = ( isset( $options['members_only'] ) ) ? $options['members_only'] : $dedo_options['members_only'];
 
 	if ( $members_only ) {
 		// Check user is logged in
