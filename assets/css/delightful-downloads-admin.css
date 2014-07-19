@@ -265,9 +265,6 @@
 .dedo_download_page_dedo_settings .description {
   max-width: 600px;
 }
-.dedo_download_page_dedo_settings .description + .description {
-  margin-top: 1em;
-}
 .dedo_download_page_dedo_settings #dedo-settings-main {
   float: left;
   width: 75%;
