@@ -165,11 +165,9 @@ class DEDO_Logging {
 	 * @return boolean
 	 */
 	public function role_check( $log ) {
-
 		global $dedo_options;
 		
 		if ( current_user_can( 'administrator' ) && !$dedo_options['log_admin_downloads'] ) {
-			
 			return false;
 		}
 
@@ -186,11 +184,9 @@ class DEDO_Logging {
 	 * @return boolean
 	 */
 	public function grace_period( $log ) {
-
 		global $wpdb, $dedo_options;
 
-		if ( $dedo_options['grace_period'] > 0 ) {
-
+		if ( $dedo_options['grace_period'] == 1 ) {
 			// Check for recent log of same download and status within grace period
 			$sql = $wpdb->prepare( "
 				SELECT ID FROM $wpdb->ddownload_statistics
@@ -202,11 +198,10 @@ class DEDO_Logging {
 			$log['status'],
 			$log['post_id'],
 			$log['date'],
-			$dedo_options['grace_period'],
+			$dedo_options['grace_period_duration'],
 			inet_pton( $log['ip_address'] ) );
 
 			if ( $wpdb->query( $sql ) ) {
-				
 				// We have a grace period
 				return true;
 			}

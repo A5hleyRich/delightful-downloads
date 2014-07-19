@@ -68,8 +68,7 @@ class DEDO_Cache {
 
 		global $dedo_options;
 
-		if ( $dedo_options['cache_duration'] > 0 ) {
-
+		if ( $dedo_options['cache'] == 1 ) {
 			$this->cache_enabled = true;
 			$this->cache_duration = $dedo_options['cache_duration'] * 60;
 			$this->key = $key;
@@ -88,11 +87,9 @@ class DEDO_Cache {
 	public function get() {
 
 		if ( true === $this->cache_enabled && false !== ( $data = get_transient( $this->key ) ) ) {
-
 			// Set cached flag
 			$this->cached = true;
 
-			// Return data
 			return $data;
 		}
 
@@ -112,7 +109,6 @@ class DEDO_Cache {
 	public function set( $result ) {
 
 		if ( true === $this->cache_enabled && false === $this->cached  ) {
-
 			// Save transient
 			set_transient( $this->key, $result, $this->cache_duration );
 		}
