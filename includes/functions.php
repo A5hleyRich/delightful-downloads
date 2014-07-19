@@ -353,7 +353,12 @@ function dedo_set_upload_dir( $upload_dir ) {
  *
  * @since  1.3
  */
-function dedo_folder_protection() {
+function dedo_folder_protection( $folder_protection = '' ) {
+	global $dedo_options;
+
+	// Allow custom options to be passed, set to save options if not
+	$folder_protection = ( '' === $folder_protection ) ? $dedo_options['folder_protection'] : $folder_protection;
+
 	// Get delightful downloads upload base path
 	$upload_dir = dedo_get_upload_dir( 'dedo_basedir' );
 
@@ -362,28 +367,35 @@ function dedo_folder_protection() {
 		return;
 	}
 
+	// Add htaccess protection if enabled, else delete it
+	if ( 1 == $folder_protection ) {
+		if ( !file_exists( $upload_dir . '/.htaccess' ) && wp_is_writable( $upload_dir ) ) {
+			$content = "Options -Indexes\n";
+			$content .= "deny from all";
+
+			@file_put_contents( $upload_dir . '/.htaccess', $content );
+		}
+	}
+	else {
+		if ( file_exists( $upload_dir . '/.htaccess' ) && wp_is_writable( $upload_dir ) ) {
+			@unlink( $upload_dir . '/.htaccess' );
+		}
+	}
+
 	// Check for root index.php
 	if ( !file_exists( $upload_dir . '/index.php' ) && wp_is_writable( $upload_dir ) ) {
 		@file_put_contents( $upload_dir . '/index.php', '<?php' . PHP_EOL . '// You shall not pass!' );
-	}
-
-	// Check for root .htaccess
-	if ( !file_exists( $upload_dir . '/.htaccess' ) && wp_is_writable( $upload_dir ) ) {
-		@copy( $htaccess, $upload_dir . '/.htaccess' );
 	}
 
 	// Check subdirs for index.php
 	$subdirs = dedo_folder_scan( $upload_dir );
 
 	foreach ( $subdirs as $subdir ) {
-		
-		if ( !file_exists( $subdir . '/index.php' ) ) {
-			@copy( $index, $subdir . '/index.php' );
+		if ( !file_exists( $subdir . '/index.php' ) && wp_is_writable( $subdir ) ) {
+			@file_put_contents( $subdir . '/index.php', '<?php' . PHP_EOL . '// You shall not pass!' );
 		}
-
 	}
 }
-add_action( 'init', 'dedo_folder_protection' );
 
 /**
  * Scan dir and return subdirs

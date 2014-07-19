@@ -56,7 +56,6 @@ add_action( 'dedo_cron_daily', 'dedo_cron_daily' );
  * @since  1.3
  */
 function dedo_cron_weekly() {
-	
 	// Run folder protection
 	dedo_folder_protection();
 }
