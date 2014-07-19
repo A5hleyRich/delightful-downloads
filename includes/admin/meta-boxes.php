@@ -205,8 +205,10 @@ function dedo_meta_box_download( $post ) {
 			</table>
 		</div>
 		<div class="footer">
+			<?php _e( 'Replace File:', 'delightful-downloads' ); ?>
 			<a href="#dedo-upload-modal" class="button dedo-modal-action"><?php _e( 'Upload', 'delightful-downloads' ); ?></a>
 			<a href="#dedo-select-modal" class="button dedo-modal-action select-existing"><?php _e( 'Select Existing', 'delightful-downloads' ); ?></a>
+			<a href="#dedo-delete-modal" class="delete dedo-delete-file"><?php _e( 'Delete File', 'delightful-downloads' ); ?>
 		</div>
 	</div>
 

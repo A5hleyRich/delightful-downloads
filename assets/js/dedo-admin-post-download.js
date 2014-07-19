@@ -14,6 +14,12 @@ jQuery( document ).ready( function( $ ){
 		eventListeners: function() {
 			var self = this;
 
+			// Delete file
+			$( '.dedo-delete-file' ).on( 'click', function( e ) {
+				self.deleteFile();
+				e.preventDefault();
+			} );
+
 			// Members redirect
 			$( document ).on( 'change', '[name="members_only"]', function( e ) {
 				if ( 1 == $( this ).val() || '' == $( this ).val() ) {
