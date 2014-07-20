@@ -36,6 +36,7 @@ function dedo_render_page_statistics() {
 	?>
 	<div class="wrap">
 		<h2><?php _e( 'Download Logs', 'delightful-downloads' ); ?>
+			<a href="#dedo-stats-export" class="add-new-h2 dedo-modal-action"><?php _e( 'Export', 'delightful-downloads' ); ?></a>
 			<a href="<?php echo wp_nonce_url( admin_url( 'edit.php?post_type=dedo_download&page=dedo_statistics&action=empty_logs' ), 'dedo_empty_logs', 'dedo_empty_logs_nonce' ); ?>" class="add-new-h2 dedo_confirm_action" data-confirm="<?php _e( 'You are about to permanently delete the download logs.', 'delightful-downloads' ); ?>"><?php _e( 'Empty Logs', 'delightful-downloads' ); ?></a>
 		</h2>
 
@@ -50,6 +51,48 @@ function dedo_render_page_statistics() {
 	</div>
 	<?php
 }
+
+/**
+ * Render Export Logs Modal
+ *
+ * @since  1.5
+ */
+function dedo_render_export_modal() {
+	// Ensure only added on statistics screen	
+	$screen = get_current_screen();
+
+	if ( 'dedo_download_page_dedo_statistics' !== $screen->id ) {
+		return;
+	}
+
+	?>
+
+	<div id="dedo-stats-export" class="dedo-modal" style="display: none; width: 400px; left: 50%; margin-left: -200px;">
+		<a href="#" class="dedo-modal-close" title="Close"><span class="media-modal-icon"></span></a>
+		<div class="media-modal-content">
+			<h1><?php _e( 'Export Logs', 'delightful-downloads' ); ?></h1>
+			<p><?php _e( 'Export log entries to a CSV file. Please select a date range:', 'delightful-downloads' ); ?></p>
+			<form method="post" enctype="multipart/form-data" action="<?php echo admin_url( 'edit.php?post_type=dedo_download&page=dedo_statistics&action=export' ); ?>">
+				<p class="left">
+					<label for="dedo_start_date"><?php _e( 'Start Date', 'delightful-downloads' ); ?></label>
+					<input name="dedo_start_date" id="dedo_start_date" type="date" ?>
+				</p>
+				<p class="right">
+					<label for="dedo_end_date"><?php _e( 'End Date', 'delightful-downloads' ); ?></label>
+					<input name="dedo_end_date" id="dedo_end_date" type="date" ?>
+				</p>
+				<p>
+					<?php wp_nonce_field( 'dedo_export_stats','dedo_export_stats_nonce' ); ?>
+					<input type="submit" value="<?php _e( 'Export', 'delightful-downloads' ); ?>" class="button button-primary"/>
+				</p>
+			</form>
+		</div>
+	</div>
+
+	<?php
+
+}
+add_action( 'admin_footer', 'dedo_render_export_modal' );
 
 /**
  * Statistics Page Actions
