@@ -75,7 +75,6 @@ function dedo_dashboard_downloads_widget() {
 			echo '<ol id="popular-downloads">';
 
 			foreach ( $popular_downloads as $popular_download ) {
-
 				echo '<li>';
 				echo '<a href="' . get_edit_post_link( $popular_download['ID'] ) . '">' . $popular_download['title'] . ' <span class="count">' . number_format_i18n( $popular_download['downloads'] ) . '</span></a>';
 				echo '</li>';
@@ -172,8 +171,9 @@ function dedo_popular_downloads_ajax() {
 	// Add download URL to array of results
 	foreach ( $result as $key => $value ) {
 
+		$result[$key]['url'] = ( !empty( $result[$key]['title'] ) ) ? get_edit_post_link( $value['ID'] ) : admin_url( 'edit.php?post_type=dedo_download' );
+		$result[$key]['title'] = ( !empty( $result[$key]['title'] ) ) ? $result[$key]['title'] : __( 'Unknown', 'delightful-downloads' );
 		$result[$key]['downloads'] = number_format_i18n( $value['downloads'] );
-		$result[$key]['url'] = get_edit_post_link( $value['ID'] );
 	}
 
 	// Return success and data
