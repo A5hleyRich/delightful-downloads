@@ -29,6 +29,53 @@ class DEDO_Statistics {
 	}
 
 	/**
+	 * Get Logs
+	 *
+	 * Get logs, allows date range, type and limit to be specified.
+	 *
+	 * @access public
+	 * @since 1.5
+	 * @return string
+	 */
+	public function get_logs( $args = array() ) {
+		global $wpdb;
+
+		extract( wp_parse_args( $args, array(
+			'status'	=> false,	
+			'start'		=> false,
+			'end'		=> false,
+			'limit'		=> false
+		) ) ) ;
+
+		$sql = "SELECT * FROM $wpdb->ddownload_statistics";
+
+		// Add where clause
+		if ( $status ) {
+			$sql .= $wpdb->prepare( " WHERE status = %s", $status );
+		}
+		else {
+			$sql .= $wpdb->prepare( " WHERE 1 = %d", 1 );
+		}
+
+		// Start date
+		if ( $start ) {
+			$sql .= $wpdb->prepare( " AND date >= %s", $start );
+		}
+
+		// End date
+		if ( $end ) {
+			$sql .= $wpdb->prepare( " AND date <= %s", $end );
+		}
+
+		// Limit
+		if ( $limit ) {
+			$sql .= $wpdb->prepare( " LIMIT %d", $limit );
+		}
+
+		return $wpdb->get_results( $sql, ARRAY_A );
+	}
+
+	/**
 	 * Count Downloads
 	 *
 	 * Count total downloads for all/single downloads/download. If a date range is set

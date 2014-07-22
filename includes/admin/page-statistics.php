@@ -37,7 +37,7 @@ function dedo_render_page_statistics() {
 	<div class="wrap">
 		<h2><?php _e( 'Download Logs', 'delightful-downloads' ); ?>
 			<a href="#dedo-stats-export" class="add-new-h2 dedo-modal-action"><?php _e( 'Export', 'delightful-downloads' ); ?></a>
-			<a href="<?php echo wp_nonce_url( admin_url( 'edit.php?post_type=dedo_download&page=dedo_statistics&action=empty_logs' ), 'dedo_empty_logs', 'dedo_empty_logs_nonce' ); ?>" class="add-new-h2 dedo_confirm_action" data-confirm="<?php _e( 'You are about to permanently delete the download logs.', 'delightful-downloads' ); ?>"><?php _e( 'Empty Logs', 'delightful-downloads' ); ?></a>
+			<a href="<?php echo wp_nonce_url( admin_url( 'edit.php?post_type=dedo_download&page=dedo_statistics&action=empty_logs' ), 'dedo_empty_logs', 'dedo_empty_logs_nonce' ); ?>" class="add-new-h2 dedo_confirm_action" data-confirm="<?php _e( 'You are about to permanently delete the download logs.', 'delightful-downloads' ); ?>"><?php _e( 'Delete', 'delightful-downloads' ); ?></a>
 		</h2>
 
 		<div id="dedo-settings-main">	
@@ -104,9 +104,91 @@ function dedo_statistics_actions() {
 	//Only perform on statistics page
 	if ( isset( $_GET['page'] ) && 'dedo_statistics' == $_GET['page'] ) {
 
+		// Export statistics
+		if( isset( $_GET['action'] ) && 'export' == $_GET['action'] ) {
+			global $dedo_statistics, $dedo_notices;
+
+			// Disable max_execution_time
+			set_time_limit( 0 );
+
+			// Verfiy nonce
+			check_admin_referer( 'dedo_export_stats', 'dedo_export_stats_nonce' );
+
+			// Admins only
+			if ( !current_user_can( 'manage_options' ) ) {
+				return;
+			}
+
+			// Add args to query
+			$args = array();
+
+			if ( isset( $_POST['dedo_start_date'] ) && !empty( $_POST['dedo_start_date'] ) ) {
+				$args['start'] = $_POST['dedo_start_date'] . ' 00:00:00';
+			}
+
+			if ( isset( $_POST['dedo_end_date'] )  && !empty( $_POST['dedo_end_date'] ) ) {
+				$args['end'] = $_POST['dedo_end_date'] . ' 23:59:59';
+			}
+
+			// Get logs
+			$logs = $dedo_statistics->get_logs( $args );
+
+			// Check we have logs before creating file
+			if ( NULL == $logs ) {
+				$dedo_notices->add( 'error', __( 'You do not have any logs to export in that date range.', 'delightful-downloads' ) );
+				
+				// Redirect page to remove action from URL
+				wp_redirect( admin_url( 'edit.php?post_type=dedo_download&page=dedo_statistics' ) );
+				exit();	
+			}
+
+			// Get download titles
+			$downloads = get_posts( array( 'post_type' => 'dedo_download', 'posts_per_page'   => -1, ) );
+
+			foreach( $downloads as $download ) {
+				$download_title[$download->ID] =  $download->post_title;
+			}
+
+			// Get user names
+			$users = get_users();
+
+			foreach( $users as $user ) {
+				$user_name[$user->ID] = $user->user_email;
+			}
+
+			// Set filename
+			$filename = 'download-logs-' . date( 'Ymd' ) . '.csv';
+
+			// Output headers so that the file is downloaded
+			nocache_headers();
+			header( 'Content-Type: text/csv; charset=utf-8' );
+			header( 'Content-Disposition: attachment; filename=' . $filename );
+			header( 'Expires: 0' );
+
+			$output = fopen( 'php://output', 'w' );
+
+			// Column headings
+			fputcsv( $output, array( __( 'ID', 'delightful-downloads' ), __( 'Status', 'delightful-downloads' ), __( 'Date', 'delightful-downloads' ), __( 'Download', 'delightful-downloads' ), __( 'User', 'delightful-downloads' ), __( 'IP Address', 'delightful-downloads' ), __( 'User Agent', 'delightful-downloads' ) ) );
+
+			// Add data
+			foreach( $logs as $log ) {
+				// Convert download ID to title
+				$log['post_id'] = ( isset( $download_title[$log['post_id']] ) ) ? $download_title[$log['post_id']] : __( 'Unknown', 'delightful-downloads' );
+
+				// Convert user ID to email
+				$log['user_id'] = ( isset( $user_name[$log['user_id']] ) ) ? $user_name[$log['user_id']] : __( 'Non-member', 'delightful-downloads' );
+
+				// Convert ip to human readable
+				$log['user_ip'] = inet_ntop( $log['user_ip'] );
+				
+				fputcsv( $output, $log );
+			}	
+
+			die();	
+		}
+
 		// Empty statistics
 		if( isset( $_GET['action'] ) && 'empty_logs' == $_GET['action'] ) {
-			
 			global $dedo_statistics, $dedo_notices;
 
 			// Verfiy nonce
@@ -114,19 +196,16 @@ function dedo_statistics_actions() {
 
 			// Admins only
 			if ( !current_user_can( 'manage_options' ) ) {
-
 				return;
 			}
 
 			$result = $dedo_statistics->empty_table();
 
 			if ( false === $result ) {
-
 				// Error
 				$dedo_notices->add( 'error', __( 'Logs could not be deleted.', 'delightful-downloads' ) );
 			}
 			else {
-
 				// Success
 				$dedo_notices->add( 'updated', __( 'Logs deleted successfully.', 'delightful-downloads' ) );
 			}
