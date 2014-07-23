@@ -167,12 +167,25 @@
 		}
 	}
 
+	.blank {
+		color: #ccc;
+		cursor: default;
+	}
+
 	// Downloads column
 	th.column-downloads {
 		padding-right: 20px;
 
 		a {
-			display: inline-block;
+			display: inline;
+
+			span {
+				float: right;
+			}
+
+			span.sorting-indicator {
+				margin-right: 5px;
+			}
 		}
 	}
 

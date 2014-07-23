@@ -139,11 +139,21 @@
 .post-type-dedo_download .inline-edit-group .inline-edit-private {
   display: none;
 }
+.post-type-dedo_download .blank {
+  color: #ccc;
+  cursor: default;
+}
 .post-type-dedo_download th.column-downloads {
   padding-right: 20px;
 }
 .post-type-dedo_download th.column-downloads a {
-  display: inline-block;
+  display: inline;
+}
+.post-type-dedo_download th.column-downloads a span {
+  float: right;
+}
+.post-type-dedo_download th.column-downloads a span.sorting-indicator {
+  margin-right: 5px;
 }
 .post-type-dedo_download .column-downloads {
   text-align: right;

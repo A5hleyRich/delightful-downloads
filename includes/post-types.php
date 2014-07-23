@@ -94,14 +94,14 @@ function dedo_download_column_contents( $column_name, $post_id ) {
 	if ( $column_name == 'file' ) {
 		$file_url = get_post_meta( $post_id, '_dedo_file_url', true );
 		$file_url = dedo_get_file_name( $file_url );
-		echo esc_attr( ( !$file_url ) ? '--' : $file_url );
+		echo ( !$file_url ) ? '<span class="blank">--</span>' : esc_attr( $file_url );
 	}
 
 	// Filesize column
 	if ( $column_name == 'filesize' ) {
 		$file_size = get_post_meta( $post_id, '_dedo_file_size', true );
 		$file_size = ( !$file_size) ? 0 : size_format( $file_size, 1 );
-		echo esc_attr( ( !$file_size ) ? '--' : $file_size );
+		echo ( !$file_size ) ? '<span class="blank">--</span>' : esc_attr( $file_size );
 	}
 	
 	// Shortcode column
@@ -121,10 +121,10 @@ function dedo_download_column_contents( $column_name, $post_id ) {
 		$file = get_post_meta( $post_id, '_dedo_file_options', true );
 
 		if ( isset( $file['members_only'] ) ) {
-			echo ( 1 == $file['members_only'] ) ? '<span class="true"></span>' : '<span class="false"></span>';
+			echo ( 1 == $file['members_only'] ) ? '<span class="true" title="' . __( 'Yes', 'delightful-downloads' ) . '"></span>' : '<span class="false" title="' . __( 'No', 'delightful-downloads' ) . '"></span>';
 		}
 		else {
-			echo '--';
+			echo '<span class="blank" title="' . __( 'Inherit', 'delightful-downloads' ) . '">--</span>';
 		}
 	}
 
@@ -133,10 +133,10 @@ function dedo_download_column_contents( $column_name, $post_id ) {
 		$file = get_post_meta( $post_id, '_dedo_file_options', true );
 
 		if ( isset( $file['open_browser'] ) ) {
-			echo ( 1 == $file['open_browser'] ) ? '<span class="true"></span>' : '<span class="false"></span>';
+			echo ( 1 == $file['open_browser'] ) ? '<span class="true" title="' . __( 'Yes', 'delightful-downloads' ) . '"></span>' : '<span class="false" title="' . __( 'No', 'delightful-downloads' ) . '"></span>';
 		}
 		else {
-			echo '--';
+			echo '<span class="blank" title="' . __( 'Inherit', 'delightful-downloads' ) . '">--</span>';
 		}
 	}
 }
