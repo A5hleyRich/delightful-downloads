@@ -92,10 +92,19 @@ jQuery( document ).ready( function( $ ){
 						$( '.file-icon img' ).attr( 'src', response.content.icon );
 						$( '.file-size' ).html( response.content.size );
 						$( '.file-status .status' ).removeClass( 'spinner' ).addClass( response.content.type );
+
+						// Add title
+						if ( 'local' == response.content.type ) {
+							$( '.file-status .status' ).attr( 'title', self.options.lang_local );
+						}
+
+						if ( 'remote' == response.content.type ) {
+							$( '.file-status .status' ).attr( 'title', self.options.lang_remote );
+						}
 					}
 					else {
 						// Change status icon
-						$( '.file-status .status' ).removeClass( 'spinner' ).addClass( 'warning' );
+						$( '.file-status .status' ).removeClass( 'spinner' ).addClass( 'warning' ).attr( 'title', self.options.lang_warning );
 					}
 				}
 

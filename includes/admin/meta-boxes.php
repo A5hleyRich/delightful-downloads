@@ -83,7 +83,10 @@ function dedo_meta_box_download( $post ) {
 		'ajaxURL'		=> admin_url( 'admin-ajax.php', isset( $_SERVER['HTTPS'] ) ? 'https://' : 'http://' ),
 		'nonce' 		=> wp_create_nonce( 'dedo_download_update_status' ),
 		'action'    	=> 'dedo_download_update_status',
-		'default_icon'	=> dedo_get_file_icon( 'default' )
+		'default_icon'	=> dedo_get_file_icon( 'default' ),
+		'lang_local'	=> __( 'Local File', 'delightful-downloads' ),
+		'lang_remote'	=> __( 'Remote File', 'delightful-downloads' ),
+		'lang_warning'	=> __( 'Inaccessible File', 'delightful-downloads' )
 	);
 
 	// Plupload args
