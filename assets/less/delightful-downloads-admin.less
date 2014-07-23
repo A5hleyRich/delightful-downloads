@@ -134,7 +134,8 @@
 	text-align: center;
 }
 
-/* All downloads screen */
+/* All Downloads
+--------------------------------------------- */
 .post-type-dedo_download {
 
 	// Hide excerpt views
@@ -163,6 +164,75 @@
 
 		em, .inline-edit-private {
 			display: none;
+		}
+	}
+
+	// Downloads column
+	th.column-downloads {
+		padding-right: 20px;
+
+		a {
+			display: inline-block;
+		}
+	}
+
+	.column-downloads {
+		text-align: right;
+		padding-right: 20px;
+	}
+	
+	// Icon columns
+	.column-members_only, .column-open_browser {
+		width: 30px;
+		text-align: center;
+
+		.icon {
+			display: inline-block;
+	 		float: none;
+	 		width: 1em;
+	 		height: 1em;
+	 		margin-top: -4px;
+	 		vertical-align: middle;
+	 		overflow: hidden;
+
+	 		&:before {
+	 			content: '\f110';
+	 			font: normal 1em 'dashicons';
+				speak: none;
+				text-align: center;
+				-webkit-font-smoothing: antialiased;
+				-moz-osx-font-smoothing: grayscale;
+	 		}
+		}
+	}
+
+	.column-open_browser .icon:before {
+		content: '\f472';
+	}
+
+	td.column-members_only, td.column-open_browser {
+		color: #ccc;
+	}
+
+	.column-members_only .true, .column-members_only .false,
+	.column-open_browser .true, .column-open_browser .false {
+		display: inline-block;
+ 		float: none;
+ 		color: #555;
+
+ 		&:before {
+ 			content: '\f147';
+ 			font: normal 1.2em 'dashicons';
+			speak: none;
+			text-align: center;
+			-webkit-font-smoothing: antialiased;
+			-moz-osx-font-smoothing: grayscale;
+ 		}
+	}
+
+	.column-members_only .false, .column-open_browser .false {
+		&:before {
+			content: '\f335';
 		}
 	}
 }

@@ -116,7 +116,8 @@
   font-size: 16px;
   text-align: center;
 }
-/* All downloads screen */
+/* All Downloads
+--------------------------------------------- */
 .post-type-dedo_download .view-switch {
   display: none;
 }
@@ -137,6 +138,70 @@
 .post-type-dedo_download .inline-edit-group em,
 .post-type-dedo_download .inline-edit-group .inline-edit-private {
   display: none;
+}
+.post-type-dedo_download th.column-downloads {
+  padding-right: 20px;
+}
+.post-type-dedo_download th.column-downloads a {
+  display: inline-block;
+}
+.post-type-dedo_download .column-downloads {
+  text-align: right;
+  padding-right: 20px;
+}
+.post-type-dedo_download .column-members_only,
+.post-type-dedo_download .column-open_browser {
+  width: 30px;
+  text-align: center;
+}
+.post-type-dedo_download .column-members_only .icon,
+.post-type-dedo_download .column-open_browser .icon {
+  display: inline-block;
+  float: none;
+  width: 1em;
+  height: 1em;
+  margin-top: -4px;
+  vertical-align: middle;
+  overflow: hidden;
+}
+.post-type-dedo_download .column-members_only .icon:before,
+.post-type-dedo_download .column-open_browser .icon:before {
+  content: '\f110';
+  font: normal 1em 'dashicons';
+  speak: none;
+  text-align: center;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+.post-type-dedo_download .column-open_browser .icon:before {
+  content: '\f472';
+}
+.post-type-dedo_download td.column-members_only,
+.post-type-dedo_download td.column-open_browser {
+  color: #ccc;
+}
+.post-type-dedo_download .column-members_only .true,
+.post-type-dedo_download .column-members_only .false,
+.post-type-dedo_download .column-open_browser .true,
+.post-type-dedo_download .column-open_browser .false {
+  display: inline-block;
+  float: none;
+  color: #555;
+}
+.post-type-dedo_download .column-members_only .true:before,
+.post-type-dedo_download .column-members_only .false:before,
+.post-type-dedo_download .column-open_browser .true:before,
+.post-type-dedo_download .column-open_browser .false:before {
+  content: '\f147';
+  font: normal 1.2em 'dashicons';
+  speak: none;
+  text-align: center;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+.post-type-dedo_download .column-members_only .false:before,
+.post-type-dedo_download .column-open_browser .false:before {
+  content: '\f335';
 }
 /* Taxonomy pages */
 .taxonomy-ddownload_category .row-actions .view,

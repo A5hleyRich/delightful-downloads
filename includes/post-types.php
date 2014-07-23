@@ -60,8 +60,10 @@ function dedo_download_column_headings( $columns ) {
 		'title' 			=> __( 'Title', 'delightful-downloads' ),
 		'file'				=> __( 'File', 'delightful-downloads' ),
 		'filesize'			=> __( 'File Size', 'delightful-downloads' ),
-		'downloads' 		=> __( 'Downloads', 'delightful-downloads' ),
 		'shortcode' 		=> __( 'Shortcode', 'delightful-downloads' ),
+		'downloads' 		=> __( 'Downloads', 'delightful-downloads' ),
+		'members_only'		=> '<span class="icon" title="' . __( 'Members Only', 'delightful-downloads' ) . '">' . __( 'Members Only', 'delightful-downloads' ) . '</span>',
+		'open_browser'		=> '<span class="icon" title="' . __( 'Open in Browser', 'delightful-downloads' ) . '">' . __( 'Open in Browser', 'delightful-downloads' ) . '</span>',
 		'date' 				=> __( 'Date', 'delightful-downloads' )
 	);
 
@@ -112,6 +114,30 @@ function dedo_download_column_contents( $column_name, $post_id ) {
 		$count = get_post_meta( $post_id, '_dedo_file_count', true );
 		$count = ( !$count ) ? 0 : number_format_i18n( $count );
 		echo esc_attr( $count );
+	}
+
+	// Members only column
+	if ( 'members_only' == $column_name ) {
+		$file = get_post_meta( $post_id, '_dedo_file_options', true );
+
+		if ( isset( $file['members_only'] ) ) {
+			echo ( 1 == $file['members_only'] ) ? '<span class="true"></span>' : '<span class="false"></span>';
+		}
+		else {
+			echo '--';
+		}
+	}
+
+	// Open browser column
+	if ( 'open_browser' == $column_name ) {
+		$file = get_post_meta( $post_id, '_dedo_file_options', true );
+
+		if ( isset( $file['open_browser'] ) ) {
+			echo ( 1 == $file['open_browser'] ) ? '<span class="true"></span>' : '<span class="false"></span>';
+		}
+		else {
+			echo '--';
+		}
 	}
 }
 add_action( 'manage_dedo_download_posts_custom_column', 'dedo_download_column_contents', 10, 2 );
