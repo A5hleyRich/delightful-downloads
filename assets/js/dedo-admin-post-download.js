@@ -156,7 +156,7 @@ jQuery( document ).ready( function( $ ){
 				var response = $.parseJSON( response.response );
 
 		 		if( response.error && response.error.code ) {
-		 			this.uploader.trigger('Error', {
+		 			self.uploader.trigger('Error', {
 		            	code : response.error.code,
 		            	message : response.error.message,
 		            	file : file
