@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Delightful Downloads\n"
-"POT-Creation-Date: 2014-06-27 12:07-0000\n"
-"PO-Revision-Date: 2014-06-27 12:07-0000\n"
+"POT-Creation-Date: 2014-07-30 20:09-0000\n"
+"PO-Revision-Date: 2014-07-30 20:09-0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: en_US\n"
@@ -22,6 +22,10 @@ msgstr ""
 msgid "Settings"
 msgstr ""
 
+#: includes/admin/ajax.php:23
+msgid "Failed security checks!"
+msgstr ""
+
 #: includes/admin/class-dedo-list-table.php:30
 msgid "Log"
 msgstr ""
@@ -31,34 +35,40 @@ msgstr ""
 msgid "Logs"
 msgstr ""
 
-#: includes/admin/class-dedo-list-table.php:48 includes/options.php:65
-#: includes/post-types.php:22
+#: includes/admin/class-dedo-list-table.php:48
+#: includes/admin/meta-boxes.php:19 includes/admin/page-statistics.php:188
+#: includes/options.php:68 includes/post-types.php:22
 msgid "Download"
 msgstr ""
 
 #: includes/admin/class-dedo-list-table.php:49
+#: includes/admin/page-statistics.php:188
 msgid "User"
 msgstr ""
 
 #: includes/admin/class-dedo-list-table.php:50
+#: includes/admin/page-statistics.php:188
 msgid "IP Address"
 msgstr ""
 
 #: includes/admin/class-dedo-list-table.php:51
+#: includes/admin/page-statistics.php:188
 msgid "User Agent"
 msgstr ""
 
-#: includes/admin/class-dedo-list-table.php:52 includes/post-types.php:65
+#: includes/admin/class-dedo-list-table.php:52
+#: includes/admin/page-statistics.php:188 includes/post-types.php:67
 msgid "Date"
 msgstr ""
 
 #: includes/admin/class-dedo-list-table.php:133
-#: includes/admin/media-button.php:64 includes/admin/media-button.php:66
-#: includes/post-types.php:102
+#: includes/admin/dashboard.php:175 includes/admin/media-button.php:64
+#: includes/admin/media-button.php:66 includes/admin/page-statistics.php:193
 msgid "Unknown"
 msgstr ""
 
 #: includes/admin/class-dedo-list-table.php:147
+#: includes/admin/page-statistics.php:196
 msgid "Non-member"
 msgstr ""
 
@@ -74,23 +84,23 @@ msgstr ""
 msgid "Download statistics could not be retrieved."
 msgstr ""
 
-#: includes/admin/dashboard.php:41 includes/admin/dashboard.php:88
+#: includes/admin/dashboard.php:41 includes/admin/dashboard.php:87
 msgid "There are no popular downloads yet!"
 msgstr ""
 
-#: includes/admin/dashboard.php:50 includes/admin/dashboard.php:95
+#: includes/admin/dashboard.php:50 includes/admin/dashboard.php:94
 msgid "Last 24 Hours"
 msgstr ""
 
-#: includes/admin/dashboard.php:54 includes/admin/dashboard.php:96
+#: includes/admin/dashboard.php:54 includes/admin/dashboard.php:95
 msgid "Last 7 Days"
 msgstr ""
 
-#: includes/admin/dashboard.php:58 includes/admin/dashboard.php:97
+#: includes/admin/dashboard.php:58 includes/admin/dashboard.php:96
 msgid "Last 30 Days"
 msgstr ""
 
-#: includes/admin/dashboard.php:62 includes/admin/dashboard.php:98
+#: includes/admin/dashboard.php:62 includes/admin/dashboard.php:97
 msgid "All Time"
 msgstr ""
 
@@ -98,8 +108,8 @@ msgstr ""
 msgid "Popular Downloads"
 msgstr ""
 
-#: includes/admin/dashboard.php:122 includes/admin/dashboard.php:160
-#: includes/admin/upgrades.php:140
+#: includes/admin/dashboard.php:121 includes/admin/dashboard.php:159
+#: includes/admin/meta-boxes.php:279 includes/admin/upgrades.php:165
 msgid "Failed security check!"
 msgstr ""
 
@@ -121,7 +131,7 @@ msgid "Size"
 msgstr ""
 
 #: includes/admin/media-button.php:51 includes/post-types.php:21
-#: includes/post-types.php:33 includes/post-types.php:63
+#: includes/post-types.php:33 includes/post-types.php:64
 msgid "Downloads"
 msgstr ""
 
@@ -157,124 +167,225 @@ msgstr ""
 msgid "Insert Download Count"
 msgstr ""
 
-#: includes/admin/meta-boxes.php:19 includes/post-types.php:61
-msgid "File"
-msgstr ""
-
-#: includes/admin/meta-boxes.php:20
-msgid "Download Stats"
-msgstr ""
-
-#: includes/admin/meta-boxes.php:46 includes/admin/meta-boxes.php:49
+#: includes/admin/meta-boxes.php:45 includes/admin/meta-boxes.php:48
 #, php-format
 msgid "Download updated. Use the %s shortcode to include it in posts or pages."
 msgstr ""
 
-#: includes/admin/meta-boxes.php:47
+#: includes/admin/meta-boxes.php:46
 msgid "Custom field updated."
 msgstr ""
 
-#: includes/admin/meta-boxes.php:48
+#: includes/admin/meta-boxes.php:47
 msgid "Custom field deleted."
 msgstr ""
 
-#: includes/admin/meta-boxes.php:50
+#: includes/admin/meta-boxes.php:49
 #, php-format
 msgid "Download restored to revision from %s"
 msgstr ""
 
-#: includes/admin/meta-boxes.php:51
+#: includes/admin/meta-boxes.php:50
 #, php-format
 msgid ""
 "Download published. Use the %s shortcode to include it in posts or pages."
 msgstr ""
 
-#: includes/admin/meta-boxes.php:52
+#: includes/admin/meta-boxes.php:51
 msgid "Download saved."
 msgstr ""
 
-#: includes/admin/meta-boxes.php:53
+#: includes/admin/meta-boxes.php:52
 msgid "Download submitted."
 msgstr ""
 
-#: includes/admin/meta-boxes.php:54
+#: includes/admin/meta-boxes.php:53
 #, php-format
 msgid "Download scheduled for: <strong>%1$s</strong>."
 msgstr ""
 
-#: includes/admin/meta-boxes.php:55
+#: includes/admin/meta-boxes.php:54
 msgid "M j, Y @ G:i"
 msgstr ""
 
-#: includes/admin/meta-boxes.php:56
+#: includes/admin/meta-boxes.php:55
 msgid "Download draft updated."
 msgstr ""
 
-#: includes/admin/meta-boxes.php:85
+#: includes/admin/meta-boxes.php:87
+msgid "Local File"
+msgstr ""
+
+#: includes/admin/meta-boxes.php:88
+msgid "Remote File"
+msgstr ""
+
+#: includes/admin/meta-boxes.php:89
+msgid "Inaccessible File"
+msgstr ""
+
+#: includes/admin/meta-boxes.php:105
 msgid "Allowed Files"
 msgstr ""
 
-#: includes/admin/meta-boxes.php:111
-msgid "File URL:"
-msgstr ""
-
-#: includes/admin/meta-boxes.php:114
-msgid "Upload or enter the file URL."
-msgstr ""
-
-#: includes/admin/meta-boxes.php:118
-msgid "Unkown"
-msgstr ""
-
-#: includes/admin/meta-boxes.php:124
+#: includes/admin/meta-boxes.php:131 includes/admin/meta-boxes.php:225
 msgid "Upload File"
 msgstr ""
 
-#: includes/admin/meta-boxes.php:125
-msgid "Select Existing File"
+#: includes/admin/meta-boxes.php:132 includes/admin/meta-boxes.php:247
+msgid "Existing File"
 msgstr ""
 
-#: includes/admin/meta-boxes.php:126
+#: includes/admin/meta-boxes.php:150
+msgid "Download Count"
+msgstr ""
+
+#: includes/admin/meta-boxes.php:154
+msgid "The number of times this file has been downloaded."
+msgstr ""
+
+#: includes/admin/meta-boxes.php:161 includes/options.php:44
+#: includes/post-types.php:65
+msgid "Members Only"
+msgstr ""
+
+#: includes/admin/meta-boxes.php:164 includes/admin/meta-boxes.php:201
+#: includes/admin/page-settings.php:269 includes/admin/page-settings.php:285
+#: includes/admin/page-settings.php:318 includes/admin/page-settings.php:426
+#: includes/admin/page-settings.php:443 includes/admin/page-settings.php:464
+#: includes/admin/page-settings.php:484 includes/admin/page-settings.php:501
+#: includes/admin/page-settings.php:535 includes/admin/page-settings.php:551
+#: includes/post-types.php:124 includes/post-types.php:136
+msgid "Yes"
+msgstr ""
+
+#: includes/admin/meta-boxes.php:165 includes/admin/meta-boxes.php:202
+#: includes/admin/page-settings.php:270 includes/admin/page-settings.php:286
+#: includes/admin/page-settings.php:319 includes/admin/page-settings.php:427
+#: includes/admin/page-settings.php:444 includes/admin/page-settings.php:465
+#: includes/admin/page-settings.php:485 includes/admin/page-settings.php:502
+#: includes/admin/page-settings.php:536 includes/admin/page-settings.php:552
+#: includes/post-types.php:124 includes/post-types.php:136
+msgid "No"
+msgstr ""
+
+#: includes/admin/meta-boxes.php:166 includes/admin/meta-boxes.php:175
+#: includes/admin/meta-boxes.php:183 includes/admin/meta-boxes.php:184
+#: includes/admin/meta-boxes.php:203 includes/post-types.php:127
+#: includes/post-types.php:139
+msgid "Inherit"
+msgstr ""
+
+#: includes/admin/meta-boxes.php:167
+msgid "Allow only logged in users to download this file."
+msgstr ""
+
+#: includes/admin/meta-boxes.php:184
+msgid "Global"
+msgstr ""
+
+#: includes/admin/meta-boxes.php:184
+msgid "Pages"
+msgstr ""
+
+#: includes/admin/meta-boxes.php:191
+msgid "The page to redirect non-members."
+msgstr ""
+
+#: includes/admin/meta-boxes.php:198
+msgid "Open In Browser"
+msgstr ""
+
+#: includes/admin/meta-boxes.php:211
+msgid "Replace File:"
+msgstr ""
+
+#: includes/admin/meta-boxes.php:212
+msgid "Upload"
+msgstr ""
+
+#: includes/admin/meta-boxes.php:213
+msgid "Select Existing"
+msgstr ""
+
+#: includes/admin/meta-boxes.php:214
+msgid "Delete File"
+msgstr ""
+
+#: includes/admin/meta-boxes.php:227
+msgid "Drop file here"
+msgstr ""
+
+#: includes/admin/meta-boxes.php:228
+msgid "or"
+msgstr ""
+
+#: includes/admin/meta-boxes.php:229
+msgid "Select File"
+msgstr ""
+
+#: includes/admin/meta-boxes.php:231
 #, php-format
 msgid "Maximum upload file size: %s."
 msgstr ""
 
-#: includes/admin/meta-boxes.php:149
-msgid "Count"
+#: includes/admin/meta-boxes.php:248
+msgid "Manaully enter a file URL, or use the file browser."
 msgstr ""
 
-#: includes/admin/page-settings.php:19 includes/admin/page-settings.php:79
+#: includes/admin/meta-boxes.php:251
+msgid "File URL or path..."
+msgstr ""
+
+#: includes/admin/meta-boxes.php:254
+msgid "Loading..."
+msgstr ""
+
+#: includes/admin/meta-boxes.php:257
+msgid "Confirm"
+msgstr ""
+
+#: includes/admin/page-settings.php:19 includes/admin/page-settings.php:80
 msgid "Download Settings"
 msgstr ""
 
-#: includes/admin/page-settings.php:80
+#: includes/admin/page-settings.php:81 includes/admin/page-settings.php:615
+msgid "Import"
+msgstr ""
+
+#: includes/admin/page-settings.php:82 includes/admin/page-statistics.php:39
+#: includes/admin/page-statistics.php:86
+msgid "Export"
+msgstr ""
+
+#: includes/admin/page-settings.php:83
 msgid "You are about to reset the download settings."
 msgstr ""
 
-#: includes/admin/page-settings.php:80
+#: includes/admin/page-settings.php:83
 msgid "Reset Defaults"
 msgstr ""
 
-#: includes/admin/page-settings.php:85
+#: includes/admin/page-settings.php:88
 msgid "Settings updated successfully."
 msgstr ""
 
-#: includes/admin/page-settings.php:198
+#: includes/admin/page-settings.php:237
 msgid "Help and Support"
 msgstr ""
 
-#: includes/admin/page-settings.php:199
+#: includes/admin/page-settings.php:238
 #, php-format
 msgid ""
 "Please take a moment to look at the %sdocumentation%s. If you are still "
 "having issues, please leave a %ssupport request%s."
 msgstr ""
 
-#: includes/admin/page-settings.php:201
+#: includes/admin/page-settings.php:240
 msgid "Share the Love"
 msgstr ""
 
-#: includes/admin/page-settings.php:202
+#: includes/admin/page-settings.php:241
 #, php-format
 msgid ""
 "Enjoy Delightful Downloads? Please consider %sdonating%s a few dollars, to "
@@ -282,161 +393,209 @@ msgid ""
 "always appreciated."
 msgstr ""
 
-#: includes/admin/page-settings.php:204
+#: includes/admin/page-settings.php:243
 msgid "About the Developer"
 msgstr ""
 
-#: includes/admin/page-settings.php:205
+#: includes/admin/page-settings.php:244
 #, php-format
 msgid ""
 "Hey there! I'm %sAshley Rich%s, a freelance web designer and WordPress "
 "developer based in the West Midlands, England."
 msgstr ""
 
-#: includes/admin/page-settings.php:206
+#: includes/admin/page-settings.php:245
 #, php-format
 msgid "%sTwitter%s"
 msgstr ""
 
-#: includes/admin/page-settings.php:234
-msgid "Default settings reset successfully."
+#: includes/admin/page-settings.php:271
+msgid "Allow downloads to be tagged or categorised."
 msgstr ""
 
-#: includes/admin/page-settings.php:263 includes/admin/page-settings.php:457
-#: includes/admin/page-settings.php:502
-msgid "Enable"
-msgstr ""
-
-#: includes/admin/page-settings.php:265
-msgid "Check this option to allow downloads to be tagged or categorised."
-msgstr ""
-
-#: includes/admin/page-settings.php:280
-msgid "Member Only"
-msgstr ""
-
-#: includes/admin/page-settings.php:282
-msgid "Check this option to allow only logged in users to download files."
-msgstr ""
-
-#: includes/admin/page-settings.php:305
+#: includes/admin/page-settings.php:287
 msgid ""
-"Select the page that a user should be redirected to if they try to download "
-"a file when not logged in and the Members Only option is checked. If no page "
-"is selected a generic error message will be displayed."
+"Allow only logged in users to download files. This can be overridden on a "
+"per-download basis."
 msgstr ""
 
-#: includes/admin/page-settings.php:319
-msgid "Enter user agents to block from downloading files. One per line."
+#: includes/admin/page-settings.php:296
+msgid "No Page (Generic Error)"
 msgstr ""
 
-#: includes/admin/page-settings.php:333
+#: includes/admin/page-settings.php:302
 msgid ""
-"Set the default text to display on button and link style outputs. This can "
-"be overwritten on a per-download basis using the 'text' attribute."
+"The page to redirect non-members. If no page is selected, a generic error "
+"message will be displayed. This can be overridden on a per-download basis."
 msgstr ""
 
-#: includes/admin/page-settings.php:353
+#: includes/admin/page-settings.php:320
 msgid ""
-"Choose the default output style for downloads. This can be overwritten on a "
-"per-download basis using the 'style' attribute."
+"Attempt to open files in the browser window. This can be overridden on a per-"
+"download basis. For files located within the Delightful Downloads upload "
+"directory, set folder protection to 'No', which can be found under the "
+"advanced tab."
 msgstr ""
 
-#: includes/admin/page-settings.php:375
-msgid ""
-"Choose the default button style. This can be overwritten on a per-download "
-"basis using the 'button' attribute."
-msgstr ""
-
-#: includes/admin/page-settings.php:397
-msgid ""
-"Choose the default output style for downloads lists. This can be overwritten "
-"on a per-list basis using the 'style' attribute."
-msgstr ""
-
-#: includes/admin/page-settings.php:412
-msgid "Log Downloads"
-msgstr ""
-
-#: includes/admin/page-settings.php:414
-msgid "Check this option to log downloads by admins."
+#: includes/admin/page-settings.php:335
+msgid "User agents to block from downloading files. One per line."
 msgstr ""
 
 #: includes/admin/page-settings.php:428
-msgid ""
-"Set the time in minutes before creating an additional log when the user "
-"tries to download the same file multiple times (0 to disable)."
+msgid "Log events triggered by admin users."
 msgstr ""
 
-#: includes/admin/page-settings.php:442
+#: includes/admin/page-settings.php:445
 msgid ""
-"Set the amount of days that logs should be kept (0 to disable). Logs older "
-"than the specified value will be deleted once a day."
+"Stop multiple logs of the same type from being saved, in quick succession."
 msgstr ""
 
-#: includes/admin/page-settings.php:459
-msgid ""
-"Check this option to include the Delightful Downloads stylesheet on the "
-"front-end. If this option is disabled you must manually add the button CSS "
-"classes to your theme's CSS file."
+#: includes/admin/page-settings.php:448
+msgid "The time in minutes before creating a new log."
 msgstr ""
 
-#: includes/admin/page-settings.php:487
+#: includes/admin/page-settings.php:466
+msgid "Automatically delete old logs."
+msgstr ""
+
+#: includes/admin/page-settings.php:469
+msgid "The time in days to keep logs."
+msgstr ""
+
+#: includes/admin/page-settings.php:486
+msgid "Output the Delightful Downloads stylesheet on the front-end."
+msgstr ""
+
+#: includes/admin/page-settings.php:503
+msgid "Cache database queries that are expensive to generate."
+msgstr ""
+
+#: includes/admin/page-settings.php:506
+msgid "The time in minutes to cache queries."
+msgstr ""
+
+#: includes/admin/page-settings.php:522
+msgid "The URL for download links."
+msgstr ""
+
+#: includes/admin/page-settings.php:537
 msgid ""
-"Set the URL for download links. This should be left as the default value, "
-"unless absolutely sure that it will not cause conflicts with existing "
-"permalinks or plugins."
+"Stop direct access to uploaded files, within the Delightful Downloads upload "
+"directory."
+msgstr ""
+
+#: includes/admin/page-settings.php:553
+msgid ""
+"Completely remove all data associated with Delightful Downloads, when "
+"uninstalling the plugin. All downloads, categories, tags and statistics will "
+"be removed."
+msgstr ""
+
+#: includes/admin/page-settings.php:609
+msgid "Import Settings"
+msgstr ""
+
+#: includes/admin/page-settings.php:610
+msgid "Select a Delightful Downloads settings file to import:"
+msgstr ""
+
+#: includes/admin/page-settings.php:680
+msgid "Invalid settings file."
+msgstr ""
+
+#: includes/admin/page-settings.php:690
+msgid "Settings have been successfully imported."
+msgstr ""
+
+#: includes/admin/page-settings.php:698
+msgid "No file uploaded."
+msgstr ""
+
+#: includes/admin/page-settings.php:758
+msgid "Default settings reset successfully."
 msgstr ""
 
 #: includes/admin/page-statistics.php:22 includes/admin/page-statistics.php:38
-#: includes/admin/page-statistics.php:107
+#: includes/admin/page-statistics.php:256
 msgid "Download Logs"
 msgstr ""
 
-#: includes/admin/page-statistics.php:39
+#: includes/admin/page-statistics.php:40
 msgid "You are about to permanently delete the download logs."
 msgstr ""
 
-#: includes/admin/page-statistics.php:39
-msgid "Empty Logs"
+#: includes/admin/page-statistics.php:40
+msgid "Delete"
+msgstr ""
+
+#: includes/admin/page-statistics.php:73
+msgid "Export Logs"
 msgstr ""
 
 #: includes/admin/page-statistics.php:74
+msgid "Export log entries to a CSV file. Please select a date range:"
+msgstr ""
+
+#: includes/admin/page-statistics.php:77
+msgid "Start Date"
+msgstr ""
+
+#: includes/admin/page-statistics.php:81
+msgid "End Date"
+msgstr ""
+
+#: includes/admin/page-statistics.php:155
+msgid "You do not have any logs to export in that date range."
+msgstr ""
+
+#: includes/admin/page-statistics.php:188
+msgid "ID"
+msgstr ""
+
+#: includes/admin/page-statistics.php:188
+msgid "Status"
+msgstr ""
+
+#: includes/admin/page-statistics.php:227
 msgid "Logs could not be deleted."
 msgstr ""
 
-#: includes/admin/page-statistics.php:79
+#: includes/admin/page-statistics.php:231
 msgid "Logs deleted successfully."
 msgstr ""
 
-#: includes/admin/upgrades.php:55
+#: includes/admin/upgrades.php:76
 msgid "Delightful Downloads updated to version 1.4."
 msgstr ""
 
-#: includes/admin/upgrades.php:102 includes/admin/upgrades.php:111
+#: includes/admin/upgrades.php:101
+msgid "Delightful Downloads updated to version 1.5."
+msgstr ""
+
+#: includes/admin/upgrades.php:127 includes/admin/upgrades.php:136
 msgid "Migrate"
 msgstr ""
 
-#: includes/admin/upgrades.php:103
+#: includes/admin/upgrades.php:128
 msgid "Stop"
 msgstr ""
 
-#: includes/admin/upgrades.php:104
+#: includes/admin/upgrades.php:129
 msgid "The migration could not start due to an error."
 msgstr ""
 
-#: includes/admin/upgrades.php:109
+#: includes/admin/upgrades.php:134
 #, php-format
 msgid ""
 "You have %s logs from an older version of Delightful Downloads. %sPlease "
 "make a backup of your database before migrating!%s"
 msgstr ""
 
-#: includes/admin/upgrades.php:115
+#: includes/admin/upgrades.php:140
 msgid "JavaScript must be enabled to migrate legacy logs."
 msgstr ""
 
-#: includes/cron.php:74
+#: includes/cron.php:73
 msgid "Once Weekly"
 msgstr ""
 
@@ -520,59 +679,59 @@ msgstr ""
 msgid "Categories and Tags"
 msgstr ""
 
-#: includes/options.php:44
-msgid "Members Download"
+#: includes/options.php:53 includes/post-types.php:66
+msgid "Open in Browser"
 msgstr ""
 
-#: includes/options.php:50
-msgid "Non-Members Redirect"
-msgstr ""
-
-#: includes/options.php:56
+#: includes/options.php:59
 msgid "Block User Agents"
 msgstr ""
 
-#: includes/options.php:62
+#: includes/options.php:65
 msgid "Default Text"
 msgstr ""
 
-#: includes/options.php:68
+#: includes/options.php:71
 msgid "Default Style"
 msgstr ""
 
-#: includes/options.php:74
+#: includes/options.php:77
 msgid "Default Button Style"
 msgstr ""
 
-#: includes/options.php:80
+#: includes/options.php:83
 msgid "Default List Style"
 msgstr ""
 
-#: includes/options.php:86
-msgid "Admin Downloads"
+#: includes/options.php:89
+msgid "Admin Events"
 msgstr ""
 
-#: includes/options.php:92
+#: includes/options.php:95
 msgid "Grace Period"
 msgstr ""
 
-#: includes/options.php:98
+#: includes/options.php:104
 msgid "Auto Delete"
 msgstr ""
 
-#: includes/options.php:104
-msgid "Default CSS Styles"
+#: includes/options.php:113
+msgid "Output CSS"
 msgstr ""
 
-#: includes/options.php:110
-msgid "Cache Duration"
+#: includes/options.php:119
+msgid "Cache"
 msgstr ""
 
-#: includes/options.php:116
+#: includes/options.php:128
 msgid "Download Address"
 msgstr ""
 
-#: includes/options.php:122
+#: includes/options.php:134
+msgid "Folder Protection"
+msgstr ""
+
+#: includes/options.php:140
 msgid "Complete Uninstall"
 msgstr ""
 
@@ -612,39 +771,47 @@ msgstr ""
 msgid "No downloads found in Trash"
 msgstr ""
 
+#: includes/post-types.php:61
+msgid "File"
+msgstr ""
+
 #: includes/post-types.php:62
 msgid "File Size"
 msgstr ""
 
-#: includes/post-types.php:64
+#: includes/post-types.php:63
 msgid "Shortcode"
 msgstr ""
 
-#: includes/post-types.php:72 includes/taxonomies.php:25
+#: includes/post-types.php:74 includes/taxonomies.php:25
 msgid "Categories"
 msgstr ""
 
-#: includes/post-types.php:73 includes/taxonomies.php:49
+#: includes/post-types.php:75 includes/taxonomies.php:49
 msgid "Tags"
 msgstr ""
 
-#: includes/process-download.php:36
+#: includes/process-download.php:33
 msgid "Invalid download."
 msgstr ""
 
-#: includes/process-download.php:55
-msgid "Please login to download this file!"
-msgstr ""
-
-#: includes/process-download.php:65
+#: includes/process-download.php:39
 msgid "You are blocked from downloading this file!"
 msgstr ""
 
-#: includes/process-download.php:73
+#: includes/process-download.php:60
+msgid "Please login to download this file!"
+msgstr ""
+
+#: includes/process-download.php:66
+msgid "Password Required"
+msgstr ""
+
+#: includes/process-download.php:71
 msgid "You must attach a file to this download."
 msgstr ""
 
-#: includes/process-download.php:123
+#: includes/process-download.php:129
 msgid "Server error, file cannot be opened!"
 msgstr ""
 
