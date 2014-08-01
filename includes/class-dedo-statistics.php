@@ -280,6 +280,7 @@ class DEDO_Statistics {
 				WHERE $wpdb->posts.post_type = %s
 					AND $wpdb->posts.post_status = %s
 					AND meta_key = %s
+					AND meta_value > 0
 				ORDER BY CAST( $wpdb->postmeta.meta_value AS unsigned ) DESC
 				LIMIT %d
 			",
