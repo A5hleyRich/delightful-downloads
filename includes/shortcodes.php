@@ -83,8 +83,8 @@ function dedo_shortcode_ddownload( $atts ) {
 	// Generate correct class and add user defined
 	$classes = 'ddownload-' . $style; // Output style
 	$classes .= ( isset( $button_class ) ) ? ' ' . $button_class : ''; // Button style
-	$classes .= ' ddownload-' . $id; // Download id
-	$classes .= ' ' . dedo_get_file_ext( get_post_meta( $id, '_dedo_file_url', true ) ); // File extension
+	$classes .= ' id-' . $id; // Download id
+	$classes .= ' ext-' . dedo_get_file_ext( get_post_meta( $id, '_dedo_file_url', true ) ); // File extension
 	$classes .= ( !empty( $class ) ) ? ' ' . $class : ''; // User defined
 
 	// Replace text and class att
@@ -190,6 +190,8 @@ function dedo_shortcode_ddownload_list( $atts ) {
 	}
 
 	// Validate and set categories/tags
+	$tax_class = '';
+
 	if ( !empty( $categories ) || !empty( $tags ) || !empty( $exclude_categories ) || !empty( $exclude_tags ) ) {
 		$query_args['tax_query'] = array(
 			'relation' => $relation,
@@ -204,6 +206,9 @@ function dedo_shortcode_ddownload_list( $atts ) {
 				'field'		=> 'slug',
 				'terms'		=> $categories_array,
 			);
+
+			// Set taxonomy class
+			$tax_class .= ' category-' . implode( ' category-', $categories_array );
 		}
 
 		if ( !empty( $tags ) ) {
@@ -215,6 +220,9 @@ function dedo_shortcode_ddownload_list( $atts ) {
 				'field'		=> 'slug',
 				'terms'		=> $tags_array,
 			);
+
+			// Set taxonomy class
+			$tax_class .= ' tag-' . implode( ' tag-', $tags_array );
 		}
 
 		if ( !empty( $exclude_categories ) ) {
@@ -273,15 +281,24 @@ function dedo_shortcode_ddownload_list( $atts ) {
 
 		// Begin output
 		if ( $downloads_list->have_posts() ) {
-			
 			ob_start();
 			
-			echo '<ul class="ddownloads_list">';
+			echo '<ul class="ddownloads_list' . $tax_class . '">';
 			
 			while ( $downloads_list->have_posts() ) {
-				
 				$downloads_list->the_post();
-				echo '<li>' . dedo_search_replace_wildcards( $style_format, get_the_ID() ) . '</li>';
+
+				// Add classes
+				$classes = 'id-' . get_the_ID(); // Download id
+				$classes .= ' ext-' . dedo_get_file_ext( get_post_meta( get_the_ID(), '_dedo_file_url', true ) ); // File extension
+
+				$new_style_format = str_replace( '%class%', $classes, $style_format );
+
+				echo '<li>' . dedo_search_replace_wildcards( $new_style_format, get_the_ID() ) . '</li>';
+
+				// Reset classes for next itteration
+				unset( $classes );
+				unset( $new_style_format );
 			}
 			
 			echo '</ul>';
