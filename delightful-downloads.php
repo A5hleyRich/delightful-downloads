@@ -161,7 +161,7 @@ class Delightful_Downloads {
 			include_once( DEDO_PLUGIN_DIR . 'includes/admin/class-dedo-list-table.php' );
 			include_once( DEDO_PLUGIN_DIR . 'includes/admin/class-dedo-notices.php' );
 			include_once( DEDO_PLUGIN_DIR . 'includes/admin/dashboard.php' );
-			// include_once( DEDO_PLUGIN_DIR . 'includes/admin/media-button.php' );
+			include_once( DEDO_PLUGIN_DIR . 'includes/admin/media-button.php' );
 			include_once( DEDO_PLUGIN_DIR . 'includes/admin/meta-boxes.php' );
 			include_once( DEDO_PLUGIN_DIR . 'includes/admin/page-settings.php' );
 			include_once( DEDO_PLUGIN_DIR . 'includes/admin/page-statistics.php' );

@@ -57,13 +57,13 @@ function dedo_media_modal() {
 	while ( $downloads->have_posts() ) {
 		$downloads->the_post();
 		$download_id = get_the_ID();
-		$file = get_post_meta( $download_id, '_dedo_file', true );
+		$file_size = get_post_meta( $download_id, '_dedo_file_size', true );
 		$download_count = get_post_meta( $download_id, '_dedo_file_count', true );
 
 ?>
-								<tr id="dedo-download-<?php echo esc_attr( $download_id ); ?>" data-id="<?php echo esc_attr( $download_id ); ?>" data-size="<?php echo esc_attr( ( !$file['download_size'] ) ? __( 'Unknown', 'delightful-downloads' ) : size_format( $file['download_size'], 1 ) ); ?>" data-count="<?php echo esc_attr( ( !$download_count ) ? '0' : number_format_i18n( $download_count, 0 ) ); ?>">
+								<tr id="dedo-download-<?php echo esc_attr( $download_id ); ?>" data-id="<?php echo esc_attr( $download_id ); ?>" data-size="<?php echo esc_attr( ( !$file_size ) ? '--' : size_format( $file_size, 1 ) ); ?>" data-count="<?php echo esc_attr( ( !$download_count ) ? '0' : number_format_i18n( $download_count, 0 ) ); ?>">
 									<td class="title_column"><strong><?php the_title(); ?></strong></td>			
-									<td class="size_column"><?php echo esc_attr( ( !$file['download_size'] ) ? __( 'Unknown', 'delightful-downloads' ) : size_format( $file['download_size'], 1 ) ); ?></td>
+									<td class="size_column"><?php echo esc_attr( ( !$file_size ) ? '--' : size_format( $file_size, 1 ) ); ?></td>
 									<td class="count_column"><?php echo esc_attr( ( !$download_count ) ? '0' : number_format_i18n( $download_count, 0 ) ); ?></td>
 								</tr>
 <?php
