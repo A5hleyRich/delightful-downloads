@@ -81,9 +81,11 @@ function dedo_shortcode_ddownload( $atts ) {
 	}
 
 	// Generate correct class and add user defined
-	$classes = 'ddownload-' . $style;
-	$classes .= ( isset( $button_class ) ) ? ' ' . $button_class : '';
-	$classes .= ( !empty( $class ) ) ? ' ' . $class : '';
+	$classes = 'ddownload-' . $style; // Output style
+	$classes .= ( isset( $button_class ) ) ? ' ' . $button_class : ''; // Button style
+	$classes .= ' ddownload-' . $id; // Download id
+	$classes .= ' ' . dedo_get_file_ext( get_post_meta( $id, '_dedo_file_url', true ) ); // File extension
+	$classes .= ( !empty( $class ) ) ? ' ' . $class : ''; // User defined
 
 	// Replace text and class att
 	$replace = array(
