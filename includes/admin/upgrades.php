@@ -93,6 +93,13 @@ function dedo_upgrade_1_4() {
 function dedo_upgrade_1_5() {
 	global $dedo_options, $dedo_notices;
 
+	// Convert old durations to boolean values
+	foreach( array( 'grace_period' ,'auto_delete', 'cache' ) as $key ) {
+		if ( $dedo_options[$key] > 0 ) {
+			$dedo_options[$key] = 1;
+		}
+	}
+
 	// Update options
 	$new_options = wp_parse_args( $dedo_options, dedo_get_default_options() );
 	update_option( 'delightful-downloads', $new_options );
