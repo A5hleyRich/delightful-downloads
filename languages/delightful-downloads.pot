@@ -1,15 +1,15 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Delightful Downloads\n"
-"POT-Creation-Date: 2014-07-30 20:09-0000\n"
-"PO-Revision-Date: 2014-07-30 20:09-0000\n"
+"POT-Creation-Date: 2014-08-03 18:10-0000\n"
+"PO-Revision-Date: 2014-08-03 18:17-0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: en_US\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 1.6.5\n"
+"X-Generator: Poedit 1.6.7\n"
 "X-Poedit-Basepath: ..\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 "X-Poedit-KeywordsList: __;_e;_n:1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;esc_attr__;"
@@ -62,8 +62,7 @@ msgid "Date"
 msgstr ""
 
 #: includes/admin/class-dedo-list-table.php:133
-#: includes/admin/dashboard.php:175 includes/admin/media-button.php:64
-#: includes/admin/media-button.php:66 includes/admin/page-statistics.php:193
+#: includes/admin/dashboard.php:175 includes/admin/page-statistics.php:193
 msgid "Unknown"
 msgstr ""
 
@@ -109,7 +108,7 @@ msgid "Popular Downloads"
 msgstr ""
 
 #: includes/admin/dashboard.php:121 includes/admin/dashboard.php:159
-#: includes/admin/meta-boxes.php:279 includes/admin/upgrades.php:165
+#: includes/admin/meta-boxes.php:279 includes/admin/upgrades.php:173
 msgid "Failed security check!"
 msgstr ""
 
@@ -568,30 +567,30 @@ msgstr ""
 msgid "Delightful Downloads updated to version 1.4."
 msgstr ""
 
-#: includes/admin/upgrades.php:101
+#: includes/admin/upgrades.php:109
 msgid "Delightful Downloads updated to version 1.5."
 msgstr ""
 
-#: includes/admin/upgrades.php:127 includes/admin/upgrades.php:136
+#: includes/admin/upgrades.php:135 includes/admin/upgrades.php:144
 msgid "Migrate"
 msgstr ""
 
-#: includes/admin/upgrades.php:128
+#: includes/admin/upgrades.php:136
 msgid "Stop"
 msgstr ""
 
-#: includes/admin/upgrades.php:129
+#: includes/admin/upgrades.php:137
 msgid "The migration could not start due to an error."
 msgstr ""
 
-#: includes/admin/upgrades.php:134
+#: includes/admin/upgrades.php:142
 #, php-format
 msgid ""
 "You have %s logs from an older version of Delightful Downloads. %sPlease "
 "make a backup of your database before migrating!%s"
 msgstr ""
 
-#: includes/admin/upgrades.php:140
+#: includes/admin/upgrades.php:148
 msgid "JavaScript must be enabled to migrate legacy logs."
 msgstr ""
 
@@ -815,12 +814,12 @@ msgstr ""
 msgid "Server error, file cannot be opened!"
 msgstr ""
 
-#: includes/shortcodes.php:46 includes/shortcodes.php:332
-#: includes/shortcodes.php:396
+#: includes/shortcodes.php:46 includes/shortcodes.php:351
+#: includes/shortcodes.php:415
 msgid "Invalid download ID."
 msgstr ""
 
-#: includes/shortcodes.php:58 includes/shortcodes.php:251
+#: includes/shortcodes.php:58 includes/shortcodes.php:261
 msgid "Invalid style attribute."
 msgstr ""
 
@@ -828,19 +827,19 @@ msgstr ""
 msgid "Invalid button attribute."
 msgstr ""
 
-#: includes/shortcodes.php:144
+#: includes/shortcodes.php:146
 msgid "Invalid orderby attribute."
 msgstr ""
 
-#: includes/shortcodes.php:175
+#: includes/shortcodes.php:177
 msgid "Invalid order attribute."
 msgstr ""
 
-#: includes/shortcodes.php:184
+#: includes/shortcodes.php:186
 msgid "Invalid relation attribute."
 msgstr ""
 
-#: includes/shortcodes.php:298
+#: includes/shortcodes.php:317
 msgid "No downloads found."
 msgstr ""
 

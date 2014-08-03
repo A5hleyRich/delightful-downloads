@@ -1,19 +1,19 @@
 #
 # Translators:
+# Björn Granberg <bjorn@maskinmedia.se>, 2014
 msgid ""
 msgstr ""
 "Project-Id-Version: Delightful Downloads\n"
 "POT-Creation-Date: 2014-08-03 18:10-0000\n"
-"PO-Revision-Date: 2014-08-03 18:20-0000\n"
+"PO-Revision-Date: 2014-08-03 18:22-0000\n"
 "Last-Translator: \n"
-"Language-Team: Russian (Russia) (http://www.transifex.com/projects/p/"
-"delightful-downloads/language/ru_RU/)\n"
+"Language-Team: Swedish (Sweden) (http://www.transifex.com/projects/p/"
+"delightful-downloads/language/sv_SE/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: ru_RU\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
-"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"Language: sv_SE\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: Poedit 1.6.7\n"
 "X-Poedit-Basepath: ..\n"
 "X-Poedit-KeywordsList: __;_e;_n:1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;esc_attr__;"
@@ -24,237 +24,237 @@ msgstr ""
 
 #: delightful-downloads.php:217 includes/admin/page-settings.php:19
 msgid "Settings"
-msgstr "Настройки"
+msgstr "Inställningar"
 
 #: includes/admin/ajax.php:23
 msgid "Failed security checks!"
-msgstr ""
+msgstr "Säkerhetskontroll misslyckades!"
 
 #: includes/admin/class-dedo-list-table.php:30
 msgid "Log"
-msgstr "Лог"
+msgstr "Logg"
 
 #: includes/admin/class-dedo-list-table.php:31
 #: includes/admin/page-statistics.php:22
 msgid "Logs"
-msgstr "Логи"
+msgstr "Loggar"
 
 #: includes/admin/class-dedo-list-table.php:48
 #: includes/admin/meta-boxes.php:19 includes/admin/page-statistics.php:188
 #: includes/options.php:68 includes/post-types.php:22
 msgid "Download"
-msgstr "Скачать"
+msgstr "Ladda ner"
 
 #: includes/admin/class-dedo-list-table.php:49
 #: includes/admin/page-statistics.php:188
 msgid "User"
-msgstr "Пользователь"
+msgstr "Användare"
 
 #: includes/admin/class-dedo-list-table.php:50
 #: includes/admin/page-statistics.php:188
 msgid "IP Address"
-msgstr "IP адрес"
+msgstr "IP-adress"
 
 #: includes/admin/class-dedo-list-table.php:51
 #: includes/admin/page-statistics.php:188
 msgid "User Agent"
-msgstr "Имя пользователя"
+msgstr "Användaragent"
 
 #: includes/admin/class-dedo-list-table.php:52
 #: includes/admin/page-statistics.php:188 includes/post-types.php:67
 msgid "Date"
-msgstr "Дата"
+msgstr "Datum"
 
 #: includes/admin/class-dedo-list-table.php:133
 #: includes/admin/dashboard.php:175 includes/admin/page-statistics.php:193
 msgid "Unknown"
-msgstr "Не известно"
+msgstr "Okänd"
 
 #: includes/admin/class-dedo-list-table.php:147
 #: includes/admin/page-statistics.php:196
 msgid "Non-member"
-msgstr "Не-пользователь"
+msgstr "Ej medlem"
 
 #: includes/admin/class-dedo-list-table.php:183
 msgid "No download logs found."
-msgstr "Логи загрузок не найдены"
+msgstr "Inga hämtningsloggar hittades"
 
 #: includes/admin/dashboard.php:22
 msgid "Download Statistics"
-msgstr "Статистика загрузок"
+msgstr "Statistik över nedladdningar"
 
 #: includes/admin/dashboard.php:40
 msgid "Download statistics could not be retrieved."
-msgstr "Статистика скачиваний не может быть получена."
+msgstr "Statistik över nedladdningar kunde inte hämtas"
 
 #: includes/admin/dashboard.php:41 includes/admin/dashboard.php:87
 msgid "There are no popular downloads yet!"
-msgstr "Пока еще нет популярных скачиваний."
+msgstr "Tillräcklig statistik saknas!"
 
 #: includes/admin/dashboard.php:50 includes/admin/dashboard.php:94
 msgid "Last 24 Hours"
-msgstr "За 24 часа"
+msgstr "Senaste 24 timmarna"
 
 #: includes/admin/dashboard.php:54 includes/admin/dashboard.php:95
 msgid "Last 7 Days"
-msgstr "За 7 дней"
+msgstr "Senaste 7 dagarna"
 
 #: includes/admin/dashboard.php:58 includes/admin/dashboard.php:96
 msgid "Last 30 Days"
-msgstr "За 30 дней"
+msgstr "Senaste 30 dagarna"
 
 #: includes/admin/dashboard.php:62 includes/admin/dashboard.php:97
 msgid "All Time"
-msgstr "За все время"
+msgstr "Sedan start"
 
 #: includes/admin/dashboard.php:67
 msgid "Popular Downloads"
-msgstr "Популярные скачивания"
+msgstr "Populära nedladdningar"
 
 #: includes/admin/dashboard.php:121 includes/admin/dashboard.php:159
 #: includes/admin/meta-boxes.php:279 includes/admin/upgrades.php:173
 msgid "Failed security check!"
-msgstr "Невозможна проверка на безопасность!"
+msgstr "Säkerhetskontroll misslyckades!"
 
 #: includes/admin/media-button.php:39 includes/admin/media-button.php:111
 msgid "Insert Download"
-msgstr "Вставить Загрузку"
+msgstr "Infoga fil"
 
 #: includes/admin/media-button.php:43
 msgid "Search"
-msgstr "Поиск"
+msgstr "Sök"
 
 #: includes/admin/media-button.php:49 includes/functions.php:88
 #: includes/post-types.php:60
 msgid "Title"
-msgstr "Заголовок"
+msgstr "Titel"
 
 #: includes/admin/media-button.php:50
 msgid "Size"
-msgstr "Размер"
+msgstr "Storlek"
 
 #: includes/admin/media-button.php:51 includes/post-types.php:21
 #: includes/post-types.php:33 includes/post-types.php:64
 msgid "Downloads"
-msgstr "Загрузки"
+msgstr "Nedladdningar"
 
 #: includes/admin/media-button.php:79
 msgid "Download Details"
-msgstr "Детали загрузки"
+msgstr "Nedladdningsdetaljer"
 
 #: includes/admin/media-button.php:82
 msgid "Downloads:"
-msgstr "Загрузок:"
+msgstr "Hämtad:"
 
 #: includes/admin/media-button.php:85
 msgid "Text"
-msgstr "Текст"
+msgstr "Text"
 
 #: includes/admin/media-button.php:87
 msgid "Style"
-msgstr "Стиль"
+msgstr "Stil"
 
 #: includes/admin/media-button.php:89 includes/admin/media-button.php:101
 msgid "Default"
-msgstr "По умолчанию"
+msgstr "Förvalt"
 
 #: includes/admin/media-button.php:99
 msgid "Color"
-msgstr "Цвет"
+msgstr "Färg"
 
 #: includes/admin/media-button.php:112
 msgid "Insert File Size"
-msgstr "Вставить размер файла"
+msgstr "Infoga filstorlek"
 
 #: includes/admin/media-button.php:113
 msgid "Insert Download Count"
-msgstr "Вставить счетчик скачиваний"
+msgstr "Infoga antal hämtningar"
 
 #: includes/admin/meta-boxes.php:45 includes/admin/meta-boxes.php:48
 #, php-format
 msgid "Download updated. Use the %s shortcode to include it in posts or pages."
 msgstr ""
-"Загрузка обновлена. Используйте %s код, чтобы вставить его в записи или "
-"страницы."
+"Nedladdningen uppdaterad. Använd kortkod %s för att inkludera den i inlägg "
+"och på sidor."
 
 #: includes/admin/meta-boxes.php:46
 msgid "Custom field updated."
-msgstr "Поле изменено."
+msgstr "Anpassat fält uppdaterat."
 
 #: includes/admin/meta-boxes.php:47
 msgid "Custom field deleted."
-msgstr "Поле удалено."
+msgstr "Anpassat fält raderat."
 
 #: includes/admin/meta-boxes.php:49
 #, php-format
 msgid "Download restored to revision from %s"
-msgstr "Загрузка восстановлена до версии %s"
+msgstr "Nedladdning återställd till revision från %s"
 
 #: includes/admin/meta-boxes.php:50
 #, php-format
 msgid ""
 "Download published. Use the %s shortcode to include it in posts or pages."
 msgstr ""
-"Загрузка опубликована. Используйте %s код, чтобы вставить его в записи или "
-"страницы."
+"Nedladdning publicerad. Använd kortkod %s för att inkludera den i inlägg och "
+"sidor."
 
 #: includes/admin/meta-boxes.php:51
 msgid "Download saved."
-msgstr "Загрузка сохранена"
+msgstr "Nedladdning sparad."
 
 #: includes/admin/meta-boxes.php:52
 msgid "Download submitted."
-msgstr "Загрузка подтверждена"
+msgstr "Nedladdning skickad."
 
 #: includes/admin/meta-boxes.php:53
 #, php-format
 msgid "Download scheduled for: <strong>%1$s</strong>."
-msgstr "Расписание дляr: <strong>%1$s</strong>."
+msgstr "Nedladdningen publiceras den: <strong>%1$s</strong>."
 
 #: includes/admin/meta-boxes.php:54
 msgid "M j, Y @ G:i"
-msgstr "d.m.Y H:i"
+msgstr "j M, Y H:i"
 
 #: includes/admin/meta-boxes.php:55
 msgid "Download draft updated."
-msgstr "Черновик загрузки обновлен"
+msgstr "Nedladdningsutkast uppdaterat."
 
 #: includes/admin/meta-boxes.php:87
 msgid "Local File"
-msgstr ""
+msgstr "Lokal fil"
 
 #: includes/admin/meta-boxes.php:88
 msgid "Remote File"
-msgstr ""
+msgstr "Fil lagrad på annan plats"
 
 #: includes/admin/meta-boxes.php:89
 msgid "Inaccessible File"
-msgstr ""
+msgstr "Otillgänglig fil"
 
 #: includes/admin/meta-boxes.php:105
 msgid "Allowed Files"
-msgstr "Разрешенных Файлов"
+msgstr "Tillåtna filer"
 
 #: includes/admin/meta-boxes.php:131 includes/admin/meta-boxes.php:225
 msgid "Upload File"
-msgstr "Загрузить файл"
+msgstr "Ladda upp fil"
 
 #: includes/admin/meta-boxes.php:132 includes/admin/meta-boxes.php:247
 msgid "Existing File"
-msgstr ""
+msgstr "Välj befintlig fil"
 
 #: includes/admin/meta-boxes.php:150
 msgid "Download Count"
-msgstr ""
+msgstr "Räkneverk"
 
 #: includes/admin/meta-boxes.php:154
 msgid "The number of times this file has been downloaded."
-msgstr ""
+msgstr "Det antal gånger som denna fil har hämtats."
 
 #: includes/admin/meta-boxes.php:161 includes/options.php:44
 #: includes/post-types.php:65
 msgid "Members Only"
-msgstr ""
+msgstr "Enbart medlemmar"
 
 #: includes/admin/meta-boxes.php:164 includes/admin/meta-boxes.php:201
 #: includes/admin/page-settings.php:269 includes/admin/page-settings.php:285
@@ -264,7 +264,7 @@ msgstr ""
 #: includes/admin/page-settings.php:535 includes/admin/page-settings.php:551
 #: includes/post-types.php:124 includes/post-types.php:136
 msgid "Yes"
-msgstr "Да"
+msgstr "Ja"
 
 #: includes/admin/meta-boxes.php:165 includes/admin/meta-boxes.php:202
 #: includes/admin/page-settings.php:270 includes/admin/page-settings.php:286
@@ -274,112 +274,112 @@ msgstr "Да"
 #: includes/admin/page-settings.php:536 includes/admin/page-settings.php:552
 #: includes/post-types.php:124 includes/post-types.php:136
 msgid "No"
-msgstr "Нет"
+msgstr "Nej"
 
 #: includes/admin/meta-boxes.php:166 includes/admin/meta-boxes.php:175
 #: includes/admin/meta-boxes.php:183 includes/admin/meta-boxes.php:184
 #: includes/admin/meta-boxes.php:203 includes/post-types.php:127
 #: includes/post-types.php:139
 msgid "Inherit"
-msgstr "Наследовать"
+msgstr "Överta"
 
 #: includes/admin/meta-boxes.php:167
 msgid "Allow only logged in users to download this file."
-msgstr ""
+msgstr "Tillåt endast inloggade användare att ladda ner filen."
 
 #: includes/admin/meta-boxes.php:184
 msgid "Global"
-msgstr ""
+msgstr "Global"
 
 #: includes/admin/meta-boxes.php:184
 msgid "Pages"
-msgstr "Страницы"
+msgstr "Sidor"
 
 #: includes/admin/meta-boxes.php:191
 msgid "The page to redirect non-members."
-msgstr ""
+msgstr "Den sida som icke-medlemmar omdirigeras till."
 
 #: includes/admin/meta-boxes.php:198
 msgid "Open In Browser"
-msgstr ""
+msgstr "Öppna i webbläsare"
 
 #: includes/admin/meta-boxes.php:211
 msgid "Replace File:"
-msgstr ""
+msgstr "Byt ut fil:"
 
 #: includes/admin/meta-boxes.php:212
 msgid "Upload"
-msgstr "Загрузить"
+msgstr "Ladda upp"
 
 #: includes/admin/meta-boxes.php:213
 msgid "Select Existing"
-msgstr ""
+msgstr "Välj befintlig"
 
 #: includes/admin/meta-boxes.php:214
 msgid "Delete File"
-msgstr ""
+msgstr "Radera filen"
 
 #: includes/admin/meta-boxes.php:227
 msgid "Drop file here"
-msgstr ""
+msgstr "Släpp filen här"
 
 #: includes/admin/meta-boxes.php:228
 msgid "or"
-msgstr "или"
+msgstr "eller"
 
 #: includes/admin/meta-boxes.php:229
 msgid "Select File"
-msgstr "Выберите файл"
+msgstr "Välj fil"
 
 #: includes/admin/meta-boxes.php:231
 #, php-format
 msgid "Maximum upload file size: %s."
-msgstr "Максимальный размер файла: %s."
+msgstr "Max storlek på uppladdad fil: %s."
 
 #: includes/admin/meta-boxes.php:248
 msgid "Manaully enter a file URL, or use the file browser."
-msgstr ""
+msgstr "Skriv en URL till en fil, eller använd filhanteraren."
 
 #: includes/admin/meta-boxes.php:251
 msgid "File URL or path..."
-msgstr ""
+msgstr "Filens URL eller sökväg"
 
 #: includes/admin/meta-boxes.php:254
 msgid "Loading..."
-msgstr ""
+msgstr "Ett ögonblick..."
 
 #: includes/admin/meta-boxes.php:257
 msgid "Confirm"
-msgstr "Подтверждаю"
+msgstr "Bekräfta"
 
 #: includes/admin/page-settings.php:19 includes/admin/page-settings.php:80
 msgid "Download Settings"
-msgstr "Настройки скачиваний"
+msgstr "Nedladdning Inställningar"
 
 #: includes/admin/page-settings.php:81 includes/admin/page-settings.php:615
 msgid "Import"
-msgstr "Импортировать"
+msgstr "Importera"
 
 #: includes/admin/page-settings.php:82 includes/admin/page-statistics.php:39
 #: includes/admin/page-statistics.php:86
 msgid "Export"
-msgstr "Экспорт"
+msgstr "Exportera"
 
 #: includes/admin/page-settings.php:83
 msgid "You are about to reset the download settings."
-msgstr "Вы собираетесь сбросить настройки."
+msgstr "Detta innebär att du kommer återställa alla nedladdningsinställningar."
 
 #: includes/admin/page-settings.php:83
 msgid "Reset Defaults"
-msgstr "Восстановить по умолчанию"
+msgstr "Återställ förvalda värden"
 
 #: includes/admin/page-settings.php:88
 msgid "Settings updated successfully."
-msgstr "Настройки обновлены успешно."
+msgstr "Inställningarna uppdaterades."
 
 #: includes/admin/page-settings.php:237
 msgid "Help and Support"
-msgstr "Помощь и поддержка"
+msgstr "Hjälp och Support"
 
 #: includes/admin/page-settings.php:238
 #, php-format
@@ -387,12 +387,12 @@ msgid ""
 "Please take a moment to look at the %sdocumentation%s. If you are still "
 "having issues, please leave a %ssupport request%s."
 msgstr ""
-"Пожалуйста, найдите время, чтобы посмотреть на %sдокументацию%s. Если у вас "
-"возникли вопросы, пожалуйста, оставьте %ssupport запрос\"% s."
+"Var vänlig läs %sdocumentation%s. Om du fortfarande har problem, var vänlig "
+"skicka en %ssupport request%s."
 
 #: includes/admin/page-settings.php:240
 msgid "Share the Love"
-msgstr "Поделиться"
+msgstr "Dela din uppskattning"
 
 #: includes/admin/page-settings.php:241
 #, php-format
@@ -401,13 +401,13 @@ msgid ""
 "help support future development. Alternatively, a %splugin review%s is "
 "always appreciated."
 msgstr ""
-"Понравился Delightful Downloads? Пожалуйста, рассмотрите %sdonating%s в "
-"несколько долларов, чтобы помочь будущему развитию. Или %splugin review%s "
-"это всегда приветствуется."
+"Gillar du Delightful Downloads? Var vänlig %sdonating%s några dollar för "
+"framtida uppdateringar och utveckling. Alternativt ge en %splugin review%s "
+"det vore mycket uppskattat."
 
 #: includes/admin/page-settings.php:243
 msgid "About the Developer"
-msgstr "О разработчике"
+msgstr "Om utvecklaren"
 
 #: includes/admin/page-settings.php:244
 #, php-format
@@ -415,8 +415,8 @@ msgid ""
 "Hey there! I'm %sAshley Rich%s, a freelance web designer and WordPress "
 "developer based in the West Midlands, England."
 msgstr ""
-"Hey there! I'm %sAshley Rich%s, a freelance web designer and WordPress "
-"developer based in the West Midlands, England."
+"Hej, jag heter %sAshley Rich%s, och är en frilansande webbdesigner och "
+"WordPressutvecklare som bor i West Midlands, England."
 
 #: includes/admin/page-settings.php:245
 #, php-format
@@ -426,22 +426,28 @@ msgstr "%sTwitter%s"
 #: includes/admin/page-settings.php:271
 msgid "Allow downloads to be tagged or categorised."
 msgstr ""
+"Välj detta alternativ för att aktivera särskilda taggar och kategorier för "
+"nedladdningar."
 
 #: includes/admin/page-settings.php:287
 msgid ""
 "Allow only logged in users to download files. This can be overridden on a "
 "per-download basis."
 msgstr ""
+"Tillåt endast inloggade användare att ladda ner filen. Kan även ställas in "
+"för varje enskild nedladdning."
 
 #: includes/admin/page-settings.php:296
 msgid "No Page (Generic Error)"
-msgstr ""
+msgstr "Ingen sida (allmänt fel)"
 
 #: includes/admin/page-settings.php:302
 msgid ""
 "The page to redirect non-members. If no page is selected, a generic error "
 "message will be displayed. This can be overridden on a per-download basis."
 msgstr ""
+"Den sida dit icke-medlemmar omdirigeras. Väljs ingen sida visas istället ett "
+"generellt felmeddelande. Detta val förbigås på varje enskild nedladdning."
 
 #: includes/admin/page-settings.php:320
 msgid ""
@@ -450,53 +456,60 @@ msgid ""
 "directory, set folder protection to 'No', which can be found under the "
 "advanced tab."
 msgstr ""
+"Försök alltid att öppna filer i webbläsarfönstret. Detta kan åsidosättas för "
+"varje enskild nedladdning. För filer som finns i Delightful Downloads egen "
+"katalog måste Mappskydd sättas till \"Nej\" (finns under fliken Avancerat)."
 
 #: includes/admin/page-settings.php:335
 msgid "User agents to block from downloading files. One per line."
 msgstr ""
+"Lista de Användaragenter som ska blockeras från att ladda ner filer. En per "
+"rad."
 
 #: includes/admin/page-settings.php:428
 msgid "Log events triggered by admin users."
-msgstr ""
+msgstr "Logga händelser som orsakas av adminanvändare."
 
 #: includes/admin/page-settings.php:445
 msgid ""
 "Stop multiple logs of the same type from being saved, in quick succession."
-msgstr ""
+msgstr "Hindra identiska loggar från att sparas om de kommer i snabb följd."
 
 #: includes/admin/page-settings.php:448
 msgid "The time in minutes before creating a new log."
-msgstr ""
+msgstr "Tid i minuter innan ny logg skapas."
 
 #: includes/admin/page-settings.php:466
 msgid "Automatically delete old logs."
-msgstr ""
+msgstr "Utgångna loggar ska raderas automatiskt."
 
 #: includes/admin/page-settings.php:469
 msgid "The time in days to keep logs."
-msgstr ""
+msgstr "Tid i dagar som loggar ska sparas."
 
 #: includes/admin/page-settings.php:486
 msgid "Output the Delightful Downloads stylesheet on the front-end."
-msgstr ""
+msgstr "Använd Delightful Downloads stilmallar på framsidan."
 
 #: includes/admin/page-settings.php:503
 msgid "Cache database queries that are expensive to generate."
-msgstr ""
+msgstr "Casha databasförfrågningar som är krävande att generera."
 
 #: includes/admin/page-settings.php:506
 msgid "The time in minutes to cache queries."
-msgstr ""
+msgstr "Tid i minuter som förfrågningar cashas."
 
 #: includes/admin/page-settings.php:522
 msgid "The URL for download links."
-msgstr ""
+msgstr "URL:en för nedladdningslänkar."
 
 #: includes/admin/page-settings.php:537
 msgid ""
 "Stop direct access to uploaded files, within the Delightful Downloads upload "
 "directory."
 msgstr ""
+"Hindra direktaccess till de filer som ligger i Delightful Downloads egen "
+"katalog."
 
 #: includes/admin/page-settings.php:553
 msgid ""
@@ -504,99 +517,102 @@ msgid ""
 "uninstalling the plugin. All downloads, categories, tags and statistics will "
 "be removed."
 msgstr ""
+"Gör en fullständig radering av all data som associeras med Delightful "
+"Downloads när denna plugin avinstalleras. Alla nedladdningar, kategorier, "
+"taggar och statistik kommer tas bort.  "
 
 #: includes/admin/page-settings.php:609
 msgid "Import Settings"
-msgstr "Импортировать настройки"
+msgstr "Importeringsinställningar"
 
 #: includes/admin/page-settings.php:610
 msgid "Select a Delightful Downloads settings file to import:"
-msgstr ""
+msgstr "Välj en Delightful Downloads inställningsfil att importera:"
 
 #: includes/admin/page-settings.php:680
 msgid "Invalid settings file."
-msgstr ""
+msgstr "Ogiltig filtyp."
 
 #: includes/admin/page-settings.php:690
 msgid "Settings have been successfully imported."
-msgstr ""
+msgstr "Inställningarna har importerats."
 
 #: includes/admin/page-settings.php:698
 msgid "No file uploaded."
-msgstr ""
+msgstr "Ingen fil laddades upp."
 
 #: includes/admin/page-settings.php:758
 msgid "Default settings reset successfully."
-msgstr "Настройки восстановлены по умолчанию."
+msgstr "Förvalda inställningar är återställda."
 
 #: includes/admin/page-statistics.php:22 includes/admin/page-statistics.php:38
 #: includes/admin/page-statistics.php:256
 msgid "Download Logs"
-msgstr "Логи скачиваний"
+msgstr "Nedladdningsloggar"
 
 #: includes/admin/page-statistics.php:40
 msgid "You are about to permanently delete the download logs."
-msgstr "Вы собираетесь удалить все логи скачиваний."
+msgstr "Vill du verkligen radera alla nedladdningsloggar?"
 
 #: includes/admin/page-statistics.php:40
 msgid "Delete"
-msgstr "Удалить"
+msgstr "Radera"
 
 #: includes/admin/page-statistics.php:73
 msgid "Export Logs"
-msgstr ""
+msgstr "Exportloggar"
 
 #: includes/admin/page-statistics.php:74
 msgid "Export log entries to a CSV file. Please select a date range:"
-msgstr ""
+msgstr "Exportera loggarna till en CSV-fil. Välj först en period:"
 
 #: includes/admin/page-statistics.php:77
 msgid "Start Date"
-msgstr "Дата начала"
+msgstr "Startdatum"
 
 #: includes/admin/page-statistics.php:81
 msgid "End Date"
-msgstr "Конечная дата"
+msgstr "Slutdatum"
 
 #: includes/admin/page-statistics.php:155
 msgid "You do not have any logs to export in that date range."
-msgstr ""
+msgstr "Det finns inga loggar att exportera för den valda perioden."
 
 #: includes/admin/page-statistics.php:188
 msgid "ID"
-msgstr "Идентификатор"
+msgstr "ID"
 
 #: includes/admin/page-statistics.php:188
 msgid "Status"
-msgstr "Статус"
+msgstr "Status"
 
 #: includes/admin/page-statistics.php:227
 msgid "Logs could not be deleted."
-msgstr "Логи не могут быть удалены."
+msgstr "Loggarna kunde inte raderas."
 
 #: includes/admin/page-statistics.php:231
 msgid "Logs deleted successfully."
-msgstr "Логи удалены."
+msgstr "Loggarna permanent raderade."
 
 #: includes/admin/upgrades.php:76
 msgid "Delightful Downloads updated to version 1.4."
-msgstr "Delightful Downloads обновлен до версии 1.4."
+msgstr "Delightful Downloads uppdaterade till version 1.4."
 
 #: includes/admin/upgrades.php:109
 msgid "Delightful Downloads updated to version 1.5."
-msgstr ""
+msgstr "Delightful Downloads uppdaterad till version 1.5."
 
 #: includes/admin/upgrades.php:135 includes/admin/upgrades.php:144
 msgid "Migrate"
-msgstr "Миграция"
+msgstr "Migrera"
 
 #: includes/admin/upgrades.php:136
 msgid "Stop"
-msgstr "Стоп"
+msgstr "Stopp"
 
 #: includes/admin/upgrades.php:137
 msgid "The migration could not start due to an error."
-msgstr "Миграция не может быть запущена из за ошибки."
+msgstr "Migrationen kunde inte inledas på grund av ett fel."
 
 #: includes/admin/upgrades.php:142
 #, php-format
@@ -604,338 +620,338 @@ msgid ""
 "You have %s logs from an older version of Delightful Downloads. %sPlease "
 "make a backup of your database before migrating!%s"
 msgstr ""
-"У вас %s логи от старой версии. %s Сделайте резервную копию базы данных "
-"перед переносом!%s"
+"Du har %s loggar från en äldre version av Delight Downloads. %sPlease make a "
+"backup of your database before migrating!%s"
 
 #: includes/admin/upgrades.php:148
 msgid "JavaScript must be enabled to migrate legacy logs."
-msgstr "JavaScript должен быть включен, чтобы перенести старые логи."
+msgstr "JavaScript måste vara aktiverat för att migrera äldre loggar."
 
 #: includes/cron.php:73
 msgid "Once Weekly"
-msgstr "Один раз в неделю"
+msgstr "En gång i veckan"
 
 #: includes/functions.php:22
 msgid "Button"
-msgstr "Кнопка"
+msgstr "Knapp"
 
 #: includes/functions.php:26
 msgid "Link"
-msgstr "Ссылка"
+msgstr "Länk"
 
 #: includes/functions.php:30
 msgid "Plain Text"
-msgstr "Обычный текст"
+msgstr "Ren text"
 
 #: includes/functions.php:47
 msgid "Black"
-msgstr "Черная"
+msgstr "Svart"
 
 #: includes/functions.php:51
 msgid "Blue"
-msgstr "Синяя"
+msgstr "Blå"
 
 #: includes/functions.php:55
 msgid "Grey"
-msgstr "Серая"
+msgstr "Grå"
 
 #: includes/functions.php:59
 msgid "Green"
-msgstr "Зеленая"
+msgstr "Grön"
 
 #: includes/functions.php:63
 msgid "Purple"
-msgstr "Фиолетовая"
+msgstr "Lila"
 
 #: includes/functions.php:67
 msgid "Red"
-msgstr "Красная"
+msgstr "Röd"
 
 #: includes/functions.php:71
 msgid "Yellow"
-msgstr "Жёлтая"
+msgstr "Gul"
 
 #: includes/functions.php:92
 msgid "Title (Date)"
-msgstr "Заголовок (Дата)"
+msgstr "Titel (Datum)"
 
 #: includes/functions.php:96
 msgid "Title (Count)"
-msgstr "Заголовок (Счетчик)"
+msgstr "Titel (Räkneverk)"
 
 #: includes/functions.php:100
 msgid "Title (File size)"
-msgstr "Заголовок (Размер файла)"
+msgstr "Titel (Filstorlek)"
 
 #: includes/functions.php:104
 msgid "Title (Extension, File size)"
-msgstr "Заголовок (Расширение, Размер файла)"
+msgstr "Titel (Filändelse, Filstorlek)"
 
 #: includes/options.php:20
 msgid "General"
-msgstr "Главные"
+msgstr "Allmänna"
 
 #: includes/options.php:21
 msgid "Shortcodes"
-msgstr "Шорткоды"
+msgstr "Kortkoder"
 
 #: includes/options.php:22
 msgid "Statistics"
-msgstr "Статистика"
+msgstr "Statistik"
 
 #: includes/options.php:23
 msgid "Advanced"
-msgstr "Расширенные"
+msgstr "Avancerat"
 
 #: includes/options.php:24
 msgid "Support"
-msgstr "Поддержка"
+msgstr "Support"
 
 #: includes/options.php:38
 msgid "Categories and Tags"
-msgstr "Категории и теги"
+msgstr "Kategorier och Taggar"
 
 #: includes/options.php:53 includes/post-types.php:66
 msgid "Open in Browser"
-msgstr ""
+msgstr "Öppna i webbläsare"
 
 #: includes/options.php:59
 msgid "Block User Agents"
-msgstr "Блокировать имена пользователей"
+msgstr "Blockera Använderagenter"
 
 #: includes/options.php:65
 msgid "Default Text"
-msgstr "Текст по умолчанию"
+msgstr "Förvald text"
 
 #: includes/options.php:71
 msgid "Default Style"
-msgstr "Стиль по умолчанию"
+msgstr "Förvald stil"
 
 #: includes/options.php:77
 msgid "Default Button Style"
-msgstr "Стиль кнопки по умолчанию"
+msgstr "Förvald knappstil"
 
 #: includes/options.php:83
 msgid "Default List Style"
-msgstr "Стиль списка по умолчанию"
+msgstr "Förvald liststil"
 
 #: includes/options.php:89
 msgid "Admin Events"
-msgstr ""
+msgstr "Utfört av Admin"
 
 #: includes/options.php:95
 msgid "Grace Period"
-msgstr "Льготный период"
+msgstr "Anståndsperiod"
 
 #: includes/options.php:104
 msgid "Auto Delete"
-msgstr "Авто удаление"
+msgstr "Radera automatiskt"
 
 #: includes/options.php:113
 msgid "Output CSS"
-msgstr ""
+msgstr "CSS output"
 
 #: includes/options.php:119
 msgid "Cache"
-msgstr "Кеширование"
+msgstr "Cache"
 
 #: includes/options.php:128
 msgid "Download Address"
-msgstr "Адрес загрузки"
+msgstr "Nedladdningsadress"
 
 #: includes/options.php:134
 msgid "Folder Protection"
-msgstr ""
+msgstr "Mappskydd"
 
 #: includes/options.php:140
 msgid "Complete Uninstall"
-msgstr "Удалено"
+msgstr "Fullständig avinstallation"
 
 #: includes/post-types.php:23
 msgid "Add New"
-msgstr "Добавить новую"
+msgstr "Skapa ny"
 
 #: includes/post-types.php:24
 msgid "Add New Download"
-msgstr "Добавить новую загрузку"
+msgstr "Skapa ny nedladdning"
 
 #: includes/post-types.php:25
 msgid "Edit Download"
-msgstr "Редактировать загрузку"
+msgstr "Ändra nedladdning"
 
 #: includes/post-types.php:26
 msgid "New Download"
-msgstr "Новая загрузка"
+msgstr "Skapa ny"
 
 #: includes/post-types.php:27
 msgid "All Downloads"
-msgstr "Все загрузки"
+msgstr "Alla nedladdningar"
 
 #: includes/post-types.php:28
 msgid "View Download"
-msgstr "Просмотр загрузок"
+msgstr "Visa nedladdning"
 
 #: includes/post-types.php:29
 msgid "Search Downloads"
-msgstr "Искать загрузки"
+msgstr "Sök bland nedladdningar"
 
 #: includes/post-types.php:30
 msgid "No downloads found"
-msgstr "Загрузок не найдено"
+msgstr "Inga nedladdningar hittades"
 
 #: includes/post-types.php:31
 msgid "No downloads found in Trash"
-msgstr "Загрузок в корзине не найдено"
+msgstr "Inga nedladdningar hittades i skräp"
 
 #: includes/post-types.php:61
 msgid "File"
-msgstr "Файл"
+msgstr "Fil"
 
 #: includes/post-types.php:62
 msgid "File Size"
-msgstr "Размер файла"
+msgstr "Filstorlek"
 
 #: includes/post-types.php:63
 msgid "Shortcode"
-msgstr "Шорткод"
+msgstr "Kortkod"
 
 #: includes/post-types.php:74 includes/taxonomies.php:25
 msgid "Categories"
-msgstr "Категории"
+msgstr "Kategorier"
 
 #: includes/post-types.php:75 includes/taxonomies.php:49
 msgid "Tags"
-msgstr "Теги"
+msgstr "Taggar"
 
 #: includes/process-download.php:33
 msgid "Invalid download."
-msgstr "Не верное скачивание."
+msgstr "Ogiltig nedladdning."
 
 #: includes/process-download.php:39
 msgid "You are blocked from downloading this file!"
-msgstr "Скачивание файла заблокировано!"
+msgstr "Du är blockerad från denna nedladdning"
 
 #: includes/process-download.php:60
 msgid "Please login to download this file!"
-msgstr "Пожалуйста войдите на сайт для скачивания!"
+msgstr "Du måsta vara inloggad för att hämta denna fil"
 
 #: includes/process-download.php:66
 msgid "Password Required"
-msgstr ""
+msgstr "Lösenord är obligatoriskt"
 
 #: includes/process-download.php:71
 msgid "You must attach a file to this download."
-msgstr "Вы должны прикрепить файл к загрузке."
+msgstr "En fil måste bifogas denna nedladdning. "
 
 #: includes/process-download.php:129
 msgid "Server error, file cannot be opened!"
-msgstr "Ошибка сервера, файл не найден!"
+msgstr "Serverfel, filen kan inte öppnas!"
 
 #: includes/shortcodes.php:46 includes/shortcodes.php:351
 #: includes/shortcodes.php:415
 msgid "Invalid download ID."
-msgstr "Не правильный ID."
+msgstr "Nedladdningens ID är ogiltigt."
 
 #: includes/shortcodes.php:58 includes/shortcodes.php:261
 msgid "Invalid style attribute."
-msgstr "Не правильный стиль атрибута."
+msgstr "Ogiltigt stilattribut."
 
 #: includes/shortcodes.php:79
 msgid "Invalid button attribute."
-msgstr "Не правильный атрибут кнопки."
+msgstr "Ogiltigt knappattribut."
 
 #: includes/shortcodes.php:146
 msgid "Invalid orderby attribute."
-msgstr "Не правильный атрибут действия."
+msgstr "Ogiltigt sorterapå-attribut."
 
 #: includes/shortcodes.php:177
 msgid "Invalid order attribute."
-msgstr "Не правильный атрибут"
+msgstr "Ogiltigt sorteringsattribut."
 
 #: includes/shortcodes.php:186
 msgid "Invalid relation attribute."
-msgstr "Устаревший атрибут."
+msgstr "Ogiltigt relationsattribut"
 
 #: includes/shortcodes.php:317
 msgid "No downloads found."
-msgstr "Скачиваний не найдено."
+msgstr "Inga nedladdningar hittades."
 
 #: includes/taxonomies.php:23
 msgid "Download Categories"
-msgstr "Категории загрузки"
+msgstr "Nedladdningskategorier"
 
 #: includes/taxonomies.php:24
 msgid "Download Category"
-msgstr "Категория загрузки"
+msgstr "Nedladdningskategori"
 
 #: includes/taxonomies.php:26
 msgid "All Categories"
-msgstr "Все категории"
+msgstr "Alla kategorier"
 
 #: includes/taxonomies.php:27
 msgid "Edit Category"
-msgstr "редактировать категорию"
+msgstr "Ändra kategori"
 
 #: includes/taxonomies.php:28
 msgid "View Category"
-msgstr "Смотреть категорию"
+msgstr "Visa kategori"
 
 #: includes/taxonomies.php:29
 msgid "Update Category"
-msgstr "Обновить категорию"
+msgstr "Uppdatera kategori"
 
 #: includes/taxonomies.php:30
 msgid "Add New Category"
-msgstr "Добавить новую категорию"
+msgstr "Skapa ny nedladdningskategori"
 
 #: includes/taxonomies.php:31
 msgid "New Category Name"
-msgstr "Имя новой категории"
+msgstr "Namn"
 
 #: includes/taxonomies.php:32
 msgid "Search Categories"
-msgstr "Искать категорию"
+msgstr "Sök kategorier"
 
 #: includes/taxonomies.php:33
 msgid "Popular Categories"
-msgstr "Популярные категории"
+msgstr "Populära kategorier"
 
 #: includes/taxonomies.php:47
 msgid "Download Tags"
-msgstr "Теги загрузок"
+msgstr "Nedladdningstaggar"
 
 #: includes/taxonomies.php:48
 msgid "Download Tag"
-msgstr "Тег загрузки"
+msgstr "Nedladdningstagg"
 
 #: includes/taxonomies.php:50
 msgid "All Tags"
-msgstr "Все теги"
+msgstr "Alla taggar"
 
 #: includes/taxonomies.php:51
 msgid "Edit Tag"
-msgstr "Редактировать тег"
+msgstr "Ändra tagg"
 
 #: includes/taxonomies.php:52
 msgid "View Tag"
-msgstr "Смотреть тег"
+msgstr "Visa tagg"
 
 #: includes/taxonomies.php:53
 msgid "Update Tag"
-msgstr "Обновить тег"
+msgstr "Uppdatera tagg"
 
 #: includes/taxonomies.php:54
 msgid "Add New Tag"
-msgstr "Добавить новый тег"
+msgstr "Lägg till ny tagg"
 
 #: includes/taxonomies.php:55
 msgid "New Tag Name"
-msgstr "Имя нового тега"
+msgstr "Namn"
 
 #: includes/taxonomies.php:56
 msgid "Search Tags"
-msgstr "Искать теги"
+msgstr "Sök taggar"
 
 #: includes/taxonomies.php:57
 msgid "Popular Tags"
-msgstr "Популярные теги"
+msgstr "Populära taggar"
