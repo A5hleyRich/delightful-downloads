@@ -8,7 +8,7 @@ Stable tag: 1.4
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-A super-awesome downloads manager for WordPress.
+A super-awesome downloads manager and statistics tracker for WordPress.
 
 == Description ==
 
@@ -16,15 +16,20 @@ Delightful Downloads is a super-awesome downloads manager for WordPress that all
 
 **Features**
 
-* File upload via the WordPress admin area.
+* File upload via the WordPress admin area. Absolute file paths and remote file URLs are supported via manual entry.
+* Categories and tag downloads.
 * Shortcodes to display download links, buttons and download information within posts, pages and widget areas.
-* Shortcode to list downloads and customise output via attributes.
+* Shortcode to list downloads, optionally filtered by categories and tags. Order by download count, file size, date, title and random.
 * Editor button to automatically generate shortcodes.
-* Download statistics tracked within the WordPress dashboard.
+* Download statistics tracked within the WordPress dashboard area. Specify a grace period so that multiple log entries are not triggered by the same user (more accurate statistics).
+* Automatically delete logs older than a specified number of days.
 * Blocks users from accessing files directly.
 * Block bots from downloading files.
 * Member only downloads with page redirect for non-logged in users.
+* Password protected files.
+* Open in Browser - Allow files such as PDFs and movies to open directly within the browser window and still track download statistics.
 * Various button styles included with the ability to add custom buttons.
+* Built in caching for excellent performance.
 * Developer friendly.
 * Localisation support.
 
@@ -36,6 +41,7 @@ Thanks to all of the WP-Translations Team Members.
 * Deutsch (German) - [Connie Müller-Gödecke](http://www.webdeerns.de),
 * Italiano (Italian),
 * Русский (Russian) - dobrodukh,
+* Svenska (Swedish) - [Björn Granberg](http://maskinmedia.se/)
 
 Don't see yours yet? Join our community and make it happen! [WP-Translations.org](http://wp-translations.org)
 
@@ -70,6 +76,10 @@ Please refer to the [FAQ](http://delightfulwp.com/delightful-downloads/faq/ "Del
 6. Settings screen.
 
 == Changelog ==
+
+= 1.5 =
+
+* Improved statistics and logging with custom database table.
 
 = 1.4 =
 
@@ -234,6 +244,11 @@ Please refer to the [FAQ](http://delightfulwp.com/delightful-downloads/faq/ "Del
 * Initial stable plugin release.
 
 == Upgrade Notice ==
+
+= 1.5 =
+
+* Bug fixes.
+* General improvements.
 
 = 1.4 =
 
