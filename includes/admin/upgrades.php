@@ -94,9 +94,12 @@ function dedo_upgrade_1_5() {
 	global $dedo_options, $dedo_notices;
 
 	// Convert old durations to boolean values
-	foreach( array( 'grace_period' ,'auto_delete', 'cache' ) as $key ) {
+	foreach( array( 'grace_period' ,'auto_delete' ) as $key ) {
 		$dedo_options[$key] = ( $dedo_options[$key] > 0 ) ? 1 : 0;
 	}
+
+	// Handle cache name change
+	$dedo_options['cache'] = ( $dedo_options['cache_duration'] > 0 ) ? 1 : 0;
 
 	// Update options
 	$new_options = wp_parse_args( $dedo_options, dedo_get_default_options() );
