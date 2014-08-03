@@ -79,7 +79,16 @@ Please refer to the [FAQ](http://delightfulwp.com/delightful-downloads/faq/ "Del
 
 = 1.5 =
 
-* Improved statistics and logging with custom database table.
+* New: Password protected downloads.
+* New: Export logs to CSV file.
+* New: Import/Export plugin settings.
+* New: The _Open in Browser_ option has been added, which allows files to open directly in the browser window.
+* New: Swedish translation.
+* Enhancement: The _Members Only_ option can now be set on a per-download basis.
+* Enhancement: Improved the _Add/Edit Download_ screen.
+* Enhancement: Improved the _Download Settings_ screen.
+* Enhancement: Improved the _All Downloads_ screen to show the _Members Only_ and _Open in Browser_ columns.
+* Bug Fix: The dashboard widget no longer breaks the widget layout, when a download has been removed.
 
 = 1.4 =
 
