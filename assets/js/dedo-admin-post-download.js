@@ -166,7 +166,7 @@ jQuery( document ).ready( function( $ ){
 			 		DEDO_Admin_Download.addFile( response.file.url );
 			 		
 			 		// Close modal and hide progress bar
-			 		self.$progress.slideUp( 900, function() {
+			 		self.$progress.delay( 900 ).slideUp( 900, function() {
 			 			$( 'body' ).trigger( 'closeModal' );
 			 		} );
 
