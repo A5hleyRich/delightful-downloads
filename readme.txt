@@ -17,7 +17,7 @@ Delightful Downloads is a super-awesome downloads manager for WordPress that all
 **Features**
 
 * File upload via the WordPress admin area. Absolute file paths and remote file URLs are supported via manual entry.
-* Categories and tag downloads.
+* Categorise and tag downloads.
 * Shortcodes to display download links, buttons and download information within posts, pages and widget areas.
 * Shortcode to list downloads, optionally filtered by categories and tags. Order by download count, file size, date, title and random.
 * Editor button to automatically generate shortcodes.
@@ -25,7 +25,7 @@ Delightful Downloads is a super-awesome downloads manager for WordPress that all
 * Automatically delete logs older than a specified number of days.
 * Blocks users from accessing files directly.
 * Block bots from downloading files.
-* Member only downloads with page redirect for non-logged in users.
+* Members only downloads with page redirect for non-logged in users.
 * Password protected files.
 * Open in Browser - Allow files such as PDFs and movies to open directly within the browser window and still track download statistics.
 * Various button styles included with the ability to add custom buttons.
@@ -83,6 +83,7 @@ Please refer to the [FAQ](http://delightfulwp.com/delightful-downloads/faq/ "Del
 * New: Export logs to CSV file.
 * New: Import/Export plugin settings.
 * New: The _Open in Browser_ option has been added, which allows files to open directly in the browser window.
+* New: The _Folder Protection_ option has been added, which allow you to turn on/off the direct access of upload files.
 * New: Swedish translation.
 * Enhancement: The _Members Only_ option can now be set on a per-download basis.
 * Enhancement: Improved the _Add/Edit Download_ screen.

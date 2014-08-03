@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Delightful Downloads\n"
-"POT-Creation-Date: 2014-08-03 18:10-0000\n"
-"PO-Revision-Date: 2014-08-03 18:17-0000\n"
+"POT-Creation-Date: 2014-08-03 22:18-0000\n"
+"PO-Revision-Date: 2014-08-03 22:18-0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: en_US\n"
@@ -532,7 +532,9 @@ msgid "Export Logs"
 msgstr ""
 
 #: includes/admin/page-statistics.php:74
-msgid "Export log entries to a CSV file. Please select a date range:"
+msgid ""
+"Export log entries to a CSV file. Please select a date range, or leave blank "
+"to export all:"
 msgstr ""
 
 #: includes/admin/page-statistics.php:77

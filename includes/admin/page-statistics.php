@@ -71,7 +71,7 @@ function dedo_render_export_modal() {
 		<a href="#" class="dedo-modal-close" title="Close"><span class="media-modal-icon"></span></a>
 		<div class="media-modal-content">
 			<h1><?php _e( 'Export Logs', 'delightful-downloads' ); ?></h1>
-			<p><?php _e( 'Export log entries to a CSV file. Please select a date range:', 'delightful-downloads' ); ?></p>
+			<p><?php _e( 'Export log entries to a CSV file. Please select a date range, or leave blank to export all:', 'delightful-downloads' ); ?></p>
 			<form method="post" enctype="multipart/form-data" action="<?php echo admin_url( 'edit.php?post_type=dedo_download&page=dedo_statistics&action=export' ); ?>">
 				<p class="left">
 					<label for="dedo_start_date"><?php _e( 'Start Date', 'delightful-downloads' ); ?></label>
