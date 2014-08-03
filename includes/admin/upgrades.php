@@ -95,9 +95,7 @@ function dedo_upgrade_1_5() {
 
 	// Convert old durations to boolean values
 	foreach( array( 'grace_period' ,'auto_delete', 'cache' ) as $key ) {
-		if ( $dedo_options[$key] > 0 ) {
-			$dedo_options[$key] = 1;
-		}
+		$dedo_options[$key] = ( $dedo_options[$key] > 0 ) ? 1 : 0;
 	}
 
 	// Update options
