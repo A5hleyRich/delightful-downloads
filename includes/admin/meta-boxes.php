@@ -211,7 +211,7 @@ function dedo_meta_box_download( $post ) {
 			<?php _e( 'Replace File:', 'delightful-downloads' ); ?>
 			<a href="#dedo-upload-modal" class="button dedo-modal-action"><?php _e( 'Upload', 'delightful-downloads' ); ?></a>
 			<a href="#dedo-select-modal" class="button dedo-modal-action select-existing"><?php _e( 'Select Existing', 'delightful-downloads' ); ?></a>
-			<a href="#dedo-delete-modal" class="delete dedo-delete-file"><?php _e( 'Delete File', 'delightful-downloads' ); ?>
+			<a href="#dedo-delete-modal" class="delete dedo-delete-file"><?php _e( 'Delete File', 'delightful-downloads' ); ?></a>
 		</div>
 	</div>
 
@@ -229,9 +229,11 @@ function dedo_meta_box_download( $post ) {
 				<p class="drag-drop-button"><input id="dedo-upload-button" type="button" value="<?php _e( 'Select File', 'delightful-downloads' ); ?>" class="button" />
 			</div>
 			<p><?php printf( __( 'Maximum upload file size: %s.', 'delightful-downloads' ), size_format( wp_max_upload_size(), 1 ) ); ?></p>
-			<div id="dedo-progress-bar" style="display: none">
-				<div id="dedo-progress-percent" style="width: 0%;"></div>
-				<div id="dedo-progress-text">0%</div>
+			<div class="dedo-progress-wrapper">
+				<div id="dedo-progress-bar" style="display: none">
+					<div id="dedo-progress-percent" style="width: 0%;"></div>
+					<div id="dedo-progress-text">0%</div>
+				</div>
 			</div>
 			<div id="dedo-progress-error" style="display: none"></div>
 		</div>

@@ -102,7 +102,7 @@ jQuery( document ).ready( function( $ ) {
 				// Fade and remove background
 				$( '#dedo-modal-background' ).fadeOut( 300, function() {
 
-					this.remove();
+					$( this ).remove();
 				} );
 
 				// Hide modal window
@@ -237,7 +237,7 @@ jQuery( document ).ready( function( $ ) {
 					$.each( response.content, function( key, value) {
 					
 						output += '<li>';
-						output += '<a href="' + value.url + '">' + value.title + ' <span class="count">' + value.downloads + '</span></a>';
+						output += '<a href="' + value.url + '"><span class="position">' + ( key + 1 ) + '.</span>' + value.title + ' <span class="count">' + value.downloads + '</span></a>';
 						output += '</li>';
 					} );
 

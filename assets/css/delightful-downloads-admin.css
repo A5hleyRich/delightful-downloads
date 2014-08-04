@@ -282,7 +282,7 @@
 }
 #ddownload-popular ol {
   margin: 0 -12px;
-  list-style-position: inside;
+  list-style: none;
 }
 #ddownload-popular ol li {
   margin: 0;
@@ -291,6 +291,11 @@
 #ddownload-popular ol li a {
   display: block;
   padding: 8px 12px;
+}
+#ddownload-popular ol li .position {
+  display: inline-block;
+  margin-right: 1em;
+  color: #777;
 }
 #ddownload-popular ol li .count,
 #ddownload-popular ol li .percentage {
@@ -598,7 +603,7 @@
 /* Progress Bar */
 #dedo-progress-bar {
   position: relative;
-  margin: 1em 0;
+  margin: 13px 0;
   width: 100%;
   height: 60px;
   background: #fcfcfc;

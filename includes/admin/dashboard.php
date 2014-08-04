@@ -74,9 +74,9 @@ function dedo_dashboard_downloads_widget() {
 
 			echo '<ol id="popular-downloads">';
 
-			foreach ( $popular_downloads as $popular_download ) {
+			foreach ( $popular_downloads as $key => $value ) {
 				echo '<li>';
-				echo '<a href="' . get_edit_post_link( $popular_download['ID'] ) . '">' . $popular_download['title'] . ' <span class="count">' . number_format_i18n( $popular_download['downloads'] ) . '</span></a>';
+				echo '<a href="' . get_edit_post_link( $value['ID'] ) . '"><span class="position">' . ( $key + 1 ) . '.</span>' . $value['title'] . ' <span class="count">' . number_format_i18n( $value['downloads'] ) . '</span></a>';
 				echo '</li>';
 			}
 
