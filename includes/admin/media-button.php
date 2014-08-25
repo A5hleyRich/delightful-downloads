@@ -63,7 +63,7 @@ function dedo_media_modal() {
 					<?php if ( $downloads ) : ?>
 						<p>
 							<label><span><?php _e( 'Download', 'delightful-downloads' ); ?></span>
-								<select id="dedo-select-download-dropdown" data-placeholder="<?php _e( 'Choose a download...', 'delightful-downloads' ); ?>">
+								<select id="dedo-select-download-dropdown">
 									<?php foreach ( $downloads as $download ) : ?>
 										<option value="<?php echo $download->ID; ?>"><?php echo $download->post_title; ?></option>
 									<?php endforeach; ?>
@@ -71,10 +71,10 @@ function dedo_media_modal() {
 							</label>
 						</p>
 						<p class="clear">
-							<label class="column-2"><span><?php _e( 'Style', 'delightful-downloads' ); ?></span>
-								<select id="dedo-select-style-dropdown" data-placeholder="<?php _e( 'Inherit', 'delightful-downloads' ); ?>" >
+							<label id="dedo-style-dropdown-container" class="column-2"><span><?php _e( 'Style', 'delightful-downloads' ); ?></span>
+								<select id="dedo-select-style-dropdown">
 									<optgroup label="<?php _e( 'Global', 'delightful-downloads' ); ?>">
-										<option><?php _e( 'Inherit', 'delightful-downloads' ); ?></option>
+										<option value=""><?php _e( 'Inherit', 'delightful-downloads' ); ?></option>
 									</optgroup>
 									<optgroup label="<?php _e( 'Styles', 'delightful-downloads' ); ?>">
 										<?php foreach ( $styles as $key => $value ) : ?>
@@ -84,10 +84,10 @@ function dedo_media_modal() {
 								</select>
 							</label>
 
-							<label class="column-2"><span><?php _e( 'Button', 'delightful-downloads' ); ?></span>
-								<select id="dedo-select-button-dropdown" data-placeholder="<?php _e( 'Inherit', 'delightful-downloads' ); ?>" >
+							<label id="dedo-button-dropdown-container" class="column-2"><span><?php _e( 'Button', 'delightful-downloads' ); ?></span>
+								<select id="dedo-select-button-dropdown">
 									<optgroup label="<?php _e( 'Global', 'delightful-downloads' ); ?>">
-										<option><?php _e( 'Inherit', 'delightful-downloads' ); ?></option>
+										<option value=""><?php _e( 'Inherit', 'delightful-downloads' ); ?></option>
 									</optgroup>
 									<optgroup label="<?php _e( 'Buttons', 'delightful-downloads' ); ?>">
 										<?php foreach ( $buttons as $key => $value ) : ?>
@@ -99,13 +99,13 @@ function dedo_media_modal() {
 						</p>
 						<p>
 							<label><span><?php _e( 'Text', 'delightful-downloads' ); ?></span>	
-								<input type="text" placeholder="<?php _e( 'Inherit', 'delightful-downloads' ); ?>" />
+								<input id="dedo-custom-text" type="text" placeholder="<?php _e( 'Inherit', 'delightful-downloads' ); ?>" />
 							</label>
 						</p>
 						<p class="buttons clear">
 							<a href="#" id="dedo-insert" class="button button-large button-primary"><?php _e( 'Insert', 'delightful-downloads' ); ?></a>
-							<a href="#" id="dedo-insert" class="button button-large right"><?php _e( 'File Size', 'delightful-downloads' ); ?></a>
-							<a href="#" id="dedo-insert" class="button button-large right"><?php _e( 'Download Count', 'delightful-downloads' ); ?></a>
+							<a href="#" id="dedo-file-size" class="button button-large right"><?php _e( 'File Size', 'delightful-downloads' ); ?></a>
+							<a href="#" id="dedo-download-count" class="button button-large right"><?php _e( 'Download Count', 'delightful-downloads' ); ?></a>
 						</p>
 					<?php endif; ?>
 

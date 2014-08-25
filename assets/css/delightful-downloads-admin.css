@@ -3,8 +3,8 @@
   margin-bottom: 24px;
 }
 #dedo-shortcode-modal .dedo-modal-content p {
-  font-size: 12px;
-  color: #666;
+  font-size: 13px;
+  color: #333;
 }
 #dedo-shortcode-modal .dedo-modal-content p.clear:after {
   content: "";
@@ -24,12 +24,12 @@
   padding-left: 10px;
 }
 #dedo-shortcode-modal .dedo-modal-content label span {
-  display: block;
-  margin-bottom: 4px;
+  line-height: 24px;
 }
 #dedo-shortcode-modal .dedo-modal-content input {
   display: block;
   width: 100%;
+  border: 1px solid #aaa;
 }
 #dedo-shortcode-modal .dedo-modal-content .buttons {
   margin: 24px -16px 0;
