@@ -55,37 +55,60 @@ function dedo_media_modal() {
 
 		?>
 			
-			<div id="dedo-shortcode-modal" class="dedo-modal" style="display: block; width: 40%; left: 50%; margin-left: -20%;">
+			<div id="dedo-shortcode-modal" class="dedo-modal" style="display: none; width: 30%; left: 50%; margin-left: -15%;">
 				<a href="#" class="dedo-modal-close" title="<?php _e( 'Close', 'delightful-downloads' ); ?>"><span class="media-modal-icon"></span></a>
 				<div class="dedo-modal-content">
 					<h1><?php _e( 'Insert Download', 'delightful-downloads' ); ?></h1>
+							
 					<?php if ( $downloads ) : ?>
 						<p>
-							<select id="dedo-select-download-dropdown" data-placeholder="<?php _e( 'Choose a download...', 'delightful-downloads' ); ?>">
-								<option></option>
-								<?php foreach ( $downloads as $download ) : ?>
-									<option value="<?php echo $download->ID; ?>"><?php echo $download->post_title; ?></option>
-								<?php endforeach; ?>
-							</select>
+							<label><span><?php _e( 'Download', 'delightful-downloads' ); ?></span>
+								<select id="dedo-select-download-dropdown" data-placeholder="<?php _e( 'Choose a download...', 'delightful-downloads' ); ?>">
+									<?php foreach ( $downloads as $download ) : ?>
+										<option value="<?php echo $download->ID; ?>"><?php echo $download->post_title; ?></option>
+									<?php endforeach; ?>
+								</select>
+							</label>
+						</p>
+						<p class="clear">
+							<label class="column-2"><span><?php _e( 'Style', 'delightful-downloads' ); ?></span>
+								<select id="dedo-select-style-dropdown" data-placeholder="<?php _e( 'Inherit', 'delightful-downloads' ); ?>" >
+									<optgroup label="<?php _e( 'Global', 'delightful-downloads' ); ?>">
+										<option><?php _e( 'Inherit', 'delightful-downloads' ); ?></option>
+									</optgroup>
+									<optgroup label="<?php _e( 'Styles', 'delightful-downloads' ); ?>">
+										<?php foreach ( $styles as $key => $value ) : ?>
+											<option value="<?php echo $key; ?>"><?php echo $value['name']; ?></option>
+										<?php endforeach; ?>
+									</optgroup>
+								</select>
+							</label>
+
+							<label class="column-2"><span><?php _e( 'Button', 'delightful-downloads' ); ?></span>
+								<select id="dedo-select-button-dropdown" data-placeholder="<?php _e( 'Inherit', 'delightful-downloads' ); ?>" >
+									<optgroup label="<?php _e( 'Global', 'delightful-downloads' ); ?>">
+										<option><?php _e( 'Inherit', 'delightful-downloads' ); ?></option>
+									</optgroup>
+									<optgroup label="<?php _e( 'Buttons', 'delightful-downloads' ); ?>">
+										<?php foreach ( $buttons as $key => $value ) : ?>
+											<option value="<?php echo $key; ?>"><?php echo $value['name']; ?></option>
+										<?php endforeach; ?>
+									</optgroup>
+								</select>
+							</label>
 						</p>
 						<p>
-							<label for=""><?php _e( 'Style', 'delightful-downloads' ); ?></label>
-							<select id="dedo-select-style-dropdown" data-placeholder="<?php _e( 'Inherit', 'delightful-downloads' ); ?>" >
-								<option></option>
-								<?php foreach ( $styles as $key => $value ) : ?>
-									<option value="<?php echo $key; ?>"><?php echo $value['name']; ?></option>
-								<?php endforeach; ?>
-							</select>
-
-							<label for=""><?php _e( 'Button', 'delightful-downloads' ); ?></label>
-							<select id="dedo-select-button-dropdown" data-placeholder="<?php _e( 'Inherit', 'delightful-downloads' ); ?>" >
-								<option></option>
-								<?php foreach ( $buttons as $key => $value ) : ?>
-									<option value="<?php echo $key; ?>"><?php echo $value['name']; ?></option>
-								<?php endforeach; ?>
-							</select>
+							<label><span><?php _e( 'Text', 'delightful-downloads' ); ?></span>	
+								<input type="text" placeholder="<?php _e( 'Inherit', 'delightful-downloads' ); ?>" />
+							</label>
+						</p>
+						<p class="buttons clear">
+							<a href="#" id="dedo-insert" class="button button-large button-primary"><?php _e( 'Insert', 'delightful-downloads' ); ?></a>
+							<a href="#" id="dedo-insert" class="button button-large right"><?php _e( 'File Size', 'delightful-downloads' ); ?></a>
+							<a href="#" id="dedo-insert" class="button button-large right"><?php _e( 'Download Count', 'delightful-downloads' ); ?></a>
 						</p>
 					<?php endif; ?>
+
 				</div>
 			</div>
 
