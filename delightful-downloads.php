@@ -182,6 +182,9 @@ class Delightful_Downloads {
 		// Install database table
 		$dedo_statistics->setup_table();
 
+		// Add version to database
+		add_option( 'delightful-downloads-version', DEDO_VERSION );
+
 		// Add default options to database if no options exist
 		add_option( 'delightful-downloads', $dedo_default_options );
 
