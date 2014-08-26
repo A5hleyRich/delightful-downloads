@@ -16,15 +16,8 @@ if ( !defined( 'ABSPATH' ) ) exit;
  * @since  1.0
  */
 function dedo_enqueue_scripts( $page ) {
-	global $dedo_options;
-	
 	// Register frontend CSS
 	wp_register_style( 'dedo-css', DEDO_PLUGIN_URL . 'assets/css/delightful-downloads.css', '', DEDO_VERSION, 'all' );
-	
-	// Enqueue frontend CSS if option is enabled
-	if ( $dedo_options['enable_css'] ) {
-		wp_enqueue_style( 'dedo-css' );
-	}
 }
 add_action( 'wp_enqueue_scripts', 'dedo_enqueue_scripts' );
 
