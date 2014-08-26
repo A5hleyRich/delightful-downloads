@@ -139,7 +139,7 @@ jQuery( document ).ready( function( $ ){
 			// File added to queue
 			this.uploader.bind( 'FilesAdded', function( up, file ) {
 				self.$progressError.hide();
-				self.$progress.slideDown( 900 );
+				self.$progress.show();
 				
 				up.refresh();
 				up.start();
@@ -166,7 +166,7 @@ jQuery( document ).ready( function( $ ){
 			 		DEDO_Admin_Download.addFile( response.file.url );
 			 		
 			 		// Close modal and hide progress bar
-			 		self.$progress.delay( 900 ).slideUp( 900, function() {
+			 		self.$progress.delay( 900 ).hide( 0, function() {
 			 			$( 'body' ).trigger( 'closeModal' );
 			 		} );
 

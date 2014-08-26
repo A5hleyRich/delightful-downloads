@@ -592,9 +592,6 @@
   background: #04a4cc;
 }
 /* Blue */
-.admin-color-blue .dedo-download-list tr.ui-selected {
-  background-color: rgba(219, 152, 37, 0.2);
-}
 .admin-color-blue #ddownload-count .count {
   color: #52accc;
 }
@@ -605,9 +602,6 @@
   background: #52accc;
 }
 /* Coffee */
-.admin-color-coffee .dedo-download-list tr.ui-selected {
-  background-color: rgba(199, 165, 137, 0.2);
-}
 .admin-color-coffee #ddownload-count .count {
   color: #c7a589;
 }
@@ -618,9 +612,6 @@
   background: #c7a589;
 }
 /* Ectoplasm */
-.admin-color-ectoplasm .dedo-download-list tr.ui-selected {
-  background-color: rgba(137, 153, 58, 0.2);
-}
 .admin-color-ectoplasm #ddownload-count .count {
   color: #a3b745;
 }
@@ -631,9 +622,6 @@
   background: #a3b745;
 }
 /* Midnight */
-.admin-color-midnight .dedo-download-list tr.ui-selected {
-  background-color: rgba(217, 44, 35, 0.2);
-}
 .admin-color-midnight #ddownload-count .count {
   color: #e14d43;
 }
@@ -644,9 +632,6 @@
   background: #e14d43;
 }
 /* Ocean */
-.admin-color-ocean .dedo-download-list tr.ui-selected {
-  background-color: rgba(158, 186, 160, 0.2);
-}
 .admin-color-ocean #ddownload-count .count {
   color: #9ebaa0;
 }
@@ -657,9 +642,6 @@
   background: #9ebaa0;
 }
 /* Sunrise */
-.admin-color-sunrise .dedo-download-list tr.ui-selected {
-  background-color: rgba(221, 130, 59, 0.2);
-}
 .admin-color-sunrise #ddownload-count .count {
   color: #dd823b;
 }
