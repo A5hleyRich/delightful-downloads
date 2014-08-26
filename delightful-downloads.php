@@ -183,13 +183,13 @@ class Delightful_Downloads {
 		$dedo_statistics->setup_table();
 
 		// Add version to database
-		add_option( 'delightful-downloads-version', DEDO_VERSION );
+		update_option( 'delightful-downloads-version', DEDO_VERSION );
 
-		// Add default options to database if no options exist
-		add_option( 'delightful-downloads', $dedo_default_options );
+		// Add default options to database
+		update_option( 'delightful-downloads', $dedo_default_options );
 
 		// Add option for admin notices
-		add_option( 'delightful-downloads-notices', array() );
+		update_option( 'delightful-downloads-notices', array() );
 
 		// Run folder protection
 		dedo_folder_protection();
