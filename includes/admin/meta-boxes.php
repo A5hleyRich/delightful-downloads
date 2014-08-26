@@ -247,7 +247,7 @@ function dedo_meta_box_download( $post ) {
 		<a href="#" class="dedo-modal-close" title="Close"><span class="media-modal-icon"></span></a>
 		<div class="dedo-modal-content">
 			<h1><?php _e( 'Existing File', 'delightful-downloads' ); ?></h1>
-			<p><?php _e( 'Manaully enter a file URL, or use the file browser.', 'delightful-downloads' ); ?></p>
+			<p><?php _e( 'Manually enter a file URL, or use the file browser.', 'delightful-downloads' ); ?></p>
 			<p>	
 				<?php wp_nonce_field( 'ddownload_file_save', 'ddownload_file_save_nonce' ); ?>
 				<input name="dedo-file-url" id="dedo-file-url" type="text" class="large-text" value="<?php echo $file_url; ?>" placeholder="<?php _e( 'File URL or path...', 'delightful-downloads' ); ?>" />
