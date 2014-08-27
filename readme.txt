@@ -68,12 +68,14 @@ Please refer to the [FAQ](http://delightfulwp.com/delightful-downloads/faq/ "Del
 
 == Screenshots ==
 
-1. Downloads overview screen.
-2. Add new download screen.
-3. Logs overview screen.
-4. Shortcode generator.
-5. Example shortcodes.
-6. Settings screen.
+1. Downloads overview screen
+2. Add new download screen - upload file
+3. Add new download screen - existing file
+4. Edit download screen
+5. Logs overview screen
+6. Shortcode generator
+7. Example shortcodes
+8. Settings screen
 
 == Changelog ==
 
