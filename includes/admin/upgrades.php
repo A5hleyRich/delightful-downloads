@@ -77,7 +77,7 @@ function dedo_upgrade_1_4() {
 
 	if ( get_option( 'delightful-downloads-legacy-logs' ) ) {
 		
-		$message .=  ' ' . __( sprintf( 'Please visit the %slogs screen%s to migrate your download statistics.', '<a href="' . admin_url( 'edit.php?post_type=dedo_download&page=dedo_statistics' ) . '">', '</a>' ), 'delightful-downloads' );
+		$message .=  ' ' . sprintf( __( 'Please visit the %slogs screen%s to migrate your download statistics.', 'delightful-downloads' ), '<a href="' . admin_url( 'edit.php?post_type=dedo_download&page=dedo_statistics' ) . '">', '</a>' );
 	}
 
 	$dedo_notices->add( 'updated', $message );

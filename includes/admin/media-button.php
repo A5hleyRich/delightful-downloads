@@ -108,7 +108,7 @@ function dedo_media_modal() {
 							<a href="#" id="dedo-download-count" class="button button-large right"><?php _e( 'Download Count', 'delightful-downloads' ); ?></a>
 						</p>
 					<?php else: ?>
-						<p><?php _e( sprintf( 'Please %sadd%s a new download.', '<a href="' . admin_url( 'post-new.php?post_type=dedo_download' ) . '" target="_blank">', '</a>' ), 'delightful-downloads' ); ?></p>
+						<p><?php echo sprintf( __( 'Please %sadd%s a new download.', 'delightful-downloads' ), '<a href="' . admin_url( 'post-new.php?post_type=dedo_download' ) . '" target="_blank">', '</a>' ); ?></p>
 					<?php endif; ?>
 
 				</div>

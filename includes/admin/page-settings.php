@@ -346,7 +346,7 @@ function dedo_settings_default_text_field() {
 	$text = $dedo_options['default_text'];
 
 	echo '<input type="text" name="delightful-downloads[default_text]" value="' . esc_attr( $text ) . '" class="regular-text" />';
-	echo '<p class="description">' . __( sprintf( 'The default text to display, when using the %s shortcode. This can be overridden on a per-download basis.', '<code>[ddownload]</code>' ), 'delightful-downloads' );
+	echo '<p class="description">' . sprintf( __( 'The default text to display, when using the %s shortcode. This can be overridden on a per-download basis.', 'delightful-downloads' ), '<code>[ddownload]</code>' );
 }
 
 /**
@@ -366,7 +366,7 @@ function dedo_settings_default_style_field() {
 		echo '<option value="' . $key . '" ' . $selected . '>' . $value['name'] . '</option>';	
 	}
 	echo '</select>';
-	echo '<p class="description">' . __( sprintf( 'The default output style, when using the %s shortcode. This can be overridden on a per-download basis.', '<code>[ddownload]</code>' ), 'delightful-downloads' );
+	echo '<p class="description">' . sprintf( __( 'The default output style, when using the %s shortcode. This can be overridden on a per-download basis.', 'delightful-downloads' ), '<code>[ddownload]</code>' );
 }
 
 /**
@@ -388,7 +388,7 @@ function dedo_settings_default_button_field() {
 	}
 
 	echo '</select>';
-	echo '<p class="description">' . __( sprintf( 'The default button style, when using the %s shortcode. This can be overridden on a per-download basis.', '<code>[ddownload]</code>' ), 'delightful-downloads' );
+	echo '<p class="description">' . sprintf( __( 'The default button style, when using the %s shortcode. This can be overridden on a per-download basis.', 'delightful-downloads' ), '<code>[ddownload]</code>' );
 }
 
 /**
@@ -410,7 +410,7 @@ function dedo_settings_default_list_field() {
 	}
 
 	echo '</select>';
-	echo '<p class="description">' . __( sprintf( 'The default output style, when using the %s shortcode. This can be overridden on a per-list basis.', '<code>[ddownload_list]</code>' ), 'delightful-downloads' );
+	echo '<p class="description">' . sprintf( __( 'The default output style, when using the %s shortcode. This can be overridden on a per-list basis.', 'delightful-downloads' ), '<code>[ddownload_list]</code>' );
 }
 
 /**
