@@ -79,7 +79,11 @@ Please refer to the [FAQ](http://delightfulwp.com/delightful-downloads/faq/ "Del
 
 = 1.5.2 =
 
-
+* Enhancement: New shortcode generator window.
+* Enhancement: The front-end CSS is now only loaded when the [ddownload] shortcode is detected.
+* Enhancement: Langauges updated.
+* Bug Fix: Dramatic performance increase within the WordPress admin area.
+* Bug Fix: Upgrades no longer fire on plugin activation.
 
 = 1.5.1 =
 
