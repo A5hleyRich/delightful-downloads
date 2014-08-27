@@ -219,7 +219,7 @@ function dedo_meta_box_download( $post ) {
 		var pluploadArgs = <?php echo json_encode( $plupload_args ); ?>;
 	</script>
 
-	<div id="dedo-upload-modal" class="dedo-modal" style="display: block; width: 40%; left: 50%; margin-left: -20%;">
+	<div id="dedo-upload-modal" class="dedo-modal" style="display: none; width: 40%; left: 50%; margin-left: -20%;">
 		<a href="#" class="dedo-modal-close" title="Close"><span class="media-modal-icon"></span></a>
 		<div id="dedo-upload-container" class="dedo-modal-content">
 			<h1><?php _e( 'Upload File', 'delightful-downloads' ); ?></h1>
