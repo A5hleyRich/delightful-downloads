@@ -4,8 +4,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Delightful Downloads\n"
-"POT-Creation-Date: 2014-08-03 18:10-0000\n"
-"PO-Revision-Date: 2014-08-03 18:22-0000\n"
+"POT-Creation-Date: 2014-08-27 14:25-0000\n"
+"PO-Revision-Date: 2014-08-27 14:31-0000\n"
 "Last-Translator: \n"
 "Language-Team: Swedish (Sweden) (http://www.transifex.com/projects/p/"
 "delightful-downloads/language/sv_SE/)\n"
@@ -14,7 +14,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Language: sv_SE\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 1.6.7\n"
+"X-Generator: Poedit 1.6.8\n"
 "X-Poedit-Basepath: ..\n"
 "X-Poedit-KeywordsList: __;_e;_n:1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;esc_attr__;"
 "esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c;_n_noop:1,2;"
@@ -22,7 +22,7 @@ msgstr ""
 "X-Poedit-SourceCharset: UTF-8\n"
 "X-Poedit-SearchPath-0: .\n"
 
-#: delightful-downloads.php:217 includes/admin/page-settings.php:19
+#: delightful-downloads.php:220 includes/admin/page-settings.php:19
 msgid "Settings"
 msgstr "Inställningar"
 
@@ -40,8 +40,9 @@ msgid "Logs"
 msgstr "Loggar"
 
 #: includes/admin/class-dedo-list-table.php:48
-#: includes/admin/meta-boxes.php:19 includes/admin/page-statistics.php:188
-#: includes/options.php:68 includes/post-types.php:22
+#: includes/admin/media-button.php:65 includes/admin/meta-boxes.php:19
+#: includes/admin/page-statistics.php:188 includes/options.php:68
+#: includes/post-types.php:22
 msgid "Download"
 msgstr "Ladda ner"
 
@@ -116,59 +117,63 @@ msgstr "Populära nedladdningar"
 msgid "Failed security check!"
 msgstr "Säkerhetskontroll misslyckades!"
 
-#: includes/admin/media-button.php:39 includes/admin/media-button.php:111
+#: includes/admin/media-button.php:59
+msgid "Close"
+msgstr ""
+
+#: includes/admin/media-button.php:61
 msgid "Insert Download"
 msgstr "Infoga fil"
 
-#: includes/admin/media-button.php:43
-msgid "Search"
-msgstr "Sök"
-
-#: includes/admin/media-button.php:49 includes/functions.php:88
-#: includes/post-types.php:60
-msgid "Title"
-msgstr "Titel"
-
-#: includes/admin/media-button.php:50
-msgid "Size"
-msgstr "Storlek"
-
-#: includes/admin/media-button.php:51 includes/post-types.php:21
-#: includes/post-types.php:33 includes/post-types.php:64
-msgid "Downloads"
-msgstr "Nedladdningar"
-
-#: includes/admin/media-button.php:79
-msgid "Download Details"
-msgstr "Nedladdningsdetaljer"
-
-#: includes/admin/media-button.php:82
-msgid "Downloads:"
-msgstr "Hämtad:"
-
-#: includes/admin/media-button.php:85
-msgid "Text"
-msgstr "Text"
-
-#: includes/admin/media-button.php:87
+#: includes/admin/media-button.php:74
 msgid "Style"
 msgstr "Stil"
 
-#: includes/admin/media-button.php:89 includes/admin/media-button.php:101
-msgid "Default"
-msgstr "Förvalt"
+#: includes/admin/media-button.php:76 includes/admin/media-button.php:89
+#: includes/admin/meta-boxes.php:184
+msgid "Global"
+msgstr "Global"
 
-#: includes/admin/media-button.php:99
-msgid "Color"
-msgstr "Färg"
+#: includes/admin/media-button.php:77 includes/admin/media-button.php:90
+#: includes/admin/media-button.php:102 includes/admin/meta-boxes.php:166
+#: includes/admin/meta-boxes.php:175 includes/admin/meta-boxes.php:183
+#: includes/admin/meta-boxes.php:184 includes/admin/meta-boxes.php:203
+#: includes/post-types.php:127 includes/post-types.php:139
+msgid "Inherit"
+msgstr "Överta"
 
-#: includes/admin/media-button.php:112
-msgid "Insert File Size"
-msgstr "Infoga filstorlek"
+#: includes/admin/media-button.php:79
+msgid "Styles"
+msgstr ""
 
-#: includes/admin/media-button.php:113
-msgid "Insert Download Count"
-msgstr "Infoga antal hämtningar"
+#: includes/admin/media-button.php:87 includes/functions.php:22
+msgid "Button"
+msgstr "Knapp"
+
+#: includes/admin/media-button.php:92
+msgid "Buttons"
+msgstr ""
+
+#: includes/admin/media-button.php:101
+msgid "Text"
+msgstr "Text"
+
+#: includes/admin/media-button.php:106
+msgid "Insert"
+msgstr ""
+
+#: includes/admin/media-button.php:107 includes/post-types.php:62
+msgid "File Size"
+msgstr "Filstorlek"
+
+#: includes/admin/media-button.php:108 includes/admin/meta-boxes.php:150
+msgid "Download Count"
+msgstr "Räkneverk"
+
+#: includes/admin/media-button.php:111
+#, php-format
+msgid "Please %sadd%s a new download."
+msgstr ""
 
 #: includes/admin/meta-boxes.php:45 includes/admin/meta-boxes.php:48
 #, php-format
@@ -243,10 +248,6 @@ msgstr "Ladda upp fil"
 msgid "Existing File"
 msgstr "Välj befintlig fil"
 
-#: includes/admin/meta-boxes.php:150
-msgid "Download Count"
-msgstr "Räkneverk"
-
 #: includes/admin/meta-boxes.php:154
 msgid "The number of times this file has been downloaded."
 msgstr "Det antal gånger som denna fil har hämtats."
@@ -276,20 +277,9 @@ msgstr "Ja"
 msgid "No"
 msgstr "Nej"
 
-#: includes/admin/meta-boxes.php:166 includes/admin/meta-boxes.php:175
-#: includes/admin/meta-boxes.php:183 includes/admin/meta-boxes.php:184
-#: includes/admin/meta-boxes.php:203 includes/post-types.php:127
-#: includes/post-types.php:139
-msgid "Inherit"
-msgstr "Överta"
-
 #: includes/admin/meta-boxes.php:167
 msgid "Allow only logged in users to download this file."
 msgstr "Tillåt endast inloggade användare att ladda ner filen."
-
-#: includes/admin/meta-boxes.php:184
-msgid "Global"
-msgstr "Global"
 
 #: includes/admin/meta-boxes.php:184
 msgid "Pages"
@@ -302,6 +292,14 @@ msgstr "Den sida som icke-medlemmar omdirigeras till."
 #: includes/admin/meta-boxes.php:198
 msgid "Open In Browser"
 msgstr "Öppna i webbläsare"
+
+#: includes/admin/meta-boxes.php:204
+#, php-format
+msgid ""
+"This file will attempt to open in the browser window. If the file is located "
+"within the Delightful Downloads upload directory, you will need to set the "
+"%sfolder protection%s setting to 'No'."
+msgstr ""
 
 #: includes/admin/meta-boxes.php:211
 msgid "Replace File:"
@@ -319,26 +317,26 @@ msgstr "Välj befintlig"
 msgid "Delete File"
 msgstr "Radera filen"
 
-#: includes/admin/meta-boxes.php:227
+#: includes/admin/meta-boxes.php:228
 msgid "Drop file here"
 msgstr "Släpp filen här"
 
-#: includes/admin/meta-boxes.php:228
+#: includes/admin/meta-boxes.php:229
 msgid "or"
 msgstr "eller"
 
-#: includes/admin/meta-boxes.php:229
+#: includes/admin/meta-boxes.php:230
 msgid "Select File"
 msgstr "Välj fil"
 
-#: includes/admin/meta-boxes.php:231
+#: includes/admin/meta-boxes.php:235
 #, php-format
 msgid "Maximum upload file size: %s."
 msgstr "Max storlek på uppladdad fil: %s."
 
 #: includes/admin/meta-boxes.php:248
-msgid "Manaully enter a file URL, or use the file browser."
-msgstr "Skriv en URL till en fil, eller använd filhanteraren."
+msgid "Manually enter a file URL, or use the file browser."
+msgstr ""
 
 #: includes/admin/meta-boxes.php:251
 msgid "File URL or path..."
@@ -466,6 +464,34 @@ msgstr ""
 "Lista de Användaragenter som ska blockeras från att ladda ner filer. En per "
 "rad."
 
+#: includes/admin/page-settings.php:349
+#, php-format
+msgid ""
+"The default text to display, when using the %s shortcode. This can be "
+"overridden on a per-download basis."
+msgstr ""
+
+#: includes/admin/page-settings.php:369
+#, php-format
+msgid ""
+"The default output style, when using the %s shortcode. This can be "
+"overridden on a per-download basis."
+msgstr ""
+
+#: includes/admin/page-settings.php:391
+#, php-format
+msgid ""
+"The default button style, when using the %s shortcode. This can be "
+"overridden on a per-download basis."
+msgstr ""
+
+#: includes/admin/page-settings.php:413
+#, php-format
+msgid ""
+"The default output style, when using the %s shortcode. This can be "
+"overridden on a per-list basis."
+msgstr ""
+
 #: includes/admin/page-settings.php:428
 msgid "Log events triggered by admin users."
 msgstr "Logga händelser som orsakas av adminanvändare."
@@ -563,8 +589,10 @@ msgid "Export Logs"
 msgstr "Exportloggar"
 
 #: includes/admin/page-statistics.php:74
-msgid "Export log entries to a CSV file. Please select a date range:"
-msgstr "Exportera loggarna till en CSV-fil. Välj först en period:"
+msgid ""
+"Export log entries to a CSV file. Please select a date range, or leave blank "
+"to export all:"
+msgstr ""
 
 #: includes/admin/page-statistics.php:77
 msgid "Start Date"
@@ -598,6 +626,11 @@ msgstr "Loggarna permanent raderade."
 msgid "Delightful Downloads updated to version 1.4."
 msgstr "Delightful Downloads uppdaterade till version 1.4."
 
+#: includes/admin/upgrades.php:80
+#, php-format
+msgid "Please visit the %slogs screen%s to migrate your download statistics."
+msgstr ""
+
 #: includes/admin/upgrades.php:109
 msgid "Delightful Downloads updated to version 1.5."
 msgstr "Delightful Downloads uppdaterad till version 1.5."
@@ -630,10 +663,6 @@ msgstr "JavaScript måste vara aktiverat för att migrera äldre loggar."
 #: includes/cron.php:73
 msgid "Once Weekly"
 msgstr "En gång i veckan"
-
-#: includes/functions.php:22
-msgid "Button"
-msgstr "Knapp"
 
 #: includes/functions.php:26
 msgid "Link"
@@ -670,6 +699,10 @@ msgstr "Röd"
 #: includes/functions.php:71
 msgid "Yellow"
 msgstr "Gul"
+
+#: includes/functions.php:88 includes/post-types.php:60
+msgid "Title"
+msgstr "Titel"
 
 #: includes/functions.php:92
 msgid "Title (Date)"
@@ -767,6 +800,11 @@ msgstr "Mappskydd"
 msgid "Complete Uninstall"
 msgstr "Fullständig avinstallation"
 
+#: includes/post-types.php:21 includes/post-types.php:33
+#: includes/post-types.php:64
+msgid "Downloads"
+msgstr "Nedladdningar"
+
 #: includes/post-types.php:23
 msgid "Add New"
 msgstr "Skapa ny"
@@ -807,10 +845,6 @@ msgstr "Inga nedladdningar hittades i skräp"
 msgid "File"
 msgstr "Fil"
 
-#: includes/post-types.php:62
-msgid "File Size"
-msgstr "Filstorlek"
-
 #: includes/post-types.php:63
 msgid "Shortcode"
 msgstr "Kortkod"
@@ -847,12 +881,12 @@ msgstr "En fil måste bifogas denna nedladdning. "
 msgid "Server error, file cannot be opened!"
 msgstr "Serverfel, filen kan inte öppnas!"
 
-#: includes/shortcodes.php:46 includes/shortcodes.php:351
-#: includes/shortcodes.php:415
+#: includes/shortcodes.php:46 includes/shortcodes.php:356
+#: includes/shortcodes.php:420
 msgid "Invalid download ID."
 msgstr "Nedladdningens ID är ogiltigt."
 
-#: includes/shortcodes.php:58 includes/shortcodes.php:261
+#: includes/shortcodes.php:58 includes/shortcodes.php:266
 msgid "Invalid style attribute."
 msgstr "Ogiltigt stilattribut."
 
@@ -860,19 +894,19 @@ msgstr "Ogiltigt stilattribut."
 msgid "Invalid button attribute."
 msgstr "Ogiltigt knappattribut."
 
-#: includes/shortcodes.php:146
+#: includes/shortcodes.php:151
 msgid "Invalid orderby attribute."
 msgstr "Ogiltigt sorterapå-attribut."
 
-#: includes/shortcodes.php:177
+#: includes/shortcodes.php:182
 msgid "Invalid order attribute."
 msgstr "Ogiltigt sorteringsattribut."
 
-#: includes/shortcodes.php:186
+#: includes/shortcodes.php:191
 msgid "Invalid relation attribute."
 msgstr "Ogiltigt relationsattribut"
 
-#: includes/shortcodes.php:317
+#: includes/shortcodes.php:322
 msgid "No downloads found."
 msgstr "Inga nedladdningar hittades."
 

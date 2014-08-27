@@ -6,8 +6,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Delightful Downloads\n"
-"POT-Creation-Date: 2014-08-03 18:10-0000\n"
-"PO-Revision-Date: 2014-08-03 18:20-0000\n"
+"POT-Creation-Date: 2014-08-27 14:25-0000\n"
+"PO-Revision-Date: 2014-08-27 14:31-0000\n"
 "Last-Translator: \n"
 "Language-Team: French (France) (http://www.transifex.com/projects/p/"
 "delightful-downloads/language/fr_FR/)\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Language: fr_FR\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Poedit 1.6.7\n"
+"X-Generator: Poedit 1.6.8\n"
 "X-Poedit-Basepath: ..\n"
 "X-Poedit-KeywordsList: __;_e;_n:1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;esc_attr__;"
 "esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c;_n_noop:1,2;"
@@ -24,7 +24,7 @@ msgstr ""
 "X-Poedit-SourceCharset: UTF-8\n"
 "X-Poedit-SearchPath-0: .\n"
 
-#: delightful-downloads.php:217 includes/admin/page-settings.php:19
+#: delightful-downloads.php:220 includes/admin/page-settings.php:19
 msgid "Settings"
 msgstr "Réglages"
 
@@ -42,8 +42,9 @@ msgid "Logs"
 msgstr "Fichiers journaux"
 
 #: includes/admin/class-dedo-list-table.php:48
-#: includes/admin/meta-boxes.php:19 includes/admin/page-statistics.php:188
-#: includes/options.php:68 includes/post-types.php:22
+#: includes/admin/media-button.php:65 includes/admin/meta-boxes.php:19
+#: includes/admin/page-statistics.php:188 includes/options.php:68
+#: includes/post-types.php:22
 msgid "Download"
 msgstr "Téléchargement"
 
@@ -118,59 +119,63 @@ msgstr "Téléchargements populaires"
 msgid "Failed security check!"
 msgstr "Échec de la vérification de sécurité !"
 
-#: includes/admin/media-button.php:39 includes/admin/media-button.php:111
+#: includes/admin/media-button.php:59
+msgid "Close"
+msgstr ""
+
+#: includes/admin/media-button.php:61
 msgid "Insert Download"
 msgstr "Insérer téléchargement"
 
-#: includes/admin/media-button.php:43
-msgid "Search"
-msgstr "Rechercher"
-
-#: includes/admin/media-button.php:49 includes/functions.php:88
-#: includes/post-types.php:60
-msgid "Title"
-msgstr "Titre"
-
-#: includes/admin/media-button.php:50
-msgid "Size"
-msgstr "Taille"
-
-#: includes/admin/media-button.php:51 includes/post-types.php:21
-#: includes/post-types.php:33 includes/post-types.php:64
-msgid "Downloads"
-msgstr "Téléchargements"
-
-#: includes/admin/media-button.php:79
-msgid "Download Details"
-msgstr "Détails du Téléchargement"
-
-#: includes/admin/media-button.php:82
-msgid "Downloads:"
-msgstr "Téléchargements :"
-
-#: includes/admin/media-button.php:85
-msgid "Text"
-msgstr "Texte"
-
-#: includes/admin/media-button.php:87
+#: includes/admin/media-button.php:74
 msgid "Style"
 msgstr "Style"
 
-#: includes/admin/media-button.php:89 includes/admin/media-button.php:101
-msgid "Default"
-msgstr "Valeur par défaut"
+#: includes/admin/media-button.php:76 includes/admin/media-button.php:89
+#: includes/admin/meta-boxes.php:184
+msgid "Global"
+msgstr "Global"
 
-#: includes/admin/media-button.php:99
-msgid "Color"
-msgstr "Couleur"
+#: includes/admin/media-button.php:77 includes/admin/media-button.php:90
+#: includes/admin/media-button.php:102 includes/admin/meta-boxes.php:166
+#: includes/admin/meta-boxes.php:175 includes/admin/meta-boxes.php:183
+#: includes/admin/meta-boxes.php:184 includes/admin/meta-boxes.php:203
+#: includes/post-types.php:127 includes/post-types.php:139
+msgid "Inherit"
+msgstr "Hérité"
 
-#: includes/admin/media-button.php:112
-msgid "Insert File Size"
-msgstr "Insérer la taille du fichier"
+#: includes/admin/media-button.php:79
+msgid "Styles"
+msgstr ""
 
-#: includes/admin/media-button.php:113
-msgid "Insert Download Count"
-msgstr "Insérer le nombre de téléchargement"
+#: includes/admin/media-button.php:87 includes/functions.php:22
+msgid "Button"
+msgstr "Bouton"
+
+#: includes/admin/media-button.php:92
+msgid "Buttons"
+msgstr ""
+
+#: includes/admin/media-button.php:101
+msgid "Text"
+msgstr "Texte"
+
+#: includes/admin/media-button.php:106
+msgid "Insert"
+msgstr ""
+
+#: includes/admin/media-button.php:107 includes/post-types.php:62
+msgid "File Size"
+msgstr "Taille du fichier"
+
+#: includes/admin/media-button.php:108 includes/admin/meta-boxes.php:150
+msgid "Download Count"
+msgstr "Nombre de téléchargement"
+
+#: includes/admin/media-button.php:111
+#, php-format
+msgid "Please %sadd%s a new download."
+msgstr ""
 
 #: includes/admin/meta-boxes.php:45 includes/admin/meta-boxes.php:48
 #, php-format
@@ -223,15 +228,15 @@ msgstr "Brouillon du téléchargement mis à jour."
 
 #: includes/admin/meta-boxes.php:87
 msgid "Local File"
-msgstr ""
+msgstr "Fichier local"
 
 #: includes/admin/meta-boxes.php:88
 msgid "Remote File"
-msgstr ""
+msgstr "Fichier distant"
 
 #: includes/admin/meta-boxes.php:89
 msgid "Inaccessible File"
-msgstr ""
+msgstr "Fichier inaccessible"
 
 #: includes/admin/meta-boxes.php:105
 msgid "Allowed Files"
@@ -243,20 +248,16 @@ msgstr "Télécharger fichier"
 
 #: includes/admin/meta-boxes.php:132 includes/admin/meta-boxes.php:247
 msgid "Existing File"
-msgstr ""
-
-#: includes/admin/meta-boxes.php:150
-msgid "Download Count"
-msgstr ""
+msgstr "Fichier existant"
 
 #: includes/admin/meta-boxes.php:154
 msgid "The number of times this file has been downloaded."
-msgstr ""
+msgstr "Le nombre de fois qu'un fichier a été téléchargé."
 
 #: includes/admin/meta-boxes.php:161 includes/options.php:44
 #: includes/post-types.php:65
 msgid "Members Only"
-msgstr ""
+msgstr "Membres uniquement"
 
 #: includes/admin/meta-boxes.php:164 includes/admin/meta-boxes.php:201
 #: includes/admin/page-settings.php:269 includes/admin/page-settings.php:285
@@ -278,20 +279,10 @@ msgstr "Oui"
 msgid "No"
 msgstr "Non"
 
-#: includes/admin/meta-boxes.php:166 includes/admin/meta-boxes.php:175
-#: includes/admin/meta-boxes.php:183 includes/admin/meta-boxes.php:184
-#: includes/admin/meta-boxes.php:203 includes/post-types.php:127
-#: includes/post-types.php:139
-msgid "Inherit"
-msgstr "Hérité"
-
 #: includes/admin/meta-boxes.php:167
 msgid "Allow only logged in users to download this file."
 msgstr ""
-
-#: includes/admin/meta-boxes.php:184
-msgid "Global"
-msgstr ""
+"Autoriser uniquement les utilisateurs connectés à télécharger des fichiers."
 
 #: includes/admin/meta-boxes.php:184
 msgid "Pages"
@@ -299,15 +290,23 @@ msgstr "Pages"
 
 #: includes/admin/meta-boxes.php:191
 msgid "The page to redirect non-members."
-msgstr ""
+msgstr "La page où rediriger les non-membres."
 
 #: includes/admin/meta-boxes.php:198
 msgid "Open In Browser"
+msgstr "Ouvrir dans le navigateur"
+
+#: includes/admin/meta-boxes.php:204
+#, php-format
+msgid ""
+"This file will attempt to open in the browser window. If the file is located "
+"within the Delightful Downloads upload directory, you will need to set the "
+"%sfolder protection%s setting to 'No'."
 msgstr ""
 
 #: includes/admin/meta-boxes.php:211
 msgid "Replace File:"
-msgstr ""
+msgstr "Remplacer le fichier :"
 
 #: includes/admin/meta-boxes.php:212
 msgid "Upload"
@@ -315,36 +314,36 @@ msgstr "Envoyer"
 
 #: includes/admin/meta-boxes.php:213
 msgid "Select Existing"
-msgstr ""
+msgstr "Sélectionner un existant"
 
 #: includes/admin/meta-boxes.php:214
 msgid "Delete File"
-msgstr ""
-
-#: includes/admin/meta-boxes.php:227
-msgid "Drop file here"
-msgstr ""
+msgstr "Supprimer le fichier"
 
 #: includes/admin/meta-boxes.php:228
+msgid "Drop file here"
+msgstr "Déposez le fichier ici"
+
+#: includes/admin/meta-boxes.php:229
 msgid "or"
 msgstr "ou"
 
-#: includes/admin/meta-boxes.php:229
+#: includes/admin/meta-boxes.php:230
 msgid "Select File"
-msgstr "Sélectionner un fichier"
+msgstr "Sélectionnez un fichier"
 
-#: includes/admin/meta-boxes.php:231
+#: includes/admin/meta-boxes.php:235
 #, php-format
 msgid "Maximum upload file size: %s."
 msgstr "Taille maximale d&rsquo;un fichier mis en ligne&nbsp;: %s."
 
 #: includes/admin/meta-boxes.php:248
-msgid "Manaully enter a file URL, or use the file browser."
+msgid "Manually enter a file URL, or use the file browser."
 msgstr ""
 
 #: includes/admin/meta-boxes.php:251
 msgid "File URL or path..."
-msgstr ""
+msgstr "URL du fichier ou chemin..."
 
 #: includes/admin/meta-boxes.php:254
 msgid "Loading..."
@@ -429,23 +428,28 @@ msgstr "%sTwitter%s"
 
 #: includes/admin/page-settings.php:271
 msgid "Allow downloads to be tagged or categorised."
-msgstr ""
+msgstr "Autoriser la catégorisation et le tague des téléchargements."
 
 #: includes/admin/page-settings.php:287
 msgid ""
 "Allow only logged in users to download files. This can be overridden on a "
 "per-download basis."
 msgstr ""
+"Autoriser uniquement les utilisateurs connectés à télécharger des fichiers. "
+"Cela peut être modifié pour chaque téléchargement individuellement."
 
 #: includes/admin/page-settings.php:296
 msgid "No Page (Generic Error)"
-msgstr ""
+msgstr "Aucune page (erreur générique)"
 
 #: includes/admin/page-settings.php:302
 msgid ""
 "The page to redirect non-members. If no page is selected, a generic error "
 "message will be displayed. This can be overridden on a per-download basis."
 msgstr ""
+"La page de redirection des non-membres. Si aucune page n'est sélectionnée, "
+"un message d'erreur générique sera affiché. Cela peut être modifié pour "
+"chaque téléchargement individuellement."
 
 #: includes/admin/page-settings.php:320
 msgid ""
@@ -457,6 +461,34 @@ msgstr ""
 
 #: includes/admin/page-settings.php:335
 msgid "User agents to block from downloading files. One per line."
+msgstr "Les agents utilisateurs pour empêcher le téléchargement. Un par ligne."
+
+#: includes/admin/page-settings.php:349
+#, php-format
+msgid ""
+"The default text to display, when using the %s shortcode. This can be "
+"overridden on a per-download basis."
+msgstr ""
+
+#: includes/admin/page-settings.php:369
+#, php-format
+msgid ""
+"The default output style, when using the %s shortcode. This can be "
+"overridden on a per-download basis."
+msgstr ""
+
+#: includes/admin/page-settings.php:391
+#, php-format
+msgid ""
+"The default button style, when using the %s shortcode. This can be "
+"overridden on a per-download basis."
+msgstr ""
+
+#: includes/admin/page-settings.php:413
+#, php-format
+msgid ""
+"The default output style, when using the %s shortcode. This can be "
+"overridden on a per-list basis."
 msgstr ""
 
 #: includes/admin/page-settings.php:428
@@ -470,31 +502,32 @@ msgstr ""
 
 #: includes/admin/page-settings.php:448
 msgid "The time in minutes before creating a new log."
-msgstr ""
+msgstr "Le temps en minutes avant de créer un nouveau journal."
 
 #: includes/admin/page-settings.php:466
 msgid "Automatically delete old logs."
-msgstr ""
+msgstr "Supprimer automatiquement les anciens journaux."
 
 #: includes/admin/page-settings.php:469
 msgid "The time in days to keep logs."
-msgstr ""
+msgstr "Le temps en jours de conservation des journaux."
 
 #: includes/admin/page-settings.php:486
 msgid "Output the Delightful Downloads stylesheet on the front-end."
 msgstr ""
+"Afficher la feuille de style de Delightful Downloads sur le front-office."
 
 #: includes/admin/page-settings.php:503
 msgid "Cache database queries that are expensive to generate."
-msgstr ""
+msgstr "Mettre en cache les requêtes de base de données lourdes à générer."
 
 #: includes/admin/page-settings.php:506
 msgid "The time in minutes to cache queries."
-msgstr ""
+msgstr "Le temps en minutes du cache des requètes."
 
 #: includes/admin/page-settings.php:522
 msgid "The URL for download links."
-msgstr ""
+msgstr "L'URL pour les liens de téléchargement."
 
 #: includes/admin/page-settings.php:537
 msgid ""
@@ -519,15 +552,15 @@ msgstr ""
 
 #: includes/admin/page-settings.php:680
 msgid "Invalid settings file."
-msgstr ""
+msgstr "Le fichier des réglages est invalide."
 
 #: includes/admin/page-settings.php:690
 msgid "Settings have been successfully imported."
-msgstr ""
+msgstr "Les réglages ont bien été importés."
 
 #: includes/admin/page-settings.php:698
 msgid "No file uploaded."
-msgstr ""
+msgstr "Aucun fichier envoyé."
 
 #: includes/admin/page-settings.php:758
 msgid "Default settings reset successfully."
@@ -553,7 +586,9 @@ msgid "Export Logs"
 msgstr ""
 
 #: includes/admin/page-statistics.php:74
-msgid "Export log entries to a CSV file. Please select a date range:"
+msgid ""
+"Export log entries to a CSV file. Please select a date range, or leave blank "
+"to export all:"
 msgstr ""
 
 #: includes/admin/page-statistics.php:77
@@ -588,6 +623,11 @@ msgstr "Journaux supprimés avec succès."
 msgid "Delightful Downloads updated to version 1.4."
 msgstr "Delightful Downloads mis à jour en version 1.4."
 
+#: includes/admin/upgrades.php:80
+#, php-format
+msgid "Please visit the %slogs screen%s to migrate your download statistics."
+msgstr ""
+
 #: includes/admin/upgrades.php:109
 msgid "Delightful Downloads updated to version 1.5."
 msgstr ""
@@ -621,10 +661,6 @@ msgstr "JavaScript doit être activé pour pouvoir migrer les journaux."
 #: includes/cron.php:73
 msgid "Once Weekly"
 msgstr "Une fois par semaine"
-
-#: includes/functions.php:22
-msgid "Button"
-msgstr "Bouton"
 
 #: includes/functions.php:26
 msgid "Link"
@@ -661,6 +697,10 @@ msgstr "Rouge"
 #: includes/functions.php:71
 msgid "Yellow"
 msgstr "Jaune"
+
+#: includes/functions.php:88 includes/post-types.php:60
+msgid "Title"
+msgstr "Titre"
 
 #: includes/functions.php:92
 msgid "Title (Date)"
@@ -752,11 +792,16 @@ msgstr "Adresse du téléchargement"
 
 #: includes/options.php:134
 msgid "Folder Protection"
-msgstr ""
+msgstr "Protection de dossier"
 
 #: includes/options.php:140
 msgid "Complete Uninstall"
 msgstr "Terminer la désinstallation"
+
+#: includes/post-types.php:21 includes/post-types.php:33
+#: includes/post-types.php:64
+msgid "Downloads"
+msgstr "Téléchargements"
 
 #: includes/post-types.php:23
 msgid "Add New"
@@ -798,10 +843,6 @@ msgstr "Aucun téléchargement trouvé dans la corbeille"
 msgid "File"
 msgstr "Fichier"
 
-#: includes/post-types.php:62
-msgid "File Size"
-msgstr "Taille du fichier"
-
 #: includes/post-types.php:63
 msgid "Shortcode"
 msgstr "Raccourci"
@@ -838,12 +879,12 @@ msgstr "Vous devez joindre un fichier à ce téléchargement."
 msgid "Server error, file cannot be opened!"
 msgstr "Erreur du serveur, le fichier n'a pas pu être ouvert!"
 
-#: includes/shortcodes.php:46 includes/shortcodes.php:351
-#: includes/shortcodes.php:415
+#: includes/shortcodes.php:46 includes/shortcodes.php:356
+#: includes/shortcodes.php:420
 msgid "Invalid download ID."
 msgstr "ID du téléchargement invalide."
 
-#: includes/shortcodes.php:58 includes/shortcodes.php:261
+#: includes/shortcodes.php:58 includes/shortcodes.php:266
 msgid "Invalid style attribute."
 msgstr "Attribut de style invalide."
 
@@ -851,19 +892,19 @@ msgstr "Attribut de style invalide."
 msgid "Invalid button attribute."
 msgstr "Attribut button invalide."
 
-#: includes/shortcodes.php:146
+#: includes/shortcodes.php:151
 msgid "Invalid orderby attribute."
 msgstr "Attribut orderby invalide."
 
-#: includes/shortcodes.php:177
+#: includes/shortcodes.php:182
 msgid "Invalid order attribute."
 msgstr "Attribut order invalide."
 
-#: includes/shortcodes.php:186
+#: includes/shortcodes.php:191
 msgid "Invalid relation attribute."
 msgstr "Attribut relation invalide."
 
-#: includes/shortcodes.php:317
+#: includes/shortcodes.php:322
 msgid "No downloads found."
 msgstr "Aucun téléchargement trouvé."
 

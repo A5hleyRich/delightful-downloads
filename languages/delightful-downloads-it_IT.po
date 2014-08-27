@@ -6,8 +6,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Delightful Downloads\n"
-"POT-Creation-Date: 2014-08-03 18:10-0000\n"
-"PO-Revision-Date: 2014-08-03 18:20-0000\n"
+"POT-Creation-Date: 2014-08-27 14:25-0000\n"
+"PO-Revision-Date: 2014-08-27 14:31-0000\n"
 "Last-Translator: \n"
 "Language-Team: Italian (Italy) (http://www.transifex.com/projects/p/"
 "delightful-downloads/language/it_IT/)\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Language: it_IT\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 1.6.7\n"
+"X-Generator: Poedit 1.6.8\n"
 "X-Poedit-Basepath: ..\n"
 "X-Poedit-KeywordsList: __;_e;_n:1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;esc_attr__;"
 "esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c;_n_noop:1,2;"
@@ -24,7 +24,7 @@ msgstr ""
 "X-Poedit-SourceCharset: UTF-8\n"
 "X-Poedit-SearchPath-0: .\n"
 
-#: delightful-downloads.php:217 includes/admin/page-settings.php:19
+#: delightful-downloads.php:220 includes/admin/page-settings.php:19
 msgid "Settings"
 msgstr "Impostazioni"
 
@@ -42,8 +42,9 @@ msgid "Logs"
 msgstr "Logs"
 
 #: includes/admin/class-dedo-list-table.php:48
-#: includes/admin/meta-boxes.php:19 includes/admin/page-statistics.php:188
-#: includes/options.php:68 includes/post-types.php:22
+#: includes/admin/media-button.php:65 includes/admin/meta-boxes.php:19
+#: includes/admin/page-statistics.php:188 includes/options.php:68
+#: includes/post-types.php:22
 msgid "Download"
 msgstr "Download"
 
@@ -118,59 +119,63 @@ msgstr ""
 msgid "Failed security check!"
 msgstr ""
 
-#: includes/admin/media-button.php:39 includes/admin/media-button.php:111
+#: includes/admin/media-button.php:59
+msgid "Close"
+msgstr ""
+
+#: includes/admin/media-button.php:61
 msgid "Insert Download"
 msgstr "Inserisci download"
 
-#: includes/admin/media-button.php:43
-msgid "Search"
-msgstr "Cerca"
-
-#: includes/admin/media-button.php:49 includes/functions.php:88
-#: includes/post-types.php:60
-msgid "Title"
-msgstr "Titolo"
-
-#: includes/admin/media-button.php:50
-msgid "Size"
-msgstr "Dimensione"
-
-#: includes/admin/media-button.php:51 includes/post-types.php:21
-#: includes/post-types.php:33 includes/post-types.php:64
-msgid "Downloads"
-msgstr "Downloads"
-
-#: includes/admin/media-button.php:79
-msgid "Download Details"
-msgstr "Dettagli download"
-
-#: includes/admin/media-button.php:82
-msgid "Downloads:"
-msgstr "Downloads:"
-
-#: includes/admin/media-button.php:85
-msgid "Text"
-msgstr "Testo"
-
-#: includes/admin/media-button.php:87
+#: includes/admin/media-button.php:74
 msgid "Style"
 msgstr "Stile"
 
-#: includes/admin/media-button.php:89 includes/admin/media-button.php:101
-msgid "Default"
-msgstr "Predefinito"
+#: includes/admin/media-button.php:76 includes/admin/media-button.php:89
+#: includes/admin/meta-boxes.php:184
+msgid "Global"
+msgstr ""
 
-#: includes/admin/media-button.php:99
-msgid "Color"
-msgstr "Colore"
+#: includes/admin/media-button.php:77 includes/admin/media-button.php:90
+#: includes/admin/media-button.php:102 includes/admin/meta-boxes.php:166
+#: includes/admin/meta-boxes.php:175 includes/admin/meta-boxes.php:183
+#: includes/admin/meta-boxes.php:184 includes/admin/meta-boxes.php:203
+#: includes/post-types.php:127 includes/post-types.php:139
+msgid "Inherit"
+msgstr "Eredita"
 
-#: includes/admin/media-button.php:112
-msgid "Insert File Size"
-msgstr "Inserisci dimensione file"
+#: includes/admin/media-button.php:79
+msgid "Styles"
+msgstr ""
 
-#: includes/admin/media-button.php:113
-msgid "Insert Download Count"
-msgstr "Inserisci numero di downloads"
+#: includes/admin/media-button.php:87 includes/functions.php:22
+msgid "Button"
+msgstr "Pulsante"
+
+#: includes/admin/media-button.php:92
+msgid "Buttons"
+msgstr ""
+
+#: includes/admin/media-button.php:101
+msgid "Text"
+msgstr "Testo"
+
+#: includes/admin/media-button.php:106
+msgid "Insert"
+msgstr ""
+
+#: includes/admin/media-button.php:107 includes/post-types.php:62
+msgid "File Size"
+msgstr ""
+
+#: includes/admin/media-button.php:108 includes/admin/meta-boxes.php:150
+msgid "Download Count"
+msgstr ""
+
+#: includes/admin/media-button.php:111
+#, php-format
+msgid "Please %sadd%s a new download."
+msgstr ""
 
 #: includes/admin/meta-boxes.php:45 includes/admin/meta-boxes.php:48
 #, php-format
@@ -241,10 +246,6 @@ msgstr "Carica file"
 msgid "Existing File"
 msgstr ""
 
-#: includes/admin/meta-boxes.php:150
-msgid "Download Count"
-msgstr ""
-
 #: includes/admin/meta-boxes.php:154
 msgid "The number of times this file has been downloaded."
 msgstr ""
@@ -274,19 +275,8 @@ msgstr "Si"
 msgid "No"
 msgstr "No"
 
-#: includes/admin/meta-boxes.php:166 includes/admin/meta-boxes.php:175
-#: includes/admin/meta-boxes.php:183 includes/admin/meta-boxes.php:184
-#: includes/admin/meta-boxes.php:203 includes/post-types.php:127
-#: includes/post-types.php:139
-msgid "Inherit"
-msgstr "Eredita"
-
 #: includes/admin/meta-boxes.php:167
 msgid "Allow only logged in users to download this file."
-msgstr ""
-
-#: includes/admin/meta-boxes.php:184
-msgid "Global"
 msgstr ""
 
 #: includes/admin/meta-boxes.php:184
@@ -299,6 +289,14 @@ msgstr ""
 
 #: includes/admin/meta-boxes.php:198
 msgid "Open In Browser"
+msgstr ""
+
+#: includes/admin/meta-boxes.php:204
+#, php-format
+msgid ""
+"This file will attempt to open in the browser window. If the file is located "
+"within the Delightful Downloads upload directory, you will need to set the "
+"%sfolder protection%s setting to 'No'."
 msgstr ""
 
 #: includes/admin/meta-boxes.php:211
@@ -317,25 +315,25 @@ msgstr ""
 msgid "Delete File"
 msgstr ""
 
-#: includes/admin/meta-boxes.php:227
+#: includes/admin/meta-boxes.php:228
 msgid "Drop file here"
 msgstr ""
 
-#: includes/admin/meta-boxes.php:228
+#: includes/admin/meta-boxes.php:229
 msgid "or"
 msgstr "o"
 
-#: includes/admin/meta-boxes.php:229
+#: includes/admin/meta-boxes.php:230
 msgid "Select File"
 msgstr "Seleziona file"
 
-#: includes/admin/meta-boxes.php:231
+#: includes/admin/meta-boxes.php:235
 #, php-format
 msgid "Maximum upload file size: %s."
 msgstr "Dimensione massima del file: %s."
 
 #: includes/admin/meta-boxes.php:248
-msgid "Manaully enter a file URL, or use the file browser."
+msgid "Manually enter a file URL, or use the file browser."
 msgstr ""
 
 #: includes/admin/meta-boxes.php:251
@@ -446,6 +444,34 @@ msgstr ""
 msgid "User agents to block from downloading files. One per line."
 msgstr ""
 
+#: includes/admin/page-settings.php:349
+#, php-format
+msgid ""
+"The default text to display, when using the %s shortcode. This can be "
+"overridden on a per-download basis."
+msgstr ""
+
+#: includes/admin/page-settings.php:369
+#, php-format
+msgid ""
+"The default output style, when using the %s shortcode. This can be "
+"overridden on a per-download basis."
+msgstr ""
+
+#: includes/admin/page-settings.php:391
+#, php-format
+msgid ""
+"The default button style, when using the %s shortcode. This can be "
+"overridden on a per-download basis."
+msgstr ""
+
+#: includes/admin/page-settings.php:413
+#, php-format
+msgid ""
+"The default output style, when using the %s shortcode. This can be "
+"overridden on a per-list basis."
+msgstr ""
+
 #: includes/admin/page-settings.php:428
 msgid "Log events triggered by admin users."
 msgstr ""
@@ -538,7 +564,9 @@ msgid "Export Logs"
 msgstr ""
 
 #: includes/admin/page-statistics.php:74
-msgid "Export log entries to a CSV file. Please select a date range:"
+msgid ""
+"Export log entries to a CSV file. Please select a date range, or leave blank "
+"to export all:"
 msgstr ""
 
 #: includes/admin/page-statistics.php:77
@@ -573,6 +601,11 @@ msgstr ""
 msgid "Delightful Downloads updated to version 1.4."
 msgstr ""
 
+#: includes/admin/upgrades.php:80
+#, php-format
+msgid "Please visit the %slogs screen%s to migrate your download statistics."
+msgstr ""
+
 #: includes/admin/upgrades.php:109
 msgid "Delightful Downloads updated to version 1.5."
 msgstr ""
@@ -603,10 +636,6 @@ msgstr ""
 #: includes/cron.php:73
 msgid "Once Weekly"
 msgstr "Una volta a settimana"
-
-#: includes/functions.php:22
-msgid "Button"
-msgstr "Pulsante"
 
 #: includes/functions.php:26
 msgid "Link"
@@ -643,6 +672,10 @@ msgstr "Rosso"
 #: includes/functions.php:71
 msgid "Yellow"
 msgstr "Giallo"
+
+#: includes/functions.php:88 includes/post-types.php:60
+msgid "Title"
+msgstr "Titolo"
 
 #: includes/functions.php:92
 msgid "Title (Date)"
@@ -740,6 +773,11 @@ msgstr ""
 msgid "Complete Uninstall"
 msgstr ""
 
+#: includes/post-types.php:21 includes/post-types.php:33
+#: includes/post-types.php:64
+msgid "Downloads"
+msgstr "Downloads"
+
 #: includes/post-types.php:23
 msgid "Add New"
 msgstr "Aggiungi nuovo"
@@ -780,10 +818,6 @@ msgstr "Nessun download trovato nel Cestino"
 msgid "File"
 msgstr "File"
 
-#: includes/post-types.php:62
-msgid "File Size"
-msgstr ""
-
 #: includes/post-types.php:63
 msgid "Shortcode"
 msgstr "Scorciatoia"
@@ -820,12 +854,12 @@ msgstr ""
 msgid "Server error, file cannot be opened!"
 msgstr "Errore del server, il file non può essere aperto!"
 
-#: includes/shortcodes.php:46 includes/shortcodes.php:351
-#: includes/shortcodes.php:415
+#: includes/shortcodes.php:46 includes/shortcodes.php:356
+#: includes/shortcodes.php:420
 msgid "Invalid download ID."
 msgstr "ID download non valido."
 
-#: includes/shortcodes.php:58 includes/shortcodes.php:261
+#: includes/shortcodes.php:58 includes/shortcodes.php:266
 msgid "Invalid style attribute."
 msgstr "Attributo Stile non valido"
 
@@ -833,19 +867,19 @@ msgstr "Attributo Stile non valido"
 msgid "Invalid button attribute."
 msgstr "Attributo Pulsante non valido."
 
-#: includes/shortcodes.php:146
+#: includes/shortcodes.php:151
 msgid "Invalid orderby attribute."
 msgstr "Attributo Ordina Per non valido."
 
-#: includes/shortcodes.php:177
+#: includes/shortcodes.php:182
 msgid "Invalid order attribute."
 msgstr "Attributo Ordinamento non valido."
 
-#: includes/shortcodes.php:186
+#: includes/shortcodes.php:191
 msgid "Invalid relation attribute."
 msgstr "Attributo Relazione non valido."
 
-#: includes/shortcodes.php:317
+#: includes/shortcodes.php:322
 msgid "No downloads found."
 msgstr "Nessun download trovato."
 
