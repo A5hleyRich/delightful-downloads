@@ -219,22 +219,20 @@ function dedo_meta_box_download( $post ) {
 		var pluploadArgs = <?php echo json_encode( $plupload_args ); ?>;
 	</script>
 
-	<div id="dedo-upload-modal" class="dedo-modal" style="display: none; width: 40%; left: 50%; margin-left: -20%;">
+	<div id="dedo-upload-modal" class="dedo-modal" style="display: block; width: 40%; left: 50%; margin-left: -20%;">
 		<a href="#" class="dedo-modal-close" title="Close"><span class="media-modal-icon"></span></a>
 		<div id="dedo-upload-container" class="dedo-modal-content">
 			<h1><?php _e( 'Upload File', 'delightful-downloads' ); ?></h1>
-			<div id="dedo-drag-drop-area">
-				<p class="drag-drop-info"><?php _e( 'Drop file here', 'delightful-downloads' ); ?></p>
-				<p><?php _e( 'or', 'delightful-downloads' ); ?></p>
-				<p class="drag-drop-button"><input id="dedo-upload-button" type="button" value="<?php _e( 'Select File', 'delightful-downloads' ); ?>" class="button" />
-			</div>
-			<p><?php printf( __( 'Maximum upload file size: %s.', 'delightful-downloads' ), size_format( wp_max_upload_size(), 1 ) ); ?></p>
-			<div class="dedo-progress-wrapper">
-				<div id="dedo-progress-bar" style="display: none">
+			<div id="dedo-drag-drop-area-container">
+				<div id="dedo-drag-drop-area">
+					<p class="drag-drop-info"><?php _e( 'Drop file here', 'delightful-downloads' ); ?></p>
+					<p><?php _e( 'or', 'delightful-downloads' ); ?></p>
+					<p class="drag-drop-button"><input id="dedo-upload-button" type="button" value="<?php _e( 'Select File', 'delightful-downloads' ); ?>" class="button" />
 					<div id="dedo-progress-percent" style="width: 0%;"></div>
 					<div id="dedo-progress-text">0%</div>
 				</div>
 			</div>
+			<p><?php printf( __( 'Maximum upload file size: %s.', 'delightful-downloads' ), size_format( wp_max_upload_size(), 1 ) ); ?></p>
 			<div id="dedo-progress-error" style="display: none"></div>
 		</div>
 	</div>

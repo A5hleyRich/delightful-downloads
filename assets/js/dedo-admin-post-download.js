@@ -116,7 +116,7 @@ jQuery( document ).ready( function( $ ){
 	// Upload File Modal
 	DEDO_Upload_Modal = {
 
-		$progress: 			$( '#dedo-progress-bar' ),
+		$container: 		$( '#dedo-upload-modal #dedo-drag-drop-area' ),
 		$progressPercent: 	$( '#dedo-progress-percent' ),
 		$progressText: 		$( '#dedo-progress-text' ),
 		$progressError: 	$( '#dedo-progress-error' ),
@@ -138,8 +138,8 @@ jQuery( document ).ready( function( $ ){
 
 			// File added to queue
 			this.uploader.bind( 'FilesAdded', function( up, file ) {
+				self.$container.addClass( 'uploading' );
 				self.$progressError.hide();
-				self.$progress.show();
 				
 				up.refresh();
 				up.start();
@@ -166,19 +166,22 @@ jQuery( document ).ready( function( $ ){
 			 		DEDO_Admin_Download.addFile( response.file.url );
 			 		
 			 		// Close modal and hide progress bar
-			 		self.$progress.delay( 900 ).hide( 0, function() {
+			 		setTimeout( function() {
 			 			$( 'body' ).trigger( 'closeModal' );
-			 		} );
-
+			 				
+			 			setTimeout( function() {
+			 				self.$container.removeClass( 'uploading' );
+			 			}, 300 );
+			 
+			 		}, 1000 );
 		 		}
 			} );
 			
 			// Error
 			this.uploader.bind( 'Error', function( up, err ) {
-				self.$progress.hide( 0, function() {
-					self.$progressError. html( '<p>' + err.message + '</p>' ).show();
-				} );
-				
+				self.$progressError. html( '<p>' + err.message + '</p>' ).show();
+			 	self.$container.removeClass( 'uploading' );
+
 				up.refresh();
 			} );
 		}
