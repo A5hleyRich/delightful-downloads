@@ -53,6 +53,10 @@ The Delightful Downloads documentation can be found [here](http://delightfulwp.c
 
 To add and manage downloads via the WordPress Administration screens, you must have a [modern web browser](http://browsehappy.com/ "Browse Happy") with JavaScript enabled.
 
+**GitHub**
+
+If you would like to contribute to the plugin, you can do so on [GitHub](https://github.com/A5hleyRich/Delightful-Downloads).
+
 == Installation ==
 
 1. Upload `delightful-downloads` to the `/wp-content/plugins/` directory.
