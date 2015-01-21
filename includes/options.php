@@ -130,6 +130,12 @@ function dedo_get_options() {
 			'type'		=> 'text',
 			'default'	=> 'ddownload',
 		),
+		'download_endpoint'	=> array(
+			'name'		=> __( 'Download Endpoint', 'delightful-downloads' ),
+			'tab'		=> 'advanced',
+			'type'		=> 'radio',
+			'default'	=> 0
+		),
 		'folder_protection'	=> array(
 			'name'		=> __( 'Folder Protection', 'delightful-downloads' ),
 			'tab'		=> 'advanced',
