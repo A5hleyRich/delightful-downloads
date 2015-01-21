@@ -519,7 +519,7 @@ function dedo_settings_download_url_field() {
 	$text = $dedo_options['download_url'];
 
 	echo '<input type="text" name="delightful-downloads[download_url]" value="' . esc_attr( $text ) . '" class="regular-text" />';
-	echo '<p class="description">' . __( 'The URL for download links.', 'delightful-downloads' ) . ' <code>' . dedo_download_link( 123 ) . '</code></p>';
+	echo '<p class="description">' . __( 'The URL for download links.', 'delightful-downloads' ) . ' <code>' . dedo_download_link( 123, 'query' ) . '</code></p>';
 }
 
 /**
@@ -534,7 +534,7 @@ function dedo_settings_download_endpoint_field() {
 
 	<label for="download_endpoint_switch_true"><input name="delightful-downloads[download_endpoint]" id="download_endpoint_switch_true" type="radio" value="1" <?php echo ( 1 === $checked ) ? 'checked' : ''; ?> /> <?php _e( 'Yes', 'delightful-downloads' ); ?></label>
 	<label for="download_endpoint_switch_false"><input name="delightful-downloads[download_endpoint]" id="download_endpoint_switch_false" type="radio" value="0" <?php echo ( 0 === $checked ) ? 'checked' : ''; ?> /> <?php _e( 'No', 'delightful-downloads' ); ?></label>
-	<p class="description"><?php echo __( 'Process downloads through a URL endpoint instead of a query parameter.', 'delightful-downloads' ) . ' <code>' . dedo_download_link( 123, true ) . '</code>'; ?></p>
+	<p class="description"><?php echo __( 'Process downloads through a URL endpoint instead of a query parameter.', 'delightful-downloads' ) . ' <code>' . dedo_download_link( 123, 'endpoint' ) . '</code>'; ?></p>
 	<?php
 }
 
