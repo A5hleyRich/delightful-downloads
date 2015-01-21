@@ -131,7 +131,6 @@ function dedo_download_process() {
 
 			// Set headers
 			nocache_headers();
-			header( "X-Robots-Tag: noindex, nofollow", true );
 			header( "Content-Type: " . dedo_download_mime( $download_path ) );
 			header( "Content-Description: File Transfer" );
 			header( "Content-Disposition: attachment; filename=\"" . basename( $download_path ) . "\";" );
