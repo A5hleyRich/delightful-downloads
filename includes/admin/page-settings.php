@@ -31,6 +31,11 @@ function dedo_register_settings() {
 	$registered_tabs = dedo_get_tabs();
 	$registered_settings = dedo_get_options();
 
+	// Deferred flushing if the endpoint setting was changed and the flag is set
+	if (delete_transient('deedo_flush_rewrite_rules') ) { 
+		flush_rewrite_rules();
+	}
+
 	// Register whitelist
 	register_setting( 'dedo_settings', 'delightful-downloads', 'dedo_validate_settings' ); 
 
@@ -590,6 +595,13 @@ function dedo_validate_settings( $input ) {
 	 
 	// Ensure download URL does not contain illegal characters
 	$input['download_url'] = strtolower( preg_replace( '/[^A-Za-z0-9_-]/', '', $input['download_url'] ) );
+
+	// Flush rewrite rules if the endpoint setting has changed
+	if ( $input['download_endpoint'] != $dedo_options['download_endpoint'] ) {
+		// Flushing is deferred to the next render cycle by a transient flag as flushing directly does not work: http://wordpress.stackexchange.com/questions/47747
+		// The transient's name cannot start with 'dedo', else it gets cleared by dedo_delete_all_transients
+		set_transient('deedo_flush_rewrite_rules', 'dummy', YEAR_IN_SECONDS);
+	}
 
 	// Run folder protection if option changed
 	if ( $input['folder_protection'] != $dedo_options['folder_protection'] ) {

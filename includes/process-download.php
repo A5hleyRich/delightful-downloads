@@ -20,12 +20,13 @@ if ( !defined( 'ABSPATH' ) ) exit;
  */
 function dedo_download_process() {
 	global $dedo_options;
+	global $wp;
 	
 	// Get download id
-	if ( isset( $_GET[$dedo_options['download_url']] ) ) {
+	if ( isset( $wp->query_vars[$dedo_options['download_url']] ) ) {
 		
 		// Ensure only positive int, else could be fishy!
-		$download_id = absint( $_GET[$dedo_options['download_url']] );
+		$download_id = absint( $wp->query_vars[$dedo_options['download_url']] );
 
 		// Check valid download
 		if ( !dedo_download_valid( $download_id ) ) {
@@ -165,4 +166,39 @@ function dedo_download_process() {
 	}
 
 }
-add_action( 'init', 'dedo_download_process', 0 );
+
+/**
+ * Add query variable
+ *
+ * This is done automatically by add_rewrite_endpoint if the endpoint option
+ * is used, but for the query option it needs to be set to be available in
+ * $wp->query_vars in the download processing handler.
+ *
+ * @since 1.5
+ */
+function dedo_download_add_query_vars( $vars ) {
+	global $dedo_options;
+
+	$vars[] = $dedo_options['download_url'];
+
+	return $vars;
+}
+
+/**
+ * Register Download Endpoint
+ *
+ * @since 1.5
+ */
+function dedo_download_add_endpoint() {
+	global $dedo_options;
+
+	// only add the endpoint if the option is activated in the settings
+	if( $dedo_options['download_endpoint'] == 1 ) {
+		add_rewrite_endpoint( $dedo_options['download_url'], EP_ROOT );
+	}
+}
+
+add_filter( 'query_vars', 'dedo_download_add_query_vars', 0 );
+add_action( 'init', 'dedo_download_add_endpoint', 0 );
+add_action( 'parse_request', 'dedo_download_process', 0 );
+
