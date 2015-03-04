@@ -414,6 +414,28 @@ function dedo_settings_default_list_field() {
 }
 
 /**
+ * Render default thumbnail size field
+ *
+ * @since  1.6
+ */
+function dedo_settings_default_thumbnail_size_field() {
+	global $dedo_options;
+
+	$lists = dedo_get_shortcode_thumbnail_sizes();
+	$default_list = $dedo_options['default_thumbnail_size'];
+
+	echo '<select name="delightful-downloads[default_thumbnail_size]">';
+	
+	foreach ( $lists as $key => $value ) {
+		$selected = ( $default_list == $key ? ' selected="selected"' : '' );
+		echo '<option value="' . $key . '" ' . $selected . '>' . $value['name'] . '</option>';	
+	}
+
+	echo '</select>';
+	echo '<p class="description">' . sprintf( __( 'The default thumbnail size, when using the %s shortcode. This can be overridden on a per-download basis.', 'delightful-downloads' ), '<code>[ddownload]</code>' );
+}
+
+/**
  * Render log admin downloads field
  *
  * @since  1.3

@@ -8,6 +8,8 @@ jQuery( document ).ready( function( $ ) {
 			style_dropdown: 	$( '#dedo-select-style-dropdown' ),
 			button_dropdown: 	$( '#dedo-select-button-dropdown' ),
 			button_container: 	$( '#dedo-button-dropdown-container' ),
+			thumbsize_dropdown:	$( '#dedo-select-thumbsize-dropdown' ),
+			thumbsize_container:$( '#dedo-thumbsize-dropdown-container' ),
 			count_button: 		$( '#dedo-download-count' ),
 			file_size_button: 	$( '#dedo-file-size' )
 		},
@@ -24,6 +26,7 @@ jQuery( document ).ready( function( $ ) {
 			this.$cached.download_dropdown.chosen( { disable_search_threshold: 10, width: "100%" } );
 			this.$cached.style_dropdown.chosen( { disable_search_threshold: 10, width: "100%" } );
 			this.$cached.button_dropdown.chosen( { disable_search_threshold: 10, width: "100%" } );
+			this.$cached.thumbsize_dropdown.chosen( { disable_search_threshold: 10, width: "100%" } );
 
 			// Modules
 			this.updateDownload();
@@ -46,15 +49,31 @@ jQuery( document ).ready( function( $ ) {
 		hideButtons: function() {
 			var self = this;
 
-			this.$cached.style_dropdown.on( 'change', function() {
+			this.$cached.style_dropdown.on( 'change', function() {				
 				if ( 'link' == $( this ).val() || 'plain_text' == $( this ).val() ) {
-					self.$cached.button_container.hide();
+					self.hideButtonsSecondLevel();					
 					self.$cached.button_dropdown.val( '' ).trigger( 'chosen:updated' );
+					self.$cached.thumbsize_dropdown.val( '' ).trigger( 'chosen:updated' );
 				}
 				else {
-					self.$cached.button_container.show();
+					self.hideButtonsSecondLevel();
+				
+					if( 'button' == $( this ).val() ) {
+						self.$cached.button_container.show();
+					} else if( 'thumbnail' == $( this ).val() ) {
+						self.$cached.thumbsize_container.show();
+					}	
 				}
 			} );
+			
+			// Trigger initializing change on current selection
+			this.$cached.style_dropdown.trigger( 'change' );
+		},
+		
+		// Hide buttons dropdown on second level
+		hideButtonsSecondLevel: function() {
+			this.$cached.button_container.hide();
+			this.$cached.thumbsize_container.hide();
 		},
 
 		// Insert button
@@ -74,12 +93,17 @@ jQuery( document ).ready( function( $ ) {
 				if ( '' !== self.$cached.button_dropdown.val() ) {
 					attrs += ' button="' + self.$cached.button_dropdown.val() + '"';
 				}
+				
+				// Add thumbnail size
+				if ( '' !== self.$cached.thumbsize_dropdown.val() ) {
+					attrs += ' thumbsize="' + self.$cached.thumbsize_dropdown.val() + '"';
+				}
 
 				// Add text
 				if ( $( '#dedo-custom-text' ).val().length > 0 ) {
 					attrs += ' text="' + $( '#dedo-custom-text' ).val() + '"';
 				}
-
+				
 				window.send_to_editor( '[ddownload id="' + self.download + '"' + attrs + ']' );
 				$( 'body' ).trigger( 'closeModal' );
 
