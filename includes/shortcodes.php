@@ -31,12 +31,13 @@ function dedo_shortcode_ddownload( $atts ) {
 	// Attributes
 	extract( shortcode_atts(
 		array(
-			'id' 	=> '',
-			'text'	=> $dedo_options['default_text'],
-			'style'	=> $dedo_options['default_style'],
-			'button'=> '',
-			'color'	=> '', // Deprecated
-			'class'	=> ''
+			'id'        => '',
+			'text'      => $dedo_options['default_text'],
+			'style'     => $dedo_options['default_style'],
+			'button'    => '',
+			'thumbsize' => $dedo_options['default_thumbnail_size'],
+			'color'	    => '', // Deprecated
+			'class'	    => ''
 		), $atts, 'ddownload' )
 	);
 
@@ -79,6 +80,21 @@ function dedo_shortcode_ddownload( $atts ) {
 			return __( 'Invalid button attribute.', 'delightful-downloads' );
 		}
 	}
+	
+	// Check thumbnail size
+	if ( $style == 'thumbnail' && array_key_exists( 'thumbsize', $atts ) ) {
+		
+		$registered_thumbnail_sizes = dedo_get_shortcode_thumbnail_sizes();
+		
+		if ( array_key_exists( $atts['thumbsize'], $registered_thumbnail_sizes ) ) {
+			
+			$dedo_options['thumbnail_size'] = $atts['thumbsize'];
+		}
+		else {
+			
+			return __( 'Invalid thumbsize attribute.', 'delightful-downloads' );
+		}		
+	}
 
 	// Generate correct class and add user defined
 	$classes = 'ddownload-' . $style; // Output style
@@ -98,16 +114,29 @@ function dedo_shortcode_ddownload( $atts ) {
  	}
 
 	// Search and replace wildcards
-	$output = dedo_search_replace_wildcards( $style_format, $id );
+	$output = dedo_search_replace_wildcards( $style_format, $id, $dedo_options );
 
 	// Enqueue frontend CSS if option is enabled
-	if ( $dedo_options['enable_css'] && 'button' == $style ) {
+	if ( $dedo_options['enable_css'] && dedo_style_requires_css( $style ) ) {
 		wp_enqueue_style( 'dedo-css' );
 	}
 
 	return apply_filters( 'dedo_shortcode_ddownload', $output );
 }
 add_shortcode( 'ddownload', 'dedo_shortcode_ddownload' );
+
+/**
+ * Is CSS required
+ *
+ * Checks if the download style requires the frontend css file.
+ *
+ * @since   1.6
+ */
+function dedo_style_requires_css( $style ) {
+	$required = array('button', 'thumbnail');
+	
+	return in_array($style, $required);
+}
 
 /**
  * Downloads List Shortcode

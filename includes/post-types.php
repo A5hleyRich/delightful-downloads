@@ -39,7 +39,7 @@ function dedo_download_post_type() {
 		'show_ui' 			=> true, 
 		'show_in_menu' 		=> true, 
 		'capability_type' 	=> apply_filters( 'dedo_ddownload_cap', 'post' ), 
-		'supports' 			=> apply_filters( 'dedo_ddownload_supports', array( 'title' ) )
+		'supports' 			=> apply_filters( 'dedo_ddownload_supports', array( 'title', 'thumbnail' ) )
 	); 
 
 	register_post_type( 'dedo_download', apply_filters( 'dedo_ddownload_args', $args ) );
@@ -72,7 +72,7 @@ function dedo_download_column_headings( $columns ) {
 		
 		$columns_taxonomies = array(
 			'taxonomy-ddownload_category' 	=> __( 'Categories', 'delightful-downloads' ),
-			'taxonomy-ddownload_tag'		=> __( 'Tags', 'delightful-downloads' ),
+			'taxonomy-ddownload_tag'		=> __( 'Tags', 'delightful-downloads' )
 		);
 
 		// Splice and insert after shortcode column

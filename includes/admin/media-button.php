@@ -52,6 +52,9 @@ function dedo_media_modal() {
 
 		// Get registered buttons
 		$buttons = dedo_get_shortcode_buttons();
+		
+		// Get registered thumbnail sizes
+		$thumbnail_sizes = dedo_get_shortcode_thumbnail_sizes();
 
 		?>
 			
@@ -91,6 +94,19 @@ function dedo_media_modal() {
 									</optgroup>
 									<optgroup label="<?php _e( 'Buttons', 'delightful-downloads' ); ?>">
 										<?php foreach ( $buttons as $key => $value ) : ?>
+											<option value="<?php echo $key; ?>"><?php echo $value['name']; ?></option>
+										<?php endforeach; ?>
+									</optgroup>
+								</select>
+							</label>
+							
+							<label id="dedo-thumbsize-dropdown-container" class="column-2"><span><?php _e( 'Size', 'delightful-downloads' ); ?></span>
+								<select id="dedo-select-thumbsize-dropdown">
+									<optgroup label="<?php _e( 'Global', 'delightful-downloads' ); ?>">
+										<option value=""><?php _e( 'Inherit', 'delightful-downloads' ); ?></option>
+									</optgroup>
+									<optgroup label="<?php _e( 'Size', 'delightful-downloads' ); ?>">
+										<?php foreach ( $thumbnail_sizes as $key => $value ) : ?>
 											<option value="<?php echo $key; ?>"><?php echo $value['name']; ?></option>
 										<?php endforeach; ?>
 									</optgroup>

@@ -22,6 +22,10 @@ function dedo_get_shortcode_styles() {
 	 		'name'			=> __( 'Button', 'delightful-downloads' ),
 	 		'format'		=> '<a href="%url%" title="%text%" rel="nofollow" class="%class%">%text%</a>'
 	 	),
+	 	'thumbnail'			=> array(
+	 		'name'			=> __( 'Thumbnail', 'delightful-downloads' ),
+	 		'format'		=> '<a href="%url%" title="%text%" rel="nofollow" class="%class%">%thumbnail%<span>%text%</span></a>'
+	 	),
 	 	'link'			=> array(
 	 		'name'			=> __( 'Link', 'delightful-downloads' ),
 	 		'format'		=> '<a href="%url%" title="%text%" rel="nofollow" class="%class%">%text%</a>'
@@ -110,11 +114,40 @@ function dedo_get_shortcode_lists() {
 }
 
 /**
+ * Shortcode thumbnail sizes
+ *
+ * @since  1.6
+ */
+function dedo_get_shortcode_thumbnail_sizes() {
+	
+	$image_sizes =  array(
+		'thumbnail'		=> array(
+			'name'		=> __( 'Small', 'delightful-downloads' ),
+			'class'		=> 'image-size-small'
+		),
+		'medium'		=> array(
+			'name'		=> __( 'Medium', 'delightful-downloads' ),
+			'class'		=> 'image-size-medium'
+		),
+		'large'		=> array(
+			'name'		=> __( 'Large', 'delightful-downloads' ),
+			'class'		=> 'image-size-large '
+		),
+		'full'		=> array(
+			'name'		=> __( 'Full', 'delightful-downloads' ),
+			'class'		=> 'image-size-full'
+		)
+	);
+
+	return apply_filters( 'dedo_get_image_sizes', $image_sizes );
+}
+
+/**
  * Replace Wildcards
  *
  * @since  1.3
  */
- function dedo_search_replace_wildcards( $string, $id ) {
+ function dedo_search_replace_wildcards( $string, $id, $options = array() ) {
 
  	// id
  	if ( strpos( $string, '%id%' ) !== false ) {
@@ -163,11 +196,24 @@ function dedo_get_shortcode_lists() {
  		$string = str_replace( '%ext%', $value, $string );
  	}
 
- 	 // file mime
+	// file mime
  	if ( strpos( $string, '%mime%' ) !== false ) {
  		$value = dedo_get_file_mime( get_post_meta( $id, '_dedo_file_url', true ) );
  		$string = str_replace( '%mime%', $value, $string );
  	}
+
+	// file thumbnail
+	if ( strpos( $string, '%thumbnail%' ) !== false ) {
+		// thumbnail size
+		if ( array_key_exists('thumbnail_size', $options ) ) {
+			$thumbnail_size = $options['thumbnail_size'];
+		} else {
+			$thumbnail_size = $options['default_thumbnail_size'];
+		}
+
+		$value = dedo_get_thumbnail( $id, get_the_title( $id ), $thumbnail_size );
+		$string = str_replace( '%thumbnail%', $value, $string );
+	}
 
  	return apply_filters( 'dedo_search_replace_wildcards', $string, $id );
  }
@@ -450,6 +496,24 @@ function dedo_get_filesize( $download_id = false ) {
 	$return = $wpdb->get_var( $sql );
 
 	return ( NULL !== $return ) ? $return : 0;
+}
+
+/**
+ * Get thumbnail
+ *
+ * Return the featured image.
+ *
+ * @since 1.6
+ */
+function dedo_get_thumbnail( $id, $title, $size = 'post-thumbnail', $class = '' ) {
+
+	$attr = array(
+		'class'	=> trim( strip_tags( $class ) ),
+		'title'	=> trim( strip_tags( $title ) ),
+		'alt'	=> trim( strip_tags( $title ) )
+	);
+	
+	return get_the_post_thumbnail( $id, $size, $attr );
 }
 
 /**

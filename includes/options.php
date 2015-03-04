@@ -85,6 +85,12 @@ function dedo_get_options() {
 			'type'		=> 'dropdown',
 			'default'	=> 'title'
 		),
+		'default_thumbnail_size' => array(
+			'name'		=> __( 'Default Thumbnail Size', 'delightful-downloads' ),
+			'tab'		=> 'shortcodes',
+			'type'		=> 'dropdown',
+			'default'	=> 'thumbnail'
+		),
 		'log_admin_downloads'	=> array(
 			'name'		=> __( 'Admin Events', 'delightful-downloads' ),
 			'tab'		=> 'statistics',
