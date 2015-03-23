@@ -14,7 +14,7 @@ if ( !defined( 'ABSPATH' ) ) exit;
 class DEDO_Widget extends WP_Widget {
 	
 	private static $count = 1;
-	private static $format = '[ddownload id=%ID% style=%LINK% text=%TEXT%]';
+	private static $format = '[ddownload id="%ID%" style="%LINK%" text="%TEXT%"]';
 
 	/**
 	 *	Init Widget
@@ -93,8 +93,8 @@ class DEDO_Widget extends WP_Widget {
 	 */
 	private function replaceFormatPlaceholders($text, $download) {
 		
-		$placeholders = array('%ID%', '%TEXT%');
-		$replacement = array($download->ID, $download->post_title);
+		$placeholders = array( '%ID%', '%TEXT%' );
+		$replacement = array( $download->ID, esc_html($download->post_title) );
 
 		return str_replace($placeholders, $replacement, $text);
 	}
