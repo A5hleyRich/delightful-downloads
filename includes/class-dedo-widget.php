@@ -14,7 +14,7 @@ if ( !defined( 'ABSPATH' ) ) exit;
 class DEDO_Widget extends WP_Widget {
 	
 	private static $count = 1;
-	private static $format = '[ddownload id="%ID%" style="%LINK%" text="%TEXT%"]';
+	private static $format = '[ddownload id="%ID%" text="%TEXT%"]';
 
 	/**
 	 *	Init Widget
