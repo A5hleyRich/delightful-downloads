@@ -260,9 +260,13 @@ function dedo_download_blocked( $current_agent ) {
  */
 function dedo_get_agents() {
 	global $dedo_options;
-	
-	// Get agents and explode into array
+
 	$crawlers = $dedo_options['block_agents'];
+
+	if ( empty( $crawlers ) ) {
+		return array();
+	}
+
 	$crawlers = explode( "\n", $crawlers );
 
 	return $crawlers;
