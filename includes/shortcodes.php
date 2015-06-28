@@ -247,7 +247,7 @@ function dedo_shortcode_ddownload_list( $atts ) {
 			$exclude_tags_array = array_map( 'trim', $exclude_tags_array );
 
 			$query_args['tax_query'][] = array(
-				'taxonomy'	=> 'ddownload_category',
+				'taxonomy'	=> 'ddownload_tag',
 				'field'		=> 'slug',
 				'terms'		=> $exclude_tags_array,
 				'operator'	=> 'NOT IN',
