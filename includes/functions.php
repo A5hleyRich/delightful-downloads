@@ -236,6 +236,10 @@ function dedo_download_blocked( $current_agent ) {
 	// Retrieve user agents
 	$user_agents = dedo_get_agents();
 
+	if ( ! $user_agents || ! $current_agent ) {
+		return true;
+	}
+
 	foreach ( $user_agents as $user_agent ) {
 		
 		$current_agent = trim( strtolower( $current_agent ) );
