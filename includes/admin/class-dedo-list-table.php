@@ -154,7 +154,11 @@ class DEDO_List_Table extends WP_List_Table {
 				break;
 
 			case 'ip_address':
-				
+
+                if ( empty( $item->user_ip ) ) {
+                    return;
+                }
+
 				return inet_ntop( $item->user_ip );
 				break;
 
