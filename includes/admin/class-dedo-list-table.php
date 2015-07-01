@@ -121,56 +121,43 @@ class DEDO_List_Table extends WP_List_Table {
 	 * @return void
 	 */
 	public function column_default( $item, $column_name ) {
-		
-		switch( $column_name ) {
-			
+
+		switch ( $column_name ) {
 			case 'download':
-				
 				$title = get_the_title( $item->post_id );
 
 				if ( '' === $title ) {
-					
 					return __( 'Unknown', 'delightful-downloads' );
-				}
-				else {
-					
+				} else {
 					return '<a href="' . get_edit_post_link( $item->post_id ) . '">' . get_the_title( $item->post_id ) . '</a>';
 				}
-
 				break;
-
 			case 'user':
-				
 				$user = get_user_by( 'id', $item->user_id );
 
 				if ( false === $user ) {
 					return __( 'Non-member', 'delightful-downloads' );
-				}
-				else {
+				} else {
 					$output = '<a href="' . get_edit_user_link( $user->ID ) . '">' . $user->display_name . '</a>';
 					$output .= '<br>' . $user->user_email;
+
 					return $output;
 				}
 				break;
-
 			case 'ip_address':
-
-                if ( empty( $item->user_ip ) ) {
-                    return;
-                }
+				if ( empty( $item->user_ip ) ) {
+					return;
+				}
 
 				return inet_ntop( $item->user_ip );
 				break;
-
 			case 'user_agent':
-				
 				return esc_attr( $item->user_agent );
 				break;
-
 			case 'dedo_date':
-				
 				$output = human_time_diff( mysql2date( 'U', $item->date ), current_time( 'timestamp' ) ) . ' ago<br />';
 				$output .= mysql2date( get_option( 'date_format' ), $item->date ) . ' at ' . mysql2date( get_option( 'time_format' ), $item->date );
+
 				return $output;
 				break;
 		}
