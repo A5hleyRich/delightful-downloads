@@ -11,6 +11,12 @@ module.exports = function( grunt ) {
 					outputStyle: 'compressed'
 				}
 			}
+		},
+		watch: {
+			sass: {
+				files: [ 'assets/sass/*' ],
+				tasks: [ 'compass' ]
+			}
 		}
 	} );
 
