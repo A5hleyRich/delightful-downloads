@@ -1,5 +1,5 @@
 .sass-cache
-node_modules
-vendor
 assets/css/*.css
 assets/js/*.min.js
+languages/*.pot
+node_modules
