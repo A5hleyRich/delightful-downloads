@@ -29,6 +29,10 @@ module.exports = function( grunt ) {
 			sass: {
 				files: [ 'assets/sass/*' ],
 				tasks: [ 'compass' ]
+			},
+			js: {
+				files: [ 'assets/js/*.js', '!assets/js/*.min.js' ],
+				tasks: [ 'uglify' ]
 			}
 		}
 	} );
