@@ -236,13 +236,6 @@ function dedo_render_part_sidebar() {
 		<div id="dedo-settings-sidebar">
 			<h4><?php _e( 'Help and Support', 'delightful-downloads' ); ?></h4>
 			<p><?php printf( __( 'Please take a moment to look at the %sdocumentation%s. If you are still having issues, please leave a %ssupport request%s.', 'delightful-downloads' ), '<a href="http://delightfulwp.com/delightful-downloads/documentation/">', '</a>', '<a href="http://delightfulwp.com/contact/?reason=support">', '</a>' ); ?></p>
-			
-			<h4><?php _e( 'Share the Love', 'delightful-downloads' ); ?></h4>
-			<p><?php printf( __( 'Enjoy Delightful Downloads? Please consider %sdonating%s a few dollars, to help support future development. Alternatively, a %splugin review%s is always appreciated.', 'delightful-downloads' ), '<a href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&amp;hosted_button_id=95AQB5DP83XAU">', '</a>', '<a href="http://wordpress.org/support/view/plugin-reviews/delightful-downloads">', '</a>' ); ?></p>
-
-			<h4><?php _e( 'About the Developer', 'delightful-downloads' ); ?></h4>
-			<p><?php printf( __( 'Hey there! I\'m %sAshley Rich%s, a freelance web designer and WordPress developer based in the West Midlands, England.', 'delightful-downloads' ), '<a href="http://ashleyrich.com">', '</a>' ); ?></p>
-			<p><?php printf( __( '%sTwitter%s', 'delightful-downloads' ), '<a href="//twitter.com/A5hleyRich">', '</a>' ); ?></p>
 		</div>
 
 	<?php endif;
