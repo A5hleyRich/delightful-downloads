@@ -2,3 +2,4 @@
 node_modules
 vendor
 assets/css/*.css
+assets/js/*.min.js

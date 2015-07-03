@@ -12,6 +12,19 @@ module.exports = function( grunt ) {
 				}
 			}
 		},
+		uglify: {
+			build: {
+				files: [
+					{
+						expand: true,
+						cwd: 'assets/js',
+						src: [ '*.js', '!*.min.js' ],
+						dest: 'assets/js',
+						ext: '.min.js'
+					}
+				]
+			}
+		},
 		watch: {
 			sass: {
 				files: [ 'assets/sass/*' ],
@@ -24,6 +37,6 @@ module.exports = function( grunt ) {
 	require( 'load-grunt-tasks' )( grunt );
 
 	// Default task(s).
-	grunt.registerTask( 'default', [ 'compass' ] );
+	grunt.registerTask( 'default', [ 'compass', 'uglify' ] );
 
 };
