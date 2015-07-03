@@ -234,6 +234,27 @@ function dedo_render_part_sidebar() {
 	if ( apply_filters( 'dedo_admin_sidebar', true ) ) : ?>
 
 		<div id="dedo-settings-sidebar">
+			<div class="pro-version">
+				<h4>Pro Version?</h4>
+				<p><?php _e( 'I\'m working on a pro version that will include the following features:', 'delightful-downloads' ); ?></p>
+				<ul>
+					<li><?php _e( 'Button customizer', 'delightful-downloads' ); ?></li>
+					<li><?php _e( 'List style customizer', 'delightful-downloads' ); ?></li>
+					<li><?php _e( 'Advanced graphical reports', 'delightful-downloads' ); ?></li>
+				</ul>
+				<form method="post" action="http://ashleyrich.com/delightful-downloads-pro" target="_blank">
+					<?php $current_user = wp_get_current_user(); ?>
+					<lable>Email:</lable>
+					<input type="email" value="<?php echo $current_user->user_email; ?>">
+					<label>First Name:</label>
+					<input type="text" value="<?php echo $current_user->user_firstname; ?>">
+					<label>Last Name:</label>
+					<input type="text" value="<?php echo $current_user->user_lastname; ?>">
+					<button class="button button-primary"><?php _e( 'Send me news about pro version', 'delightful-downloads' ); ?></button>
+				</form>
+				<small><?php _e( 'I promise I will not use your email for anything else and you can unsubscribe anytime.' ); ?></small>
+			</div>
+
 			<h4><?php _e( 'Help and Support', 'delightful-downloads' ); ?></h4>
 			<p><?php printf( __( 'Please take a moment to look at the %sdocumentation%s. If you are still having issues, please leave a %ssupport request%s.', 'delightful-downloads' ), '<a href="http://delightfulwp.com/delightful-downloads/documentation/">', '</a>', '<a href="https://wordpress.org/support/plugin/delightful-downloads">', '</a>' ); ?></p>
 		</div>
