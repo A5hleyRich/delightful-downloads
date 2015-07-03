@@ -4,11 +4,11 @@ Plugin Name: Delightful Downloads
 Plugin URI: http://delightfulwp.com/delightful-downloads/
 Description: A super-awesome downloads manager for WordPress.
 Version: 1.5.2
-Author: Delightful WP
-Author URI: http://delightfulwp.com
+Author: Ashley Rich
+Author URI: http://ashleyrich.com
 License: GPL2
 
-Copyright 2013  Delightful WP  (email : hello@delightfulwp.com)
+Copyright 2013  Ashley Rich  (email : hello@ashleyrich.com)
 
 This program is free software; you can redistribute it and/or modify
 it under the terms of the GNU General Public License, version 2, as 
