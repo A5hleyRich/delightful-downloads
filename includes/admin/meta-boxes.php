@@ -118,7 +118,7 @@ function dedo_meta_box_download( $post ) {
 	$file_browser_args = array(
 		'root'			=> dedo_get_upload_dir( 'basedir' ) . '/',
 		'url'			=> dedo_get_upload_dir( 'baseurl' ) . '/',
-		'script'		=> DEDO_PLUGIN_URL . 'assets/js/jqueryFileTree/connectors/jqueryFileTree.php'
+		'script'		=> DEDO_PLUGIN_URL . 'assets/vendor/jqueryFileTree/connectors/jqueryFileTree.php'
 	);
 
 	?>
