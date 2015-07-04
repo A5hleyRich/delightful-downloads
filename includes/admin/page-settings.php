@@ -248,11 +248,11 @@ function dedo_render_part_sidebar() {
 					<input type="hidden" name="u" value="ace6f39e2bb7270b9ca7a21bc">
 					<input type="hidden" name="id" value="003e1f6906">
 					<label for="MERGE0">Email:</label>
-					<input type="email" name="MERGE0" id="MERGE0" value="<?php echo $current_user->user_email; ?>">
+					<input type="email" name="MERGE0" id="MERGE0" class="regular-text" value="<?php echo $current_user->user_email; ?>">
 					<label for="MERGE1">First Name:</label>
-					<input type="text" name="MERGE1" id="MERGE1" value="<?php echo $current_user->user_firstname; ?>">
+					<input type="text" name="MERGE1" id="MERGE1" class="regular-text" value="<?php echo $current_user->user_firstname; ?>">
 					<label for="MERGE2">Last Name:</label>
-					<input type="text" name="MERGE2" id="MERGE2" value="<?php echo $current_user->user_lastname; ?>">
+					<input type="text" name="MERGE2" id="MERGE2" class="regular-text" value="<?php echo $current_user->user_lastname; ?>">
 					<button class="button button-primary"><?php _e( 'Send me news about pro version', 'delightful-downloads' ); ?></button>
 				</form>
 				<small><?php _e( 'I promise I will not use your email for anything else and you can unsubscribe anytime.' ); ?></small>
