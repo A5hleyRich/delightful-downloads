@@ -238,9 +238,10 @@ function dedo_render_part_sidebar() {
 				<h4>Pro Version?</h4>
 				<p><?php _e( 'I\'m working on a pro version that will include the following features:', 'delightful-downloads' ); ?></p>
 				<ul>
-					<li><?php _e( 'Button customizer', 'delightful-downloads' ); ?></li>
-					<li><?php _e( 'List style customizer', 'delightful-downloads' ); ?></li>
+					<li><?php _e( 'Button styles builder', 'delightful-downloads' ); ?></li>
+					<li><?php _e( 'List styles builder', 'delightful-downloads' ); ?></li>
 					<li><?php _e( 'Advanced graphical reports', 'delightful-downloads' ); ?></li>
+					<li><?php _e( 'MailChimp subscribe to download', 'delightful-downloads' ); ?></li>
 				</ul>
 				<form method="post" action="http://ashleyrich.com/delightful-downloads-pro" target="_blank">
 					<?php $current_user = wp_get_current_user(); ?>
