@@ -5,10 +5,12 @@
  * @package     Delightful Downloads
  * @subpackage  Includes/Scripts
  * @since       1.0
-*/
+ */
 
 // Exit if accessed directly
-if ( !defined( 'ABSPATH' ) ) exit;
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
 
 /**
  * Register Frontend Scripts & Styles
@@ -19,6 +21,7 @@ function dedo_enqueue_scripts( $page ) {
 	// Register frontend CSS
 	wp_register_style( 'dedo-css', DEDO_PLUGIN_URL . 'assets/css/delightful-downloads.css', '', DEDO_VERSION, 'all' );
 }
+
 add_action( 'wp_enqueue_scripts', 'dedo_enqueue_scripts' );
 
 /**
@@ -41,11 +44,15 @@ function dedo_admin_enqueue_scripts( $page ) {
 	wp_register_script( 'dedo-admin-js-media-button', $src, array( 'jquery', 'dedo-jqueryChosen' ), $version, true );
 
 	$src = DEDO_PLUGIN_URL . 'assets/js/dedo-admin-post-download' . $suffix . '.js';
-	wp_register_script( 'dedo-admin-js-post-download', $src, array( 'jquery', 'plupload-all', 'jqueryFileTree' ), $version, true );
+	wp_register_script( 'dedo-admin-js-post-download', $src, array(
+		'jquery',
+		'plupload-all',
+		'jqueryFileTree'
+	), $version, true );
 
 	$src = DEDO_PLUGIN_URL . 'assets/vendor/jqueryFileTree/jqueryFileTree.js';
 	wp_register_script( 'jqueryFileTree', $src, array( 'jquery' ), $version, true );
-	
+
 	$src = DEDO_PLUGIN_URL . 'assets/vendor/jqueryChosen/chosen.jquery' . $suffix . '.js';
 	wp_register_script( 'dedo-jqueryChosen', $src, array( 'jquery' ), $version, true );
 
@@ -59,7 +66,13 @@ function dedo_admin_enqueue_scripts( $page ) {
 	wp_enqueue_script( 'dedo-admin-js-global' );
 
 	// Enqueue on dedo_download post add/edit screen
-	if ( in_array( $page, array( 'post.php', 'page.php', 'post-new.php', 'post-edit.php' ) ) && get_post_type() == 'dedo_download' ) {
+	if ( in_array( $page, array(
+			'post.php',
+			'page.php',
+			'post-new.php',
+			'post-edit.php'
+		) ) && get_post_type() == 'dedo_download'
+	) {
 		wp_enqueue_script( 'dedo-admin-js-post-download' );
 		wp_enqueue_style( 'jqueryFileTree-css' );
 	}
@@ -70,4 +83,5 @@ function dedo_admin_enqueue_scripts( $page ) {
 		wp_enqueue_style( 'dedo-jqueryChosen-css' );
 	}
 }
+
 add_action( 'admin_enqueue_scripts', 'dedo_admin_enqueue_scripts' );
