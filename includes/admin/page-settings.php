@@ -230,8 +230,9 @@ foreach ( $dedo_options as $key => $value ) {
  * @since  1.5
  */
 function dedo_render_part_sidebar() {
-
 	if ( apply_filters( 'dedo_admin_sidebar', true ) ) : ?>
+
+		<?php $current_user = wp_get_current_user(); ?>
 
 		<div id="dedo-settings-sidebar">
 			<div class="pro-version">
@@ -243,14 +244,15 @@ function dedo_render_part_sidebar() {
 					<li><?php _e( 'Advanced graphical reports', 'delightful-downloads' ); ?></li>
 					<li><?php _e( 'MailChimp subscribe to download', 'delightful-downloads' ); ?></li>
 				</ul>
-				<form method="post" action="http://ashleyrich.com/delightful-downloads-pro" target="_blank">
-					<?php $current_user = wp_get_current_user(); ?>
-					<lable>Email:</lable>
-					<input type="email" value="<?php echo $current_user->user_email; ?>">
-					<label>First Name:</label>
-					<input type="text" value="<?php echo $current_user->user_firstname; ?>">
-					<label>Last Name:</label>
-					<input type="text" value="<?php echo $current_user->user_lastname; ?>">
+				<form method="post" action="http://ashleyrich.us5.list-manage.com/subscribe/post" target="_blank">
+					<input type="hidden" name="u" value="ace6f39e2bb7270b9ca7a21bc">
+					<input type="hidden" name="id" value="003e1f6906">
+					<label for="MERGE0">Email:</label>
+					<input type="email" name="MERGE0" id="MERGE0" value="<?php echo $current_user->user_email; ?>">
+					<label for="MERGE1">First Name:</label>
+					<input type="text" name="MERGE1" id="MERGE1" value="<?php echo $current_user->user_firstname; ?>">
+					<label for="MERGE2">Last Name:</label>
+					<input type="text" name="MERGE2" id="MERGE2" value="<?php echo $current_user->user_lastname; ?>">
 					<button class="button button-primary"><?php _e( 'Send me news about pro version', 'delightful-downloads' ); ?></button>
 				</form>
 				<small><?php _e( 'I promise I will not use your email for anything else and you can unsubscribe anytime.' ); ?></small>
