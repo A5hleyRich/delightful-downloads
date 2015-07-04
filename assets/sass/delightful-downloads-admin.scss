@@ -347,6 +347,34 @@
 	padding-top: 1em;
 	padding-left: 20px;
 	box-sizing: border-box;
+
+	.pro-version {
+		margin: -1em 0 0 -20px;
+		padding: 1.33em 20px;
+		background: #32373c;
+		color: #b4b9be;
+
+		h4 {
+			margin: 0 0 1.33em;
+			color: #fff;
+		}
+
+		ul {
+			margin-left: 20px;
+			list-style: disc;
+		}
+
+		label {
+			display: block;
+			margin-bottom: 6px;
+		}
+		
+		input, button {
+			display: block;
+			width: 100%;
+			margin-bottom: 13px;
+		}
+	}
 }
 
 .dedo-settings-textarea {
