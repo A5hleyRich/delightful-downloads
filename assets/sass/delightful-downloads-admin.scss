@@ -1,54 +1,57 @@
 /* Shortcode Modal Window */
-#dedo-shortcode-modal .dedo-modal-content {
+#dedo-shortcode-modal {
+	z-index: 100000;
+	
+	.dedo-modal-content {
+		h1 {
+			margin-bottom: 24px;
+		}
 
-	h1 {
-		margin-bottom: 24px;
-	}
+		p {
+			font-size: 13px;
+			color: #333;
+		}
 
-	p {
-		font-size: 13px;
-		color: #333;
-	}
+		p.clear:after {
+			content: "";
+			display: table;
+			clear: both;
+		}
 
-	p.clear:after {
-		content: "";
-		display: table;
-		clear: both;
-	}
+		label.column-2 {
+			display: block;
+			box-sizing: border-box;
+			float: left;
+			width: 50%;
+		}
 
-	label.column-2 {
-		display: block;
-		box-sizing: border-box;
-		float: left;
-		width: 50%;
-	}
+		label.column-2:nth-child(1) {
+			padding-right: 10px;
+		}
 
-	label.column-2:nth-child(1) {
-		padding-right: 10px;
-	}
+		label.column-2:nth-child(2) {
+			padding-left: 10px;
+		}
 
-	label.column-2:nth-child(2) {
-		padding-left: 10px;
-	}
+		label span {
+			line-height: 24px;
+		}
 
-	label span {
-		line-height: 24px;
-	}
+		input {
+			display: block;
+			width: 100%;
+			border: 1px solid #aaa;
+		}
 
-	input {
-		display: block;
-		width: 100%;
-		border: 1px solid #aaa;
-	}
+		.buttons {
+			margin: 24px -16px 0;
+			padding: 12px 16px;
+			border-top: 1px solid #ddd;
+			background: #fcfcfc;
 
-	.buttons {
-		margin: 24px -16px 0;
-		padding: 12px 16px;
-		border-top: 1px solid #ddd;
-		background: #fcfcfc;
-
-		a {
-			margin-right: 5px;
+			a {
+				margin-right: 5px;
+			}
 		}
 	}
 }
