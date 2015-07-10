@@ -62,6 +62,13 @@ module.exports = function( grunt ) {
 				]
 			}
 		},
+		po2mo: {
+			files: {
+				src: 'languages/*.po',
+				expand: true
+			}
+
+		},
 		watch: {
 			sass: {
 				files: [ 'assets/sass/*' ],
@@ -79,5 +86,6 @@ module.exports = function( grunt ) {
 
 	// Default task(s).
 	grunt.registerTask( 'default', [ 'compass', 'uglify' ] );
+	grunt.registerTask( 'translate', [ 'pot', 'po2mo' ] );
 
 };
