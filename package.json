@@ -8,6 +8,7 @@
     "grunt-contrib-watch": "^0.6.1",
     "grunt-po2mo": "^0.1.2",
     "grunt-pot": "^0.2.1",
+    "grunt-shell": "^1.1.2",
     "load-grunt-tasks": "^3.2.0"
   }
 }

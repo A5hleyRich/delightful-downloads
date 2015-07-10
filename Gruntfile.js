@@ -63,6 +63,14 @@ module.exports = function( grunt ) {
 			}
 
 		},
+		shell: {
+			txPull: {
+				command: 'tx pull -a --minimum-perc=60'
+			},
+			txPush: {
+				command: 'tx push -s'
+			}
+		},
 		watch: {
 			sass: {
 				files: [ 'assets/sass/*' ],
@@ -80,6 +88,6 @@ module.exports = function( grunt ) {
 
 	// Default task(s).
 	grunt.registerTask( 'default', [ 'compass', 'uglify' ] );
-	grunt.registerTask( 'translate', [ 'pot', 'po2mo' ] );
+	grunt.registerTask( 'translate', [ 'pot', 'shell:txPush', 'shell:txPull', 'po2mo' ] );
 
 };
