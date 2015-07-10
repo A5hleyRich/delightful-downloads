@@ -4,10 +4,12 @@ module.exports = function( grunt ) {
 	grunt.initConfig( {
 		pkg: grunt.file.readJSON( 'package.json' ),
 		compass: {
-			options: {
-				cssDir: 'assets/css',
-				sassDir: 'assets/sass',
-				outputStyle: 'compressed'
+			dist: {
+				options: {
+					cssDir: 'assets/css',
+					sassDir: 'assets/sass',
+					outputStyle: 'compressed'
+				}
 			}
 		},
 		uglify: {
