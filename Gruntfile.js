@@ -49,12 +49,10 @@ module.exports = function( grunt ) {
 				msgid_bugs_address: 'hello@ashleyrich.com',
 				comment_tag: 'translators:'
 			},
-			files: [
-				{
-					expand: true,
-					src: [ '**/*.php', '!node_modules/**/*.php' ]
-				}
-			]
+			files: {
+				expand: true,
+				src: [ '**/*.php', '!node_modules/**/*.php' ]
+			}
 		},
 		po2mo: {
 			files: {
