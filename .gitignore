@@ -1,6 +1,5 @@
 .sass-cache
 assets/css/*.css
 assets/js/*.min.js
-languages/*.pot
-languages/*.po
+languages
 node_modules
