@@ -2,4 +2,5 @@
 assets/css/*.css
 assets/js/*.min.js
 languages/*.pot
+languages/*.po
 node_modules
