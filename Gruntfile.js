@@ -4,63 +4,55 @@ module.exports = function( grunt ) {
 	grunt.initConfig( {
 		pkg: grunt.file.readJSON( 'package.json' ),
 		compass: {
-			build: {
-				options: {
-					cssDir: 'assets/css',
-					sassDir: 'assets/sass',
-					outputStyle: 'compressed'
-				}
+			options: {
+				cssDir: 'assets/css',
+				sassDir: 'assets/sass',
+				outputStyle: 'compressed'
 			}
 		},
 		uglify: {
-			build: {
-				files: [
-					{
-						expand: true,
-						cwd: 'assets/js',
-						src: [ '*.js', '!*.min.js' ],
-						dest: 'assets/js',
-						ext: '.min.js'
-					}
-				]
+			files: {
+				expand: true,
+				cwd: 'assets/js',
+				src: [ '*.js', '!*.min.js' ],
+				dest: 'assets/js',
+				ext: '.min.js'
 			}
 		},
 		pot: {
-			build: {
-				options: {
-					text_domain: 'delightful-downloads',
-					dest: 'languages/delightful-downloads.pot',
-					keywords: [
-						'gettext',
-						'__',
-						'_e',
-						'_n:1,2',
-						'_x:1,2c',
-						'_ex:1,2c',
-						'_nx:4c,1,2',
-						'esc_attr__',
-						'esc_attr_e',
-						'esc_attr_x:1,2c',
-						'esc_html__',
-						'esc_html_e',
-						'esc_html_x:1,2c',
-						'_n_noop:1,2',
-						'_nx_noop:3c,1,2',
-						'__ngettext_noop:1,2'
-					],
-					encoding: 'UTF-8',
-					package_name: 'delightful-downloads',
-					package_version: '1.5.2',
-					msgid_bugs_address: 'hello@ashleyrich.com',
-					comment_tag: 'translators:'
-				},
-				files: [
-					{
-						expand: true,
-						src: [ '**/*.php', '!node_modules/**/*.php' ]
-					}
-				]
-			}
+			options: {
+				text_domain: 'delightful-downloads',
+				dest: 'languages/delightful-downloads.pot',
+				keywords: [
+					'gettext',
+					'__',
+					'_e',
+					'_n:1,2',
+					'_x:1,2c',
+					'_ex:1,2c',
+					'_nx:4c,1,2',
+					'esc_attr__',
+					'esc_attr_e',
+					'esc_attr_x:1,2c',
+					'esc_html__',
+					'esc_html_e',
+					'esc_html_x:1,2c',
+					'_n_noop:1,2',
+					'_nx_noop:3c,1,2',
+					'__ngettext_noop:1,2'
+				],
+				encoding: 'UTF-8',
+				package_name: 'delightful-downloads',
+				package_version: '1.5.2',
+				msgid_bugs_address: 'hello@ashleyrich.com',
+				comment_tag: 'translators:'
+			},
+			files: [
+				{
+					expand: true,
+					src: [ '**/*.php', '!node_modules/**/*.php' ]
+				}
+			]
 		},
 		po2mo: {
 			files: {
