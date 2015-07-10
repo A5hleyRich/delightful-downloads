@@ -1,5 +1,5 @@
 .sass-cache
-assets/css/*.css
+assets/css
 assets/js/*.min.js
 languages
 node_modules
