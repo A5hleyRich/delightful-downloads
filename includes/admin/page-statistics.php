@@ -196,7 +196,9 @@ function dedo_statistics_actions_export() {
 		$log['user_id'] = ( isset( $user_name[$log['user_id']] ) ) ? $user_name[$log['user_id']] : __( 'Non-member', 'delightful-downloads' );
 
 		// Convert ip to human readable
-		$log['user_ip'] = inet_ntop( $log['user_ip'] );
+        if ( ! empty( $log['user_ip'] ) ) {
+            $log['user_ip'] = inet_ntop( $log['user_ip'] );
+        }
 		
 		fputcsv( $output, $log );
 	}	

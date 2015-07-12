@@ -55,8 +55,7 @@ jQuery( document ).ready( function( $ ) {
 			self = this;
 
 			// Show modal
-			$( '.dedo-modal-action' ).on( 'click', function( e ) {
-
+			$( 'body' ).on( 'click', '.dedo-modal-action', function( e ) {
 				self.modal = $( this ).attr( 'href' );
 
 				$( 'body' ).trigger( 'openModal' );

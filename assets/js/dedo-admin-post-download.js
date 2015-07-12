@@ -231,7 +231,7 @@ jQuery( document ).ready( function( $ ){
 		focus: function() {
 			var self = this;
 
-			$( '.dedo-modal-action.select-existing' ).on( 'click', function() {
+			$( 'body' ).on( 'click', '.dedo-modal-action.select-existing', function() {
 				self.$file_url.focus();
 			} );
 		}

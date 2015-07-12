@@ -140,7 +140,7 @@ class DEDO_Logging {
 			$log['post_id'],
 			$log['date'],
 			$log['user_id'],
-			inet_pton( $log['ip_address'] ),
+			$this->prepare_ip_address( $log['ip_address'] ),
 			$log['agent'] 
 		);
 
@@ -199,7 +199,7 @@ class DEDO_Logging {
 			$log['post_id'],
 			$log['date'],
 			$dedo_options['grace_period_duration'],
-			inet_pton( $log['ip_address'] ) );
+			$this->prepare_ip_address( $log['ip_address'] ) );
 
 			if ( $wpdb->query( $sql ) ) {
 				// We have a grace period
@@ -208,6 +208,24 @@ class DEDO_Logging {
 		}
 
 		return false;
+	}
+
+	/**
+	 *
+	 * @param $ip_address
+	 *
+	 * @return string
+	 */
+	public function prepare_ip_address( $ip_address ) {
+		// PHP versions prior to 5.3.0 on Windows did not support the inet_pton function
+		if ( ! function_exists( 'inet_pton' ) ) {
+			return '';
+		}
+
+		// Some servers pass an IP range, exploding suppresses PHP Warning
+		$ip_address = explode( ',', $ip_address );
+
+		return inet_pton( $ip_address[0] );
 	}
 
 }
