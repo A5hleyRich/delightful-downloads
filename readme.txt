@@ -83,6 +83,16 @@ Please refer to the [FAQ](http://delightfulwp.com/delightful-downloads/faq/ "Del
 
 == Changelog ==
 
+= 1.5.3 =
+
+* New: Pro subscribe form added to _Settings_ screen
+* Improvement: Use minified JavaScript
+* Improvement: Translations updated
+* Bug fix: PHP warning when _Block User Agents_ option empty
+* Bug fix: PHP warning when IP address range supplied by server
+* Bug fix: `exclude_tags` attribute not working on `[ddownload_list]` shortcode
+* Bug fix: Conflict with Divi theme
+
 = 1.5.2 =
 
 * Enhancement: New shortcode generator window.
@@ -274,6 +284,10 @@ Please refer to the [FAQ](http://delightfulwp.com/delightful-downloads/faq/ "Del
 * Initial stable plugin release.
 
 == Upgrade Notice ==
+
+= 1.5.3 =
+
+* Bug fixes
 
 = 1.5.2 =
 
