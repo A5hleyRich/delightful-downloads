@@ -2,9 +2,9 @@
 Contributors: A5hleyRich
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=S6KBW2ZSVZ8RE
 Tags: download, manager, downloads, monitor, shortcode, delightful downloads, file, counter, tracking
-Requires at least: 4.1
-Tested up to: 4.1
-Stable tag: 1.5.2
+Requires at least: 4.2.2
+Tested up to: 4.2.2
+Stable tag: 1.5.3
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -82,6 +82,16 @@ Please refer to the [FAQ](http://delightfulwp.com/delightful-downloads/faq/ "Del
 8. Settings screen
 
 == Changelog ==
+
+= 1.5.3 =
+
+* New: Pro subscribe form added to _Settings_ screen
+* Improvement: Use minified JavaScript
+* Improvement: Translations updated
+* Bug fix: PHP warning when _Block User Agents_ option empty
+* Bug fix: PHP warning when IP address range supplied by server
+* Bug fix: `exclude_tags` attribute not working on `[ddownload_list]` shortcode
+* Bug fix: Conflict with Divi theme
 
 = 1.5.2 =
 
@@ -274,6 +284,10 @@ Please refer to the [FAQ](http://delightfulwp.com/delightful-downloads/faq/ "Del
 * Initial stable plugin release.
 
 == Upgrade Notice ==
+
+= 1.5.3 =
+
+* Bug fixes
 
 = 1.5.2 =
 
