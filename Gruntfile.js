@@ -45,7 +45,7 @@ module.exports = function( grunt ) {
 				],
 				encoding: 'UTF-8',
 				package_name: 'delightful-downloads',
-				package_version: '1.5.3',
+				package_version: '1.5.4',
 				msgid_bugs_address: 'hello@ashleyrich.com',
 				comment_tag: 'translators:'
 			},
