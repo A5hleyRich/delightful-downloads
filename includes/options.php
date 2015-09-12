@@ -89,7 +89,7 @@ function dedo_get_options() {
 			'name'		=> __( 'Admin Events', 'delightful-downloads' ),
 			'tab'		=> 'statistics',
 			'type'		=> 'radio',
-			'default'	=> 0
+			'default'	=> 1
 		),
 		'grace_period'		=> array(
 			'name'		=> __( 'Grace Period', 'delightful-downloads' ),
