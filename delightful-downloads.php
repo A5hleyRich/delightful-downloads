@@ -1,7 +1,7 @@
 <?php
 /*
 Plugin Name: Delightful Downloads
-Plugin URI: http://delightfulwp.com/delightful-downloads/
+Plugin URI: https://delightfuldownloads.com
 Description: A super-awesome downloads manager for WordPress.
 Version: 1.5.4
 Author: Ashley Rich

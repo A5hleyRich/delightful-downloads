@@ -47,7 +47,7 @@ Don't see yours yet? Join our community and make it happen! [WP-Translations.org
 
 **Documentation**
 
-The Delightful Downloads documentation can be found [here](http://delightfulwp.com/delightful-downloads/documentation/ "Delightful Downloads Documentation").
+The Delightful Downloads documentation can be found [here](https://delightfuldownloads.com/documentation/ "Delightful Downloads Documentation").
 
 **Requirements**
 
@@ -63,11 +63,11 @@ If you would like to contribute to the plugin, you can do so on [GitHub](https:/
 1. Activate the plugin through the 'Plugins' menu in WordPress.
 1. Go to Downloads > Settings and configure the options.
 
-Please refer to the [documentation](http://delightfulwp.com/delightful-downloads/documentation/installation/ "Delightful Downloads Documentation") for further instructions.
+Please refer to the [documentation](https://delightfuldownloads.com/documentation/installation/ "Delightful Downloads Documentation") for further instructions.
 
 == Frequently asked questions ==
 
-Please refer to the [FAQ](http://delightfulwp.com/delightful-downloads/faq/ "Delightful Downloads FAQ") section within the [documentation](http://delightfulwp.com/delightful-downloads/documentation/ "Delightful Downloads Documentation").
+Please refer to the [FAQ](https://delightfuldownloads.com/documentation/delightful-downloads-faqs/ "Delightful Downloads FAQ") section within the [documentation](https://delightfuldownloads.com/documentation/ "Delightful Downloads Documentation").
 
 
 == Screenshots ==
