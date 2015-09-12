@@ -77,11 +77,11 @@ function dedo_render_page_settings() {
 
 	<div class="wrap">
 		
-		<h2><?php _e( 'Download Settings', 'delightful-downloads' ); ?>
+		<h1><?php _e( 'Download Settings', 'delightful-downloads' ); ?>
 			<a href="#dedo-settings-import" class="add-new-h2 dedo-modal-action"><?php _e( 'Import', 'delightful-downloads' ); ?></a>
 			<a href="<?php echo wp_nonce_url( admin_url( 'edit.php?post_type=dedo_download&page=dedo_settings&action=export' ), 'dedo_export_settings', 'dedo_export_settings_nonce' ) ?>" class="add-new-h2"><?php _e( 'Export', 'delightful-downloads' ); ?></a>
 			<a href="<?php echo wp_nonce_url( admin_url( 'edit.php?post_type=dedo_download&page=dedo_settings&action=reset_defaults' ), 'dedo_reset_settings', 'dedo_reset_settings_nonce' ) ?>" class="add-new-h2 dedo_confirm_action" data-confirm="<?php _e( 'You are about to reset the download settings.', 'delightful-downloads' ); ?>"><?php _e( 'Reset Defaults', 'delightful-downloads' ); ?></a>
-		</h2>
+		</h1>
 		
 		<?php if ( isset( $_GET['settings-updated'] ) ) {
 				
