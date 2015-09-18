@@ -21,22 +21,15 @@ class DEDO_Widget extends WP_Widget {
 	 *
 	 * @access public
 	 * @since 1.6
-	 * @return void
 	 */
 	public function __construct() {
-
-		parent::__construct(
-			false,
-			__( 'Delightful Downloads' ),
-			array( 'description' => __( 'Display your downloads inside a widget.' ) )
-		);
+		parent::__construct( 'delightful-downloads', __( 'Delightful Downloads', 'delightful-downloads' ), array( 'description' => __( "A list of your site's downloads.", 'delightful-downloads' ) ) );
 	}
 
 	/**
 	 * Widget output
 	 */
 	public function widget( $args, $instance ) {
-		
 		// Get published downloads
 		$category_id = is_numeric(strip_tags($instance['category'])) ? strip_tags($instance['category']) : false;
 		$tag_id      = is_numeric(strip_tags($instance['tag']))      ? strip_tags($instance['tag']) : false;
@@ -92,7 +85,6 @@ class DEDO_Widget extends WP_Widget {
 	 * @return string
 	 */
 	private function replaceFormatPlaceholders($text, $download) {
-		
 		$placeholders = array( '%ID%', '%TEXT%' );
 		$replacement = array( $download->ID, esc_html($download->post_title) );
 
@@ -103,7 +95,6 @@ class DEDO_Widget extends WP_Widget {
 	 * Save widget options
 	 */
 	public function update( $new_instance, $old_instance ) {
-		
 		$instance = $old_instance;
 
 		$instance['title'] = strip_tags($new_instance['title']);
@@ -119,7 +110,6 @@ class DEDO_Widget extends WP_Widget {
 	 * Display backend form
 	 */
 	public function form( $instance ) {
-		
 		if ( $instance ) {
 			$title = esc_attr( $instance['title'] );
 			$count = is_numeric(esc_attr( $instance['count'] )) ? esc_attr( $instance['count'] ) : 1;
