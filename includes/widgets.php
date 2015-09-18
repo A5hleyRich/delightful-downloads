@@ -7,8 +7,9 @@
  * @since       1.6
 */
 
-// Exit if accessed directly
-if ( !defined( 'ABSPATH' ) ) exit;
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
 
 /**
  * Widgets
@@ -16,6 +17,6 @@ if ( !defined( 'ABSPATH' ) ) exit;
  * @since 1.6
  */
 function dedo_widgets() {	
-	register_widget( 'DEDO_Widget' );
+	register_widget( 'DEDO_Widget_List' );
 }
 add_action( 'widgets_init', 'dedo_widgets', 5 );

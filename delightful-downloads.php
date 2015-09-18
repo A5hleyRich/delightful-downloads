@@ -147,7 +147,7 @@ class Delightful_Downloads {
 		include_once( DEDO_PLUGIN_DIR . 'includes/class-dedo-cache.php' );
 		include_once( DEDO_PLUGIN_DIR . 'includes/class-dedo-logging.php' );
 		include_once( DEDO_PLUGIN_DIR . 'includes/class-dedo-statistics.php' );
-		include_once( DEDO_PLUGIN_DIR . 'includes/class-dedo-widget.php' );
+		include_once( DEDO_PLUGIN_DIR . 'includes/class-dedo-widget-list.php' );
 		include_once( DEDO_PLUGIN_DIR . 'includes/cron.php' );
 		include_once( DEDO_PLUGIN_DIR . 'includes/functions.php' );
 		include_once( DEDO_PLUGIN_DIR . 'includes/mime-types.php' );

@@ -11,7 +11,7 @@
 // Exit if accessed directly
 if ( !defined( 'ABSPATH' ) ) exit;
 
-class DEDO_Widget extends WP_Widget {
+class DEDO_Widget_List extends WP_Widget {
 	
 	private static $count = 1;
 	private static $format = '[ddownload id="%ID%" text="%TEXT%"]';
@@ -23,7 +23,13 @@ class DEDO_Widget extends WP_Widget {
 	 * @since 1.6
 	 */
 	public function __construct() {
-		parent::__construct( 'delightful-downloads', __( 'Delightful Downloads', 'delightful-downloads' ), array( 'description' => __( "A list of your site's downloads.", 'delightful-downloads' ) ) );
+		$widget_id = 'delightful-downloads-list-widget';
+		$name      = __( 'Delightful Downloads', 'delightful-downloads' );
+		$options   = array(
+			'description' => __( "A list of your site's downloads.", 'delightful-downloads' ),
+		);
+
+		parent::__construct( $widget_id, $name, $options );
 	}
 
 	/**
