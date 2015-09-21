@@ -114,71 +114,97 @@ class DEDO_Widget_List extends WP_Widget {
 
 	/**
 	 * Display backend form
+	 *
+	 * @param array $instance
+	 *
+	 * @return void
 	 */
 	public function form( $instance ) {
-		if ( $instance ) {
-			$title = esc_attr( $instance['title'] );
-			$count = is_numeric(esc_attr( $instance['count'] )) ? esc_attr( $instance['count'] ) : 1;
-			$category = esc_attr( $instance['category'] );
-			$tag = esc_attr( $instance['tag'] );
-			$format = !empty( $instance['format'] ) ? esc_attr( $instance['format'] ) : self::$format;
-		}
-		else {
-			$title = __( 'Downloads' );
-			$count = self::$count;
-			$category = '';
-			$tag = '';
-			$format = self::$format;
-		}
-		
-		$ddownload_categories = get_terms( 'ddownload_category' );
-		$ddownload_tags = get_terms( 'ddownload_tag' );
-		
-		// Title
-		echo '<p>';
-			echo '<label for="'.$this->get_field_id( 'title' ).'">'.__( 'Title:' ).'</label>';
-			echo '<input class="widefat" id="'.$this->get_field_id( 'title' ).'" name="'.$this->get_field_name( 'title' ).'" type="text" value="'.$title.'" />';
-		echo '</p>';
-		
-		// Count
-		echo '<p>';
-			echo '<label for="'.$this->get_field_id( 'count' ).'">'.__( 'Count:' ).'</label>';
-			echo '<input class="widefat" id="'.$this->get_field_id( 'count' ).'" name="'.$this->get_field_name( 'count' ).'" type="number" value="'.$count.'" />';
-		echo '</p>';
-		
-		// Category
-		echo '<p>';
-			echo '<label for="'.$this->get_field_id( 'category' ).'">'.__( 'Category:' ).'</label>';
-			echo '<select class="widefat" id="'.$this->get_field_id( 'category' ).'" name="'.$this->get_field_name( 'category' ).'">';
-				echo '<option>'.__( 'All categories' ).'</option>';
-				if(is_array($ddownload_categories) && !empty($ddownload_categories)) {
-					foreach($ddownload_categories as $ddownload_category) {
-						$selected = ($ddownload_category->term_id == $category) ? ' selected' : '';
-						echo '<option value="'.$ddownload_category->term_id.'"'.$selected.'>'.$ddownload_category->name.'</option>';
-					}					
-				}
-			echo '</select>';
-		echo '</p>';
-		
-		// Tag
-		echo '<p>';
-			echo '<label for="'.$this->get_field_id( 'tag' ).'">'.__( 'Tag:' ).'</label>';
-			echo '<select class="widefat" id="'.$this->get_field_id( 'tag' ).'" name="'.$this->get_field_name( 'tag' ).'">';
-				echo '<option>'.__( 'All tags' ).'</option>';
-				if(is_array($ddownload_tags) && !empty($ddownload_tags)) {
-					foreach($ddownload_tags as $ddownload_tag) {
-						$selected = ($ddownload_tag->term_id == $tag) ? ' selected' : '';
-						echo '<option value="'.$ddownload_tag->term_id.'"'.$selected.'>'.$ddownload_tag->name.'</option>';
-					}					
-				}
-			echo '</select>';
-		echo '</p>';
-		
-		// Format
-		echo '<p>';
-			echo '<label for="'.$this->get_field_id( 'format' ).'">'.__( 'Format:' ).'</label>';
-			echo '<textarea class="widefat" id="'.$this->get_field_id( 'format' ).'" name="'.$this->get_field_name( 'format' ).'">'.$format.'</textarea>';
-		echo '</p>';
+		global $dedo_options;
+
+		$defaults = array(
+			'title'    => __( 'Downloads', 'delightful-downloads' ),
+			'count'    => 1,
+			'orderby'  => 'title',
+			'order'    => 'asc',
+			'category' => '',
+			'tag'      => '',
+			'style'    => '',
+		);
+		$instance = wp_parse_args( $defaults, $instance );
+
+		$title    = $instance['title'];
+		$count    = $instance['count'];
+		$orderby  = $instance['orderby'];
+		$order    = $instance['order'];
+		$category = $instance['category'];
+		$tag      = $instance['tag'];
+		$style    = $instance['style'];
+
+		$taxonomy_args = array(
+			'hide_empty' => false,
+		);
+
+		?>
+
+		<p>
+			<label for="<?php echo $this->get_field_id( 'title' ); ?>"><?php _e( 'Title:', 'delightful-downloads' ); ?></label>
+			<input class="widefat" id="<?php echo $this->get_field_id( 'title' ); ?>" name="<?php echo $this->get_field_name( 'title' ); ?>" type="text" value="<?php echo $title; ?>" />
+		</p>
+		<p>
+			<label for="<?php echo $this->get_field_id( 'count' ); ?>"><?php _e( 'Number of downloads to show:', 'delightful-downloads' ); ?></label>
+			<input class="widefat" id="<?php echo $this->get_field_id( 'count' ); ?>" name="<?php echo $this->get_field_name( 'count' ); ?>" type="number" value="<?php echo $count; ?>" step="1" min="1" />
+		</p>
+		<p>
+			<label for="<?php echo $this->get_field_id( 'orderby' ); ?>"><?php _e( 'Order by:', 'delightful-downloads' ); ?></label>
+			<select class="widefat" id="<?php echo $this->get_field_id( 'orderby' ); ?>" name="<?php echo $this->get_field_name( 'orderby' ); ?>">
+				<option value="date" <?php selected( 'date', $orderby ); ?>><?php _e( 'Date', 'delightful-downloads' ); ?></option>
+				<option value="count" <?php selected( 'count', $orderby ); ?>><?php _e( 'Download Count', 'delightful-downloads' ); ?></option>
+				<option value="filesize" <?php selected( 'filesize', $orderby ); ?>><?php _e( 'File Size', 'delightful-downloads' ); ?></option>
+				<option value="random" <?php selected( 'random', $orderby ); ?>><?php _e( 'Random', 'delightful-downloads' ); ?></option>
+				<option value="title" <?php selected( 'title', $orderby ); ?>><?php _e( 'Title', 'delightful-downloads' ); ?></option>
+			</select>
+		</p>
+		<p>
+			<label for="<?php echo $this->get_field_id( 'order' ); ?>"><?php _e( 'Order:', 'delightful-downloads' ); ?></label>
+			<select class="widefat" id="<?php echo $this->get_field_id( 'order' ); ?>" name="<?php echo $this->get_field_name( 'order' ); ?>">
+				<option value="asc" <?php selected( 'asc', $order ); ?>><?php _e( 'ASC', 'delightful-downloads' ); ?></option>
+				<option value="desc" <?php selected( 'desc', $order ); ?>><?php _e( 'DESC', 'delightful-downloads' ); ?></option>
+			</select>
+		</p>
+		<?php if ( $dedo_options['enable_taxonomies'] ) : ?>
+			<p>
+				<label for="<?php echo $this->get_field_id( 'category' ); ?>"><?php _e( 'Category:', 'delightful-downloads' ); ?></label>
+				<?php $categories = get_terms( 'ddownload_category', $taxonomy_args ); ?>
+				<select class="widefat" id="<?php echo $this->get_field_id( 'category' ); ?>" name="<?php echo $this->get_field_name( 'category' ); ?>">
+					<option <?php selected( 'all', $category ); ?>><?php _e( 'All Categories', 'delightful-downloads' ); ?></option>
+					<?php foreach( $categories as $c ) : ?>
+						<option value="<?php echo $c->term_id; ?>" <?php selected( $c->term_id, $category ); ?>><?php echo $c->name; ?></option>
+					<?php endforeach; ?>
+				</select>
+			</p>
+			<p>
+				<label for="<?php echo $this->get_field_id( 'tag' ); ?>"><?php _e( 'Tag:', 'delightful-downloads' ); ?></label>
+				<?php $tags = get_terms( 'ddownload_tag', $taxonomy_args ); ?>
+				<select class="widefat" id="<?php echo $this->get_field_id( 'tag' ); ?>" name="<?php echo $this->get_field_name( 'tag' ); ?>">
+					<option <?php selected( 'all', $tag ); ?>><?php _e( 'All Tags', 'delightful-downloads' ); ?></option>
+					<?php foreach( $tags as $t ) : ?>
+						<option value="<?php echo $t->term_id; ?>" <?php selected( $t->term_id, $tag ); ?>><?php echo $t->name; ?></option>
+					<?php endforeach; ?>
+				</select>
+			</p>
+		<?php endif; ?>
+		<p>
+			<label for="<?php echo $this->get_field_id( 'style' ); ?>"><?php _e( 'List Style:', 'delightful-downloads' ); ?></label>
+			<?php $styles = dedo_get_shortcode_lists(); ?>
+			<select class="widefat" id="<?php echo $this->get_field_id( 'style' ); ?>" name="<?php echo $this->get_field_name( 'style' ); ?>">
+				<?php foreach( $styles as $index => $value ) : ?>
+					<option value="<?php echo $index; ?>" <?php selected( $index, $style ); ?>><?php echo $value['name']; ?></option>
+				<?php endforeach; ?>
+			</select>
+		</p>
+
+		<?php
 	}
 
 }
