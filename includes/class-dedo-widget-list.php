@@ -33,8 +33,22 @@ class DEDO_Widget_List extends WP_Widget {
 	 * Widget output
 	 */
 	public function widget( $args, $instance ) {
+		$atts = array(
+			'limit'      => $instance['count'],
+			'orderby'    => $instance['orderby'],
+			'order'      => $instance['order'],
+			'categories' => $instance['category'],
+			'tags'       => $instance['tag'],
+			'style'      => $instance['style'],
+		);
+
 		echo $args['before_widget'];
-		echo 'Widget';
+
+		if ( ! empty( $instance['title'] ) ) {
+			echo $args['before_title'] . apply_filters( 'widget_title', $instance['title'] ) . $args['after_title'];
+		}
+
+		echo dedo_shortcode_ddownload_list( $atts );
 		echo $args['after_widget'];
 	}
 
@@ -125,7 +139,7 @@ class DEDO_Widget_List extends WP_Widget {
 				<label for="<?php echo $this->get_field_id( 'category' ); ?>"><?php _e( 'Category:', 'delightful-downloads' ); ?></label>
 				<?php $categories = get_terms( 'ddownload_category', $taxonomy_args ); ?>
 				<select class="widefat" id="<?php echo $this->get_field_id( 'category' ); ?>" name="<?php echo $this->get_field_name( 'category' ); ?>">
-					<option <?php selected( 'all', $category ); ?>><?php _e( 'All Categories', 'delightful-downloads' ); ?></option>
+					<option value="" <?php selected( '', $category ); ?>><?php _e( 'All Categories', 'delightful-downloads' ); ?></option>
 					<?php foreach( $categories as $c ) : ?>
 						<option value="<?php echo $c->term_id; ?>" <?php selected( $c->term_id, $category ); ?>><?php echo $c->name; ?></option>
 					<?php endforeach; ?>
@@ -135,7 +149,7 @@ class DEDO_Widget_List extends WP_Widget {
 				<label for="<?php echo $this->get_field_id( 'tag' ); ?>"><?php _e( 'Tag:', 'delightful-downloads' ); ?></label>
 				<?php $tags = get_terms( 'ddownload_tag', $taxonomy_args ); ?>
 				<select class="widefat" id="<?php echo $this->get_field_id( 'tag' ); ?>" name="<?php echo $this->get_field_name( 'tag' ); ?>">
-					<option <?php selected( 'all', $tag ); ?>><?php _e( 'All Tags', 'delightful-downloads' ); ?></option>
+					<option value="" <?php selected( '', $tag ); ?>><?php _e( 'All Tags', 'delightful-downloads' ); ?></option>
 					<?php foreach( $tags as $t ) : ?>
 						<option value="<?php echo $t->term_id; ?>" <?php selected( $t->term_id, $tag ); ?>><?php echo $t->name; ?></option>
 					<?php endforeach; ?>
