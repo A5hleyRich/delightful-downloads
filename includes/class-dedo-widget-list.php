@@ -12,9 +12,6 @@
 if ( !defined( 'ABSPATH' ) ) exit;
 
 class DEDO_Widget_List extends WP_Widget {
-	
-	private static $count = 1;
-	private static $format = '[ddownload id="%ID%" text="%TEXT%"]';
 
 	/**
 	 *	Init Widget
@@ -36,80 +33,31 @@ class DEDO_Widget_List extends WP_Widget {
 	 * Widget output
 	 */
 	public function widget( $args, $instance ) {
-		// Get published downloads
-		$category_id = is_numeric(strip_tags($instance['category'])) ? strip_tags($instance['category']) : false;
-		$tag_id      = is_numeric(strip_tags($instance['tag']))      ? strip_tags($instance['tag']) : false;
-		$count       = is_numeric(esc_attr( $instance['count'] ))    ? esc_attr( $instance['count'] ) : 1;
-		
-		$post_query_args = array(
-			'post_type'		=> 'dedo_download',
-			'post_status'	=> 'publish',
-			'orderby'		=> 'post_date',
-			'order'			=> 'DESC',
-			'posts_per_page'=> $count
-		);
-		if($category_id) {
-			$post_query_args['tax_query'][] = array(
-				'taxonomy' => 'ddownload_category',
-				'field' => 'term_id',
-				'terms' => $category_id
-			);
-		}
-		if($tag_id) {
-			$post_query_args['tax_query'][] = array(
-				'taxonomy' => 'ddownload_tag',
-				'field' => 'term_id',
-				'terms' => $tag_id
-			);
-		}
-		
-		$downloads = get_posts( $post_query_args );
-		
-		// Display widget
-		echo '<div id="'.$args['widget_id'].'" class="widget widget_dedo">';
-		if(!empty($instance['title'])) {
-			echo '<h3>'.$instance['title'].'</h3>';
-		}
-		if(is_array($downloads) && !empty($downloads)) {
-			foreach($downloads as $download) {
-				echo apply_filters( 'widget_text', $this->replaceFormatPlaceholders($instance['format'], $download) );
-			}
-		}
-		echo '</div>';
-	}
-	
-	/**
-	 * Replace placeholders
-	 * 
-	 * Replaces placeholders in format text.
-	 * 
-	 * @param string $text
-	 * @param object $download
-	 * 
-	 * @access private
-	 * @since 1.6
-	 * @return string
-	 */
-	private function replaceFormatPlaceholders($text, $download) {
-		$placeholders = array( '%ID%', '%TEXT%' );
-		$replacement = array( $download->ID, esc_html($download->post_title) );
-
-		return str_replace($placeholders, $replacement, $text);
+		echo $args['before_widget'];
+		echo 'Widget';
+		echo $args['after_widget'];
 	}
 
 	/**
 	 * Save widget options
+	 *
+	 * @param array $new_instance
+	 * @param array $old_instance
+	 *
+	 * @return array
 	 */
 	public function update( $new_instance, $old_instance ) {
-		$instance = $old_instance;
+		$instance = array();
 
-		$instance['title'] = strip_tags($new_instance['title']);
-		$instance['count'] = is_numeric(strip_tags($new_instance['count'])) ? strip_tags($new_instance['count']) : self::$count;
-		$instance['category'] = strip_tags($new_instance['category']);
-		$instance['tag'] = strip_tags($new_instance['tag']);
-		$instance['format'] = $new_instance['format'];
-		
-        return $instance;
+		$instance['title']    = sanitize_text_field( $new_instance['title'] );
+		$instance['count']    = absint( $new_instance['count'] );
+		$instance['orderby']  = sanitize_text_field( $new_instance['orderby'] );
+		$instance['order']    = sanitize_text_field( $new_instance['order'] );
+		$instance['category'] = sanitize_text_field( $new_instance['category'] );
+		$instance['tag']      = sanitize_text_field( $new_instance['tag'] );
+		$instance['style']    = sanitize_text_field( $new_instance['style'] );
+
+		return $instance;
 	}
 
 	/**
@@ -131,7 +79,7 @@ class DEDO_Widget_List extends WP_Widget {
 			'tag'      => '',
 			'style'    => '',
 		);
-		$instance = wp_parse_args( $defaults, $instance );
+		$instance = wp_parse_args( $instance, $defaults );
 
 		$title    = $instance['title'];
 		$count    = $instance['count'];
