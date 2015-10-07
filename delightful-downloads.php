@@ -149,6 +149,7 @@ class Delightful_Downloads {
 		include_once( DEDO_PLUGIN_DIR . 'includes/class-dedo-cache.php' );
 		include_once( DEDO_PLUGIN_DIR . 'includes/class-dedo-logging.php' );
 		include_once( DEDO_PLUGIN_DIR . 'includes/class-dedo-statistics.php' );
+		include_once( DEDO_PLUGIN_DIR . 'includes/class-dedo-widget.php' );
 		include_once( DEDO_PLUGIN_DIR . 'includes/cron.php' );
 		include_once( DEDO_PLUGIN_DIR . 'includes/functions.php' );
 		include_once( DEDO_PLUGIN_DIR . 'includes/mime-types.php' );
@@ -156,6 +157,7 @@ class Delightful_Downloads {
 		include_once( DEDO_PLUGIN_DIR . 'includes/process-download.php' );
 		include_once( DEDO_PLUGIN_DIR . 'includes/scripts.php' );
 		include_once( DEDO_PLUGIN_DIR . 'includes/shortcodes.php' );
+		include_once( DEDO_PLUGIN_DIR . 'includes/widgets.php' );
 		include_once( DEDO_PLUGIN_DIR . 'includes/taxonomies.php' );
 		
 		if ( is_admin() ) {
