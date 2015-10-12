@@ -179,10 +179,20 @@ function dedo_get_shortcode_lists() {
  *
  * @since  1.0
  */
-function dedo_download_link( $id ) {
+function dedo_download_link( $id, $type = 'auto' ) {
 	 global $dedo_options;
+
+	 if ( $type === 'query' ) {
+	 	$endpoint = false;
+	 }
+	 else if ( $type === 'endpoint' ) {
+	 	$endpoint = true;
+	 }
+	 else { // $type === 'auto'
+	 	$endpoint = $dedo_options['download_endpoint'] == 1;
+	 }
 	 
-	 $output = esc_html( home_url( '?' . $dedo_options['download_url'] . '=' . $id ) );
+	 $output = esc_html( home_url( ( $endpoint ? '/' : '?' ) . $dedo_options['download_url'] . ( $endpoint ? '/' : '=' ) . $id ) );
 	 return apply_filters( 'dedo_download_link', $output );
 }
 
