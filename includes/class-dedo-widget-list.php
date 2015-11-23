@@ -33,14 +33,19 @@ class DEDO_Widget_List extends WP_Widget {
 	 * Widget output
 	 */
 	public function widget( $args, $instance ) {
+		global $dedo_options;
+
 		$atts = array(
-			'limit'      => $instance['count'],
-			'orderby'    => $instance['orderby'],
-			'order'      => $instance['order'],
-			'categories' => $instance['category'],
-			'tags'       => $instance['tag'],
-			'style'      => $instance['style'],
+			'limit'   => $instance['count'],
+			'orderby' => $instance['orderby'],
+			'order'   => $instance['order'],
+			'style'   => $instance['style'],
 		);
+
+		if ( $dedo_options['enable_taxonomies'] ) {
+			$atts['categories'] = $instance['category'];
+			$atts['tags']       = $instance['tag'];
+		}
 
 		echo $args['before_widget'];
 
