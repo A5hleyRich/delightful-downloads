@@ -61,15 +61,20 @@ class DEDO_Widget_List extends WP_Widget {
 	 * @return array
 	 */
 	public function update( $new_instance, $old_instance ) {
+		global $dedo_options;
+
 		$instance = array();
 
-		$instance['title']    = sanitize_text_field( $new_instance['title'] );
-		$instance['count']    = absint( $new_instance['count'] );
-		$instance['orderby']  = sanitize_text_field( $new_instance['orderby'] );
-		$instance['order']    = sanitize_text_field( $new_instance['order'] );
-		$instance['category'] = sanitize_text_field( $new_instance['category'] );
-		$instance['tag']      = sanitize_text_field( $new_instance['tag'] );
-		$instance['style']    = sanitize_text_field( $new_instance['style'] );
+		$instance['title']   = sanitize_text_field( $new_instance['title'] );
+		$instance['count']   = absint( $new_instance['count'] );
+		$instance['orderby'] = sanitize_text_field( $new_instance['orderby'] );
+		$instance['order']   = sanitize_text_field( $new_instance['order'] );
+		$instance['style']   = sanitize_text_field( $new_instance['style'] );
+
+		if ( $dedo_options['enable_taxonomies'] ) {
+			$instance['category'] = sanitize_text_field( $new_instance['category'] );
+			$instance['tag']      = sanitize_text_field( $new_instance['tag'] );
+		}
 
 		return $instance;
 	}
@@ -86,7 +91,7 @@ class DEDO_Widget_List extends WP_Widget {
 
 		$defaults = array(
 			'title'    => __( 'Downloads', 'delightful-downloads' ),
-			'count'    => 1,
+			'count'    => 5,
 			'orderby'  => 'title',
 			'order'    => 'asc',
 			'category' => '',
