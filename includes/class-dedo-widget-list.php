@@ -153,6 +153,15 @@ class DEDO_Widget_List extends WP_Widget {
 				<option value="desc" <?php selected( 'desc', $order ); ?>><?php _e( 'DESC', 'delightful-downloads' ); ?></option>
 			</select>
 		</p>
+		<p>
+			<label for="<?php echo $this->get_field_id( 'style' ); ?>"><?php _e( 'List Style:', 'delightful-downloads' ); ?></label>
+			<?php $styles = dedo_get_shortcode_lists(); ?>
+			<select class="widefat" id="<?php echo $this->get_field_id( 'style' ); ?>" name="<?php echo $this->get_field_name( 'style' ); ?>">
+				<?php foreach( $styles as $index => $value ) : ?>
+					<option value="<?php echo $index; ?>" <?php selected( $index, $style ); ?>><?php echo $value['name']; ?></option>
+				<?php endforeach; ?>
+			</select>
+		</p>
 		<?php if ( $dedo_options['enable_taxonomies'] ) : ?>
 			<p>
 				<label for="<?php echo $this->get_field_id( 'category' ); ?>"><?php _e( 'Category:', 'delightful-downloads' ); ?></label>
@@ -175,15 +184,6 @@ class DEDO_Widget_List extends WP_Widget {
 				</select>
 			</p>
 		<?php endif; ?>
-		<p>
-			<label for="<?php echo $this->get_field_id( 'style' ); ?>"><?php _e( 'List Style:', 'delightful-downloads' ); ?></label>
-			<?php $styles = dedo_get_shortcode_lists(); ?>
-			<select class="widefat" id="<?php echo $this->get_field_id( 'style' ); ?>" name="<?php echo $this->get_field_name( 'style' ); ?>">
-				<?php foreach( $styles as $index => $value ) : ?>
-					<option value="<?php echo $index; ?>" <?php selected( $index, $style ); ?>><?php echo $value['name']; ?></option>
-				<?php endforeach; ?>
-			</select>
-		</p>
 
 		<?php
 	}
