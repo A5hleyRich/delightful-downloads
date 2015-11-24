@@ -45,6 +45,7 @@ class DEDO_Widget_List extends WP_Widget {
 		if ( $dedo_options['enable_taxonomies'] ) {
 			$atts['categories'] = $instance['category'];
 			$atts['tags']       = $instance['tag'];
+			$atts['relation']   = $instance['relation'];
 		}
 
 		echo $args['before_widget'];
@@ -88,6 +89,7 @@ class DEDO_Widget_List extends WP_Widget {
 		if ( $dedo_options['enable_taxonomies'] ) {
 			$instance['category'] = sanitize_text_field( $new_instance['category'] );
 			$instance['tag']      = sanitize_text_field( $new_instance['tag'] );
+			$instance['relation'] = sanitize_text_field( $new_instance['relation'] );
 		}
 
 		return $instance;
@@ -108,9 +110,10 @@ class DEDO_Widget_List extends WP_Widget {
 			'count'    => 5,
 			'orderby'  => 'title',
 			'order'    => 'asc',
+			'style'    => '',
 			'category' => '',
 			'tag'      => '',
-			'style'    => '',
+			'relation' => 'AND'
 		);
 		$instance = wp_parse_args( $instance, $defaults );
 
@@ -118,9 +121,10 @@ class DEDO_Widget_List extends WP_Widget {
 		$count    = $instance['count'];
 		$orderby  = $instance['orderby'];
 		$order    = $instance['order'];
+		$style    = $instance['style'];
 		$category = $instance['category'];
 		$tag      = $instance['tag'];
-		$style    = $instance['style'];
+		$relation = $instance['relation'];
 
 		$taxonomy_args = array(
 			'hide_empty' => false,
@@ -169,7 +173,7 @@ class DEDO_Widget_List extends WP_Widget {
 				<select class="widefat" id="<?php echo $this->get_field_id( 'category' ); ?>" name="<?php echo $this->get_field_name( 'category' ); ?>">
 					<option value="" <?php selected( '', $category ); ?>><?php _e( 'All Categories', 'delightful-downloads' ); ?></option>
 					<?php foreach( $categories as $c ) : ?>
-						<option value="<?php echo $c->term_id; ?>" <?php selected( $c->term_id, $category ); ?>><?php echo $c->name; ?></option>
+						<option value="<?php echo $c->slug; ?>" <?php selected( $c->slug, $category ); ?>><?php echo $c->name; ?></option>
 					<?php endforeach; ?>
 				</select>
 			</p>
@@ -179,9 +183,17 @@ class DEDO_Widget_List extends WP_Widget {
 				<select class="widefat" id="<?php echo $this->get_field_id( 'tag' ); ?>" name="<?php echo $this->get_field_name( 'tag' ); ?>">
 					<option value="" <?php selected( '', $tag ); ?>><?php _e( 'All Tags', 'delightful-downloads' ); ?></option>
 					<?php foreach( $tags as $t ) : ?>
-						<option value="<?php echo $t->term_id; ?>" <?php selected( $t->term_id, $tag ); ?>><?php echo $t->name; ?></option>
+						<option value="<?php echo $t->slug; ?>" <?php selected( $t->slug, $tag ); ?>><?php echo $t->name; ?></option>
 					<?php endforeach; ?>
 				</select>
+			</p>
+			<p>
+				<label for="<?php echo $this->get_field_id( 'relation' ); ?>"><?php _e( 'Relation:', 'delightful-downloads' ); ?></label>
+				<select class="widefat" id="<?php echo $this->get_field_id( 'relation' ); ?>" name="<?php echo $this->get_field_name( 'relation' ); ?>">
+					<option value="AND" <?php selected( 'AND', $relation ); ?>>AND</option>
+					<option value="OR" <?php selected( 'OR', $relation ); ?>>OR</option>
+				</select>
+				<small><?php _e( 'Downloads belong to category AND/OR tag.', 'delightful-downloads' ); ?></small>
 			</p>
 		<?php endif; ?>
 
