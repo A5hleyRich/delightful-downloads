@@ -50,19 +50,11 @@ class DEDO_Widget_List extends WP_Widget {
 
 		echo $args['before_widget'];
 
-		if ( ! apply_filters( 'dedo_widget_list_customize_style', false ) ) {
-			echo '<div class="widget_nav_menu">';
-		}
-
 		if ( ! empty( $instance['title'] ) ) {
 			echo $args['before_title'] . apply_filters( 'widget_title', $instance['title'] ) . $args['after_title'];
 		}
 
 		echo dedo_shortcode_ddownload_list( $atts );
-
-		if ( ! apply_filters( 'dedo_widget_list_customize_style', false ) ) {
-			echo '</div>';
-		}
 
 		echo $args['after_widget'];
 	}
