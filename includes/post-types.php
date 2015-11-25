@@ -30,17 +30,17 @@ function dedo_download_post_type() {
 		'not_found' 			=> __( 'No downloads found', 'delightful-downloads' ),
 		'not_found_in_trash' 	=> __( 'No downloads found in Trash', 'delightful-downloads' ), 
 		'parent_item_colon' 	=> '',
-		'menu_name' 			=> __( 'Downloads', 'delightful-downloads' ) 
-	); 
+		'menu_name' 			=> __( 'Downloads', 'delightful-downloads' )
+	);
 
 	$args = array(
-		'labels' 			=> apply_filters( 'dedo_ddownload_labels', $labels ),
-		'public' 			=> false,
-		'show_ui' 			=> true, 
-		'show_in_menu' 		=> true,
-		'menu_icon'			=> 'dashicons-download',
-		'capability_type' 	=> apply_filters( 'dedo_ddownload_cap', 'post' ), 
-		'supports' 			=> apply_filters( 'dedo_ddownload_supports', array( 'title' ) ),
+		'labels'          => apply_filters( 'dedo_ddownload_labels', $labels ),
+		'public'          => false,
+		'show_ui'         => true,
+		'show_in_menu'    => true,
+		'menu_icon'       => 'dashicons-download',
+		'capability_type' => apply_filters( 'dedo_ddownload_cap', 'post' ),
+		'supports'        => apply_filters( 'dedo_ddownload_supports', array( 'title' ) ),
 	); 
 
 	register_post_type( 'dedo_download', apply_filters( 'dedo_ddownload_args', $args ) );
