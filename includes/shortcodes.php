@@ -319,7 +319,7 @@ function dedo_shortcode_ddownload_list( $atts ) {
 			}
 		}
 		else {
-			return __( 'No downloads found.', 'delightful-downloads' );
+			return '<p>' . __( 'No downloads found.', 'delightful-downloads' ) . '</p>';
 		}
 
 	}
