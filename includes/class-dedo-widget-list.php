@@ -101,11 +101,11 @@ class DEDO_Widget_List extends WP_Widget {
 			'title'    => __( 'Downloads', 'delightful-downloads' ),
 			'count'    => 5,
 			'orderby'  => 'title',
-			'order'    => 'asc',
-			'style'    => '',
+			'order'    => 'ASC',
+			'style'    => 'title',
 			'category' => '',
 			'tag'      => '',
-			'relation' => 'AND'
+			'relation' => 'AND',
 		);
 		$instance = wp_parse_args( $instance, $defaults );
 
