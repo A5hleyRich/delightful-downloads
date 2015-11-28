@@ -84,8 +84,7 @@ function dedo_render_page_settings() {
 		</h1>
 		
 		<?php if ( isset( $_GET['settings-updated'] ) ) {
-				
-			echo '<div class="updated"><p>' . __( 'Settings updated successfully.', 'delightful-downloads' ) . '</p></div>';
+			echo '<div class="notice updated is-dismissible"><p>' . __( 'Settings updated successfully.', 'delightful-downloads' ) . '</p></div>';
 		} ?>
 
 		<h3 id="dedo-settings-tabs" class="nav-tab-wrapper">
