@@ -1,9 +1,9 @@
 <?php
 /*
 Plugin Name: Delightful Downloads
-Plugin URI: http://delightfulwp.com/delightful-downloads/
+Plugin URI: https://delightfuldownloads.com
 Description: A super-awesome downloads manager for WordPress.
-Version: 1.5.5
+Version: 1.6
 Author: Ashley Rich
 Author URI: http://ashleyrich.com
 Text Domain: delightful-downloads
@@ -96,7 +96,7 @@ class Delightful_Downloads {
 	private function setup_constants() {
 
 		if( !defined( 'DEDO_VERSION' ) ) {
-			define( 'DEDO_VERSION', '1.5.5' );
+			define( 'DEDO_VERSION', '1.6' );
 		}
 
 		if( !defined( 'DEDO_PLUGIN_URL' ) ) {
@@ -149,6 +149,7 @@ class Delightful_Downloads {
 		include_once( DEDO_PLUGIN_DIR . 'includes/class-dedo-cache.php' );
 		include_once( DEDO_PLUGIN_DIR . 'includes/class-dedo-logging.php' );
 		include_once( DEDO_PLUGIN_DIR . 'includes/class-dedo-statistics.php' );
+		include_once( DEDO_PLUGIN_DIR . 'includes/class-dedo-widget-list.php' );
 		include_once( DEDO_PLUGIN_DIR . 'includes/cron.php' );
 		include_once( DEDO_PLUGIN_DIR . 'includes/functions.php' );
 		include_once( DEDO_PLUGIN_DIR . 'includes/mime-types.php' );
@@ -156,6 +157,7 @@ class Delightful_Downloads {
 		include_once( DEDO_PLUGIN_DIR . 'includes/process-download.php' );
 		include_once( DEDO_PLUGIN_DIR . 'includes/scripts.php' );
 		include_once( DEDO_PLUGIN_DIR . 'includes/shortcodes.php' );
+		include_once( DEDO_PLUGIN_DIR . 'includes/widgets.php' );
 		include_once( DEDO_PLUGIN_DIR . 'includes/taxonomies.php' );
 		
 		if ( is_admin() ) {

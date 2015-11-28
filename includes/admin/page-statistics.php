@@ -35,10 +35,10 @@ function dedo_render_page_statistics() {
 	
 	?>
 	<div class="wrap">
-		<h2><?php _e( 'Download Logs', 'delightful-downloads' ); ?>
+		<h1><?php _e( 'Download Logs', 'delightful-downloads' ); ?>
 			<a href="#dedo-stats-export" class="add-new-h2 dedo-modal-action"><?php _e( 'Export', 'delightful-downloads' ); ?></a>
 			<a href="<?php echo wp_nonce_url( admin_url( 'edit.php?post_type=dedo_download&page=dedo_statistics&action=empty_logs' ), 'dedo_empty_logs', 'dedo_empty_logs_nonce' ); ?>" class="add-new-h2 dedo_confirm_action" data-confirm="<?php _e( 'You are about to permanently delete the download logs.', 'delightful-downloads' ); ?>"><?php _e( 'Delete', 'delightful-downloads' ); ?></a>
-		</h2>
+		</h1>
 
 		<div id="dedo-settings-main">	
 			<?php do_action( 'ddownload_statistics_header' ); ?>

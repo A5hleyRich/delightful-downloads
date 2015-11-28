@@ -77,15 +77,14 @@ function dedo_render_page_settings() {
 
 	<div class="wrap">
 		
-		<h2><?php _e( 'Download Settings', 'delightful-downloads' ); ?>
+		<h1><?php _e( 'Download Settings', 'delightful-downloads' ); ?>
 			<a href="#dedo-settings-import" class="add-new-h2 dedo-modal-action"><?php _e( 'Import', 'delightful-downloads' ); ?></a>
 			<a href="<?php echo wp_nonce_url( admin_url( 'edit.php?post_type=dedo_download&page=dedo_settings&action=export' ), 'dedo_export_settings', 'dedo_export_settings_nonce' ) ?>" class="add-new-h2"><?php _e( 'Export', 'delightful-downloads' ); ?></a>
 			<a href="<?php echo wp_nonce_url( admin_url( 'edit.php?post_type=dedo_download&page=dedo_settings&action=reset_defaults' ), 'dedo_reset_settings', 'dedo_reset_settings_nonce' ) ?>" class="add-new-h2 dedo_confirm_action" data-confirm="<?php _e( 'You are about to reset the download settings.', 'delightful-downloads' ); ?>"><?php _e( 'Reset Defaults', 'delightful-downloads' ); ?></a>
-		</h2>
+		</h1>
 		
 		<?php if ( isset( $_GET['settings-updated'] ) ) {
-				
-			echo '<div class="updated"><p>' . __( 'Settings updated successfully.', 'delightful-downloads' ) . '</p></div>';
+			echo '<div class="notice updated is-dismissible"><p>' . __( 'Settings updated successfully.', 'delightful-downloads' ) . '</p></div>';
 		} ?>
 
 		<h3 id="dedo-settings-tabs" class="nav-tab-wrapper">
@@ -259,7 +258,7 @@ function dedo_render_part_sidebar() {
 			</div>
 
 			<h4><?php _e( 'Help and Support', 'delightful-downloads' ); ?></h4>
-			<p><?php printf( __( 'Please take a moment to look at the %sdocumentation%s. If you are still having issues, please leave a %ssupport request%s.', 'delightful-downloads' ), '<a href="http://delightfulwp.com/delightful-downloads/documentation/">', '</a>', '<a href="https://wordpress.org/support/plugin/delightful-downloads">', '</a>' ); ?></p>
+			<p><?php printf( __( 'Please take a moment to look at the %sdocumentation%s. If you are still having issues, please take a look at the %ssupport forums%s.', 'delightful-downloads' ), '<a href="https://delightfuldownloads.com/documentation/">', '</a>', '<a href="https://wordpress.org/support/plugin/delightful-downloads">', '</a>' ); ?></p>
 		</div>
 
 	<?php endif;
@@ -540,6 +539,18 @@ function dedo_settings_download_url_field() {
 }
 
 /**
+ * Render Upload Directory field
+ */
+function dedo_settings_upload_directory_field() {
+	global $dedo_options;
+
+	$text = $dedo_options['upload_directory'];
+
+	echo '<input type="text" name="delightful-downloads[upload_directory]" value="' . esc_attr( $text ) . '" class="regular-text" />';
+	echo '<p class="description">' . __( 'The directory to upload files.', 'delightful-downloads' ) . ' <code>' . trailingslashit( dedo_get_upload_dir( 'dedo_baseurl' ) ) . '</code></p>';
+}
+
+/**
  * Render Folder Protection field
  *
  * @since  1.5
@@ -590,7 +601,10 @@ function dedo_validate_settings( $input ) {
 	}
 	 
 	// Ensure download URL does not contain illegal characters
-	$input['download_url'] = strtolower( preg_replace( '/[^A-Za-z0-9_-]/', '', $input['download_url'] ) );
+	$input['download_url'] = strtolower( preg_replace( '/[^A-Za-z0-9\_\-]/', '', $input['download_url'] ) );
+
+	// Ensure upload directory does not contain illegal characters
+	$input['upload_directory'] = strtolower( preg_replace( '/[^A-Za-z0-9\_\-]/', '', $input['upload_directory'] ) );
 
 	// Run folder protection if option changed
 	if ( $input['folder_protection'] != $dedo_options['folder_protection'] ) {

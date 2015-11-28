@@ -6,9 +6,9 @@
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: delightful-downloads 1.5.4\n"
+"Project-Id-Version: delightful-downloads 1.6\n"
 "Report-Msgid-Bugs-To: hello@ashleyrich.com\n"
-"POT-Creation-Date: 2015-07-13 08:28+0100\n"
+"POT-Creation-Date: 2015-11-28 17:51+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: delightful-downloads.php:220 includes/admin/page-settings.php:19
+#: delightful-downloads.php:224 includes/admin/page-settings.php:19
 msgid "Settings"
 msgstr ""
 
@@ -36,8 +36,8 @@ msgstr ""
 
 #: includes/admin/class-dedo-list-table.php:48
 #: includes/admin/media-button.php:65 includes/admin/meta-boxes.php:19
-#: includes/admin/page-statistics.php:188 includes/options.php:68
-#: includes/post-types.php:22
+#: includes/admin/page-statistics.php:188 includes/options.php:70
+#: includes/post-types.php:23
 msgid "Download"
 msgstr ""
 
@@ -57,7 +57,8 @@ msgid "User Agent"
 msgstr ""
 
 #: includes/admin/class-dedo-list-table.php:52
-#: includes/admin/page-statistics.php:188 includes/post-types.php:67
+#: includes/admin/page-statistics.php:188
+#: includes/class-dedo-widget-list.php:138 includes/post-types.php:67
 msgid "Date"
 msgstr ""
 
@@ -133,7 +134,7 @@ msgstr ""
 #: includes/admin/media-button.php:102 includes/admin/meta-boxes.php:166
 #: includes/admin/meta-boxes.php:175 includes/admin/meta-boxes.php:183
 #: includes/admin/meta-boxes.php:184 includes/admin/meta-boxes.php:203
-#: includes/post-types.php:127 includes/post-types.php:139
+#: includes/post-types.php:125 includes/post-types.php:136
 msgid "Inherit"
 msgstr ""
 
@@ -157,11 +158,13 @@ msgstr ""
 msgid "Insert"
 msgstr ""
 
-#: includes/admin/media-button.php:107 includes/post-types.php:62
+#: includes/admin/media-button.php:107 includes/class-dedo-widget-list.php:140
+#: includes/post-types.php:62
 msgid "File Size"
 msgstr ""
 
 #: includes/admin/media-button.php:108 includes/admin/meta-boxes.php:150
+#: includes/class-dedo-widget-list.php:139
 msgid "Download Count"
 msgstr ""
 
@@ -243,28 +246,28 @@ msgstr ""
 msgid "The number of times this file has been downloaded."
 msgstr ""
 
-#: includes/admin/meta-boxes.php:161 includes/options.php:44
+#: includes/admin/meta-boxes.php:161 includes/options.php:46
 #: includes/post-types.php:65
 msgid "Members Only"
 msgstr ""
 
 #: includes/admin/meta-boxes.php:164 includes/admin/meta-boxes.php:201
-#: includes/admin/page-settings.php:286 includes/admin/page-settings.php:302
-#: includes/admin/page-settings.php:335 includes/admin/page-settings.php:443
-#: includes/admin/page-settings.php:460 includes/admin/page-settings.php:481
-#: includes/admin/page-settings.php:501 includes/admin/page-settings.php:518
-#: includes/admin/page-settings.php:552 includes/admin/page-settings.php:568
-#: includes/post-types.php:124 includes/post-types.php:136
+#: includes/admin/page-settings.php:285 includes/admin/page-settings.php:301
+#: includes/admin/page-settings.php:334 includes/admin/page-settings.php:442
+#: includes/admin/page-settings.php:459 includes/admin/page-settings.php:480
+#: includes/admin/page-settings.php:500 includes/admin/page-settings.php:517
+#: includes/admin/page-settings.php:563 includes/admin/page-settings.php:579
+#: includes/post-types.php:123 includes/post-types.php:134
 msgid "Yes"
 msgstr ""
 
 #: includes/admin/meta-boxes.php:165 includes/admin/meta-boxes.php:202
-#: includes/admin/page-settings.php:287 includes/admin/page-settings.php:303
-#: includes/admin/page-settings.php:336 includes/admin/page-settings.php:444
-#: includes/admin/page-settings.php:461 includes/admin/page-settings.php:482
-#: includes/admin/page-settings.php:502 includes/admin/page-settings.php:519
-#: includes/admin/page-settings.php:553 includes/admin/page-settings.php:569
-#: includes/post-types.php:124 includes/post-types.php:136
+#: includes/admin/page-settings.php:286 includes/admin/page-settings.php:302
+#: includes/admin/page-settings.php:335 includes/admin/page-settings.php:443
+#: includes/admin/page-settings.php:460 includes/admin/page-settings.php:481
+#: includes/admin/page-settings.php:501 includes/admin/page-settings.php:518
+#: includes/admin/page-settings.php:564 includes/admin/page-settings.php:580
+#: includes/post-types.php:123 includes/post-types.php:134
 msgid "No"
 msgstr ""
 
@@ -345,7 +348,7 @@ msgstr ""
 msgid "Download Settings"
 msgstr ""
 
-#: includes/admin/page-settings.php:81 includes/admin/page-settings.php:632
+#: includes/admin/page-settings.php:81 includes/admin/page-settings.php:646
 msgid "Import"
 msgstr ""
 
@@ -362,72 +365,72 @@ msgstr ""
 msgid "Reset Defaults"
 msgstr ""
 
-#: includes/admin/page-settings.php:88
+#: includes/admin/page-settings.php:87
 msgid "Settings updated successfully."
 msgstr ""
 
-#: includes/admin/page-settings.php:240
+#: includes/admin/page-settings.php:239
 msgid "I'm working on a pro version that will include the following features:"
 msgstr ""
 
-#: includes/admin/page-settings.php:242
+#: includes/admin/page-settings.php:241
 msgid "Button styles builder"
 msgstr ""
 
-#: includes/admin/page-settings.php:243
+#: includes/admin/page-settings.php:242
 msgid "List styles builder"
 msgstr ""
 
-#: includes/admin/page-settings.php:244
+#: includes/admin/page-settings.php:243
 msgid "Advanced graphical reports"
 msgstr ""
 
-#: includes/admin/page-settings.php:245
+#: includes/admin/page-settings.php:244
 msgid "MailChimp subscribe to download"
 msgstr ""
 
-#: includes/admin/page-settings.php:256
+#: includes/admin/page-settings.php:255
 msgid "Keep me informed"
 msgstr ""
 
-#: includes/admin/page-settings.php:258
+#: includes/admin/page-settings.php:257
 msgid ""
 "I promise I will not use your email for anything else and you can "
 "unsubscribe at anytime."
 msgstr ""
 
-#: includes/admin/page-settings.php:261
+#: includes/admin/page-settings.php:260
 msgid "Help and Support"
 msgstr ""
 
-#: includes/admin/page-settings.php:262
+#: includes/admin/page-settings.php:261
 #, php-format
 msgid ""
 "Please take a moment to look at the %sdocumentation%s. If you are still "
-"having issues, please leave a %ssupport request%s."
+"having issues, please take a look at the %ssupport forums%s."
 msgstr ""
 
-#: includes/admin/page-settings.php:288
+#: includes/admin/page-settings.php:287
 msgid "Allow downloads to be tagged or categorised."
 msgstr ""
 
-#: includes/admin/page-settings.php:304
+#: includes/admin/page-settings.php:303
 msgid ""
 "Allow only logged in users to download files. This can be overridden on a "
 "per-download basis."
 msgstr ""
 
-#: includes/admin/page-settings.php:313
+#: includes/admin/page-settings.php:312
 msgid "No Page (Generic Error)"
 msgstr ""
 
-#: includes/admin/page-settings.php:319
+#: includes/admin/page-settings.php:318
 msgid ""
 "The page to redirect non-members. If no page is selected, a generic error "
 "message will be displayed. This can be overridden on a per-download basis."
 msgstr ""
 
-#: includes/admin/page-settings.php:337
+#: includes/admin/page-settings.php:336
 msgid ""
 "Attempt to open files in the browser window. This can be overridden on a per-"
 "download basis. For files located within the Delightful Downloads upload "
@@ -435,109 +438,113 @@ msgid ""
 "advanced tab."
 msgstr ""
 
-#: includes/admin/page-settings.php:352
+#: includes/admin/page-settings.php:351
 msgid "User agents to block from downloading files. One per line."
 msgstr ""
 
-#: includes/admin/page-settings.php:366
+#: includes/admin/page-settings.php:365
 #, php-format
 msgid ""
 "The default text to display, when using the %s shortcode. This can be "
 "overridden on a per-download basis."
 msgstr ""
 
-#: includes/admin/page-settings.php:386
+#: includes/admin/page-settings.php:385
 #, php-format
 msgid ""
 "The default output style, when using the %s shortcode. This can be "
 "overridden on a per-download basis."
 msgstr ""
 
-#: includes/admin/page-settings.php:408
+#: includes/admin/page-settings.php:407
 #, php-format
 msgid ""
 "The default button style, when using the %s shortcode. This can be "
 "overridden on a per-download basis."
 msgstr ""
 
-#: includes/admin/page-settings.php:430
+#: includes/admin/page-settings.php:429
 #, php-format
 msgid ""
 "The default output style, when using the %s shortcode. This can be "
 "overridden on a per-list basis."
 msgstr ""
 
-#: includes/admin/page-settings.php:445
+#: includes/admin/page-settings.php:444
 msgid "Log events triggered by admin users."
 msgstr ""
 
-#: includes/admin/page-settings.php:462
+#: includes/admin/page-settings.php:461
 msgid ""
 "Stop multiple logs of the same type from being saved, in quick succession."
 msgstr ""
 
-#: includes/admin/page-settings.php:465
+#: includes/admin/page-settings.php:464
 msgid "The time in minutes before creating a new log."
 msgstr ""
 
-#: includes/admin/page-settings.php:483
+#: includes/admin/page-settings.php:482
 msgid "Automatically delete old logs."
 msgstr ""
 
-#: includes/admin/page-settings.php:486
+#: includes/admin/page-settings.php:485
 msgid "The time in days to keep logs."
 msgstr ""
 
-#: includes/admin/page-settings.php:503
+#: includes/admin/page-settings.php:502
 msgid "Output the Delightful Downloads stylesheet on the front-end."
 msgstr ""
 
-#: includes/admin/page-settings.php:520
+#: includes/admin/page-settings.php:519
 msgid "Cache database queries that are expensive to generate."
 msgstr ""
 
-#: includes/admin/page-settings.php:523
+#: includes/admin/page-settings.php:522
 msgid "The time in minutes to cache queries."
 msgstr ""
 
-#: includes/admin/page-settings.php:539
+#: includes/admin/page-settings.php:538
 msgid "The URL for download links."
 msgstr ""
 
-#: includes/admin/page-settings.php:554
+#: includes/admin/page-settings.php:550
+msgid "The directory to upload files."
+msgstr ""
+
+#: includes/admin/page-settings.php:565
 msgid ""
 "Stop direct access to uploaded files, within the Delightful Downloads upload "
 "directory."
 msgstr ""
 
-#: includes/admin/page-settings.php:570
+#: includes/admin/page-settings.php:581
 msgid ""
 "Completely remove all data associated with Delightful Downloads, when "
 "uninstalling the plugin. All downloads, categories, tags and statistics will "
 "be removed."
 msgstr ""
 
-#: includes/admin/page-settings.php:626
+#: includes/admin/page-settings.php:640
 msgid "Import Settings"
 msgstr ""
 
-#: includes/admin/page-settings.php:627
+#: includes/admin/page-settings.php:641
 msgid "Select a Delightful Downloads settings file to import:"
 msgstr ""
 
-#: includes/admin/page-settings.php:697
+#: includes/admin/page-settings.php:711
 msgid "Invalid settings file."
 msgstr ""
 
-#: includes/admin/page-settings.php:707
+#: includes/admin/page-settings.php:721
 msgid "Settings have been successfully imported."
 msgstr ""
 
-#: includes/admin/page-settings.php:715
+#: includes/admin/page-settings.php:729
 msgid "No file uploaded."
 msgstr ""
 
-#: includes/admin/page-settings.php:775
+#: includes/admin/page-settings.php:789
 msgid "Default settings reset successfully."
 msgstr ""
 
@@ -628,6 +635,80 @@ msgstr ""
 msgid "JavaScript must be enabled to migrate legacy logs."
 msgstr ""
 
+#: includes/class-dedo-widget-list.php:24
+msgid "Delightful Downloads"
+msgstr ""
+
+#: includes/class-dedo-widget-list.php:26
+msgid "A list of your site's downloads."
+msgstr ""
+
+#: includes/class-dedo-widget-list.php:101 includes/post-types.php:22
+#: includes/post-types.php:34 includes/post-types.php:64
+msgid "Downloads"
+msgstr ""
+
+#: includes/class-dedo-widget-list.php:128
+msgid "Title:"
+msgstr ""
+
+#: includes/class-dedo-widget-list.php:132
+msgid "Number of downloads to show:"
+msgstr ""
+
+#: includes/class-dedo-widget-list.php:136
+msgid "Order by:"
+msgstr ""
+
+#: includes/class-dedo-widget-list.php:141
+msgid "Random"
+msgstr ""
+
+#: includes/class-dedo-widget-list.php:142 includes/functions.php:88
+#: includes/post-types.php:60
+msgid "Title"
+msgstr ""
+
+#: includes/class-dedo-widget-list.php:146
+msgid "Order:"
+msgstr ""
+
+#: includes/class-dedo-widget-list.php:148
+msgid "ASC"
+msgstr ""
+
+#: includes/class-dedo-widget-list.php:149
+msgid "DESC"
+msgstr ""
+
+#: includes/class-dedo-widget-list.php:153
+msgid "List Style:"
+msgstr ""
+
+#: includes/class-dedo-widget-list.php:163
+msgid "Category:"
+msgstr ""
+
+#: includes/class-dedo-widget-list.php:166 includes/taxonomies.php:26
+msgid "All Categories"
+msgstr ""
+
+#: includes/class-dedo-widget-list.php:173
+msgid "Tag:"
+msgstr ""
+
+#: includes/class-dedo-widget-list.php:176 includes/taxonomies.php:50
+msgid "All Tags"
+msgstr ""
+
+#: includes/class-dedo-widget-list.php:183
+msgid "Relation:"
+msgstr ""
+
+#: includes/class-dedo-widget-list.php:188
+msgid "Downloads belong to category AND/OR tag."
+msgstr ""
+
 #: includes/cron.php:73
 msgid "Once Weekly"
 msgstr ""
@@ -668,10 +749,6 @@ msgstr ""
 msgid "Yellow"
 msgstr ""
 
-#: includes/functions.php:88 includes/post-types.php:60
-msgid "Title"
-msgstr ""
-
 #: includes/functions.php:92
 msgid "Title (Date)"
 msgstr ""
@@ -688,124 +765,123 @@ msgstr ""
 msgid "Title (Extension, File size)"
 msgstr ""
 
-#: includes/options.php:20
+#: includes/options.php:22
 msgid "General"
 msgstr ""
 
-#: includes/options.php:21
+#: includes/options.php:23
 msgid "Shortcodes"
 msgstr ""
 
-#: includes/options.php:22
+#: includes/options.php:24
 msgid "Statistics"
 msgstr ""
 
-#: includes/options.php:23
+#: includes/options.php:25
 msgid "Advanced"
 msgstr ""
 
-#: includes/options.php:24
+#: includes/options.php:26
 msgid "Support"
 msgstr ""
 
-#: includes/options.php:38
+#: includes/options.php:40
 msgid "Categories and Tags"
 msgstr ""
 
-#: includes/options.php:53 includes/post-types.php:66
+#: includes/options.php:55 includes/post-types.php:66
 msgid "Open in Browser"
 msgstr ""
 
-#: includes/options.php:59
+#: includes/options.php:61
 msgid "Block User Agents"
 msgstr ""
 
-#: includes/options.php:65
+#: includes/options.php:67
 msgid "Default Text"
 msgstr ""
 
-#: includes/options.php:71
+#: includes/options.php:73
 msgid "Default Style"
 msgstr ""
 
-#: includes/options.php:77
+#: includes/options.php:79
 msgid "Default Button Style"
 msgstr ""
 
-#: includes/options.php:83
+#: includes/options.php:85
 msgid "Default List Style"
 msgstr ""
 
-#: includes/options.php:89
+#: includes/options.php:91
 msgid "Admin Events"
 msgstr ""
 
-#: includes/options.php:95
+#: includes/options.php:97
 msgid "Grace Period"
 msgstr ""
 
-#: includes/options.php:104
+#: includes/options.php:106
 msgid "Auto Delete"
 msgstr ""
 
-#: includes/options.php:113
+#: includes/options.php:115
 msgid "Output CSS"
 msgstr ""
 
-#: includes/options.php:119
+#: includes/options.php:121
 msgid "Cache"
 msgstr ""
 
-#: includes/options.php:128
+#: includes/options.php:130
 msgid "Download Address"
 msgstr ""
 
-#: includes/options.php:134
+#: includes/options.php:136
+msgid "Upload Directory"
+msgstr ""
+
+#: includes/options.php:142
 msgid "Folder Protection"
 msgstr ""
 
-#: includes/options.php:140
+#: includes/options.php:148
 msgid "Complete Uninstall"
 msgstr ""
 
-#: includes/post-types.php:21 includes/post-types.php:33
-#: includes/post-types.php:64
-msgid "Downloads"
-msgstr ""
-
-#: includes/post-types.php:23
+#: includes/post-types.php:24
 msgid "Add New"
 msgstr ""
 
-#: includes/post-types.php:24
+#: includes/post-types.php:25
 msgid "Add New Download"
 msgstr ""
 
-#: includes/post-types.php:25
+#: includes/post-types.php:26
 msgid "Edit Download"
 msgstr ""
 
-#: includes/post-types.php:26
+#: includes/post-types.php:27
 msgid "New Download"
 msgstr ""
 
-#: includes/post-types.php:27
+#: includes/post-types.php:28
 msgid "All Downloads"
 msgstr ""
 
-#: includes/post-types.php:28
+#: includes/post-types.php:29
 msgid "View Download"
 msgstr ""
 
-#: includes/post-types.php:29
+#: includes/post-types.php:30
 msgid "Search Downloads"
 msgstr ""
 
-#: includes/post-types.php:30
+#: includes/post-types.php:31
 msgid "No downloads found"
 msgstr ""
 
-#: includes/post-types.php:31
+#: includes/post-types.php:32
 msgid "No downloads found in Trash"
 msgstr ""
 
@@ -817,11 +893,11 @@ msgstr ""
 msgid "Shortcode"
 msgstr ""
 
-#: includes/post-types.php:74 includes/taxonomies.php:25
+#: includes/post-types.php:73 includes/taxonomies.php:25
 msgid "Categories"
 msgstr ""
 
-#: includes/post-types.php:75 includes/taxonomies.php:49
+#: includes/post-types.php:74 includes/taxonomies.php:49
 msgid "Tags"
 msgstr ""
 
@@ -886,10 +962,6 @@ msgstr ""
 msgid "Download Category"
 msgstr ""
 
-#: includes/taxonomies.php:26
-msgid "All Categories"
-msgstr ""
-
 #: includes/taxonomies.php:27
 msgid "Edit Category"
 msgstr ""
@@ -924,10 +996,6 @@ msgstr ""
 
 #: includes/taxonomies.php:48
 msgid "Download Tag"
-msgstr ""
-
-#: includes/taxonomies.php:50
-msgid "All Tags"
 msgstr ""
 
 #: includes/taxonomies.php:51
