@@ -1,8 +1,0 @@
-[main]
-host = https://www.transifex.com
-
-[delightful-downloads.delightful-downloads]
-file_filter = languages/delightful-downloads-<lang>.po
-source_file = languages/delightful-downloads.pot
-source_lang = en_US
-type = PO
