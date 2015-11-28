@@ -28,7 +28,7 @@ if ( 'Y' == trim( fgets( STDIN ) ) ) {
 echo 'Publish to Github? (Y/n) ';
 if ( 'Y' == trim( fgets( STDIN ) ) ) {
 	system( 'rm -fR github' ); // Cleanup before cloning to prevent errors
-	system( 'git clone git@github.com:A5hleyRich/delightful-downloads.git github1' );
+	system( 'git clone -b master git@github.com:A5hleyRich/delightful-downloads.git github1' );
 	system( 'mkdir github' );
 	system( 'mv github1/.git* github/' );
 	system( 'rm -R github1/' );
