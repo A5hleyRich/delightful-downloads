@@ -4,3 +4,4 @@ assets/js/*.min.js
 builds
 languages
 node_modules
+npm-debug.log
