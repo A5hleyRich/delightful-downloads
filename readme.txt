@@ -83,6 +83,12 @@ Please refer to the [FAQ](https://delightfuldownloads.com/documentation/delightf
 
 == Changelog ==
 
+= 1.6 =
+
+* New: Download list widget
+* New: Customize upload directory from _Settings_ screen
+* Improvement: Admin notices now dismissible
+
 = 1.5.5 =
 
 * Improvement: Add text domain for translate.wordpress.org integration
@@ -292,6 +298,11 @@ Please refer to the [FAQ](https://delightfuldownloads.com/documentation/delightf
 * Initial stable plugin release.
 
 == Upgrade Notice ==
+
+= 1.6 =
+
+* Compatibility with WordPress 4.4
+* Compatibility with PHP 7
 
 = 1.5.3 =
 
