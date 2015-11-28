@@ -94,7 +94,7 @@ class DEDO_Notices {
 			foreach ( $this->notices as $key => $notice ) {
 			
 				// Display to user
-				echo '<div class="' . $notice['type'] . '"><p>' . $notice['message'] . '</p></div>';
+				echo '<div class="notice ' . $notice['type'] . ' is-dismissible"><p>' . $notice['message'] . '</p></div>';
 
 				// Remove from stored notices
 				unset( $this->notices[$key] );
