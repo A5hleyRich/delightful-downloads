@@ -601,7 +601,10 @@ function dedo_validate_settings( $input ) {
 	}
 	 
 	// Ensure download URL does not contain illegal characters
-	$input['download_url'] = strtolower( preg_replace( '/[^A-Za-z0-9_-]/', '', $input['download_url'] ) );
+	$input['download_url'] = strtolower( preg_replace( '/[^A-Za-z0-9\_\-]/', '', $input['download_url'] ) );
+
+	// Ensure upload directory does not contain illegal characters
+	$input['upload_directory'] = strtolower( preg_replace( '/[^A-Za-z0-9\_\-]/', '', $input['upload_directory'] ) );
 
 	// Run folder protection if option changed
 	if ( $input['folder_protection'] != $dedo_options['folder_protection'] ) {
