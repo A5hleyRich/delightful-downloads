@@ -539,6 +539,18 @@ function dedo_settings_download_url_field() {
 }
 
 /**
+ * Render Upload Directory field
+ */
+function dedo_settings_upload_directory_field() {
+	global $dedo_options;
+
+	$text = $dedo_options['upload_directory'];
+
+	echo '<input type="text" name="delightful-downloads[upload_directory]" value="' . esc_attr( $text ) . '" class="regular-text" />';
+	echo '<p class="description">' . __( 'The directory to upload files.', 'delightful-downloads' ) . ' <code>' . trailingslashit( dedo_get_upload_dir( 'dedo_baseurl' ) ) . '</code></p>';
+}
+
+/**
  * Render Folder Protection field
  *
  * @since  1.5
