@@ -63,7 +63,7 @@ module.exports = function( grunt ) {
 		},
 		shell: {
 			txPull: {
-				command: 'tx pull -a --minimum-perc=60'
+				command: 'tx pull -a --minimum-perc=90'
 			},
 			txPush: {
 				command: 'tx push -s'
