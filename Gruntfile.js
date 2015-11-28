@@ -69,6 +69,7 @@ module.exports = function( grunt ) {
 				command: 'tx push -s'
 			}
 		},
+		clean: ['languages/*.po'],
 		watch: {
 			sass: {
 				files: [ 'assets/sass/*' ],
@@ -86,6 +87,6 @@ module.exports = function( grunt ) {
 
 	// Default task(s).
 	grunt.registerTask( 'default', [ 'compass', 'uglify' ] );
-	grunt.registerTask( 'translate', [ 'pot', 'shell:txPush', 'shell:txPull', 'po2mo' ] );
+	grunt.registerTask( 'translate', [ 'pot', 'shell:txPush', 'shell:txPull', 'po2mo', 'clean' ] );
 
 };
