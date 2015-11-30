@@ -68,8 +68,6 @@ class DEDO_Widget_List extends WP_Widget {
 	 * @return array
 	 */
 	public function update( $new_instance, $old_instance ) {
-		global $dedo_options;
-
 		$instance = array();
 
 		$instance['title']   = sanitize_text_field( $new_instance['title'] );
@@ -77,12 +75,9 @@ class DEDO_Widget_List extends WP_Widget {
 		$instance['orderby'] = sanitize_text_field( $new_instance['orderby'] );
 		$instance['order']   = sanitize_text_field( $new_instance['order'] );
 		$instance['style']   = sanitize_text_field( $new_instance['style'] );
-
-		if ( $dedo_options['enable_taxonomies'] ) {
-			$instance['category'] = sanitize_text_field( $new_instance['category'] );
-			$instance['tag']      = sanitize_text_field( $new_instance['tag'] );
-			$instance['relation'] = sanitize_text_field( $new_instance['relation'] );
-		}
+		$instance['category'] = sanitize_text_field( $new_instance['category'] );
+		$instance['tag']      = sanitize_text_field( $new_instance['tag'] );
+		$instance['relation'] = sanitize_text_field( $new_instance['relation'] );
 
 		return $instance;
 	}
@@ -187,6 +182,10 @@ class DEDO_Widget_List extends WP_Widget {
 				</select>
 				<small><?php _e( 'Downloads belong to category AND/OR tag.', 'delightful-downloads' ); ?></small>
 			</p>
+		<?php else: ?>
+			<input type="hidden" id="<?php echo $this->get_field_id( 'category' ); ?>" name="<?php echo $this->get_field_name( 'category' ); ?>" value="<?php echo $category; ?>">
+			<input type="hidden" id="<?php echo $this->get_field_id( 'tag' ); ?>" name="<?php echo $this->get_field_name( 'tag' ); ?>" value="<?php echo $tag; ?>">
+			<input type="hidden" id="<?php echo $this->get_field_id( 'relation' ); ?>" name="<?php echo $this->get_field_name( 'relation' ); ?>" value="<?php echo $relation; ?>">
 		<?php endif; ?>
 
 		<?php
