@@ -6,9 +6,9 @@
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: delightful-downloads 1.6\n"
+"Project-Id-Version: delightful-downloads 1.6.1\n"
 "Report-Msgid-Bugs-To: hello@ashleyrich.com\n"
-"POT-Creation-Date: 2015-11-28 17:51+0000\n"
+"POT-Creation-Date: 2015-11-30 19:31+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -58,7 +58,7 @@ msgstr ""
 
 #: includes/admin/class-dedo-list-table.php:52
 #: includes/admin/page-statistics.php:188
-#: includes/class-dedo-widget-list.php:138 includes/post-types.php:67
+#: includes/class-dedo-widget-list.php:133 includes/post-types.php:67
 msgid "Date"
 msgstr ""
 
@@ -158,13 +158,13 @@ msgstr ""
 msgid "Insert"
 msgstr ""
 
-#: includes/admin/media-button.php:107 includes/class-dedo-widget-list.php:140
+#: includes/admin/media-button.php:107 includes/class-dedo-widget-list.php:135
 #: includes/post-types.php:62
 msgid "File Size"
 msgstr ""
 
 #: includes/admin/media-button.php:108 includes/admin/meta-boxes.php:150
-#: includes/class-dedo-widget-list.php:139
+#: includes/class-dedo-widget-list.php:134
 msgid "Download Count"
 msgstr ""
 
@@ -643,69 +643,69 @@ msgstr ""
 msgid "A list of your site's downloads."
 msgstr ""
 
-#: includes/class-dedo-widget-list.php:101 includes/post-types.php:22
+#: includes/class-dedo-widget-list.php:96 includes/post-types.php:22
 #: includes/post-types.php:34 includes/post-types.php:64
 msgid "Downloads"
 msgstr ""
 
-#: includes/class-dedo-widget-list.php:128
+#: includes/class-dedo-widget-list.php:123
 msgid "Title:"
 msgstr ""
 
-#: includes/class-dedo-widget-list.php:132
+#: includes/class-dedo-widget-list.php:127
 msgid "Number of downloads to show:"
 msgstr ""
 
-#: includes/class-dedo-widget-list.php:136
+#: includes/class-dedo-widget-list.php:131
 msgid "Order by:"
 msgstr ""
 
-#: includes/class-dedo-widget-list.php:141
+#: includes/class-dedo-widget-list.php:136
 msgid "Random"
 msgstr ""
 
-#: includes/class-dedo-widget-list.php:142 includes/functions.php:88
+#: includes/class-dedo-widget-list.php:137 includes/functions.php:88
 #: includes/post-types.php:60
 msgid "Title"
 msgstr ""
 
-#: includes/class-dedo-widget-list.php:146
+#: includes/class-dedo-widget-list.php:141
 msgid "Order:"
 msgstr ""
 
-#: includes/class-dedo-widget-list.php:148
+#: includes/class-dedo-widget-list.php:143
 msgid "ASC"
 msgstr ""
 
-#: includes/class-dedo-widget-list.php:149
+#: includes/class-dedo-widget-list.php:144
 msgid "DESC"
 msgstr ""
 
-#: includes/class-dedo-widget-list.php:153
+#: includes/class-dedo-widget-list.php:148
 msgid "List Style:"
 msgstr ""
 
-#: includes/class-dedo-widget-list.php:163
+#: includes/class-dedo-widget-list.php:158
 msgid "Category:"
 msgstr ""
 
-#: includes/class-dedo-widget-list.php:166 includes/taxonomies.php:26
+#: includes/class-dedo-widget-list.php:161 includes/taxonomies.php:26
 msgid "All Categories"
 msgstr ""
 
-#: includes/class-dedo-widget-list.php:173
+#: includes/class-dedo-widget-list.php:168
 msgid "Tag:"
 msgstr ""
 
-#: includes/class-dedo-widget-list.php:176 includes/taxonomies.php:50
+#: includes/class-dedo-widget-list.php:171 includes/taxonomies.php:50
 msgid "All Tags"
 msgstr ""
 
-#: includes/class-dedo-widget-list.php:183
+#: includes/class-dedo-widget-list.php:178
 msgid "Relation:"
 msgstr ""
 
-#: includes/class-dedo-widget-list.php:188
+#: includes/class-dedo-widget-list.php:183
 msgid "Downloads belong to category AND/OR tag."
 msgstr ""
 
