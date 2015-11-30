@@ -4,7 +4,7 @@ Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_i
 Tags: download, manager, downloads, monitor, shortcode, delightful downloads, file, counter, tracking
 Requires at least: 4.2.2
 Tested up to: 4.4
-Stable tag: 1.6
+Stable tag: 1.6.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -82,6 +82,10 @@ Please refer to the [FAQ](https://delightfuldownloads.com/documentation/delightf
 8. Settings screen
 
 == Changelog ==
+
+= 1.6.1 =
+
+* Bug fix: 'PHP Notice:  Undefined index: category'
 
 = 1.6 =
 
