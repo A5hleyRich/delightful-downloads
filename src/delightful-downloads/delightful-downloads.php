@@ -27,14 +27,16 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 */
 
 // Exit if accessed directly
-if ( !defined( 'ABSPATH' ) ) exit;
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
 
 /**
  * Delightful Downloads
  *
  * @package  Delightful Downloads
  * @since    1.3.2
-*/
+ */
 class Delightful_Downloads {
 
 	/**
@@ -42,34 +44,35 @@ class Delightful_Downloads {
 	 *
 	 * @since  1.3.2
 	 */
-	private static $instance = null;
+	private static $instance;
 
 	/**
-	 * Initialize the plugin.
-	 *
-	 * @since  1.3.2
+	 * @var string
 	 */
-	private function __construct() {
+	public $path;
 
-		// Setup plugin constants
-		self::setup_constants();
+	/**
+	 * @var string
+	 */
+	public $version;
 
-		// Load plugin text domain
-		self::load_plugin_textdomain();
+	/**
+	 * Protected constructor to prevent creating a new instance of the
+	 * class via the `new` operator from outside of this class.
+	 */
+	protected function __construct() {
+	}
 
-		// Setup plugin options
-		self::setup_options();
+	/**
+	 * As this class is a singleton it should not be clone-able
+	 */
+	protected function __clone() {
+	}
 
-		// Include plugin files
-		self::includes();
-
-		// Register activation/deactivation hooks
-		register_activation_hook( __FILE__, array( $this, 'activate' ) );
-		register_deactivation_hook( __FILE__, array( $this, 'deactivate' ) );
-
-		// Register misc hooks
-		add_filter( 'plugin_action_links', array( $this, 'plugin_links' ), 10, 2 );
-
+	/**
+	 * As this class is a singleton it should not be able to be unserialized
+	 */
+	protected function __wakeup() {
 	}
 
 	/**
@@ -77,112 +80,138 @@ class Delightful_Downloads {
 	 *
 	 * @since  1.3.2
 	 */
-	public static function get_instance() {
+	public static function get_instance( $path, $version ) {
+		if ( ! isset( self::$instance ) ) {
+			self::$instance = new Delightful_Downloads();
 
-			// If the single instance hasn't been set, set it now.
-			if ( null == self::$instance ) {
-				self::$instance = new self;
-			}
+			// Initialize the class
+			self::$instance->init( $path, $version );
+		}
 
-			return self::$instance;
-
+		return self::$instance;
 	}
 
 	/**
-	 * Setup plugin constants.
+	 * Initialize the class.
 	 *
-	 * @since  1.3.2
+	 * @param string $path
+	 * @param string $version
 	 */
-	private function setup_constants() {
+	protected function init( $path, $version ) {
+		$this->path    = $path;
+		$this->version = $version;
 
-		if( !defined( 'DEDO_VERSION' ) ) {
-			define( 'DEDO_VERSION', '1.6.1' );
+		self::$instance->constants();
+		self::$instance->textdomain();
+		self::$instance->options();
+		self::$instance->includes();
+
+		// Register activation/deactivation hooks
+		register_activation_hook( __FILE__, array( $this, 'activate' ) );
+		register_deactivation_hook( __FILE__, array( $this, 'deactivate' ) );
+
+		// Plugin row links
+		add_filter( 'plugin_action_links', array( $this, 'plugin_links' ), 10, 2 );
+	}
+
+
+	/**
+	 * Include all the classes used by the plugin
+	 */
+	protected function includes() {
+		require_once dirname( $this->path ) . '/includes/class-dedo-cache.php';
+		require_once dirname( $this->path ) . '/includes/class-dedo-logging.php';
+		require_once dirname( $this->path ) . '/includes/class-dedo-statistics.php';
+		require_once dirname( $this->path ) . '/includes/class-dedo-widget-list.php';
+		require_once dirname( $this->path ) . '/includes/cron.php';
+		require_once dirname( $this->path ) . '/includes/functions.php';
+		require_once dirname( $this->path ) . '/includes/mime-types.php';
+		require_once dirname( $this->path ) . '/includes/post-types.php';
+		require_once dirname( $this->path ) . '/includes/process-download.php';
+		require_once dirname( $this->path ) . '/includes/scripts.php';
+		require_once dirname( $this->path ) . '/includes/shortcodes.php';
+		require_once dirname( $this->path ) . '/includes/widgets.php';
+		require_once dirname( $this->path ) . '/includes/taxonomies.php';
+
+		if ( is_admin() ) {
+			require_once dirname( $this->path ) . '/includes/admin/ajax.php';
+			require_once dirname( $this->path ) . '/includes/admin/class-dedo-list-table.php';
+			require_once dirname( $this->path ) . '/includes/admin/class-dedo-notices.php';
+			require_once dirname( $this->path ) . '/includes/admin/dashboard.php';
+			require_once dirname( $this->path ) . '/includes/admin/media-button.php';
+			require_once dirname( $this->path ) . '/includes/admin/meta-boxes.php';
+			require_once dirname( $this->path ) . '/includes/admin/page-settings.php';
+			require_once dirname( $this->path ) . '/includes/admin/page-statistics.php';
+			require_once dirname( $this->path ) . '/includes/admin/upgrades.php';
 		}
-
-		if( !defined( 'DEDO_PLUGIN_URL' ) ) {
-			define( 'DEDO_PLUGIN_URL', plugin_dir_url( __FILE__ ) );
-		}
-
-		if( !defined( 'DEDO_PLUGIN_DIR' ) ) {
-			define( 'DEDO_PLUGIN_DIR', plugin_dir_path( __FILE__ ) );			
-		}
-
 	}
 
 	/**
-     * Load the plugin text domain.
-     *
-     * @since  1.3.2
-     */
-    private function load_plugin_textdomain() {
+	 * Setup class constants
+	 */
+	protected function constants() {
+		if ( ! defined( 'DEDO_VERSION' ) ) {
+			define( 'DEDO_VERSION', $this->version );
+		}
 
+		if ( ! defined( 'DEDO_PLUGIN_URL' ) ) {
+			define( 'DEDO_PLUGIN_URL', plugin_dir_url( $this->path ) );
+		}
+
+		if ( ! defined( 'DEDO_PLUGIN_DIR' ) ) {
+			define( 'DEDO_PLUGIN_DIR', plugin_dir_path( $this->path ) );
+		}
+	}
+
+	/**
+	 * Textdomain
+	 */
+	protected function textdomain() {
 		load_textdomain( 'delightful-downloads', WP_LANG_DIR . '/delightful-downloads/delightful-downloads-' . get_locale() . '.mo' );
-        load_plugin_textdomain( 'delightful-downloads', false, dirname( plugin_basename( __FILE__ ) ) . '/languages/' );        
-
-    }
+		load_plugin_textdomain( 'delightful-downloads', false, dirname( plugin_basename( __FILE__ ) ) . '/languages/' );
+	}
 
 	/**
-	 * Setup plugin options.
-	 *
-	 * @since  1.3.2
+	 * Options
 	 */
-	private function setup_options() {
-
+	protected function options() {
 		global $dedo_options, $dedo_default_options;
 
-		// Include options file.
-		include_once( DEDO_PLUGIN_DIR . 'includes/options.php' );
+		require_once dirname( $this->path ) . '/includes/options.php';
 
 		// Set globals
 		$dedo_default_options = dedo_get_default_options();
-		$dedo_options = wp_parse_args( get_option( 'delightful-downloads' ), $dedo_default_options );
-
-	}    
+		$dedo_options         = wp_parse_args( get_option( 'delightful-downloads' ), $dedo_default_options );
+	}
 
 	/**
-	 * Include plugin files.
+	 * Plugin Links.
 	 *
-	 * @since  1.3.2
+	 * Add links below Delightful Downloads on the plugin screen.
+	 *
+	 * @param string $links
+	 * @param string $file
+	 *
+	 * @return string
 	 */
-	private function includes() {
+	public function plugin_links( $links, $file ) {
+		if ( plugin_basename( __FILE__ ) === $file ) {
+			$plugin_links[] = '<a href="' . admin_url( 'edit.php?post_type=dedo_download&page=dedo_settings' ) . '">' . __( 'Settings', 'delightful-downloads' ) . '</a>';
 
-		include_once( DEDO_PLUGIN_DIR . 'includes/class-dedo-cache.php' );
-		include_once( DEDO_PLUGIN_DIR . 'includes/class-dedo-logging.php' );
-		include_once( DEDO_PLUGIN_DIR . 'includes/class-dedo-statistics.php' );
-		include_once( DEDO_PLUGIN_DIR . 'includes/class-dedo-widget-list.php' );
-		include_once( DEDO_PLUGIN_DIR . 'includes/cron.php' );
-		include_once( DEDO_PLUGIN_DIR . 'includes/functions.php' );
-		include_once( DEDO_PLUGIN_DIR . 'includes/mime-types.php' );
-		include_once( DEDO_PLUGIN_DIR . 'includes/post-types.php' );
-		include_once( DEDO_PLUGIN_DIR . 'includes/process-download.php' );
-		include_once( DEDO_PLUGIN_DIR . 'includes/scripts.php' );
-		include_once( DEDO_PLUGIN_DIR . 'includes/shortcodes.php' );
-		include_once( DEDO_PLUGIN_DIR . 'includes/widgets.php' );
-		include_once( DEDO_PLUGIN_DIR . 'includes/taxonomies.php' );
-		
-		if ( is_admin() ) {
-			include_once( DEDO_PLUGIN_DIR . 'includes/admin/ajax.php' );
-			include_once( DEDO_PLUGIN_DIR . 'includes/admin/class-dedo-list-table.php' );
-			include_once( DEDO_PLUGIN_DIR . 'includes/admin/class-dedo-notices.php' );
-			include_once( DEDO_PLUGIN_DIR . 'includes/admin/dashboard.php' );
-			include_once( DEDO_PLUGIN_DIR . 'includes/admin/media-button.php' );
-			include_once( DEDO_PLUGIN_DIR . 'includes/admin/meta-boxes.php' );
-			include_once( DEDO_PLUGIN_DIR . 'includes/admin/page-settings.php' );
-			include_once( DEDO_PLUGIN_DIR . 'includes/admin/page-statistics.php' );
-			include_once( DEDO_PLUGIN_DIR . 'includes/admin/upgrades.php' );
+			foreach ( $plugin_links as $plugin_link ) {
+				array_unshift( $links, $plugin_link );
+			}
 		}
 
+		return $links;
 	}
 
 	/**
 	 * Activate plugin
-	 *
-	 * @since  1.3.2
 	 */
 	public function activate() {
-
 		global $dedo_default_options, $dedo_statistics;
-	
+
 		// Install database table
 		$dedo_statistics->setup_table();
 
@@ -197,41 +226,27 @@ class Delightful_Downloads {
 
 		// Run folder protection
 		dedo_folder_protection();
-		
 	}
 
 	/**
 	 * Deactivate plugin
-	 *
-	 * @since  1.3.2
 	 */
 	public function deactivate() {
-
 		// Clear dedo transients
 		dedo_delete_all_transients();
 	}
 
-	/**
-	 * Plugin Links.
-	 *
-	 * Add links below Delightful Downloads on the plugin screen.
-	 *
-	 * @since  1.3.2
-	 */
-	public function plugin_links( $links, $file ) {
-
-		if ( $file == plugin_basename( __FILE__ ) ) {
-			$plugin_links[] = '<a href="' . admin_url( 'edit.php?post_type=dedo_download&page=dedo_settings' ) . '">' . __( 'Settings', 'delightful-downloads' ) . '</a>';
-		
-			foreach ( $plugin_links as $plugin_link ) {
-				array_unshift( $links, $plugin_link );
-			}
-		}
-
-		return $links;
-
-	} 
-
 }
 
-$delightful_downloads = Delightful_Downloads::get_instance();
+/**
+ * Delightful Downloads
+ *
+ * @return Delightful_Downloads
+ */
+function Delightful_Downloads() {
+	$version = '1.6.1';
+
+	return Delightful_Downloads::get_instance( __FILE__, $version );
+}
+
+Delightful_Downloads();
