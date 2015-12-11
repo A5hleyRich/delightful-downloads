@@ -1,6 +1,6 @@
 .sass-cache
-assets/css
-assets/js/*.min.js
+src/delightful-downloads/assets/css
+src/delightful-downloads/assets/js/*.min.js
 builds
 languages
 node_modules
