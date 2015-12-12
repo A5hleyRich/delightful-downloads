@@ -56,6 +56,9 @@ function dedo_admin_enqueue_scripts( $page ) {
 	$src = DEDO_PLUGIN_URL . 'assets/vendor/jqueryChosen/chosen.jquery' . $suffix . '.js';
 	wp_register_script( 'dedo-jqueryChosen', $src, array( 'jquery' ), $version, true );
 
+	$src = DEDO_PLUGIN_URL . 'assets/vendor/Vue/vue' . $suffix . '.js';
+	wp_register_script( 'dedo-vue', $src, array(), '1.0.10', true );
+
 	// Register styles
 	wp_register_style( 'dedo-css-admin', DEDO_PLUGIN_URL . 'assets/css/delightful-downloads-admin.css', '', $version, 'all' );
 	wp_register_style( 'jqueryFileTree-css', DEDO_PLUGIN_URL . 'assets/vendor/jqueryFileTree/jqueryFileTree.css', '', $version, 'all' );
