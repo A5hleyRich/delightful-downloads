@@ -24,7 +24,7 @@ function dedo_register_page_statistics() {
 	// Hook for screen options dropdown
 	add_action( "load-$dedo_statistics_page", 'dedo_statistics_screen_options' );
 }
-add_action( 'admin_menu', 'dedo_register_page_statistics', 5 );
+add_action( 'admin_menu', 'dedo_register_page_statistics', 20 );
 
 /**
  * Render Statistics Page
