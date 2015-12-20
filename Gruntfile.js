@@ -6,25 +6,36 @@ module.exports = function( grunt ) {
 		compass: {
 			dist: {
 				options: {
-					cssDir: 'assets/css',
-					sassDir: 'assets/sass',
-					outputStyle: 'compressed'
+					cssDir: 'src/delightful-downloads/assets/css',
+					sassDir: 'src/delightful-downloads/assets/sass',
+					environment: 'development'
 				}
+			}
+		},
+		cssmin: {
+			target: {
+				files: [{
+					expand: true,
+					cwd: 'src/delightful-downloads/assets/css',
+					src: [ '*.css', '!*.min.css' ],
+					dest: 'src/delightful-downloads/assets/css',
+					ext: '.min.css'
+				}]
 			}
 		},
 		uglify: {
 			files: {
 				expand: true,
-				cwd: 'assets/js',
+				cwd: 'src/delightful-downloads/assets/js',
 				src: [ '*.js', '!*.min.js' ],
-				dest: 'assets/js',
+				dest: 'src/delightful-downloads/assets/js',
 				ext: '.min.js'
 			}
 		},
 		pot: {
 			options: {
 				text_domain: 'delightful-downloads',
-				dest: 'languages/delightful-downloads.pot',
+				dest: 'src/delightful-downloads/languages/delightful-downloads.pot',
 				keywords: [
 					'gettext',
 					'__',
@@ -51,12 +62,12 @@ module.exports = function( grunt ) {
 			},
 			files: {
 				expand: true,
-				src: [ '**/*.php', '!node_modules/**/*.php' ]
+				src: [ 'src/delightful-downloads/**/*.php' ]
 			}
 		},
 		po2mo: {
 			files: {
-				src: 'languages/*.po',
+				src: 'src/delightful-downloads/languages/*.po',
 				expand: true
 			}
 
@@ -69,14 +80,18 @@ module.exports = function( grunt ) {
 				command: 'tx push -s'
 			}
 		},
-		clean: ['languages/*.po'],
+		clean: ['src/delightful-downloads/languages/*.po'],
 		watch: {
 			sass: {
-				files: [ 'assets/sass/*' ],
+				files: [ 'src/delightful-downloads/assets/sass/*' ],
 				tasks: [ 'compass' ]
 			},
+			css: {
+				files: [ 'src/delightful-downloads/assets/css/*', '!src/delightful-downloads/assets/css/*.min.css' ],
+				tasks: [ 'cssmin' ]
+			},
 			js: {
-				files: [ 'assets/js/*.js', '!assets/js/*.min.js' ],
+				files: [ 'src/delightful-downloads/assets/js/*.js', '!src/delightful-downloads/assets/js/*.min.js' ],
 				tasks: [ 'uglify' ]
 			}
 		}
@@ -86,7 +101,7 @@ module.exports = function( grunt ) {
 	require( 'load-grunt-tasks' )( grunt );
 
 	// Default task(s).
-	grunt.registerTask( 'default', [ 'compass', 'uglify' ] );
+	grunt.registerTask( 'default', [ 'compass', 'cssmin', 'uglify' ] );
 	grunt.registerTask( 'translate', [ 'pot', 'shell:txPush', 'shell:txPull', 'po2mo', 'clean' ] );
 
 };

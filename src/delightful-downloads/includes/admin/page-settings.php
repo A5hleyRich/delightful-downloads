@@ -18,7 +18,7 @@ if ( !defined( 'ABSPATH' ) ) exit;
 function dedo_register_page_settings() {
 	add_submenu_page( 'edit.php?post_type=dedo_download', __( 'Download Settings', 'delightful-downloads' ), __( 'Settings', 'delightful-downloads' ), 'manage_options', 'dedo_settings', 'dedo_render_page_settings' );
 }
-add_action( 'admin_menu', 'dedo_register_page_settings', 10 );
+add_action( 'admin_menu', 'dedo_register_page_settings', 30 );
 
 /**
  * Register Settings Sections and Fields
@@ -235,13 +235,12 @@ function dedo_render_part_sidebar() {
 
 		<div id="dedo-settings-sidebar">
 			<div class="pro-version">
-				<h4>Pro Version?</h4>
-				<p><?php _e( 'I\'m working on a pro version that will include the following features:', 'delightful-downloads' ); ?></p>
+				<h4><?php _e( 'Add-ons?', 'delightful-downloads' ); ?></h4>
+				<p><?php _e( "I'm working on a few premium add-ons to enhance Delightful Downloads:", 'delightful-downloads' ); ?></p>
 				<ul>
-					<li><?php _e( 'Button styles builder', 'delightful-downloads' ); ?></li>
-					<li><?php _e( 'List styles builder', 'delightful-downloads' ); ?></li>
-					<li><?php _e( 'Advanced graphical reports', 'delightful-downloads' ); ?></li>
-					<li><?php _e( 'MailChimp subscribe to download', 'delightful-downloads' ); ?></li>
+					<li><?php _e( '<strong>Customizer</strong> - Button and list styles builder', 'delightful-downloads' ); ?></li>
+					<li><?php _e( '<strong>MailChimp</strong> - Subscribe to download', 'delightful-downloads' ); ?></li>
+					<li><?php _e( '<strong>Twitter</strong> - Tweet to download', 'delightful-downloads' ); ?></li>
 				</ul>
 				<form method="post" action="http://ashleyrich.us5.list-manage.com/subscribe/post" target="_blank">
 					<input type="hidden" name="u" value="ace6f39e2bb7270b9ca7a21bc">
@@ -254,7 +253,7 @@ function dedo_render_part_sidebar() {
 					<input type="text" name="MERGE2" id="MERGE2" class="regular-text" value="<?php echo $current_user->user_lastname; ?>">
 					<button class="button button-primary"><?php _e( 'Keep me informed', 'delightful-downloads' ); ?></button>
 				</form>
-				<small><?php _e( 'I promise I will not use your email for anything else and you can unsubscribe at anytime.' ); ?></small>
+				<small><?php _e( 'I will not use your email for anything else and you can unsubscribe at anytime.' ); ?></small>
 			</div>
 
 			<h4><?php _e( 'Help and Support', 'delightful-downloads' ); ?></h4>
