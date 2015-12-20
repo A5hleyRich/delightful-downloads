@@ -18,8 +18,12 @@ if ( ! defined( 'ABSPATH' ) ) {
  * @since  1.0
  */
 function dedo_enqueue_scripts( $page ) {
+	$version = defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ? time() : DEDO_VERSION;
+	$suffix  = defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ? '' : '.min';
+
 	// Register frontend CSS
-	wp_register_style( 'dedo-css', DEDO_PLUGIN_URL . 'assets/css/delightful-downloads.css', '', DEDO_VERSION, 'all' );
+	$src = DEDO_PLUGIN_URL . 'assets/css/delightful-downloads' . $suffix . '.css';
+	wp_register_style( 'dedo-css', $src, array(), $version, 'all' );
 }
 
 add_action( 'wp_enqueue_scripts', 'dedo_enqueue_scripts' );
@@ -60,9 +64,12 @@ function dedo_admin_enqueue_scripts( $page ) {
 	wp_register_script( 'dedo-vue', $src, array(), '1.0.10', true );
 
 	// Register styles
-	wp_register_style( 'dedo-css-admin', DEDO_PLUGIN_URL . 'assets/css/delightful-downloads-admin.css', '', $version, 'all' );
-	wp_register_style( 'jqueryFileTree-css', DEDO_PLUGIN_URL . 'assets/vendor/jqueryFileTree/jqueryFileTree.css', '', $version, 'all' );
-	wp_register_style( 'dedo-jqueryChosen-css', DEDO_PLUGIN_URL . 'assets/vendor/jqueryChosen/chosen.min.css', '', $version, 'all' );
+	$src = DEDO_PLUGIN_URL . 'assets/css/delightful-downloads-admin' . $suffix . '.css';
+	wp_register_style( 'dedo-css-admin', $src, array(), $version, 'all' );
+	$src = DEDO_PLUGIN_URL . 'assets/vendor/jqueryFileTree/jqueryFileTree.css';
+	wp_register_style( 'jqueryFileTree-css', $src, array(), $version, 'all' );
+	$src = DEDO_PLUGIN_URL . 'assets/vendor/jqueryChosen/chosen' . $suffix . '.css';
+	wp_register_style( 'dedo-jqueryChosen-css', $src, array(), $version, 'all' );
 
 	// Enqueue on all admin pages
 	wp_enqueue_style( 'dedo-css-admin' );
