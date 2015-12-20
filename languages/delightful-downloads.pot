@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: delightful-downloads 1.6.1\n"
 "Report-Msgid-Bugs-To: hello@ashleyrich.com\n"
-"POT-Creation-Date: 2015-11-30 19:31+0000\n"
+"POT-Creation-Date: 2015-12-20 21:04+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,277 +17,316 @@ msgstr ""
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: delightful-downloads.php:224 includes/admin/page-settings.php:19
+#: src/delightful-downloads/delightful-downloads.php:199
+#: src/delightful-downloads/includes/admin/page-settings.php:19
 msgid "Settings"
 msgstr ""
 
-#: includes/admin/ajax.php:23
+#: src/delightful-downloads/includes/admin/ajax.php:23
 msgid "Failed security checks!"
 msgstr ""
 
-#: includes/admin/class-dedo-list-table.php:30
+#: src/delightful-downloads/includes/admin/class-dedo-list-table.php:30
 msgid "Log"
 msgstr ""
 
-#: includes/admin/class-dedo-list-table.php:31
-#: includes/admin/page-statistics.php:22
+#: src/delightful-downloads/includes/admin/class-dedo-list-table.php:31
+#: src/delightful-downloads/includes/admin/page-statistics.php:22
 msgid "Logs"
 msgstr ""
 
-#: includes/admin/class-dedo-list-table.php:48
-#: includes/admin/media-button.php:65 includes/admin/meta-boxes.php:19
-#: includes/admin/page-statistics.php:188 includes/options.php:70
-#: includes/post-types.php:23
+#: src/delightful-downloads/includes/admin/class-dedo-list-table.php:48
+#: src/delightful-downloads/includes/admin/media-button.php:65
+#: src/delightful-downloads/includes/admin/meta-boxes.php:19
+#: src/delightful-downloads/includes/admin/page-statistics.php:188
+#: src/delightful-downloads/includes/options.php:70
+#: src/delightful-downloads/includes/post-types.php:23
 msgid "Download"
 msgstr ""
 
-#: includes/admin/class-dedo-list-table.php:49
-#: includes/admin/page-statistics.php:188
+#: src/delightful-downloads/includes/admin/class-dedo-list-table.php:49
+#: src/delightful-downloads/includes/admin/page-statistics.php:188
 msgid "User"
 msgstr ""
 
-#: includes/admin/class-dedo-list-table.php:50
-#: includes/admin/page-statistics.php:188
+#: src/delightful-downloads/includes/admin/class-dedo-list-table.php:50
+#: src/delightful-downloads/includes/admin/page-statistics.php:188
 msgid "IP Address"
 msgstr ""
 
-#: includes/admin/class-dedo-list-table.php:51
-#: includes/admin/page-statistics.php:188
+#: src/delightful-downloads/includes/admin/class-dedo-list-table.php:51
+#: src/delightful-downloads/includes/admin/page-statistics.php:188
 msgid "User Agent"
 msgstr ""
 
-#: includes/admin/class-dedo-list-table.php:52
-#: includes/admin/page-statistics.php:188
-#: includes/class-dedo-widget-list.php:133 includes/post-types.php:67
+#: src/delightful-downloads/includes/admin/class-dedo-list-table.php:52
+#: src/delightful-downloads/includes/admin/page-statistics.php:188
+#: src/delightful-downloads/includes/class-dedo-widget-list.php:133
+#: src/delightful-downloads/includes/post-types.php:67
 msgid "Date"
 msgstr ""
 
-#: includes/admin/class-dedo-list-table.php:130
-#: includes/admin/dashboard.php:175 includes/admin/page-statistics.php:193
+#: src/delightful-downloads/includes/admin/class-dedo-list-table.php:130
+#: src/delightful-downloads/includes/admin/dashboard.php:175
+#: src/delightful-downloads/includes/admin/page-statistics.php:193
 msgid "Unknown"
 msgstr ""
 
-#: includes/admin/class-dedo-list-table.php:139
-#: includes/admin/page-statistics.php:196
+#: src/delightful-downloads/includes/admin/class-dedo-list-table.php:139
+#: src/delightful-downloads/includes/admin/page-statistics.php:196
 msgid "Non-member"
 msgstr ""
 
-#: includes/admin/class-dedo-list-table.php:174
+#: src/delightful-downloads/includes/admin/class-dedo-list-table.php:174
 msgid "No download logs found."
 msgstr ""
 
-#: includes/admin/dashboard.php:22
+#: src/delightful-downloads/includes/admin/dashboard.php:22
 msgid "Download Statistics"
 msgstr ""
 
-#: includes/admin/dashboard.php:40
+#: src/delightful-downloads/includes/admin/dashboard.php:40
 msgid "Download statistics could not be retrieved."
 msgstr ""
 
-#: includes/admin/dashboard.php:41 includes/admin/dashboard.php:87
+#: src/delightful-downloads/includes/admin/dashboard.php:41
+#: src/delightful-downloads/includes/admin/dashboard.php:87
 msgid "There are no popular downloads yet!"
 msgstr ""
 
-#: includes/admin/dashboard.php:50 includes/admin/dashboard.php:94
+#: src/delightful-downloads/includes/admin/dashboard.php:50
+#: src/delightful-downloads/includes/admin/dashboard.php:94
 msgid "Last 24 Hours"
 msgstr ""
 
-#: includes/admin/dashboard.php:54 includes/admin/dashboard.php:95
+#: src/delightful-downloads/includes/admin/dashboard.php:54
+#: src/delightful-downloads/includes/admin/dashboard.php:95
 msgid "Last 7 Days"
 msgstr ""
 
-#: includes/admin/dashboard.php:58 includes/admin/dashboard.php:96
+#: src/delightful-downloads/includes/admin/dashboard.php:58
+#: src/delightful-downloads/includes/admin/dashboard.php:96
 msgid "Last 30 Days"
 msgstr ""
 
-#: includes/admin/dashboard.php:62 includes/admin/dashboard.php:97
+#: src/delightful-downloads/includes/admin/dashboard.php:62
+#: src/delightful-downloads/includes/admin/dashboard.php:97
 msgid "All Time"
 msgstr ""
 
-#: includes/admin/dashboard.php:67
+#: src/delightful-downloads/includes/admin/dashboard.php:67
 msgid "Popular Downloads"
 msgstr ""
 
-#: includes/admin/dashboard.php:121 includes/admin/dashboard.php:159
-#: includes/admin/meta-boxes.php:279 includes/admin/upgrades.php:173
+#: src/delightful-downloads/includes/admin/dashboard.php:121
+#: src/delightful-downloads/includes/admin/dashboard.php:159
+#: src/delightful-downloads/includes/admin/meta-boxes.php:279
+#: src/delightful-downloads/includes/admin/upgrades.php:173
 msgid "Failed security check!"
 msgstr ""
 
-#: includes/admin/media-button.php:59
+#: src/delightful-downloads/includes/admin/media-button.php:59
 msgid "Close"
 msgstr ""
 
-#: includes/admin/media-button.php:61
+#: src/delightful-downloads/includes/admin/media-button.php:61
 msgid "Insert Download"
 msgstr ""
 
-#: includes/admin/media-button.php:74
+#: src/delightful-downloads/includes/admin/media-button.php:74
 msgid "Style"
 msgstr ""
 
-#: includes/admin/media-button.php:76 includes/admin/media-button.php:89
-#: includes/admin/meta-boxes.php:184
+#: src/delightful-downloads/includes/admin/media-button.php:76
+#: src/delightful-downloads/includes/admin/media-button.php:89
+#: src/delightful-downloads/includes/admin/meta-boxes.php:184
 msgid "Global"
 msgstr ""
 
-#: includes/admin/media-button.php:77 includes/admin/media-button.php:90
-#: includes/admin/media-button.php:102 includes/admin/meta-boxes.php:166
-#: includes/admin/meta-boxes.php:175 includes/admin/meta-boxes.php:183
-#: includes/admin/meta-boxes.php:184 includes/admin/meta-boxes.php:203
-#: includes/post-types.php:125 includes/post-types.php:136
+#: src/delightful-downloads/includes/admin/media-button.php:77
+#: src/delightful-downloads/includes/admin/media-button.php:90
+#: src/delightful-downloads/includes/admin/media-button.php:102
+#: src/delightful-downloads/includes/admin/meta-boxes.php:166
+#: src/delightful-downloads/includes/admin/meta-boxes.php:175
+#: src/delightful-downloads/includes/admin/meta-boxes.php:183
+#: src/delightful-downloads/includes/admin/meta-boxes.php:184
+#: src/delightful-downloads/includes/admin/meta-boxes.php:203
+#: src/delightful-downloads/includes/post-types.php:125
+#: src/delightful-downloads/includes/post-types.php:136
 msgid "Inherit"
 msgstr ""
 
-#: includes/admin/media-button.php:79
+#: src/delightful-downloads/includes/admin/media-button.php:79
 msgid "Styles"
 msgstr ""
 
-#: includes/admin/media-button.php:87 includes/functions.php:22
+#: src/delightful-downloads/includes/admin/media-button.php:87
+#: src/delightful-downloads/includes/functions.php:22
 msgid "Button"
 msgstr ""
 
-#: includes/admin/media-button.php:92
+#: src/delightful-downloads/includes/admin/media-button.php:92
 msgid "Buttons"
 msgstr ""
 
-#: includes/admin/media-button.php:101
+#: src/delightful-downloads/includes/admin/media-button.php:101
 msgid "Text"
 msgstr ""
 
-#: includes/admin/media-button.php:106
+#: src/delightful-downloads/includes/admin/media-button.php:106
 msgid "Insert"
 msgstr ""
 
-#: includes/admin/media-button.php:107 includes/class-dedo-widget-list.php:135
-#: includes/post-types.php:62
+#: src/delightful-downloads/includes/admin/media-button.php:107
+#: src/delightful-downloads/includes/class-dedo-widget-list.php:135
+#: src/delightful-downloads/includes/post-types.php:62
 msgid "File Size"
 msgstr ""
 
-#: includes/admin/media-button.php:108 includes/admin/meta-boxes.php:150
-#: includes/class-dedo-widget-list.php:134
+#: src/delightful-downloads/includes/admin/media-button.php:108
+#: src/delightful-downloads/includes/admin/meta-boxes.php:150
+#: src/delightful-downloads/includes/class-dedo-widget-list.php:134
 msgid "Download Count"
 msgstr ""
 
-#: includes/admin/media-button.php:111
+#: src/delightful-downloads/includes/admin/media-button.php:111
 #, php-format
 msgid "Please %sadd%s a new download."
 msgstr ""
 
-#: includes/admin/meta-boxes.php:45 includes/admin/meta-boxes.php:48
+#: src/delightful-downloads/includes/admin/meta-boxes.php:45
+#: src/delightful-downloads/includes/admin/meta-boxes.php:48
 #, php-format
 msgid "Download updated. Use the %s shortcode to include it in posts or pages."
 msgstr ""
 
-#: includes/admin/meta-boxes.php:46
+#: src/delightful-downloads/includes/admin/meta-boxes.php:46
 msgid "Custom field updated."
 msgstr ""
 
-#: includes/admin/meta-boxes.php:47
+#: src/delightful-downloads/includes/admin/meta-boxes.php:47
 msgid "Custom field deleted."
 msgstr ""
 
-#: includes/admin/meta-boxes.php:49
+#: src/delightful-downloads/includes/admin/meta-boxes.php:49
 #, php-format
 msgid "Download restored to revision from %s"
 msgstr ""
 
-#: includes/admin/meta-boxes.php:50
+#: src/delightful-downloads/includes/admin/meta-boxes.php:50
 #, php-format
 msgid ""
 "Download published. Use the %s shortcode to include it in posts or pages."
 msgstr ""
 
-#: includes/admin/meta-boxes.php:51
+#: src/delightful-downloads/includes/admin/meta-boxes.php:51
 msgid "Download saved."
 msgstr ""
 
-#: includes/admin/meta-boxes.php:52
+#: src/delightful-downloads/includes/admin/meta-boxes.php:52
 msgid "Download submitted."
 msgstr ""
 
-#: includes/admin/meta-boxes.php:53
+#: src/delightful-downloads/includes/admin/meta-boxes.php:53
 #, php-format
 msgid "Download scheduled for: <strong>%1$s</strong>."
 msgstr ""
 
-#: includes/admin/meta-boxes.php:54
+#: src/delightful-downloads/includes/admin/meta-boxes.php:54
 msgid "M j, Y @ G:i"
 msgstr ""
 
-#: includes/admin/meta-boxes.php:55
+#: src/delightful-downloads/includes/admin/meta-boxes.php:55
 msgid "Download draft updated."
 msgstr ""
 
-#: includes/admin/meta-boxes.php:87
+#: src/delightful-downloads/includes/admin/meta-boxes.php:87
 msgid "Local File"
 msgstr ""
 
-#: includes/admin/meta-boxes.php:88
+#: src/delightful-downloads/includes/admin/meta-boxes.php:88
 msgid "Remote File"
 msgstr ""
 
-#: includes/admin/meta-boxes.php:89
+#: src/delightful-downloads/includes/admin/meta-boxes.php:89
 msgid "Inaccessible File"
 msgstr ""
 
-#: includes/admin/meta-boxes.php:105
+#: src/delightful-downloads/includes/admin/meta-boxes.php:105
 msgid "Allowed Files"
 msgstr ""
 
-#: includes/admin/meta-boxes.php:131 includes/admin/meta-boxes.php:225
+#: src/delightful-downloads/includes/admin/meta-boxes.php:131
+#: src/delightful-downloads/includes/admin/meta-boxes.php:225
 msgid "Upload File"
 msgstr ""
 
-#: includes/admin/meta-boxes.php:132 includes/admin/meta-boxes.php:247
+#: src/delightful-downloads/includes/admin/meta-boxes.php:132
+#: src/delightful-downloads/includes/admin/meta-boxes.php:247
 msgid "Existing File"
 msgstr ""
 
-#: includes/admin/meta-boxes.php:154
+#: src/delightful-downloads/includes/admin/meta-boxes.php:154
 msgid "The number of times this file has been downloaded."
 msgstr ""
 
-#: includes/admin/meta-boxes.php:161 includes/options.php:46
-#: includes/post-types.php:65
+#: src/delightful-downloads/includes/admin/meta-boxes.php:161
+#: src/delightful-downloads/includes/options.php:46
+#: src/delightful-downloads/includes/post-types.php:65
 msgid "Members Only"
 msgstr ""
 
-#: includes/admin/meta-boxes.php:164 includes/admin/meta-boxes.php:201
-#: includes/admin/page-settings.php:285 includes/admin/page-settings.php:301
-#: includes/admin/page-settings.php:334 includes/admin/page-settings.php:442
-#: includes/admin/page-settings.php:459 includes/admin/page-settings.php:480
-#: includes/admin/page-settings.php:500 includes/admin/page-settings.php:517
-#: includes/admin/page-settings.php:563 includes/admin/page-settings.php:579
-#: includes/post-types.php:123 includes/post-types.php:134
+#: src/delightful-downloads/includes/admin/meta-boxes.php:164
+#: src/delightful-downloads/includes/admin/meta-boxes.php:201
+#: src/delightful-downloads/includes/admin/page-settings.php:284
+#: src/delightful-downloads/includes/admin/page-settings.php:300
+#: src/delightful-downloads/includes/admin/page-settings.php:333
+#: src/delightful-downloads/includes/admin/page-settings.php:441
+#: src/delightful-downloads/includes/admin/page-settings.php:458
+#: src/delightful-downloads/includes/admin/page-settings.php:479
+#: src/delightful-downloads/includes/admin/page-settings.php:499
+#: src/delightful-downloads/includes/admin/page-settings.php:516
+#: src/delightful-downloads/includes/admin/page-settings.php:562
+#: src/delightful-downloads/includes/admin/page-settings.php:578
+#: src/delightful-downloads/includes/post-types.php:123
+#: src/delightful-downloads/includes/post-types.php:134
 msgid "Yes"
 msgstr ""
 
-#: includes/admin/meta-boxes.php:165 includes/admin/meta-boxes.php:202
-#: includes/admin/page-settings.php:286 includes/admin/page-settings.php:302
-#: includes/admin/page-settings.php:335 includes/admin/page-settings.php:443
-#: includes/admin/page-settings.php:460 includes/admin/page-settings.php:481
-#: includes/admin/page-settings.php:501 includes/admin/page-settings.php:518
-#: includes/admin/page-settings.php:564 includes/admin/page-settings.php:580
-#: includes/post-types.php:123 includes/post-types.php:134
+#: src/delightful-downloads/includes/admin/meta-boxes.php:165
+#: src/delightful-downloads/includes/admin/meta-boxes.php:202
+#: src/delightful-downloads/includes/admin/page-settings.php:285
+#: src/delightful-downloads/includes/admin/page-settings.php:301
+#: src/delightful-downloads/includes/admin/page-settings.php:334
+#: src/delightful-downloads/includes/admin/page-settings.php:442
+#: src/delightful-downloads/includes/admin/page-settings.php:459
+#: src/delightful-downloads/includes/admin/page-settings.php:480
+#: src/delightful-downloads/includes/admin/page-settings.php:500
+#: src/delightful-downloads/includes/admin/page-settings.php:517
+#: src/delightful-downloads/includes/admin/page-settings.php:563
+#: src/delightful-downloads/includes/admin/page-settings.php:579
+#: src/delightful-downloads/includes/post-types.php:123
+#: src/delightful-downloads/includes/post-types.php:134
 msgid "No"
 msgstr ""
 
-#: includes/admin/meta-boxes.php:167
+#: src/delightful-downloads/includes/admin/meta-boxes.php:167
 msgid "Allow only logged in users to download this file."
 msgstr ""
 
-#: includes/admin/meta-boxes.php:184
+#: src/delightful-downloads/includes/admin/meta-boxes.php:184
 msgid "Pages"
 msgstr ""
 
-#: includes/admin/meta-boxes.php:191
+#: src/delightful-downloads/includes/admin/meta-boxes.php:191
 msgid "The page to redirect non-members."
 msgstr ""
 
-#: includes/admin/meta-boxes.php:198
+#: src/delightful-downloads/includes/admin/meta-boxes.php:198
 msgid "Open In Browser"
 msgstr ""
 
-#: includes/admin/meta-boxes.php:204
+#: src/delightful-downloads/includes/admin/meta-boxes.php:204
 #, php-format
 msgid ""
 "This file will attempt to open in the browser window. If the file is located "
@@ -295,142 +334,145 @@ msgid ""
 "%sfolder protection%s setting to 'No'."
 msgstr ""
 
-#: includes/admin/meta-boxes.php:211
+#: src/delightful-downloads/includes/admin/meta-boxes.php:211
 msgid "Replace File:"
 msgstr ""
 
-#: includes/admin/meta-boxes.php:212
+#: src/delightful-downloads/includes/admin/meta-boxes.php:212
 msgid "Upload"
 msgstr ""
 
-#: includes/admin/meta-boxes.php:213
+#: src/delightful-downloads/includes/admin/meta-boxes.php:213
 msgid "Select Existing"
 msgstr ""
 
-#: includes/admin/meta-boxes.php:214
+#: src/delightful-downloads/includes/admin/meta-boxes.php:214
 msgid "Delete File"
 msgstr ""
 
-#: includes/admin/meta-boxes.php:228
+#: src/delightful-downloads/includes/admin/meta-boxes.php:228
 msgid "Drop file here"
 msgstr ""
 
-#: includes/admin/meta-boxes.php:229
+#: src/delightful-downloads/includes/admin/meta-boxes.php:229
 msgid "or"
 msgstr ""
 
-#: includes/admin/meta-boxes.php:230
+#: src/delightful-downloads/includes/admin/meta-boxes.php:230
 msgid "Select File"
 msgstr ""
 
-#: includes/admin/meta-boxes.php:235
+#: src/delightful-downloads/includes/admin/meta-boxes.php:235
 #, php-format
 msgid "Maximum upload file size: %s."
 msgstr ""
 
-#: includes/admin/meta-boxes.php:248
+#: src/delightful-downloads/includes/admin/meta-boxes.php:248
 msgid "Manually enter a file URL, or use the file browser."
 msgstr ""
 
-#: includes/admin/meta-boxes.php:251
+#: src/delightful-downloads/includes/admin/meta-boxes.php:251
 msgid "File URL or path..."
 msgstr ""
 
-#: includes/admin/meta-boxes.php:254
+#: src/delightful-downloads/includes/admin/meta-boxes.php:254
 msgid "Loading..."
 msgstr ""
 
-#: includes/admin/meta-boxes.php:257
+#: src/delightful-downloads/includes/admin/meta-boxes.php:257
 msgid "Confirm"
 msgstr ""
 
-#: includes/admin/page-settings.php:19 includes/admin/page-settings.php:80
+#: src/delightful-downloads/includes/admin/page-settings.php:19
+#: src/delightful-downloads/includes/admin/page-settings.php:80
 msgid "Download Settings"
 msgstr ""
 
-#: includes/admin/page-settings.php:81 includes/admin/page-settings.php:646
+#: src/delightful-downloads/includes/admin/page-settings.php:81
+#: src/delightful-downloads/includes/admin/page-settings.php:645
 msgid "Import"
 msgstr ""
 
-#: includes/admin/page-settings.php:82 includes/admin/page-statistics.php:39
-#: includes/admin/page-statistics.php:86
+#: src/delightful-downloads/includes/admin/page-settings.php:82
+#: src/delightful-downloads/includes/admin/page-statistics.php:39
+#: src/delightful-downloads/includes/admin/page-statistics.php:86
 msgid "Export"
 msgstr ""
 
-#: includes/admin/page-settings.php:83
+#: src/delightful-downloads/includes/admin/page-settings.php:83
 msgid "You are about to reset the download settings."
 msgstr ""
 
-#: includes/admin/page-settings.php:83
+#: src/delightful-downloads/includes/admin/page-settings.php:83
 msgid "Reset Defaults"
 msgstr ""
 
-#: includes/admin/page-settings.php:87
+#: src/delightful-downloads/includes/admin/page-settings.php:87
 msgid "Settings updated successfully."
 msgstr ""
 
-#: includes/admin/page-settings.php:239
-msgid "I'm working on a pro version that will include the following features:"
+#: src/delightful-downloads/includes/admin/page-settings.php:238
+msgid "Add-ons?"
 msgstr ""
 
-#: includes/admin/page-settings.php:241
-msgid "Button styles builder"
+#: src/delightful-downloads/includes/admin/page-settings.php:239
+msgid "I'm working on a few premium add-ons to enhance Delightful Downloads:"
 msgstr ""
 
-#: includes/admin/page-settings.php:242
-msgid "List styles builder"
+#: src/delightful-downloads/includes/admin/page-settings.php:241
+msgid "<strong>Customizer</strong> - Button and list styles builder"
 msgstr ""
 
-#: includes/admin/page-settings.php:243
-msgid "Advanced graphical reports"
+#: src/delightful-downloads/includes/admin/page-settings.php:242
+msgid "<strong>MailChimp</strong> - Subscribe to download"
 msgstr ""
 
-#: includes/admin/page-settings.php:244
-msgid "MailChimp subscribe to download"
+#: src/delightful-downloads/includes/admin/page-settings.php:243
+msgid "<strong>Twitter</strong> - Tweet to download"
 msgstr ""
 
-#: includes/admin/page-settings.php:255
+#: src/delightful-downloads/includes/admin/page-settings.php:254
 msgid "Keep me informed"
 msgstr ""
 
-#: includes/admin/page-settings.php:257
+#: src/delightful-downloads/includes/admin/page-settings.php:256
 msgid ""
-"I promise I will not use your email for anything else and you can "
-"unsubscribe at anytime."
+"I will not use your email for anything else and you can unsubscribe at "
+"anytime."
 msgstr ""
 
-#: includes/admin/page-settings.php:260
+#: src/delightful-downloads/includes/admin/page-settings.php:259
 msgid "Help and Support"
 msgstr ""
 
-#: includes/admin/page-settings.php:261
+#: src/delightful-downloads/includes/admin/page-settings.php:260
 #, php-format
 msgid ""
 "Please take a moment to look at the %sdocumentation%s. If you are still "
 "having issues, please take a look at the %ssupport forums%s."
 msgstr ""
 
-#: includes/admin/page-settings.php:287
+#: src/delightful-downloads/includes/admin/page-settings.php:286
 msgid "Allow downloads to be tagged or categorised."
 msgstr ""
 
-#: includes/admin/page-settings.php:303
+#: src/delightful-downloads/includes/admin/page-settings.php:302
 msgid ""
 "Allow only logged in users to download files. This can be overridden on a "
 "per-download basis."
 msgstr ""
 
-#: includes/admin/page-settings.php:312
+#: src/delightful-downloads/includes/admin/page-settings.php:311
 msgid "No Page (Generic Error)"
 msgstr ""
 
-#: includes/admin/page-settings.php:318
+#: src/delightful-downloads/includes/admin/page-settings.php:317
 msgid ""
 "The page to redirect non-members. If no page is selected, a generic error "
 "message will be displayed. This can be overridden on a per-download basis."
 msgstr ""
 
-#: includes/admin/page-settings.php:336
+#: src/delightful-downloads/includes/admin/page-settings.php:335
 msgid ""
 "Attempt to open files in the browser window. This can be overridden on a per-"
 "download basis. For files located within the Delightful Downloads upload "
@@ -438,590 +480,602 @@ msgid ""
 "advanced tab."
 msgstr ""
 
-#: includes/admin/page-settings.php:351
+#: src/delightful-downloads/includes/admin/page-settings.php:350
 msgid "User agents to block from downloading files. One per line."
 msgstr ""
 
-#: includes/admin/page-settings.php:365
+#: src/delightful-downloads/includes/admin/page-settings.php:364
 #, php-format
 msgid ""
 "The default text to display, when using the %s shortcode. This can be "
 "overridden on a per-download basis."
 msgstr ""
 
-#: includes/admin/page-settings.php:385
+#: src/delightful-downloads/includes/admin/page-settings.php:384
 #, php-format
 msgid ""
 "The default output style, when using the %s shortcode. This can be "
 "overridden on a per-download basis."
 msgstr ""
 
-#: includes/admin/page-settings.php:407
+#: src/delightful-downloads/includes/admin/page-settings.php:406
 #, php-format
 msgid ""
 "The default button style, when using the %s shortcode. This can be "
 "overridden on a per-download basis."
 msgstr ""
 
-#: includes/admin/page-settings.php:429
+#: src/delightful-downloads/includes/admin/page-settings.php:428
 #, php-format
 msgid ""
 "The default output style, when using the %s shortcode. This can be "
 "overridden on a per-list basis."
 msgstr ""
 
-#: includes/admin/page-settings.php:444
+#: src/delightful-downloads/includes/admin/page-settings.php:443
 msgid "Log events triggered by admin users."
 msgstr ""
 
-#: includes/admin/page-settings.php:461
+#: src/delightful-downloads/includes/admin/page-settings.php:460
 msgid ""
 "Stop multiple logs of the same type from being saved, in quick succession."
 msgstr ""
 
-#: includes/admin/page-settings.php:464
+#: src/delightful-downloads/includes/admin/page-settings.php:463
 msgid "The time in minutes before creating a new log."
 msgstr ""
 
-#: includes/admin/page-settings.php:482
+#: src/delightful-downloads/includes/admin/page-settings.php:481
 msgid "Automatically delete old logs."
 msgstr ""
 
-#: includes/admin/page-settings.php:485
+#: src/delightful-downloads/includes/admin/page-settings.php:484
 msgid "The time in days to keep logs."
 msgstr ""
 
-#: includes/admin/page-settings.php:502
+#: src/delightful-downloads/includes/admin/page-settings.php:501
 msgid "Output the Delightful Downloads stylesheet on the front-end."
 msgstr ""
 
-#: includes/admin/page-settings.php:519
+#: src/delightful-downloads/includes/admin/page-settings.php:518
 msgid "Cache database queries that are expensive to generate."
 msgstr ""
 
-#: includes/admin/page-settings.php:522
+#: src/delightful-downloads/includes/admin/page-settings.php:521
 msgid "The time in minutes to cache queries."
 msgstr ""
 
-#: includes/admin/page-settings.php:538
+#: src/delightful-downloads/includes/admin/page-settings.php:537
 msgid "The URL for download links."
 msgstr ""
 
-#: includes/admin/page-settings.php:550
+#: src/delightful-downloads/includes/admin/page-settings.php:549
 msgid "The directory to upload files."
 msgstr ""
 
-#: includes/admin/page-settings.php:565
+#: src/delightful-downloads/includes/admin/page-settings.php:564
 msgid ""
 "Stop direct access to uploaded files, within the Delightful Downloads upload "
 "directory."
 msgstr ""
 
-#: includes/admin/page-settings.php:581
+#: src/delightful-downloads/includes/admin/page-settings.php:580
 msgid ""
 "Completely remove all data associated with Delightful Downloads, when "
 "uninstalling the plugin. All downloads, categories, tags and statistics will "
 "be removed."
 msgstr ""
 
-#: includes/admin/page-settings.php:640
+#: src/delightful-downloads/includes/admin/page-settings.php:639
 msgid "Import Settings"
 msgstr ""
 
-#: includes/admin/page-settings.php:641
+#: src/delightful-downloads/includes/admin/page-settings.php:640
 msgid "Select a Delightful Downloads settings file to import:"
 msgstr ""
 
-#: includes/admin/page-settings.php:711
+#: src/delightful-downloads/includes/admin/page-settings.php:710
 msgid "Invalid settings file."
 msgstr ""
 
-#: includes/admin/page-settings.php:721
+#: src/delightful-downloads/includes/admin/page-settings.php:720
 msgid "Settings have been successfully imported."
 msgstr ""
 
-#: includes/admin/page-settings.php:729
+#: src/delightful-downloads/includes/admin/page-settings.php:728
 msgid "No file uploaded."
 msgstr ""
 
-#: includes/admin/page-settings.php:789
+#: src/delightful-downloads/includes/admin/page-settings.php:788
 msgid "Default settings reset successfully."
 msgstr ""
 
-#: includes/admin/page-statistics.php:22 includes/admin/page-statistics.php:38
-#: includes/admin/page-statistics.php:258
+#: src/delightful-downloads/includes/admin/page-statistics.php:22
+#: src/delightful-downloads/includes/admin/page-statistics.php:38
+#: src/delightful-downloads/includes/admin/page-statistics.php:258
 msgid "Download Logs"
 msgstr ""
 
-#: includes/admin/page-statistics.php:40
+#: src/delightful-downloads/includes/admin/page-statistics.php:40
 msgid "You are about to permanently delete the download logs."
 msgstr ""
 
-#: includes/admin/page-statistics.php:40
+#: src/delightful-downloads/includes/admin/page-statistics.php:40
 msgid "Delete"
 msgstr ""
 
-#: includes/admin/page-statistics.php:73
+#: src/delightful-downloads/includes/admin/page-statistics.php:73
 msgid "Export Logs"
 msgstr ""
 
-#: includes/admin/page-statistics.php:74
+#: src/delightful-downloads/includes/admin/page-statistics.php:74
 msgid ""
 "Export log entries to a CSV file. Please select a date range, or leave blank "
 "to export all:"
 msgstr ""
 
-#: includes/admin/page-statistics.php:77
+#: src/delightful-downloads/includes/admin/page-statistics.php:77
 msgid "Start Date"
 msgstr ""
 
-#: includes/admin/page-statistics.php:81
+#: src/delightful-downloads/includes/admin/page-statistics.php:81
 msgid "End Date"
 msgstr ""
 
-#: includes/admin/page-statistics.php:155
+#: src/delightful-downloads/includes/admin/page-statistics.php:155
 msgid "You do not have any logs to export in that date range."
 msgstr ""
 
-#: includes/admin/page-statistics.php:188
+#: src/delightful-downloads/includes/admin/page-statistics.php:188
 msgid "ID"
 msgstr ""
 
-#: includes/admin/page-statistics.php:188
+#: src/delightful-downloads/includes/admin/page-statistics.php:188
 msgid "Status"
 msgstr ""
 
-#: includes/admin/page-statistics.php:229
+#: src/delightful-downloads/includes/admin/page-statistics.php:229
 msgid "Logs could not be deleted."
 msgstr ""
 
-#: includes/admin/page-statistics.php:233
+#: src/delightful-downloads/includes/admin/page-statistics.php:233
 msgid "Logs deleted successfully."
 msgstr ""
 
-#: includes/admin/upgrades.php:76
+#: src/delightful-downloads/includes/admin/upgrades.php:76
 msgid "Delightful Downloads updated to version 1.4."
 msgstr ""
 
-#: includes/admin/upgrades.php:80
+#: src/delightful-downloads/includes/admin/upgrades.php:80
 #, php-format
 msgid "Please visit the %slogs screen%s to migrate your download statistics."
 msgstr ""
 
-#: includes/admin/upgrades.php:109
+#: src/delightful-downloads/includes/admin/upgrades.php:109
 msgid "Delightful Downloads updated to version 1.5."
 msgstr ""
 
-#: includes/admin/upgrades.php:135 includes/admin/upgrades.php:144
+#: src/delightful-downloads/includes/admin/upgrades.php:135
+#: src/delightful-downloads/includes/admin/upgrades.php:144
 msgid "Migrate"
 msgstr ""
 
-#: includes/admin/upgrades.php:136
+#: src/delightful-downloads/includes/admin/upgrades.php:136
 msgid "Stop"
 msgstr ""
 
-#: includes/admin/upgrades.php:137
+#: src/delightful-downloads/includes/admin/upgrades.php:137
 msgid "The migration could not start due to an error."
 msgstr ""
 
-#: includes/admin/upgrades.php:142
+#: src/delightful-downloads/includes/admin/upgrades.php:142
 #, php-format
 msgid ""
 "You have %s logs from an older version of Delightful Downloads. %sPlease "
 "make a backup of your database before migrating!%s"
 msgstr ""
 
-#: includes/admin/upgrades.php:148
+#: src/delightful-downloads/includes/admin/upgrades.php:148
 msgid "JavaScript must be enabled to migrate legacy logs."
 msgstr ""
 
-#: includes/class-dedo-widget-list.php:24
+#: src/delightful-downloads/includes/class-dedo-widget-list.php:24
 msgid "Delightful Downloads"
 msgstr ""
 
-#: includes/class-dedo-widget-list.php:26
+#: src/delightful-downloads/includes/class-dedo-widget-list.php:26
 msgid "A list of your site's downloads."
 msgstr ""
 
-#: includes/class-dedo-widget-list.php:96 includes/post-types.php:22
-#: includes/post-types.php:34 includes/post-types.php:64
+#: src/delightful-downloads/includes/class-dedo-widget-list.php:96
+#: src/delightful-downloads/includes/post-types.php:22
+#: src/delightful-downloads/includes/post-types.php:34
+#: src/delightful-downloads/includes/post-types.php:64
 msgid "Downloads"
 msgstr ""
 
-#: includes/class-dedo-widget-list.php:123
+#: src/delightful-downloads/includes/class-dedo-widget-list.php:123
 msgid "Title:"
 msgstr ""
 
-#: includes/class-dedo-widget-list.php:127
+#: src/delightful-downloads/includes/class-dedo-widget-list.php:127
 msgid "Number of downloads to show:"
 msgstr ""
 
-#: includes/class-dedo-widget-list.php:131
+#: src/delightful-downloads/includes/class-dedo-widget-list.php:131
 msgid "Order by:"
 msgstr ""
 
-#: includes/class-dedo-widget-list.php:136
+#: src/delightful-downloads/includes/class-dedo-widget-list.php:136
 msgid "Random"
 msgstr ""
 
-#: includes/class-dedo-widget-list.php:137 includes/functions.php:88
-#: includes/post-types.php:60
+#: src/delightful-downloads/includes/class-dedo-widget-list.php:137
+#: src/delightful-downloads/includes/functions.php:88
+#: src/delightful-downloads/includes/post-types.php:60
 msgid "Title"
 msgstr ""
 
-#: includes/class-dedo-widget-list.php:141
+#: src/delightful-downloads/includes/class-dedo-widget-list.php:141
 msgid "Order:"
 msgstr ""
 
-#: includes/class-dedo-widget-list.php:143
+#: src/delightful-downloads/includes/class-dedo-widget-list.php:143
 msgid "ASC"
 msgstr ""
 
-#: includes/class-dedo-widget-list.php:144
+#: src/delightful-downloads/includes/class-dedo-widget-list.php:144
 msgid "DESC"
 msgstr ""
 
-#: includes/class-dedo-widget-list.php:148
+#: src/delightful-downloads/includes/class-dedo-widget-list.php:148
 msgid "List Style:"
 msgstr ""
 
-#: includes/class-dedo-widget-list.php:158
+#: src/delightful-downloads/includes/class-dedo-widget-list.php:158
 msgid "Category:"
 msgstr ""
 
-#: includes/class-dedo-widget-list.php:161 includes/taxonomies.php:26
+#: src/delightful-downloads/includes/class-dedo-widget-list.php:161
+#: src/delightful-downloads/includes/taxonomies.php:26
 msgid "All Categories"
 msgstr ""
 
-#: includes/class-dedo-widget-list.php:168
+#: src/delightful-downloads/includes/class-dedo-widget-list.php:168
 msgid "Tag:"
 msgstr ""
 
-#: includes/class-dedo-widget-list.php:171 includes/taxonomies.php:50
+#: src/delightful-downloads/includes/class-dedo-widget-list.php:171
+#: src/delightful-downloads/includes/taxonomies.php:50
 msgid "All Tags"
 msgstr ""
 
-#: includes/class-dedo-widget-list.php:178
+#: src/delightful-downloads/includes/class-dedo-widget-list.php:178
 msgid "Relation:"
 msgstr ""
 
-#: includes/class-dedo-widget-list.php:183
+#: src/delightful-downloads/includes/class-dedo-widget-list.php:183
 msgid "Downloads belong to category AND/OR tag."
 msgstr ""
 
-#: includes/cron.php:73
+#: src/delightful-downloads/includes/cron.php:73
 msgid "Once Weekly"
 msgstr ""
 
-#: includes/functions.php:26
+#: src/delightful-downloads/includes/functions.php:26
 msgid "Link"
 msgstr ""
 
-#: includes/functions.php:30
+#: src/delightful-downloads/includes/functions.php:30
 msgid "Plain Text"
 msgstr ""
 
-#: includes/functions.php:47
+#: src/delightful-downloads/includes/functions.php:47
 msgid "Black"
 msgstr ""
 
-#: includes/functions.php:51
+#: src/delightful-downloads/includes/functions.php:51
 msgid "Blue"
 msgstr ""
 
-#: includes/functions.php:55
+#: src/delightful-downloads/includes/functions.php:55
 msgid "Grey"
 msgstr ""
 
-#: includes/functions.php:59
+#: src/delightful-downloads/includes/functions.php:59
 msgid "Green"
 msgstr ""
 
-#: includes/functions.php:63
+#: src/delightful-downloads/includes/functions.php:63
 msgid "Purple"
 msgstr ""
 
-#: includes/functions.php:67
+#: src/delightful-downloads/includes/functions.php:67
 msgid "Red"
 msgstr ""
 
-#: includes/functions.php:71
+#: src/delightful-downloads/includes/functions.php:71
 msgid "Yellow"
 msgstr ""
 
-#: includes/functions.php:92
+#: src/delightful-downloads/includes/functions.php:92
 msgid "Title (Date)"
 msgstr ""
 
-#: includes/functions.php:96
+#: src/delightful-downloads/includes/functions.php:96
 msgid "Title (Count)"
 msgstr ""
 
-#: includes/functions.php:100
+#: src/delightful-downloads/includes/functions.php:100
 msgid "Title (File size)"
 msgstr ""
 
-#: includes/functions.php:104
+#: src/delightful-downloads/includes/functions.php:104
 msgid "Title (Extension, File size)"
 msgstr ""
 
-#: includes/options.php:22
+#: src/delightful-downloads/includes/options.php:22
 msgid "General"
 msgstr ""
 
-#: includes/options.php:23
+#: src/delightful-downloads/includes/options.php:23
 msgid "Shortcodes"
 msgstr ""
 
-#: includes/options.php:24
+#: src/delightful-downloads/includes/options.php:24
 msgid "Statistics"
 msgstr ""
 
-#: includes/options.php:25
+#: src/delightful-downloads/includes/options.php:25
 msgid "Advanced"
 msgstr ""
 
-#: includes/options.php:26
+#: src/delightful-downloads/includes/options.php:26
 msgid "Support"
 msgstr ""
 
-#: includes/options.php:40
+#: src/delightful-downloads/includes/options.php:40
 msgid "Categories and Tags"
 msgstr ""
 
-#: includes/options.php:55 includes/post-types.php:66
+#: src/delightful-downloads/includes/options.php:55
+#: src/delightful-downloads/includes/post-types.php:66
 msgid "Open in Browser"
 msgstr ""
 
-#: includes/options.php:61
+#: src/delightful-downloads/includes/options.php:61
 msgid "Block User Agents"
 msgstr ""
 
-#: includes/options.php:67
+#: src/delightful-downloads/includes/options.php:67
 msgid "Default Text"
 msgstr ""
 
-#: includes/options.php:73
+#: src/delightful-downloads/includes/options.php:73
 msgid "Default Style"
 msgstr ""
 
-#: includes/options.php:79
+#: src/delightful-downloads/includes/options.php:79
 msgid "Default Button Style"
 msgstr ""
 
-#: includes/options.php:85
+#: src/delightful-downloads/includes/options.php:85
 msgid "Default List Style"
 msgstr ""
 
-#: includes/options.php:91
+#: src/delightful-downloads/includes/options.php:91
 msgid "Admin Events"
 msgstr ""
 
-#: includes/options.php:97
+#: src/delightful-downloads/includes/options.php:97
 msgid "Grace Period"
 msgstr ""
 
-#: includes/options.php:106
+#: src/delightful-downloads/includes/options.php:106
 msgid "Auto Delete"
 msgstr ""
 
-#: includes/options.php:115
+#: src/delightful-downloads/includes/options.php:115
 msgid "Output CSS"
 msgstr ""
 
-#: includes/options.php:121
+#: src/delightful-downloads/includes/options.php:121
 msgid "Cache"
 msgstr ""
 
-#: includes/options.php:130
+#: src/delightful-downloads/includes/options.php:130
 msgid "Download Address"
 msgstr ""
 
-#: includes/options.php:136
+#: src/delightful-downloads/includes/options.php:136
 msgid "Upload Directory"
 msgstr ""
 
-#: includes/options.php:142
+#: src/delightful-downloads/includes/options.php:142
 msgid "Folder Protection"
 msgstr ""
 
-#: includes/options.php:148
+#: src/delightful-downloads/includes/options.php:148
 msgid "Complete Uninstall"
 msgstr ""
 
-#: includes/post-types.php:24
+#: src/delightful-downloads/includes/post-types.php:24
 msgid "Add New"
 msgstr ""
 
-#: includes/post-types.php:25
+#: src/delightful-downloads/includes/post-types.php:25
 msgid "Add New Download"
 msgstr ""
 
-#: includes/post-types.php:26
+#: src/delightful-downloads/includes/post-types.php:26
 msgid "Edit Download"
 msgstr ""
 
-#: includes/post-types.php:27
+#: src/delightful-downloads/includes/post-types.php:27
 msgid "New Download"
 msgstr ""
 
-#: includes/post-types.php:28
+#: src/delightful-downloads/includes/post-types.php:28
 msgid "All Downloads"
 msgstr ""
 
-#: includes/post-types.php:29
+#: src/delightful-downloads/includes/post-types.php:29
 msgid "View Download"
 msgstr ""
 
-#: includes/post-types.php:30
+#: src/delightful-downloads/includes/post-types.php:30
 msgid "Search Downloads"
 msgstr ""
 
-#: includes/post-types.php:31
+#: src/delightful-downloads/includes/post-types.php:31
 msgid "No downloads found"
 msgstr ""
 
-#: includes/post-types.php:32
+#: src/delightful-downloads/includes/post-types.php:32
 msgid "No downloads found in Trash"
 msgstr ""
 
-#: includes/post-types.php:61
+#: src/delightful-downloads/includes/post-types.php:61
 msgid "File"
 msgstr ""
 
-#: includes/post-types.php:63
+#: src/delightful-downloads/includes/post-types.php:63
 msgid "Shortcode"
 msgstr ""
 
-#: includes/post-types.php:73 includes/taxonomies.php:25
+#: src/delightful-downloads/includes/post-types.php:73
+#: src/delightful-downloads/includes/taxonomies.php:25
 msgid "Categories"
 msgstr ""
 
-#: includes/post-types.php:74 includes/taxonomies.php:49
+#: src/delightful-downloads/includes/post-types.php:74
+#: src/delightful-downloads/includes/taxonomies.php:49
 msgid "Tags"
 msgstr ""
 
-#: includes/process-download.php:33
+#: src/delightful-downloads/includes/process-download.php:33
 msgid "Invalid download."
 msgstr ""
 
-#: includes/process-download.php:39
+#: src/delightful-downloads/includes/process-download.php:39
 msgid "You are blocked from downloading this file!"
 msgstr ""
 
-#: includes/process-download.php:60
+#: src/delightful-downloads/includes/process-download.php:60
 msgid "Please login to download this file!"
 msgstr ""
 
-#: includes/process-download.php:66
+#: src/delightful-downloads/includes/process-download.php:66
 msgid "Password Required"
 msgstr ""
 
-#: includes/process-download.php:71
+#: src/delightful-downloads/includes/process-download.php:71
 msgid "You must attach a file to this download."
 msgstr ""
 
-#: includes/process-download.php:129
+#: src/delightful-downloads/includes/process-download.php:129
 msgid "Server error, file cannot be opened!"
 msgstr ""
 
-#: includes/shortcodes.php:46 includes/shortcodes.php:356
-#: includes/shortcodes.php:420
+#: src/delightful-downloads/includes/shortcodes.php:46
+#: src/delightful-downloads/includes/shortcodes.php:356
+#: src/delightful-downloads/includes/shortcodes.php:420
 msgid "Invalid download ID."
 msgstr ""
 
-#: includes/shortcodes.php:58 includes/shortcodes.php:266
+#: src/delightful-downloads/includes/shortcodes.php:58
+#: src/delightful-downloads/includes/shortcodes.php:266
 msgid "Invalid style attribute."
 msgstr ""
 
-#: includes/shortcodes.php:79
+#: src/delightful-downloads/includes/shortcodes.php:79
 msgid "Invalid button attribute."
 msgstr ""
 
-#: includes/shortcodes.php:151
+#: src/delightful-downloads/includes/shortcodes.php:151
 msgid "Invalid orderby attribute."
 msgstr ""
 
-#: includes/shortcodes.php:182
+#: src/delightful-downloads/includes/shortcodes.php:182
 msgid "Invalid order attribute."
 msgstr ""
 
-#: includes/shortcodes.php:191
+#: src/delightful-downloads/includes/shortcodes.php:191
 msgid "Invalid relation attribute."
 msgstr ""
 
-#: includes/shortcodes.php:322
+#: src/delightful-downloads/includes/shortcodes.php:322
 msgid "No downloads found."
 msgstr ""
 
-#: includes/taxonomies.php:23
+#: src/delightful-downloads/includes/taxonomies.php:23
 msgid "Download Categories"
 msgstr ""
 
-#: includes/taxonomies.php:24
+#: src/delightful-downloads/includes/taxonomies.php:24
 msgid "Download Category"
 msgstr ""
 
-#: includes/taxonomies.php:27
+#: src/delightful-downloads/includes/taxonomies.php:27
 msgid "Edit Category"
 msgstr ""
 
-#: includes/taxonomies.php:28
+#: src/delightful-downloads/includes/taxonomies.php:28
 msgid "View Category"
 msgstr ""
 
-#: includes/taxonomies.php:29
+#: src/delightful-downloads/includes/taxonomies.php:29
 msgid "Update Category"
 msgstr ""
 
-#: includes/taxonomies.php:30
+#: src/delightful-downloads/includes/taxonomies.php:30
 msgid "Add New Category"
 msgstr ""
 
-#: includes/taxonomies.php:31
+#: src/delightful-downloads/includes/taxonomies.php:31
 msgid "New Category Name"
 msgstr ""
 
-#: includes/taxonomies.php:32
+#: src/delightful-downloads/includes/taxonomies.php:32
 msgid "Search Categories"
 msgstr ""
 
-#: includes/taxonomies.php:33
+#: src/delightful-downloads/includes/taxonomies.php:33
 msgid "Popular Categories"
 msgstr ""
 
-#: includes/taxonomies.php:47
+#: src/delightful-downloads/includes/taxonomies.php:47
 msgid "Download Tags"
 msgstr ""
 
-#: includes/taxonomies.php:48
+#: src/delightful-downloads/includes/taxonomies.php:48
 msgid "Download Tag"
 msgstr ""
 
-#: includes/taxonomies.php:51
+#: src/delightful-downloads/includes/taxonomies.php:51
 msgid "Edit Tag"
 msgstr ""
 
-#: includes/taxonomies.php:52
+#: src/delightful-downloads/includes/taxonomies.php:52
 msgid "View Tag"
 msgstr ""
 
-#: includes/taxonomies.php:53
+#: src/delightful-downloads/includes/taxonomies.php:53
 msgid "Update Tag"
 msgstr ""
 
-#: includes/taxonomies.php:54
+#: src/delightful-downloads/includes/taxonomies.php:54
 msgid "Add New Tag"
 msgstr ""
 
-#: includes/taxonomies.php:55
+#: src/delightful-downloads/includes/taxonomies.php:55
 msgid "New Tag Name"
 msgstr ""
 
-#: includes/taxonomies.php:56
+#: src/delightful-downloads/includes/taxonomies.php:56
 msgid "Search Tags"
 msgstr ""
 
-#: includes/taxonomies.php:57
+#: src/delightful-downloads/includes/taxonomies.php:57
 msgid "Popular Tags"
 msgstr ""
