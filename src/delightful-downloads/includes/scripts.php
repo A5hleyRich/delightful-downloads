@@ -18,14 +18,20 @@ if ( ! defined( 'ABSPATH' ) ) {
  * @since  1.0
  */
 function dedo_enqueue_scripts( $page ) {
+	global $dedo_options;
+
+	// Enqueue frontend CSS if option is enabled
+	if ( ! $dedo_options['enable_css'] ) {
+		return;
+	}
+
 	$version = defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ? time() : DEDO_VERSION;
 	$suffix  = defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ? '' : '.min';
 
 	// Register frontend CSS
 	$src = DEDO_PLUGIN_URL . 'assets/css/delightful-downloads' . $suffix . '.css';
-	wp_register_style( 'dedo-css', $src, array(), $version, 'all' );
+	wp_enqueue_style( 'dedo-css', $src, array(), $version, 'all' );
 }
-
 add_action( 'wp_enqueue_scripts', 'dedo_enqueue_scripts' );
 
 /**

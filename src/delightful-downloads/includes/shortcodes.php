@@ -100,11 +100,6 @@ function dedo_shortcode_ddownload( $atts ) {
 	// Search and replace wildcards
 	$output = dedo_search_replace_wildcards( $style_format, $id );
 
-	// Enqueue frontend CSS if option is enabled
-	if ( $dedo_options['enable_css'] && 'button' == $style ) {
-		wp_enqueue_style( 'dedo-css' );
-	}
-
 	return apply_filters( 'dedo_shortcode_ddownload', $output );
 }
 add_shortcode( 'ddownload', 'dedo_shortcode_ddownload' );
