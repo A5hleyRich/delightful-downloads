@@ -162,6 +162,10 @@ class Delightful_Downloads {
 		if ( ! defined( 'DEDO_PLUGIN_DIR' ) ) {
 			define( 'DEDO_PLUGIN_DIR', plugin_dir_path( $this->path ) );
 		}
+
+		if ( ! defined( 'DELIGHTFUL_DOWNLOADS_API' ) ) {
+			define( 'DELIGHTFUL_DOWNLOADS_API', 'https://delightfuldownloads.com' );
+		}
 	}
 
 	/**
