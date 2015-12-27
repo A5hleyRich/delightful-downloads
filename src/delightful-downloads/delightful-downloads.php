@@ -119,6 +119,7 @@ class Delightful_Downloads {
 	 * Include all the classes used by the plugin
 	 */
 	protected function includes() {
+		require_once dirname( $this->path ) . '/classes/class-addon.php';
 		require_once dirname( $this->path ) . '/includes/class-dedo-cache.php';
 		require_once dirname( $this->path ) . '/includes/class-dedo-logging.php';
 		require_once dirname( $this->path ) . '/includes/class-dedo-statistics.php';
