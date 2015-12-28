@@ -167,7 +167,7 @@ abstract class Delightful_Downloads_Addon {
 	 * @return array
 	 */
 	public function add_settings_option( $options ) {
-		$options[ $this->get_option_key() ] = array(
+		$options[ $this->get_license_key() ] = array(
 			'name'    =>  $this->name . ' ' . __( 'License Key', 'delightful-downloads' ),
 			'tab'     => 'licenses',
 			'type'    => 'text',
@@ -186,23 +186,29 @@ abstract class Delightful_Downloads_Addon {
 	 * @return array
 	 */
 	public function update_license( $input ) {
-		if ( ! isset( $input[ $this->get_option_key() ] ) ) {
+		if ( ! isset( $input[ $this->get_license_key() ] ) ) {
 			// License not set
 			return $input;
 		}
 
-		if ( '' !== trim( $input[ $this->get_option_key() ] ) ) {
-			$response = $this->api_call( 'activate_license', $input[ $this->get_option_key() ] );
+		if ( $this->is_license_active() && $input[ $this->get_license_key() ] === $this->get_option( $this->get_license_key() ) ) {
+			// Status already set and license not changed
+			return $input;
+		}
+
+		if ( '' !== trim( $input[ $this->get_license_key() ] ) ) {
+			// Activate license
+			$response = $this->api_call( 'activate_license', $input[ $this->get_license_key() ] );
 
 			if ( ! $response ) {
 				global $dedo_notices;
 
-				$dedo_notices->add( 'error', __( 'Your license could not be activated! Please check the license key and try again.', 'delightful-downloads' ) );
+				$dedo_notices->add( 'error', sprintf( __( 'Your %s license could not be activated! Please check the license key and try again.', 'delightful-downloads' ), $this->name ) );
 			}
 		} else {
 			// Deactivate site
-			$this->api_call( 'deactivate_license', $this->get_option( $this->get_option_key() ) );
-			unset( $input[ $this->get_option_key() ] );
+			$this->api_call( 'deactivate_license', $this->get_option( $this->get_license_key() ) );
+			unset( $input[ $this->get_license_key() ] );
 		}
 
 		return $input;
@@ -226,13 +232,12 @@ abstract class Delightful_Downloads_Addon {
 
 		$response = wp_remote_post( DELIGHTFUL_DOWNLOADS_API, array( 'timeout' => 15, 'sslverify' => false, 'body' => $args ) );
 
-		error_log( $action . ': ' . print_r( $response, true ) );
-
 		if ( is_wp_error( $response ) ) {
 			return false;
 		}
 
 		$data = json_decode( wp_remote_retrieve_body( $response ) );
+		$this->set_license_status( $data );
 
 		if ( 'valid' !== $data->license ) {
 			return false;
@@ -245,8 +250,9 @@ abstract class Delightful_Downloads_Addon {
 	 * Render license field
 	 */
 	public function render_license_field() {
-		$name  = $this->get_option_key();
-		$value = $this->get_option( $name );
+		$key     = $this->get_license_key();
+		$value   = $this->get_option( $key );
+		$status  = $this->get_license_status();
 
 		include dirname( Delightful_Downloads()->path ) . '/views/license-field.php';
 	}
@@ -274,12 +280,45 @@ abstract class Delightful_Downloads_Addon {
 	}
 
 	/**
-	 * Get option key
+	 * Get license key
 	 *
 	 * @return string
 	 */
-	protected function get_option_key() {
+	protected function get_license_key() {
 		return $this->slug . '-license';
+	}
+
+	/**
+	 * Is license active
+	 *
+	 * @return bool
+	 */
+	protected function is_license_active() {
+		$status = $this->get_license_status();
+
+		if ( isset( $status->success ) ) {
+			return $status->success;
+		}
+
+		return false;
+	}
+
+	/**
+	 * Get license status
+	 *
+	 * @return mixed
+	 */
+	protected function get_license_status() {
+		return get_option( $this->slug . '-status' );
+	}
+
+	/**
+	 * Set license status
+	 *
+	 * @param bool|array $status
+	 */
+	protected function set_license_status( $status ) {
+		update_option( $this->slug . '-status', $status );
 	}
 
 	/**
