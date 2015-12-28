@@ -9,7 +9,7 @@ abstract class Delightful_Downloads_Addon {
 	/**
 	 * Instance of this class.
 	 *
-	 * @since  1.3.2
+	 * @var array
 	 */
 	protected static $instance;
 
@@ -81,14 +81,14 @@ abstract class Delightful_Downloads_Addon {
 	 * @return Delightful_Downloads_Customizer
 	 */
 	public static function get_instance( $path, $version, $class, $name, $slug ) {
-		if ( ! isset( self::$instance ) ) {
-			self::$instance = new $class();
+		if ( ! isset( self::$instance[ $slug ] ) ) {
+			self::$instance[ $slug ] = new $class();
 
 			// Initialize the class
-			self::$instance->init( $path, $version, $name, $slug );
+			self::$instance[ $slug ]->init( $path, $version, $name, $slug );
 		}
 
-		return self::$instance;
+		return self::$instance[ $slug ];
 	}
 
 	/**
@@ -107,9 +107,9 @@ abstract class Delightful_Downloads_Addon {
 		$this->slug    = $slug;
 		$this->version = $version;
 
-		self::$instance->textdomain();
-		self::$instance->includes();
-		self::$instance->hooks();
+		self::$instance[ $slug ]->textdomain();
+		self::$instance[ $slug ]->includes();
+		self::$instance[ $slug ]->hooks();
 	}
 
 	/**
@@ -153,7 +153,7 @@ abstract class Delightful_Downloads_Addon {
 	public function load_updater() {
 		$this->updater = new EDD_SL_Plugin_Updater( DELIGHTFUL_DOWNLOADS_API, $this->file, array(
 			'version' 	=> $this->version,
-			'license' 	=> 'e48dd0ebc8ae88b79a9d7b7e0bb17243',
+			'license' 	=> $this->get_option( $this->get_license_key() ),
 			'item_name' => $this->name,
 			'author' 	=> 'Ashley Rich',
 		) );
@@ -267,7 +267,7 @@ abstract class Delightful_Downloads_Addon {
 		$data = json_decode( wp_remote_retrieve_body( $response ) );
 		$this->set_license_status( $data );
 
-		if ( 'valid' !== $data->license ) {
+		if ( ! isset( $data->license ) || 'valid' !== $data->license ) {
 			return false;
 		}
 
