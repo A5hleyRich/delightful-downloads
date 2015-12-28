@@ -201,9 +201,7 @@ abstract class Delightful_Downloads_Addon {
 			$response = $this->api_call( 'activate_license', $input[ $this->get_license_key() ] );
 
 			if ( ! $response ) {
-				global $dedo_notices;
-
-				$dedo_notices->add( 'error', sprintf( __( 'Your %s license could not be activated! Please check the license key and try again.', 'delightful-downloads' ), $this->name ) );
+				$this->show_license_error();
 			}
 		} else {
 			// Deactivate site
@@ -212,6 +210,36 @@ abstract class Delightful_Downloads_Addon {
 		}
 
 		return $input;
+	}
+
+	/**
+	 * Show license error
+	 */
+	protected function show_license_error() {
+		global $dedo_notices;
+
+		$status  = $this->get_license_status();
+		$message = '<strong>' . sprintf( __( '%s License Error', 'delightful-downloads' ), $this->name ) . '</strong> &mdash; ';
+
+		if ( isset( $status->error ) ) {
+			switch ( $status->error ) {
+				case 'missing':
+					$message .= __( 'License key not found.', 'delightful-downloads' );
+					break;
+				case 'no_activations_left':
+					$message .= __( 'No site activations remaining.', 'delightful-downloads' );
+					break;
+				case 'expired':
+					$message .= __( 'Your license key has expired.', 'delightful-downloads' );
+					break;
+				default:
+					$message .= __( 'Please check your license key and try again.', 'delightful-downloads' );
+			}
+		} else {
+			$message .= __( 'Please check your license key and try again.', 'delightful-downloads' );
+		}
+
+		$dedo_notices->add( 'error', $message );
 	}
 
 	/**
