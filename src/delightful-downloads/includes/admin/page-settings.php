@@ -48,11 +48,16 @@ function dedo_register_settings() {
 	
 	// Register form fields
 	foreach ( $registered_settings as $key => $value ) {
-		
+		$callback = 'dedo_settings_' . $key . '_field';
+
+		if ( 'licenses' === $value['tab'] ) {
+			$callback = array( $value['class'], 'render_license_field' );
+		}
+
 		add_settings_field(
 			$key,
 			$value['name'],
-			'dedo_settings_' . $key . '_field',
+			$callback,
 			'dedo_settings_' . $value['tab'],
 			'dedo_settings_' . $value['tab']
 		);
@@ -594,8 +599,13 @@ function dedo_validate_settings( $input ) {
 
 	// Ensure text fields are not blank
 	foreach( $options as $key => $value ) {
-		if ( 'text' === $options[$key]['type'] && '' === trim( $input[$key] ) ) {
-			$input[$key] = $dedo_default_options[$key];
+		if ( 'text' !== $options[ $key ]['type'] ) {
+			continue;
+		}
+
+		// None empty text fields
+		if ( 'licenses' !== $options[ $key ]['tab'] && '' === trim( $input[ $key ] ) ) {
+			$input[ $key ] = $dedo_default_options[ $key ];
 		}
 	}
 	 
@@ -613,7 +623,7 @@ function dedo_validate_settings( $input ) {
 	// Clear transients
 	dedo_delete_all_transients();
 
-	return $input;
+	return apply_filters( 'dedo_validate_settings', $input );
 }
 
 /**

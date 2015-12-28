@@ -1,0 +1,1 @@
+<input type="text" name="delightful-downloads[<?php echo $name; ?>]" value="<?php echo esc_attr( $value ); ?>" class="regular-text" />

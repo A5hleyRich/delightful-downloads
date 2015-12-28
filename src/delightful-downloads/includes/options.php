@@ -23,10 +23,11 @@ function dedo_get_tabs() {
 		'shortcodes' => __( 'Shortcodes', 'delightful-downloads' ),
 		'statistics' => __( 'Statistics', 'delightful-downloads' ),
 		'advanced'   => __( 'Advanced', 'delightful-downloads' ),
+		'licenses'   => __( 'Licenses', 'delightful-downloads' ),
 		'support'    => __( 'Support', 'delightful-downloads' ),
 	);
 
-	return $tabs;
+	return apply_filters( 'dedo_settings_tabs', $tabs );
 }
 
 /**
@@ -152,7 +153,7 @@ function dedo_get_options() {
 		),
 	);
 
-	return $options;
+	return apply_filters( 'dedo_settings_options', $options );
 }
 
 /**

@@ -139,8 +139,12 @@ abstract class Delightful_Downloads_Addon {
 		// Activation
 		register_activation_hook( __FILE__, array( $this, 'activate' ) );
 
-		// Load updater
+		// Actions
 		add_action( 'admin_init', array( $this, 'load_updater' ) );
+
+		// Filters
+		add_filter( 'dedo_settings_options', array( $this, 'add_settings_option' ) );
+		add_filter( 'dedo_validate_settings', array( $this, 'update_license' ) );
 	}
 
 	/**
@@ -156,6 +160,129 @@ abstract class Delightful_Downloads_Addon {
 	}
 
 	/**
+	 * Add settings option
+	 *
+	 * @param array $options
+	 *
+	 * @return array
+	 */
+	public function add_settings_option( $options ) {
+		$options[ $this->get_option_key() ] = array(
+			'name'    =>  $this->name . ' ' . __( 'License Key', 'delightful-downloads' ),
+			'tab'     => 'licenses',
+			'type'    => 'text',
+			'default' => '',
+			'class'   => $this,
+		);
+
+		return $options;
+	}
+
+	/**
+	 * Update license
+	 *
+	 * @param array $input
+	 *
+	 * @return array
+	 */
+	public function update_license( $input ) {
+		if ( ! isset( $input[ $this->get_option_key() ] ) ) {
+			// License not set
+			return $input;
+		}
+
+		if ( '' !== trim( $input[ $this->get_option_key() ] ) ) {
+			$response = $this->api_call( 'activate_license', $input[ $this->get_option_key() ] );
+
+			if ( ! $response ) {
+				global $dedo_notices;
+
+				$dedo_notices->add( 'error', __( 'Your license could not be activated! Please check the license key and try again.', 'delightful-downloads' ) );
+			}
+		} else {
+			// Deactivate site
+			$this->api_call( 'deactivate_license', $this->get_option( $this->get_option_key() ) );
+			unset( $input[ $this->get_option_key() ] );
+		}
+
+		return $input;
+	}
+
+	/**
+	 * API call
+	 *
+	 * @param string $action
+	 * @param string $license
+	 *
+	 * @return bool
+	 */
+	protected function api_call( $action, $license ) {
+		$args = array(
+			'edd_action' => $action,
+			'license' 	 => $license,
+			'item_name'  => $this->name,
+			'url'        => home_url(),
+		);
+
+		$response = wp_remote_post( DELIGHTFUL_DOWNLOADS_API, array( 'timeout' => 15, 'sslverify' => false, 'body' => $args ) );
+
+		error_log( $action . ': ' . print_r( $response, true ) );
+
+		if ( is_wp_error( $response ) ) {
+			return false;
+		}
+
+		$data = json_decode( wp_remote_retrieve_body( $response ) );
+
+		if ( 'valid' !== $data->license ) {
+			return false;
+		}
+
+		return true;
+	}
+
+	/**
+	 * Render license field
+	 */
+	public function render_license_field() {
+		$name  = $this->get_option_key();
+		$value = $this->get_option( $name );
+
+		include dirname( Delightful_Downloads()->path ) . '/views/license-field.php';
+	}
+
+	/**
+	 * Get option
+	 *
+	 * @param string $key
+	 * @param mixed  $default
+	 *
+	 * @return mixed
+	 */
+	protected function get_option( $key, $default = '' ) {
+		global $dedo_options, $dedo_default_options;
+
+		if ( isset( $dedo_options[ $key ] ) ) {
+			return $dedo_options[ $key ];
+		}
+
+		if ( isset( $dedo_default_options[ $key ] ) ) {
+			return $dedo_default_options[ $key ];
+		}
+
+		return $default;
+	}
+
+	/**
+	 * Get option key
+	 *
+	 * @return string
+	 */
+	protected function get_option_key() {
+		return $this->slug . '-license';
+	}
+
+	/**
 	 * Render view
 	 *
 	 * @param string $view
@@ -165,4 +292,5 @@ abstract class Delightful_Downloads_Addon {
 		extract( $args );
 		include $this->path . 'views/' . $view . '.php';
 	}
+
 }
