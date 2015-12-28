@@ -250,9 +250,9 @@ abstract class Delightful_Downloads_Addon {
 	 * Render license field
 	 */
 	public function render_license_field() {
-		$key     = $this->get_license_key();
-		$value   = $this->get_option( $key );
-		$status  = $this->get_license_status();
+		$key    = $this->get_license_key();
+		$value  = $this->get_option( $key );
+		$status = $this->get_license_status();
 
 		include dirname( Delightful_Downloads()->path ) . '/views/license-field.php';
 	}
@@ -296,8 +296,8 @@ abstract class Delightful_Downloads_Addon {
 	protected function is_license_active() {
 		$status = $this->get_license_status();
 
-		if ( isset( $status->success ) ) {
-			return $status->success;
+		if ( isset( $status->license ) && 'valid' === $status->license ) {
+			return true;
 		}
 
 		return false;
