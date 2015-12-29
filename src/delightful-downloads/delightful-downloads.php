@@ -141,6 +141,7 @@ class Delightful_Downloads {
 			require_once dirname( $this->path ) . '/includes/admin/dashboard.php';
 			require_once dirname( $this->path ) . '/includes/admin/media-button.php';
 			require_once dirname( $this->path ) . '/includes/admin/meta-boxes.php';
+			require_once dirname( $this->path ) . '/includes/admin/page-addons.php';
 			require_once dirname( $this->path ) . '/includes/admin/page-settings.php';
 			require_once dirname( $this->path ) . '/includes/admin/page-statistics.php';
 			require_once dirname( $this->path ) . '/includes/admin/upgrades.php';
@@ -241,6 +242,17 @@ class Delightful_Downloads {
 		dedo_delete_all_transients();
 	}
 
+	/**
+	 * Render view
+	 *
+	 * @param string $view
+	 * @param array  $args
+	 */
+	public function render_view( $view, $args = array() ) {
+		extract( $args );
+		include dirname( $this->path ) . '/views/' . $view . '.php';
+	}
+
 }
 
 /**
@@ -253,5 +265,4 @@ function Delightful_Downloads() {
 
 	return Delightful_Downloads::get_instance( __FILE__, $version );
 }
-
 Delightful_Downloads();

@@ -280,9 +280,10 @@ abstract class Delightful_Downloads_Addon {
 	public function render_license_field() {
 		$key    = $this->get_license_key();
 		$value  = $this->get_option( $key );
+		$active = $this->is_license_active();
 		$status = $this->get_license_status();
 
-		include dirname( Delightful_Downloads()->path ) . '/views/license-field.php';
+		Delightful_Downloads()->render_view( 'license-field', array( 'key' => $key, 'value' => $value, 'active' => $active, 'status' => $status ) );
 	}
 
 	/**

@@ -750,6 +750,57 @@
 	}
 }
 
+/* Add-ons
+--------------------------------------------- */
+.dedo-addons-container {
+	display: flex;
+	flex-wrap: wrap;
+	max-width: 1368px;
+	margin: 20px -20px -20px 0;
+
+	.item {
+		position: relative;
+		box-sizing: border-box;
+		padding: 15px 15px 60px;
+		margin: 0 20px 20px 0;
+		width: 320px;
+		background: #fff;
+		border: 1px solid #ddd;
+
+		.action {
+			position: absolute;
+			bottom: 0;
+			left: 0;
+			right: 0;
+			padding: 15px;
+			border-top: 1px solid #ddd;
+			background: #f5f5f5;
+		}
+	}
+
+	a {
+		text-decoration: none;
+		-webkit-transition: opacity .3s;
+		-moz-transition: opacity .3s;
+		-o-transition: opacity .3s;
+		transition: opacity .3s;
+	}
+
+	a:hover {
+		opacity: .8;
+	}
+
+	img {
+		margin: -16px -16px 0;
+		width: 320px;
+		height: auto;
+	}
+
+	h3 {
+		font-size: 14px;
+	}
+}
+
 /* Theme Colors
 --------------------------------------------- */
 
