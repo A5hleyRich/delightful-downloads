@@ -28,7 +28,9 @@ function dedo_render_page_addons() {
 		$response = wp_remote_retrieve_body( $response );
 		$addons   = json_decode( $response );
 
-		set_site_transient( 'dedo_addons', $addons, HOUR_IN_SECONDS );
+		if ( is_array( $addons ) && isset( $addons[0]->title ) ) {
+			set_site_transient( 'dedo_addons', $addons, HOUR_IN_SECONDS );
+		}
 	}
 
 	Delightful_Downloads()->render_view( 'addons', array( 'addons' => $addons ) );
