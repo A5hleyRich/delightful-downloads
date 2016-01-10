@@ -121,7 +121,7 @@ abstract class Delightful_Downloads_Addon {
 		if ( file_exists( $global_path ) ) {
 			load_textdomain( $this->slug, $global_path );
 		} else {
-			load_plugin_textdomain( $this->slug, false, dirname( plugin_basename( __FILE__ ) ) . '/languages/' );
+			load_plugin_textdomain( $this->slug, false, dirname( plugin_basename( $this->file ) ) . '/languages/' );
 		}
 	}
 
@@ -136,9 +136,6 @@ abstract class Delightful_Downloads_Addon {
 	 * Hooks
 	 */
 	protected function hooks() {
-		// Activation
-		register_activation_hook( __FILE__, array( $this, 'activate' ) );
-
 		// Actions
 		add_action( 'admin_init', array( $this, 'load_updater' ) );
 
