@@ -252,9 +252,9 @@ function dedo_shortcode_ddownload_list( $atts ) {
 
 	// Check style against registered styles
 	$registered_styles = dedo_get_shortcode_lists();
+	$style_class       = ' list-' . $style;
 
 	if ( array_key_exists( $style, $registered_styles ) ) {
-		
 		$style_format = $registered_styles[ $style ]['format'];
 	}
 	else {
@@ -283,7 +283,7 @@ function dedo_shortcode_ddownload_list( $atts ) {
 		if ( $downloads_list->have_posts() ) {
 			ob_start();
 			
-			echo '<ul class="ddownloads_list' . $tax_class . '">';
+			echo '<ul class="ddownloads_list' . $tax_class . $style_class . '">';
 			
 			while ( $downloads_list->have_posts() ) {
 				$downloads_list->the_post();
