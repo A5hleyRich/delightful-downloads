@@ -377,14 +377,21 @@ function dedo_settings_default_text_field() {
 function dedo_settings_default_style_field() {
 	global $dedo_options;
 
-	$styles = dedo_get_shortcode_styles();
+	$styles        = dedo_get_shortcode_styles();
 	$default_style = $dedo_options['default_style'];
+	$disabled      = empty( $styles ) ? 'disabled' : '';
 
-	echo '<select name="delightful-downloads[default_style]">';
-	foreach ( $styles as $key => $value ) {
-		$selected = ( $default_style == $key ? ' selected="selected"' : '' );
-		echo '<option value="' . $key . '" ' . $selected . '>' . $value['name'] . '</option>';	
+	echo '<select name="delightful-downloads[default_style]" ' . $disabled . '>';
+
+	if ( ! empty( $styles ) ) {
+		foreach ( $styles as $key => $value ) {
+			$selected = ( $default_style == $key ? ' selected="selected"' : '' );
+			echo '<option value="' . $key . '" ' . $selected . '>' . $value['name'] . '</option>';
+		}
+	} else {
+		echo '<option>' . __( 'No styles registered', 'delightful-downloads' ) . '</option>';
 	}
+
 	echo '</select>';
 	echo '<p class="description">' . sprintf( __( 'The default output style, when using the %s shortcode. This can be overridden on a per-download basis.', 'delightful-downloads' ), '<code>[ddownload]</code>' );
 }
