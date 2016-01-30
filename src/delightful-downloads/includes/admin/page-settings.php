@@ -421,12 +421,17 @@ function dedo_settings_default_list_field() {
 
 	$lists = dedo_get_shortcode_lists();
 	$default_list = $dedo_options['default_list'];
+	$disabled = empty( $lists ) ? 'disabled' : '';
 
-	echo '<select name="delightful-downloads[default_list]">';
-	
-	foreach ( $lists as $key => $value ) {
-		$selected = ( $default_list == $key ? ' selected="selected"' : '' );
-		echo '<option value="' . $key . '" ' . $selected . '>' . $value['name'] . '</option>';	
+	echo '<select name="delightful-downloads[default_list]" ' . $disabled . '>';
+
+	if ( ! empty( $lists ) ) {
+		foreach ( $lists as $key => $value ) {
+			$selected = ( $default_list == $key ? ' selected="selected"' : '' );
+			echo '<option value="' . $key . '" ' . $selected . '>' . $value['name'] . '</option>';
+		}
+	} else {
+		echo '<option>' . __( 'No list styles registered', 'delightful-downloads' ) . '</option>';
 	}
 
 	echo '</select>';
