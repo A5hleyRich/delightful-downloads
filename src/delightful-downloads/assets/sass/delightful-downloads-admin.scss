@@ -801,6 +801,23 @@
 	}
 }
 
+// Shortcode
+input.copy-to-clipboard {
+	width: 100%;
+	max-width: 300px;
+	margin: 0;
+	padding: 6px 10px;
+	border: none;
+	box-shadow: none;
+	font-family: "Courier New", Courier, mono;
+	font-size: 1em;
+	cursor: pointer;
+}
+
+input.copy-to-clipboard + .description {
+	margin-top: 5px;
+}
+
 /* Theme Colors
 --------------------------------------------- */
 

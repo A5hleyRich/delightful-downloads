@@ -81,6 +81,12 @@ function dedo_admin_enqueue_scripts( $page ) {
 	wp_enqueue_style( 'dedo-css-admin' );
 	wp_enqueue_script( 'dedo-admin-js-global' );
 
+	// JS copy to clipboard
+	$src = DEDO_PLUGIN_URL . 'assets/js/copy-to-clipboard' . $suffix . '.js';
+	wp_enqueue_script( 'dedo-copy-to-clipboard', $src, array(
+		'jquery',
+	), $version, true );
+
 	// Enqueue on dedo_download post add/edit screen
 	if ( in_array( $page, array(
 			'post.php',

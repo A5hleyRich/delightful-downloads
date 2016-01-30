@@ -105,7 +105,8 @@ function dedo_download_column_contents( $column_name, $post_id ) {
 
 	// Shortcode column
 	if ( $column_name == 'shortcode' ) {
-		echo '<code>[ddownload id="' . esc_attr( $post_id ) . '"]</code>';
+		echo '<input type="text" class="copy-to-clipboard" value="[ddownload id=&quot;' . esc_attr( $post_id ) . '&quot;]" readonly>';
+		echo '<p class="description" style="display: none;">' . __( 'Shortcode copied to clipboard.', 'delightful-downloads' ) . '</p>';
 	}
 
 	// Count column
