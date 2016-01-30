@@ -397,14 +397,19 @@ function dedo_settings_default_style_field() {
 function dedo_settings_default_button_field() {
 	global $dedo_options;
 
-	$colors = dedo_get_shortcode_buttons();
+	$colors        = dedo_get_shortcode_buttons();
 	$default_color = $dedo_options['default_button'];
+	$disabled      = empty( $colors ) ? 'disabled' : '';
 
-	echo '<select name="delightful-downloads[default_button]">';
-	
-	foreach ( $colors as $key => $value ) {
-		$selected = ( $default_color == $key ? ' selected="selected"' : '' );
-		echo '<option value="' . $key . '" ' . $selected . '>' . $value['name'] . '</option>';	
+	echo '<select name="delightful-downloads[default_button]" ' . $disabled . '>';
+
+	if ( ! empty( $colors ) ) {
+		foreach ( $colors as $key => $value ) {
+			$selected = ( $default_color == $key ? ' selected="selected"' : '' );
+			echo '<option value="' . $key . '" ' . $selected . '>' . $value['name'] . '</option>';
+		}
+	} else {
+		echo '<option>' . __( 'No button styles registered', 'delightful-downloads' ) . '</option>';
 	}
 
 	echo '</select>';
@@ -419,9 +424,9 @@ function dedo_settings_default_button_field() {
 function dedo_settings_default_list_field() {
 	global $dedo_options;
 
-	$lists = dedo_get_shortcode_lists();
+	$lists        = dedo_get_shortcode_lists();
 	$default_list = $dedo_options['default_list'];
-	$disabled = empty( $lists ) ? 'disabled' : '';
+	$disabled     = empty( $lists ) ? 'disabled' : '';
 
 	echo '<select name="delightful-downloads[default_list]" ' . $disabled . '>';
 
