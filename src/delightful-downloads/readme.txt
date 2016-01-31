@@ -32,6 +32,10 @@ Delightful Downloads is a super-awesome downloads manager for WordPress that all
 * Developer friendly.
 * Localisation support.
 
+**Add-Ons**
+
+* [Customizer](https://delightfuldownloads.com/add-ons/customizer/?utm_source=WordPress&utm_medium=Repo&utm_content=Customizer&utm_campaign=Description) - Button and list styles builder
+
 **Translations**
 
 Thanks to all of the WP-Translations Team Members.
