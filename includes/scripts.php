@@ -18,14 +18,20 @@ if ( ! defined( 'ABSPATH' ) ) {
  * @since  1.0
  */
 function dedo_enqueue_scripts( $page ) {
+	global $dedo_options;
+
+	// Enqueue frontend CSS if option is enabled
+	if ( ! $dedo_options['enable_css'] ) {
+		return;
+	}
+
 	$version = defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ? time() : DEDO_VERSION;
 	$suffix  = defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ? '' : '.min';
 
 	// Register frontend CSS
 	$src = DEDO_PLUGIN_URL . 'assets/css/delightful-downloads' . $suffix . '.css';
-	wp_register_style( 'dedo-css', $src, array(), $version, 'all' );
+	wp_enqueue_style( 'dedo-css', $src, array(), $version, 'all' );
 }
-
 add_action( 'wp_enqueue_scripts', 'dedo_enqueue_scripts' );
 
 /**
@@ -74,6 +80,12 @@ function dedo_admin_enqueue_scripts( $page ) {
 	// Enqueue on all admin pages
 	wp_enqueue_style( 'dedo-css-admin' );
 	wp_enqueue_script( 'dedo-admin-js-global' );
+
+	// JS copy to clipboard
+	$src = DEDO_PLUGIN_URL . 'assets/js/copy-to-clipboard' . $suffix . '.js';
+	wp_enqueue_script( 'dedo-copy-to-clipboard', $src, array(
+		'jquery',
+	), $version, true );
 
 	// Enqueue on dedo_download post add/edit screen
 	if ( in_array( $page, array(

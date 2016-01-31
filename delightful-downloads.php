@@ -3,7 +3,7 @@
 Plugin Name: Delightful Downloads
 Plugin URI: https://delightfuldownloads.com
 Description: A super-awesome downloads manager for WordPress.
-Version: 1.6.2
+Version: 1.6.3
 Author: Ashley Rich
 Author URI: http://ashleyrich.com
 Text Domain: delightful-downloads
@@ -119,6 +119,7 @@ class Delightful_Downloads {
 	 * Include all the classes used by the plugin
 	 */
 	protected function includes() {
+		require_once dirname( $this->path ) . '/classes/class-addon.php';
 		require_once dirname( $this->path ) . '/includes/class-dedo-cache.php';
 		require_once dirname( $this->path ) . '/includes/class-dedo-logging.php';
 		require_once dirname( $this->path ) . '/includes/class-dedo-statistics.php';
@@ -140,6 +141,7 @@ class Delightful_Downloads {
 			require_once dirname( $this->path ) . '/includes/admin/dashboard.php';
 			require_once dirname( $this->path ) . '/includes/admin/media-button.php';
 			require_once dirname( $this->path ) . '/includes/admin/meta-boxes.php';
+			require_once dirname( $this->path ) . '/includes/admin/page-addons.php';
 			require_once dirname( $this->path ) . '/includes/admin/page-settings.php';
 			require_once dirname( $this->path ) . '/includes/admin/page-statistics.php';
 			require_once dirname( $this->path ) . '/includes/admin/upgrades.php';
@@ -160,6 +162,10 @@ class Delightful_Downloads {
 
 		if ( ! defined( 'DEDO_PLUGIN_DIR' ) ) {
 			define( 'DEDO_PLUGIN_DIR', plugin_dir_path( $this->path ) );
+		}
+
+		if ( ! defined( 'DELIGHTFUL_DOWNLOADS_API' ) ) {
+			define( 'DELIGHTFUL_DOWNLOADS_API', 'https://delightfuldownloads.com' );
 		}
 	}
 
@@ -236,6 +242,17 @@ class Delightful_Downloads {
 		dedo_delete_all_transients();
 	}
 
+	/**
+	 * Render view
+	 *
+	 * @param string $view
+	 * @param array  $args
+	 */
+	public function render_view( $view, $args = array() ) {
+		extract( $args );
+		include dirname( $this->path ) . '/views/' . $view . '.php';
+	}
+
 }
 
 /**
@@ -244,9 +261,8 @@ class Delightful_Downloads {
  * @return Delightful_Downloads
  */
 function Delightful_Downloads() {
-	$version = '1.6.2';
+	$version = '1.6.3';
 
 	return Delightful_Downloads::get_instance( __FILE__, $version );
 }
-
 Delightful_Downloads();

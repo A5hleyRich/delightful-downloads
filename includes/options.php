@@ -23,10 +23,20 @@ function dedo_get_tabs() {
 		'shortcodes' => __( 'Shortcodes', 'delightful-downloads' ),
 		'statistics' => __( 'Statistics', 'delightful-downloads' ),
 		'advanced'   => __( 'Advanced', 'delightful-downloads' ),
-		'support'    => __( 'Support', 'delightful-downloads' ),
 	);
 
-	return $tabs;
+	$options = dedo_get_options();
+
+	foreach ( $options as $option ) {
+		if ( 'licenses' === $option['tab'] ) {
+			$tabs['licenses'] = __( 'Licenses', 'delightful-downloads' );
+			break;
+		}
+	}
+
+	$tabs['support'] = __( 'Support', 'delightful-downloads' );
+
+	return apply_filters( 'dedo_settings_tabs', $tabs );
 }
 
 /**
@@ -152,7 +162,7 @@ function dedo_get_options() {
 		),
 	);
 
-	return $options;
+	return apply_filters( 'dedo_settings_options', $options );
 }
 
 /**

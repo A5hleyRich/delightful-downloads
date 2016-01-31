@@ -57,7 +57,34 @@ function dedo_update_messages( $messages ) {
 
 	return $messages;
 }
-add_action( 'post_updated_messages', 'dedo_update_messages' );
+add_filter( 'post_updated_messages', 'dedo_update_messages' );
+
+/**
+ * Bulk messages
+ *
+ * @param array $bulk_messages
+ * @param array $bulk_counts
+ *
+ * @return array
+ */
+function dedo_bulk_messages( $bulk_messages, $bulk_counts ) {
+	$screen = get_current_screen();
+
+	if ( 'dedo_download' !== $screen->post_type ) {
+		return $bulk_messages;
+	}
+
+	$bulk_messages['post'] = array(
+		'updated'   => _n( '%s download updated.', '%s downloads updated.', $bulk_counts['updated'], 'delightful-downloads-customizer' ),
+		'locked'    => ( 1 == $bulk_counts['locked'] ) ? __( '1 download not updated, somebody is editing it.', 'delightful-downloads-customizer' ) : _n( '%s download not updated, somebody is editing it.', '%s downloads not updated, somebody is editing them.', $bulk_counts['locked'], 'delightful-downloads-customizer' ),
+		'deleted'   => _n( '%s download permanently deleted.', '%s downloads permanently deleted.', $bulk_counts['deleted'], 'delightful-downloads-customizer' ),
+		'trashed'   => _n( '%s download moved to the Trash.', '%s downloads moved to the Trash.', $bulk_counts['trashed'], 'delightful-downloads-customizer' ),
+		'untrashed' => _n( '%s download restored from the Trash.', '%s downloads restored from the Trash.', $bulk_counts['untrashed'], 'delightful-downloads-customizer' ),
+	);
+
+	return $bulk_messages;
+}
+add_filter( 'bulk_post_updated_messages', 'dedo_bulk_messages', 10, 2 );
 
 /**
  * Render Download Metabox

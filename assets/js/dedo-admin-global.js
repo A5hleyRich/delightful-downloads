@@ -289,6 +289,7 @@ jQuery( document ).ready( function( $ ) {
 		init: function() {
 			this.settingsTabs();
 			this.toggleOptions();
+			this.deactivateLicense();
 		},
 
 		settingsTabs: function() {
@@ -307,7 +308,7 @@ jQuery( document ).ready( function( $ ) {
 				// Add tab to refer, so page redirects to tab on save
 				$( 'input[name="_wp_http_referer"]' ).val( function( i, value ) {
 					return value.replace( /&tab=[a-zA-z]+/g, '' ) + '&tab=' + $cachedTab.attr( 'href' ).replace( '#dedo-settings-tab-', '' );
-				} )
+				} );
 
 				e.preventDefault();
 			} );
@@ -327,6 +328,12 @@ jQuery( document ).ready( function( $ ) {
 					}
 				} );
 			} )
+		},
+
+		deactivateLicense: function() {
+			$( '.dedo-deactivate-license' ).on( 'click', function( e ) {
+				$( this ).siblings( 'input[type="text"]' ).val( '' );
+			} );
 		}
 	};
 

@@ -1,10 +1,9 @@
 === Delightful Downloads ===
 Contributors: A5hleyRich
-Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=S6KBW2ZSVZ8RE
 Tags: download, manager, downloads, monitor, shortcode, delightful downloads, file, counter, tracking
-Requires at least: 4.2.2
+Requires at least: 4.4
 Tested up to: 4.4
-Stable tag: 1.6.2
+Stable tag: 1.6.3
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -32,6 +31,10 @@ Delightful Downloads is a super-awesome downloads manager for WordPress that all
 * Built in caching for excellent performance.
 * Developer friendly.
 * Localisation support.
+
+**Add-Ons**
+
+* [Customizer](https://delightfuldownloads.com/add-ons/customizer/?utm_source=WordPress&utm_medium=Repo&utm_content=Customizer&utm_campaign=Description) - Button and list styles editor
 
 **Translations**
 
@@ -82,6 +85,14 @@ Please refer to the [FAQ](https://delightfuldownloads.com/documentation/delightf
 8. Settings screen
 
 == Changelog ==
+
+= 1.6.3 =
+
+* New: [Customizer Add-On](https://delightfuldownloads.com/add-ons/customizer/?utm_source=WordPress&utm_medium=Repo&utm_content=Customizer&utm_campaign=Changelogs) released
+* New: Add-Ons page added
+* Improvement: Automatically copy shortcodes to clipboard on click
+* Bug fix: Dashboard widget incorrect styling
+* Bug fix: Settings screen tabs incorrect styling
 
 = 1.6.2 =
 

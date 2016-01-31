@@ -48,11 +48,16 @@ function dedo_register_settings() {
 	
 	// Register form fields
 	foreach ( $registered_settings as $key => $value ) {
-		
+		$callback = 'dedo_settings_' . $key . '_field';
+
+		if ( 'licenses' === $value['tab'] ) {
+			$callback = array( $value['class'], 'render_license_field' );
+		}
+
 		add_settings_field(
 			$key,
 			$value['name'],
-			'dedo_settings_' . $key . '_field',
+			$callback,
 			'dedo_settings_' . $value['tab'],
 			'dedo_settings_' . $value['tab']
 		);
@@ -87,7 +92,7 @@ function dedo_render_page_settings() {
 			echo '<div class="notice updated is-dismissible"><p>' . __( 'Settings updated successfully.', 'delightful-downloads' ) . '</p></div>';
 		} ?>
 
-		<h3 id="dedo-settings-tabs" class="nav-tab-wrapper">
+		<h2 id="dedo-settings-tabs" class="nav-tab-wrapper">
 			
 			<?php // Generate tabs
 			
@@ -96,7 +101,7 @@ function dedo_render_page_settings() {
 				echo '<a href="#dedo-settings-tab-' . $key . '" class="nav-tab ' . ( $active_tab == $key ? 'nav-tab-active' : '' ) . '">' . $value . '</a>';
    	 		} ?>
 
-		</h3>	
+		</h2>
 
 		<div id="dedo-settings-main" <?php echo ( !apply_filters( 'dedo_admin_sidebar', true ) ) ? 'style="float: none; width: 100%; padding-right: 0;"' : ''; ?>>	
 
@@ -238,7 +243,10 @@ function dedo_render_part_sidebar() {
 				<h4><?php _e( 'Add-ons?', 'delightful-downloads' ); ?></h4>
 				<p><?php _e( "I'm working on a few premium add-ons to enhance Delightful Downloads:", 'delightful-downloads' ); ?></p>
 				<ul>
-					<li><?php _e( '<strong>Customizer</strong> - Button and list styles builder', 'delightful-downloads' ); ?></li>
+					<li>
+						<strike><?php _e( '<strong>Customizer</strong> - Button and list styles editor', 'delightful-downloads' ); ?></strike>
+						<a href="https://delightfuldownloads.com/add-ons/customizer/?utm_source=WordPress&utm_medium=Plugin&utm_content=Customizer&utm_campaign=Addons%20Page"><?php _e( 'Available', 'delightful-downloads' ); ?></a>
+					</li>
 					<li><?php _e( '<strong>MailChimp</strong> - Subscribe to download', 'delightful-downloads' ); ?></li>
 					<li><?php _e( '<strong>Twitter</strong> - Tweet to download', 'delightful-downloads' ); ?></li>
 				</ul>
@@ -257,7 +265,7 @@ function dedo_render_part_sidebar() {
 			</div>
 
 			<h4><?php _e( 'Help and Support', 'delightful-downloads' ); ?></h4>
-			<p><?php printf( __( 'Please take a moment to look at the %sdocumentation%s. If you are still having issues, please take a look at the %ssupport forums%s.', 'delightful-downloads' ), '<a href="https://delightfuldownloads.com/documentation/">', '</a>', '<a href="https://wordpress.org/support/plugin/delightful-downloads">', '</a>' ); ?></p>
+			<p><?php printf( __( 'Having issues? Check out the %sdocumentation%s. If you can\'t find a solution, please raise an issue on the %ssupport forums%s.', 'delightful-downloads' ), '<a href="https://delightfuldownloads.com/documentation/">', '</a>', '<a href="https://wordpress.org/support/plugin/delightful-downloads">', '</a>' ); ?></p>
 		</div>
 
 	<?php endif;
@@ -372,14 +380,21 @@ function dedo_settings_default_text_field() {
 function dedo_settings_default_style_field() {
 	global $dedo_options;
 
-	$styles = dedo_get_shortcode_styles();
+	$styles        = dedo_get_shortcode_styles();
 	$default_style = $dedo_options['default_style'];
+	$disabled      = empty( $styles ) ? 'disabled' : '';
 
-	echo '<select name="delightful-downloads[default_style]">';
-	foreach ( $styles as $key => $value ) {
-		$selected = ( $default_style == $key ? ' selected="selected"' : '' );
-		echo '<option value="' . $key . '" ' . $selected . '>' . $value['name'] . '</option>';	
+	echo '<select name="delightful-downloads[default_style]" ' . $disabled . '>';
+
+	if ( ! empty( $styles ) ) {
+		foreach ( $styles as $key => $value ) {
+			$selected = ( $default_style == $key ? ' selected="selected"' : '' );
+			echo '<option value="' . $key . '" ' . $selected . '>' . $value['name'] . '</option>';
+		}
+	} else {
+		echo '<option>' . __( 'No styles registered', 'delightful-downloads' ) . '</option>';
 	}
+
 	echo '</select>';
 	echo '<p class="description">' . sprintf( __( 'The default output style, when using the %s shortcode. This can be overridden on a per-download basis.', 'delightful-downloads' ), '<code>[ddownload]</code>' );
 }
@@ -392,14 +407,19 @@ function dedo_settings_default_style_field() {
 function dedo_settings_default_button_field() {
 	global $dedo_options;
 
-	$colors = dedo_get_shortcode_buttons();
+	$colors        = dedo_get_shortcode_buttons();
 	$default_color = $dedo_options['default_button'];
+	$disabled      = empty( $colors ) ? 'disabled' : '';
 
-	echo '<select name="delightful-downloads[default_button]">';
-	
-	foreach ( $colors as $key => $value ) {
-		$selected = ( $default_color == $key ? ' selected="selected"' : '' );
-		echo '<option value="' . $key . '" ' . $selected . '>' . $value['name'] . '</option>';	
+	echo '<select name="delightful-downloads[default_button]" ' . $disabled . '>';
+
+	if ( ! empty( $colors ) ) {
+		foreach ( $colors as $key => $value ) {
+			$selected = ( $default_color == $key ? ' selected="selected"' : '' );
+			echo '<option value="' . $key . '" ' . $selected . '>' . $value['name'] . '</option>';
+		}
+	} else {
+		echo '<option>' . __( 'No button styles registered', 'delightful-downloads' ) . '</option>';
 	}
 
 	echo '</select>';
@@ -414,14 +434,19 @@ function dedo_settings_default_button_field() {
 function dedo_settings_default_list_field() {
 	global $dedo_options;
 
-	$lists = dedo_get_shortcode_lists();
+	$lists        = dedo_get_shortcode_lists();
 	$default_list = $dedo_options['default_list'];
+	$disabled     = empty( $lists ) ? 'disabled' : '';
 
-	echo '<select name="delightful-downloads[default_list]">';
-	
-	foreach ( $lists as $key => $value ) {
-		$selected = ( $default_list == $key ? ' selected="selected"' : '' );
-		echo '<option value="' . $key . '" ' . $selected . '>' . $value['name'] . '</option>';	
+	echo '<select name="delightful-downloads[default_list]" ' . $disabled . '>';
+
+	if ( ! empty( $lists ) ) {
+		foreach ( $lists as $key => $value ) {
+			$selected = ( $default_list == $key ? ' selected="selected"' : '' );
+			echo '<option value="' . $key . '" ' . $selected . '>' . $value['name'] . '</option>';
+		}
+	} else {
+		echo '<option>' . __( 'No list styles registered', 'delightful-downloads' ) . '</option>';
 	}
 
 	echo '</select>';
@@ -594,8 +619,13 @@ function dedo_validate_settings( $input ) {
 
 	// Ensure text fields are not blank
 	foreach( $options as $key => $value ) {
-		if ( 'text' === $options[$key]['type'] && '' === trim( $input[$key] ) ) {
-			$input[$key] = $dedo_default_options[$key];
+		if ( 'text' !== $options[ $key ]['type'] ) {
+			continue;
+		}
+
+		// None empty text fields
+		if ( 'licenses' !== $options[ $key ]['tab'] && '' === trim( $input[ $key ] ) ) {
+			$input[ $key ] = $dedo_default_options[ $key ];
 		}
 	}
 	 
@@ -613,7 +643,7 @@ function dedo_validate_settings( $input ) {
 	// Clear transients
 	dedo_delete_all_transients();
 
-	return $input;
+	return apply_filters( 'dedo_validate_settings', $input );
 }
 
 /**
