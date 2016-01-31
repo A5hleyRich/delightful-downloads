@@ -372,6 +372,14 @@
 			width: 100%;
 			margin-bottom: 13px;
 		}
+
+		a {
+			color: #5fbc3a;
+
+			&:hover {
+				color: #81d742;
+			}
+		}
 	}
 }
 
