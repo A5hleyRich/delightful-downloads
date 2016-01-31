@@ -82,6 +82,14 @@ Please refer to the [FAQ](https://delightfuldownloads.com/documentation/delightf
 
 == Changelog ==
 
+= 1.6.3 =
+
+* New: [Customizer Add-On](https://delightfuldownloads.com/add-ons/customizer/?utm_source=WordPress&utm_medium=Repo&utm_content=Customizer&utm_campaign=Changelogs) released
+* New: Add-Ons page added
+* Improvement: Automatically copy shortcodes to clipboard on click
+* Bug fix: Dashboard widget incorrect styling
+* Bug fix: Settings screen tabs incorrect styling
+
 = 1.6.2 =
 
 * Improvement: Code structure improvements
