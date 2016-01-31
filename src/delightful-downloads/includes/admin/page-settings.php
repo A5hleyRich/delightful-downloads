@@ -244,7 +244,7 @@ function dedo_render_part_sidebar() {
 				<p><?php _e( "I'm working on a few premium add-ons to enhance Delightful Downloads:", 'delightful-downloads' ); ?></p>
 				<ul>
 					<li>
-						<strike><?php _e( '<strong>Customizer</strong> - Button and list styles builder', 'delightful-downloads' ); ?></strike>
+						<strike><?php _e( '<strong>Customizer</strong> - Button and list styles editor', 'delightful-downloads' ); ?></strike>
 						<a href="https://delightfuldownloads.com/add-ons/customizer/?utm_source=WordPress&utm_medium=Plugin&utm_content=Customizer&utm_campaign=Addons%20Page"><?php _e( 'Available', 'delightful-downloads' ); ?></a>
 					</li>
 					<li><?php _e( '<strong>MailChimp</strong> - Subscribe to download', 'delightful-downloads' ); ?></li>
