@@ -1,6 +1,5 @@
 === Delightful Downloads ===
 Contributors: A5hleyRich
-Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=S6KBW2ZSVZ8RE
 Tags: download, manager, downloads, monitor, shortcode, delightful downloads, file, counter, tracking
 Requires at least: 4.2.2
 Tested up to: 4.4
