@@ -265,7 +265,7 @@ function dedo_render_part_sidebar() {
 			</div>
 
 			<h4><?php _e( 'Help and Support', 'delightful-downloads' ); ?></h4>
-			<p><?php printf( __( 'Please take a moment to look at the %sdocumentation%s. If you are still having issues, please take a look at the %ssupport forums%s.', 'delightful-downloads' ), '<a href="https://delightfuldownloads.com/documentation/">', '</a>', '<a href="https://wordpress.org/support/plugin/delightful-downloads">', '</a>' ); ?></p>
+			<p><?php printf( __( 'Having issues? Check out the %sdocumentation%s. If you can\'t find a solution, please raise an issue on the %ssupport forums%s.', 'delightful-downloads' ), '<a href="https://delightfuldownloads.com/documentation/">', '</a>', '<a href="https://wordpress.org/support/plugin/delightful-downloads">', '</a>' ); ?></p>
 		</div>
 
 	<?php endif;
