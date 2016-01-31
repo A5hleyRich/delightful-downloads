@@ -92,7 +92,7 @@ function dedo_render_page_settings() {
 			echo '<div class="notice updated is-dismissible"><p>' . __( 'Settings updated successfully.', 'delightful-downloads' ) . '</p></div>';
 		} ?>
 
-		<h3 id="dedo-settings-tabs" class="nav-tab-wrapper">
+		<h2 id="dedo-settings-tabs" class="nav-tab-wrapper">
 			
 			<?php // Generate tabs
 			
@@ -101,7 +101,7 @@ function dedo_render_page_settings() {
 				echo '<a href="#dedo-settings-tab-' . $key . '" class="nav-tab ' . ( $active_tab == $key ? 'nav-tab-active' : '' ) . '">' . $value . '</a>';
    	 		} ?>
 
-		</h3>	
+		</h2>
 
 		<div id="dedo-settings-main" <?php echo ( !apply_filters( 'dedo_admin_sidebar', true ) ) ? 'style="float: none; width: 100%; padding-right: 0;"' : ''; ?>>	
 

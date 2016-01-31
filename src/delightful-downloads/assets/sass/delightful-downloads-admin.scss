@@ -308,12 +308,8 @@
 	.nav-tab-wrapper {
 		margin-bottom: 0;
 
-		.nav-tab {
-			border-bottom: 1px solid #ccc; /* Fix tab jumping */
-		}
-
-		.nav-tab-active {
-			border-bottom: 1px solid #f1f1f1;
+		.nav-tab:focus {
+			box-shadow: none;
 		}
 	}
 
