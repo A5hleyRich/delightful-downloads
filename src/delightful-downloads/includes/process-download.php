@@ -171,4 +171,4 @@ function dedo_download_process() {
 	}
 
 }
-add_action( 'init', 'dedo_download_process', 0 );
+add_action( 'init', 'dedo_download_process', 4 );

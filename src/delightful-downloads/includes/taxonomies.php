@@ -72,4 +72,4 @@ function dedo_download_taxonomies() {
 		register_taxonomy( 'ddownload_tag', array( 'dedo_download' ), $tag_args );
 	}
 }
-add_action( 'init', 'dedo_download_taxonomies' );
+add_action( 'init', 'dedo_download_taxonomies', 3 );
