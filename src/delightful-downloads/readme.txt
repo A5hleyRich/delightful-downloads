@@ -3,7 +3,7 @@ Contributors: A5hleyRich
 Tags: download, manager, downloads, monitor, shortcode, delightful downloads, file, counter, tracking
 Requires at least: 4.4
 Tested up to: 4.4
-Stable tag: 1.6.3
+Stable tag: 1.6.4
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -85,6 +85,10 @@ Please refer to the [FAQ](https://delightfuldownloads.com/documentation/delightf
 8. Settings screen
 
 == Changelog ==
+
+= 1.6.4 =
+
+* Bug fix: Fatal error when activating add-ons
 
 = 1.6.3 =
 
