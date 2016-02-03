@@ -129,7 +129,9 @@ abstract class Delightful_Downloads_Addon {
 	 * Includes
 	 */
 	protected function includes() {
-		require_once dirname( Delightful_Downloads()->path ) . '/classes/EDD_SL_Plugin_Updater.php';
+		if ( ! class_exists( 'EDD_SL_Plugin_Updater' ) ) {
+			require_once dirname( Delightful_Downloads()->path ) . '/classes/EDD_SL_Plugin_Updater.php';
+		}
 	}
 
 	/**

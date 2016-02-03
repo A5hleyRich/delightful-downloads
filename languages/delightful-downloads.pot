@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: delightful-downloads 1.6.1\n"
 "Report-Msgid-Bugs-To: hello@ashleyrich.com\n"
-"POT-Creation-Date: 2016-01-31 21:59+0000\n"
+"POT-Creation-Date: 2016-02-03 05:44+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -41,29 +41,29 @@ msgstr ""
 msgid "Error"
 msgstr ""
 
-#: src/delightful-downloads/classes/class-addon.php:168
+#: src/delightful-downloads/classes/class-addon.php:170
 msgid "License Key"
 msgstr ""
 
-#: src/delightful-downloads/classes/class-addon.php:219
+#: src/delightful-downloads/classes/class-addon.php:221
 #, php-format
 msgid "%s License Error"
 msgstr ""
 
-#: src/delightful-downloads/classes/class-addon.php:224
+#: src/delightful-downloads/classes/class-addon.php:226
 msgid "License key not found."
 msgstr ""
 
-#: src/delightful-downloads/classes/class-addon.php:227
+#: src/delightful-downloads/classes/class-addon.php:229
 msgid "No site activations remaining."
 msgstr ""
 
-#: src/delightful-downloads/classes/class-addon.php:230
+#: src/delightful-downloads/classes/class-addon.php:232
 msgid "Your license key has expired."
 msgstr ""
 
-#: src/delightful-downloads/classes/class-addon.php:233
-#: src/delightful-downloads/classes/class-addon.php:236
+#: src/delightful-downloads/classes/class-addon.php:235
+#: src/delightful-downloads/classes/class-addon.php:238
 msgid "Please check your license key and try again."
 msgstr ""
 
