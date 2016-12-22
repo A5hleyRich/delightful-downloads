@@ -114,11 +114,6 @@ function dedo_download_process() {
 		// Open in browser
 		$open_browser = ( isset( $options['open_browser'] ) ) ? $options['open_browser'] : $dedo_options['open_browser'];
 
-		if ( $open_browser ) {
-			header( "Location: $download_url" );
-			exit();
-		}
-
 		// Convert to path
 		if ( $download_path = dedo_get_abs_path( $download_url ) ) {
 
@@ -131,10 +126,9 @@ function dedo_download_process() {
 
 			// Set headers
 			nocache_headers();
-			header( "X-Robots-Tag: noindex, nofollow", true );
 			header( "Content-Type: " . dedo_download_mime( $download_path ) );
 			header( "Content-Description: File Transfer" );
-			header( "Content-Disposition: attachment; filename=\"" . basename( $download_path ) . "\";" );
+			header( "Content-Disposition: ".($open_browser ? "inline" : "attachment")."; filename=\"" . basename( $download_path ) . "\";" );
 			header( "Content-Transfer-Encoding: binary" );
 			header( "Content-Length: " . @filesize( $download_path ) ); // filesize causes blank downloads on Windows servers
 

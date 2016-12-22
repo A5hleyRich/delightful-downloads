@@ -340,7 +340,7 @@ function dedo_settings_open_browser_field() {
 
 	<label for="open_browser_true"><input name="delightful-downloads[open_browser]" id="open_browser_true" type="radio" value="1" <?php echo ( 1 === $checked ) ? 'checked' : ''; ?> /> <?php _e( 'Yes', 'delightful-downloads' ); ?></label>
 	<label for="open_browser_false"><input name="delightful-downloads[open_browser]" id="open_browser_false" type="radio" value="0" <?php echo ( 0 === $checked ) ? 'checked' : ''; ?> /> <?php _e( 'No', 'delightful-downloads' ); ?></label>
-	<p class="description"><?php _e( 'Attempt to open files in the browser window. This can be overridden on a per-download basis. For files located within the Delightful Downloads upload directory, set folder protection to \'No\', which can be found under the advanced tab.', 'delightful-downloads' ); ?></p>
+	<p class="description"><?php _e( 'Attempt to open files in the browser window. This can be overridden on a per-download basis.', 'delightful-downloads' ); ?></p>
 	<?php
 }
 

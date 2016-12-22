@@ -228,7 +228,7 @@ function dedo_meta_box_download( $post ) {
 							<label for="open_browser_true"><input name="open_browser" id="open_browser_true" type="radio" value="1" <?php echo ( 1 === $open_browser ) ? 'checked' : ''; ?> /> <?php _e( 'Yes', 'delightful-downloads' ); ?></label>
 							<label for="open_browser_false"><input name="open_browser" id="open_browser_false" type="radio" value="0" <?php echo ( 0 === $open_browser ) ? 'checked' : ''; ?> /> <?php _e( 'No', 'delightful-downloads' ); ?></label>
 							<label for="open_browser_inherit"><input name="open_browser" id="open_browser_inherit" type="radio" value <?php echo ( '' === $open_browser ) ? 'checked' : ''; ?> /> <?php _e( 'Inherit', 'delightful-downloads' ); ?></label>
-							<p class="description"><?php echo sprintf( __( 'This file will attempt to open in the browser window. If the file is located within the Delightful Downloads upload directory, you will need to set the %sfolder protection%s setting to \'No\'.', 'delightful-downloads' ), '<a href="' . admin_url( 'edit.php?post_type=dedo_download&page=dedo_settings&tab=advanced' ) . '" target="_blank">', '</a>' ); ?></p>
+							<p class="description"><?php echo sprintf( __( 'This file will attempt to open in the browser window.', 'delightful-downloads' ), '<a href="' . admin_url( 'edit.php?post_type=dedo_download&page=dedo_settings&tab=advanced' ) . '" target="_blank">', '</a>' ); ?></p>
 						</td>
 					</tr>
 				</tbody>
