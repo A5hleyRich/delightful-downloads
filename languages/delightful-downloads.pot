@@ -1,6 +1,6 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
-# This file is distributed under the same license as the PACKAGE package.
+# This file is distributed under the same license as the delightful-downloads package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
 #, fuzzy
@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: delightful-downloads 1.6.1\n"
 "Report-Msgid-Bugs-To: hello@ashleyrich.com\n"
-"POT-Creation-Date: 2016-02-03 05:44+0000\n"
+"POT-Creation-Date: 2017-01-29 21:57+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -1074,58 +1074,58 @@ msgstr ""
 msgid "Shortcode copied to clipboard."
 msgstr ""
 
-#: src/delightful-downloads/includes/process-download.php:33
+#: src/delightful-downloads/includes/process-download.php:29
 msgid "Invalid download."
 msgstr ""
 
-#: src/delightful-downloads/includes/process-download.php:39
+#: src/delightful-downloads/includes/process-download.php:35
 msgid "You are blocked from downloading this file!"
 msgstr ""
 
-#: src/delightful-downloads/includes/process-download.php:60
+#: src/delightful-downloads/includes/process-download.php:59
 msgid "Please login to download this file!"
 msgstr ""
 
-#: src/delightful-downloads/includes/process-download.php:66
+#: src/delightful-downloads/includes/process-download.php:65
 msgid "Password Required"
 msgstr ""
 
-#: src/delightful-downloads/includes/process-download.php:71
+#: src/delightful-downloads/includes/process-download.php:70
 msgid "You must attach a file to this download."
 msgstr ""
 
-#: src/delightful-downloads/includes/process-download.php:129
+#: src/delightful-downloads/includes/process-download.php:125
 msgid "Server error, file cannot be opened!"
 msgstr ""
 
-#: src/delightful-downloads/includes/shortcodes.php:46
-#: src/delightful-downloads/includes/shortcodes.php:351
-#: src/delightful-downloads/includes/shortcodes.php:415
+#: src/delightful-downloads/includes/shortcodes.php:47
+#: src/delightful-downloads/includes/shortcodes.php:352
+#: src/delightful-downloads/includes/shortcodes.php:416
 msgid "Invalid download ID."
 msgstr ""
 
-#: src/delightful-downloads/includes/shortcodes.php:58
-#: src/delightful-downloads/includes/shortcodes.php:261
+#: src/delightful-downloads/includes/shortcodes.php:59
+#: src/delightful-downloads/includes/shortcodes.php:262
 msgid "Invalid style attribute."
 msgstr ""
 
-#: src/delightful-downloads/includes/shortcodes.php:79
+#: src/delightful-downloads/includes/shortcodes.php:80
 msgid "Invalid button attribute."
 msgstr ""
 
-#: src/delightful-downloads/includes/shortcodes.php:146
+#: src/delightful-downloads/includes/shortcodes.php:147
 msgid "Invalid orderby attribute."
 msgstr ""
 
-#: src/delightful-downloads/includes/shortcodes.php:177
+#: src/delightful-downloads/includes/shortcodes.php:178
 msgid "Invalid order attribute."
 msgstr ""
 
-#: src/delightful-downloads/includes/shortcodes.php:186
+#: src/delightful-downloads/includes/shortcodes.php:187
 msgid "Invalid relation attribute."
 msgstr ""
 
-#: src/delightful-downloads/includes/shortcodes.php:317
+#: src/delightful-downloads/includes/shortcodes.php:318
 msgid "No downloads found."
 msgstr ""
 

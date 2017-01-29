@@ -314,8 +314,34 @@
 .dedo_download_page_dedo_settings .description {
   max-width: 600px;
 }
+/* line 328, ../sass/delightful-downloads-admin.scss */
+.dedo_download_page_dedo_settings .status-container {
+  margin-top: 12px;
+}
+/* line 331, ../sass/delightful-downloads-admin.scss */
+.dedo_download_page_dedo_settings .status-container .error {
+  color: #a00;
+  font-style: italic;
+}
+/* line 337, ../sass/delightful-downloads-admin.scss */
+.dedo_download_page_dedo_settings .status {
+  display: inline-block;
+  padding: 3px 6px;
+  color: #fff;
+  font-size: 12px;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+/* line 345, ../sass/delightful-downloads-admin.scss */
+.dedo_download_page_dedo_settings .status.connected {
+  background: #32cd32;
+}
+/* line 349, ../sass/delightful-downloads-admin.scss */
+.dedo_download_page_dedo_settings .status.disconnected {
+  background: red;
+}
 
-/* line 329, ../sass/delightful-downloads-admin.scss */
+/* line 355, ../sass/delightful-downloads-admin.scss */
 .dedo_download_page_dedo_settings #dedo-settings-main {
   float: left;
   width: 75%;
@@ -324,7 +350,7 @@
   box-sizing: border-box;
 }
 
-/* line 337, ../sass/delightful-downloads-admin.scss */
+/* line 363, ../sass/delightful-downloads-admin.scss */
 .dedo_download_page_dedo_settings #dedo-settings-sidebar {
   float: left;
   width: 25%;
@@ -333,51 +359,84 @@
   padding-left: 20px;
   box-sizing: border-box;
 }
-/* line 345, ../sass/delightful-downloads-admin.scss */
+/* line 371, ../sass/delightful-downloads-admin.scss */
 .dedo_download_page_dedo_settings #dedo-settings-sidebar .pro-version {
   margin: -1em 0 0 -20px;
   padding: 1.33em 20px;
   background: #32373c;
   color: #b4b9be;
 }
-/* line 351, ../sass/delightful-downloads-admin.scss */
+/* line 377, ../sass/delightful-downloads-admin.scss */
 .dedo_download_page_dedo_settings #dedo-settings-sidebar .pro-version h4 {
   margin: 0 0 1.33em;
   color: #fff;
 }
-/* line 356, ../sass/delightful-downloads-admin.scss */
+/* line 382, ../sass/delightful-downloads-admin.scss */
 .dedo_download_page_dedo_settings #dedo-settings-sidebar .pro-version ul {
   margin-left: 20px;
   list-style: disc;
 }
-/* line 361, ../sass/delightful-downloads-admin.scss */
+/* line 387, ../sass/delightful-downloads-admin.scss */
 .dedo_download_page_dedo_settings #dedo-settings-sidebar .pro-version label {
   display: block;
   margin-bottom: 6px;
 }
-/* line 366, ../sass/delightful-downloads-admin.scss */
+/* line 392, ../sass/delightful-downloads-admin.scss */
 .dedo_download_page_dedo_settings #dedo-settings-sidebar .pro-version input, .dedo_download_page_dedo_settings #dedo-settings-sidebar .pro-version button {
   display: block;
   width: 100%;
   margin-bottom: 13px;
 }
-/* line 372, ../sass/delightful-downloads-admin.scss */
+/* line 398, ../sass/delightful-downloads-admin.scss */
 .dedo_download_page_dedo_settings #dedo-settings-sidebar .pro-version a {
   color: #5fbc3a;
 }
-/* line 375, ../sass/delightful-downloads-admin.scss */
+/* line 401, ../sass/delightful-downloads-admin.scss */
 .dedo_download_page_dedo_settings #dedo-settings-sidebar .pro-version a:hover {
   color: #81d742;
 }
 
-/* line 382, ../sass/delightful-downloads-admin.scss */
+/* line 408, ../sass/delightful-downloads-admin.scss */
 .dedo-settings-textarea {
   width: 50%;
   height: 200px;
 }
 
+/* line 413, ../sass/delightful-downloads-admin.scss */
+.dedo-form-container {
+  margin: -6px -12px -12px;
+}
+
+/* line 417, ../sass/delightful-downloads-admin.scss */
+.dedo-form-group {
+  padding: 15px 10px;
+}
+/* line 420, ../sass/delightful-downloads-admin.scss */
+.dedo-form-group:last-of-type {
+  border-bottom: none;
+}
+/* line 424, ../sass/delightful-downloads-admin.scss */
+.dedo-form-group .dedo-label {
+  display: block;
+  color: #23282d;
+  font-size: 14px;
+  line-height: 1.3;
+  font-weight: 600;
+  padding: 0;
+  margin: 0 0 12px;
+  vertical-align: text-bottom;
+}
+/* line 435, ../sass/delightful-downloads-admin.scss */
+.dedo-form-group select {
+  width: 100%;
+}
+/* line 439, ../sass/delightful-downloads-admin.scss */
+.dedo-form-group .description {
+  margin: 6px 0 0;
+}
+
 /* Support Page */
-/* line 388, ../sass/delightful-downloads-admin.scss */
+/* line 445, ../sass/delightful-downloads-admin.scss */
 #dedo_support {
   width: 100%;
   height: 500px;
@@ -386,35 +445,35 @@
 
 /* Statistics Page
 --------------------------------------------- */
-/* line 400, ../sass/delightful-downloads-admin.scss */
+/* line 457, ../sass/delightful-downloads-admin.scss */
 #dedo-stats-export .left, #dedo-stats-export .right {
   float: left;
   width: 50%;
   margin-top: 0;
   box-sizing: border-box;
 }
-/* line 406, ../sass/delightful-downloads-admin.scss */
+/* line 463, ../sass/delightful-downloads-admin.scss */
 #dedo-stats-export .left label, #dedo-stats-export .right label {
   display: block;
   font-weight: bold;
   color: #000;
 }
-/* line 412, ../sass/delightful-downloads-admin.scss */
+/* line 469, ../sass/delightful-downloads-admin.scss */
 #dedo-stats-export .left input, #dedo-stats-export .right input {
   width: 100%;
 }
-/* line 417, ../sass/delightful-downloads-admin.scss */
+/* line 474, ../sass/delightful-downloads-admin.scss */
 #dedo-stats-export .left {
   padding-right: 8px;
 }
-/* line 421, ../sass/delightful-downloads-admin.scss */
+/* line 478, ../sass/delightful-downloads-admin.scss */
 #dedo-stats-export .right {
   padding-left: 8px;
 }
 
 /* Admin Modal Windows
 --------------------------------------------- */
-/* line 428, ../sass/delightful-downloads-admin.scss */
+/* line 485, ../sass/delightful-downloads-admin.scss */
 .dedo-modal {
   position: fixed;
   top: 60px;
@@ -426,7 +485,7 @@
   -o-box-shadow: 0 5px 15px rgba(0, 0, 0, 0.7);
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.7);
 }
-/* line 439, ../sass/delightful-downloads-admin.scss */
+/* line 496, ../sass/delightful-downloads-admin.scss */
 .dedo-modal .dedo-modal-close {
   position: absolute;
   text-decoration: none;
@@ -436,7 +495,7 @@
   height: 30px;
   z-index: 1000;
 }
-/* line 448, ../sass/delightful-downloads-admin.scss */
+/* line 505, ../sass/delightful-downloads-admin.scss */
 .dedo-modal .dedo-modal-close span.media-modal-icon {
   display: block;
   margin: 8px auto 0;
@@ -444,7 +503,7 @@
   height: 15px;
   background-image: none;
 }
-/* line 456, ../sass/delightful-downloads-admin.scss */
+/* line 513, ../sass/delightful-downloads-admin.scss */
 .dedo-modal .dedo-modal-close span.media-modal-icon:before {
   content: '\f158';
   font: normal 20px/1 'dashicons';
@@ -454,11 +513,11 @@
   -moz-osx-font-smoothing: grayscale;
   color: #666;
 }
-/* line 467, ../sass/delightful-downloads-admin.scss */
+/* line 524, ../sass/delightful-downloads-admin.scss */
 .dedo-modal .dedo-modal-close:hover span.media-modal-icon:before {
   color: #0099d5;
 }
-/* line 471, ../sass/delightful-downloads-admin.scss */
+/* line 528, ../sass/delightful-downloads-admin.scss */
 .dedo-modal h1 {
   margin: 0 -16px;
   padding: 0 16px;
@@ -468,7 +527,7 @@
   line-height: 60px;
 }
 
-/* line 481, ../sass/delightful-downloads-admin.scss */
+/* line 538, ../sass/delightful-downloads-admin.scss */
 #dedo-modal-background {
   position: fixed;
   top: 0;
@@ -482,26 +541,26 @@
 
 /* Add/Edit Download Screen
 --------------------------------------------- */
-/* line 498, ../sass/delightful-downloads-admin.scss */
+/* line 555, ../sass/delightful-downloads-admin.scss */
 .post-type-dedo_download #titlediv {
   margin-bottom: 20px;
 }
-/* line 502, ../sass/delightful-downloads-admin.scss */
+/* line 559, ../sass/delightful-downloads-admin.scss */
 .post-type-dedo_download #post-visibility-select p {
   margin-top: 0;
 }
-/* line 507, ../sass/delightful-downloads-admin.scss */
+/* line 564, ../sass/delightful-downloads-admin.scss */
 .post-type-dedo_download #visibility-radio-private, .post-type-dedo_download label[for="visibility-radio-private"] {
   display: none;
 }
 
 /* Admin Add Download */
-/* line 513, ../sass/delightful-downloads-admin.scss */
+/* line 570, ../sass/delightful-downloads-admin.scss */
 #dedo-new-download {
   padding: 60px 0;
   text-align: center;
 }
-/* line 517, ../sass/delightful-downloads-admin.scss */
+/* line 574, ../sass/delightful-downloads-admin.scss */
 #dedo-new-download .button {
   display: inline-block;
   width: 180px;
@@ -512,30 +571,30 @@
 }
 
 /* Existing Download */
-/* line 528, ../sass/delightful-downloads-admin.scss */
+/* line 585, ../sass/delightful-downloads-admin.scss */
 #dedo-existing-download {
   margin: -6px -12px -12px;
   overflow: hidden;
 }
-/* line 532, ../sass/delightful-downloads-admin.scss */
+/* line 589, ../sass/delightful-downloads-admin.scss */
 #dedo-existing-download .left-panel, #dedo-existing-download .right-panel {
   float: left;
   box-sizing: border-box;
   padding: 30px 20px;
 }
-/* line 538, ../sass/delightful-downloads-admin.scss */
+/* line 595, ../sass/delightful-downloads-admin.scss */
 #dedo-existing-download .left-panel {
   width: 33%;
   margin-right: -1px;
   border-right: 1px solid #ddd;
   text-align: center;
 }
-/* line 545, ../sass/delightful-downloads-admin.scss */
+/* line 602, ../sass/delightful-downloads-admin.scss */
 #dedo-existing-download .right-panel {
   width: 67%;
   border-left: 1px solid #ddd;
 }
-/* line 550, ../sass/delightful-downloads-admin.scss */
+/* line 607, ../sass/delightful-downloads-admin.scss */
 #dedo-existing-download .footer {
   padding: 10px 12px;
   border-top: 1px solid #ddd;
@@ -543,49 +602,49 @@
   line-height: 28px;
   clear: both;
 }
-/* line 557, ../sass/delightful-downloads-admin.scss */
+/* line 614, ../sass/delightful-downloads-admin.scss */
 #dedo-existing-download .footer .button {
   margin-left: 5px;
 }
-/* line 561, ../sass/delightful-downloads-admin.scss */
+/* line 618, ../sass/delightful-downloads-admin.scss */
 #dedo-existing-download .footer .delete {
   float: right;
   text-decoration: none;
   color: #a00;
 }
-/* line 566, ../sass/delightful-downloads-admin.scss */
+/* line 623, ../sass/delightful-downloads-admin.scss */
 #dedo-existing-download .footer .delete:hover {
   color: #f00;
 }
-/* line 572, ../sass/delightful-downloads-admin.scss */
+/* line 629, ../sass/delightful-downloads-admin.scss */
 #dedo-existing-download .file-icon {
   width: 128px;
   height: 128px;
   margin: 0 auto 1.4em;
 }
-/* line 577, ../sass/delightful-downloads-admin.scss */
+/* line 634, ../sass/delightful-downloads-admin.scss */
 #dedo-existing-download .file-icon img {
   display: block;
   width: 128px;
   height: 128px;
   margin: 0;
 }
-/* line 585, ../sass/delightful-downloads-admin.scss */
+/* line 642, ../sass/delightful-downloads-admin.scss */
 #dedo-existing-download .file-name {
   position: relative;
   font-weight: bold;
 }
-/* line 590, ../sass/delightful-downloads-admin.scss */
+/* line 647, ../sass/delightful-downloads-admin.scss */
 #dedo-existing-download .file-size {
   margin-bottom: 1.4em;
   color: #666;
 }
-/* line 597, ../sass/delightful-downloads-admin.scss */
+/* line 654, ../sass/delightful-downloads-admin.scss */
 #dedo-existing-download .file-status .status {
   display: inline-block;
   float: none;
 }
-/* line 602, ../sass/delightful-downloads-admin.scss */
+/* line 659, ../sass/delightful-downloads-admin.scss */
 #dedo-existing-download .file-status .status:before {
   font: normal 20px 'dashicons';
   speak: none;
@@ -593,65 +652,65 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
-/* line 610, ../sass/delightful-downloads-admin.scss */
+/* line 667, ../sass/delightful-downloads-admin.scss */
 #dedo-existing-download .file-status .status.local:before {
   content: '\f147';
   font-size: 22px;
   color: #0a0;
 }
-/* line 616, ../sass/delightful-downloads-admin.scss */
+/* line 673, ../sass/delightful-downloads-admin.scss */
 #dedo-existing-download .file-status .status.remote:before {
   content: '\f103';
   font-size: 16px;
   color: #0a0;
 }
-/* line 622, ../sass/delightful-downloads-admin.scss */
+/* line 679, ../sass/delightful-downloads-admin.scss */
 #dedo-existing-download .file-status .status.warning:before {
   content: '\f348';
   font-size: 18px;
   color: #ffba00;
 }
-/* line 629, ../sass/delightful-downloads-admin.scss */
+/* line 686, ../sass/delightful-downloads-admin.scss */
 #dedo-existing-download .form-table {
   margin: -20px 0;
 }
-/* line 632, ../sass/delightful-downloads-admin.scss */
+/* line 689, ../sass/delightful-downloads-admin.scss */
 #dedo-existing-download .form-table th {
   width: auto;
   padding-right: 30px;
   white-space: nowrap;
 }
-/* line 638, ../sass/delightful-downloads-admin.scss */
+/* line 695, ../sass/delightful-downloads-admin.scss */
 #dedo-existing-download .form-table td {
   width: 100%;
   padding-right: 0;
 }
-/* line 643, ../sass/delightful-downloads-admin.scss */
+/* line 700, ../sass/delightful-downloads-admin.scss */
 #dedo-existing-download .form-table .regular-text {
   width: 100px;
 }
-/* line 647, ../sass/delightful-downloads-admin.scss */
+/* line 704, ../sass/delightful-downloads-admin.scss */
 #dedo-existing-download .form-table label {
   margin-right: 12px;
 }
-/* line 652, ../sass/delightful-downloads-admin.scss */
+/* line 709, ../sass/delightful-downloads-admin.scss */
 #dedo-existing-download .dedo-sub-option {
   margin-top: 30px;
 }
 
 /* Upload Modal */
-/* line 659, ../sass/delightful-downloads-admin.scss */
+/* line 716, ../sass/delightful-downloads-admin.scss */
 #dedo-upload-modal {
   /* Progress Bar */
 }
-/* line 661, ../sass/delightful-downloads-admin.scss */
+/* line 718, ../sass/delightful-downloads-admin.scss */
 #dedo-upload-modal #dedo-drag-drop-area-container {
   position: relative;
   display: table;
   width: 100%;
   margin-top: 1em;
 }
-/* line 668, ../sass/delightful-downloads-admin.scss */
+/* line 725, ../sass/delightful-downloads-admin.scss */
 #dedo-upload-modal #dedo-drag-drop-area {
   display: table-cell;
   height: 200px;
@@ -663,18 +722,18 @@
   -ms-transition: all .5s ease;
   transition: all .5s ease;
 }
-/* line 679, ../sass/delightful-downloads-admin.scss */
+/* line 736, ../sass/delightful-downloads-admin.scss */
 #dedo-upload-modal #dedo-drag-drop-area p {
   margin: 5px 0;
   font-size: 14px;
   text-align: center;
   color: #aaa;
 }
-/* line 686, ../sass/delightful-downloads-admin.scss */
+/* line 743, ../sass/delightful-downloads-admin.scss */
 #dedo-upload-modal #dedo-drag-drop-area .drag-drop-info {
   font-size: 20px;
 }
-/* line 690, ../sass/delightful-downloads-admin.scss */
+/* line 747, ../sass/delightful-downloads-admin.scss */
 #dedo-upload-modal #dedo-drag-drop-area #dedo-progress-percent {
   display: none;
   position: absolute;
@@ -684,7 +743,7 @@
   background: #000;
   opacity: .5;
 }
-/* line 700, ../sass/delightful-downloads-admin.scss */
+/* line 757, ../sass/delightful-downloads-admin.scss */
 #dedo-upload-modal #dedo-drag-drop-area #dedo-progress-text {
   display: none;
   width: 100%;
@@ -692,36 +751,36 @@
   line-height: 1;
   text-align: center;
 }
-/* line 710, ../sass/delightful-downloads-admin.scss */
+/* line 767, ../sass/delightful-downloads-admin.scss */
 #dedo-upload-modal #dedo-drag-drop-area.uploading {
   height: 100px;
   border: 4px solid #bbb;
 }
-/* line 714, ../sass/delightful-downloads-admin.scss */
+/* line 771, ../sass/delightful-downloads-admin.scss */
 #dedo-upload-modal #dedo-drag-drop-area.uploading p {
   display: none;
 }
-/* line 718, ../sass/delightful-downloads-admin.scss */
+/* line 775, ../sass/delightful-downloads-admin.scss */
 #dedo-upload-modal #dedo-drag-drop-area.uploading #dedo-progress-percent {
   display: block;
 }
-/* line 722, ../sass/delightful-downloads-admin.scss */
+/* line 779, ../sass/delightful-downloads-admin.scss */
 #dedo-upload-modal #dedo-drag-drop-area.uploading #dedo-progress-text {
   display: block;
 }
 
-/* line 728, ../sass/delightful-downloads-admin.scss */
+/* line 785, ../sass/delightful-downloads-admin.scss */
 #dedo-progress-error {
   color: red;
   font-style: italic;
 }
 
 /* Existing Modal */
-/* line 736, ../sass/delightful-downloads-admin.scss */
+/* line 793, ../sass/delightful-downloads-admin.scss */
 #dedo-select-modal #dedo-file-url {
   padding: 5px 5px 6px;
 }
-/* line 740, ../sass/delightful-downloads-admin.scss */
+/* line 797, ../sass/delightful-downloads-admin.scss */
 #dedo-select-modal #dedo-file-browser {
   box-sizing: border-box;
   width: 99%;
@@ -739,14 +798,14 @@
 
 /* Add-ons
 --------------------------------------------- */
-/* line 759, ../sass/delightful-downloads-admin.scss */
+/* line 816, ../sass/delightful-downloads-admin.scss */
 .dedo-addons-container {
   display: flex;
   flex-wrap: wrap;
   max-width: 1368px;
   margin: 20px -20px -20px 0;
 }
-/* line 765, ../sass/delightful-downloads-admin.scss */
+/* line 822, ../sass/delightful-downloads-admin.scss */
 .dedo-addons-container .item {
   position: relative;
   box-sizing: border-box;
@@ -756,7 +815,7 @@
   background: #fff;
   border: 1px solid #ddd;
 }
-/* line 774, ../sass/delightful-downloads-admin.scss */
+/* line 831, ../sass/delightful-downloads-admin.scss */
 .dedo-addons-container .item .action {
   position: absolute;
   bottom: 0;
@@ -766,7 +825,7 @@
   border-top: 1px solid #ddd;
   background: #f5f5f5;
 }
-/* line 785, ../sass/delightful-downloads-admin.scss */
+/* line 842, ../sass/delightful-downloads-admin.scss */
 .dedo-addons-container a {
   text-decoration: none;
   -webkit-transition: opacity .3s;
@@ -774,22 +833,22 @@
   -o-transition: opacity .3s;
   transition: opacity .3s;
 }
-/* line 793, ../sass/delightful-downloads-admin.scss */
+/* line 850, ../sass/delightful-downloads-admin.scss */
 .dedo-addons-container a:hover {
   opacity: .8;
 }
-/* line 797, ../sass/delightful-downloads-admin.scss */
+/* line 854, ../sass/delightful-downloads-admin.scss */
 .dedo-addons-container img {
   margin: -16px -16px 0;
   width: 320px;
   height: auto;
 }
-/* line 803, ../sass/delightful-downloads-admin.scss */
+/* line 860, ../sass/delightful-downloads-admin.scss */
 .dedo-addons-container h3 {
   font-size: 14px;
 }
 
-/* line 809, ../sass/delightful-downloads-admin.scss */
+/* line 866, ../sass/delightful-downloads-admin.scss */
 input.copy-to-clipboard {
   width: 100%;
   max-width: 300px;
@@ -802,7 +861,7 @@ input.copy-to-clipboard {
   cursor: pointer;
 }
 
-/* line 821, ../sass/delightful-downloads-admin.scss */
+/* line 878, ../sass/delightful-downloads-admin.scss */
 input.copy-to-clipboard + .description {
   margin-top: 5px;
 }
@@ -810,121 +869,121 @@ input.copy-to-clipboard + .description {
 /* Theme Colors
 --------------------------------------------- */
 /* Fresh (Default) */
-/* line 831, ../sass/delightful-downloads-admin.scss */
+/* line 888, ../sass/delightful-downloads-admin.scss */
 .admin-color-fresh #ddownload-count .count,
 .admin-color-fresh #dedo-upload-modal #dedo-drag-drop-area #dedo-progress-text {
   color: #04a4cc;
 }
-/* line 836, ../sass/delightful-downloads-admin.scss */
+/* line 893, ../sass/delightful-downloads-admin.scss */
 .admin-color-fresh #dedo-upload-modal #dedo-drag-drop-area.uploading {
   border-color: #04a4cc;
 }
-/* line 839, ../sass/delightful-downloads-admin.scss */
+/* line 896, ../sass/delightful-downloads-admin.scss */
 .admin-color-fresh #dedo-upload-modal #dedo-drag-drop-area.uploading #dedo-progress-percent {
   background: #04a4cc;
 }
 
 /* Light */
-/* line 848, ../sass/delightful-downloads-admin.scss */
+/* line 905, ../sass/delightful-downloads-admin.scss */
 .admin-color-light #ddownload-count .count,
 .admin-color-light #dedo-upload-modal #dedo-drag-drop-area #dedo-progress-text {
   color: #04a4cc;
 }
-/* line 853, ../sass/delightful-downloads-admin.scss */
+/* line 910, ../sass/delightful-downloads-admin.scss */
 .admin-color-light #dedo-upload-modal #dedo-drag-drop-area.uploading {
   border-color: #04a4cc;
 }
-/* line 856, ../sass/delightful-downloads-admin.scss */
+/* line 913, ../sass/delightful-downloads-admin.scss */
 .admin-color-light #dedo-upload-modal #dedo-drag-drop-area.uploading #dedo-progress-percent {
   background: #04a4cc;
 }
 
 /* Blue */
-/* line 865, ../sass/delightful-downloads-admin.scss */
+/* line 922, ../sass/delightful-downloads-admin.scss */
 .admin-color-blue #ddownload-count .count,
 .admin-color-blue #dedo-upload-modal #dedo-drag-drop-area #dedo-progress-text {
   color: #52accc;
 }
-/* line 870, ../sass/delightful-downloads-admin.scss */
+/* line 927, ../sass/delightful-downloads-admin.scss */
 .admin-color-blue #dedo-upload-modal #dedo-drag-drop-area.uploading {
   border-color: #52accc;
 }
-/* line 873, ../sass/delightful-downloads-admin.scss */
+/* line 930, ../sass/delightful-downloads-admin.scss */
 .admin-color-blue #dedo-upload-modal #dedo-drag-drop-area.uploading #dedo-progress-percent {
   background: #52accc;
 }
 
 /* Coffee */
-/* line 882, ../sass/delightful-downloads-admin.scss */
+/* line 939, ../sass/delightful-downloads-admin.scss */
 .admin-color-coffee #ddownload-count .count,
 .admin-color-coffee #dedo-upload-modal #dedo-drag-drop-area #dedo-progress-text {
   color: #c7a589;
 }
-/* line 887, ../sass/delightful-downloads-admin.scss */
+/* line 944, ../sass/delightful-downloads-admin.scss */
 .admin-color-coffee #dedo-upload-modal #dedo-drag-drop-area.uploading {
   border-color: #c7a589;
 }
-/* line 890, ../sass/delightful-downloads-admin.scss */
+/* line 947, ../sass/delightful-downloads-admin.scss */
 .admin-color-coffee #dedo-upload-modal #dedo-drag-drop-area.uploading #dedo-progress-percent {
   background: #c7a589;
 }
 
 /* Ectoplasm */
-/* line 899, ../sass/delightful-downloads-admin.scss */
+/* line 956, ../sass/delightful-downloads-admin.scss */
 .admin-color-ectoplasm #ddownload-count .count,
 .admin-color-ectoplasm #dedo-upload-modal #dedo-drag-drop-area #dedo-progress-text {
   color: #a3b745;
 }
-/* line 904, ../sass/delightful-downloads-admin.scss */
+/* line 961, ../sass/delightful-downloads-admin.scss */
 .admin-color-ectoplasm #dedo-upload-modal #dedo-drag-drop-area.uploading {
   border-color: #a3b745;
 }
-/* line 907, ../sass/delightful-downloads-admin.scss */
+/* line 964, ../sass/delightful-downloads-admin.scss */
 .admin-color-ectoplasm #dedo-upload-modal #dedo-drag-drop-area.uploading #dedo-progress-percent {
   background: #a3b745;
 }
 
 /* Midnight */
-/* line 916, ../sass/delightful-downloads-admin.scss */
+/* line 973, ../sass/delightful-downloads-admin.scss */
 .admin-color-midnight #ddownload-count .count,
 .admin-color-midnight #dedo-upload-modal #dedo-drag-drop-area #dedo-progress-text {
   color: #e14d43;
 }
-/* line 921, ../sass/delightful-downloads-admin.scss */
+/* line 978, ../sass/delightful-downloads-admin.scss */
 .admin-color-midnight #dedo-upload-modal #dedo-drag-drop-area.uploading {
   border-color: #e14d43;
 }
-/* line 924, ../sass/delightful-downloads-admin.scss */
+/* line 981, ../sass/delightful-downloads-admin.scss */
 .admin-color-midnight #dedo-upload-modal #dedo-drag-drop-area.uploading #dedo-progress-percent {
   background: #e14d43;
 }
 
 /* Ocean */
-/* line 933, ../sass/delightful-downloads-admin.scss */
+/* line 990, ../sass/delightful-downloads-admin.scss */
 .admin-color-ocean #ddownload-count .count,
 .admin-color-ocean #dedo-upload-modal #dedo-drag-drop-area #dedo-progress-text {
   color: #9ebaa0;
 }
-/* line 938, ../sass/delightful-downloads-admin.scss */
+/* line 995, ../sass/delightful-downloads-admin.scss */
 .admin-color-ocean #dedo-upload-modal #dedo-drag-drop-area.uploading {
   border-color: #9ebaa0;
 }
-/* line 941, ../sass/delightful-downloads-admin.scss */
+/* line 998, ../sass/delightful-downloads-admin.scss */
 .admin-color-ocean #dedo-upload-modal #dedo-drag-drop-area.uploading #dedo-progress-percent {
   background: #9ebaa0;
 }
 
 /* Sunrise */
-/* line 950, ../sass/delightful-downloads-admin.scss */
+/* line 1007, ../sass/delightful-downloads-admin.scss */
 .admin-color-sunrise #ddownload-count .count,
 .admin-color-sunrise #dedo-upload-modal #dedo-drag-drop-area #dedo-progress-text {
   color: #dd823b;
 }
-/* line 955, ../sass/delightful-downloads-admin.scss */
+/* line 1012, ../sass/delightful-downloads-admin.scss */
 .admin-color-sunrise #dedo-upload-modal #dedo-drag-drop-area.uploading {
   border-color: #dd823b;
 }
-/* line 958, ../sass/delightful-downloads-admin.scss */
+/* line 1015, ../sass/delightful-downloads-admin.scss */
 .admin-color-sunrise #dedo-upload-modal #dedo-drag-drop-area.uploading #dedo-progress-percent {
   background: #dd823b;
 }

@@ -86,6 +86,10 @@ Please refer to the [FAQ](https://delightfuldownloads.com/documentation/delightf
 
 == Changelog ==
 
+= 1.6.5 =
+
+* Improvement: Compatibility with upcoming MailChimp addon
+
 = 1.6.4 =
 
 * Bug fix: Fatal error when activating add-ons

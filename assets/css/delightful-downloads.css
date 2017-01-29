@@ -222,3 +222,8 @@
   color: #7e5d7c !important;
   border: 1px solid #6a4664;
 }
+
+/* line 24, ../sass/delightful-downloads.scss */
+.dedo-form-error-message {
+  color: #a00;
+}

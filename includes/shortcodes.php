@@ -15,10 +15,11 @@ if ( !defined( 'ABSPATH' ) ) exit;
  *
  * Outputs a single download based on user defined attributes.
  *
- * @since   1.0
+ * @param array $atts
+ *
+ * @return string
  */
 function dedo_shortcode_ddownload( $atts ) {
-	
 	/**
 	 * Use get option again so that WPML can filter default text
 	 * for translation, get_option() is cached so should not
@@ -100,7 +101,7 @@ function dedo_shortcode_ddownload( $atts ) {
 	// Search and replace wildcards
 	$output = dedo_search_replace_wildcards( $style_format, $id );
 
-	return apply_filters( 'dedo_shortcode_ddownload', $output );
+	return apply_filters( 'dedo_shortcode_ddownload', $output, $id, $atts, $classes );
 }
 add_shortcode( 'ddownload', 'dedo_shortcode_ddownload' );
 
