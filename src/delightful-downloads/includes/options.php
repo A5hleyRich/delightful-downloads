@@ -18,12 +18,12 @@ if ( ! defined( 'ABSPATH' ) ) {
  * @since  1.3
  */
 function dedo_get_tabs() {
-	$tabs = array(
+	$tabs = apply_filters( 'dedo_settings_tabs', array(
 		'general'    => __( 'General', 'delightful-downloads' ),
 		'shortcodes' => __( 'Shortcodes', 'delightful-downloads' ),
 		'statistics' => __( 'Statistics', 'delightful-downloads' ),
 		'advanced'   => __( 'Advanced', 'delightful-downloads' ),
-	);
+	) );
 
 	$options = dedo_get_options();
 
@@ -36,7 +36,7 @@ function dedo_get_tabs() {
 
 	$tabs['support'] = __( 'Support', 'delightful-downloads' );
 
-	return apply_filters( 'dedo_settings_tabs', $tabs );
+	return $tabs;
 }
 
 /**

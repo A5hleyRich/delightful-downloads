@@ -50,8 +50,8 @@ function dedo_register_settings() {
 	foreach ( $registered_settings as $key => $value ) {
 		$callback = 'dedo_settings_' . $key . '_field';
 
-		if ( 'licenses' === $value['tab'] ) {
-			$callback = array( $value['class'], 'render_license_field' );
+		if ( ! empty( $value['callback'] ) ) {
+			$callback = $value['callback'];
 		}
 
 		add_settings_field(

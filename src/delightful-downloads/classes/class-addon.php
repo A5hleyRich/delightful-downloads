@@ -167,11 +167,11 @@ abstract class Delightful_Downloads_Addon {
 	 */
 	public function add_settings_option( $options ) {
 		$options[ $this->get_license_key() ] = array(
-			'name'    =>  $this->name . ' ' . __( 'License Key', 'delightful-downloads' ),
-			'tab'     => 'licenses',
-			'type'    => 'text',
-			'default' => '',
-			'class'   => $this,
+			'name'     =>  $this->name . ' ' . __( 'License Key', 'delightful-downloads' ),
+			'tab'      => 'licenses',
+			'type'     => 'text',
+			'default'  => '',
+			'callback' => array( $this, 'render_license_field' ),
 		);
 
 		return $options;
@@ -293,7 +293,7 @@ abstract class Delightful_Downloads_Addon {
 	 *
 	 * @return mixed
 	 */
-	protected function get_option( $key, $default = '' ) {
+	public function get_option( $key, $default = '' ) {
 		global $dedo_options, $dedo_default_options;
 
 		if ( isset( $dedo_options[ $key ] ) ) {
