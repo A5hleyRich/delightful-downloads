@@ -612,10 +612,11 @@ function dedo_settings_uninstall_field() {
  * @since  1.3
  */
 function dedo_validate_settings( $input ) {
-	global $dedo_options, $dedo_default_options;
+	global $dedo_options;
 
 	// Registered options
-	$options = dedo_get_options();
+	$options              = dedo_get_options();
+	$dedo_default_options = dedo_get_default_options();
 
 	// Ensure text fields are not blank
 	foreach( $options as $key => $value ) {
