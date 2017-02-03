@@ -3,7 +3,7 @@ Contributors: A5hleyRich
 Tags: download, manager, downloads, monitor, shortcode, delightful downloads, file, counter, tracking
 Requires at least: 4.7
 Tested up to: 4.7.2
-Stable tag: 1.6.5
+Stable tag: 1.6.6
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -35,18 +35,7 @@ Delightful Downloads is a super-awesome downloads manager for WordPress that all
 **Add-Ons**
 
 * [Customizer](https://delightfuldownloads.com/add-ons/customizer/?utm_source=WordPress&utm_medium=Repo&utm_content=Customizer&utm_campaign=Description) - Button and list styles editor
-
-**Translations**
-
-Thanks to all of the WP-Translations Team Members.
-
-* Français (French (France)),
-* Deutsch (German) - [Connie Müller-Gödecke](http://www.webdeerns.de),
-* Italiano (Italian),
-* Русский (Russian) - dobrodukh,
-* Svenska (Swedish) - [Björn Granberg](http://maskinmedia.se/)
-
-Don't see yours yet? Join our community and make it happen! [WP-Translations.org](http://wp-translations.org)
+* [MailChimp](https://delightfuldownloads.com/add-ons/mailchimp/?utm_source=WordPress&utm_medium=Repo&utm_content=MailChimp&utm_campaign=Description) - Subscribe to download
 
 **Documentation**
 
@@ -89,6 +78,11 @@ Please refer to the [FAQ](https://delightfuldownloads.com/documentation/delightf
 = 1.6.5 =
 
 * Improvement: Compatibility with upcoming MailChimp addon
+
+= 1.6.5 =
+
+* New: MailChimp addon released
+* Bug fix: Fix undefined error on settings save
 
 = 1.6.4 =
 

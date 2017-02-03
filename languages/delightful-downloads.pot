@@ -8,13 +8,13 @@ msgid ""
 msgstr ""
 "Project-Id-Version: delightful-downloads 1.6.1\n"
 "Report-Msgid-Bugs-To: hello@ashleyrich.com\n"
-"POT-Creation-Date: 2017-01-29 22:08+0000\n"
+"POT-Creation-Date: 2017-02-02 23:59+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=CHARSET\n"
+"Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
 
@@ -367,16 +367,16 @@ msgstr ""
 
 #: src/delightful-downloads/includes/admin/meta-boxes.php:191
 #: src/delightful-downloads/includes/admin/meta-boxes.php:228
-#: src/delightful-downloads/includes/admin/page-settings.php:292
-#: src/delightful-downloads/includes/admin/page-settings.php:308
-#: src/delightful-downloads/includes/admin/page-settings.php:341
-#: src/delightful-downloads/includes/admin/page-settings.php:466
-#: src/delightful-downloads/includes/admin/page-settings.php:483
-#: src/delightful-downloads/includes/admin/page-settings.php:504
-#: src/delightful-downloads/includes/admin/page-settings.php:524
-#: src/delightful-downloads/includes/admin/page-settings.php:541
-#: src/delightful-downloads/includes/admin/page-settings.php:587
-#: src/delightful-downloads/includes/admin/page-settings.php:603
+#: src/delightful-downloads/includes/admin/page-settings.php:285
+#: src/delightful-downloads/includes/admin/page-settings.php:301
+#: src/delightful-downloads/includes/admin/page-settings.php:334
+#: src/delightful-downloads/includes/admin/page-settings.php:459
+#: src/delightful-downloads/includes/admin/page-settings.php:476
+#: src/delightful-downloads/includes/admin/page-settings.php:497
+#: src/delightful-downloads/includes/admin/page-settings.php:517
+#: src/delightful-downloads/includes/admin/page-settings.php:534
+#: src/delightful-downloads/includes/admin/page-settings.php:580
+#: src/delightful-downloads/includes/admin/page-settings.php:596
 #: src/delightful-downloads/includes/post-types.php:124
 #: src/delightful-downloads/includes/post-types.php:135
 msgid "Yes"
@@ -384,16 +384,16 @@ msgstr ""
 
 #: src/delightful-downloads/includes/admin/meta-boxes.php:192
 #: src/delightful-downloads/includes/admin/meta-boxes.php:229
-#: src/delightful-downloads/includes/admin/page-settings.php:293
-#: src/delightful-downloads/includes/admin/page-settings.php:309
-#: src/delightful-downloads/includes/admin/page-settings.php:342
-#: src/delightful-downloads/includes/admin/page-settings.php:467
-#: src/delightful-downloads/includes/admin/page-settings.php:484
-#: src/delightful-downloads/includes/admin/page-settings.php:505
-#: src/delightful-downloads/includes/admin/page-settings.php:525
-#: src/delightful-downloads/includes/admin/page-settings.php:542
-#: src/delightful-downloads/includes/admin/page-settings.php:588
-#: src/delightful-downloads/includes/admin/page-settings.php:604
+#: src/delightful-downloads/includes/admin/page-settings.php:286
+#: src/delightful-downloads/includes/admin/page-settings.php:302
+#: src/delightful-downloads/includes/admin/page-settings.php:335
+#: src/delightful-downloads/includes/admin/page-settings.php:460
+#: src/delightful-downloads/includes/admin/page-settings.php:477
+#: src/delightful-downloads/includes/admin/page-settings.php:498
+#: src/delightful-downloads/includes/admin/page-settings.php:518
+#: src/delightful-downloads/includes/admin/page-settings.php:535
+#: src/delightful-downloads/includes/admin/page-settings.php:581
+#: src/delightful-downloads/includes/admin/page-settings.php:597
 #: src/delightful-downloads/includes/post-types.php:124
 #: src/delightful-downloads/includes/post-types.php:135
 msgid "No"
@@ -486,7 +486,7 @@ msgid "Download Settings"
 msgstr ""
 
 #: src/delightful-downloads/includes/admin/page-settings.php:86
-#: src/delightful-downloads/includes/admin/page-settings.php:675
+#: src/delightful-downloads/includes/admin/page-settings.php:669
 msgid "Import"
 msgstr ""
 
@@ -509,71 +509,58 @@ msgid "Settings updated successfully."
 msgstr ""
 
 #: src/delightful-downloads/includes/admin/page-settings.php:243
-msgid "Add-ons?"
+msgid "News and Updates"
 msgstr ""
 
 #: src/delightful-downloads/includes/admin/page-settings.php:244
-msgid "I'm working on a few premium add-ons to enhance Delightful Downloads:"
+#, php-format
+msgid ""
+"Want to be the first to know about future add-ons? Subscribe to keep "
+"informed and receive your 20% discount when they’re released!"
 msgstr ""
 
-#: src/delightful-downloads/includes/admin/page-settings.php:247
-msgid "<strong>Customizer</strong> - Button and list styles editor"
-msgstr ""
-
-#: src/delightful-downloads/includes/admin/page-settings.php:248
-msgid "Available"
-msgstr ""
-
-#: src/delightful-downloads/includes/admin/page-settings.php:250
-msgid "<strong>MailChimp</strong> - Subscribe to download"
-msgstr ""
-
-#: src/delightful-downloads/includes/admin/page-settings.php:251
-msgid "<strong>Twitter</strong> - Tweet to download"
-msgstr ""
-
-#: src/delightful-downloads/includes/admin/page-settings.php:262
+#: src/delightful-downloads/includes/admin/page-settings.php:255
 msgid "Keep me informed"
 msgstr ""
 
-#: src/delightful-downloads/includes/admin/page-settings.php:264
+#: src/delightful-downloads/includes/admin/page-settings.php:257
 msgid ""
 "I will not use your email for anything else and you can unsubscribe at "
 "anytime."
 msgstr ""
 
-#: src/delightful-downloads/includes/admin/page-settings.php:267
+#: src/delightful-downloads/includes/admin/page-settings.php:260
 msgid "Help and Support"
 msgstr ""
 
-#: src/delightful-downloads/includes/admin/page-settings.php:268
+#: src/delightful-downloads/includes/admin/page-settings.php:261
 #, php-format
 msgid ""
 "Having issues? Check out the %sdocumentation%s. If you can't find a "
 "solution, please raise an issue on the %ssupport forums%s."
 msgstr ""
 
-#: src/delightful-downloads/includes/admin/page-settings.php:294
+#: src/delightful-downloads/includes/admin/page-settings.php:287
 msgid "Allow downloads to be tagged or categorised."
 msgstr ""
 
-#: src/delightful-downloads/includes/admin/page-settings.php:310
+#: src/delightful-downloads/includes/admin/page-settings.php:303
 msgid ""
 "Allow only logged in users to download files. This can be overridden on a "
 "per-download basis."
 msgstr ""
 
-#: src/delightful-downloads/includes/admin/page-settings.php:319
+#: src/delightful-downloads/includes/admin/page-settings.php:312
 msgid "No Page (Generic Error)"
 msgstr ""
 
-#: src/delightful-downloads/includes/admin/page-settings.php:325
+#: src/delightful-downloads/includes/admin/page-settings.php:318
 msgid ""
 "The page to redirect non-members. If no page is selected, a generic error "
 "message will be displayed. This can be overridden on a per-download basis."
 msgstr ""
 
-#: src/delightful-downloads/includes/admin/page-settings.php:343
+#: src/delightful-downloads/includes/admin/page-settings.php:336
 msgid ""
 "Attempt to open files in the browser window. This can be overridden on a per-"
 "download basis. For files located within the Delightful Downloads upload "
@@ -581,125 +568,125 @@ msgid ""
 "advanced tab."
 msgstr ""
 
-#: src/delightful-downloads/includes/admin/page-settings.php:358
+#: src/delightful-downloads/includes/admin/page-settings.php:351
 msgid "User agents to block from downloading files. One per line."
 msgstr ""
 
-#: src/delightful-downloads/includes/admin/page-settings.php:372
+#: src/delightful-downloads/includes/admin/page-settings.php:365
 #, php-format
 msgid ""
 "The default text to display, when using the %s shortcode. This can be "
 "overridden on a per-download basis."
 msgstr ""
 
-#: src/delightful-downloads/includes/admin/page-settings.php:395
+#: src/delightful-downloads/includes/admin/page-settings.php:388
 msgid "No styles registered"
 msgstr ""
 
-#: src/delightful-downloads/includes/admin/page-settings.php:399
+#: src/delightful-downloads/includes/admin/page-settings.php:392
 #, php-format
 msgid ""
 "The default output style, when using the %s shortcode. This can be "
 "overridden on a per-download basis."
 msgstr ""
 
-#: src/delightful-downloads/includes/admin/page-settings.php:422
+#: src/delightful-downloads/includes/admin/page-settings.php:415
 msgid "No button styles registered"
 msgstr ""
 
-#: src/delightful-downloads/includes/admin/page-settings.php:426
+#: src/delightful-downloads/includes/admin/page-settings.php:419
 #, php-format
 msgid ""
 "The default button style, when using the %s shortcode. This can be "
 "overridden on a per-download basis."
 msgstr ""
 
-#: src/delightful-downloads/includes/admin/page-settings.php:449
+#: src/delightful-downloads/includes/admin/page-settings.php:442
 msgid "No list styles registered"
 msgstr ""
 
-#: src/delightful-downloads/includes/admin/page-settings.php:453
+#: src/delightful-downloads/includes/admin/page-settings.php:446
 #, php-format
 msgid ""
 "The default output style, when using the %s shortcode. This can be "
 "overridden on a per-list basis."
 msgstr ""
 
-#: src/delightful-downloads/includes/admin/page-settings.php:468
+#: src/delightful-downloads/includes/admin/page-settings.php:461
 msgid "Log events triggered by admin users."
 msgstr ""
 
-#: src/delightful-downloads/includes/admin/page-settings.php:485
+#: src/delightful-downloads/includes/admin/page-settings.php:478
 msgid ""
 "Stop multiple logs of the same type from being saved, in quick succession."
 msgstr ""
 
-#: src/delightful-downloads/includes/admin/page-settings.php:488
+#: src/delightful-downloads/includes/admin/page-settings.php:481
 msgid "The time in minutes before creating a new log."
 msgstr ""
 
-#: src/delightful-downloads/includes/admin/page-settings.php:506
+#: src/delightful-downloads/includes/admin/page-settings.php:499
 msgid "Automatically delete old logs."
 msgstr ""
 
-#: src/delightful-downloads/includes/admin/page-settings.php:509
+#: src/delightful-downloads/includes/admin/page-settings.php:502
 msgid "The time in days to keep logs."
 msgstr ""
 
-#: src/delightful-downloads/includes/admin/page-settings.php:526
+#: src/delightful-downloads/includes/admin/page-settings.php:519
 msgid "Output the Delightful Downloads stylesheet on the front-end."
 msgstr ""
 
-#: src/delightful-downloads/includes/admin/page-settings.php:543
+#: src/delightful-downloads/includes/admin/page-settings.php:536
 msgid "Cache database queries that are expensive to generate."
 msgstr ""
 
-#: src/delightful-downloads/includes/admin/page-settings.php:546
+#: src/delightful-downloads/includes/admin/page-settings.php:539
 msgid "The time in minutes to cache queries."
 msgstr ""
 
-#: src/delightful-downloads/includes/admin/page-settings.php:562
+#: src/delightful-downloads/includes/admin/page-settings.php:555
 msgid "The URL for download links."
 msgstr ""
 
-#: src/delightful-downloads/includes/admin/page-settings.php:574
+#: src/delightful-downloads/includes/admin/page-settings.php:567
 msgid "The directory to upload files."
 msgstr ""
 
-#: src/delightful-downloads/includes/admin/page-settings.php:589
+#: src/delightful-downloads/includes/admin/page-settings.php:582
 msgid ""
 "Stop direct access to uploaded files, within the Delightful Downloads upload "
 "directory."
 msgstr ""
 
-#: src/delightful-downloads/includes/admin/page-settings.php:605
+#: src/delightful-downloads/includes/admin/page-settings.php:598
 msgid ""
 "Completely remove all data associated with Delightful Downloads, when "
 "uninstalling the plugin. All downloads, categories, tags and statistics will "
 "be removed."
 msgstr ""
 
-#: src/delightful-downloads/includes/admin/page-settings.php:669
+#: src/delightful-downloads/includes/admin/page-settings.php:663
 msgid "Import Settings"
 msgstr ""
 
-#: src/delightful-downloads/includes/admin/page-settings.php:670
+#: src/delightful-downloads/includes/admin/page-settings.php:664
 msgid "Select a Delightful Downloads settings file to import:"
 msgstr ""
 
-#: src/delightful-downloads/includes/admin/page-settings.php:740
+#: src/delightful-downloads/includes/admin/page-settings.php:734
 msgid "Invalid settings file."
 msgstr ""
 
-#: src/delightful-downloads/includes/admin/page-settings.php:750
+#: src/delightful-downloads/includes/admin/page-settings.php:744
 msgid "Settings have been successfully imported."
 msgstr ""
 
-#: src/delightful-downloads/includes/admin/page-settings.php:758
+#: src/delightful-downloads/includes/admin/page-settings.php:752
 msgid "No file uploaded."
 msgstr ""
 
-#: src/delightful-downloads/includes/admin/page-settings.php:818
+#: src/delightful-downloads/includes/admin/page-settings.php:812
 msgid "Default settings reset successfully."
 msgstr ""
 

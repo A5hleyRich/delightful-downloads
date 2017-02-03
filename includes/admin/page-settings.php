@@ -240,16 +240,9 @@ function dedo_render_part_sidebar() {
 
 		<div id="dedo-settings-sidebar">
 			<div class="pro-version">
-				<h4><?php _e( 'Add-ons?', 'delightful-downloads' ); ?></h4>
-				<p><?php _e( "I'm working on a few premium add-ons to enhance Delightful Downloads:", 'delightful-downloads' ); ?></p>
-				<ul>
-					<li>
-						<strike><?php _e( '<strong>Customizer</strong> - Button and list styles editor', 'delightful-downloads' ); ?></strike>
-						<a href="https://delightfuldownloads.com/add-ons/customizer/?utm_source=WordPress&utm_medium=Plugin&utm_content=Customizer&utm_campaign=Addons%20Page"><?php _e( 'Available', 'delightful-downloads' ); ?></a>
-					</li>
-					<li><?php _e( '<strong>MailChimp</strong> - Subscribe to download', 'delightful-downloads' ); ?></li>
-					<li><?php _e( '<strong>Twitter</strong> - Tweet to download', 'delightful-downloads' ); ?></li>
-				</ul>
+				<h4><?php _e( 'News and Updates', 'delightful-downloads' ); ?></h4>
+				<p><?php _e( "Want to be the first to know about future add-ons? Subscribe to keep informed and receive your 20% discount when they’re released!", 'delightful-downloads' ); ?></p>
+
 				<form method="post" action="http://ashleyrich.us5.list-manage.com/subscribe/post" target="_blank">
 					<input type="hidden" name="u" value="ace6f39e2bb7270b9ca7a21bc">
 					<input type="hidden" name="id" value="003e1f6906">
@@ -612,10 +605,11 @@ function dedo_settings_uninstall_field() {
  * @since  1.3
  */
 function dedo_validate_settings( $input ) {
-	global $dedo_options, $dedo_default_options;
+	global $dedo_options;
 
 	// Registered options
-	$options = dedo_get_options();
+	$options              = dedo_get_options();
+	$dedo_default_options = dedo_get_default_options();
 
 	// Ensure text fields are not blank
 	foreach( $options as $key => $value ) {
