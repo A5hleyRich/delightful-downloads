@@ -133,10 +133,10 @@ function dedo_count_downloads_ajax() {
 	);
 
 	// Return success and data
-	echo json_encode( array (
+	echo html_entity_decode(json_encode( array (
 		'status'	=> 'success',
 		'content'	=> $result
-	) );
+	) ) );
 
 	die();
 }
@@ -177,10 +177,10 @@ function dedo_popular_downloads_ajax() {
 	}
 
 	// Return success and data
-	echo json_encode( array (
+	echo html_entity_decode(json_encode( array (
 		'status'	=> 'success',
 		'content'	=> $result
-	) );
+	) ) );
 
 	die();
 }
