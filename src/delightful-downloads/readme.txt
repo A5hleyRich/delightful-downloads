@@ -75,14 +75,14 @@ Please refer to the [FAQ](https://delightfuldownloads.com/documentation/delightf
 
 == Changelog ==
 
-= 1.6.5 =
-
-* Improvement: Compatibility with upcoming MailChimp addon
-
-= 1.6.5 =
+= 1.6.6 =
 
 * New: MailChimp addon released
 * Bug fix: Fix undefined error on settings save
+
+= 1.6.5 =
+
+* Improvement: Compatibility with upcoming MailChimp addon
 
 = 1.6.4 =
 
