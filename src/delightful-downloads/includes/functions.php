@@ -163,6 +163,12 @@ function dedo_get_shortcode_lists() {
  		$string = str_replace( '%ext%', $value, $string );
  	}
 
+	// file description
+ 	if ( strpos( $string, '%description%' ) !== false ) {
+ 		$value = get_post_meta( $id, '_dedo_file_description', true );
+ 		$string = str_replace( '%description%', $value, $string );
+ 	}
+
  	 // file mime
  	if ( strpos( $string, '%mime%' ) !== false ) {
  		$value = dedo_get_file_mime( get_post_meta( $id, '_dedo_file_url', true ) );

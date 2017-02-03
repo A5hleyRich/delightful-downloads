@@ -103,6 +103,9 @@ function dedo_meta_box_download( $post ) {
 	$file_count = get_post_meta( $post->ID, '_dedo_file_count', true );
 	$file_count = ( false != $file_count ) ? $file_count : 0;
 
+	$file_description = get_post_meta( $post->ID, '_dedo_file_description', true );
+	$file_description = ( false != $file_description ) ? $file_description : '';
+
 	$file_options = get_post_meta( $post->ID, '_dedo_file_options', true );
 
 	// Update status args
@@ -229,6 +232,15 @@ function dedo_meta_box_download( $post ) {
 							<label for="open_browser_false"><input name="open_browser" id="open_browser_false" type="radio" value="0" <?php echo ( 0 === $open_browser ) ? 'checked' : ''; ?> /> <?php _e( 'No', 'delightful-downloads' ); ?></label>
 							<label for="open_browser_inherit"><input name="open_browser" id="open_browser_inherit" type="radio" value <?php echo ( '' === $open_browser ) ? 'checked' : ''; ?> /> <?php _e( 'Inherit', 'delightful-downloads' ); ?></label>
 							<p class="description"><?php echo sprintf( __( 'This file will attempt to open in the browser window. If the file is located within the Delightful Downloads upload directory, you will need to set the %sfolder protection%s setting to \'No\'.', 'delightful-downloads' ), '<a href="' . admin_url( 'edit.php?post_type=dedo_download&page=dedo_settings&tab=advanced' ) . '" target="_blank">', '</a>' ); ?></p>
+						</td>
+					</tr>
+					<tr>
+						<th scope="row">
+							<?php _e( 'File Description', 'delightful-downloads' ); ?>
+						</th>
+						<td>
+							<textarea name="file_description" id="file_description"><?php echo $file_description; ?></textarea>
+							<p class="description"><?php _e( 'Optional description of the file. Display with wildcard %description%.' ); ?></p>
 						</td>
 					</tr>
 				</tbody>
@@ -397,6 +409,11 @@ function dedo_meta_boxes_save( $post_id ) {
 		// Save download count
 		if ( isset( $_POST['download_count'] ) && '' !== trim( $_POST['download_count'] ) ) {
 			update_post_meta( $post_id, '_dedo_file_count', trim( $_POST['download_count'] ) );
+		}
+
+		// Save file description
+		if ( isset( $_POST['file_description'] ) && '' !== trim( $_POST['file_description'] ) ) {
+			update_post_meta( $post_id, '_dedo_file_description', trim( $_POST['file_description'] ) );
 		}
 
 		// Get current file options
