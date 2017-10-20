@@ -66,7 +66,18 @@ function dedo_download_column_headings( $columns ) {
 		'open_browser' => '<span class="icon" title="' . __( 'Open in Browser', 'delightful-downloads' ) . '">' . __( 'Open in Browser', 'delightful-downloads' ) . '</span>',
 		'date'         => __( 'Date', 'delightful-downloads' ),
 	);
+  
+	// If Quicklinks is enabled add to columns array
+	if ( $dedo_options['download_quicklink'] ) {
+		$columns_quicklink = array(
+			'quicklink'    => __( 'Quick Link', 'delightful-downloads' ),
+		);
 
+		// Splice and insert after shortcode column
+		$spliced = array_splice( $columns, 4 );
+		$columns = array_merge( $columns, $columns_quicklink, $spliced );
+	}
+  
 	// If taxonomies is enabled add to columns array
 	if ( $dedo_options['enable_taxonomies'] ) {
 		$columns_taxonomies = array(
@@ -109,6 +120,13 @@ function dedo_download_column_contents( $column_name, $post_id ) {
 		echo '<p class="description" style="display: none;">' . __( 'Shortcode copied to clipboard.', 'delightful-downloads' ) . '</p>';
 	}
 
+	// QuickLink
+	if ( $column_name == 'quicklink' ) {
+		global $dedo_options;
+		echo '<input type="text" class="copy-to-clipboard" value="' . get_site_url() . '?' . $text = $dedo_options['download_url'] . '=' . esc_attr( $post_id ) . '" readonly>';
+		echo '<p class="description" style="display: none;">' . __( 'QuickLink copied to clipboard.', 'delightful-downloads' ) . '</p>';
+	}
+  
 	// Count column
 	if ( $column_name == 'downloads' ) {
 		$count = get_post_meta( $post_id, '_dedo_file_count', true );

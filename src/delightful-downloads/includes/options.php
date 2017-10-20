@@ -142,6 +142,12 @@ function dedo_get_options() {
 			'type'    => 'text',
 			'default' => 'ddownload',
 		),
+    	'download_quicklink'   => array(
+			'name'    => __( 'Download Address Quicklink', 'delightful-downloads' ),
+			'tab'     => 'advanced',
+			'type'    => 'radio',
+			'default' => 1,
+		),
 		'upload_directory'    => array(
 			'name'    => __( 'Upload Directory', 'delightful-downloads' ),
 			'tab'     => 'advanced',
