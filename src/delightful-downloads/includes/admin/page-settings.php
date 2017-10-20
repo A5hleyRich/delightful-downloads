@@ -556,6 +556,22 @@ function dedo_settings_download_url_field() {
 }
 
 /**
+ * Render Download Address Quicklink
+ *
+ * @since  1.3
+ */
+function dedo_settings_download_quicklink_field() {
+	global $dedo_options;
+
+  	$checked = absint( $dedo_options['download_quicklink'] );
+	?>
+  	<label for="quicklink_true"><input name="delightful-downloads[download_quicklink]" id="quicklink_true" type="radio" value="1" <?php echo ( 1 === $checked ) ? 'checked' : ''; ?> /> <?php _e( 'Yes', 'delightful-downloads' ); ?></label>
+	<label for="quicklink_false"><input name="delightful-downloads[download_quicklink]" id="quicklink_false" type="radio" value="0" <?php echo ( 0 === $checked ) ? 'checked' : ''; ?> /> <?php _e( 'No', 'delightful-downloads' ); ?></label>
+	<p class="description"><?php _e( 'Display Quicklink column in download list.', 'delightful-downloads' ); ?></p> 
+	<?  
+}
+
+/**
  * Render Upload Directory field
  */
 function dedo_settings_upload_directory_field() {
