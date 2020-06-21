@@ -1,9 +1,9 @@
 === Delightful Downloads ===
-Contributors: A5hleyRich, PB
-Tags: download, manager, downloads, monitor, shortcode, delightful downloads, file, counter, tracking
+Contributors: A5hleyRich, Sven Bolte
+Tags: download, manager, downloads, monitor, shortcode, delightful downloads, file, counter, tracking, infobox, fixed filetree
 Requires at least: 4.7
-Tested up to: 5.4
-Stable tag: 9.9.13
+Tested up to: 5.4.2
+Stable tag: 9.9.16
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -42,8 +42,8 @@ To add and manage downloads via the WordPress Administration screens, you must h
 
 **GitHub, Source Code**
 
-If you would like to contribute to the plugin, you can do so on [GitHub](https://github.com/A5hleyRich/Delightful-Downloads).
-There are several forks.
+If you would like to contribute to the plugin, you can do so on [GitHub](https://github.com/svenbolte/delightful-downloads).
+There are several forks (like this one).
 
 == Installation ==
 
@@ -58,6 +58,12 @@ Please refer to the [documentation] at the root folder of this plugin for furthe
 Please refer to the [FAQ] at the root folder of this plugin for further instructions (documentation.txt) 
 
 == Changelog ==
+
+= 9.9.16 =
+* Added german and german (formal) translations to language directory
+* Security fixes for jQueryFileTree applied and tested. Root file system access is now blocked
+* minor bug fixes
+* removed some unneccessary stuff
 
 = 9.9.13 =
 * Quicklink column to copy download URL in Downloads admin panel can be enabled
