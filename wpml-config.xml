@@ -1,0 +1,16 @@
+<wpml-config>
+    <custom-fields>
+        <custom-field action="ignore">_dedo_log_agent</custom-field>
+        <custom-field action="ignore">_dedo_log_download</custom-field>
+        <custom-field action="ignore">_dedo_log_ip</custom-field>
+    </custom-fields>
+    <custom-types>
+        <custom-type translate="0">dedo_download</custom-type>
+        <custom-type translate="0">dedo_log</custom-type>   
+    </custom-types>
+    <admin-texts>
+        <key name="delightful-downloads">
+            <key name="default_text" />
+        </key>
+    </admin-texts>
+</wpml-config>
