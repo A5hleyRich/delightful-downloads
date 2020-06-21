@@ -1,3 +1,7 @@
+## Security fixes and features
+
+I pulled this fork to integrate the 1.1.1 version of jqueryfiletree, new file type images, a new infobox layout, descriptions for files and much more. feel free to use and comment.
+
 ![Version](https://img.shields.io/wordpress/plugin/dt/delightful-downloads.svg) ![Rating](https://img.shields.io/wordpress/plugin/r/delightful-downloads.svg)
 
 ## Bugs
