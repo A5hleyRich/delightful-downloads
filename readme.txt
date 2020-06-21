@@ -34,7 +34,7 @@ Delightful Downloads is a super-awesome downloads manager for WordPress that all
 
 **Documentation**
 
-The Delightful Downloads documentation can be found at the root folder of this plugin for further instructions (documentation.txt)
+The Delightful Downloads documentation can be found at the root folder of this plugin for further instructions (documentation.txt and documentation-styles.pdf)
 
 **Requirements**
 

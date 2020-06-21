@@ -9,6 +9,30 @@ Custom file type extended: Description can be given and stored in database, Cate
 language packs german and german formal added.
 Documentation updated and put in the project in text form (/documentation.txt)
 
+## Documentation ##
+
+The Delightful Downloads documentation can be found at the root folder of this plugin for further instructions (documentation.txt and documentation-styles.pdf)
+
+
+## Features ##
+
+* File upload via the WordPress admin area. Absolute file paths and remote file URLs are supported via manual entry.
+* Categorise and tag downloads.
+* Shortcodes to display download links, buttons and download information within posts, pages and widget areas.
+* Shortcode to list downloads, optionally filtered by categories and tags. Order by download count, file size, date, title and random.
+* Editor button to automatically generate shortcodes.
+* Download statistics tracked within the WordPress dashboard area. Specify a grace period so that multiple log entries are not triggered by the same user (more accurate statistics).
+* Automatically delete logs older than a specified number of days.
+* Blocks users from accessing files directly.
+* Block bots from downloading files.
+* Members only downloads with page redirect for non-logged in users.
+* Password protected files.
+* Open in Browser - Allow files such as PDFs and movies to open directly within the browser window and still track download statistics.
+* Various button styles included with the ability to add custom buttons.
+* Built in caching for excellent performance.
+* Developer friendly.
+* Localisation support and german translations.
+
 
 ## Bugs
 
