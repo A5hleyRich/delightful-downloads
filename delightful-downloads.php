@@ -1,11 +1,11 @@
 <?php
 /*
  * Plugin Name: Delightful Downloads
- * Plugin URI: https://github.com/A5hleyRich/delightful-downloads
+ * Plugin URI: https://github.com/svenbolte/delightful-downloads/
  * Description: A super-awesome downloads manager for WordPress.
- * Version: 9.9.13
+ * Version: 9.9.16
  * Author: Ashley Rich und PBMod
- * Author URI: http://ashleyrich.com
+ * Author URI: https://github.com/svenbolte/
  * Text Domain: delightful-downloads
  * Domain Path: /languages/
  * License: GPL2
