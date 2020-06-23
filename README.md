@@ -16,6 +16,7 @@ The Delightful Downloads documentation can be found at the root folder of this p
 
 ## Features ##
 
+* crypted Link for one day pass download of a file copy in admin area and share. File Can be downloaded until end of same day
 * File upload via the WordPress admin area. Absolute file paths and remote file URLs are supported via manual entry.
 * Categorise and tag downloads.
 * Shortcodes to display download links, buttons and download information within posts, pages and widget areas.

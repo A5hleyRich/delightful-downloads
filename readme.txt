@@ -3,7 +3,7 @@ Contributors: A5hleyRich, Sven Bolte
 Tags: download, manager, downloads, monitor, shortcode, delightful downloads, file, counter, tracking, infobox, fixed filetree
 Requires at least: 4.7
 Tested up to: 5.4.2
-Stable tag: 9.9.16
+Stable tag: 9.9.17
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -58,6 +58,9 @@ Please refer to the [documentation] at the root folder of this plugin for furthe
 Please refer to the [FAQ] at the root folder of this plugin for further instructions (documentation.txt) 
 
 == Changelog ==
+
+= 9.9.17 =
+* added one day pass download links (copy to clipboard) in admin panel. File can be downloaded with this crypted link until end of same day
 
 = 9.9.16 =
 * Added german and german (formal) translations to language directory

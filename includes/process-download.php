@@ -3,7 +3,7 @@
  * Delightful Downloads Process Download
  *
  * @package     Delightful Downloads
- * @subpackage  Includes/Process Downloads
+ * @subpackage  Includes/Process Downloads and secure one day pass downloads
  * @since       1.0
  */
 
@@ -20,6 +20,44 @@ if ( ! defined( 'ABSPATH' ) ) {
  *
  * @since 1.0
  */
+
+// Secure download one day pass
+function dedo_onedaypass_process( $download_id ) {
+	global $dedo_options;
+
+	// Check valid download
+	if ( ! dedo_download_valid( $download_id ) ) {
+		do_action( 'ddownload_download_invalid', $download_id );
+		wp_die( __( 'Invalid download.', 'delightful-downloads' ) );
+	}
+	// Get file meta
+	$download_url = get_post_meta( $download_id, '_dedo_file_url', true );
+	$options      = get_post_meta( $download_id, '_dedo_file_options', true );
+
+
+    // Onedaypass prüfen
+	if ($_GET['code'] == md5(intval(date()/24*60*60))) { // if it match it is legit
+		// $path = ABSPATH.'wp-content/uploads/delightful-downloads/2019/software.zip'; // the file made available for download via this PHP file
+		$path = dedo_get_abs_path( $download_url );
+		$mm_type="application/octet-stream"; // modify accordingly to the file type of $path, but in most cases no need to do so
+		header("Pragma: public");
+		header("Expires: 0");
+		header("Cache-Control: must-revalidate, post-check=0, pre-check=0");
+		header("Cache-Control: public");
+		header("Content-Description: File Transfer");
+		header("Content-Type: " . $mm_type);
+		header("Content-Length: " .(string)(filesize($path)) );
+		header('Content-Disposition: attachment; filename="'.basename($path).'"');
+		header("Content-Transfer-Encoding: binary\n");
+		readfile($path); // outputs the content of the file
+		exit();		  
+	} else {
+		echo 'Pfad nicht gefunden'; // not legit
+	}  
+
+}
+
+
 function dedo_download_process( $download_id ) {
 	global $dedo_options;
 
@@ -171,6 +209,9 @@ function dedo_init_handle_download() {
 
 	if ( isset( $_GET[ $dedo_options['download_url'] ] ) ) {
 		dedo_download_process( absint( $_GET[ $dedo_options['download_url'] ] ) );
+	}
+	if ( isset( $_GET[ 'sdownload' ] ) ) {
+		dedo_onedaypass_process( absint( $_GET[ 'sdownload' ] ) );
 	}
 }
 add_action( 'init', 'dedo_init_handle_download', 4 );
