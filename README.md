@@ -8,6 +8,7 @@ New File type icons (taken from an open source project and added some types like
 Custom file type extended: Description can be given and stored in database, Categories and tags added
 language packs german and german formal added.
 Documentation updated and put in the project in text form (/documentation.txt)
+secured one-day-download pass links per file function
 
 ## Documentation ##
 
@@ -16,7 +17,7 @@ The Delightful Downloads documentation can be found at the root folder of this p
 
 ## Features ##
 
-* crypted Link for one day pass download of a file copy in admin area and share. File Can be downloaded until end of same day
+* crypted Link for one day pass download of a file copy (unique one per file) in admin area and share. File Can be downloaded until end of same day. expiring after that time
 * File upload via the WordPress admin area. Absolute file paths and remote file URLs are supported via manual entry.
 * Categorise and tag downloads.
 * Shortcodes to display download links, buttons and download information within posts, pages and widget areas.
@@ -32,7 +33,7 @@ The Delightful Downloads documentation can be found at the root folder of this p
 * Various button styles included with the ability to add custom buttons.
 * Built in caching for excellent performance.
 * Developer friendly.
-* Localisation support and german translations.
+* Localisation support and german translations ( complete for german and german(formal) ).
 
 
 ## Bugs

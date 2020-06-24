@@ -59,6 +59,10 @@ Please refer to the [FAQ] at the root folder of this plugin for further instruct
 
 == Changelog ==
 
+= 9.9.18 =
+* one day pass are unique per download now (user can download named file until 2400 hrs same day. Own column in admin panel for 1-day-pass-downloads
+* German translation completed and added one day downloads translation
+
 = 9.9.17 =
 * added one day pass download links (copy to clipboard) in admin panel. File can be downloaded with this crypted link until end of same day
 
