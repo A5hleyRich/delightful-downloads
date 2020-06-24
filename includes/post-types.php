@@ -61,6 +61,7 @@ function dedo_download_column_headings( $columns ) {
 		'file'         => __( 'File', 'delightful-downloads' ),
 		'filesize'     => __( 'File Size', 'delightful-downloads' ),
 		'shortcode'    => __( 'Shortcode', 'delightful-downloads' ),
+		'onedaypass'    => __( 'One day pass:', 'delightful-downloads' ),
 		'downloads'    => __( 'Downloads', 'delightful-downloads' ),
 		'members_only' => '<span class="icon" title="' . __( 'Members Only', 'delightful-downloads' ) . '">' . __( 'Members Only', 'delightful-downloads' ) . '</span>',
 		'open_browser' => '<span class="icon" title="' . __( 'Open in Browser', 'delightful-downloads' ) . '">' . __( 'Open in Browser', 'delightful-downloads' ) . '</span>',
@@ -118,9 +119,6 @@ function dedo_download_column_contents( $column_name, $post_id ) {
 	if ( $column_name == 'shortcode' ) {
 		echo '<input type="text" title="id=&quot;' . esc_attr( $post_id ) . '&quot;" class="copy-to-clipboard" value="[ddownload id=&quot;' . esc_attr( $post_id ) . '&quot;]" readonly>';
 		echo '<p class="description" style="display: none;">' . __( 'Shortcode copied to clipboard.', 'delightful-downloads' ) . '</p>';
-		echo __( 'One day pass:', 'delightful-downloads' );
-		echo '<input type="text" title="'.md5(intval(date()/24*60*60)).'" class="copy-to-clipboard" value="' . get_site_url() . '?sdownload=' . esc_attr( $post_id ) .  '&code='.md5(intval(date()/24*60*60)) . '" readonly>';
-		echo '<p class="description" style="display: none;">' . __( 'One day pass copied to clipboard.', 'delightful-downloads' ) . '</p>';
 	}
 
 	// QuickLink
@@ -128,6 +126,13 @@ function dedo_download_column_contents( $column_name, $post_id ) {
 		global $dedo_options;
 		echo '<input type="text" title="'.$dedo_options['download_url'] . '=' . esc_attr( $post_id ) . '" class="copy-to-clipboard" value="' . get_site_url() . '?' . $text = $dedo_options['download_url'] . '=' . esc_attr( $post_id ) . '" readonly>';
 		echo '<p class="description" style="display: none;">' . __( 'Quicklink copied to clipboard.', 'delightful-downloads' ) . '</p>';
+	}
+	
+	// One day pass column
+	if ( $column_name == 'onedaypass' ) {
+		$hashwert = md5(intval($post_id) + intval(date()/24*60*60));
+		echo '<input type="text" title="'.$hashwert.'" class="copy-to-clipboard" value="' . get_site_url() . '?sdownload=' . esc_attr( $post_id ) .  '&code='. $hashwert . '" readonly>';
+		echo '<p class="description" style="display: none;">' . __( 'One day pass copied to clipboard.', 'delightful-downloads' ) . '</p>';
 	}
 	
 	// Count column
