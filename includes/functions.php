@@ -704,70 +704,7 @@ function dedo_get_file_status( $url ) {
 function dedo_get_file_icon( $file, $url = true ) {
 	$ext = dedo_get_file_ext( $file );
 	
-	switch( $ext ) {
-		case 'aac': 	$icon = 'aac.png'; break;
-		case 'ai': 		$icon = 'ai.png'; break;
-		case 'aiff':	$icon = 'aiff.png'; break;
-		case 'avi':		$icon = 'avi.png'; break;
-		case 'bmp':		$icon = 'bmp.png'; break;
-		case 'c':		$icon = 'c.png'; break;
-		case 'cpp':		$icon = 'cpp.png'; break;
-		case 'css':		$icon = 'css.png'; break;
-		case 'dat':		$icon = 'dat.png'; break;
-		case 'dmg':		$icon = 'dmg.png'; break;
-		case 'doc':		$icon = 'doc.png'; break;
-		case 'dotx':	$icon = 'dotx.png'; break;
-		case 'dwg':		$icon = 'dwg.png'; break;
-		case 'dxf':		$icon = 'dxf.png'; break;
-		case 'eps':		$icon = 'eps.png'; break;
-		case 'exe':		$icon = 'exe.png'; break;
-		case 'flv':		$icon = 'flv.png'; break;
-		case 'gif':		$icon = 'gif.png'; break;
-		case 'h':		$icon = 'h.png'; break;
-		case 'hpp':		$icon = 'hpp.png'; break;
-		case 'html':	$icon = 'html.png'; break;
-		case 'ics':		$icon = 'ics.png'; break;
-		case 'iso':		$icon = 'iso.png'; break;
-		case 'java':	$icon = 'java.png'; break;
-		case 'jpg':		$icon = 'jpg.png'; break;
-		case 'js':		$icon = 'js.png'; break;
-		case 'key':		$icon = 'key.png'; break;
-		case 'less':	$icon = 'less.png'; break;
-		case 'mid':		$icon = 'mid.png'; break;
-		case 'mp3':		$icon = 'mp3.png'; break;
-		case 'mp4':		$icon = 'mp4.png'; break;
-		case 'mpg':		$icon = 'mpg.png'; break;
-		case 'odf':		$icon = 'odf.png'; break;
-		case 'ods':		$icon = 'ods.png'; break;
-		case 'odt':		$icon = 'odt.png'; break;
-		case 'otp':		$icon = 'otp.png'; break;
-		case 'ots':		$icon = 'ots.png'; break;
-		case 'ott':		$icon = 'ott.png'; break;
-		case 'pdf':		$icon = 'pdf.png'; break;
-		case 'php':		$icon = 'php.png'; break;
-		case 'png':		$icon = 'png.png'; break;
-		case 'ppt':		$icon = 'ppt.png'; break;
-		case 'psd':		$icon = 'psd.png'; break;
-		case 'py':		$icon = 'py.png'; break;
-		case 'qt':		$icon = 'qt.png'; break;
-		case 'rar':		$icon = 'rar.png'; break;
-		case 'rb':		$icon = 'rb.png'; break;
-		case 'rtf':		$icon = 'rtf.png'; break;
-		case 'sass':	$icon = 'sass.png'; break;
-		case 'scss':	$icon = 'scss.png'; break;
-		case 'sql':		$icon = 'sql.png'; break;
-		case 'tga':		$icon = 'tga.png'; break;
-		case 'tgz':		$icon = 'tgz.png'; break;
-		case 'tiff':	$icon = 'tiff.png'; break;
-		case 'txt':		$icon = 'txt.png'; break;
-		case 'wav':		$icon = 'wav.png'; break;
-		case 'xls':		$icon = 'xls.png'; break;
-		case 'xlsx':	$icon = 'xlsx.png'; break;
-		case 'xml':		$icon = 'xml.png'; break;
-		case 'yml':		$icon = 'yml.png'; break;
-		case 'zip':		$icon = 'zip.png'; break;
-		default:		$icon = '_blank.png'; break;
-	}
+	$icon = $ext.'.png';	
 
 	if ( $url ) {
 		return DEDO_PLUGIN_URL . 'assets/icons/' . $icon;
