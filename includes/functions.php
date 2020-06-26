@@ -337,7 +337,8 @@ function dedo_download_ip() {
 	else {
 		$ip_address = sanitize_text_field( $_SERVER['REMOTE_ADDR'] );
 	}
-
+	// letzte Stelle der IP anonymisieren (0 setzen)	
+	$ip_address = long2ip(ip2long($ip_address) & 0xFFFFFF00);
 	return $ip_address;
 }
 
