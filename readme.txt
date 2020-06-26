@@ -3,7 +3,7 @@ Contributors: A5hleyRich, Sven Bolte
 Tags: download, manager, downloads, monitor, shortcode, delightful downloads, file, counter, tracking, infobox, fixed filetree
 Requires at least: 4.7
 Tested up to: 5.4.2
-Stable tag: 9.9.17
+Stable tag: 9.9.19
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -31,6 +31,7 @@ Delightful Downloads is a super-awesome downloads manager for WordPress that all
 * Built in caching for excellent performance.
 * Developer friendly.
 * Localisation support and german translations.
+* IP-Address for downloads is stored shortened with last digit = 0
 
 **Documentation**
 
@@ -58,6 +59,9 @@ Please refer to the [documentation] at the root folder of this plugin for furthe
 Please refer to the [FAQ] at the root folder of this plugin for further instructions (documentation.txt) 
 
 == Changelog ==
+
+= 9.9.18 =
+IP-Anonymization in logfiles
 
 = 9.9.18 =
 * one day pass are unique per download now (user can download named file until 2400 hrs same day. Own column in admin panel for 1-day-pass-downloads
