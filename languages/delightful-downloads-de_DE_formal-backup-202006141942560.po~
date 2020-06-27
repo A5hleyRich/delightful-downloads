@@ -2,49 +2,112 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the delightful-downloads package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-#, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: delightful-downloads 1.6.1\n"
 "Report-Msgid-Bugs-To: hello@ashleyrich.com\n"
-"POT-Creation-Date: 2020-06-23 19:41+0000\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
-"Language: \n"
+"POT-Creation-Date: 2020-06-14 19:29+0000\n"
+"PO-Revision-Date: 2020-06-14 19:42+0000\n"
+"Last-Translator: Patrick Bärenfänger\n"
+"Language-Team: Deutsch (Sie)\n"
+"Language: de_DE_formal\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
-"X-Generator: Loco https://localise.biz/"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Loco https://localise.biz/\n"
+"X-Loco-Version: 2.4.0; wp-5.4.2"
 
 #: delightful-downloads.php:193 includes/admin/page-settings.php:19
 msgid "Settings"
 msgstr ""
 
-#: classes/class-addon.php:170
-msgid "License Key"
+#: includes/taxonomies.php:23
+msgid "Download Categories"
+msgstr "Download Kategorien"
+
+#: includes/taxonomies.php:24
+msgid "Download Category"
+msgstr "Download Kategorie"
+
+#: includes/taxonomies.php:25 includes/post-types.php:84
+msgid "Categories"
+msgstr "Kategorien"
+
+#: includes/taxonomies.php:26 includes/class-dedo-widget-list.php:161
+msgid "All Categories"
+msgstr "Alle Kategorien"
+
+#: includes/taxonomies.php:27
+msgid "Edit Category"
+msgstr "Kategorie bearbeiten"
+
+#: includes/taxonomies.php:28
+msgid "View Category"
 msgstr ""
 
-#: classes/class-addon.php:221
-#, php-format
-msgid "%s License Error"
+#: includes/taxonomies.php:29
+msgid "Update Category"
 msgstr ""
 
-#: classes/class-addon.php:226
-msgid "License key not found."
+#: includes/taxonomies.php:30
+msgid "Add New Category"
+msgstr "Neue Kategorie zufügen"
+
+#: includes/taxonomies.php:31
+msgid "New Category Name"
 msgstr ""
 
-#: classes/class-addon.php:229
-msgid "No site activations remaining."
+#: includes/taxonomies.php:32
+msgid "Search Categories"
 msgstr ""
 
-#: classes/class-addon.php:232
-msgid "Your license key has expired."
+#: includes/taxonomies.php:33
+msgid "Popular Categories"
 msgstr ""
 
-#: classes/class-addon.php:235 classes/class-addon.php:238
-msgid "Please check your license key and try again."
+#: includes/taxonomies.php:47
+msgid "Download Tags"
+msgstr "Download Schlagwörter"
+
+#: includes/taxonomies.php:48
+msgid "Download Tag"
+msgstr "Download Schlagwort"
+
+#: includes/taxonomies.php:49 includes/post-types.php:85
+msgid "Tags"
+msgstr "Schlagwörter"
+
+#: includes/taxonomies.php:50 includes/class-dedo-widget-list.php:171
+msgid "All Tags"
+msgstr ""
+
+#: includes/taxonomies.php:51
+msgid "Edit Tag"
+msgstr "Schlagwort bearbeiten"
+
+#: includes/taxonomies.php:52
+msgid "View Tag"
+msgstr ""
+
+#: includes/taxonomies.php:53
+msgid "Update Tag"
+msgstr ""
+
+#: includes/taxonomies.php:54
+msgid "Add New Tag"
+msgstr "Neues Schlagwort zufügen"
+
+#: includes/taxonomies.php:55
+msgid "New Tag Name"
+msgstr ""
+
+#: includes/taxonomies.php:56
+msgid "Search Tags"
+msgstr ""
+
+#: includes/taxonomies.php:57
+msgid "Popular Tags"
 msgstr ""
 
 #. Name of the plugin
@@ -54,7 +117,7 @@ msgstr ""
 
 #: includes/class-dedo-widget-list.php:26
 msgid "A list of your site's downloads."
-msgstr ""
+msgstr "Liste der Downloads dieser Seite"
 
 #: includes/class-dedo-widget-list.php:96 includes/post-types.php:22
 #: includes/post-types.php:34 includes/post-types.php:64
@@ -74,29 +137,29 @@ msgid "Order by:"
 msgstr ""
 
 #: includes/class-dedo-widget-list.php:133 includes/post-types.php:67
-#: includes/admin/class-dedo-list-table.php:52
 #: includes/admin/page-statistics.php:188
+#: includes/admin/class-dedo-list-table.php:52
 msgid "Date"
 msgstr ""
 
 #: includes/class-dedo-widget-list.php:134 includes/admin/media-button.php:108
 #: includes/admin/meta-boxes.php:177
 msgid "Download Count"
-msgstr ""
+msgstr "Download Zähler"
 
 #: includes/class-dedo-widget-list.php:135 includes/post-types.php:62
 #: includes/admin/media-button.php:107
 msgid "File Size"
-msgstr ""
+msgstr "Dateigröße"
 
 #: includes/class-dedo-widget-list.php:136
 msgid "Random"
-msgstr ""
+msgstr "Zufall"
 
 #: includes/class-dedo-widget-list.php:137 includes/functions.php:96
 #: includes/post-types.php:60
 msgid "Title"
-msgstr ""
+msgstr "Titel"
 
 #: includes/class-dedo-widget-list.php:141
 msgid "Order:"
@@ -104,11 +167,11 @@ msgstr ""
 
 #: includes/class-dedo-widget-list.php:143
 msgid "ASC"
-msgstr ""
+msgstr "aufsteigend"
 
 #: includes/class-dedo-widget-list.php:144
 msgid "DESC"
-msgstr ""
+msgstr "absteigend"
 
 #: includes/class-dedo-widget-list.php:148
 msgid "List Style:"
@@ -118,17 +181,9 @@ msgstr ""
 msgid "Category:"
 msgstr ""
 
-#: includes/class-dedo-widget-list.php:161 includes/taxonomies.php:26
-msgid "All Categories"
-msgstr ""
-
 #: includes/class-dedo-widget-list.php:168
 msgid "Tag:"
-msgstr ""
-
-#: includes/class-dedo-widget-list.php:171 includes/taxonomies.php:50
-msgid "All Tags"
-msgstr ""
+msgstr "Schlagwort:"
 
 #: includes/class-dedo-widget-list.php:178
 msgid "Relation:"
@@ -140,7 +195,7 @@ msgstr ""
 
 #: includes/functions.php:22 includes/admin/media-button.php:87
 msgid "Button"
-msgstr ""
+msgstr "Schaltfläche"
 
 #: includes/functions.php:26
 msgid "Infobox mit Icon und Details"
@@ -160,27 +215,27 @@ msgstr ""
 
 #: includes/functions.php:55
 msgid "Black"
-msgstr ""
+msgstr "schwarz"
 
 #: includes/functions.php:59
 msgid "Blue"
-msgstr ""
+msgstr "blau"
 
 #: includes/functions.php:63
 msgid "Grey"
-msgstr ""
+msgstr "grau"
 
 #: includes/functions.php:67
 msgid "Green"
-msgstr ""
+msgstr "grün"
 
 #: includes/functions.php:71
 msgid "Purple"
-msgstr ""
+msgstr "purpur"
 
 #: includes/functions.php:75
 msgid "Red"
-msgstr ""
+msgstr "rot"
 
 #: includes/functions.php:79
 msgid "Yellow"
@@ -192,7 +247,7 @@ msgstr ""
 
 #: includes/functions.php:104
 msgid "Title (Count)"
-msgstr ""
+msgstr "Titel (Zähler)"
 
 #: includes/functions.php:108
 msgid "Title (File size)"
@@ -214,6 +269,30 @@ msgstr ""
 msgid "Title (Icon, Date, Extension, File size,count)"
 msgstr ""
 
+#: includes/process-download.php:29
+msgid "Invalid download."
+msgstr ""
+
+#: includes/process-download.php:35
+msgid "You are blocked from downloading this file!"
+msgstr ""
+
+#: includes/process-download.php:59
+msgid "Please login to download this file!"
+msgstr ""
+
+#: includes/process-download.php:65
+msgid "Password Required"
+msgstr "Kennwort erforderlich"
+
+#: includes/process-download.php:70
+msgid "You must attach a file to this download."
+msgstr ""
+
+#: includes/process-download.php:125
+msgid "Server error, file cannot be opened!"
+msgstr ""
+
 #: includes/options.php:22
 msgid "General"
 msgstr ""
@@ -228,7 +307,7 @@ msgstr ""
 
 #: includes/options.php:25
 msgid "Advanced"
-msgstr ""
+msgstr "Erweitert"
 
 #: includes/options.php:32
 msgid "Licenses"
@@ -261,9 +340,8 @@ msgid "Default Text"
 msgstr ""
 
 #: includes/options.php:80 includes/post-types.php:23
-#: includes/admin/class-dedo-list-table.php:48
-#: includes/admin/media-button.php:65 includes/admin/meta-boxes.php:19
-#: includes/admin/page-statistics.php:188
+#: includes/admin/page-statistics.php:188 includes/admin/media-button.php:65
+#: includes/admin/class-dedo-list-table.php:48 includes/admin/meta-boxes.php:19
 msgid "Download"
 msgstr ""
 
@@ -301,19 +379,19 @@ msgstr ""
 
 #: includes/options.php:140
 msgid "Download Address"
-msgstr ""
+msgstr "Download Adresse (URL)"
 
 #: includes/options.php:146
 msgid "Download Address Quicklink"
-msgstr ""
+msgstr "Download Adresse Kurz-Link"
 
 #: includes/options.php:152
 msgid "Upload Directory"
-msgstr ""
+msgstr "Upload Verzeichnis"
 
 #: includes/options.php:158
 msgid "Folder Protection"
-msgstr ""
+msgstr "Ordnerschutz"
 
 #: includes/options.php:164
 msgid "Complete Uninstall"
@@ -321,15 +399,15 @@ msgstr ""
 
 #: includes/post-types.php:24
 msgid "Add New"
-msgstr ""
+msgstr "Neuer Download"
 
 #: includes/post-types.php:25
 msgid "Add New Download"
-msgstr ""
+msgstr "Neuen Download zufügen"
 
 #: includes/post-types.php:26
 msgid "Edit Download"
-msgstr ""
+msgstr "Download bearbeiten"
 
 #: includes/post-types.php:27
 msgid "New Download"
@@ -337,7 +415,7 @@ msgstr ""
 
 #: includes/post-types.php:28
 msgid "All Downloads"
-msgstr ""
+msgstr "Alle Downloads"
 
 #: includes/post-types.php:29
 msgid "View Download"
@@ -357,7 +435,7 @@ msgstr ""
 
 #: includes/post-types.php:61
 msgid "File"
-msgstr ""
+msgstr "Datei"
 
 #: includes/post-types.php:63
 msgid "Shortcode"
@@ -365,33 +443,17 @@ msgstr ""
 
 #: includes/post-types.php:73
 msgid "Quick Link"
-msgstr ""
-
-#: includes/post-types.php:84 includes/taxonomies.php:25
-msgid "Categories"
-msgstr ""
-
-#: includes/post-types.php:85 includes/taxonomies.php:49
-msgid "Tags"
-msgstr ""
+msgstr "Schnell-Link"
 
 #: includes/post-types.php:120
 msgid "Shortcode copied to clipboard."
 msgstr ""
 
-#: includes/post-types.php:121
-msgid "One day pass:"
-msgstr ""
+#: includes/post-types.php:127
+msgid "QuickLink copied to clipboard."
+msgstr "Schnell Link in die Zwischenablage kopiert"
 
-#: includes/post-types.php:123
-msgid "One day pass copied to clipboard."
-msgstr ""
-
-#: includes/post-types.php:130
-msgid "Quicklink copied to clipboard."
-msgstr ""
-
-#: includes/post-types.php:145 includes/post-types.php:156
+#: includes/post-types.php:142 includes/post-types.php:153
 #: includes/admin/meta-boxes.php:191 includes/admin/meta-boxes.php:228
 #: includes/admin/page-settings.php:276 includes/admin/page-settings.php:292
 #: includes/admin/page-settings.php:325 includes/admin/page-settings.php:450
@@ -400,9 +462,9 @@ msgstr ""
 #: includes/admin/page-settings.php:571 includes/admin/page-settings.php:587
 #: includes/admin/page-settings.php:603
 msgid "Yes"
-msgstr ""
+msgstr "Ja"
 
-#: includes/post-types.php:145 includes/post-types.php:156
+#: includes/post-types.php:142 includes/post-types.php:153
 #: includes/admin/meta-boxes.php:192 includes/admin/meta-boxes.php:229
 #: includes/admin/page-settings.php:277 includes/admin/page-settings.php:293
 #: includes/admin/page-settings.php:326 includes/admin/page-settings.php:451
@@ -413,36 +475,12 @@ msgstr ""
 msgid "No"
 msgstr ""
 
-#: includes/post-types.php:147 includes/post-types.php:158
+#: includes/post-types.php:144 includes/post-types.php:155
 #: includes/admin/media-button.php:77 includes/admin/media-button.php:90
 #: includes/admin/media-button.php:102 includes/admin/meta-boxes.php:193
 #: includes/admin/meta-boxes.php:202 includes/admin/meta-boxes.php:210
 #: includes/admin/meta-boxes.php:211 includes/admin/meta-boxes.php:230
 msgid "Inherit"
-msgstr ""
-
-#: includes/process-download.php:31 includes/process-download.php:67
-msgid "Invalid download."
-msgstr ""
-
-#: includes/process-download.php:73
-msgid "You are blocked from downloading this file!"
-msgstr ""
-
-#: includes/process-download.php:97
-msgid "Please login to download this file!"
-msgstr ""
-
-#: includes/process-download.php:103
-msgid "Password Required"
-msgstr ""
-
-#: includes/process-download.php:108
-msgid "You must attach a file to this download."
-msgstr ""
-
-#: includes/process-download.php:163
-msgid "Server error, file cannot be opened!"
 msgstr ""
 
 #: includes/shortcodes.php:47 includes/shortcodes.php:354
@@ -474,118 +512,115 @@ msgstr ""
 msgid "No downloads found."
 msgstr ""
 
-#: includes/taxonomies.php:23
-msgid "Download Categories"
+#: classes/class-addon.php:170
+msgid "License Key"
 msgstr ""
 
-#: includes/taxonomies.php:24
-msgid "Download Category"
+#: classes/class-addon.php:221
+#, php-format
+msgid "%s License Error"
 msgstr ""
 
-#: includes/taxonomies.php:27
-msgid "Edit Category"
+#: classes/class-addon.php:226
+msgid "License key not found."
 msgstr ""
 
-#: includes/taxonomies.php:28
-msgid "View Category"
+#: classes/class-addon.php:229
+msgid "No site activations remaining."
 msgstr ""
 
-#: includes/taxonomies.php:29
-msgid "Update Category"
+#: classes/class-addon.php:232
+msgid "Your license key has expired."
 msgstr ""
 
-#: includes/taxonomies.php:30
-msgid "Add New Category"
+#: classes/class-addon.php:235 classes/class-addon.php:238
+msgid "Please check your license key and try again."
 msgstr ""
 
-#: includes/taxonomies.php:31
-msgid "New Category Name"
+#: includes/admin/page-statistics.php:22 includes/admin/page-statistics.php:38
+#: includes/admin/page-statistics.php:258
+msgid "Download Logs"
 msgstr ""
 
-#: includes/taxonomies.php:32
-msgid "Search Categories"
-msgstr ""
-
-#: includes/taxonomies.php:33
-msgid "Popular Categories"
-msgstr ""
-
-#: includes/taxonomies.php:47
-msgid "Download Tags"
-msgstr ""
-
-#: includes/taxonomies.php:48
-msgid "Download Tag"
-msgstr ""
-
-#: includes/taxonomies.php:51
-msgid "Edit Tag"
-msgstr ""
-
-#: includes/taxonomies.php:52
-msgid "View Tag"
-msgstr ""
-
-#: includes/taxonomies.php:53
-msgid "Update Tag"
-msgstr ""
-
-#: includes/taxonomies.php:54
-msgid "Add New Tag"
-msgstr ""
-
-#: includes/taxonomies.php:55
-msgid "New Tag Name"
-msgstr ""
-
-#: includes/taxonomies.php:56
-msgid "Search Tags"
-msgstr ""
-
-#: includes/taxonomies.php:57
-msgid "Popular Tags"
-msgstr ""
-
-#: includes/admin/ajax.php:23
-msgid "Failed security checks!"
-msgstr ""
-
-#: includes/admin/class-dedo-list-table.php:30
-msgid "Log"
-msgstr ""
-
-#: includes/admin/class-dedo-list-table.php:31
 #: includes/admin/page-statistics.php:22
+#: includes/admin/class-dedo-list-table.php:31
 msgid "Logs"
 msgstr ""
 
-#: includes/admin/class-dedo-list-table.php:49
+#: includes/admin/page-statistics.php:39 includes/admin/page-statistics.php:86
+#: includes/admin/page-settings.php:87
+msgid "Export"
+msgstr "exportieren"
+
+#: includes/admin/page-statistics.php:40
+msgid "You are about to permanently delete the download logs."
+msgstr ""
+
+#: includes/admin/page-statistics.php:40
+msgid "Delete"
+msgstr "löschen"
+
+#: includes/admin/page-statistics.php:73
+msgid "Export Logs"
+msgstr ""
+
+#: includes/admin/page-statistics.php:74
+msgid ""
+"Export log entries to a CSV file. Please select a date range, or leave blank "
+"to export all:"
+msgstr ""
+
+#: includes/admin/page-statistics.php:77
+msgid "Start Date"
+msgstr "Anfangsdatum"
+
+#: includes/admin/page-statistics.php:81
+msgid "End Date"
+msgstr "Ablaufdatum"
+
+#: includes/admin/page-statistics.php:155
+msgid "You do not have any logs to export in that date range."
+msgstr ""
+
 #: includes/admin/page-statistics.php:188
+msgid "ID"
+msgstr ""
+
+#: includes/admin/page-statistics.php:188
+msgid "Status"
+msgstr ""
+
+#: includes/admin/page-statistics.php:188
+#: includes/admin/class-dedo-list-table.php:49
 msgid "User"
 msgstr ""
 
-#: includes/admin/class-dedo-list-table.php:50
 #: includes/admin/page-statistics.php:188
+#: includes/admin/class-dedo-list-table.php:50
 msgid "IP Address"
 msgstr ""
 
-#: includes/admin/class-dedo-list-table.php:51
 #: includes/admin/page-statistics.php:188
+#: includes/admin/class-dedo-list-table.php:51
 msgid "User Agent"
 msgstr ""
 
+#: includes/admin/page-statistics.php:193 includes/admin/dashboard.php:175
 #: includes/admin/class-dedo-list-table.php:130
-#: includes/admin/dashboard.php:175 includes/admin/page-statistics.php:193
 msgid "Unknown"
 msgstr ""
 
-#: includes/admin/class-dedo-list-table.php:139
 #: includes/admin/page-statistics.php:196
+#: includes/admin/class-dedo-list-table.php:139
 msgid "Non-member"
+msgstr "Nicht-Mitglied (Gast)"
+
+#: includes/admin/page-statistics.php:229
+msgid "Logs could not be deleted."
 msgstr ""
 
-#: includes/admin/class-dedo-list-table.php:174
-msgid "No download logs found."
+#: includes/admin/page-statistics.php:233
+msgid "Logs deleted successfully."
 msgstr ""
 
 #: includes/admin/dashboard.php:22
@@ -648,7 +683,7 @@ msgstr ""
 
 #: includes/admin/media-button.php:92
 msgid "Buttons"
-msgstr ""
+msgstr "Schaltflächen"
 
 #: includes/admin/media-button.php:101
 msgid "Text"
@@ -661,6 +696,14 @@ msgstr ""
 #: includes/admin/media-button.php:111
 #, php-format
 msgid "Please %sadd%s a new download."
+msgstr ""
+
+#: includes/admin/class-dedo-list-table.php:30
+msgid "Log"
+msgstr ""
+
+#: includes/admin/class-dedo-list-table.php:174
+msgid "No download logs found."
 msgstr ""
 
 #: includes/admin/meta-boxes.php:45 includes/admin/meta-boxes.php:48
@@ -689,7 +732,7 @@ msgstr ""
 
 #: includes/admin/meta-boxes.php:51
 msgid "Download saved."
-msgstr ""
+msgstr "Download gespeichert"
 
 #: includes/admin/meta-boxes.php:52
 msgid "Download submitted."
@@ -722,11 +765,11 @@ msgstr ""
 
 #: includes/admin/meta-boxes.php:158 includes/admin/meta-boxes.php:252
 msgid "Upload File"
-msgstr ""
+msgstr "Datei hochladen"
 
 #: includes/admin/meta-boxes.php:159 includes/admin/meta-boxes.php:274
 msgid "Existing File"
-msgstr ""
+msgstr "vorhandene Datei"
 
 #: includes/admin/meta-boxes.php:211
 msgid "Pages"
@@ -750,7 +793,7 @@ msgstr ""
 
 #: includes/admin/meta-boxes.php:239
 msgid "Upload"
-msgstr ""
+msgstr "hochladen"
 
 #: includes/admin/meta-boxes.php:240
 msgid "Select Existing"
@@ -758,11 +801,11 @@ msgstr ""
 
 #: includes/admin/meta-boxes.php:241
 msgid "Delete File"
-msgstr ""
+msgstr "Datei löschen"
 
 #: includes/admin/meta-boxes.php:255
 msgid "Drop file here"
-msgstr ""
+msgstr "Datei hier hin ziehen"
 
 #: includes/admin/meta-boxes.php:256
 msgid "or"
@@ -793,17 +836,16 @@ msgstr ""
 msgid "Confirm"
 msgstr ""
 
+#: includes/admin/ajax.php:23
+msgid "Failed security checks!"
+msgstr ""
+
 #: includes/admin/page-settings.php:19 includes/admin/page-settings.php:85
 msgid "Download Settings"
 msgstr ""
 
 #: includes/admin/page-settings.php:86 includes/admin/page-settings.php:676
 msgid "Import"
-msgstr ""
-
-#: includes/admin/page-settings.php:87 includes/admin/page-statistics.php:39
-#: includes/admin/page-statistics.php:86
-msgid "Export"
 msgstr ""
 
 #: includes/admin/page-settings.php:88
@@ -983,63 +1025,14 @@ msgstr ""
 msgid "Default settings reset successfully."
 msgstr ""
 
-#: includes/admin/page-statistics.php:22 includes/admin/page-statistics.php:38
-#: includes/admin/page-statistics.php:258
-msgid "Download Logs"
-msgstr ""
-
-#: includes/admin/page-statistics.php:40
-msgid "You are about to permanently delete the download logs."
-msgstr ""
-
-#: includes/admin/page-statistics.php:40
-msgid "Delete"
-msgstr ""
-
-#: includes/admin/page-statistics.php:73
-msgid "Export Logs"
-msgstr ""
-
-#: includes/admin/page-statistics.php:74
-msgid ""
-"Export log entries to a CSV file. Please select a date range, or leave blank "
-"to export all:"
-msgstr ""
-
-#: includes/admin/page-statistics.php:77
-msgid "Start Date"
-msgstr ""
-
-#: includes/admin/page-statistics.php:81
-msgid "End Date"
-msgstr ""
-
-#: includes/admin/page-statistics.php:155
-msgid "You do not have any logs to export in that date range."
-msgstr ""
-
-#: includes/admin/page-statistics.php:188
-msgid "ID"
-msgstr ""
-
-#: includes/admin/page-statistics.php:188
-msgid "Status"
-msgstr ""
-
-#: includes/admin/page-statistics.php:229
-msgid "Logs could not be deleted."
-msgstr ""
-
-#: includes/admin/page-statistics.php:233
-msgid "Logs deleted successfully."
-msgstr ""
-
 #. Description of the plugin
 msgid "A super-awesome downloads manager for WordPress."
 msgstr ""
+"ein klasse Download-Manager für Wordpress mit Dateisystem-Rechten zum "
+"sperren von kennwortgeschützten Downloads"
 
 #. URI of the plugin
-msgid "https://github.com/svenbolte/delightful-downloads/"
+msgid "https://github.com/A5hleyRich/delightful-downloads"
 msgstr ""
 
 #. Author of the plugin
@@ -1047,5 +1040,5 @@ msgid "Ashley Rich und PBMod"
 msgstr ""
 
 #. Author URI of the plugin
-msgid "https://github.com/svenbolte/"
+msgid "http://ashleyrich.com"
 msgstr ""

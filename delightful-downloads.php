@@ -3,7 +3,7 @@
  * Plugin Name: Delightful Downloads
  * Plugin URI: https://github.com/svenbolte/delightful-downloads/
  * Description: A super-awesome downloads manager for WordPress.
- * Version: 9.9.19
+ * Version: 9.9.20
  * Author: Ashley Rich und PBMod
  * Author URI: https://github.com/svenbolte/
  * Text Domain: delightful-downloads
@@ -107,7 +107,6 @@ class Delightful_Downloads {
 	 * Include all the classes used by the plugin
 	 */
 	protected function includes() {
-		require_once dirname( $this->path ) . '/classes/class-addon.php';
 		require_once dirname( $this->path ) . '/includes/class-dedo-cache.php';
 		require_once dirname( $this->path ) . '/includes/class-dedo-logging.php';
 		require_once dirname( $this->path ) . '/includes/class-dedo-statistics.php';
@@ -129,10 +128,8 @@ class Delightful_Downloads {
 			require_once dirname( $this->path ) . '/includes/admin/dashboard.php';
 			require_once dirname( $this->path ) . '/includes/admin/media-button.php';
 			require_once dirname( $this->path ) . '/includes/admin/meta-boxes.php';
-			require_once dirname( $this->path ) . '/includes/admin/page-addons.php';
 			require_once dirname( $this->path ) . '/includes/admin/page-settings.php';
 			require_once dirname( $this->path ) . '/includes/admin/page-statistics.php';
-			require_once dirname( $this->path ) . '/includes/admin/upgrades.php';
 		}
 	}
 
@@ -230,17 +227,6 @@ class Delightful_Downloads {
 		dedo_delete_all_transients();
 	}
 
-	/**
-	 * Render view
-	 *
-	 * @param string $view
-	 * @param array  $args
-	 */
-	public function render_view( $view, $args = array() ) {
-		extract( $args );
-		include dirname( $this->path ) . '/views/' . $view . '.php';
-	}
-
 }
 
 /**
@@ -249,8 +235,7 @@ class Delightful_Downloads {
  * @return Delightful_Downloads
  */
 function Delightful_Downloads() {
-	$version = '1.6.6';
-
+	$version = '9.6.6';
 	return Delightful_Downloads::get_instance( __FILE__, $version );
 }
 Delightful_Downloads();

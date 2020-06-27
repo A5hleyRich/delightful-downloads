@@ -623,11 +623,7 @@ function dedo_validate_settings( $input ) {
 		if ( 'text' !== $options[ $key ]['type'] ) {
 			continue;
 		}
-
 		// None empty text fields
-		if ( 'licenses' !== $options[ $key ]['tab'] && '' === trim( $input[ $key ] ) ) {
-			$input[ $key ] = $dedo_default_options[ $key ];
-		}
 	}
 	 
 	// Ensure download URL does not contain illegal characters
