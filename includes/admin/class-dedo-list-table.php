@@ -151,7 +151,7 @@ class DEDO_List_Table extends WP_List_Table {
 
 				// Wenn quick-flag plugin aktiv
 				if( class_exists( 'Quick_Flag' ) ) {
-					$flagge = '<br>' . do_shortcode('[quick-flag ip="'.$item->user_ip.']');
+					$flagge = '<br>' . do_shortcode('[quick-flag ip="'.$item->user_ip.'"]');
 				}	
 				return inet_ntop( $item->user_ip ) . $flagge;
 				break;
