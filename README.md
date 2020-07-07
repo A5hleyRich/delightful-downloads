@@ -1,4 +1,4 @@
-![Version](https://img.shields.io/wordpress/plugin/dt/delightful-downloads.svg) ![Rating](https://img.shields.io/wordpress/plugin/r/delightful-downloads.svg)
+![Version]
 
 ## Why this Version (my special Air Fork of it ;))
 
