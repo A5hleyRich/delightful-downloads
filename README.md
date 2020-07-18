@@ -1,3 +1,5 @@
+![Version](https://img.shields.io/wordpress/plugin/dt/delightful-downloads.svg) ![Rating](https://img.shields.io/wordpress/plugin/r/delightful-downloads.svg)
+
 ## Why this Version (my special Air Fork of it ;))
 
 DEDO is blocked on wordpress plugins directory because of a security vulnerability in jqueryfiletree.php. Latter was already closed, so i integrated the fixes in this plugin.
