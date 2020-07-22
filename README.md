@@ -49,8 +49,3 @@ Anyone is welcome to contribute to Delightful Downloads. There are various ways 
 ## Development
 
 Development should be performed on the __develop__ branch. After cloning the __develop__ branch to your local machine you should run:
-
-`npm install`
-
-This will build the required CSS files.
-

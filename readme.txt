@@ -1,6 +1,6 @@
 === Delightful Downloads ===
-Contributors: A5hleyRich, Sven Bolte
-Tags: download, manager, downloads, monitor, shortcode, delightful downloads, file, counter, tracking, infobox, fixed filetree,quick-flag
+Contributors: A5hleyRich, Sven Bolte, others (best of forks)
+Tags: download, manager, downloads, monitor, shortcode, delightful downloads, file, counter, tracking, infobox, fixed filetree,ipflag, chartscodes
 Requires at least: 4.7
 Tested up to: 5.4.2
 Stable tag: 9.9.20
@@ -15,7 +15,8 @@ Delightful Downloads is a super-awesome downloads manager for WordPress that all
 
 **Features**
 
-* optional: If quick-flag plugin is installed, country of downloader with flag and country code will be listed
+* optional: If chartscodes plugin is installed, country of downloader with flag and country code will be listed (last digit of ip set to 0)
+* one day pass are unique per download now (user can download named file until 2400 hrs same day). Direct directory access to file is blocked by .htaccess
 * File upload via the WordPress admin area. Absolute file paths and remote file URLs are supported via manual entry.
 * Categorise and tag downloads.
 * Shortcodes to display download links, buttons and download information within posts, pages and widget areas.
@@ -62,10 +63,10 @@ Please refer to the [FAQ] at the root folder of this plugin for further instruct
 == Changelog ==
 
 = 9.9.20 =
-Wenn Quick-Flag Plugin installiert ist, wird die Länderflagge und das Land des Downloaders angezeigt in den Listen
+* If chartscodes plugin (https://github.com/svenbolte/chartcodes) is installed, ip country flag and country will be displayed in logs
 
-= 9.9.18 =
-IP-Anonymization in logfiles
+= 9.9.19 =
+* IP-Anonymization in logfiles. Last digit will be nulled. This way it is possible to get the country but not the person which complies with german GDPR
 
 = 9.9.18 =
 * one day pass are unique per download now (user can download named file until 2400 hrs same day. Own column in admin panel for 1-day-pass-downloads
