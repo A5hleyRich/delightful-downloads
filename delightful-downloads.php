@@ -3,14 +3,14 @@
  * Plugin Name: Delightful Downloads
  * Plugin URI: https://github.com/svenbolte/delightful-downloads/
  * Description: A super-awesome downloads manager for WordPress.
- * Version: 9.9.21
+ * Version: 9.9.22
  * Author: Ashley Rich und PBMod
  * Author URI: https://github.com/svenbolte/
  * Text Domain: delightful-downloads
  * Domain Path: /languages/
  * License: GPL2
- * Tested up to: 5.4.2
- * Requires at least: 4.0
+ * Tested up to: 5.5
+ * Requires at least: 4.5
  * Requires PHP: 5.3
 */
 

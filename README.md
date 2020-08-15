@@ -1,3 +1,5 @@
+![Version](https://img.shields.io/wordpress/plugin/dt/delightful-downloads.svg) ![Rating](https://img.shields.io/wordpress/plugin/r/delightful-downloads.svg)
+
 ## Why this Version (my special Air Fork of it ;))
 
 DEDO is blocked on wordpress plugins directory because of a security vulnerability in jqueryfiletree.php. Latter was already closed, so i integrated the fixes in this plugin.
@@ -49,3 +51,8 @@ Anyone is welcome to contribute to Delightful Downloads. There are various ways 
 ## Development
 
 Development should be performed on the __develop__ branch. After cloning the __develop__ branch to your local machine you should run:
+
+`npm install`
+
+This will build the required CSS files.
+
