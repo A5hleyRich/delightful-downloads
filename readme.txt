@@ -2,8 +2,7 @@
 Contributors: A5hleyRich, Sven Bolte, others (best of forks)
 Tags: download, manager, downloads, monitor, shortcode, delightful downloads, file, counter, tracking, infobox, fixed filetree,ipflag, chartscodes
 Requires at least: 4.7
-Tested up to: 5.4.2
-Stable tag: 9.9.20
+Stable tag: 9.9.22
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
