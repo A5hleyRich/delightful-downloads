@@ -2,7 +2,7 @@
 //
 // jQuery File Tree PHP Connector
 //
-// Version 1.01
+// Version 1.1.1
 //
 // Cory S.N. LaViska
 // A Beautiful Site (http://abeautifulsite.net/)
@@ -14,15 +14,30 @@
 //
 // History:
 //
-// 1.01 - updated to work with foreign characters in directory/file names (12 April 2008)
-// 1.00 - released (24 March 2008)
+// 1.1.1 - SECURITY: forcing root to prevent users from determining system's file structure (per DaveBrad)
+// 1.1.0 - adding multiSelect (checkbox) support (08/22/2014)
+// 1.0.2 - fixes undefined 'dir' error - by itsyash (06/09/2014)// 1.02 - implemented security fix
+// 1.0.1 - updated to work with foreign characters in directory/file names (12 April 2008)
+// 1.0.0 - released (24 March 2008)
 //
 // Output a list of files for jQuery File Tree
 //
 
 header('Access-Control-Allow-Origin: *');
 
-$_POST['dir'] = urldecode($_POST['dir']);
+
+/**
+ * filesystem root - USER needs to set this!
+ * -> prevents debug users from exploring system's directory structure
+ * ex: $root = $_SERVER['DOCUMENT_ROOT'];
+ */
+//$root = null;
+$root = $_SERVER['DOCUMENT_ROOT'];
+if( !$root ) exit("ERROR: Root filesystem directory not set in jqueryFileTree.php");
+
+$postDir = rawurldecode($root.(isset($_POST['dir']) ? $_POST['dir'] : null ));
+
+// $_POST['dir'] = urldecode($_POST['dir']);
 
 if( file_exists($_POST['dir']) ) {
 	$files = scandir($_POST['dir']);

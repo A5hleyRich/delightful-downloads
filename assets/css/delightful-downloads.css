@@ -227,3 +227,28 @@
 .dedo-form-error-message {
   color: #a00;
 }
+/* Image Zoom on hover */
+img.img-zoom {
+-moz-transition:transform .1s;
+-ms-transition:transform .1s;
+-o-transition:transform .1s;
+-webkit-transition:transform .1s;
+transform-origin:top right;
+transition:transform .1s;
+z-index: 1;
+}
+
+img.img-zoom:hover {
+-moz-box-shadow:0 0 19px 0 rgba(50,50,50,0.95);
+-moz-transform:scale(2.0,2.0);
+-ms-transform:scale(2.0,2.0);
+-o-transform:scale(2.0,2.0);
+-webkit-box-shadow:0 0 19px 0 rgba(50,50,50,0.95);
+-webkit-transform:scale(2.0,2.0);
+box-shadow:0 0 19px 0 rgba(50,50,50,0.95);
+cursor:zoom-in;
+cursor:-moz-zoom-in;
+cursor:-webkit-zoom-in;
+transform:scale(2.0,2.0);
+z-index: 1	;
+}

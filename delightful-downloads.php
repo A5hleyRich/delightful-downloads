@@ -1,29 +1,17 @@
 <?php
 /*
-Plugin Name: Delightful Downloads
-Plugin URI: https://delightfuldownloads.com
-Description: A super-awesome downloads manager for WordPress.
-Version: 1.6.6
-Author: Ashley Rich
-Author URI: http://ashleyrich.com
-Text Domain: delightful-downloads
-Domain Path: /languages/
-License: GPL2
-
-Copyright 2013  Ashley Rich  (email : hello@ashleyrich.com)
-
-This program is free software; you can redistribute it and/or modify
-it under the terms of the GNU General Public License, version 2, as 
-published by the Free Software Foundation.
-
-This program is distributed in the hope that it will be useful,
-but WITHOUT ANY WARRANTY; without even the implied warranty of
-MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-GNU General Public License for more details.
-
-You should have received a copy of the GNU General Public License
-along with this program; if not, write to the Free Software
-Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
+ * Plugin Name: Delightful Downloads
+ * Plugin URI: https://github.com/svenbolte/delightful-downloads/
+ * Description: A super-awesome downloads manager for WordPress.
+ * Version: 9.9.22
+ * Author: Ashley Rich und PBMod
+ * Author URI: https://github.com/svenbolte/
+ * Text Domain: delightful-downloads
+ * Domain Path: /languages/
+ * License: GPL2
+ * Tested up to: 5.5
+ * Requires at least: 4.5
+ * Requires PHP: 5.3
 */
 
 // Exit if accessed directly
@@ -119,7 +107,6 @@ class Delightful_Downloads {
 	 * Include all the classes used by the plugin
 	 */
 	protected function includes() {
-		require_once dirname( $this->path ) . '/classes/class-addon.php';
 		require_once dirname( $this->path ) . '/includes/class-dedo-cache.php';
 		require_once dirname( $this->path ) . '/includes/class-dedo-logging.php';
 		require_once dirname( $this->path ) . '/includes/class-dedo-statistics.php';
@@ -141,10 +128,8 @@ class Delightful_Downloads {
 			require_once dirname( $this->path ) . '/includes/admin/dashboard.php';
 			require_once dirname( $this->path ) . '/includes/admin/media-button.php';
 			require_once dirname( $this->path ) . '/includes/admin/meta-boxes.php';
-			require_once dirname( $this->path ) . '/includes/admin/page-addons.php';
 			require_once dirname( $this->path ) . '/includes/admin/page-settings.php';
 			require_once dirname( $this->path ) . '/includes/admin/page-statistics.php';
-			require_once dirname( $this->path ) . '/includes/admin/upgrades.php';
 		}
 	}
 
@@ -165,7 +150,7 @@ class Delightful_Downloads {
 		}
 
 		if ( ! defined( 'DELIGHTFUL_DOWNLOADS_API' ) ) {
-			define( 'DELIGHTFUL_DOWNLOADS_API', 'https://delightfuldownloads.com' );
+			define( 'DELIGHTFUL_DOWNLOADS_API', 'https://github.com/A5hleyRich/delightful-downloads' );
 		}
 	}
 
@@ -242,17 +227,6 @@ class Delightful_Downloads {
 		dedo_delete_all_transients();
 	}
 
-	/**
-	 * Render view
-	 *
-	 * @param string $view
-	 * @param array  $args
-	 */
-	public function render_view( $view, $args = array() ) {
-		extract( $args );
-		include dirname( $this->path ) . '/views/' . $view . '.php';
-	}
-
 }
 
 /**
@@ -261,8 +235,7 @@ class Delightful_Downloads {
  * @return Delightful_Downloads
  */
 function Delightful_Downloads() {
-	$version = '1.6.6';
-
+	$version = '9.6.6';
 	return Delightful_Downloads::get_instance( __FILE__, $version );
 }
 Delightful_Downloads();

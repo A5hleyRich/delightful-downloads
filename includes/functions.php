@@ -22,9 +22,17 @@ function dedo_get_shortcode_styles() {
 	 		'name'			=> __( 'Button', 'delightful-downloads' ),
 	 		'format'		=> '<a href="%url%" title="%text%" rel="nofollow" class="%class%">%text%</a>'
 	 	),
+	 	'infobox'		=> array(
+	 		'name'			=> __( 'Infobox mit Icon und Details', 'delightful-downloads' ),
+	 		'format'		=> '<div style="border:1px solid #e1e1e1;width:100%;padding:8px;">%thumb%%icon%<span><a href="%url%" title="%ext%-Datei&#10;herunterladen" rel="nofollow" class="%class%"><span  class="headline">%title%</a></span><div><strong>%filename% - %date% - %filesize% - <i class="fa fa-download"></i> %count%</strong><br>%description%</div></div>'
+	 	),
 	 	'link'			=> array(
 	 		'name'			=> __( 'Link', 'delightful-downloads' ),
 	 		'format'		=> '<a href="%url%" title="%text%" rel="nofollow" class="%class%">%text%</a>'
+	 	),
+	 	'iconlink'			=> array(
+	 		'name'			=> __( 'Icon und Link', 'delightful-downloads' ),
+	 		'format'		=> '%icon% &nbsp; <a href="%url%" title="%text%" rel="nofollow" class="%class%">%text%</a>'
 	 	),
 	 	'plain_text'	=> array(
 	 		'name'			=> __( 'Plain Text', 'delightful-downloads' ),
@@ -103,6 +111,22 @@ function dedo_get_shortcode_lists() {
 	 	'title_ext_filesize'=> array(
 	 		'name'				=> __( 'Title (Extension, File size)', 'delightful-downloads' ),
 	 		'format'			=> '<a href="%url%" title="%title% (%ext%, %filesize%)" rel="nofollow" class="%class%">%title% (%ext%, %filesize%)</a>'
+	 	),
+	 	'title_date_ext_filesize'=> array(
+	 		'name'				=> __( 'Title (Date, Extension, File size)', 'delightful-downloads' ),
+	 		'format'			=> '<a href="%url%" title="%title% (%date%, %ext%, %filesize%)" rel="nofollow" class="%class%">%title% (%date%, %ext%, %filesize%)</a>'
+	 	),
+	 	'title_ext_filesize_count'=> array(
+	 		'name'				=> __( 'Title (Date, Extension, File size,count)', 'delightful-downloads' ),
+	 		'format'			=> '<a href="%url%" title="%title% (%date%, %ext%, %filesize%, %count%x)" rel="nofollow" class="%class%">%title% (%date%, %ext%, %filesize%, %count%x)</a>'
+	 	),
+	 	'icon_title_ext_filesize_count'=> array(
+	 		'name'				=> __( 'Title (Icon, Date, Extension, File size,count)', 'delightful-downloads' ),
+	 		'format'			=> '%icon% &nbsp; <a href="%url%" title="%title% (%date%, %ext%, %filesize%, %count%x)" rel="nofollow" class="%class%">%title% (%date%, %ext%, %filesize%, %count%x)</a>'
+	 	),
+	 	'infoboxlist'=> array(
+	 		'name'				=> __( 'Title (Icon, Date, Extension, File size,count)', 'delightful-downloads' ),
+	 		'format'			=> '<div style="border:1px solid #e1e1e1;width:100%;padding:8px;">%thumb%%icon%<span><a href="%url%" title="%ext%-Datei&#10;herunterladen" rel="nofollow" class="%class%"><span  class="headline">%title%</a></span><div><strong>%filename% - %date% - %filesize% - <i class="fa fa-download"></i> %count%</strong><br>%description%</div></div>'
 	 	)
 	);
 
@@ -133,9 +157,24 @@ function dedo_get_shortcode_lists() {
  		$string = str_replace( '%title%', $value, $string );
  	}
 
- 	// date
+ 	// beschreibung
+ 	if ( strpos( $string, '%description%' ) !== false ) {
+ 		$value = get_the_excerpt( $id );
+ 		$string = str_replace( '%description%', $value, $string );
+ 	}
+
+	 // post thumbnail - Beitragsbild mit img-zoom on hover
+ 	if ( strpos( $string, '%thumb%' ) !== false ) {
+ 		$value = '<div style="max-width:200px;border:1px none;float:right;text-align:right;z-index:2;"><img class="img-zoom" src="' . get_the_post_thumbnail_url( $id ) . '"></div>';
+ 		$string = str_replace( '%thumb%', $value, $string );
+ 	}
+
+	// date
  	if ( strpos( $string, '%date%' ) !== false ) {
- 		$value = get_the_date( apply_filters( 'dedo_shortcode_date_format', '' ) );
+ 		$moddate = get_the_modified_date( apply_filters( 'dedo_shortcode_date_format', '' ), $id );
+		$credate = get_the_date( apply_filters( 'dedo_shortcode_date_format', '' ), $id );
+		if ( $moddate != $credate ) {$value = $credate . ' | ' . $moddate;} else {$value = $credate;}
+		if ( !is_user_logged_in() ) {$value = $moddate;}
  		$string = str_replace( '%date%', $value, $string );
  	}
 
@@ -163,7 +202,15 @@ function dedo_get_shortcode_lists() {
  		$string = str_replace( '%ext%', $value, $string );
  	}
 
- 	 // file mime
+  	// file icon
+ 	if ( strpos( $string, '%icon%' ) !== false ) {
+ 		$fext = strtolower( dedo_get_file_ext( get_post_meta( $id, '_dedo_file_url', true ) ) );
+		$fmime = dedo_get_file_mime( get_post_meta( $id, '_dedo_file_url', true ) );
+		$value='<img title="'.$fmime.'" style="width:50px;height:50px;vertical-align:middle" src="' . DEDO_PLUGIN_URL . '/assets/icons/' . $fext . '.png">';
+ 		$string = str_replace( '%icon%', $value, $string );
+ 	}
+
+ 	// file mime
  	if ( strpos( $string, '%mime%' ) !== false ) {
  		$value = dedo_get_file_mime( get_post_meta( $id, '_dedo_file_url', true ) );
  		$string = str_replace( '%mime%', $value, $string );
@@ -290,7 +337,8 @@ function dedo_download_ip() {
 	else {
 		$ip_address = sanitize_text_field( $_SERVER['REMOTE_ADDR'] );
 	}
-
+	// letzte Stelle der IP anonymisieren (0 setzen)	
+	$ip_address = long2ip(ip2long($ip_address) & 0xFFFFFF00);
 	return $ip_address;
 }
 
@@ -657,70 +705,7 @@ function dedo_get_file_status( $url ) {
 function dedo_get_file_icon( $file, $url = true ) {
 	$ext = dedo_get_file_ext( $file );
 	
-	switch( $ext ) {
-		case 'aac': 	$icon = 'aac.png'; break;
-		case 'ai': 		$icon = 'ai.png'; break;
-		case 'aiff':	$icon = 'aiff.png'; break;
-		case 'avi':		$icon = 'avi.png'; break;
-		case 'bmp':		$icon = 'bmp.png'; break;
-		case 'c':		$icon = 'c.png'; break;
-		case 'cpp':		$icon = 'cpp.png'; break;
-		case 'css':		$icon = 'css.png'; break;
-		case 'dat':		$icon = 'dat.png'; break;
-		case 'dmg':		$icon = 'dmg.png'; break;
-		case 'doc':		$icon = 'doc.png'; break;
-		case 'dotx':	$icon = 'dotx.png'; break;
-		case 'dwg':		$icon = 'dwg.png'; break;
-		case 'dxf':		$icon = 'dxf.png'; break;
-		case 'eps':		$icon = 'eps.png'; break;
-		case 'exe':		$icon = 'exe.png'; break;
-		case 'flv':		$icon = 'flv.png'; break;
-		case 'gif':		$icon = 'gif.png'; break;
-		case 'h':		$icon = 'h.png'; break;
-		case 'hpp':		$icon = 'hpp.png'; break;
-		case 'html':	$icon = 'html.png'; break;
-		case 'ics':		$icon = 'ics.png'; break;
-		case 'iso':		$icon = 'iso.png'; break;
-		case 'java':	$icon = 'java.png'; break;
-		case 'jpg':		$icon = 'jpg.png'; break;
-		case 'js':		$icon = 'js.png'; break;
-		case 'key':		$icon = 'key.png'; break;
-		case 'less':	$icon = 'less.png'; break;
-		case 'mid':		$icon = 'mid.png'; break;
-		case 'mp3':		$icon = 'mp3.png'; break;
-		case 'mp4':		$icon = 'mp4.png'; break;
-		case 'mpg':		$icon = 'mpg.png'; break;
-		case 'odf':		$icon = 'odf.png'; break;
-		case 'ods':		$icon = 'ods.png'; break;
-		case 'odt':		$icon = 'odt.png'; break;
-		case 'otp':		$icon = 'otp.png'; break;
-		case 'ots':		$icon = 'ots.png'; break;
-		case 'ott':		$icon = 'ott.png'; break;
-		case 'pdf':		$icon = 'pdf.png'; break;
-		case 'php':		$icon = 'php.png'; break;
-		case 'png':		$icon = 'png.png'; break;
-		case 'ppt':		$icon = 'ppt.png'; break;
-		case 'psd':		$icon = 'psd.png'; break;
-		case 'py':		$icon = 'py.png'; break;
-		case 'qt':		$icon = 'qt.png'; break;
-		case 'rar':		$icon = 'rar.png'; break;
-		case 'rb':		$icon = 'rb.png'; break;
-		case 'rtf':		$icon = 'rtf.png'; break;
-		case 'sass':	$icon = 'sass.png'; break;
-		case 'scss':	$icon = 'scss.png'; break;
-		case 'sql':		$icon = 'sql.png'; break;
-		case 'tga':		$icon = 'tga.png'; break;
-		case 'tgz':		$icon = 'tgz.png'; break;
-		case 'tiff':	$icon = 'tiff.png'; break;
-		case 'txt':		$icon = 'txt.png'; break;
-		case 'wav':		$icon = 'wav.png'; break;
-		case 'xls':		$icon = 'xls.png'; break;
-		case 'xlsx':	$icon = 'xlsx.png'; break;
-		case 'xml':		$icon = 'xml.png'; break;
-		case 'yml':		$icon = 'yml.png'; break;
-		case 'zip':		$icon = 'zip.png'; break;
-		default:		$icon = '_blank.png'; break;
-	}
+	$icon = $ext.'.png';	
 
 	if ( $url ) {
 		return DEDO_PLUGIN_URL . 'assets/icons/' . $icon;
