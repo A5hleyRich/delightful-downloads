@@ -1,9 +1,8 @@
 === Delightful Downloads ===
-Contributors: A5hleyRich
-Tags: download, manager, downloads, monitor, shortcode, delightful downloads, file, counter, tracking
+Contributors: A5hleyRich, Sven Bolte, others (best of forks)
+Tags: download, manager, downloads, monitor, shortcode, delightful downloads, file, counter, tracking, infobox, fixed filetree,ipflag, chartscodes
 Requires at least: 4.7
-Tested up to: 4.7.2
-Stable tag: 1.6.6
+Stable tag: 9.9.22
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -15,6 +14,8 @@ Delightful Downloads is a super-awesome downloads manager for WordPress that all
 
 **Features**
 
+* optional: If chartscodes plugin is installed, country of downloader with flag and country code will be listed (last digit of ip set to 0)
+* one day pass are unique per download now (user can download named file until 2400 hrs same day). Direct directory access to file is blocked by .htaccess
 * File upload via the WordPress admin area. Absolute file paths and remote file URLs are supported via manual entry.
 * Categorise and tag downloads.
 * Shortcodes to display download links, buttons and download information within posts, pages and widget areas.
@@ -30,24 +31,21 @@ Delightful Downloads is a super-awesome downloads manager for WordPress that all
 * Various button styles included with the ability to add custom buttons.
 * Built in caching for excellent performance.
 * Developer friendly.
-* Localisation support.
-
-**Add-Ons**
-
-* [Customizer](https://delightfuldownloads.com/add-ons/customizer/?utm_source=WordPress&utm_medium=Repo&utm_content=Customizer&utm_campaign=Description) - Button and list styles editor
-* [MailChimp](https://delightfuldownloads.com/add-ons/mailchimp/?utm_source=WordPress&utm_medium=Repo&utm_content=MailChimp&utm_campaign=Description) - Subscribe to download
+* Localisation support and german translations.
+* IP-Address for downloads is stored shortened with last digit = 0
 
 **Documentation**
 
-The Delightful Downloads documentation can be found [here](https://delightfuldownloads.com/documentation/ "Delightful Downloads Documentation").
+The Delightful Downloads documentation can be found at the root folder of this plugin for further instructions (documentation.txt and documentation-styles.pdf)
 
 **Requirements**
 
 To add and manage downloads via the WordPress Administration screens, you must have a [modern web browser](http://browsehappy.com/ "Browse Happy") with JavaScript enabled.
 
-**GitHub**
+**GitHub, Source Code**
 
-If you would like to contribute to the plugin, you can do so on [GitHub](https://github.com/A5hleyRich/Delightful-Downloads).
+If you would like to contribute to the plugin, you can do so on [GitHub](https://github.com/svenbolte/delightful-downloads).
+There are several forks (like this one).
 
 == Installation ==
 
@@ -55,25 +53,39 @@ If you would like to contribute to the plugin, you can do so on [GitHub](https:/
 1. Activate the plugin through the 'Plugins' menu in WordPress.
 1. Go to Downloads > Settings and configure the options.
 
-Please refer to the [documentation](https://delightfuldownloads.com/documentation/installation/ "Delightful Downloads Documentation") for further instructions.
+Please refer to the [documentation] at the root folder of this plugin for further instructions (documentation.txt)
 
 == Frequently asked questions ==
 
-Please refer to the [FAQ](https://delightfuldownloads.com/documentation/delightful-downloads-faqs/ "Delightful Downloads FAQ") section within the [documentation](https://delightfuldownloads.com/documentation/ "Delightful Downloads Documentation").
-
-
-== Screenshots ==
-
-1. Downloads overview screen
-2. Add new download screen - upload file
-3. Add new download screen - existing file
-4. Edit download screen
-5. Logs overview screen
-6. Shortcode generator
-7. Example shortcodes
-8. Settings screen
+Please refer to the [FAQ] at the root folder of this plugin for further instructions (documentation.txt) 
 
 == Changelog ==
+
+= 9.9.20 =
+* If chartscodes plugin (https://github.com/svenbolte/chartcodes) is installed, ip country flag and country will be displayed in logs
+
+= 9.9.19 =
+* IP-Anonymization in logfiles. Last digit will be nulled. This way it is possible to get the country but not the person which complies with german GDPR
+
+= 9.9.18 =
+* one day pass are unique per download now (user can download named file until 2400 hrs same day. Own column in admin panel for 1-day-pass-downloads
+* German translation completed and added one day downloads translation
+
+= 9.9.17 =
+* added one day pass download links (copy to clipboard) in admin panel. File can be downloaded with this crypted link until end of same day
+
+= 9.9.16 =
+* Added german and german (formal) translations to language directory
+* Security fixes for jQueryFileTree applied and tested. Root file system access is now blocked
+* minor bug fixes
+* removed some unneccessary stuff
+
+= 9.9.13 =
+* Quicklink column to copy download URL in Downloads admin panel can be enabled
+* Wildcards: %icon% and %description% added < displays the file type icon from assets left to the rest
+* Editor and comments (Add new download) enabled to allow to display single download on a custom page.
+* ddownloads list: switched from list UL LI  to table
+* Style 'infobox' added. This displays the download in a infobox with silver border with filetype icon on the left and all other relevant information and Destailes Description of the file
 
 = 1.6.6 =
 

@@ -239,26 +239,17 @@ function dedo_render_part_sidebar() {
 		<?php $current_user = wp_get_current_user(); ?>
 
 		<div id="dedo-settings-sidebar">
-			<div class="pro-version">
-				<h4><?php _e( 'News and Updates', 'delightful-downloads' ); ?></h4>
-				<p><?php _e( "Want to be the first to know about future add-ons? Subscribe to keep informed and receive your 20% discount when they’re released!", 'delightful-downloads' ); ?></p>
-
-				<form method="post" action="http://ashleyrich.us5.list-manage.com/subscribe/post" target="_blank">
-					<input type="hidden" name="u" value="ace6f39e2bb7270b9ca7a21bc">
-					<input type="hidden" name="id" value="003e1f6906">
-					<label for="MERGE0">Email:</label>
-					<input type="email" name="MERGE0" id="MERGE0" class="regular-text" value="<?php echo $current_user->user_email; ?>">
-					<label for="MERGE1">First Name:</label>
-					<input type="text" name="MERGE1" id="MERGE1" class="regular-text" value="<?php echo $current_user->user_firstname; ?>">
-					<label for="MERGE2">Last Name:</label>
-					<input type="text" name="MERGE2" id="MERGE2" class="regular-text" value="<?php echo $current_user->user_lastname; ?>">
-					<button class="button button-primary"><?php _e( 'Keep me informed', 'delightful-downloads' ); ?></button>
-				</form>
-				<small><?php _e( 'I will not use your email for anything else and you can unsubscribe at anytime.' ); ?></small>
-			</div>
 
 			<h4><?php _e( 'Help and Support', 'delightful-downloads' ); ?></h4>
-			<p><?php printf( __( 'Having issues? Check out the %sdocumentation%s. If you can\'t find a solution, please raise an issue on the %ssupport forums%s.', 'delightful-downloads' ), '<a href="https://delightfuldownloads.com/documentation/">', '</a>', '<a href="https://wordpress.org/support/plugin/delightful-downloads">', '</a>' ); ?></p>
+			<p><?php printf( __( 'Having issues? Check out the %sdocumentation%s. If you can\'t find a solution, please raise an issue on the %ssupport forums%s.', 'delightful-downloads' ), '<a href='.DEDO_PLUGIN_URL.'/documentation.txt">', '</a>', '<a href="https://wordpress.org/support/plugin/delightful-downloads">', '</a>' ); ?></p>
+			<h4>
+				Sample Shortcodes:
+			</h4>
+			<p>
+				[ddownload id="6779" style="infobox" text="%title%  - %filename% - %date% - %filesize% - (%count%x)"]<br>
+				[ddownload_list]<br>
+				[ddownload id="3071" style="link" text="%title% %filename% - %date% - %filesize% - (%count%x)"]
+			</p>
 		</div>
 
 	<?php endif;
@@ -555,6 +546,7 @@ function dedo_settings_download_url_field() {
 	echo '<p class="description">' . __( 'The URL for download links.', 'delightful-downloads' ) . ' <code>' . dedo_download_link( 123 ) . '</code></p>';
 }
 
+
 /**
  * Render Upload Directory field
  */
@@ -565,6 +557,21 @@ function dedo_settings_upload_directory_field() {
 
 	echo '<input type="text" name="delightful-downloads[upload_directory]" value="' . esc_attr( $text ) . '" class="regular-text" />';
 	echo '<p class="description">' . __( 'The directory to upload files.', 'delightful-downloads' ) . ' <code>' . trailingslashit( dedo_get_upload_dir( 'dedo_baseurl' ) ) . '</code></p>';
+}
+
+/**
+ * Render Download Address Quicklink
+ *
+ * @since  1.3
+ */
+function dedo_settings_download_quicklink_field() {
+	global $dedo_options;
+	$checked = absint( $dedo_options['download_quicklink'] );
+   	?>
+  	<label for="quicklink_true"><input name="delightful-downloads[download_quicklink]" id="quicklink_true" type="radio" value="1" <?php echo ( 1 === $checked ) ? 'checked' : ''; ?> /> <?php _e( 'Yes', 'delightful-downloads' ); ?></label>
+	<label for="quicklink_false"><input name="delightful-downloads[download_quicklink]" id="quicklink_false" type="radio" value="0" <?php echo ( 0 === $checked ) ? 'checked' : ''; ?> /> <?php _e( 'No', 'delightful-downloads' ); ?></label>
+	<p class="description"><?php _e( 'Display Quicklink column in download list.', 'delightful-downloads' ); ?></p> 
+	<?php
 }
 
 /**
@@ -616,11 +623,7 @@ function dedo_validate_settings( $input ) {
 		if ( 'text' !== $options[ $key ]['type'] ) {
 			continue;
 		}
-
 		// None empty text fields
-		if ( 'licenses' !== $options[ $key ]['tab'] && '' === trim( $input[ $key ] ) ) {
-			$input[ $key ] = $dedo_default_options[ $key ];
-		}
 	}
 	 
 	// Ensure download URL does not contain illegal characters

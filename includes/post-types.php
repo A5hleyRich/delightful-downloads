@@ -41,7 +41,7 @@ function dedo_download_post_type() {
 		'show_in_menu'    => true,
 		'menu_icon'       => 'dashicons-download',
 		'capability_type' => apply_filters( 'dedo_ddownload_cap', 'post' ),
-		'supports'        => apply_filters( 'dedo_ddownload_supports', array( 'title' ) ),
+		'supports'        => apply_filters( 'dedo_ddownload_supports', array( 'title', 'editor', 'thumbnail' ) ),
 	);
 	register_post_type( 'dedo_download', apply_filters( 'dedo_ddownload_args', $args ) );
 }
@@ -61,12 +61,24 @@ function dedo_download_column_headings( $columns ) {
 		'file'         => __( 'File', 'delightful-downloads' ),
 		'filesize'     => __( 'File Size', 'delightful-downloads' ),
 		'shortcode'    => __( 'Shortcode', 'delightful-downloads' ),
+		'onedaypass'    => __( 'One day pass:', 'delightful-downloads' ),
 		'downloads'    => __( 'Downloads', 'delightful-downloads' ),
 		'members_only' => '<span class="icon" title="' . __( 'Members Only', 'delightful-downloads' ) . '">' . __( 'Members Only', 'delightful-downloads' ) . '</span>',
 		'open_browser' => '<span class="icon" title="' . __( 'Open in Browser', 'delightful-downloads' ) . '">' . __( 'Open in Browser', 'delightful-downloads' ) . '</span>',
 		'date'         => __( 'Date', 'delightful-downloads' ),
 	);
 
+	// If Quicklinks is enabled add to columns array
+	if ( $dedo_options['download_quicklink'] ) {
+		$columns_quicklink = array(
+			'quicklink'    => __( 'Quick Link', 'delightful-downloads' ),
+		);
+
+		// Splice and insert after shortcode column
+		$spliced = array_splice( $columns, 4 );
+		$columns = array_merge( $columns, $columns_quicklink, $spliced );
+	}
+  	
 	// If taxonomies is enabled add to columns array
 	if ( $dedo_options['enable_taxonomies'] ) {
 		$columns_taxonomies = array(
@@ -105,10 +117,24 @@ function dedo_download_column_contents( $column_name, $post_id ) {
 
 	// Shortcode column
 	if ( $column_name == 'shortcode' ) {
-		echo '<input type="text" class="copy-to-clipboard" value="[ddownload id=&quot;' . esc_attr( $post_id ) . '&quot;]" readonly>';
+		echo '<input type="text" title="id=&quot;' . esc_attr( $post_id ) . '&quot;" class="copy-to-clipboard" value="[ddownload id=&quot;' . esc_attr( $post_id ) . '&quot;]" readonly>';
 		echo '<p class="description" style="display: none;">' . __( 'Shortcode copied to clipboard.', 'delightful-downloads' ) . '</p>';
 	}
 
+	// QuickLink
+	if ( $column_name == 'quicklink' ) {
+		global $dedo_options;
+		echo '<input type="text" title="'.$dedo_options['download_url'] . '=' . esc_attr( $post_id ) . '" class="copy-to-clipboard" value="' . get_site_url() . '?' . $text = $dedo_options['download_url'] . '=' . esc_attr( $post_id ) . '" readonly>';
+		echo '<p class="description" style="display: none;">' . __( 'Quicklink copied to clipboard.', 'delightful-downloads' ) . '</p>';
+	}
+	
+	// One day pass column
+	if ( $column_name == 'onedaypass' ) {
+		$hashwert = md5(intval($post_id) + intval(date('Y-m-d H:i:s')/24*60*60));
+		echo '<input type="text" title="'.$hashwert.'" class="copy-to-clipboard" value="' . get_site_url() . '?sdownload=' . esc_attr( $post_id ) .  '&code='. $hashwert . '" readonly>';
+		echo '<p class="description" style="display: none;">' . __( 'One day pass copied to clipboard.', 'delightful-downloads' ) . '</p>';
+	}
+	
 	// Count column
 	if ( $column_name == 'downloads' ) {
 		$count = get_post_meta( $post_id, '_dedo_file_count', true );

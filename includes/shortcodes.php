@@ -284,7 +284,7 @@ function dedo_shortcode_ddownload_list( $atts ) {
 		if ( $downloads_list->have_posts() ) {
 			ob_start();
 			
-			echo '<ul class="ddownloads_list' . $tax_class . $style_class . '">';
+			echo '<figure class="wp-block-table is-style-stripes"><table class="ddownloads_list' . $tax_class . $style_class . '">';
 			
 			while ( $downloads_list->have_posts() ) {
 				$downloads_list->the_post();
@@ -295,14 +295,16 @@ function dedo_shortcode_ddownload_list( $atts ) {
 
 				$new_style_format = str_replace( '%class%', $classes, $style_format );
 
-				echo '<li>' . dedo_search_replace_wildcards( $new_style_format, get_the_ID() ) . '</li>';
+				echo '<tr><td>' . dedo_search_replace_wildcards( $new_style_format, get_the_ID() ) . '</td></tr>';
 
-				// Reset classes for next itteration
+				$filename = dedo_get_upload_dir( '', $upload_dir ) . get_the_ID();
+
+				// Reset classes for next iteration
 				unset( $classes );
 				unset( $new_style_format );
 			}
 			
-			echo '</ul>';
+			echo '</table></figure>';
 			
 			$output = ob_get_clean();
 
