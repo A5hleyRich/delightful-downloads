@@ -3,8 +3,8 @@ Contributors: A5hleyRich, Sven Bolte, others (best of forks)
 Tags: download, manager, downloads, monitor, shortcode, delightful downloads, file, counter, tracking, infobox, fixed filetree,ipflag, chartscodes
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
-Version: 9.9.23
-Stable tag: 9.9.23
+Version: 9.9.24
+Stable tag: 9.9.24
 Requires at least: 5.1
 Tested up to: 5.5.1
 Requires PHP: 7.2
@@ -63,6 +63,9 @@ Please refer to the [documentation] at the root folder of this plugin for furthe
 Please refer to the [FAQ] at the root folder of this plugin for further instructions (documentation.txt) 
 
 == Changelog ==
+
+= 9.9.24 =
+* changed some styles and defaults to infobox and button default color to grey button, list type to infoboxlist
 
 = 9.9.20 =
 * If chartscodes plugin (https://github.com/svenbolte/chartcodes) is installed, ip country flag and country will be displayed in logs

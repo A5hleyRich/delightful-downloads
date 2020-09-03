@@ -83,19 +83,19 @@ function dedo_get_options() {
 			'name'    => __( 'Default Style', 'delightful-downloads' ),
 			'tab'     => 'shortcodes',
 			'type'    => 'dropdown',
-			'default' => 'button',
+			'default' => 'infobox',
 		),
 		'default_button'      => array(
 			'name'    => __( 'Default Button Style', 'delightful-downloads' ),
 			'tab'     => 'shortcodes',
 			'type'    => 'dropdown',
-			'default' => 'blue',
+			'default' => 'grey',
 		),
 		'default_list'        => array(
 			'name'    => __( 'Default List Style', 'delightful-downloads' ),
 			'tab'     => 'shortcodes',
 			'type'    => 'dropdown',
-			'default' => 'title',
+			'default' => 'infoboxlist',
 		),
 		'log_admin_downloads' => array(
 			'name'    => __( 'Admin Events', 'delightful-downloads' ),

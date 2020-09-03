@@ -18,13 +18,13 @@ if ( !defined( 'ABSPATH' ) ) exit;
 function dedo_get_shortcode_styles() {
 	
 	$styles = array(
-	 	'button'		=> array(
-	 		'name'			=> __( 'Button', 'delightful-downloads' ),
-	 		'format'		=> '<a href="%url%" title="%text%" rel="nofollow" class="%class%">%text%</a>'
-	 	),
 	 	'infobox'		=> array(
 	 		'name'			=> __( 'Infobox mit Icon und Details', 'delightful-downloads' ),
 	 		'format'		=> '<div style="border:1px solid #e1e1e1;width:100%;padding:8px;">%thumb%%icon%<span><a href="%url%" title="%ext%-Datei&#10;herunterladen" rel="nofollow" class="%class%"><span  class="headline">%title%</a></span><div><strong>%filename% - %date% - %filesize% - <i class="fa fa-download"></i> %count%</strong><br>%description%</div></div>'
+	 	),
+	 	'button'		=> array(
+	 		'name'			=> __( 'Button', 'delightful-downloads' ),
+	 		'format'		=> '<a href="%url%" title="%text%" rel="nofollow" class="%class%">%text%</a>'
 	 	),
 	 	'link'			=> array(
 	 		'name'			=> __( 'Link', 'delightful-downloads' ),
