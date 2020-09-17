@@ -238,19 +238,16 @@ function dedo_render_part_sidebar() {
 
 		<?php $current_user = wp_get_current_user(); ?>
 
-		<div id="dedo-settings-sidebar">
+		<div id="dedo-settings-sidebar" class="postbox">
 
 			<h4><?php _e( 'Help and Support', 'delightful-downloads' ); ?></h4>
-			<p><?php printf( __( 'Having issues? Check out the %sdocumentation%s. If you can\'t find a solution, please raise an issue on the %ssupport forums%s.', 'delightful-downloads' ), '<a href='.DEDO_PLUGIN_URL.'/documentation.txt">', '</a>', '<a href="https://wordpress.org/support/plugin/delightful-downloads">', '</a>' ); ?></p>
-			<h4>
-				Sample Shortcodes:
-			</h4>
-			<p>
-				[ddownload id="6779" style="infobox" text="%title%  - %filename% - %date% - %filesize% - (%count%x)"]<br>
-				[ddownload_list]<br>
-				[ddownload id="3071" style="link" text="%title% %filename% - %date% - %filesize% - (%count%x)"]
-			</p>
-		</div>
+			<p><?php printf( __( 'Having issues? Check out the %sdocumentation%s. If you can\'t find a solution, please raise an issue on the %ssupport forums%s.', 'delightful-downloads' ), '<a target="_blank" href="'.DEDO_PLUGIN_URL.'documentation.txt">', '</a>', '<a href="https://wordpress.org/support/plugin/delightful-downloads">', '</a>' ); ?></p>
+			<h4><?php _e( 'sample shortcodes', 'delightful-downloads' ); ?></h4>
+			<p><code>[ddownload id="6779" style="infobox" text="%title%  - %filename% - %date% - %filesize% - (%count%x)"]</code></p>
+				<p><code>[ddownload_list] - Liste mit Icons</code></p>
+				<p><code>[ddownload id="3071" style="link" text="%title% %filename% - %date% - %filesize% - (%count%x)"]</code></p>
+				<p><code>[ddownload id="3071"] - Infobox Layout mit File Icon</code></p>
+	</div>
 
 	<?php endif;
 

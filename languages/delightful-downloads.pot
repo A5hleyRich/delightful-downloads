@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: delightful-downloads 1.6.1\n"
 "Report-Msgid-Bugs-To: hello@ashleyrich.com\n"
-"POT-Creation-Date: 2020-06-23 19:41+0000\n"
+"POT-Creation-Date: 2020-09-17 11:32+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,33 +18,8 @@ msgstr ""
 "Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
 "X-Generator: Loco https://localise.biz/"
 
-#: delightful-downloads.php:193 includes/admin/page-settings.php:19
+#: delightful-downloads.php:191 includes/admin/page-settings.php:19
 msgid "Settings"
-msgstr ""
-
-#: classes/class-addon.php:170
-msgid "License Key"
-msgstr ""
-
-#: classes/class-addon.php:221
-#, php-format
-msgid "%s License Error"
-msgstr ""
-
-#: classes/class-addon.php:226
-msgid "License key not found."
-msgstr ""
-
-#: classes/class-addon.php:229
-msgid "No site activations remaining."
-msgstr ""
-
-#: classes/class-addon.php:232
-msgid "Your license key has expired."
-msgstr ""
-
-#: classes/class-addon.php:235 classes/class-addon.php:238
-msgid "Please check your license key and try again."
 msgstr ""
 
 #. Name of the plugin
@@ -57,7 +32,7 @@ msgid "A list of your site's downloads."
 msgstr ""
 
 #: includes/class-dedo-widget-list.php:96 includes/post-types.php:22
-#: includes/post-types.php:34 includes/post-types.php:64
+#: includes/post-types.php:34 includes/post-types.php:65
 msgid "Downloads"
 msgstr ""
 
@@ -73,7 +48,7 @@ msgstr ""
 msgid "Order by:"
 msgstr ""
 
-#: includes/class-dedo-widget-list.php:133 includes/post-types.php:67
+#: includes/class-dedo-widget-list.php:133 includes/post-types.php:68
 #: includes/admin/class-dedo-list-table.php:52
 #: includes/admin/page-statistics.php:188
 msgid "Date"
@@ -138,12 +113,12 @@ msgstr ""
 msgid "Downloads belong to category AND/OR tag."
 msgstr ""
 
-#: includes/functions.php:22 includes/admin/media-button.php:87
-msgid "Button"
+#: includes/functions.php:22
+msgid "Infobox mit Icon und Details"
 msgstr ""
 
-#: includes/functions.php:26
-msgid "Infobox mit Icon und Details"
+#: includes/functions.php:26 includes/admin/media-button.php:87
+msgid "Button"
 msgstr ""
 
 #: includes/functions.php:30
@@ -242,13 +217,13 @@ msgstr ""
 msgid "Categories and Tags"
 msgstr ""
 
-#: includes/options.php:56 includes/post-types.php:65
-#: includes/post-types.php:65 includes/admin/meta-boxes.php:188
+#: includes/options.php:56 includes/post-types.php:66
+#: includes/post-types.php:66 includes/admin/meta-boxes.php:188
 msgid "Members Only"
 msgstr ""
 
-#: includes/options.php:65 includes/post-types.php:66
-#: includes/post-types.php:66
+#: includes/options.php:65 includes/post-types.php:67
+#: includes/post-types.php:67
 msgid "Open in Browser"
 msgstr ""
 
@@ -363,35 +338,35 @@ msgstr ""
 msgid "Shortcode"
 msgstr ""
 
-#: includes/post-types.php:73
-msgid "Quick Link"
-msgstr ""
-
-#: includes/post-types.php:84 includes/taxonomies.php:25
-msgid "Categories"
-msgstr ""
-
-#: includes/post-types.php:85 includes/taxonomies.php:49
-msgid "Tags"
-msgstr ""
-
-#: includes/post-types.php:120
-msgid "Shortcode copied to clipboard."
-msgstr ""
-
-#: includes/post-types.php:121
+#: includes/post-types.php:64
 msgid "One day pass:"
 msgstr ""
 
-#: includes/post-types.php:123
-msgid "One day pass copied to clipboard."
+#: includes/post-types.php:74
+msgid "Quick Link"
 msgstr ""
 
-#: includes/post-types.php:130
+#: includes/post-types.php:85 includes/taxonomies.php:25
+msgid "Categories"
+msgstr ""
+
+#: includes/post-types.php:86 includes/taxonomies.php:49
+msgid "Tags"
+msgstr ""
+
+#: includes/post-types.php:121
+msgid "Shortcode copied to clipboard."
+msgstr ""
+
+#: includes/post-types.php:128
 msgid "Quicklink copied to clipboard."
 msgstr ""
 
-#: includes/post-types.php:145 includes/post-types.php:156
+#: includes/post-types.php:135
+msgid "One day pass copied to clipboard."
+msgstr ""
+
+#: includes/post-types.php:150 includes/post-types.php:161
 #: includes/admin/meta-boxes.php:191 includes/admin/meta-boxes.php:228
 #: includes/admin/page-settings.php:276 includes/admin/page-settings.php:292
 #: includes/admin/page-settings.php:325 includes/admin/page-settings.php:450
@@ -402,7 +377,7 @@ msgstr ""
 msgid "Yes"
 msgstr ""
 
-#: includes/post-types.php:145 includes/post-types.php:156
+#: includes/post-types.php:150 includes/post-types.php:161
 #: includes/admin/meta-boxes.php:192 includes/admin/meta-boxes.php:229
 #: includes/admin/page-settings.php:277 includes/admin/page-settings.php:293
 #: includes/admin/page-settings.php:326 includes/admin/page-settings.php:451
@@ -413,7 +388,7 @@ msgstr ""
 msgid "No"
 msgstr ""
 
-#: includes/post-types.php:147 includes/post-types.php:158
+#: includes/post-types.php:152 includes/post-types.php:163
 #: includes/admin/media-button.php:77 includes/admin/media-button.php:90
 #: includes/admin/media-button.php:102 includes/admin/meta-boxes.php:193
 #: includes/admin/meta-boxes.php:202 includes/admin/meta-boxes.php:210
@@ -421,27 +396,27 @@ msgstr ""
 msgid "Inherit"
 msgstr ""
 
-#: includes/process-download.php:31 includes/process-download.php:67
+#: includes/process-download.php:31 includes/process-download.php:74
 msgid "Invalid download."
 msgstr ""
 
-#: includes/process-download.php:73
+#: includes/process-download.php:80
 msgid "You are blocked from downloading this file!"
 msgstr ""
 
-#: includes/process-download.php:97
+#: includes/process-download.php:104
 msgid "Please login to download this file!"
 msgstr ""
 
-#: includes/process-download.php:103
+#: includes/process-download.php:110
 msgid "Password Required"
 msgstr ""
 
-#: includes/process-download.php:108
+#: includes/process-download.php:115
 msgid "You must attach a file to this download."
 msgstr ""
 
-#: includes/process-download.php:163
+#: includes/process-download.php:170
 msgid "Server error, file cannot be opened!"
 msgstr ""
 
@@ -584,7 +559,7 @@ msgstr ""
 msgid "Non-member"
 msgstr ""
 
-#: includes/admin/class-dedo-list-table.php:174
+#: includes/admin/class-dedo-list-table.php:178
 msgid "No download logs found."
 msgstr ""
 
@@ -797,7 +772,7 @@ msgstr ""
 msgid "Download Settings"
 msgstr ""
 
-#: includes/admin/page-settings.php:86 includes/admin/page-settings.php:676
+#: includes/admin/page-settings.php:86 includes/admin/page-settings.php:672
 msgid "Import"
 msgstr ""
 
@@ -959,27 +934,27 @@ msgid ""
 "be removed."
 msgstr ""
 
-#: includes/admin/page-settings.php:670
+#: includes/admin/page-settings.php:666
 msgid "Import Settings"
 msgstr ""
 
-#: includes/admin/page-settings.php:671
+#: includes/admin/page-settings.php:667
 msgid "Select a Delightful Downloads settings file to import:"
 msgstr ""
 
-#: includes/admin/page-settings.php:741
+#: includes/admin/page-settings.php:737
 msgid "Invalid settings file."
 msgstr ""
 
-#: includes/admin/page-settings.php:751
+#: includes/admin/page-settings.php:747
 msgid "Settings have been successfully imported."
 msgstr ""
 
-#: includes/admin/page-settings.php:759
+#: includes/admin/page-settings.php:755
 msgid "No file uploaded."
 msgstr ""
 
-#: includes/admin/page-settings.php:819
+#: includes/admin/page-settings.php:815
 msgid "Default settings reset successfully."
 msgstr ""
 

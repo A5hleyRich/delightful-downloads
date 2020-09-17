@@ -346,8 +346,11 @@
   float: left;
   width: 75%;
   padding-right: 20px;
-  padding-top: 1em;
+  padding-top: 0.2em;
+  padding-left:10px;
   box-sizing: border-box;
+  background-color:#fff;
+  border: 1px solid #e1e1e1;
 }
 
 /* line 363, ../sass/delightful-downloads-admin.scss */
