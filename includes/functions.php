@@ -20,7 +20,7 @@ function dedo_get_shortcode_styles() {
 	$styles = array(
 	 	'infobox'		=> array(
 	 		'name'			=> __( 'Infobox mit Icon und Details', 'delightful-downloads' ),
-	 		'format'		=> '<div style="border:1px solid #e1e1e1;width:100%;padding:8px;">%thumb%%icon%<span><a href="%url%" title="%ext%-Datei&#10;herunterladen" rel="nofollow" class="%class%"><span class="headline">%title%</a></span><div><strong>%filename% - <i title="erstellt/geändert" class="fa fa-calendar-o"></i> %date% - %filesize% - <i title="Downloads" class="fa fa-download"></i> %count%</strong><br>%description%</div></div>'
+	 		'format'		=> '<div style="border:1px solid #e1e1e1;width:100%;padding:8px;">%thumb%%icon%<span><a href="%url%" title="%ext%-Datei&#10;herunterladen" rel="nofollow" class="%class%"><span class="headline">%title%</a></span><div><strong>%filename% - %filesize% - <i title="Downloads" class="fa fa-download"></i> %count%<br><i title="erstellt/geändert" class="fa fa-calendar-o"></i> %date%</strong><br>%description%</div></div>'
 	 	),
 	 	'button'		=> array(
 	 		'name'			=> __( 'Button', 'delightful-downloads' ),
@@ -126,7 +126,7 @@ function dedo_get_shortcode_lists() {
 	 	),
 	 	'infoboxlist'=> array(
 	 		'name'				=> __( 'Title (Icon, Date, Extension, File size,count)', 'delightful-downloads' ),
-	 		'format'			=> '<div style="border:1px solid #e1e1e1;width:100%;padding:8px;">%thumb%%icon%<span><a href="%url%" title="%ext%-Datei&#10;herunterladen" rel="nofollow" class="%class%"><span class="headline">%title%</a></span><div><strong>%filename% - <i title="erstellt/geändert" class="fa fa-calendar-o"></i> %date% - %filesize% - <i title="Downloads" class="fa fa-download"></i> %count%</strong><br>%description%</div></div>'
+	 		'format'			=> '<div style="border:1px solid transparent;width:100%;padding:8px;">%thumb%%icon%<span><a href="%url%" title="%ext%-Datei&#10;herunterladen" rel="nofollow" class="%class%"><span class="headline">%title%</a></span><div><strong>%filename% - %filesize% - <i title="Downloads" class="fa fa-download"></i> %count%<br><i title="erstellt/geändert" class="fa fa-calendar-o"></i> %date%</strong><br>%description%</div></div>'
 	 	)
 	);
 
@@ -171,11 +171,13 @@ function dedo_get_shortcode_lists() {
 
 	// date
  	if ( strpos( $string, '%date%' ) !== false ) {
- 		$moddate = get_the_modified_date( apply_filters( 'dedo_shortcode_date_format', '' ), $id );
-		$credate = get_the_date( apply_filters( 'dedo_shortcode_date_format', '' ), $id );
+ 		// $moddate = get_the_modified_date( apply_filters( 'dedo_shortcode_date_format', '' ), $id );
+ 		$moddate = get_the_modified_date( 'l, d.m.Y H:i:s', $id );
+		//$credate = get_the_date( apply_filters( 'dedo_shortcode_date_format', '' ), $id );
+		$credate = get_the_date( 'l, d.m.Y H:i:s', $id );
 		if ( $moddate != $credate ) {$value = $credate . ' | ' . $moddate;} else {$value = $credate;}
 		if ( !is_user_logged_in() ) {$value = $moddate;}
-		$value .= ' vor '. human_time_diff(intval(get_the_modified_time( 'U, d.m.Y H:i:s', false, $id, true )), time());
+		$value .= ' vor '. human_time_diff(intval(get_the_modified_date( 'U, d.m.Y H:i:s', $id )), time());
 		$string = str_replace( '%date%', $value, $string );
  	}
 
