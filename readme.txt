@@ -3,8 +3,8 @@ Contributors: A5hleyRich, Sven Bolte, others (best of forks)
 Tags: download, manager, downloads, monitor, shortcode, delightful downloads, file, counter, tracking, infobox, fixed filetree,ipflag, chartscodes
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
-Version: 9.9.26
-Stable tag: 9.9.26
+Version: 9.9.27
+Stable tag: 9.9.27
 Requires at least: 5.1
 Tested up to: 5.5.1
 Requires PHP: 7.2
@@ -64,8 +64,9 @@ Please refer to the [FAQ] at the root folder of this plugin for further instruct
 
 == Changelog ==
 
-= 9.9.26 =
+= 9.9.26-27 =
 Download and List infobox - human time added to modified date
+Bugfixes and removed deprecated functions
 
 = 9.9.25 =
 Admin area modernized, documentation link bugfix

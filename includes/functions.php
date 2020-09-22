@@ -372,7 +372,6 @@ function dedo_get_upload_dir( $return = '', $upload_dir = '' ) {
 
 	$upload_dir = ( $upload_dir === '' ? wp_upload_dir() : $upload_dir );
 	$directory  = $dedo_options['upload_directory'];
-
 	$upload_dir['path']         = trailingslashit( $upload_dir['basedir'] ) . $directory . $upload_dir['subdir'];
 	$upload_dir['url']          = trailingslashit( $upload_dir['baseurl'] ) . $directory . $upload_dir['subdir'];
 	$upload_dir['dedo_basedir'] = trailingslashit( $upload_dir['basedir'] ) . $directory;

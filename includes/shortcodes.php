@@ -272,10 +272,8 @@ function dedo_shortcode_ddownload_list( $atts ) {
 	$dedo_cache = new DEDO_Cache( $key );
 
 	if ( true == $cache && false !== ( $cached_data = $dedo_cache->get() ) ) {
-
 		$output = $cached_data;
-	}
-	else {
+	} else {
 
 		// Run query
 		$downloads_list = new WP_Query( $query_args );
@@ -283,9 +281,7 @@ function dedo_shortcode_ddownload_list( $atts ) {
 		// Begin output
 		if ( $downloads_list->have_posts() ) {
 			ob_start();
-			
-			echo '<figure class="wp-block-table is-style-stripes"><table class="ddownloads_list' . $tax_class . $style_class . '">';
-			
+			echo '<table class="ddownloads_list' . $tax_class . $style_class . '">';
 			while ( $downloads_list->have_posts() ) {
 				$downloads_list->the_post();
 
@@ -296,23 +292,18 @@ function dedo_shortcode_ddownload_list( $atts ) {
 				$new_style_format = str_replace( '%class%', $classes, $style_format );
 
 				echo '<tr><td>' . dedo_search_replace_wildcards( $new_style_format, get_the_ID() ) . '</td></tr>';
-
-				$filename = dedo_get_upload_dir( '', $upload_dir ) . get_the_ID();
-
+				// kann weg? ---  $filename = dedo_get_upload_dir( '', $upload_dir ) . get_the_ID(); 
 				// Reset classes for next iteration
 				unset( $classes );
 				unset( $new_style_format );
 			}
 			
-			echo '</table></figure>';
-			
+			echo '</table>';
 			$output = ob_get_clean();
-
 			wp_reset_postdata();
 
 			// Save to cache
 			if ( true == $cache ) {
-				
 				$dedo_cache->set( $output );
 			}
 		}
@@ -321,7 +312,6 @@ function dedo_shortcode_ddownload_list( $atts ) {
 		}
 
 	}
-	
 	return apply_filters( 'dedo_shortcode_ddownload_list', $output );
 }
 add_shortcode( 'ddownload_list', 'dedo_shortcode_ddownload_list' );

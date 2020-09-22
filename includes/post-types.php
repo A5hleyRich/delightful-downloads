@@ -130,7 +130,7 @@ function dedo_download_column_contents( $column_name, $post_id ) {
 	
 	// One day pass column
 	if ( $column_name == 'onedaypass' ) {
-		$hashwert = md5(intval($post_id) + intval(date('Y-m-d H:i:s')/24*60*60));
+		$hashwert = md5(intval($post_id) + intval(date('Y-m-d H:i:s'))/24*60*60);
 		echo '<input type="text" title="'.$hashwert.'" class="copy-to-clipboard" value="' . get_site_url() . '?sdownload=' . esc_attr( $post_id ) .  '&code='. $hashwert . '" readonly>';
 		echo '<p class="description" style="display: none;">' . __( 'One day pass copied to clipboard.', 'delightful-downloads' ) . '</p>';
 	}

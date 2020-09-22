@@ -20,12 +20,14 @@ function dedo_media_button( $context ) {
 
 	// Only run in post/page creation and edit screens
 	if ( in_array( $pagenow, array( 'post.php', 'page.php', 'post-new.php', 'post-edit.php' ) ) ) { 
-		$context .= '<a href="#dedo-shortcode-modal" id="dedo-media-button" class="button dedo-modal-action add-download" data-editor="content" title="Add Download"><span class="wp-media-buttons-icon"></span>Add Download</a>';	
+		printf( '<a href="#dedo-shortcode-modal" id="dedo-media-button" class="button dedo-modal-action add-download" data-editor="content" title="Add Download">' . '<span class="wp-media-buttons-icon dashicons dashicons-art"></span> Add Download' . '</a>' );
+
+		// $context .= '<span class="wp-media-buttons-icon"></span></a>';	
 	}
 
 	return $context;
 }
-add_filter( 'media_buttons_context', 'dedo_media_button' );
+add_action( 'media_buttons', 'dedo_media_button' );
 
 /**
  * Add Modal Window to Footer

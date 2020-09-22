@@ -35,9 +35,8 @@ header('Access-Control-Allow-Origin: *');
 $root = $_SERVER['DOCUMENT_ROOT'];
 if( !$root ) exit("ERROR: Root filesystem directory not set in jqueryFileTree.php");
 
-$postDir = rawurldecode($root.(isset($_POST['dir']) ? $_POST['dir'] : null ));
-
-// $_POST['dir'] = urldecode($_POST['dir']);
+$postDir = rawurldecode($root.(isset($_POST['dir']) ? $_POST['dir'] = urldecode($_POST['dir']) : null ));
+//  $_POST['dir'] = urldecode($_POST['dir']);
 
 if( file_exists($_POST['dir']) ) {
 	$files = scandir($_POST['dir']);
