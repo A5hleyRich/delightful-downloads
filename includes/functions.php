@@ -208,6 +208,7 @@ function dedo_get_shortcode_lists() {
   	// file icon
  	if ( strpos( $string, '%icon%' ) !== false ) {
  		$fext = strtolower( dedo_get_file_ext( get_post_meta( $id, '_dedo_file_url', true ) ) );
+		if ( empty($fext) ) { $fext = '_blank'; }
 		$fmime = dedo_get_file_mime( get_post_meta( $id, '_dedo_file_url', true ) );
 		$value='<img title="'.$fmime.'" style="width:50px;height:50px;vertical-align:middle" src="' . DEDO_PLUGIN_URL . '/assets/icons/' . $fext . '.png">';
  		$string = str_replace( '%icon%', $value, $string );
