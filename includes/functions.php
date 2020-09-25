@@ -16,7 +16,6 @@ if ( !defined( 'ABSPATH' ) ) exit;
  * @since  1.0
  */
 function dedo_get_shortcode_styles() {
-	
 	$styles = array(
 	 	'infobox'		=> array(
 	 		'name'			=> __( 'Infobox mit Icon und Details', 'delightful-downloads' ),
@@ -39,7 +38,6 @@ function dedo_get_shortcode_styles() {
 	 		'format'		=> '%url%'
 	 	)
 	);
-
 	return apply_filters( 'dedo_get_styles', $styles );
 }
 
