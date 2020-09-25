@@ -3,8 +3,8 @@ Contributors: A5hleyRich, Sven Bolte, others (best of forks)
 Tags: download, manager, downloads, monitor, shortcode, delightful downloads, file, counter, tracking, infobox, fixed filetree,ipflag, chartscodes
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
-Version: 9.9.27
-Stable tag: 9.9.27
+Version: 9.9.28
+Stable tag: 9.9.28
 Requires at least: 5.1
 Tested up to: 5.5.1
 Requires PHP: 7.2
@@ -64,9 +64,16 @@ Please refer to the [FAQ] at the root folder of this plugin for further instruct
 
 == Changelog ==
 
+= 9.9.28 =
+* removing the file in download editor does not remove the file from the server but unlinks it from post
+  - added the option in admin downloads list to physically delete file from server (deleted status is marked in list). 
+  - added file exist check in list and in onedaypass download. 
+* Download logs now show if it was downloaded using onedaypass or by regular download method (in column user agent)  
+* added some german translations
+
 = 9.9.26-27 =
-Download and List infobox - human time added to modified date
-Bugfixes and removed deprecated functions
+* Download and List infobox - human time added to modified date
+* Bugfixes and removed deprecated functions
 
 = 9.9.25 =
 Admin area modernized, documentation link bugfix

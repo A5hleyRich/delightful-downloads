@@ -95,17 +95,29 @@ function dedo_download_column_headings( $columns ) {
 }
 add_filter( 'manage_dedo_download_posts_columns', 'dedo_download_column_headings' );
 
+
 /**
  * Download Post Type Column Contents
  *
  * @since  1.0
  */
 function dedo_download_column_contents( $column_name, $post_id ) {
+	
 	// File column
 	if ( $column_name == 'file' ) {
 		$file_url = get_post_meta( $post_id, '_dedo_file_url', true );
+		$file_path = dedo_get_abs_path($file_url);
+		if (isset($_GET['aktion'])) {
+		  if ( current_user_can('administrator') && $_GET['aktion'] == 'dedodelete' && $_GET['post'] == $post_id ) {
+			  wp_delete_file( $file_path );
+			  wp_redirect( admin_url( "edit.php?post_type=dedo_download") );
+		  }	
+		} 
 		$file_url = dedo_get_file_name( $file_url );
 		echo ( ! $file_url ) ? '<span class="blank">--</span>' : esc_attr( $file_url );
+		if (file_exists($file_path)) { 
+			echo '<br><a style="color:tomato;padding-top:7px" title="'.$file_path.'" onclick="return confirm(\''.__( 'really delete attached file from server?', 'delightful-downloads' ).'\');" href ="'.admin_url( "edit.php?post_type=dedo_download&post=$post_id&aktion=dedodelete").'">' . __( 'delete file', 'delightful-downloads' ) .'</a>';
+		} else { echo '<br>'.__( 'file is deleted', 'delightful-downloads' ); }
 	}
 
 	// Filesize column

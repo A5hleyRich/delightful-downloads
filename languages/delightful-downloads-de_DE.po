@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the Plugins - Delightful Downloads - Stable (latest release) package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2020-09-17 11:33+0000\n"
+"PO-Revision-Date: 2020-09-25 19:24+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: Plugins - Delightful Downloads - Stable (latest release)"
 "\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-09-17 11:32+0000\n"
+"POT-Creation-Date: 2020-09-25 19:20+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "X-Loco-Version: 2.4.3; wp-5.5.1"
@@ -53,13 +53,13 @@ msgstr "Anordnen nach:"
 msgid "Date"
 msgstr "Datum"
 
-#: includes/class-dedo-widget-list.php:134 includes/admin/media-button.php:108
+#: includes/class-dedo-widget-list.php:134 includes/admin/media-button.php:110
 #: includes/admin/meta-boxes.php:177
 msgid "Download Count"
 msgstr "Anzahl Downloads"
 
 #: includes/class-dedo-widget-list.php:135 includes/post-types.php:62
-#: includes/admin/media-button.php:107
+#: includes/admin/media-button.php:109
 msgid "File Size"
 msgstr "Dateigröße"
 
@@ -116,7 +116,7 @@ msgstr "Downloads einer Kategorie AND/OR Schlagwort. "
 msgid "Infobox mit Icon und Details"
 msgstr "Infobox mit Icon und Details"
 
-#: includes/functions.php:26 includes/admin/media-button.php:87
+#: includes/functions.php:26 includes/admin/media-button.php:89
 msgid "Button"
 msgstr "Button"
 
@@ -184,9 +184,13 @@ msgstr "Titel (Datum, Erweiterung, Dateigröße)"
 msgid "Title (Date, Extension, File size,count)"
 msgstr "Titel (Datum, Erweiterung, Dateigröße, Anzahl)"
 
-#: includes/functions.php:124 includes/functions.php:128
+#: includes/functions.php:124
 msgid "Title (Icon, Date, Extension, File size,count)"
 msgstr "Titel (Symbol, Datum, Erweiterung, Dateigröße, Anzahl)"
+
+#: includes/functions.php:128
+msgid "Infobox (Icon, Date, Extension, File size,count)"
+msgstr "Infobox (Icon, Datum, Endung, Dateigröße, Zähler)"
 
 #: includes/options.php:22
 msgid "General"
@@ -236,7 +240,7 @@ msgstr "Standard-Text"
 
 #: includes/options.php:80 includes/post-types.php:23
 #: includes/admin/class-dedo-list-table.php:48
-#: includes/admin/media-button.php:65 includes/admin/meta-boxes.php:19
+#: includes/admin/media-button.php:67 includes/admin/meta-boxes.php:19
 #: includes/admin/page-statistics.php:188
 msgid "Download"
 msgstr "Download"
@@ -353,43 +357,56 @@ msgstr "Kategorien"
 msgid "Tags"
 msgstr "Schlagwörter"
 
-#: includes/post-types.php:121
+#: includes/post-types.php:119
+msgid "really delete attached file from server?"
+msgstr "die Datei wirklich vom Server löschen?"
+
+#: includes/post-types.php:119
+#| msgid "Delete File"
+msgid "delete file"
+msgstr "Datei löschen"
+
+#: includes/post-types.php:120
+msgid "file is deleted"
+msgstr "Datei nicht vorhanden"
+
+#: includes/post-types.php:133
 msgid "Shortcode copied to clipboard."
 msgstr "Der ShortCode ist nun in der Zwischenablage. "
 
-#: includes/post-types.php:128
+#: includes/post-types.php:140
 msgid "Quicklink copied to clipboard."
 msgstr "QuickLink in die Zwischenablage kopiert."
 
-#: includes/post-types.php:135
+#: includes/post-types.php:147
 msgid "One day pass copied to clipboard."
 msgstr "1-Tages-Download in die Zwischenablage kopiert."
 
-#: includes/post-types.php:150 includes/post-types.php:161
+#: includes/post-types.php:162 includes/post-types.php:173
 #: includes/admin/meta-boxes.php:191 includes/admin/meta-boxes.php:228
-#: includes/admin/page-settings.php:276 includes/admin/page-settings.php:292
-#: includes/admin/page-settings.php:325 includes/admin/page-settings.php:450
-#: includes/admin/page-settings.php:467 includes/admin/page-settings.php:488
-#: includes/admin/page-settings.php:508 includes/admin/page-settings.php:525
-#: includes/admin/page-settings.php:571 includes/admin/page-settings.php:587
-#: includes/admin/page-settings.php:603
+#: includes/admin/page-settings.php:273 includes/admin/page-settings.php:289
+#: includes/admin/page-settings.php:322 includes/admin/page-settings.php:447
+#: includes/admin/page-settings.php:464 includes/admin/page-settings.php:485
+#: includes/admin/page-settings.php:505 includes/admin/page-settings.php:522
+#: includes/admin/page-settings.php:568 includes/admin/page-settings.php:584
+#: includes/admin/page-settings.php:600
 msgid "Yes"
 msgstr "Ja"
 
-#: includes/post-types.php:150 includes/post-types.php:161
+#: includes/post-types.php:162 includes/post-types.php:173
 #: includes/admin/meta-boxes.php:192 includes/admin/meta-boxes.php:229
-#: includes/admin/page-settings.php:277 includes/admin/page-settings.php:293
-#: includes/admin/page-settings.php:326 includes/admin/page-settings.php:451
-#: includes/admin/page-settings.php:468 includes/admin/page-settings.php:489
-#: includes/admin/page-settings.php:509 includes/admin/page-settings.php:526
-#: includes/admin/page-settings.php:572 includes/admin/page-settings.php:588
-#: includes/admin/page-settings.php:604
+#: includes/admin/page-settings.php:274 includes/admin/page-settings.php:290
+#: includes/admin/page-settings.php:323 includes/admin/page-settings.php:448
+#: includes/admin/page-settings.php:465 includes/admin/page-settings.php:486
+#: includes/admin/page-settings.php:506 includes/admin/page-settings.php:523
+#: includes/admin/page-settings.php:569 includes/admin/page-settings.php:585
+#: includes/admin/page-settings.php:601
 msgid "No"
 msgstr "Nein"
 
-#: includes/post-types.php:152 includes/post-types.php:163
-#: includes/admin/media-button.php:77 includes/admin/media-button.php:90
-#: includes/admin/media-button.php:102 includes/admin/meta-boxes.php:193
+#: includes/post-types.php:164 includes/post-types.php:175
+#: includes/admin/media-button.php:79 includes/admin/media-button.php:92
+#: includes/admin/media-button.php:104 includes/admin/meta-boxes.php:193
 #: includes/admin/meta-boxes.php:202 includes/admin/meta-boxes.php:210
 #: includes/admin/meta-boxes.php:211 includes/admin/meta-boxes.php:230
 msgid "Inherit"
@@ -398,6 +415,12 @@ msgstr "übernehmen"
 #: includes/process-download.php:31 includes/process-download.php:74
 msgid "Invalid download."
 msgstr "Ungültiger Download."
+
+#: includes/process-download.php:62
+msgid "download not found or onedaypass invalid or expired."
+msgstr ""
+"Die Download Datei wurde nicht gefunden oder das Onedaypass Ticket ist "
+"abgelaufen oder ungültig."
 
 #: includes/process-download.php:80
 msgid "You are blocked from downloading this file!"
@@ -419,8 +442,8 @@ msgstr "Geben Sie die Datei für den Download an."
 msgid "Server error, file cannot be opened!"
 msgstr "Server-Fehler, die Datei konnte nicht geöffnet werden."
 
-#: includes/shortcodes.php:47 includes/shortcodes.php:354
-#: includes/shortcodes.php:418
+#: includes/shortcodes.php:47 includes/shortcodes.php:344
+#: includes/shortcodes.php:408
 msgid "Invalid download ID."
 msgstr "Ungültige-Download-ID."
 
@@ -444,7 +467,7 @@ msgstr "Ungültiges order-Attribut."
 msgid "Invalid relation attribute."
 msgstr "Ungültiges relation-Attribut."
 
-#: includes/shortcodes.php:320
+#: includes/shortcodes.php:311
 msgid "No downloads found."
 msgstr "Keine Downloads gefunden."
 
@@ -599,40 +622,40 @@ msgstr "Beliebte Downloads"
 msgid "Failed security check!"
 msgstr "Sicherheits-Prüfung fehlgeschlagen!"
 
-#: includes/admin/media-button.php:59
+#: includes/admin/media-button.php:61
 msgid "Close"
 msgstr "Schliessen"
 
-#: includes/admin/media-button.php:61
+#: includes/admin/media-button.php:63
 msgid "Insert Download"
 msgstr "Download einfügen"
 
-#: includes/admin/media-button.php:74
+#: includes/admin/media-button.php:76
 msgid "Style"
 msgstr "Stil"
 
-#: includes/admin/media-button.php:76 includes/admin/media-button.php:89
+#: includes/admin/media-button.php:78 includes/admin/media-button.php:91
 #: includes/admin/meta-boxes.php:211
 msgid "Global"
 msgstr "Global"
 
-#: includes/admin/media-button.php:79
+#: includes/admin/media-button.php:81
 msgid "Styles"
 msgstr "Stile"
 
-#: includes/admin/media-button.php:92
+#: includes/admin/media-button.php:94
 msgid "Buttons"
 msgstr "Buttons"
 
-#: includes/admin/media-button.php:101
+#: includes/admin/media-button.php:103
 msgid "Text"
 msgstr "Text"
 
-#: includes/admin/media-button.php:106
+#: includes/admin/media-button.php:108
 msgid "Insert"
 msgstr "Einfügen"
 
-#: includes/admin/media-button.php:111
+#: includes/admin/media-button.php:113
 #, php-format
 msgid "Please %sadd%s a new download."
 msgstr "Bitte %sadd%s einen neuen Download."
@@ -738,8 +761,8 @@ msgid "Select Existing"
 msgstr "Bestehende Auswählen"
 
 #: includes/admin/meta-boxes.php:241
-msgid "Delete File"
-msgstr "Datei löschen"
+msgid "Unlink file from post"
+msgstr "Datei vom Download lösen"
 
 #: includes/admin/meta-boxes.php:255
 msgid "Drop file here"
@@ -779,7 +802,7 @@ msgstr "Bestätigen"
 msgid "Download Settings"
 msgstr "Downloads Einstellungen"
 
-#: includes/admin/page-settings.php:86 includes/admin/page-settings.php:672
+#: includes/admin/page-settings.php:86 includes/admin/page-settings.php:669
 msgid "Import"
 msgstr "Daten importieren"
 
@@ -813,12 +836,16 @@ msgstr ""
 "Offene Fragen? Schauen Sie in die %sdocumentation%s. Wenn Sie dort keine "
 "Lösung finden, stellen Sie Ihre Frage im %ssupport forums%s."
 
-#: includes/admin/page-settings.php:278
+#: includes/admin/page-settings.php:245
+msgid "sample shortcodes"
+msgstr "Beispiel-Shortcodes"
+
+#: includes/admin/page-settings.php:275
 msgid "Allow downloads to be tagged or categorised."
 msgstr ""
 "Download-Dateien können mit Schlagworten versehen oder kategorisiert werden. "
 
-#: includes/admin/page-settings.php:294
+#: includes/admin/page-settings.php:291
 msgid ""
 "Allow only logged in users to download files. This can be overridden on a "
 "per-download basis."
@@ -826,11 +853,11 @@ msgstr ""
 "Nur angemeldete Benutzer können Dateien herunterladen. Dies kann man pro "
 "Download-Datei regeln. "
 
-#: includes/admin/page-settings.php:303
+#: includes/admin/page-settings.php:300
 msgid "No Page (Generic Error)"
 msgstr "Keine Seite (Systemfehler)"
 
-#: includes/admin/page-settings.php:309
+#: includes/admin/page-settings.php:306
 msgid ""
 "The page to redirect non-members. If no page is selected, a generic error "
 "message will be displayed. This can be overridden on a per-download basis."
@@ -839,7 +866,7 @@ msgstr ""
 "wurde, wird ein Systemfehler angezeigt. Diese Einstellung kann für jeden "
 "Download überschrieben werden."
 
-#: includes/admin/page-settings.php:327
+#: includes/admin/page-settings.php:324
 msgid ""
 "Attempt to open files in the browser window. This can be overridden on a per-"
 "download basis. For files located within the Delightful Downloads upload "
@@ -851,13 +878,13 @@ msgstr ""
 "Sie die Ordner-Einstellungen auf \"Nein\" setzen (zu finden unter dem "
 "Advanced - Tab) "
 
-#: includes/admin/page-settings.php:342
+#: includes/admin/page-settings.php:339
 msgid "User agents to block from downloading files. One per line."
 msgstr ""
 "User-Agents, die am Herunterladen von Dateien gehindert werden sollen. Ein "
 "Eintrag pro Zeile."
 
-#: includes/admin/page-settings.php:356
+#: includes/admin/page-settings.php:353
 #, php-format
 msgid ""
 "The default text to display, when using the %s shortcode. This can be "
@@ -866,11 +893,11 @@ msgstr ""
 "Standard-Anzeige-Text für den %s shortcode Dies kann für jeden Download "
 "überschrieben werden. "
 
-#: includes/admin/page-settings.php:379
+#: includes/admin/page-settings.php:376
 msgid "No styles registered"
 msgstr "Keine Stil-Definitionen registriert "
 
-#: includes/admin/page-settings.php:383
+#: includes/admin/page-settings.php:380
 #, php-format
 msgid ""
 "The default output style, when using the %s shortcode. This can be "
@@ -879,11 +906,11 @@ msgstr ""
 "Standard-Output-Stil für den %s shortcode. Dies kann für jede Liste "
 "überschrieben werden. "
 
-#: includes/admin/page-settings.php:406
+#: includes/admin/page-settings.php:403
 msgid "No button styles registered"
 msgstr "Keine Button-Stil-Definitionen registriert "
 
-#: includes/admin/page-settings.php:410
+#: includes/admin/page-settings.php:407
 #, php-format
 msgid ""
 "The default button style, when using the %s shortcode. This can be "
@@ -892,11 +919,11 @@ msgstr ""
 "Standard-Button-Stil für den %s shortcode. Dies kann für jede Liste "
 "überschrieben werden. "
 
-#: includes/admin/page-settings.php:433
+#: includes/admin/page-settings.php:430
 msgid "No list styles registered"
 msgstr "Keine Listen-Stil-Definitionen registriert "
 
-#: includes/admin/page-settings.php:437
+#: includes/admin/page-settings.php:434
 #, php-format
 msgid ""
 "The default output style, when using the %s shortcode. This can be "
@@ -905,56 +932,56 @@ msgstr ""
 "Standard-Output-Stil für den %s shortcode. Dies kann auf für jede Liste "
 "überschrieben werden."
 
-#: includes/admin/page-settings.php:452
+#: includes/admin/page-settings.php:449
 msgid "Log events triggered by admin users."
 msgstr "Aktivitäten der Admin-Benutzer speichern. "
 
-#: includes/admin/page-settings.php:469
+#: includes/admin/page-settings.php:466
 msgid ""
 "Stop multiple logs of the same type from being saved, in quick succession."
 msgstr ""
 "Mehrere Protokolle desselben Typs, die in zeitlicher Folge erstellt wurden, "
 "nicht speichern. "
 
-#: includes/admin/page-settings.php:472
+#: includes/admin/page-settings.php:469
 msgid "The time in minutes before creating a new log."
 msgstr "Wartezeit (in Minuten) bis zur Erstellung einer neuen Protokolldatei. "
 
-#: includes/admin/page-settings.php:490
+#: includes/admin/page-settings.php:487
 msgid "Automatically delete old logs."
 msgstr "Alte Logs automatisch löschen."
 
-#: includes/admin/page-settings.php:493
+#: includes/admin/page-settings.php:490
 msgid "The time in days to keep logs."
 msgstr " Vorhaltezeit für Protokolldateien. "
 
-#: includes/admin/page-settings.php:510
+#: includes/admin/page-settings.php:507
 msgid "Output the Delightful Downloads stylesheet on the front-end."
 msgstr "Das Delightful-Downloads-Stylesheet im Frontend einbinden. "
 
-#: includes/admin/page-settings.php:527
+#: includes/admin/page-settings.php:524
 msgid "Cache database queries that are expensive to generate."
 msgstr "Umfangreiche Abfragen zwischenspeichern (Performance!) "
 
-#: includes/admin/page-settings.php:530
+#: includes/admin/page-settings.php:527
 msgid "The time in minutes to cache queries."
 msgstr " \tVorhaltezeit (in Minuten) für Queries / Abfragen. "
 
-#: includes/admin/page-settings.php:546
+#: includes/admin/page-settings.php:543
 msgid "The URL for download links."
 msgstr "Die URL für Download-Links. "
 
-#: includes/admin/page-settings.php:559
+#: includes/admin/page-settings.php:556
 msgid "The directory to upload files."
 msgstr "Das Zielverzeichnis für die Uploads."
 
-#: includes/admin/page-settings.php:573
+#: includes/admin/page-settings.php:570
 msgid "Display Quicklink column in download list."
 msgstr ""
 "\n"
 "Zeigen Sie die Quicklink-Spalte in der Download-Liste an."
 
-#: includes/admin/page-settings.php:589
+#: includes/admin/page-settings.php:586
 msgid ""
 "Stop direct access to uploaded files, within the Delightful Downloads upload "
 "directory."
@@ -962,7 +989,7 @@ msgstr ""
 "Kein direkter Zugriff auf die Dateien im Delightful Downloads-Upload-"
 "Verzeichnis."
 
-#: includes/admin/page-settings.php:605
+#: includes/admin/page-settings.php:602
 msgid ""
 "Completely remove all data associated with Delightful Downloads, when "
 "uninstalling the plugin. All downloads, categories, tags and statistics will "
@@ -972,28 +999,28 @@ msgstr ""
 "entfernen. Alle Download-Dateien, Kategorien, Schlagworte und Übersichten "
 "werden entfernt. "
 
-#: includes/admin/page-settings.php:666
+#: includes/admin/page-settings.php:663
 msgid "Import Settings"
 msgstr "Einstellungen importieren"
 
-#: includes/admin/page-settings.php:667
+#: includes/admin/page-settings.php:664
 msgid "Select a Delightful Downloads settings file to import:"
 msgstr ""
 "Wählen Sie die Delightful-Downloads-Konfigurations-Datei zum Importieren. "
 
-#: includes/admin/page-settings.php:737
+#: includes/admin/page-settings.php:734
 msgid "Invalid settings file."
 msgstr "Ungültige Konfigurations-Datei. "
 
-#: includes/admin/page-settings.php:747
+#: includes/admin/page-settings.php:744
 msgid "Settings have been successfully imported."
 msgstr "Die Einstellungen wurden erfolgreich importiert. "
 
-#: includes/admin/page-settings.php:755
+#: includes/admin/page-settings.php:752
 msgid "No file uploaded."
 msgstr "Keine Datei hochgeladen."
 
-#: includes/admin/page-settings.php:815
+#: includes/admin/page-settings.php:812
 msgid "Default settings reset successfully."
 msgstr "Standard-Einstellungen wurden erfolgreich zurückgesetzt. "
 

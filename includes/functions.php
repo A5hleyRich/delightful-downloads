@@ -125,7 +125,7 @@ function dedo_get_shortcode_lists() {
 	 		'format'			=> '%icon% &nbsp; <a href="%url%" title="%title% (%date%, %ext%, %filesize%, %count%x)" rel="nofollow" class="%class%">%title% (%date%, %ext%, %filesize%, %count%x)</a>'
 	 	),
 	 	'infoboxlist'=> array(
-	 		'name'				=> __( 'Title (Icon, Date, Extension, File size,count)', 'delightful-downloads' ),
+	 		'name'				=> __( 'Infobox (Icon, Date, Extension, File size,count)', 'delightful-downloads' ),
 	 		'format'			=> '<div style="border:1px solid transparent;width:100%;padding:8px;">%thumb%%icon%<span><a href="%url%" title="%ext%-Datei&#10;herunterladen" rel="nofollow" class="%class%"><span class="headline">%title%</a></span><div><strong>%filename% - %filesize% - <i title="Downloads" class="fa fa-download"></i> %count%<br><i title="erstellt/geändert" class="fa fa-calendar-o"></i> %date%</strong><br>%description%</div></div>'
 	 	)
 	);

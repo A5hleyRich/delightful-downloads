@@ -120,6 +120,7 @@ class DEDO_Logging {
 		);
 
 		$log = wp_parse_args( $log, $defaults );
+		if ( isset( $_GET[ 'sdownload' ] ) ) { $oneday = 'ONEDAYPASS | '; } else { $oneday='DOWNLOAD | '; }
 
 		// Are we logging events for this user role?
 		if ( false === $this->role_check( $log ) ) {
@@ -141,7 +142,7 @@ class DEDO_Logging {
 			$log['date'],
 			$log['user_id'],
 			$this->prepare_ip_address( $log['ip_address'] ),
-			$log['agent'] 
+			$oneday . $log['agent'] 
 		);
 
 		// Run and update count if successfull
