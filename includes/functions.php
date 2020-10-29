@@ -19,7 +19,7 @@ function dedo_get_shortcode_styles() {
 	$styles = array(
 	 	'infobox'		=> array(
 	 		'name'			=> __( 'Infobox mit Icon und Details', 'delightful-downloads' ),
-	 		'format'		=> '<div style="border:1px solid #e1e1e1;width:100%;padding:8px;">%thumb%%icon%<span><a href="%url%" title="%ext%-Datei&#10;herunterladen" rel="nofollow" class="%class%"><span class="headline">%title%</a></span><div><strong>%filename% - %filesize% - <i title="Downloads" class="fa fa-download"></i> %count%<br><i title="erstellt/geändert" class="fa fa-calendar-o"></i> %date%</strong><br>%description%</div></div>'
+	 		'format'		=> '<div style="border:1px solid #e1e1e1;width:100%;padding:8px;">%thumb%%icon%<span><a href="%url%" title="%ext%-Datei&#10;herunterladen" rel="nofollow" class="%class%"><span class="headline">%title%</a></span><div><abbr><i title="filename" class="fa fa-file-o"></i> %filename% &nbsp; <i title="filename" class="fa fa-expand"></i> %filesize% &nbsp; <i title="Downloads" class="fa fa-download"></i> %count%<br><i title="erstellt/geändert" class="fa fa-calendar-o"></i> %date%</abbr><br>%description%</div></div>'
 	 	),
 	 	'button'		=> array(
 	 		'name'			=> __( 'Button', 'delightful-downloads' ),
@@ -124,7 +124,7 @@ function dedo_get_shortcode_lists() {
 	 	),
 	 	'infoboxlist'=> array(
 	 		'name'				=> __( 'Infobox (Icon, Date, Extension, File size,count)', 'delightful-downloads' ),
-	 		'format'			=> '<div style="border:1px solid transparent;width:100%;padding:8px;">%thumb%%icon%<span><a href="%url%" title="%ext%-Datei&#10;herunterladen" rel="nofollow" class="%class%"><span class="headline">%title%</a></span><div><strong>%filename% - %filesize% - <i title="Downloads" class="fa fa-download"></i> %count%<br><i title="erstellt/geändert" class="fa fa-calendar-o"></i> %date%</strong><br>%description%</div></div>'
+	 		'format'			=> '<div style="border:1px solid transparent;width:100%;padding:8px;">%thumb%%icon%<span><a href="%url%" title="%ext%-Datei&#10;herunterladen" rel="nofollow" class="%class%"><span class="headline">%title%</a></span><div><abbr><i title="filename" class="fa fa-file-o"></i> %filename% &nbsp; <i title="filename" class="fa fa-expand"></i> %filesize% &nbsp; <i title="Downloads" class="fa fa-download"></i> %count% &nbsp; <i title="erstellt/geändert" class="fa fa-calendar-o"></i> %date%</abbr><br>%description%</div></div>'
 	 	)
 	);
 
