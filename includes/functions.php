@@ -19,7 +19,7 @@ function dedo_get_shortcode_styles() {
 	$styles = array(
 	 	'infobox'		=> array(
 	 		'name'			=> __( 'Infobox mit Icon und Details', 'delightful-downloads' ),
-	 		'format'		=> '<div style="border:1px solid #e1e1e1;width:100%;padding:8px;">%thumb%%icon%<span><a href="%url%" title="%ext%-Datei&#10;herunterladen" rel="nofollow" class="%class%"><span class="headline">%title%</a></span><div><abbr><i title="filename" class="fa fa-file-o"></i> %filename% &nbsp; <i title="filename" class="fa fa-expand"></i> %filesize% &nbsp; <i title="Downloads" class="fa fa-download"></i> %count%<br><i title="erstellt/geändert" class="fa fa-calendar-o"></i> %date%</abbr><br>%description%</div></div>'
+	 		'format'		=> '<div style="border:1px solid #e1e1e1;width:100%;padding:8px;">%thumb%%icon%<span><a href="%url%" title="%ext%-Datei&#10;herunterladen" rel="nofollow" class="%class%"><span class="headline">%title%</a></span><div>%adminedit%<abbr><i title="filename" class="fa fa-file-o"></i> %filename% &nbsp; <i title="filename" class="fa fa-expand"></i> %filesize% &nbsp; <i title="Downloads" class="fa fa-download"></i> %count%<br><i title="erstellt/geändert" class="fa fa-calendar-o"></i> %date%</abbr><br>%description%</div></div>'
 	 	),
 	 	'button'		=> array(
 	 		'name'			=> __( 'Button', 'delightful-downloads' ),
@@ -124,7 +124,7 @@ function dedo_get_shortcode_lists() {
 	 	),
 	 	'infoboxlist'=> array(
 	 		'name'				=> __( 'Infobox (Icon, Date, Extension, File size,count)', 'delightful-downloads' ),
-	 		'format'			=> '<div style="border:1px solid transparent;width:100%;padding:8px;">%thumb%%icon%<span><a href="%url%" title="%ext%-Datei&#10;herunterladen" rel="nofollow" class="%class%"><span class="headline">%title%</a></span><div><abbr><i title="filename" class="fa fa-file-o"></i> %filename% &nbsp; <i title="filename" class="fa fa-expand"></i> %filesize% &nbsp; <i title="Downloads" class="fa fa-download"></i> %count% &nbsp; <i title="erstellt/geändert" class="fa fa-calendar-o"></i> %date%</abbr><br>%description%</div></div>'
+	 		'format'			=> '<div style="border:1px solid transparent;width:100%;padding:8px;">%thumb%%icon%<span><a href="%url%" title="%ext%-Datei&#10;herunterladen" rel="nofollow" class="%class%"><span class="headline">%title%</a></span><div>%adminedit%<abbr><i title="filename" class="fa fa-file-o"></i> %filename% &nbsp; <i title="filename" class="fa fa-expand"></i> %filesize% &nbsp; <i title="Downloads" class="fa fa-download"></i> %count% &nbsp; <i title="erstellt/geändert" class="fa fa-calendar-o"></i> %date%</abbr><br>%description%</div></div>'
 	 	)
 	);
 
@@ -138,7 +138,16 @@ function dedo_get_shortcode_lists() {
  */
  function dedo_search_replace_wildcards( $string, $id ) {
 
- 	// id
+ 	//adminedit
+ 	if ( strpos( $string, '%adminedit%' ) !== false ) {
+ 		if(current_user_can('administrator')) {
+			$string = str_replace( '%adminedit%', ' <a href="'. get_home_url() . '/wp-admin/post.php?post='.$id.'&action=edit"><i title="'. __( 'edit this download', 'delightful-downloads' ) . '" class="fa fa-pencil"></i></a> &nbsp; ', $string );
+		} else {
+			$string = str_replace( '%adminedit%', '', $string );
+		}
+ 	}
+	 
+	// id
  	if ( strpos( $string, '%id%' ) !== false ) {
  		$string = str_replace( '%id%', $id, $string );
  	}
