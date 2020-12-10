@@ -6,8 +6,8 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Version: 9.9.30
 Stable tag: 9.9.30
 Requires at least: 5.1
-Tested up to: 5.5.3
-Requires PHP: 7.2
+Tested up to: 5.6
+Requires PHP: 7.4
 
 A super-awesome downloads manager and statistics tracker for WordPress.
 
@@ -64,9 +64,8 @@ Please refer to the [FAQ] at the root folder of this plugin for further instruct
 
 == Changelog ==
 
-= 9.9.30 =
-Added edit link on download list and single download infobox-layout (in frontend, only when administrator is logged in)
-Admins can edit and update download post now with one mouse click from the frontend
+= 9.9.28 =
+PHP 8 fixes and Wordpress 5.6 tests
 
 = 9.9.28 =
 * removing the file in download editor does not remove the file from the server but unlinks it from post
