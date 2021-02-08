@@ -41,7 +41,8 @@ function dedo_onedaypass_process( $download_id ) {
 	do_action( 'ddownload_download_before', $download_id );
 	
     // Onedaypass prüfen
-	if ( file_exists(dedo_get_abs_path( $download_url ) ) && $_GET['code'] == md5(intval($download_id) + intval(strtotime(date('Y-m-d H:i:s')) / 24 * 60 * 60)) ) { // if it match it is legit
+	$hashwert = md5( intval($download_id) + intval(strtotime(date('Y-m-d'))) );
+	if ( file_exists(dedo_get_abs_path( $download_url ) ) && $_GET['code'] == $hashwert ) { // if it match it is legit
 		// $path = ABSPATH.'wp-content/uploads/delightful-downloads/2019/software.zip'; // the file made available for download via this PHP file
 		$path = dedo_get_abs_path( $download_url );
 		$mm_type="application/octet-stream"; // modify accordingly to the file type of $path, but in most cases no need to do so
