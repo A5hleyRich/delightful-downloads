@@ -3,10 +3,10 @@ Contributors: A5hleyRich, Sven Bolte, others (best of forks)
 Tags: download, manager, downloads, monitor, shortcode, delightful downloads, file, counter, tracking, infobox, fixed filetree,ipflag, chartscodes
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
-Version: 9.9.30
-Stable tag: 9.9.30
+Version: 9.9.31
+Stable tag: 9.9.31
 Requires at least: 5.1
-Tested up to: 5.6
+Tested up to: 5.6.1
 Requires PHP: 7.4
 
 A super-awesome downloads manager and statistics tracker for WordPress.
@@ -64,7 +64,12 @@ Please refer to the [FAQ] at the root folder of this plugin for further instruct
 
 == Changelog ==
 
-= 9.9.28 =
+= 9.9.31 =
+* Bugfix OnedayPass  Link - it worked even when next day passed. 
+* added nextday pass in admin area. If you want to pass your customers the link for today and tomorrow you can pass him two links now 
+and neeno need to reissue tomorrow
+
+= 9.9.29 - 30 =
 PHP 8 fixes and Wordpress 5.6 tests
 
 = 9.9.28 =
@@ -103,7 +108,7 @@ Admin area modernized, documentation link bugfix
 * minor bug fixes
 * removed some unneccessary stuff
 
-= 9.9.13 =
+= 9.9.13 = PBMod
 * Quicklink column to copy download URL in Downloads admin panel can be enabled
 * Wildcards: %icon% and %description% added < displays the file type icon from assets left to the rest
 * Editor and comments (Add new download) enabled to allow to display single download on a custom page.
@@ -111,20 +116,16 @@ Admin area modernized, documentation link bugfix
 * Style 'infobox' added. This displays the download in a infobox with silver border with filetype icon on the left and all other relevant information and Destailes Description of the file
 
 = 1.6.6 =
-
 * New: MailChimp addon released
 * Bug fix: Fix undefined error on settings save
 
 = 1.6.5 =
-
 * Improvement: Compatibility with upcoming MailChimp addon
 
 = 1.6.4 =
-
 * Bug fix: Fatal error when activating add-ons
 
 = 1.6.3 =
-
 * New: [Customizer Add-On](https://delightfuldownloads.com/add-ons/customizer/?utm_source=WordPress&utm_medium=Repo&utm_content=Customizer&utm_campaign=Changelogs) released
 * New: Add-Ons page added
 * Improvement: Automatically copy shortcodes to clipboard on click
@@ -132,30 +133,24 @@ Admin area modernized, documentation link bugfix
 * Bug fix: Settings screen tabs incorrect styling
 
 = 1.6.2 =
-
 * Improvement: Code structure improvements
 * Improvement: Add-on subscribe form updated
 
 = 1.6.1 =
-
 * Bug fix: 'PHP Notice:  Undefined index: category'
 
 = 1.6 =
-
 * New: Download list widget
 * New: Customize upload directory from _Settings_ screen
 * Improvement: Admin notices now dismissible
 
 = 1.5.5 =
-
 * Improvement: Add text domain for translate.wordpress.org integration
 
 = 1.5.4 =
-
 * Bug fix: Minified JavaScript files missing
 
 = 1.5.3 =
-
 * New: Pro subscribe form added to _Settings_ screen
 * Improvement: Use minified JavaScript
 * Improvement: Translations updated
@@ -165,7 +160,6 @@ Admin area modernized, documentation link bugfix
 * Bug fix: Conflict with Divi theme
 
 = 1.5.2 =
-
 * Enhancement: New shortcode generator window.
 * Enhancement: The front-end CSS is now only loaded when the [ddownload] shortcode is detected.
 * Enhancement: Langauges updated.
@@ -173,13 +167,11 @@ Admin area modernized, documentation link bugfix
 * Bug Fix: Upgrades no longer fire on plugin activation.
 
 = 1.5.1 =
-
 * Bug Fix: Missing closing tag on the _Add/Edit Download_ Screen.
 * Bug Fix: Display of popular downloads on some browsers.
 * Bug Fix: Modal windows not closing in Opera.
 
 = 1.5 =
-
 * New: Password protected downloads.
 * New: Export logs to CSV file.
 * New: Import/Export plugin settings.
@@ -193,7 +185,6 @@ Admin area modernized, documentation link bugfix
 * Bug Fix: The dashboard widget no longer breaks the widget layout, when a download has been removed.
 
 = 1.4 =
-
 * Improved statistics and logging with custom database table.
 * Improved dashboard widget.
 * Added the option to set a grace period when creating new logs, which can be found on the settings screen, under the statistics tab.
@@ -208,7 +199,6 @@ Admin area modernized, documentation link bugfix
 * Fixed blank and corrupt downloads bug.
 
 = 1.3.8 =
-
 * Cleaned up the Add Downloads screen.
 * Added file size column to the All Downloads screen.
 * Added the ability to add offsite (remote) files.
@@ -222,12 +212,10 @@ Admin area modernized, documentation link bugfix
 * Removed deprecated functions in favour of core WordPress functions.
 
 = 1.3.7 =
-
 * Removed trunk directory from distribution.
 * Fixed undefined variable warning in jQueryFileTree.
 
 = 1.3.6 =
-
 * Shortcodes date output now uses the date format set in the WordPress settings screen.
 * Support screen merged into Settings screen.
 * Added PHP safe mode check to Support screen.
@@ -237,22 +225,18 @@ Admin area modernized, documentation link bugfix
 * Added German translation. 
 
 = 1.3.5 =
-
 * Added action hook when an invalid download is triggered.
 * Fixed button text color.
 * Fixed text description for [ddownload_list] on Settings screen.
 * Fixed a rare bug that would cause a fatal error on activation.
 
 = 1.3.4 =
-
 * Fixed a bug caused by a conflict with the WP Super Cache plugin.
 
 = 1.3.3 =
-
 * Added Russian translation.
 
 = 1.3.2 =
-
 * Code refactor.
 * Improved shortcode generator visuals.
 * Improved dashboard widget so that only admins and editors can view it by default.
@@ -263,16 +247,13 @@ Admin area modernized, documentation link bugfix
 * Security fixes.
 
 = 1.3.1.1 =
-
 * Fixed localisation support.
 
 = 1.3.1 =
-
 * Removed Pretty Permalinks option.
 * Fixed a bug that caused downloads to stop working.
 
 = 1.3 =
-
 * Added download tags and categories.
 * Added folder protection so that files can no longer be accessed directly.
 * Added the option to block user agents such as search bots.
@@ -289,11 +270,9 @@ Admin area modernized, documentation link bugfix
 * Improved Settings Screen.
 
 = 1.2.3 =
-
 * Fixed a bug that caused downloads to become corrupt when the NextGEN Gallery plugin was active.
 
 = 1.2.2 =
-
 * Added caching to the [ddownload_count] shortcode.
 * Added language template po and mo files.
 * Improved the Add Download screen with more descriptive help text.
@@ -303,7 +282,6 @@ Admin area modernized, documentation link bugfix
 * Fixed a bug that caused the Logs table to incorrectly show the author.
 
 = 1.2.1 =
-
 * Improved download links by adding rel="nofollow" to encourage Search Engines not to download files.
 * Improved the file browser so that it no longer shows hidden files.
 * Fixed a bug that caused menu images to not display.
@@ -314,7 +292,6 @@ Admin area modernized, documentation link bugfix
 * Removed text file error logging in preparation for improved statistics.
 
 = 1.2 =
-
 * Added dashboard widget.
 * Added an option to the settings screen to set the directory used in the file browser.
 * Added support options to settings screen.
@@ -323,16 +300,13 @@ Admin area modernized, documentation link bugfix
 * Fixed a bug that caused the incorrect time to display in the download logs.
 
 = 1.1.2 =
-
 * Fixes shortcode formatting.
 * Fixes a bug that caused the file browser to not load.
 
 = 1.1.1 =
-
 * Fixes headers already sent error.
 
 = 1.1 =
-
 * Downloads by admins are no longer logged or added to the file's download count.
 * Added the ability to search for downloads in the shortcode generator window.
 * Added ddownload_total_count shortcode button to the shortcode generator window.
@@ -347,81 +321,7 @@ Admin area modernized, documentation link bugfix
 * Fixed a bug in the download log screen that resulted in not being able to filter by ip address.
 
 = 1.0.1 =
-
 * Fixes a bug that caused the inability to add a download on the post screen.
 
 = 1.0 =
-
 * Initial stable plugin release.
-
-== Upgrade Notice ==
-
-= 1.6 =
-
-* Compatibility with WordPress 4.4
-* Compatibility with PHP 7
-
-= 1.5.3 =
-
-* Bug fixes
-
-= 1.5.2 =
-
-* Bug fixes.
-* Compatibility with WordPress 4.0.
-
-= 1.5.1 =
-
-* Bug fixes.
-
-= 1.5 =
-
-* Bug fixes.
-* General improvements.
-
-= 1.4 =
-
-* Bug fixes.
-* General improvements.
-
-= 1.3.8 =
-
-* Bug fixes.
-* General improvements.
-
-= 1.3.7 =
-
-* Bug fixes.
-
-= 1.3.6 =
-
-* General improvements.
-
-= 1.3.5 =
-
-* Bug fixes.
-
-= 1.3.4 =
-
-* Bug fixes.
-
-= 1.3.3 =
-
-* Updated translations.
-
-= 1.3.2 =
-
-* Security fixes.
-* Bug fixes.
-
-= 1.3.1.1 =
-
-* Bug fixes.
-
-= 1.3.1 =
-
-* Bug fixes.
-
-= 1.3 =
-
-* Additional features and general improvements.

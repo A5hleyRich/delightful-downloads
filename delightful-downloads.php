@@ -8,10 +8,10 @@ Author URI: https://github.com/svenbolte/
 Text Domain: delightful-downloads
 Domain Path: /languages/
 License: GPL2
-Version: 9.9.30
-Stable tag: 9.9.30
+Version: 9.9.31
+Stable tag: 9.9.31
 Requires at least: 5.1
-Tested up to: 5.6
+Tested up to: 5.6.1
 Requires PHP: 7.4
 */
 

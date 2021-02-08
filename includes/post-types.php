@@ -142,8 +142,10 @@ function dedo_download_column_contents( $column_name, $post_id ) {
 	
 	// One day pass column
 	if ( $column_name == 'onedaypass' ) {
-		$hashwert = md5(intval($post_id) + intval(date('Y-m-d H:i:s'))/24*60*60);
-		echo '<input type="text" title="'.$hashwert.'" class="copy-to-clipboard" value="' . get_site_url() . '?sdownload=' . esc_attr( $post_id ) .  '&code='. $hashwert . '" readonly>';
+		$hashwert = md5(intval($download_id) + intval(strtotime(date('Y-m-d H:i:s')) / 24 * 60 * 60));
+		$hashwertmorgen = md5(intval($download_id) + intval((strtotime(date('Y-m-d H:i:s')) + 60 * 60 * 24) / 24 * 60 * 60));
+		echo '<input type="text" title="für heute&#10;'.$hashwert.'" class="copy-to-clipboard" value="' . get_site_url() . '?sdownload=' . esc_attr( $post_id ) .  '&code='. $hashwert . '" readonly>';
+		echo '<input type="text" title="für morgen&#10;'.$hashwertmorgen.'" class="copy-to-clipboard" value="' . get_site_url() . '?sdownload=' . esc_attr( $post_id ) .  '&code='. $hashwertmorgen . '" readonly>';
 		echo '<p class="description" style="display: none;">' . __( 'One day pass copied to clipboard.', 'delightful-downloads' ) . '</p>';
 	}
 	
