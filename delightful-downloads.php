@@ -2,36 +2,30 @@
 /*
 Plugin Name: Delightful Downloads
 Plugin URI: https://github.com/svenbolte/delightful-downloads/
-Description: A super-awesome downloads manager for WordPress.
 Author: Ashley Rich und PBMod
 Author URI: https://github.com/svenbolte/
+Description: A super-awesome downloads manager for WordPress with htacces file limits and file icons.
 Text Domain: delightful-downloads
 Domain Path: /languages/
 License: GPL2
-Version: 9.9.31
-Stable tag: 9.9.31
+Version: 9.9.32
+Stable tag: 9.9.32
 Requires at least: 5.1
 Tested up to: 5.7
 Requires PHP: 7.4
 */
 
 // Exit if accessed directly
-if ( ! defined( 'ABSPATH' ) ) {
-	exit;
-}
+if ( ! defined( 'ABSPATH' ) ) {	exit; }
 
 /**
  * Delightful Downloads
- *
  * @package  Delightful Downloads
- * @since    1.3.2
  */
 class Delightful_Downloads {
 
 	/**
 	 * Instance of this class.
-	 *
-	 * @since  1.3.2
 	 */
 	private static $instance;
 
@@ -66,8 +60,6 @@ class Delightful_Downloads {
 
 	/**
 	 * Return an instance of this class.
-	 *
-	 * @since  1.3.2
 	 */
 	public static function get_instance( $path, $version ) {
 		if ( ! isset( self::$instance ) ) {
@@ -82,7 +74,6 @@ class Delightful_Downloads {
 
 	/**
 	 * Initialize the class.
-	 *
 	 * @param string $path
 	 * @param string $version
 	 */
@@ -178,12 +169,9 @@ class Delightful_Downloads {
 
 	/**
 	 * Plugin Links.
-	 *
 	 * Add links below Delightful Downloads on the plugin screen.
-	 *
 	 * @param string $links
 	 * @param string $file
-	 *
 	 * @return string
 	 */
 	public function plugin_links( $links, $file ) {
@@ -232,11 +220,10 @@ class Delightful_Downloads {
 
 /**
  * Delightful Downloads
- *
  * @return Delightful_Downloads
  */
 function Delightful_Downloads() {
-	$version = '9.6.6';
+	$version = '9.9.32';
 	return Delightful_Downloads::get_instance( __FILE__, $version );
 }
 Delightful_Downloads();

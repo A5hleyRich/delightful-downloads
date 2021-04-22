@@ -19,7 +19,16 @@ function dedo_get_shortcode_styles() {
 	$styles = array(
 	 	'infobox'		=> array(
 	 		'name'			=> __( 'Infobox mit Icon und Details', 'delightful-downloads' ),
-	 		'format'		=> '<div style="border:1px solid #e1e1e1;width:100%;padding:8px;">%thumb%%icon%<span><a href="%url%" title="%ext%-Datei&#10;herunterladen" rel="nofollow" class="%class%"><span class="headline">%title%</a></span><div>%adminedit%<abbr><i title="filename" class="fa fa-file-o"></i> %filename% &nbsp; <i title="filename" class="fa fa-expand"></i> %filesize% &nbsp; <i title="Downloads" class="fa fa-download"></i> %count%<br><i title="erstellt/geändert" class="fa fa-calendar-o"></i> %date%</abbr><br>%description%</div></div>'
+	 		'format'		=> '<div class="%class%" style="display:flex;border:1px solid #e1e1e1;width:100%;padding:8px;">
+					<div style="display:inline-block;min-width:60px;width:60px">%icon%</div>
+					<div style="display:inline-block;width:100%;min-width:70%"><a href="%url%" title="%ext%-Datei&#10;herunterladen" rel="nofollow">
+					<span class="headline">%title%</a></span><br>%adminedit%
+					<abbr><i title="category" class="fa fa-folder-open"></i> %category% &nbsp;
+					<i title="filename" class="fa fa-file-o"></i> %filename% &nbsp; 
+					<i title="filesize" class="fa fa-expand"></i> %filesize% &nbsp;
+					<i title="Downloads" class="fa fa-download"></i> %count% &nbsp; 
+					<i title="erstellt/geändert" class="fa fa-calendar-o"></i> %date%</abbr>
+					<br><br>%description%</div>%thumb%</div>'
 	 	),
 	 	'button'		=> array(
 	 		'name'			=> __( 'Button', 'delightful-downloads' ),
@@ -124,7 +133,16 @@ function dedo_get_shortcode_lists() {
 	 	),
 	 	'infoboxlist'=> array(
 	 		'name'				=> __( 'Infobox (Icon, Date, Extension, File size,count)', 'delightful-downloads' ),
-	 		'format'			=> '<div style="border:1px solid transparent;width:100%;padding:8px;">%thumb%%icon%<span><a href="%url%" title="%ext%-Datei&#10;herunterladen" rel="nofollow" class="%class%"><span class="headline">%title%</a></span><div>%adminedit%<abbr><i title="filename" class="fa fa-file-o"></i> %filename% &nbsp; <i title="filename" class="fa fa-expand"></i> %filesize% &nbsp; <i title="Downloads" class="fa fa-download"></i> %count% &nbsp; <i title="erstellt/geändert" class="fa fa-calendar-o"></i> %date%</abbr><br>%description%</div></div>'
+	 		'format'			=> '<div  style="display:flex;width:100%;padding:8px;">
+					<div style="display:inline-block;min-width:60px;width:60px">%icon%</div>
+					<div style="display:inline-block;width:100%;min-width:70%"><a href="%url%" title="%ext%-Datei&#10;herunterladen" rel="nofollow">
+					<span class="headline">%title%</a></span><br>%adminedit%
+					<abbr><i title="category" class="fa fa-folder-open"></i> %category% &nbsp;
+					<i title="filename" class="fa fa-file-o"></i> %filename% &nbsp; 
+					<i title="filesize" class="fa fa-expand"></i> %filesize% &nbsp;
+					<i title="Downloads" class="fa fa-download"></i> %count% &nbsp; 
+					<i title="erstellt/geändert" class="fa fa-calendar-o"></i> %date%</abbr>
+					<div class="entry-content">%description%</div></div>%thumb%</div>'
 	 	)
 	);
 
@@ -164,6 +182,13 @@ function dedo_get_shortcode_lists() {
  		$string = str_replace( '%title%', $value, $string );
  	}
 
+ 	// Kategorie (erste)
+ 	if ( strpos( $string, '%category%' ) !== false ) {
+		$post_terms = get_the_terms( $id, 'ddownload_category' );
+		if (!empty($post_terms)) $value = $post_terms[0]->name; else $value='';
+		$string = str_replace( '%category%', $value, $string );
+ 	}
+
  	// beschreibung
  	if ( strpos( $string, '%description%' ) !== false ) {
  		$value = get_the_excerpt( $id );
@@ -172,7 +197,7 @@ function dedo_get_shortcode_lists() {
 
 	 // post thumbnail - Beitragsbild mit img-zoom on hover
  	if ( strpos( $string, '%thumb%' ) !== false ) {
- 		$value = '<div style="max-width:200px;border:1px none;float:right;text-align:right;z-index:2;"><img class="img-zoom" src="' . get_the_post_thumbnail_url( $id ) . '"></div>';
+ 		$value = '<div style="max-width:200px;border:1px none;float:right;"><img class="img-zoom" style="transform-origin: center right" src="' . get_the_post_thumbnail_url( $id ) . '"></div>';
  		$string = str_replace( '%thumb%', $value, $string );
  	}
 

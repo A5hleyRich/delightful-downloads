@@ -3,8 +3,8 @@ Contributors: A5hleyRich, Sven Bolte, others (best of forks)
 Tags: download, manager, downloads, monitor, shortcode, delightful downloads, file, counter, tracking, infobox, fixed filetree,ipflag, chartscodes
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
-Version: 9.9.31
-Stable tag: 9.9.31
+Version: 9.9.32
+Stable tag: 9.9.32
 Requires at least: 5.1
 Tested up to: 5.7
 Requires PHP: 7.4
@@ -63,6 +63,9 @@ Please refer to the [documentation] at the root folder of this plugin for furthe
 Please refer to the [FAQ] at the root folder of this plugin for further instructions (documentation.txt) 
 
 == Changelog ==
+
+= 9.9.32 =
+improved styling in infobox and infoboxlist, image zoom, flexbox and first categorie display %category%
 
 = 9.9.31 =
 * Bugfix OnedayPass  Link - it worked even when next day passed. 
