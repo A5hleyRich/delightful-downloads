@@ -13,7 +13,7 @@ if ( !defined( 'ABSPATH' ) ) exit;
 function dedo_get_shortcode_styles() {
 	$styles = array(
 	 	'infobox'		=> array(
-	 		'name'			=> __( 'Infobox mit Icon und Details', 'delightful-downloads' ),
+	 		'name'			=> __( 'Infobox mit Icon, Rahmen und Details', 'delightful-downloads' ),
 	 		'format'		=> '<div class="%class%" style="display:flex;border:1px solid #e1e1e1;width:100%;padding:4px;">
 					<div style="display:inline-block;min-width:80px;width:80px">%icon%</div>
 					<div style="display:inline-block;width:100%;min-width:70%"><a href="%url%" title="%ext%-Datei&#10;herunterladen" rel="nofollow">
@@ -118,11 +118,20 @@ function dedo_get_shortcode_lists() {
 	 	),
 	 	'icon_title_ext_filesize_count'=> array(
 	 		'name'				=> __( 'Title (Icon, Date, Extension, File size,count)', 'delightful-downloads' ),
-	 		'format'			=> '%icon% &nbsp; <a href="%url%" title="%title% (%date%, %ext%, %filesize%, %count%x)" rel="nofollow" class="%class%">%title% (%date%, %ext%, %filesize%, %count%x)</a>'
+	 		'format'			=> '<div style="display:flex;width:100%">
+					<div style="display:inline-block;min-width:80px;width:80px">%icon%</div>
+					<div style="display:inline-block;width:100%;min-width:70%"><a href="%url%" title="%ext%-Datei&#10;herunterladen" rel="nofollow">
+					<span class="headline">%title%</a></span><br>%adminedit%
+					<abbr><i title="category" class="fa fa-folder-open"></i> %category% &nbsp;
+					<i title="filename" class="fa fa-file-o"></i> %filename% &nbsp; 
+					<i title="filesize" class="fa fa-expand"></i> %filesize% &nbsp;
+					<i title="Downloads" class="fa fa-download"></i> %count% &nbsp; 
+					<i title="erstellt/geändert" class="fa fa-calendar-o"></i> %date%</abbr>
+					</div></div>'
 	 	),
 	 	'infoboxlist'=> array(
-	 		'name'				=> __( 'Infobox (Icon, Date, Extension, File size,count)', 'delightful-downloads' ),
-	 		'format'			=> '<div  style="display:flex;width:100%">
+	 		'name'				=> __( 'Infoboxliste (Icon,Date,Extension,Filesize,count,Thumb,descript)', 'delightful-downloads' ),
+	 		'format'			=> '<div style="display:flex;width:100%">
 					<div style="display:inline-block;min-width:80px;width:80px">%icon%</div>
 					<div style="display:inline-block;width:100%;min-width:70%"><a href="%url%" title="%ext%-Datei&#10;herunterladen" rel="nofollow">
 					<span class="headline">%title%</a></span><br>%adminedit%
@@ -214,7 +223,6 @@ function dedo_get_shortcode_lists() {
   	// file icon
  	if ( strpos( $string, '%icon%' ) !== false ) {
  		$ffile = ( get_post_meta( $id, '_dedo_file_url', true ) );
-		$fmime = dedo_get_file_mime( get_post_meta( $id, '_dedo_file_url', true ) );
 		$value = dedo_get_file_icon( $ffile );
  		$string = str_replace( '%icon%', $value, $string );
  	}
@@ -583,7 +591,6 @@ function dedo_get_file_status( $url ) {
 	}
 	else {
 		$response = @get_headers( $url, 1 );
-
 		if ( ( false === $response || 'HTTP/1.1 404 Not Found' == $response[0] || 'HTTP/1.1 403 Forbidden' == $response[0] ) || !isset( $response['Content-Length'] ) ) {		
 			return false;
 		}
@@ -592,7 +599,6 @@ function dedo_get_file_status( $url ) {
 			$size = $response['Content-Length'];
 		}
 	}
-
 	return array(
 		'type'	=> $type,
 		'size'	=> $size
@@ -607,8 +613,9 @@ function dedo_get_file_status( $url ) {
  */
 function dedo_get_file_icon( $file ) {
 	$ext = dedo_get_file_ext( $file );
+	$fmime = dedo_get_file_mime( $file );
 	// Load css sprite for file type icons
 	wp_enqueue_style( 'filetye-style', DEDO_PLUGIN_URL . 'assets/css/filetypes.min.css' );
-	$icon = '<i class="ftyp ftyp-'.strtolower($ext).'" title="'.$ext.'"></i>';
+	$icon = '<i class="ftyp ftyp-'.strtolower($ext).'" title="'.$ext.'-Datei&#10;'.$fmime.'"></i>';
 	return $icon;
 }
