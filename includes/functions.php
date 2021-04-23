@@ -1,10 +1,7 @@
 <?php
 /**
  * Delightful Downloads Functions
- *
  * @package     Delightful Downloads
- * @subpackage  Includes/Functions
- * @since       1.0, mod adminedit
 */
 
 // Exit if accessed directly
@@ -12,15 +9,13 @@ if ( !defined( 'ABSPATH' ) ) exit;
 
 /**
  * Shortcode Styles
- *
- * @since  1.0
  */
 function dedo_get_shortcode_styles() {
 	$styles = array(
 	 	'infobox'		=> array(
 	 		'name'			=> __( 'Infobox mit Icon und Details', 'delightful-downloads' ),
-	 		'format'		=> '<div class="%class%" style="display:flex;border:1px solid #e1e1e1;width:100%;padding:8px;">
-					<div style="display:inline-block;min-width:60px;width:60px">%icon%</div>
+	 		'format'		=> '<div class="%class%" style="display:flex;border:1px solid #e1e1e1;width:100%;padding:4px;">
+					<div style="display:inline-block;min-width:80px;width:80px">%icon%</div>
 					<div style="display:inline-block;width:100%;min-width:70%"><a href="%url%" title="%ext%-Datei&#10;herunterladen" rel="nofollow">
 					<span class="headline">%title%</a></span><br>%adminedit%
 					<abbr><i title="category" class="fa fa-folder-open"></i> %category% &nbsp;
@@ -52,8 +47,6 @@ function dedo_get_shortcode_styles() {
 
 /**
  * Shortcode Buttons
- *
- * @since  1.3
  */
 function dedo_get_shortcode_buttons() {
 	
@@ -87,17 +80,13 @@ function dedo_get_shortcode_buttons() {
 			'class'		=> 'button-yellow'
 		)
 	);
-
 	return apply_filters( 'dedo_get_buttons', $buttons );
 }
 
 /**
  * Returns List Styles
- *
- * @since  1.3
  */
 function dedo_get_shortcode_lists() {
-	
 	$lists = array(
 	 	'title'				=> array(
 	 		'name'				=> __( 'Title', 'delightful-downloads' ),
@@ -133,8 +122,8 @@ function dedo_get_shortcode_lists() {
 	 	),
 	 	'infoboxlist'=> array(
 	 		'name'				=> __( 'Infobox (Icon, Date, Extension, File size,count)', 'delightful-downloads' ),
-	 		'format'			=> '<div  style="display:flex;width:100%;padding:8px;">
-					<div style="display:inline-block;min-width:60px;width:60px">%icon%</div>
+	 		'format'			=> '<div  style="display:flex;width:100%">
+					<div style="display:inline-block;min-width:80px;width:80px">%icon%</div>
 					<div style="display:inline-block;width:100%;min-width:70%"><a href="%url%" title="%ext%-Datei&#10;herunterladen" rel="nofollow">
 					<span class="headline">%title%</a></span><br>%adminedit%
 					<abbr><i title="category" class="fa fa-folder-open"></i> %category% &nbsp;
@@ -151,11 +140,8 @@ function dedo_get_shortcode_lists() {
 
 /**
  * Replace Wildcards
- *
- * @since  1.3
  */
  function dedo_search_replace_wildcards( $string, $id ) {
-
  	//adminedit
  	if ( strpos( $string, '%adminedit%' ) !== false ) {
  		if(current_user_can('administrator')) {
@@ -164,43 +150,36 @@ function dedo_get_shortcode_lists() {
 			$string = str_replace( '%adminedit%', '', $string );
 		}
  	}
-	 
 	// id
  	if ( strpos( $string, '%id%' ) !== false ) {
  		$string = str_replace( '%id%', $id, $string );
  	}
-
  	// url
  	if ( strpos( $string, '%url%' ) !== false ) {
  		$value = dedo_download_link( $id );
  		$string = str_replace( '%url%', $value, $string );
  	}
-
  	// title
  	if ( strpos( $string, '%title%' ) !== false ) {
  		$value = get_the_title( $id );
  		$string = str_replace( '%title%', $value, $string );
  	}
-
  	// Kategorie (erste)
  	if ( strpos( $string, '%category%' ) !== false ) {
 		$post_terms = get_the_terms( $id, 'ddownload_category' );
 		if (!empty($post_terms)) $value = $post_terms[0]->name; else $value='';
 		$string = str_replace( '%category%', $value, $string );
  	}
-
  	// beschreibung
  	if ( strpos( $string, '%description%' ) !== false ) {
  		$value = get_the_excerpt( $id );
  		$string = str_replace( '%description%', $value, $string );
  	}
-
-	 // post thumbnail - Beitragsbild mit img-zoom on hover
+	// post thumbnail - Beitragsbild mit img-zoom on hover
  	if ( strpos( $string, '%thumb%' ) !== false ) {
  		$value = '<div style="max-width:200px;border:1px none;float:right;"><img class="img-zoom" style="transform-origin: center right" src="' . get_the_post_thumbnail_url( $id ) . '"></div>';
  		$string = str_replace( '%thumb%', $value, $string );
  	}
-
 	// date
  	if ( strpos( $string, '%date%' ) !== false ) {
  		// $moddate = get_the_modified_date( apply_filters( 'dedo_shortcode_date_format', '' ), $id );
@@ -212,67 +191,53 @@ function dedo_get_shortcode_lists() {
 		$value .= ' vor '. human_time_diff(intval(get_the_modified_date( 'U, d.m.Y H:i:s', $id )), time());
 		$string = str_replace( '%date%', $value, $string );
  	}
-
  	// filesize
  	if ( strpos( $string, '%filesize%' ) !== false ) {
  		$value = size_format( get_post_meta( $id, '_dedo_file_size', true ), 1 );
  		$string = str_replace( '%filesize%', $value, $string );
  	}
-
  	// downloads
  	if ( strpos( $string, '%count%' ) !== false ) {
  		$value = number_format_i18n( get_post_meta( $id, '_dedo_file_count', true ) );
  		$string = str_replace( '%count%', $value, $string );
  	}
-
  	// file name
  	if ( strpos( $string, '%filename%' ) !== false ) {
  		$value = dedo_get_file_name( get_post_meta( $id, '_dedo_file_url', true ) );
  		$string = str_replace( '%filename%', $value, $string );
  	}
-
  	// file extension
  	if ( strpos( $string, '%ext%' ) !== false ) {
  		$value = strtoupper( dedo_get_file_ext( get_post_meta( $id, '_dedo_file_url', true ) ) );
  		$string = str_replace( '%ext%', $value, $string );
  	}
-
   	// file icon
  	if ( strpos( $string, '%icon%' ) !== false ) {
- 		$fext = strtolower( dedo_get_file_ext( get_post_meta( $id, '_dedo_file_url', true ) ) );
-		if ( empty($fext) ) { $fext = '_blank'; }
+ 		$ffile = ( get_post_meta( $id, '_dedo_file_url', true ) );
 		$fmime = dedo_get_file_mime( get_post_meta( $id, '_dedo_file_url', true ) );
-		$value='<img title="'.$fmime.'" style="width:50px;height:50px;vertical-align:middle" src="' . DEDO_PLUGIN_URL . '/assets/icons/' . $fext . '.png">';
+		$value = dedo_get_file_icon( $ffile );
  		$string = str_replace( '%icon%', $value, $string );
  	}
-
  	// file mime
  	if ( strpos( $string, '%mime%' ) !== false ) {
  		$value = dedo_get_file_mime( get_post_meta( $id, '_dedo_file_url', true ) );
  		$string = str_replace( '%mime%', $value, $string );
  	}
-
  	return apply_filters( 'dedo_search_replace_wildcards', $string, $id );
  }
 
 /**
  * Download Link
- *
  * Generate download link based on provided id.
- *
- * @since  1.0
  */
 function dedo_download_link( $id ) {
-	 global $dedo_options;
-	 
-	 $output = esc_html( home_url( '?' . $dedo_options['download_url'] . '=' . $id ) );
-	 return apply_filters( 'dedo_download_link', $output );
+	global $dedo_options;
+	$output = esc_html( home_url( '?' . $dedo_options['download_url'] . '=' . $id ) );
+	return apply_filters( 'dedo_download_link', $output );
 }
 
 /**
  * Check for valid download
- *
- * @since  1.0
  */
 function dedo_download_valid( $download_id ) {
 	$download_id = absint( $download_id );
@@ -288,15 +253,11 @@ function dedo_download_valid( $download_id ) {
 
 /**
  * Check user has permission to download file
- *
- * @since  1.0
  */
 function dedo_download_permission( $options ) {
 	global $dedo_options;
-
 	// First check per-download settings, else revert to global setting
 	$members_only = ( isset( $options['members_only'] ) ) ? $options['members_only'] : $dedo_options['members_only'];
-
 	if ( $members_only ) {
 		// Check user is logged in
 		if ( is_user_logged_in() ) {
@@ -306,7 +267,6 @@ function dedo_download_permission( $options ) {
 			return false;
 		}
 	}
-
 	return true;
 }
 
@@ -318,11 +278,9 @@ function dedo_download_permission( $options ) {
 function dedo_download_blocked( $current_agent ) {
 	// Retrieve user agents
 	$user_agents = dedo_get_agents();
-
 	if ( ! $user_agents ) {
 		return true;
 	}
-
 	foreach ( $user_agents as $user_agent ) {
 		$current_agent = trim( strtolower( $current_agent ) );
 		$user_agent    = trim( strtolower( $user_agent ) );
@@ -335,26 +293,19 @@ function dedo_download_blocked( $current_agent ) {
 			return false;
 		}	
 	}
-
 	return true;
 }
 
 /**
  * Get blocked user agents
- *
- * @since  1.3
  */
 function dedo_get_agents() {
 	global $dedo_options;
-
 	$crawlers = $dedo_options['block_agents'];
-
 	if ( empty( $crawlers ) ) {
 		return array();
 	}
-
 	$crawlers = explode( "\n", $crawlers );
-
 	return $crawlers;
 }
 
@@ -380,36 +331,29 @@ function dedo_download_ip() {
 
 /**
  * Get file mime type based on file extension
- *
- * @since  1.0
  */
 function dedo_download_mime( $path ) {
 	// Strip path, leave filename and extension
 	$file = explode( '/', $path );
 	$file = strtolower( end( $file ) );
 	$filetype = wp_check_filetype( $file );	
-	
 	return $filetype['type'];
 }
 
 /**
  * Return various upload dirs/urls for Delightful Downloads.
- *
  * @param string $return
  * @param string $upload_dir
- *
  * @return string
  */
 function dedo_get_upload_dir( $return = '', $upload_dir = '' ) {
 	global $dedo_options;
-
 	$upload_dir = ( $upload_dir === '' ? wp_upload_dir() : $upload_dir );
 	$directory  = $dedo_options['upload_directory'];
 	$upload_dir['path']         = trailingslashit( $upload_dir['basedir'] ) . $directory . $upload_dir['subdir'];
 	$upload_dir['url']          = trailingslashit( $upload_dir['baseurl'] ) . $directory . $upload_dir['subdir'];
 	$upload_dir['dedo_basedir'] = trailingslashit( $upload_dir['basedir'] ) . $directory;
 	$upload_dir['dedo_baseurl'] = trailingslashit( $upload_dir['baseurl'] ) . $directory;
-
 	switch ( $return ) {
 		default:
 			return $upload_dir;
@@ -440,33 +384,24 @@ function dedo_get_upload_dir( $return = '', $upload_dir = '' ) {
 
 /**
  * Set the upload dir for Delightful Downloads.
- *
- * @since  1.2.1
  */
 function dedo_set_upload_dir( $upload_dir ) {
-
     return dedo_get_upload_dir( '', $upload_dir );
 }
 
 /**
  * Protect uploads dir from direct access
- *
- * @since  1.3
  */
 function dedo_folder_protection( $folder_protection = '' ) {
 	global $dedo_options;
-
 	// Allow custom options to be passed, set to save options if not
 	$folder_protection = ( '' === $folder_protection ) ? $dedo_options['folder_protection'] : $folder_protection;
-
 	// Get delightful downloads upload base path
 	$upload_dir = dedo_get_upload_dir( 'dedo_basedir' );
-
 	// Create upload dir if needed, return on fail. Causes fatal error on activation otherwise
 	if ( !wp_mkdir_p( $upload_dir ) ) {
 		return;
 	}
-
 	// Add htaccess protection if enabled, else delete it
 	if ( 1 == $folder_protection ) {
 		if ( !file_exists( $upload_dir . '/.htaccess' ) && wp_is_writable( $upload_dir ) ) {
@@ -481,12 +416,10 @@ function dedo_folder_protection( $folder_protection = '' ) {
 			@unlink( $upload_dir . '/.htaccess' );
 		}
 	}
-
 	// Check for root index.php
 	if ( !file_exists( $upload_dir . '/index.php' ) && wp_is_writable( $upload_dir ) ) {
 		@file_put_contents( $upload_dir . '/index.php', '<?php' . PHP_EOL . '// You shall not pass!' );
 	}
-
 	// Check subdirs for index.php
 	$subdirs = dedo_folder_scan( $upload_dir );
 
@@ -499,69 +432,47 @@ function dedo_folder_protection( $folder_protection = '' ) {
 
 /**
  * Scan dir and return subdirs
- *
- * @since  1.3
  */
 function dedo_folder_scan( $dir ) {
 	// Check class exists
 	if ( class_exists( 'RecursiveDirectoryIterator' ) ) {
 		// Setup return array
 		$return = array();
-
 		$iterator = new RecursiveDirectoryIterator( $dir );
-
 		// Loop through results and add uniques to return array
 		foreach ( new RecursiveIteratorIterator( $iterator ) as $file ) {
-			
 			if ( !in_array( $file->getPath(), $return ) ) {	
 				$return[] = $file->getPath();
 			}
-
 		}
-
 		return $return;
 	}
-	
 	return false;
 }
 
 /**
  * Get Downloads Filesize
- *
  * Returns the total filesize of all files.
- *
- * @since   1.3
  */
 function dedo_get_filesize( $download_id = false ) {
 	global $wpdb;
-
 	$sql = $wpdb->prepare( "
 		SELECT SUM( meta_value )
 		FROM $wpdb->postmeta
 		WHERE meta_key = %s
 	", 
 	'_dedo_file_size' );
-
-	if ( $download_id ) {
-
-		$sql .= $wpdb->prepare( " AND post_id = %d", $download_id );
-	}
-
+	if ( $download_id ) { $sql .= $wpdb->prepare( " AND post_id = %d", $download_id ); }
 	$return = $wpdb->get_var( $sql );
-
 	return ( NULL !== $return ) ? $return : 0;
 }
 
 /**
  * Delete All Transients
- *
  * Deletes all transients created by Delightful Downloads
- *
- * @since   1.3
  */
 function dedo_delete_all_transients() {
 	global $wpdb;
-
 	$sql = $wpdb->prepare( "
 		DELETE FROM $wpdb->options
 		WHERE option_name LIKE %s
@@ -573,50 +484,35 @@ function dedo_delete_all_transients() {
 		'\_transient\_timeout\_delightful-downloads%%',
 		'\_transient\_dedo_%%',
 		'\_transient\_timeout\_dedo_%%' );
-
 	$wpdb->query( $sql );
 }
 
 /**
  * Get Absolute Path
- *
  * Searches various locations for download file.
- *
  * It is always recommended that the file should be within /wp-content
  * otherwise it can't be guaranteed that the file will be found.
- *
  * Also allows absolute path to store files outsite the document root.
- *
- * @since   1.3.8
  */
 function dedo_get_abs_path( $requested_file ) {
-	
 	$parsed_file = parse_url( $requested_file );
-
 	// Check for absolute path
 	if ( ( !isset( $parsed_file['scheme'] ) || !in_array( $parsed_file['scheme'], array( 'http', 'https' ) ) ) && isset( $parsed_file['path'] ) && file_exists( $requested_file ) ) {
-		
 		$file = $requested_file;
 	}
-
 	// Falls within wp_content
 	else if ( strpos( $requested_file, WP_CONTENT_URL ) !== false ) {
 		$file_path = str_replace( WP_CONTENT_URL, WP_CONTENT_DIR, $requested_file );
-		
 		$file = realpath( $file_path );
 	}
-
 	// Falls in multisite
 	else if ( is_multisite() && !is_main_site() && strpos( $requested_file, network_site_url() ) !== false ) {
 		$site_url = trailingslashit( site_url() );
 		$file_path = str_replace( $site_url, ABSPATH, $requested_file );
-
 		$site_url = trailingslashit( network_site_url() );
 		$file_path = str_replace( $site_url, ABSPATH, $file_path );
-
 		$file = realpath( $file_path );
 	}
-
 	// Falls within WordPress directory structure
 	else if ( strpos( $requested_file, site_url() ) !== false ) {
 		$site_url = trailingslashit( site_url() );
@@ -624,14 +520,12 @@ function dedo_get_abs_path( $requested_file ) {
 
 		$file = realpath( $file_path );
 	}
-
 	// Falls outside WordPress structure but within document root.
 	else if ( strpos( $requested_file, site_url() ) && file_exists( $_SERVER['DOCUMENT_ROOT'] . $parsed_file['path'] ) ) {
 		$file_path = $_SERVER['DOCUMENT_ROOT'] . $parsed_file['path'];
 		
 		$file = realpath( $file_path );
 	}
-
 	// Checks file exists
 	if ( isset( $file ) && is_file( $file ) ) {
 		return $file;
@@ -643,62 +537,41 @@ function dedo_get_abs_path( $requested_file ) {
 
 /**
  * Get File Name
- *
  * Strips the filename from a URL or path.
- *
- * @since   1.3.8
- *
  * @param string $path File path/url of filename.
  * @return string Value of file name with extension.
  */
 function dedo_get_file_name( $path ) {
-
 	return basename( $path );
 }
 
 /**
  * Get File Mime
- *
  * Get the file mime type from the file path using WordPress
  * built in filetype check.
- *
- * @since   1.3.8
- *
  * @param string $path File path/url of filename.
  * @return string Value of file mime.
  */
 function dedo_get_file_mime( $path ) {
-	
 	$file = wp_check_filetype( $path );
-
 	return $file['type'];
 }
 
 /**
  * Get File Extension
- *
  * Get the file extension from the file path using WordPress
  * built in filetype check.
- *
- * @since   1.3.8
- *
  * @param string $path File path/url of filename.
  * @return string Value of file extension.
  */
 function dedo_get_file_ext( $path ) {
-	
 	$file = wp_check_filetype( $path );
-	
 	return $file['ext'];
 }
 
 /**
  * Get File Status
- *
  * Checks whether a file is accessible, either locally or remotely.
- *
- * @since   1.5
- *
  * @param string $url File path/url of filename.
  * @return boolean/array.
  */
@@ -728,24 +601,14 @@ function dedo_get_file_status( $url ) {
 
 /**
  * Get File Icon
- *
- * Return the correct file icon for a file type.
- *
- * @since   1.5
- *
+ * Return the correct file icon for a file type from css sprite.
  * @param string $file url/path.
- * @param boolen $url return full icon url.
  * @return string.
  */
-function dedo_get_file_icon( $file, $url = true ) {
+function dedo_get_file_icon( $file ) {
 	$ext = dedo_get_file_ext( $file );
-	
-	$icon = $ext.'.png';	
-
-	if ( $url ) {
-		return DEDO_PLUGIN_URL . 'assets/icons/' . $icon;
-	}
-	else {
-		return $icon;
-	}
+	// Load css sprite for file type icons
+	wp_enqueue_style( 'filetye-style', DEDO_PLUGIN_URL . 'assets/css/filetypes.min.css' );
+	$icon = '<i class="ftyp ftyp-'.strtolower($ext).'" title="'.$ext.'"></i>';
+	return $icon;
 }

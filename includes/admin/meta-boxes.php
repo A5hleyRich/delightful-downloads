@@ -110,7 +110,7 @@ function dedo_meta_box_download( $post ) {
 		'ajaxURL'		=> admin_url( 'admin-ajax.php', isset( $_SERVER['HTTPS'] ) ? 'https://' : 'http://' ),
 		'nonce' 		=> wp_create_nonce( 'dedo_download_update_status' ),
 		'action'    	=> 'dedo_download_update_status',
-		'default_icon'	=> dedo_get_file_icon( 'default' ),
+		'default_icon'	=> dedo_get_file_icon( '_blank' ),
 		'lang_local'	=> __( 'Local File', 'delightful-downloads' ),
 		'lang_remote'	=> __( 'Remote File', 'delightful-downloads' ),
 		'lang_warning'	=> __( 'Inaccessible File', 'delightful-downloads' )
@@ -161,7 +161,7 @@ function dedo_meta_box_download( $post ) {
 	<div id="dedo-existing-download" style="<?php echo ( isset( $file_url ) && !empty( $file_url ) ) ? 'display: block;' : 'display: none;'; ?>">		
 		<div class="left-panel">
 			<div class="file-icon">	
-				<img src="<?php echo dedo_get_file_icon( $file_url ); ?>" />
+			<?php echo dedo_get_file_icon( $file_url ); ?>
 			</div>
 			<div class="file-name"><?php echo dedo_get_file_name( $file_url ); ?></div>
 			<div class="file-size"><?php echo $file_size; ?></div>
