@@ -117,7 +117,7 @@ function dedo_get_shortcode_lists() {
 	 		'format'			=> '<a href="%url%" title="%title% (%date%, %ext%, %filesize%, %count%x)" rel="nofollow" class="%class%">%title% (%date%, %ext%, %filesize%, %count%x)</a>'
 	 	),
 	 	'icon_title_ext_filesize_count'=> array(
-	 		'name'				=> __( 'Title (Icon, Date, Extension, File size,count)', 'delightful-downloads' ),
+	 		'name'				=> __( 'Title (Icon, Category, Filename, Filesize)', 'delightful-downloads' ),
 	 		'format'			=> '<div style="display:flex;width:100%">
 					<div style="display:inline-block;min-width:60px;width:60px">%icon%</div>
 					<div style="display:inline-block;width:100%;min-width:70%"><a href="%url%" title="%ext%-Datei&#10;herunterladen" rel="nofollow">
@@ -125,9 +125,7 @@ function dedo_get_shortcode_lists() {
 					<abbr><i title="category" class="fa fa-folder-open"></i> %category% &nbsp;
 					<i title="filename" class="fa fa-file-o"></i> %filename% &nbsp; 
 					<i title="filesize" class="fa fa-expand"></i> %filesize% &nbsp;
-					<i title="Downloads" class="fa fa-download"></i> %count% &nbsp; 
-					<i title="erstellt/geändert" class="fa fa-calendar-o"></i> %date%</abbr>
-					</div></div>'
+					</abbr></div></div>'
 	 	),
 	 	'infoboxlist'=> array(
 	 		'name'				=> __( 'Infoboxliste (Icon,Date,Extension,Filesize,count,Thumb,descript)', 'delightful-downloads' ),
