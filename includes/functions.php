@@ -15,7 +15,7 @@ function dedo_get_shortcode_styles() {
 	 	'infobox'		=> array(
 	 		'name'			=> __( 'Infobox mit Icon, Rahmen und Details', 'delightful-downloads' ),
 	 		'format'		=> '<div class="%class%" style="display:flex;border:1px solid #e1e1e1;width:100%;padding:4px;">
-					<div style="display:inline-block;min-width:80px;width:80px">%icon%</div>
+					<div style="display:inline-block;min-width:60px;width:60px">%icon%</div>
 					<div style="display:inline-block;width:100%;min-width:70%"><a href="%url%" title="%ext%-Datei&#10;herunterladen" rel="nofollow">
 					<span class="headline">%title%</a></span><br>%adminedit%
 					<abbr><i title="category" class="fa fa-folder-open"></i> %category% &nbsp;
@@ -119,7 +119,7 @@ function dedo_get_shortcode_lists() {
 	 	'icon_title_ext_filesize_count'=> array(
 	 		'name'				=> __( 'Title (Icon, Date, Extension, File size,count)', 'delightful-downloads' ),
 	 		'format'			=> '<div style="display:flex;width:100%">
-					<div style="display:inline-block;min-width:80px;width:80px">%icon%</div>
+					<div style="display:inline-block;min-width:60px;width:60px">%icon%</div>
 					<div style="display:inline-block;width:100%;min-width:70%"><a href="%url%" title="%ext%-Datei&#10;herunterladen" rel="nofollow">
 					<span class="headline">%title%</a></span><br>%adminedit%
 					<abbr><i title="category" class="fa fa-folder-open"></i> %category% &nbsp;
@@ -132,7 +132,7 @@ function dedo_get_shortcode_lists() {
 	 	'infoboxlist'=> array(
 	 		'name'				=> __( 'Infoboxliste (Icon,Date,Extension,Filesize,count,Thumb,descript)', 'delightful-downloads' ),
 	 		'format'			=> '<div style="display:flex;width:100%">
-					<div style="display:inline-block;min-width:80px;width:80px">%icon%</div>
+					<div style="display:inline-block;min-width:60px;width:60px">%icon%</div>
 					<div style="display:inline-block;width:100%;min-width:70%"><a href="%url%" title="%ext%-Datei&#10;herunterladen" rel="nofollow">
 					<span class="headline">%title%</a></span><br>%adminedit%
 					<abbr><i title="category" class="fa fa-folder-open"></i> %category% &nbsp;
