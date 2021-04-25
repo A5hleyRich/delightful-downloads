@@ -35,13 +35,15 @@ function dedo_download_post_type() {
 	);
 
 	$args = array(
-		'labels'          => apply_filters( 'dedo_ddownload_labels', $labels ),
-		'public'          => false,
-		'show_ui'         => true,
-		'show_in_menu'    => true,
-		'menu_icon'       => 'dashicons-download',
+		'labels'        => apply_filters( 'dedo_ddownload_labels', $labels ),
+		'public'        => true,
+		'rewrite'       => array( 'slug' => 'ddl' ),
+		'has_archive'	=> true,
+		'show_ui'       => true,
+		'show_in_menu'  => true,
+		'menu_icon'     => 'dashicons-download',
 		'capability_type' => apply_filters( 'dedo_ddownload_cap', 'post' ),
-		'supports'        => apply_filters( 'dedo_ddownload_supports', array( 'title', 'editor', 'thumbnail' ) ),
+		'supports'      => apply_filters( 'dedo_ddownload_supports', array( 'title', 'editor', 'thumbnail' ) ),
 	);
 	register_post_type( 'dedo_download', apply_filters( 'dedo_ddownload_args', $args ) );
 }

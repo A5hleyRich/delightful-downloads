@@ -8,13 +8,30 @@
 if ( !defined( 'ABSPATH' ) ) exit;
 
 /**
+ * Register own template for downloads
+ */
+function dedo_template( $single_template ) {
+    global $post;
+	$wpxtheme = wp_get_theme(); // gets the current theme
+	if ( 'Penguin' == $wpxtheme->name || 'Penguin' == $wpxtheme->parent_theme ) { $xpenguin = true;} else { $xpenguin=false; }
+    if ( $post->post_type == 'dedo_download' ) {
+        if ($xpenguin) { $single_template = dirname( __FILE__ ) . '/dedo-template-penguin.php';	} else {
+			$single_template = dirname( __FILE__ ) . '/dedo-template.php';
+		}
+    }
+    return $single_template;
+}
+add_filter( 'single_template', 'dedo_template' );
+
+
+/**
  * Shortcode Styles
  */
 function dedo_get_shortcode_styles() {
 	$styles = array(
 	 	'infobox'		=> array(
 	 		'name'			=> __( 'Infobox mit Icon, Rahmen und Details', 'delightful-downloads' ),
-	 		'format'		=> '<div class="%class%" style="display:flex;border:1px solid #e1e1e1;width:100%;padding:4px;">
+	 		'format'		=> '<div class="%class%" style="display:flex;border:1px solid #e1e1e1;width:100%;padding:4px;border-radius:3px">
 					<div style="display:inline-block;min-width:60px;width:60px">%icon%</div>
 					<div style="display:inline-block;width:100%;min-width:70%"><a href="%url%" title="%ext%-Datei&#10;herunterladen" rel="nofollow">
 					<span class="headline">%title%</a></span><br>%adminedit%
@@ -24,6 +41,17 @@ function dedo_get_shortcode_styles() {
 					<i title="Downloads" class="fa fa-download"></i> %count% &nbsp; 
 					<i title="erstellt/geändert" class="fa fa-calendar-o"></i> %date%</abbr>
 					<br><br>%description%</div>%thumb%</div>'
+	 	),
+	 	'singlepost'		=> array(
+	 		'name'			=> __( 'Infobox mit Icon, Rahmen für Post Archive', 'delightful-downloads' ),
+	 		'format'		=> '<div class="%class%" style="display:flex;border:1px solid #e1e1e1;width:100%;padding:4px;border-radius:3px">
+					<div style="display:inline-block;min-width:60px;width:60px">%icon%</div>
+					<div style="display:inline-block;width:100%;min-width:70%"><a href="%url%" title="%ext%-Datei&#10;herunterladen" rel="nofollow">
+					<span class="headline">'.__( 'Datei herunterladen', 'delightful-downloads' ).'</a></span><br>%adminedit%
+					<abbr><i title="category" class="fa fa-folder-open"></i> %category% &nbsp;
+					<i title="filename" class="fa fa-file-o"></i> %filename% &nbsp; 
+					<i title="filesize" class="fa fa-expand"></i> %filesize% &nbsp;
+					<i title="Downloads" class="fa fa-download"></i> %count%</abbr></div></div>'
 	 	),
 	 	'button'		=> array(
 	 		'name'			=> __( 'Button', 'delightful-downloads' ),
@@ -117,15 +145,13 @@ function dedo_get_shortcode_lists() {
 	 		'format'			=> '<a href="%url%" title="%title% (%date%, %ext%, %filesize%, %count%x)" rel="nofollow" class="%class%">%title% (%date%, %ext%, %filesize%, %count%x)</a>'
 	 	),
 	 	'icon_title_ext_filesize_count'=> array(
-	 		'name'				=> __( 'Title (Icon, Category, Filename, Filesize)', 'delightful-downloads' ),
+	 		'name'				=> __( 'Title (Icon, Category, Filesize)', 'delightful-downloads' ),
 	 		'format'			=> '<div style="display:flex;width:100%">
 					<div style="display:inline-block;min-width:60px;width:60px">%icon%</div>
 					<div style="display:inline-block;width:100%;min-width:70%"><a href="%url%" title="%ext%-Datei&#10;herunterladen" rel="nofollow">
 					<span class="headline">%title%</a></span><br>%adminedit%
 					<abbr><i title="category" class="fa fa-folder-open"></i> %category% &nbsp;
-					<i title="filename" class="fa fa-file-o"></i> %filename% &nbsp; 
-					<i title="filesize" class="fa fa-expand"></i> %filesize% &nbsp;
-					</abbr></div></div>'
+					<i title="filesize" class="fa fa-expand"></i> %filesize%</abbr></div></div>'
 	 	),
 	 	'infoboxlist'=> array(
 	 		'name'				=> __( 'Infoboxliste (Icon,Date,Extension,Filesize,count,Thumb,descript)', 'delightful-downloads' ),
