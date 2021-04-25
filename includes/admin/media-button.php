@@ -12,7 +12,6 @@ if ( !defined( 'ABSPATH' ) ) exit;
 
 /**
  * Display Media Button
- *
  * @since  1.0
  */
 function dedo_media_button( $context ) {
@@ -51,12 +50,9 @@ function dedo_media_modal() {
 
 		// Get registered styles
 		$styles = dedo_get_shortcode_styles();
-
 		// Get registered buttons
 		$buttons = dedo_get_shortcode_buttons();
-
 		?>
-			
 			<div id="dedo-shortcode-modal" class="dedo-modal" style="display: none; width: 30%; left: 50%; margin-left: -15%;">
 				<a href="#" class="dedo-modal-close" title="<?php _e( 'Close', 'delightful-downloads' ); ?>"><span class="media-modal-icon"></span></a>
 				<div class="dedo-modal-content">
