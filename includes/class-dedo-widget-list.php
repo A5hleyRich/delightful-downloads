@@ -131,6 +131,7 @@ class DEDO_Widget_List extends WP_Widget {
 			<label for="<?php echo $this->get_field_id( 'orderby' ); ?>"><?php _e( 'Order by:', 'delightful-downloads' ); ?></label>
 			<select class="widefat" id="<?php echo $this->get_field_id( 'orderby' ); ?>" name="<?php echo $this->get_field_name( 'orderby' ); ?>">
 				<option value="date" <?php selected( 'date', $orderby ); ?>><?php _e( 'Date', 'delightful-downloads' ); ?></option>
+				<option value="date" <?php selected( 'modified', $orderby ); ?>><?php _e( 'Date modified', 'delightful-downloads' ); ?></option>
 				<option value="count" <?php selected( 'count', $orderby ); ?>><?php _e( 'Download Count', 'delightful-downloads' ); ?></option>
 				<option value="filesize" <?php selected( 'filesize', $orderby ); ?>><?php _e( 'File Size', 'delightful-downloads' ); ?></option>
 				<option value="random" <?php selected( 'random', $orderby ); ?>><?php _e( 'Random', 'delightful-downloads' ); ?></option>
