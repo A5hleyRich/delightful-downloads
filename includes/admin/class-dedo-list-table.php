@@ -136,7 +136,7 @@ class DEDO_List_Table extends WP_List_Table {
 		if( ! empty( $_REQUEST['s'] ) ){
 	        $search = esc_sql( $_REQUEST['s'] );
     	    $sqlsearch .= " AND user_agent LIKE '%{$search}%'";
-    	}
+    	} else $sqlsearch='';
 		// search box
 		$this->search_box('Search', 'search');
 		
