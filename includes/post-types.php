@@ -155,7 +155,9 @@ function dedo_download_column_contents( $column_name, $post_id ) {
 	if ( $column_name == 'downloads' ) {
 		$count = get_post_meta( $post_id, '_dedo_file_count', true );
 		$count = ( ! $count ) ? 0 : number_format_i18n( $count );
-		echo esc_attr( $count );
+		$scount = get_post_meta( $post_id, '_dedo_oneday_count', true );
+		$scount = ( ! $scount ) ? 0 : number_format_i18n( $scount );
+		echo esc_attr( $count . ' / ' . $scount );
 	}
 
 	// Members only column

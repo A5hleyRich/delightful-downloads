@@ -18,7 +18,6 @@ if ( !defined( 'ABSPATH' ) ) exit;
 function dedo_register_dashboard_widgets() {
 	
 	if ( current_user_can( apply_filters( 'dedo_cap_dashboard', 'edit_pages' ) ) ) {
-		
 		wp_add_dashboard_widget( 'dedo_dashboard_downloads', __( 'Download Statistics', 'delightful-downloads' ), 'dedo_dashboard_downloads_widget' );
 	}
 }
@@ -32,7 +31,6 @@ add_action( 'wp_dashboard_setup', 'dedo_register_dashboard_widgets' );
 function dedo_dashboard_downloads_widget() {
 	
 	global $dedo_statistics;
-
 	// Supply options for popular downloads dropdown
 	wp_localize_script( 'dedo-admin-js-global', 'DEDODashboardOptions', array(
 		'ajaxURL'		=> admin_url( 'admin-ajax.php', isset( $_SERVER['HTTPS'] ) ? 'https://' : 'http://' ),
@@ -40,9 +38,14 @@ function dedo_dashboard_downloads_widget() {
 		'errorText'		=> __( 'Download statistics could not be retrieved.', 'delightful-downloads' ),
 		'noResultsText'	=> __( 'There are no popular downloads yet!', 'delightful-downloads' )
 	) );
-
-	?>
-
+	// get totals of onedaypass downloads
+	global $wpdb;
+	$totalcost = $wpdb->get_col("SELECT SUM(pm.meta_value) FROM {$wpdb->postmeta} pm
+                             INNER JOIN {$wpdb->posts} p ON p.ID = pm.post_id
+                             WHERE pm.meta_key = '_dedo_oneday_count' 
+                             AND p.post_status = 'publish' 
+                             AND p.post_type = 'dedo_download'");
+?>
 	<div id="ddownload-count">
 		<ul>
 			<li id="ddownload-count-1" style="opacity: 0">
@@ -62,33 +65,25 @@ function dedo_dashboard_downloads_widget() {
 				<span class="label"><?php _e( 'All Time', 'delightful-downloads' ); ?></span>
 			</li>
 		</ul>
+		<h4><?php echo __( 'Onedaypass Downloads', 'delightful-downloads' ) . ' &nbsp; <span class="count" style="font-size:1.3em">'.$totalcost[0].'</span>'; ?>	</h4>
 	</div>
 	<div id="ddownload-popular">
 		<h4><?php _e( 'Popular Downloads', 'delightful-downloads' ); ?></h4>
-		
 		<?php
-
 		$popular_downloads = $dedo_statistics->get_popular_downloads( array( 'limit' => 5, 'cache' => false ) );
-
 		if ( !empty( $popular_downloads ) ) {
-
 			echo '<ol id="popular-downloads">';
-
 			foreach ( $popular_downloads as $key => $value ) {
 				echo '<li>';
 				echo '<a href="' . get_edit_post_link( $value['ID'] ) . '"><span class="position">' . ( $key + 1 ) . '.</span>' . $value['title'] . ' <span class="count">' . number_format_i18n( $value['downloads'] ) . '</span></a>';
 				echo '</li>';
 			}
-
 			echo '</ol>';
 		}
 		else {
-
 			echo '<p>' . __( 'There are no popular downloads yet!', 'delightful-downloads' ) . '</p>';
 		}
-
 		?>
-		
 		<div class="sub">
 			<select id="popular-downloads-dropdown">
 				<option value="1"><?php _e( 'Last 24 Hours', 'delightful-downloads' ); ?></option>
@@ -115,12 +110,10 @@ function dedo_count_downloads_ajax() {
 
 	// Check for nonce and permission
 	if ( !check_ajax_referer( 'dedo_dashboard', 'nonce', false ) || !current_user_can( apply_filters( 'dedo_cap_dashboard', 'edit_pages' ) ) ) {
-		
 		echo json_encode( array(
 			'status'	=> 'error',
 			'content'	=> __( 'Failed security check!', 'delightful-downloads' )
 		) );
-
 		die();
 	}
 

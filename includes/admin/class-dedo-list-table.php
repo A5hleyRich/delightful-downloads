@@ -35,6 +35,21 @@ class DEDO_List_Table extends WP_List_Table {
 		$this->prepare_items();
 	}
 
+
+	public function search_box( $text, $input_id ) { ?>
+		<form method="GET"><p class="search-box">
+		<label class="screen-reader-text" for="<?php echo $input_id ?>"><?php echo $text; ?>:</label>
+		<input type="search" id="<?php echo $input_id ?>" name="s" value="<?php _admin_search_query(); ?>" />
+ 		<?php echo '<input type="hidden" name="post_type" value="' . esc_attr( $_REQUEST['post_type'] ) . '" />'; ?>
+ 		<?php echo '<input type="hidden" name="page" value="' . esc_attr( $_REQUEST['page'] ) . '" />'; ?>
+  		<?php if ( ! empty( $_REQUEST['paged'] ) ) echo '<input type="hidden" name="paged" value="' . esc_attr( $_REQUEST['paged'] ) . '" />'; ?>
+ 		<?php if ( ! empty( $_REQUEST['orderby'] ) ) echo '<input type="hidden" name="orderby" value="' . esc_attr( $_REQUEST['orderby'] ) . '" />'; ?>
+ 		<?php if ( ! empty( $_REQUEST['order'] ) ) echo '<input type="hidden" name="order" value="' . esc_attr( $_REQUEST['order'] ) . '" />'; ?>
+		<?php submit_button( __( 'Search Downloads', 'delightful-downloads' ), 'button', false, false, array('id' => 'search-submit') ); ?>
+			</p></form>
+	<?php }
+	
+	
 	/**
 	 *	Get Columns
 	 *
@@ -54,6 +69,17 @@ class DEDO_List_Table extends WP_List_Table {
 
 		return $columns;
 	}
+	
+	function get_sortable_columns() {
+    $sortable_columns = array(
+        'dedo_date'     => array('date',true),     //true means it's already sorted
+        'download'     => array('post_id',false), 
+        'user_id'    => array('user_id',false),
+        'user_agent'  => array('user_agent',false),
+    );
+        return $sortable_columns;
+    }
+	
 
 	/**
 	 *	Prepare Items
@@ -66,8 +92,11 @@ class DEDO_List_Table extends WP_List_Table {
 		
 		global $wpdb, $dedo_statistics;
 
+		// get sortable columns
+		$sortable = $this->get_sortable_columns();
+		
 		// Column headers
-		$this->_column_headers = array( $this->get_columns(), array(), array() );
+		$this->_column_headers = array( $this->get_columns(), array(), $sortable );
 
 		// Get the current user ID used to retrieve per_page from screen options
 		$user = get_current_user_id();
@@ -99,18 +128,30 @@ class DEDO_List_Table extends WP_List_Table {
 			'per_page'    => $per_page
 		) );
 
-		// Get logs
+		// Get logs sorted
+		  $orderby = (!empty($_REQUEST['orderby'])) ? $_REQUEST['orderby'] : 'date'; //If no sort, default to title
+		  $order = (!empty($_REQUEST['order'])) ? $_REQUEST['order'] : 'desc'; //If no order, default to asc
+
+		// Search
+		if( ! empty( $_REQUEST['s'] ) ){
+	        $search = esc_sql( $_REQUEST['s'] );
+    	    $sqlsearch .= " AND user_agent LIKE '%{$search}%'";
+    	}
+		// search box
+		$this->search_box('Search', 'search');
+		
 		$sql = $wpdb->prepare( "
 			SELECT * FROM $wpdb->ddownload_statistics 
-			WHERE status = %s
-			ORDER BY date DESC
+			WHERE status = %s ".$sqlsearch." 
+			ORDER BY $orderby $order 
 			LIMIT %d OFFSET %d
 		",
 		'success', // WHERE status
 		$per_page, // LIMIT
 		( $current_page - 1 ) * $per_page ); // OFFSET
-
+		
 		$this->items = $wpdb->get_results( $sql );
+	
 	}
 
 	/**
@@ -121,26 +162,22 @@ class DEDO_List_Table extends WP_List_Table {
 	 * @return void
 	 */
 	public function column_default( $item, $column_name ) {
-
 		switch ( $column_name ) {
 			case 'download':
 				$title = get_the_title( $item->post_id );
-
 				if ( '' === $title ) {
 					return __( 'Unknown', 'delightful-downloads' );
 				} else {
-					return '<a href="' . get_edit_post_link( $item->post_id ) . '">' . get_the_title( $item->post_id ) . '</a>';
+					return '<a href="' . get_edit_post_link( $item->post_id ) . '">' . get_the_title( $item->post_id ) . '</a> #' . $item->post_id;
 				}
 				break;
 			case 'user':
 				$user = get_user_by( 'id', $item->user_id );
-
 				if ( false === $user ) {
 					return __( 'Non-member', 'delightful-downloads' );
 				} else {
 					$output = '<a href="' . get_edit_user_link( $user->ID ) . '">' . $user->display_name . '</a>';
 					$output .= '<br>' . $user->user_email;
-
 					return $output;
 				}
 				break;
@@ -148,7 +185,6 @@ class DEDO_List_Table extends WP_List_Table {
 				if ( empty( $item->user_ip ) ) {
 					return;
 				}
-
 				// Wenn ipflag plugin aktiv
 				if( class_exists( 'ipflag' ) ) {
 					$flagge = '<br>' . do_shortcode('[ipflag ip="'.$item->user_ip.'"]');
@@ -159,9 +195,8 @@ class DEDO_List_Table extends WP_List_Table {
 				return esc_attr( $item->user_agent );
 				break;
 			case 'dedo_date':
-				$output = human_time_diff( mysql2date( 'U', $item->date ), current_time( 'timestamp' ) ) . ' ago<br />';
+				$output = 'vor '.human_time_diff( mysql2date( 'U', $item->date ), current_time( 'timestamp' ) ) . '<br>';
 				$output .= mysql2date( get_option( 'date_format' ), $item->date ) . ' at ' . mysql2date( get_option( 'time_format' ), $item->date );
-
 				return $output;
 				break;
 		}

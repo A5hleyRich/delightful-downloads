@@ -147,11 +147,14 @@ class DEDO_Logging {
 
 		// Run and update count if successfull
 		if ( $wpdb->query( $sql ) && 'success' === $log['status'] ) {
-			
 			$count = get_post_meta( $log['post_id'], '_dedo_file_count', true );
 			update_post_meta( $log['post_id'], '_dedo_file_count', ++$count );
+			// log and increase another counter if oneday pass download
+			if ( $oneday == 'ONEDAYPASS | ' ) {
+				$scount = get_post_meta( $log['post_id'], '_dedo_oneday_count', true );
+				update_post_meta( $log['post_id'], '_dedo_oneday_count', ++$scount );
+			}
 		}
-
 		// Hook after log
 		do_action( 'ddownload_insert_log_after', $log );
 	}

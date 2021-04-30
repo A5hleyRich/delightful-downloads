@@ -103,6 +103,9 @@ function dedo_meta_box_download( $post ) {
 	$file_count = get_post_meta( $post->ID, '_dedo_file_count', true );
 	$file_count = ( false != $file_count ) ? $file_count : 0;
 
+	$file_oneday = get_post_meta( $post->ID, '_dedo_oneday_count', true );
+	$file_oneday = ( false != $file_oneday ) ? $file_oneday : 0;
+
 	$file_options = get_post_meta( $post->ID, '_dedo_file_options', true );
 
 	// Update status args
@@ -178,6 +181,7 @@ function dedo_meta_box_download( $post ) {
 						</th>
 						<td>
 							<input name="download_count" id="download_count" class="regular-text" type="number" min="0" value="<?php echo $file_count; ?>" />
+							<?php  echo '&nbsp; <b>'.__( 'Oneday-Pass Count', 'delightful-downloads' ) .': </b>'. $file_oneday; ?>
 							<p class="description"><?php _e( 'The number of times this file has been downloaded.' ); ?></p>
 						</td>
 					</tr>
