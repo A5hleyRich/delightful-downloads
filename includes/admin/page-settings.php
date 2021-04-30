@@ -103,7 +103,7 @@ function dedo_render_page_settings() {
 
 		</h2>
 
-		<div id="dedo-settings-main" <?php echo ( !apply_filters( 'dedo_admin_sidebar', true ) ) ? 'style="float: none; width: 100%; padding-right: 0;"' : ''; ?>>	
+		<div id="dedo-settings-main" <?php echo ( !apply_filters( 'dedo_admin_sidebar', true ) ) ? 'style="float: none; width: 100%; padding:3px"' : ''; ?>>	
 
 			<form action="options.php" method="post">	
 				<?php // Setup fields
@@ -223,15 +223,11 @@ foreach ( $dedo_options as $key => $value ) {
 
 ?>
 	</textarea>
-
 	<?php
-
 }
 
 /**
  * Render Sidebar
- *
- * @since  1.5
  */
 function dedo_render_part_sidebar() {
 	if ( apply_filters( 'dedo_admin_sidebar', true ) ) : ?>
@@ -241,7 +237,7 @@ function dedo_render_part_sidebar() {
 		<div id="dedo-settings-sidebar" class="postbox">
 
 			<h4><?php _e( 'Help and Support', 'delightful-downloads' ); ?></h4>
-			<p><?php printf( __( 'Having issues? Check out the %sdocumentation%s. If you can\'t find a solution, please raise an issue on the %ssupport forums%s.', 'delightful-downloads' ), '<a target="_blank" href="'.DEDO_PLUGIN_URL.'documentation.txt">', '</a>', '<a href="https://wordpress.org/support/plugin/delightful-downloads">', '</a>' ); ?></p>
+			<p><?php printf( __( 'Having issues? Check out the %sdocumentation%s. For bugs please raise an issue on the %ssupport forums%s.', 'delightful-downloads' ), '<a target="_blank" href="'.DEDO_PLUGIN_URL.'readme.txt">', '</a>', '<a href="https://github.com/svenbolte/delightful-downloads/issues">', '</a>' ); ?></p>
 			<h4><?php _e( 'sample shortcodes', 'delightful-downloads' ); ?></h4>
 			<p><code>[ddownload id="6779" style="infobox" text="%title%  - %filename% - %date% - %filesize% - (%count%x)"]</code></p>
 				<p><code>[ddownload_list] - Liste mit Icons</code></p>

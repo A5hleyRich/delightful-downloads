@@ -182,7 +182,7 @@ function dedo_meta_box_download( $post ) {
 						<td>
 							<input name="download_count" id="download_count" class="regular-text" type="number" min="0" value="<?php echo $file_count; ?>" />
 							<?php  echo '&nbsp; <b>'.__( 'Oneday-Pass Count', 'delightful-downloads' ) .': </b>'. $file_oneday; ?>
-							<p class="description"><?php _e( 'The number of times this file has been downloaded.' ); ?></p>
+							<p class="description"><?php _e( 'The number of times this file has been downloaded.', 'delightful-downloads' ); ?></p>
 						</td>
 					</tr>
 					<?php $members_only = ( isset( $file_options['members_only'] ) ? $file_options['members_only'] : '' ); ?>
@@ -195,7 +195,7 @@ function dedo_meta_box_download( $post ) {
 							<label for="members_only_true"><input name="members_only" id="members_only_true" type="radio" value="1" <?php echo ( 1 === $members_only ) ? 'checked' : ''; ?> /> <?php _e( 'Yes', 'delightful-downloads' ); ?></label>
 							<label for="members_only_false"><input name="members_only" id="members_only_false" type="radio" value="0" <?php echo ( 0 === $members_only ) ? 'checked' : ''; ?> /> <?php _e( 'No', 'delightful-downloads' ); ?></label>
 							<label for="members_only_inherit"><input name="members_only" id="members_only_inherit" type="radio" value <?php echo ( '' === $members_only ) ? 'checked' : ''; ?> /> <?php _e( 'Inherit', 'delightful-downloads' ); ?></label>
-							<p class="description"><?php _e( 'Allow only logged in users to download this file.' ); ?></p>
+							<p class="description"><?php _e( 'Allow only logged in users to download this file.', 'delightful-downloads' ); ?></p>
 							<div id="members_only_sub" class="dedo-sub-option" style="<?php echo ( 0 === $members_only ) ? 'display: none;' : ''; ?>">
 								<?php 
 
@@ -219,7 +219,7 @@ function dedo_meta_box_download( $post ) {
 								echo $list; 
 								?>
 
-								<p class="description"><?php _e( 'The page to redirect non-members.' ); ?></p>
+								<p class="description"><?php _e( 'The page to redirect non-members.', 'delightful-downloads' ); ?></p>
 							</div>
 						</td>
 					</tr>

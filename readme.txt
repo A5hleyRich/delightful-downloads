@@ -37,10 +37,6 @@ Delightful Downloads is a super-awesome downloads manager for WordPress that all
 * Localisation support and german translations.
 * IP-Address for downloads is stored shortened with last digit = 0
 
-**Documentation**
-
-The Delightful Downloads documentation can be found at the root folder of this plugin for further instructions (documentation.txt and documentation-styles.pdf)
-
 **Requirements**
 
 To add and manage downloads via the WordPress Administration screens, you must have a [modern web browser](http://browsehappy.com/ "Browse Happy") with JavaScript enabled.
@@ -49,6 +45,276 @@ To add and manage downloads via the WordPress Administration screens, you must h
 
 If you would like to contribute to the plugin, you can do so on [GitHub](https://github.com/svenbolte/delightful-downloads).
 There are several forks (like this one).
+
+**Documentation**
+The Delightful Downloads documentation can be found at the root folder of this plugin (documentation-styles.pdf)
+More details here:
+
+------------------------------------  FAQ -------------------------
+General
+Can I manually upload files via FTP/SFTP?
+Yes, simply upload them to your server anywhere within the WordPress file structure (usually wp-content/uploads/). Once uploaded, you can enter the file URL into the Add New Download screen.
+
+How do I increase the maximum file upload size?
+Please refer to this tutorial on how to increase the maximum file size in WordPress.
+
+How do I add additional allowed file types to the file uploader?
+Please refer to this tutorial on how to add additional file types to WordPress.
+
+Usage
+How do I output a single download link?
+Use the shortcode [[ddownload id="123"]]. Replace the ID with the desired download ID, which can be found in the All Downloads screen.
+
+How do I output a single download file size?
+Use the shortcode [[ddownload_size id="123"]]. Replace the ID with the desired download ID, which can be found in the All Downloads screen.
+
+How do I output the number of times a single file has been downloaded?
+Use the shortcode [[ddownload_count id="123"]]. Replace the ID with the desired download ID, which can be found in the All Downloads screen.
+
+How do I output a list of download links?
+Use the shortcode [[ddownload_list]].
+
+How do I output the number of times all of my files have been download?
+Use the shortcode [[ddownload_total_count]].
+
+Troubleshooting
+Why when I click a download link does the download count not update?
+This is usually caused by being logged in as an admin. Downloads by admin users are not automatically logged, however you can change this behaviour in the Settings screen under the Statistics tab.
+
+If using the [[ddownload_total_count]] shortcode, the count is also cached by default and will only update every few minutes based on the Cache Duration, which is set in the Settings screen under the Advanced tab.
+
+Why do I receive a 403 Forbidden error when I try to access a file directly?
+Delightful Downloads automatically blocks direct access to files stored within the wp-content/uploads/delightful-downloads/ directory. To access the file you must use the [[ddownload id="123"]] shortcode.
+
+Why do my files download with the incorrect file extension?
+This is caused when WordPress does not know the file type your are serving to users. Please refer to this tutorial on how to add additional file types to WordPress.
+
+Why do my remote files open directly in the browser?
+When serving remote files it is not possible to set the correct headers which force a file to be downloaded, instead the browser will attempt to open them.
+
+Why do my files show a file size of unknown?
+This is caused when the file does not exist at the location specified or is inaccessible due to incorrect permissions.
+
+
+-----------------------------------Shortcodes----------------------
+[[ddownload_count]]
+You can output the number of times a download has been downloaded using the [[ddownload_count]] shortcode. You must supply a download ID and optional attributes can be supplied to further customise the output. To output a download count using the default settings: [[ddownload_count id="123"]]
+You can find the ID of a download in the All Downloads screen.
+
+All Downloads Screen
+
+Attributes
+The following are optional attributes that will modify the output.
+
+format
+Format the number (10000 becomes 10,000). Default: true.
+
+[[ddownload_count id="123" format="false"]]
+
+-----------------------------------------------
+[[ddownload_filesize]]
+You can output the file size of a download using the [[ddownload_filesize]] shortcode. You must supply a download ID and optional attributes can be supplied to further customise the output. To output a file size using the default settings: [[ddownload_filesize id="123"]]
+You can find the ID of a download in the All Downloads screen.
+
+All Downloads Screen
+
+Attributes
+The following are optional attributes that will modify the output.
+
+format
+Format the number (100000 becomes 97.66 KB). Default: true.
+
+[[ddownload_filesize id="123" format="false"]]
+
+-----------------------------------------------
+[[ddownload_list]]
+You can output a list of downloads using the [[ddownload_list]] shortcode. Optional attributes can be supplied to customise the output. To output all published downloads, sorted by title in ascending order: [[ddownload_list]]
+
+Attributes
+The following are optional attributes that will modify the output.
+
+cache
+Cache the results. The amount of time the results are cached for can be set in the Settings screen under the Advanced tab. Default: true.
+
+categories
+Show only downloads within specified categories. Comma separated list of category slugs. Default: blank.
+
+exclude_categories
+Exclude downloads within specified categories. Comma separated list of category slugs. Default: blank.
+
+exclude_tags
+Exclude downloads within specified tags. Comma separated list of tag slugs. Default: blank.
+
+limit
+Limit the number of downloads to display. Set to 0 to show all results. Default: 0.
+
+order
+The order in which results are displayed. Set to either ASC or DESC. Default: ASC.
+
+orderby
+The option in which results should be sorted by. The available options are title, date, count (Download count), filesize, random. Default: title.
+
+relation
+When using both categories and tags together this attribute specifies the relationship between the two. The options are AND (Must be in all), OR (Must be in at least one). Default: AND.
+
+style
+The output style that should be used to display the list of downloads. The default options are title, title_date, title_downloads, title_filesize. Custom list styles can also be added, as detailed here.
+
+tags
+Show only downloads within specified tags. Comma separated list of tag slugs. Default: blank.
+
+
+-----------------------------------------------
+[[ddownload_total_count]]
+You can output the total number of downloads for all files using the [[ddownload_total_count]] shortcode. Optional attributes can be supplied to further customise the output. To output the total download count with the default settings: [[ddownload_total_count]]
+
+Attributes
+The following are optional attributes that will modify the output.
+
+cache
+Cache the results. The amount of time the results are cached for can be set in the Settings screen under the Advanced tab. Default: true.
+
+[[ddownload_total_count cache="false"]]
+
+days
+Show the total download count over the last number of days. Set to 0 for all time. Default: 0.
+
+[[ddownload_total_count days="7"]]
+
+format
+Format the number (10000 becomes 10,000). Default: true.
+
+[[ddownload_total_count format="false"]]
+
+-----------------------------------------------
+[[ddownload]]
+You can easily output a single download using the [[ddownload]] shortcode. You must supply a download ID and optional attributes can be supplied to modify the output. To output a download using the default settings: [[ddownload id="123"]]
+
+You can find the ID of a download in the All Downloads screen.
+
+All Downloads Screen
+
+When no optional attributes are supplied Delightful Downloads will use the default values which can be configured in the Settings screen under the Shortcodes tab.
+
+Settings Screen Shortcodes Tab
+
+Attributes
+The following optional attributes will modify the output on a per-download basis.
+
+text
+Set the text to display on links/buttons. You may use wildcards to dynamically enter data.
+
+[[ddownload id="123" text="Download my File"]]
+
+style
+Set which output style to use. The default output styles are link, button or plain text. Custom output styles can also be added, as detailed here.
+
+[[ddownload id="123" style="link"]]
+
+button
+Set which button to use if the style attribute is set to button. The default buttons are black, blue, grey, green, purple, red and yellow. Custom buttons can also be added, as detailed here.
+
+[[ddownload id="123" style="button" button="red"]]
+
+class
+Add any custom CSS classes to the output.
+
+[[ddownload id="123" class="custom-class button-large"]]
+
+Examples
+A link output with the file size displayed:
+
+[[ddownload id="123" style="link" text="Download (%filesize%)"]]
+
+A button output with the download count displayed:
+
+[[ddownload id="123" style="button" text="Download (%count%)"]]
+
+[[ddownload id="3071"]] - Infobox Layout mit File Icon and grey rounded border
+
+-------------------------- Wildcards --------------------------------------------------
+Wildcards
+Wildcards allow you to dynamically enter data associated with a download. The available wildcards are:
+
+%adminedit%
+display a pencil link next to the downloads for admin use (only displayed if logged in with admin rights)
+
+%icon% 
+display a filetype icon (from a color png sprite)
+
+%category%
+display the first dedo category assigned to the download
+
+%count%
+The number of times the download has been downloaded.
+
+%date%
+The date the download was published and the date it was modified (only shown to logged in users).
+guest users only see creation date OR modified date
+
+%ext%
+The file extension.
+
+%filename%
+The file name of the download.
+
+%filesize%
+The file size of the download.
+
+%id%
+The unique identifier of the download.
+
+%mime%
+The mime type of the download.
+
+%icon%
+displays the file type icon for the extension.
+
+%thumb%
+get the post thumb of the download (image, right-aligned, zoom-over)
+
+%title%
+The title of the download entered in the Add Download screen.
+
+%description%
+The ecxerpt of description of the download entered in the Add Download screen
+
+%url%
+The URL to the download file.
+
+Where To Use Them
+Wildcards can generate dynamic data in the following places:
+
+The text attribute of the [[ddownload]] shortcode. Examples:
+
+[[ddownload text="Download - %date%"]]
+
+[[ddownload text="Download (%filesize%)"]]
+
+[[ddownload text="Download (Downloaded: %count%)"]]
+
+The Default Text field in the Settings screen under the Shortcodes tab.
+Settings Screen Default Text
+
+------------------------- List Types ----------------------------------------------------------------
+Choose the default list type for shortcode: ddownload_list in the admin dashboard:
+
+	 	title, title_date, title_count, title_filesize, title_ext_filesize,
+		title_date_ext_filesize,
+		title_ext_filesize_count,
+	 	icon_title_ext_filesize_count
+		
+------------------------- Styles for output ---------------------------------------------------------
+valid values for the shortcode attribute styles are. Can be found in includes/functions.php:
+
+	 	button		= colored button with download or download Text wildcards
+	 	infobox		= white box with grey border, filetype icon and all possible details
+	 	link		= Download Link, displays DOWNLOAD or selected wildcards as text field
+	 	iconlink	= Icon, Download Link, displays DOWNLOAD or selected wildcards as text field
+	 	plain_text	= Download URL (quicklink) as text
+
+---------------------------- End of documentation ---------------------------------------------------
+
 
 == Installation ==
 
