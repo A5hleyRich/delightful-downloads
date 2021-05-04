@@ -144,10 +144,12 @@ function dedo_download_column_contents( $column_name, $post_id ) {
 	
 	// One day pass column
 	if ( $column_name == 'onedaypass' ) {
-		$hashwert = md5( intval($post_id) + intval(strtotime(date('Y-m-d'))) );
-		$hashwertmorgen = md5( intval($post_id) + intval(strtotime(date('Y-m-d')) + 60 * 60 * 24) );
-		echo '<input type="text" title="für heute&#10;'.$hashwert.'" class="copy-to-clipboard" style="direction:rtl;cursor:pointer" value="' . get_site_url() . '?sdownload=' . esc_attr( $post_id ) .  '&code='. $hashwert . '" readonly>';
-		echo '<input type="text" title="für morgen&#10;'.$hashwertmorgen.'" class="copy-to-clipboard" style="direction:rtl;cursor:pointer" value="' . get_site_url() . '?sdownload=' . esc_attr( $post_id ) .  '&code='. $hashwertmorgen . '" readonly>';
+		$datetime = new DateTime('now');
+		$datetime2 = new DateTime('tomorrow');
+		$hashwert = md5( intval($post_id) + intval($datetime->format('Ymd')) );
+		$hashwertmorgen = md5( intval($post_id) + intval($datetime2->format('Ymd')) );
+		echo '<input type="text" title="für '.$datetime->format('d.m.Y').' heute&#10;'.$hashwert.'" class="copy-to-clipboard" style="direction:rtl;cursor:pointer" value="' . get_site_url() . '?sdownload=' . esc_attr( $post_id ) .  '&code='. $hashwert . '" readonly>';
+		echo '<input type="text" title="für '.$datetime2->format('d.m.Y').' morgen&#10;'.$hashwertmorgen.'" class="copy-to-clipboard" style="direction:rtl;cursor:pointer" value="' . get_site_url() . '?sdownload=' . esc_attr( $post_id ) .  '&code='. $hashwertmorgen . '" readonly>';
 		echo '<p class="description" style="display: none;">' . __( 'One day pass copied to clipboard.', 'delightful-downloads' ) . '</p>';
 	}
 	
