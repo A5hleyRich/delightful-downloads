@@ -3,10 +3,10 @@ Contributors: A5hleyRich, Sven Bolte, others (best of forks)
 Tags: download, manager, downloads, monitor, shortcode, delightful downloads, file, counter, tracking, infobox, fixed filetree,ipflag, chartscodes
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
-Version: 9.9.35
-Stable tag: 9.9.35
+Version: 9.9.36
+Stable tag: 9.9.36
 Requires at least: 5.1
-Tested up to: 5.7.1
+Tested up to: 5.8
 Requires PHP: 7.4
 
 A super-awesome downloads manager and statistics tracker for WordPress.
@@ -252,6 +252,9 @@ The number of times the download has been downloaded.
 The date the download was published and the date it was modified (only shown to logged in users).
 guest users only see creation date OR modified date
 
+%locked%  
+displays a red lock if Download is password protected
+
 %ext%
 The file extension.
 
@@ -329,6 +332,9 @@ Please refer to the [documentation] at the root folder of this plugin for furthe
 Please refer to the [FAQ] at the root folder of this plugin for further instructions (documentation.txt) 
 
 == Changelog ==
+
+= 9.9.36 =
+add password flag shortcode to download types
 
 = 9.9.35 =
 sort and search download logs, display and count onedaypass dls

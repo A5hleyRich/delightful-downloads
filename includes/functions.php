@@ -36,7 +36,7 @@ function dedo_get_shortcode_styles() {
 					<div style="display:inline-block;width:100%;min-width:70%"><a href="%url%" title="%ext%-Datei&#10;herunterladen" rel="nofollow">
 					<span class="headline">%title%</a></span><br>%adminedit%
 					<abbr><i title="category" class="fa fa-folder-open"></i> %category% &nbsp;
-					<i title="filename" class="fa fa-file-o"></i> %filename% &nbsp; 
+					%locked% <i title="filename" class="fa fa-file-o"></i> %filename% &nbsp; 
 					<i title="filesize" class="fa fa-expand"></i> %filesize% &nbsp;
 					<i title="Downloads" class="fa fa-download"></i> %count% &nbsp; 
 					<i title="erstellt/geändert" class="fa fa-calendar-o"></i> %date%</abbr>
@@ -49,7 +49,7 @@ function dedo_get_shortcode_styles() {
 					<div style="display:inline-block;width:100%;min-width:70%"><a href="%url%" title="%ext%-Datei&#10;herunterladen" rel="nofollow">
 					<span class="headline">'.__( 'Datei herunterladen', 'delightful-downloads' ).'</a></span><br>%adminedit%
 					<abbr><i title="category" class="fa fa-folder-open"></i> %category% &nbsp;
-					<i title="filename" class="fa fa-file-o"></i> %filename% &nbsp; 
+					%locked% <i title="filename" class="fa fa-file-o"></i> %filename% &nbsp; 
 					<i title="filesize" class="fa fa-expand"></i> %filesize% &nbsp;
 					<i title="Downloads" class="fa fa-download"></i> %count%</abbr></div></div>'
 	 	),
@@ -160,7 +160,7 @@ function dedo_get_shortcode_lists() {
 					<div style="display:inline-block;width:100%;min-width:70%"><a href="%url%" title="%ext%-Datei&#10;herunterladen" rel="nofollow">
 					<span class="headline">%title%</a></span><br>%adminedit%
 					<abbr><i title="category" class="fa fa-folder-open"></i> %category% &nbsp;
-					<i title="filename" class="fa fa-file-o"></i> %filename% &nbsp; 
+					%locked% <i title="filename" class="fa fa-file-o"></i> %filename% &nbsp; 
 					<i title="filesize" class="fa fa-expand"></i> %filesize% &nbsp;
 					<i title="Downloads" class="fa fa-download"></i> %count% &nbsp; 
 					<i title="erstellt/geändert" class="fa fa-calendar-o"></i> %date%</abbr>
@@ -243,6 +243,15 @@ function dedo_get_shortcode_lists() {
  	if ( strpos( $string, '%filename%' ) !== false ) {
  		$value = dedo_get_file_name( get_post_meta( $id, '_dedo_file_url', true ) );
  		$string = str_replace( '%filename%', $value, $string );
+ 	}
+ 	// protected file
+ 	if ( strpos( $string, '%locked%' ) !== false ) {
+ 		if (post_password_required($id)) {
+			$value='<i title="Kennwortgeschützt" class="fa fa-lock" style="color:#ff0000"></i>';
+		} else {
+			$value='';
+		}
+ 		$string = str_replace( '%locked%', $value, $string );
  	}
  	// file extension
  	if ( strpos( $string, '%ext%' ) !== false ) {
