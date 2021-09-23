@@ -118,31 +118,31 @@ function dedo_get_shortcode_lists() {
 	$lists = array(
 	 	'title'				=> array(
 	 		'name'				=> __( 'Title', 'delightful-downloads' ),
-	 		'format'			=> '<a href="%url%" title="%title%" rel="nofollow" class="%class%">%title%</a>'
+	 		'format'			=> '<a href="%url%" title="%title%" rel="nofollow" class="%class%">%title%</a> &nbsp; %locked%'
 	 	),
 	 	'title_date'		=> array(
 	 		'name'				=> __( 'Title (Date)', 'delightful-downloads' ),
-	 		'format'			=> '<a href="%url%" title="%title% (%date%)" rel="nofollow" class="%class%">%title% (%date%)</a>'
+	 		'format'			=> '<a href="%url%" title="%title% (%date%)" rel="nofollow" class="%class%">%title% (%date%)</a> &nbsp; %locked%'
 	 	),
 	 	'title_count'		=> array(
 	 		'name'				=> __( 'Title (Count)', 'delightful-downloads' ),
-	 		'format'			=> '<a href="%url%" title="%title% (Downloads: %count%)" rel="nofollow" class="%class%">%title% (Downloads: %count%)</a>'
+	 		'format'			=> '<a href="%url%" title="%title% (Downloads: %count%)" rel="nofollow" class="%class%">%title% (Downloads: %count%)</a> &nbsp; %locked%'
 	 	),
 	 	'title_filesize'	=> array(
 	 		'name'				=> __( 'Title (File size)', 'delightful-downloads' ),
-	 		'format'			=> '<a href="%url%" title="%title% (%filesize%)" rel="nofollow" class="%class%">%title% (%filesize%)</a>'
+	 		'format'			=> '<a href="%url%" title="%title% (%filesize%)" rel="nofollow" class="%class%">%title% (%filesize%)</a> &nbsp; %locked%'
 	 	),
 	 	'title_ext_filesize'=> array(
 	 		'name'				=> __( 'Title (Extension, File size)', 'delightful-downloads' ),
-	 		'format'			=> '<a href="%url%" title="%title% (%ext%, %filesize%)" rel="nofollow" class="%class%">%title% (%ext%, %filesize%)</a>'
+	 		'format'			=> '<a href="%url%" title="%title% (%ext%, %filesize%)" rel="nofollow" class="%class%">%title% (%ext%, %filesize%)</a> &nbsp; %locked%'
 	 	),
 	 	'title_date_ext_filesize'=> array(
 	 		'name'				=> __( 'Title (Date, Extension, File size)', 'delightful-downloads' ),
-	 		'format'			=> '<a href="%url%" title="%title% (%date%, %ext%, %filesize%)" rel="nofollow" class="%class%">%title% (%date%, %ext%, %filesize%)</a>'
+	 		'format'			=> '<a href="%url%" title="%title% (%date%, %ext%, %filesize%)" rel="nofollow" class="%class%">%title% (%date%, %ext%, %filesize%)</a> &nbsp; %locked%'
 	 	),
 	 	'title_ext_filesize_count'=> array(
 	 		'name'				=> __( 'Title (Date, Extension, File size,count)', 'delightful-downloads' ),
-	 		'format'			=> '<a href="%url%" title="%title% (%date%, %ext%, %filesize%, %count%x)" rel="nofollow" class="%class%">%title% (%date%, %ext%, %filesize%, %count%x)</a>'
+	 		'format'			=> '<a href="%url%" title="%title% (%date%, %ext%, %filesize%, %count%x)" rel="nofollow" class="%class%">%title% (%date%, %ext%, %filesize%, %count%x)</a> &nbsp; %locked%'
 	 	),
 	 	'icon_title_ext_filesize_count'=> array(
 	 		'name'				=> __( 'Title (Icon, Category, Filesize)', 'delightful-downloads' ),
@@ -151,6 +151,7 @@ function dedo_get_shortcode_lists() {
 					<div style="display:inline-block;width:100%;min-width:70%"><a href="%url%" title="%ext%-Datei&#10;herunterladen" rel="nofollow">
 					<span class="headline">%title%</a></span><br>%adminedit%
 					<abbr><i title="category" class="fa fa-folder-open"></i> %category% &nbsp;
+					%locked% &nbsp;
 					<i title="filesize" class="fa fa-expand"></i> %filesize%</abbr></div></div>'
 	 	),
 	 	'infoboxlist'=> array(
