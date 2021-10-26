@@ -7,9 +7,7 @@
 // Exit if accessed directly
 if ( !defined( 'ABSPATH' ) ) exit;
 
-/**
- * Register own template for downloads
- */
+// Register own template for downloads
 function dedo_template( $single_template ) {
     global $post;
 	$wpxtheme = wp_get_theme(); // gets the current theme
@@ -23,10 +21,31 @@ function dedo_template( $single_template ) {
 }
 add_filter( 'single_template', 'dedo_template' );
 
+// Zeitdifferenz ermitteln und gestern/vorgestern/morgen schreiben
+function ddago($timestamp)
+{
+	$xlang = get_bloginfo("language"); 
+	date_default_timezone_set('Europe/Berlin');
+	$now = time();
+	if ( $timestamp > $now ) { $prepo = __('in','penguin');$postpo=''; } else {
+		if ($xlang == 'de-DE') {$prepo = __('vor','penguin');$postpo='';} else {$prepo='';$postpo = __('ago','penguin');}
+		}
+	$her = intval($now) - intval($timestamp);
+	if ($her>86400 and $her<172800 ) {
+		$hdate=__('yesterday','penguin');
+	} else if ($her>172800 and $her<259200 ) {
+		$hdate=__('1 day before yesterday','penguin'); 
+	} else if ($her<-86400 and $her>-172800 ) {
+		$hdate=__('tomorrow','penguin'); 
+	} else if ($her<-172800 and $her>-259200 ) {
+		$hdate=__('1 day after tomorrow','penguin'); 
+    } else {
+		$hdate = ' '.$prepo.' '.human_time_diff(intval($timestamp),$now).' '.$postpo;
+	}	
+	return $hdate;
+}
 
-/**
- * Shortcode Styles
- */
+// Shortcode Styles
 function dedo_get_shortcode_styles() {
 	$styles = array(
 	 	'infobox'		=> array(
@@ -118,31 +137,31 @@ function dedo_get_shortcode_lists() {
 	$lists = array(
 	 	'title'				=> array(
 	 		'name'				=> __( 'Title', 'delightful-downloads' ),
-	 		'format'			=> '<a href="%url%" title="%title%" rel="nofollow" class="%class%">%title%</a> &nbsp; %locked%'
+	 		'format'			=> '<a href="%url%" title="%title%" rel="nofollow" class="%class%">%title%</a>'
 	 	),
 	 	'title_date'		=> array(
 	 		'name'				=> __( 'Title (Date)', 'delightful-downloads' ),
-	 		'format'			=> '<a href="%url%" title="%title% (%date%)" rel="nofollow" class="%class%">%title% (%date%)</a> &nbsp; %locked%'
+	 		'format'			=> '<a href="%url%" title="%title% (%date%)" rel="nofollow" class="%class%">%title% (%date%)</a>'
 	 	),
 	 	'title_count'		=> array(
 	 		'name'				=> __( 'Title (Count)', 'delightful-downloads' ),
-	 		'format'			=> '<a href="%url%" title="%title% (Downloads: %count%)" rel="nofollow" class="%class%">%title% (Downloads: %count%)</a> &nbsp; %locked%'
+	 		'format'			=> '<a href="%url%" title="%title% (Downloads: %count%)" rel="nofollow" class="%class%">%title% (Downloads: %count%)</a>'
 	 	),
 	 	'title_filesize'	=> array(
 	 		'name'				=> __( 'Title (File size)', 'delightful-downloads' ),
-	 		'format'			=> '<a href="%url%" title="%title% (%filesize%)" rel="nofollow" class="%class%">%title% (%filesize%)</a> &nbsp; %locked%'
+	 		'format'			=> '<a href="%url%" title="%title% (%filesize%)" rel="nofollow" class="%class%">%title% (%filesize%)</a>'
 	 	),
 	 	'title_ext_filesize'=> array(
 	 		'name'				=> __( 'Title (Extension, File size)', 'delightful-downloads' ),
-	 		'format'			=> '<a href="%url%" title="%title% (%ext%, %filesize%)" rel="nofollow" class="%class%">%title% (%ext%, %filesize%)</a> &nbsp; %locked%'
+	 		'format'			=> '<a href="%url%" title="%title% (%ext%, %filesize%)" rel="nofollow" class="%class%">%title% (%ext%, %filesize%)</a>'
 	 	),
 	 	'title_date_ext_filesize'=> array(
 	 		'name'				=> __( 'Title (Date, Extension, File size)', 'delightful-downloads' ),
-	 		'format'			=> '<a href="%url%" title="%title% (%date%, %ext%, %filesize%)" rel="nofollow" class="%class%">%title% (%date%, %ext%, %filesize%)</a> &nbsp; %locked%'
+	 		'format'			=> '<a href="%url%" title="%title% (%date%, %ext%, %filesize%)" rel="nofollow" class="%class%">%title% (%date%, %ext%, %filesize%)</a>'
 	 	),
 	 	'title_ext_filesize_count'=> array(
 	 		'name'				=> __( 'Title (Date, Extension, File size,count)', 'delightful-downloads' ),
-	 		'format'			=> '<a href="%url%" title="%title% (%date%, %ext%, %filesize%, %count%x)" rel="nofollow" class="%class%">%title% (%date%, %ext%, %filesize%, %count%x)</a> &nbsp; %locked%'
+	 		'format'			=> '<a href="%url%" title="%title% (%date%, %ext%, %filesize%, %count%x)" rel="nofollow" class="%class%">%title% (%date%, %ext%, %filesize%, %count%x)</a>'
 	 	),
 	 	'icon_title_ext_filesize_count'=> array(
 	 		'name'				=> __( 'Title (Icon, Category, Filesize)', 'delightful-downloads' ),
@@ -151,7 +170,6 @@ function dedo_get_shortcode_lists() {
 					<div style="display:inline-block;width:100%;min-width:70%"><a href="%url%" title="%ext%-Datei&#10;herunterladen" rel="nofollow">
 					<span class="headline">%title%</a></span><br>%adminedit%
 					<abbr><i title="category" class="fa fa-folder-open"></i> %category% &nbsp;
-					%locked% &nbsp;
 					<i title="filesize" class="fa fa-expand"></i> %filesize%</abbr></div></div>'
 	 	),
 	 	'infoboxlist'=> array(
@@ -227,7 +245,7 @@ function dedo_get_shortcode_lists() {
 		$credate = get_the_date( 'l, d.m.Y H:i:s', $id );
 		if ( $moddate != $credate ) {$value = $credate . ' | ' . $moddate;} else {$value = $credate;}
 		if ( !is_user_logged_in() ) {$value = $moddate;}
-		$value .= ' vor '. human_time_diff(intval(get_the_modified_date( 'U, d.m.Y H:i:s', $id )), time());
+		$value .= ddago(intval(get_the_modified_date( 'U, d.m.Y H:i:s', $id )));
 		$string = str_replace( '%date%', $value, $string );
  	}
  	// filesize

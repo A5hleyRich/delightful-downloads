@@ -334,7 +334,7 @@ Please refer to the [FAQ] at the root folder of this plugin for further instruct
 == Changelog ==
 
 = 9.9.37 =
-added red locked symbol to downloads with password (internal DDL shortcodes), esp. for use with themes that suppress "protected:" in title
+fixed human time diff preword that was only in german. changed to "ago" in german "her" after time diffs.
 
 = 9.9.36 =
 add password flag shortcode to download types

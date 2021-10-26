@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: delightful-downloads 1.6.1\n"
 "Report-Msgid-Bugs-To: hello@ashleyrich.com\n"
-"POT-Creation-Date: 2021-04-30 19:43+0000\n"
+"POT-Creation-Date: 2021-10-26 15:49+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -50,6 +50,10 @@ msgstr ""
 
 #: includes/options.php:25
 msgid "Advanced"
+msgstr ""
+
+#: includes/functions.php:229 includes/admin/class-dedo-list-table.php:198
+msgid "ago"
 msgstr ""
 
 #: includes/class-dedo-widget-list.php:162 includes/taxonomies.php:26
@@ -265,7 +269,7 @@ msgstr ""
 msgid "Download Logs"
 msgstr ""
 
-#: includes/process-download.php:63
+#: includes/process-download.php:64
 msgid "download not found or onedaypass invalid or expired."
 msgstr ""
 
@@ -343,7 +347,7 @@ msgstr ""
 msgid "Edit Tag"
 msgstr ""
 
-#: includes/functions.php:181
+#: includes/functions.php:186
 msgid "edit this download"
 msgstr ""
 
@@ -472,7 +476,7 @@ msgstr ""
 msgid "Infoboxliste (Icon,Date,Extension,Filesize,count,Thumb,descript)"
 msgstr ""
 
-#: includes/post-types.php:170 includes/post-types.php:181
+#: includes/post-types.php:172 includes/post-types.php:183
 #: includes/admin/media-button.php:75 includes/admin/media-button.php:88
 #: includes/admin/media-button.php:100 includes/admin/meta-boxes.php:197
 #: includes/admin/meta-boxes.php:206 includes/admin/meta-boxes.php:214
@@ -497,7 +501,7 @@ msgstr ""
 msgid "Invalid download ID."
 msgstr ""
 
-#: includes/process-download.php:31 includes/process-download.php:75
+#: includes/process-download.php:31 includes/process-download.php:76
 msgid "Invalid download."
 msgstr ""
 
@@ -609,7 +613,7 @@ msgstr ""
 msgid "New Tag Name"
 msgstr ""
 
-#: includes/post-types.php:168 includes/post-types.php:179
+#: includes/post-types.php:170 includes/post-types.php:181
 #: includes/admin/meta-boxes.php:196 includes/admin/meta-boxes.php:233
 #: includes/admin/page-settings.php:270 includes/admin/page-settings.php:286
 #: includes/admin/page-settings.php:319 includes/admin/page-settings.php:444
@@ -665,7 +669,7 @@ msgstr ""
 msgid "Number of downloads to show:"
 msgstr ""
 
-#: includes/post-types.php:151
+#: includes/functions.php:184 includes/post-types.php:153
 msgid "One day pass copied to clipboard."
 msgstr ""
 
@@ -714,7 +718,7 @@ msgstr ""
 msgid "Pages"
 msgstr ""
 
-#: includes/process-download.php:111
+#: includes/process-download.php:112
 msgid "Password Required"
 msgstr ""
 
@@ -727,7 +731,7 @@ msgstr ""
 msgid "Please %sadd%s a new download."
 msgstr ""
 
-#: includes/process-download.php:105
+#: includes/process-download.php:106
 msgid "Please login to download this file!"
 msgstr ""
 
@@ -811,7 +815,7 @@ msgstr ""
 msgid "Select File"
 msgstr ""
 
-#: includes/process-download.php:171
+#: includes/process-download.php:172
 msgid "Server error, file cannot be opened!"
 msgstr ""
 
@@ -1056,7 +1060,7 @@ msgstr ""
 msgid "Yellow"
 msgstr ""
 
-#: includes/post-types.php:168 includes/post-types.php:179
+#: includes/post-types.php:170 includes/post-types.php:181
 #: includes/admin/meta-boxes.php:195 includes/admin/meta-boxes.php:232
 #: includes/admin/page-settings.php:269 includes/admin/page-settings.php:285
 #: includes/admin/page-settings.php:318 includes/admin/page-settings.php:443
@@ -1075,7 +1079,7 @@ msgstr ""
 msgid "You are about to reset the download settings."
 msgstr ""
 
-#: includes/process-download.php:81
+#: includes/process-download.php:82
 msgid "You are blocked from downloading this file!"
 msgstr ""
 
@@ -1083,6 +1087,6 @@ msgstr ""
 msgid "You do not have any logs to export in that date range."
 msgstr ""
 
-#: includes/process-download.php:116
+#: includes/process-download.php:117
 msgid "You must attach a file to this download."
 msgstr ""
