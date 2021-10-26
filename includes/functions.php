@@ -40,9 +40,9 @@ function ddago($timestamp)
 	} else if ($her<-172800 and $her>-259200 ) {
 		$hdate=__('1 day after tomorrow','penguin'); 
     } else {
-		$hdate = ' '.$prepo.' '.human_time_diff(intval($timestamp),$now).' '.$postpo;
+		$hdate = $prepo.' '.human_time_diff(intval($timestamp),$now).' '.$postpo;
 	}	
-	return $hdate;
+	return ' '.$hdate;
 }
 
 // Shortcode Styles
@@ -58,7 +58,7 @@ function dedo_get_shortcode_styles() {
 					%locked% <i title="filename" class="fa fa-file-o"></i> %filename% &nbsp; 
 					<i title="filesize" class="fa fa-expand"></i> %filesize% &nbsp;
 					<i title="Downloads" class="fa fa-download"></i> %count% &nbsp; 
-					<i title="erstellt/geändert" class="fa fa-calendar-o"></i> %date%</abbr>
+					%datesymbol%</abbr>
 					<br><br>%description%</div>%thumb%</div>'
 	 	),
 	 	'singlepost'		=> array(
@@ -182,7 +182,7 @@ function dedo_get_shortcode_lists() {
 					%locked% <i title="filename" class="fa fa-file-o"></i> %filename% &nbsp; 
 					<i title="filesize" class="fa fa-expand"></i> %filesize% &nbsp;
 					<i title="Downloads" class="fa fa-download"></i> %count% &nbsp; 
-					<i title="erstellt/geändert" class="fa fa-calendar-o"></i> %date%</abbr>
+					%datesymbol%</abbr>
 					<div class="entry-content">%description%</div></div>%thumb%</div>'
 	 	)
 	);
@@ -236,6 +236,19 @@ function dedo_get_shortcode_lists() {
  	if ( strpos( $string, '%thumb%' ) !== false ) {
  		$value = '<div style="max-width:200px;border:1px none;float:right;"><img class="img-zoom" style="transform-origin: center right" src="' . get_the_post_thumbnail_url( $id ) . '"></div>';
  		$string = str_replace( '%thumb%', $value, $string );
+ 	}
+	// datesymbol
+ 	if ( strpos( $string, '%datesymbol%' ) !== false ) {
+		$wiealt = ceil((time() - get_post_modified_time()) / 86400);
+		if ($wiealt < 15) $calgelb='#ffff00'; else $calgelb='transparent';
+		$calicon='<i style="background-color:'.$calgelb.'" title="erstellt/geändert ('.$wiealt.'d)" class="fa fa-calendar-o"></i>';
+		$value = $calicon.' ';
+ 		$moddate = get_the_modified_date( 'l, d.m.Y H:i:s', $id );
+		$credate = get_the_date( 'l, d.m.Y H:i:s', $id );
+		if ( $moddate != $credate ) {$value .= $credate . ' | ' . $moddate;} else {$value .= $credate;}
+		if ( !is_user_logged_in() ) {$value .= $moddate;}
+		$value .= ddago(intval(get_the_modified_date( 'U, d.m.Y H:i:s', $id )));
+		$string = str_replace( '%datesymbol%', $value, $string );
  	}
 	// date
  	if ( strpos( $string, '%date%' ) !== false ) {
