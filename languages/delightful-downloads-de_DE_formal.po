@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the Plugins - Delightful Downloads - Stable (latest release) package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2021-10-26 15:49+0000\n"
+"PO-Revision-Date: 2021-10-27 09:23+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -16,6 +16,14 @@ msgstr ""
 "Last-Translator: \n"
 "Language-Team: Deutsch (Sie)\n"
 "X-Loco-Version: 2.4.3; wp-5.5.1"
+
+#: includes/functions.php:41
+msgid "1 day after tomorrow"
+msgstr "übermorgen"
+
+#: includes/functions.php:37
+msgid "1 day before yesterday"
+msgstr "vorgestern"
 
 #: includes/class-dedo-widget-list.php:26
 msgid "A list of your site's downloads."
@@ -53,7 +61,7 @@ msgstr "Vorgänge im Dashboard "
 msgid "Advanced"
 msgstr "Erweitert"
 
-#: includes/functions.php:229 includes/admin/class-dedo-list-table.php:198
+#: includes/functions.php:31
 msgid "ago"
 msgstr "her"
 
@@ -118,7 +126,7 @@ msgstr "Automatisch Löschen"
 msgid "Automatically delete old logs."
 msgstr "Alte Logs automatisch löschen."
 
-#: includes/functions.php:83
+#: includes/functions.php:102
 msgid "Black"
 msgstr "Schwarz"
 
@@ -126,11 +134,11 @@ msgstr "Schwarz"
 msgid "Block User Agents"
 msgstr "User-Agents (Bots etc.) blockieren"
 
-#: includes/functions.php:87
+#: includes/functions.php:106
 msgid "Blue"
 msgstr "Blau"
 
-#: includes/functions.php:57 includes/admin/media-button.php:85
+#: includes/functions.php:76 includes/admin/media-button.php:85
 msgid "Button"
 msgstr "Button"
 
@@ -198,7 +206,7 @@ msgstr "Datum"
 msgid "Date modified"
 msgstr "Datum letzte Änderung"
 
-#: includes/functions.php:50
+#: includes/functions.php:69
 msgid "Datei herunterladen"
 msgstr "Datei herunterladen"
 
@@ -367,7 +375,7 @@ msgstr "Download bearbeiten"
 msgid "Edit Tag"
 msgstr "Tags bearbeiten"
 
-#: includes/functions.php:186
+#: includes/functions.php:205
 msgid "edit this download"
 msgstr "Download bearbeiten"
 
@@ -439,11 +447,11 @@ msgstr "Global"
 msgid "Grace Period"
 msgstr "Ablauffrist"
 
-#: includes/functions.php:95
+#: includes/functions.php:114
 msgid "Green"
 msgstr "Grün"
 
-#: includes/functions.php:91
+#: includes/functions.php:110
 msgid "Grey"
 msgstr "Grau"
 
@@ -471,7 +479,7 @@ msgstr "https://github.com/svenbolte/"
 msgid "https://github.com/svenbolte/delightful-downloads/"
 msgstr "https://github.com/svenbolte/delightful-downloads/"
 
-#: includes/functions.php:65
+#: includes/functions.php:84
 msgid "Icon und Link"
 msgstr "Icon und Link"
 
@@ -487,20 +495,24 @@ msgstr "Daten importieren"
 msgid "Import Settings"
 msgstr "Einstellungen importieren"
 
+#: includes/functions.php:30
+msgid "in"
+msgstr "in"
+
 #: includes/admin/meta-boxes.php:119
 msgid "Inaccessible File"
 msgstr "Dateizugriff nicht möglich"
 
-#: includes/functions.php:46
+#: includes/functions.php:65
 msgid "Infobox mit Icon, Rahmen für Post Archive"
 msgstr "Infobox mit Icon, Rahmen für Post Archive"
 
-#: includes/functions.php:33
+#: includes/functions.php:52
 #| msgid "Infobox mit Icon und Details"
 msgid "Infobox mit Icon, Rahmen und Details"
 msgstr "Infobox mit Icon, Rahmen und Details"
 
-#: includes/functions.php:157
+#: includes/functions.php:176
 msgid "Infoboxliste (Icon,Date,Extension,Filesize,count,Thumb,descript)"
 msgstr ""
 "Infoboxliste (Icon,Datum,Dateiname,Größe,Zähler,Beitragsbild,Beschreibung)"
@@ -575,7 +587,7 @@ msgstr "Letzte 7 Tage"
 msgid "Licenses"
 msgstr "Lizenzen"
 
-#: includes/functions.php:61
+#: includes/functions.php:80
 msgid "Link"
 msgstr "Link"
 
@@ -699,7 +711,7 @@ msgstr "Nicht angemeldet "
 msgid "Number of downloads to show:"
 msgstr "Anzahl der anzuzeigenden Downloads:"
 
-#: includes/functions.php:184 includes/post-types.php:153
+#: includes/functions.php:203 includes/post-types.php:153
 msgid "One day pass copied to clipboard."
 msgstr "1-Tages-Download in die Zwischenablage kopiert."
 
@@ -752,7 +764,7 @@ msgstr "Seiten"
 msgid "Password Required"
 msgstr "Passwort erforderlich"
 
-#: includes/functions.php:69
+#: includes/functions.php:88
 msgid "Plain Text"
 msgstr "Nur Text"
 
@@ -777,7 +789,7 @@ msgstr "Beliebte Downloads"
 msgid "Popular Tags"
 msgstr "Populäre Schlagworte (Tags)"
 
-#: includes/functions.php:99
+#: includes/functions.php:118
 msgid "Purple"
 msgstr "Purpur"
 
@@ -797,7 +809,7 @@ msgstr "Zufällig"
 msgid "really delete attached file from server?"
 msgstr "die Datei wirklich vom Server löschen?"
 
-#: includes/functions.php:103
+#: includes/functions.php:122
 msgid "Red"
 msgstr "Rot"
 
@@ -1014,42 +1026,46 @@ msgstr ""
 "Downloads-Upload-Verzeichnis gespeichert ist, müssen Sie die Einstellung für "
 "%sfolder protection%s auf \"Nein\" setzen. "
 
-#: includes/class-dedo-widget-list.php:138 includes/functions.php:120
+#: includes/class-dedo-widget-list.php:138 includes/functions.php:139
 #: includes/post-types.php:62
 msgid "Title"
 msgstr "Titel"
 
-#: includes/functions.php:128
+#: includes/functions.php:147
 msgid "Title (Count)"
 msgstr "Titel (Zähler)"
 
-#: includes/functions.php:124
+#: includes/functions.php:143
 msgid "Title (Date)"
 msgstr "Titel (Datum)"
 
-#: includes/functions.php:140
+#: includes/functions.php:159
 msgid "Title (Date, Extension, File size)"
 msgstr "Titel (Datum, Erweiterung, Dateigröße)"
 
-#: includes/functions.php:144
+#: includes/functions.php:163
 msgid "Title (Date, Extension, File size,count)"
 msgstr "Titel (Datum, Erweiterung, Dateigröße, Anzahl)"
 
-#: includes/functions.php:136
+#: includes/functions.php:155
 msgid "Title (Extension, File size)"
 msgstr "Titel (Dateierweiterung, Dateigröße)"
 
-#: includes/functions.php:132
+#: includes/functions.php:151
 msgid "Title (File size)"
 msgstr "Titel (Dateigröße)"
 
-#: includes/functions.php:148
+#: includes/functions.php:167
 msgid "Title (Icon, Category, Filesize)"
 msgstr "Titel (Symbol, Kategorie, Dateigröße)"
 
 #: includes/class-dedo-widget-list.php:123
 msgid "Title:"
 msgstr "Titel:"
+
+#: includes/functions.php:39
+msgid "tomorrow"
+msgstr "morgen"
 
 #: includes/admin/class-dedo-list-table.php:169
 #: includes/admin/dashboard.php:168 includes/admin/page-statistics.php:193
@@ -1108,7 +1124,11 @@ msgstr "Download anzeigen"
 msgid "View Tag"
 msgstr "Schlagwort anzeigen"
 
-#: includes/functions.php:107
+#: includes/functions.php:31
+msgid "vor"
+msgstr "vor"
+
+#: includes/functions.php:126
 msgid "Yellow"
 msgstr "Gelb"
 
@@ -1122,6 +1142,10 @@ msgstr "Gelb"
 #: includes/admin/page-settings.php:596
 msgid "Yes"
 msgstr "Ja"
+
+#: includes/functions.php:35
+msgid "yesterday"
+msgstr "gestern"
 
 #: includes/admin/page-statistics.php:40
 msgid "You are about to permanently delete the download logs."
