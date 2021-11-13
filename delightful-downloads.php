@@ -11,7 +11,7 @@ License: GPL2
 Version: 9.9.38
 Stable tag: 9.9.38
 Requires at least: 5.1
-Tested up to: 5.8.1
+Tested up to: 5.8.2
 Requires PHP: 7.4
 */
 
