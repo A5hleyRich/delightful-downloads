@@ -3,11 +3,11 @@ Contributors: A5hleyRich, Sven Bolte, others (best of forks)
 Tags: download, manager, downloads, monitor, shortcode, delightful downloads, file, counter, tracking, infobox, fixed filetree,ipflag, chartscodes
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
-Version: 9.9.38
-Stable tag: 9.9.38
+Version: 9.9.40
+Stable tag: 9.9.40
 Requires at least: 5.1
 Tested up to: 5.8.2
-Requires PHP: 7.4
+Requires PHP: 8.0
 
 A super-awesome downloads manager and statistics tracker for WordPress.
 
@@ -332,6 +332,10 @@ Please refer to the [documentation] at the root folder of this plugin for furthe
 Please refer to the [FAQ] at the root folder of this plugin for further instructions (documentation.txt) 
 
 == Changelog ==
+
+= 9.9.40 =
+rewrite time function ddago(
+needs a theme with fontawesome 4.7 like penguin-mod or icons will not displayed
 
 = 9.9.37 =
 fixed human time diff preword that was only in german. changed to "ago" in german "her" after time diffs.

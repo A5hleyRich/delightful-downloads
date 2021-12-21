@@ -22,27 +22,35 @@ function dedo_template( $single_template ) {
 add_filter( 'single_template', 'dedo_template' );
 
 // Zeitdifferenz ermitteln und gestern/vorgestern/morgen schreiben
-function ddago($timestamp)
-{
-	$xlang = get_bloginfo("language"); 
+function ddago($timestamp) {
+	$xlang = get_bloginfo("language");
 	date_default_timezone_set('Europe/Berlin');
 	$now = time();
-	if ( $timestamp > $now ) { $prepo = __('in','delightful-downloads');$postpo=''; } else {
-		if ($xlang == 'de-DE') {$prepo = __('vor','delightful-downloads');$postpo='';} else {$prepo='';$postpo = __('ago','delightful-downloads');}
+	if ($timestamp > $now) {
+		$prepo = __('in', 'delightful-downloads');
+		$postpo = '';
+	} else {
+		if ($xlang == 'de-DE') {
+			$prepo = __('vor', 'delightful-downloads');
+			$postpo = '';
+		} else {
+			$prepo = '';
+			$postpo = __('ago', 'delightful-downloads');
 		}
+	}
 	$her = intval($now) - intval($timestamp);
-	if ($her>86400 and $her<172800 ) {
-		$hdate=__('yesterday','delightful-downloads');
-	} else if ($her>172800 and $her<259200 ) {
-		$hdate=__('1 day before yesterday','delightful-downloads'); 
-	} else if ($her<-86400 and $her>-172800 ) {
-		$hdate=__('tomorrow','delightful-downloads'); 
-	} else if ($her<-172800 and $her>-259200 ) {
-		$hdate=__('1 day after tomorrow','delightful-downloads'); 
-    } else {
-		$hdate = $prepo.' '.human_time_diff(intval($timestamp),$now).' '.$postpo;
-	}	
-	return ' '.$hdate;
+	if ($her > 86400 and $her < 172800) {
+		$hdate = __('yesterday', 'delightful-downloads');
+	} else if ($her > 172800 and $her < 259200) {
+		$hdate = __('1 day before yesterday', 'delightful-downloads');
+	} else if ($her < - 86400 and $her > - 172800) {
+		$hdate = __('tomorrow', 'delightful-downloads');
+	} else if ($her < - 172800 and $her > - 259200) {
+		$hdate = __('1 day after tomorrow', 'delightful-downloads');
+	} else {
+		$hdate = ' ' . $prepo . ' ' . human_time_diff(intval($timestamp), $now) . ' ' . $postpo;
+	}
+	return $hdate;
 }
 
 // Shortcode Styles
