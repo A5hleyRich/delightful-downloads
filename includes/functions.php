@@ -59,28 +59,29 @@ function dedo_get_shortcode_styles() {
 	 	'infobox'		=> array(
 	 		'name'			=> __( 'Infobox mit Icon, Rahmen und Details', 'delightful-downloads' ),
 	 		'format'		=> '<div class="%class%" style="display:flex;border:1px solid #e1e1e1;width:100%;padding:4px;border-radius:3px">
+					<div style="display:flex;width:100%">
 					<div style="display:inline-block;min-width:60px;width:60px">%icon%</div>
-					<div style="display:inline-block;width:100%;min-width:70%"><a href="%url%" title="%ext%-Datei&#10;herunterladen" rel="nofollow">
-					<span class="headline">%title%</a></span><br>%adminedit%
-					<abbr><i title="category" class="fa fa-folder-open"></i> %category% &nbsp;
+					<div style="display:inline-block;width:100%;min-width:70%">
+					%adminedit%%permalink% &nbsp;<abbr><i title="category" class="fa fa-folder-open"></i> %category% &nbsp;
 					%locked% <i title="filename" class="fa fa-file-o"></i> %filename% &nbsp; 
 					<i title="filesize" class="fa fa-expand"></i> %filesize% &nbsp;
 					 %downloadtime% &nbsp;
 					<i title="Downloads" class="fa fa-download"></i> %count% &nbsp; 
 					%datesymbol%</abbr>
-					<br><br>%description%</div>%thumb%</div>'
+					<h6><a href="%url%" title="%ext%-Datei&#10;herunterladen" rel="nofollow">%title%</a></h6>
+					<div class="entry-content">%description%</div></div>%thumb%</div> </div>'
 	 	),
 	 	'singlepost'		=> array(
 	 		'name'			=> __( 'Infobox mit Icon, Rahmen für Post Archive', 'delightful-downloads' ),
 	 		'format'		=> '<div class="%class%" style="display:flex;border:1px solid #e1e1e1;width:100%;padding:4px;border-radius:3px">
 					<div style="display:inline-block;min-width:60px;width:60px">%icon%</div>
-					<div style="display:inline-block;width:100%;min-width:70%"><a href="%url%" title="%ext%-Datei&#10;herunterladen" rel="nofollow">
-					<span class="headline">'.__( 'Datei herunterladen', 'delightful-downloads' ).'</a></span><br>%adminedit%
-					<abbr><i title="category" class="fa fa-folder-open"></i> %category% &nbsp;
+					<div style="display:inline-block;width:100%;min-width:70%">
+					%adminedit%<abbr><i title="category" class="fa fa-folder-open"></i> %category% &nbsp;
 					%locked% <i title="filename" class="fa fa-file-o"></i> %filename% &nbsp; 
-					<i title="filesize" class="fa fa-expand"></i> %filesize% &nbsp;
-					 %downloadtime% &nbsp;
-					<i title="Downloads" class="fa fa-download"></i> %count%</abbr></div></div>'
+					<i title="filesize" class="fa fa-expand"></i> %filesize% &nbsp; %downloadtime% &nbsp;
+					<i title="Downloads" class="fa fa-download"></i> %count%</abbr>
+					<h6 style="margin:.2em"><a href="%url%" title="%ext%-Datei&#10;herunterladen" rel="nofollow">
+					'.__( 'Datei herunterladen', 'delightful-downloads' ).'</a></h6> </div></div>'
 	 	),
 	 	'button'		=> array(
 	 		'name'			=> __( 'Button', 'delightful-downloads' ),
@@ -177,23 +178,24 @@ function dedo_get_shortcode_lists() {
 	 		'name'				=> __( 'Title (Icon, Category, Filesize)', 'delightful-downloads' ),
 	 		'format'			=> '<div style="display:flex;width:100%">
 					<div style="display:inline-block;min-width:60px;width:60px">%icon%</div>
-					<div style="display:inline-block;width:100%;min-width:70%"><a href="%url%" title="%ext%-Datei&#10;herunterladen" rel="nofollow">
-					<span class="headline">%title%</a></span><br>%adminedit%
-					<abbr><i title="category" class="fa fa-folder-open"></i> %category% &nbsp;
+					<div style="display:inline-block;width:100%;min-width:70%"><a class="headline" href="%url%" title="%ext%-Datei&#10;herunterladen" rel="nofollow">
+					%title%</a><br>%adminedit%
+					%permalink% &nbsp;%locked% &nbsp;<abbr><i title="category" class="fa fa-folder-open"></i> %category% &nbsp;
 					<i title="filesize" class="fa fa-expand"></i> %filesize%</abbr></div></div>'
 	 	),
 	 	'infoboxlist'=> array(
 	 		'name'				=> __( 'Infoboxliste (Icon,Date,Extension,Filesize,count,Thumb,descript)', 'delightful-downloads' ),
-	 		'format'			=> '<div style="display:flex;width:100%">
+	 		'format'			=> '
+					<div style="display:flex;width:100%">
 					<div style="display:inline-block;min-width:60px;width:60px">%icon%</div>
-					<div style="display:inline-block;width:100%;min-width:70%"><a href="%url%" title="%ext%-Datei&#10;herunterladen" rel="nofollow">
-					<span class="headline">%title%</a></span><br>%adminedit%
-					<abbr><i title="category" class="fa fa-folder-open"></i> %category% &nbsp;
+					<div style="display:inline-block;width:100%;min-width:70%">
+					%adminedit%%permalink% &nbsp;<abbr><i title="category" class="fa fa-folder-open"></i> %category% &nbsp;
 					%locked% <i title="filename" class="fa fa-file-o"></i> %filename% &nbsp; 
 					<i title="filesize" class="fa fa-expand"></i> %filesize% &nbsp;
 					 %downloadtime% &nbsp;
 					<i title="Downloads" class="fa fa-download"></i> %count% &nbsp; 
 					%datesymbol%</abbr>
+					<h6><a href="%url%" title="%ext%-Datei&#10;herunterladen" rel="nofollow">%title%</a></h6>
 					<div class="entry-content">%description%</div></div>%thumb%</div>'
 	 	)
 	);
@@ -250,6 +252,11 @@ function download_times($filesize) {
 		$post_terms = get_the_terms( $id, 'ddownload_category' );
 		if (!empty($post_terms)) $value = $post_terms[0]->name; else $value='';
 		$string = str_replace( '%category%', $value, $string );
+ 	}
+ 	// permalink single cpost
+ 	if ( strpos( $string, '%permalink%' ) !== false ) {
+		$value = ' <a href="'.get_the_permalink($id).'"><i title="'.__('read more').'" class="fa fa-search-plus"></i></a>';
+ 		$string = str_replace( '%permalink%', $value, $string );
  	}
  	// beschreibung
  	if ( strpos( $string, '%description%' ) !== false ) {
@@ -328,7 +335,7 @@ function download_times($filesize) {
  	// protected file
  	if ( strpos( $string, '%locked%' ) !== false ) {
  		if (post_password_required($id)) {
-			$value='<i title="Kennwortgeschützt" class="fa fa-lock" style="color:#ff0000"></i>';
+			$value='<i title="Kennwortgeschützt" class="fa fa-lg fa-lock" style="color:tomato"></i>';
 		} else {
 			$value='';
 		}
