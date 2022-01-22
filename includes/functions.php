@@ -248,14 +248,14 @@ function dedo_get_shortcode_lists() {
 	// datesymbol
  	if ( strpos( $string, '%datesymbol%' ) !== false ) {
 		$wiealt = ceil((time() - get_post_modified_time()) / 86400);
-		if ($wiealt < 15) $calgelb='#ffff00'; else $calgelb='transparent';
+		if ($wiealt < 15) $calgelb='#ffd800'; else $calgelb='transparent';
 		$calicon='<i style="background-color:'.$calgelb.'" title="erstellt/geändert ('.$wiealt.'d)" class="fa fa-calendar-o"></i>';
 		$value = $calicon.' ';
  		$moddate = get_the_modified_date( 'l, d.m.Y H:i:s', $id );
 		$credate = get_the_date( 'l, d.m.Y H:i:s', $id );
 		if ( $moddate != $credate ) {$value .= $credate . ' | ' . $moddate;} else {$value .= $credate;}
 		if ( !is_user_logged_in() ) {$value .= $moddate;}
-		$value .= ddago(intval(get_the_modified_date( 'U, d.m.Y H:i:s', $id )));
+		$value .= ' '.ddago(intval(get_the_modified_date( 'U, d.m.Y H:i:s', $id )));
 		$string = str_replace( '%datesymbol%', $value, $string );
  	}
 	// date
