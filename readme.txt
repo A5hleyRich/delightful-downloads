@@ -3,10 +3,10 @@ Contributors: A5hleyRich, Sven Bolte, others (best of forks)
 Tags: download, manager, downloads, monitor, shortcode, delightful downloads, file, counter, tracking, infobox, fixed filetree,ipflag, chartscodes
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
-Version: 9.9.40
-Stable tag: 9.9.40
+Version: 9.9.42
+Stable tag: 9.9.42
 Requires at least: 5.1
-Tested up to: 5.8.2
+Tested up to: 5.8.3
 Requires PHP: 8.0
 
 A super-awesome downloads manager and statistics tracker for WordPress.
@@ -264,6 +264,9 @@ The file name of the download.
 %filesize%
 The file size of the download.
 
+%downloadtime%
+display a clock symbol of fontawesome and download times for typical intern lines (16,25,50,100,200,500,1000MBit)
+
 %id%
 The unique identifier of the download.
 
@@ -332,6 +335,12 @@ Please refer to the [documentation] at the root folder of this plugin for furthe
 Please refer to the [FAQ] at the root folder of this plugin for further instructions (documentation.txt) 
 
 == Changelog ==
+
+= 9.9.42 =
+infobox datesymbol layout shows create and modified dates and agos on mouseover
+new files yellow, date and time display homogenized (shows only mod date if present else creation date
+catch error if download is created without adding a file (placeholder for file can be added later
+downloadtime as wildcard and for infobox and list added. shows download time (200Mbit) and on mouseover 6 typical internet lines dl-time
 
 = 9.9.40 =
 rewrite time function ddago(

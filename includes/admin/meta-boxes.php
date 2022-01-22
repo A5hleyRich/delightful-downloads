@@ -375,6 +375,7 @@ function dedo_meta_boxes_save( $post_id ) {
 	if ( isset( $_POST['ddownload_file_save_nonce'] ) && wp_verify_nonce( $_POST['ddownload_file_save_nonce'], 'ddownload_file_save' ) ) {	
 
 		$file_url = trim( $_POST['dedo-file-url'] );
+		if (empty($file_url)) $file_url="none";
 
 		/**
 		 * Get cached remote file sizes

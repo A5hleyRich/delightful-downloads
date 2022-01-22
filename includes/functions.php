@@ -65,6 +65,7 @@ function dedo_get_shortcode_styles() {
 					<abbr><i title="category" class="fa fa-folder-open"></i> %category% &nbsp;
 					%locked% <i title="filename" class="fa fa-file-o"></i> %filename% &nbsp; 
 					<i title="filesize" class="fa fa-expand"></i> %filesize% &nbsp;
+					 %downloadtime% &nbsp;
 					<i title="Downloads" class="fa fa-download"></i> %count% &nbsp; 
 					%datesymbol%</abbr>
 					<br><br>%description%</div>%thumb%</div>'
@@ -78,6 +79,7 @@ function dedo_get_shortcode_styles() {
 					<abbr><i title="category" class="fa fa-folder-open"></i> %category% &nbsp;
 					%locked% <i title="filename" class="fa fa-file-o"></i> %filename% &nbsp; 
 					<i title="filesize" class="fa fa-expand"></i> %filesize% &nbsp;
+					 %downloadtime% &nbsp;
 					<i title="Downloads" class="fa fa-download"></i> %count%</abbr></div></div>'
 	 	),
 	 	'button'		=> array(
@@ -189,18 +191,32 @@ function dedo_get_shortcode_lists() {
 					<abbr><i title="category" class="fa fa-folder-open"></i> %category% &nbsp;
 					%locked% <i title="filename" class="fa fa-file-o"></i> %filename% &nbsp; 
 					<i title="filesize" class="fa fa-expand"></i> %filesize% &nbsp;
+					 %downloadtime% &nbsp;
 					<i title="Downloads" class="fa fa-download"></i> %count% &nbsp; 
 					%datesymbol%</abbr>
 					<div class="entry-content">%description%</div></div>%thumb%</div>'
 	 	)
 	);
-
 	return apply_filters( 'dedo_get_lists', $lists );
 }
 
-/**
- * Replace Wildcards
- */
+// Get download-time for typical internet lines
+function download_times($filesize) {
+	$bbreite = array (25,50,100,200,500,1000,16);
+	$outp = array();
+	foreach ($bbreite as $value) {
+		$time16 = $filesize * 8 / ($value*1024*1024);
+		$s = $time16%60;
+		$m = floor(($time16%3600)/60);
+		$h = floor(($time16%86400)/3600);
+		$outp[] = ($h>0 ? $h.'h ' :'').($m>0 ? $m.'m ' :'').$s.'s@'.$value.'MBit';
+	}	
+	if ($s > 0) $dtime='<a title="'.implode("\n", $outp).'"><i class="fa fa-clock-o"></i> '.$outp[6].'</a>'; else $dtime='';
+	return $dtime;
+}
+
+
+// Replace Wildcards
  function dedo_search_replace_wildcards( $string, $id ) {
  	//adminedit
  	if ( strpos( $string, '%adminedit%' ) !== false ) {
@@ -247,23 +263,43 @@ function dedo_get_shortcode_lists() {
  	}
 	// datesymbol
  	if ( strpos( $string, '%datesymbol%' ) !== false ) {
-		$wiealt = ceil((time() - get_post_modified_time()) / 86400);
-		if ($wiealt < 15) $calgelb='#ffd800'; else $calgelb='transparent';
-		$calicon='<i style="background-color:'.$calgelb.'" title="erstellt/geändert ('.$wiealt.'d)" class="fa fa-calendar-o"></i>';
-		$value = $calicon.' ';
- 		$moddate = get_the_modified_date( 'l, d.m.Y H:i:s', $id );
-		$credate = get_the_date( 'l, d.m.Y H:i:s', $id );
-		if ( $moddate != $credate ) {$value .= $credate . ' | ' . $moddate;} else {$value .= $credate;}
-		if ( !is_user_logged_in() ) {$value .= $moddate;}
-		$value .= ' '.ddago(intval(get_the_modified_date( 'U, d.m.Y H:i:s', $id )));
+		$diff = time() - get_the_modified_time('U', false, $id, true);
+		if (round((intval($diff) / 86400), 0) < 30) {
+			$newcolor = "#FFD800";
+		} else {
+			$newcolor = "transparent";
+		}
+		$erstelldat = get_post_time('l, d. M Y H:i:s', false, $id, true);
+		$postago = ago(get_post_time('U, d. F Y H:i:s', false, $id, true));
+		$moddat = get_the_modified_time('l, d. M Y H:i:s', false, $id, true);
+		$modago = ago(get_the_modified_time('U, d. F Y H:i:s', false, $id, true));
+		$diffmod = get_the_modified_time('U', false, $id, true) - get_post_time('U', false, $id, true);
+		$datumlink= '';
+		$erstelltitle = 'erstellt: ' . $erstelldat . ' ' . $postago;
+		if ($diffmod > 0) {
+			$erstelltitle .= '&#10;verändert: ' . $moddat . ' ' . $modago;
+			$erstelltitle .= '&#10;verändert nach: ' . human_time_diff(get_post_time('U', false, $id, true), get_the_modified_time('U', false, $id, true));
+		}
+		if ($diffmod > 86400) {
+			$newormod = 'fa fa-calendar-plus-o';
+		} else {
+			$newormod = 'fa fa-calendar-o';
+		}
+		$value = '<a title="' . $erstelltitle . '" '.$datumlink.'><i style="background-color:' . $newcolor . '" class="' . $newormod . '"></i> ';
+			if ($diffmod > 0) {
+				$value .= ' ' . get_the_modified_time(get_option('date_format').' '.get_option('time_format'), false, $id, true) . ' ' . $modago;
+			} else {
+				$value .= ' ' . get_post_time(get_option('date_format').' '.get_option('time_format'), false, $id, true) . ' ' . $idago;
+			}
+		$value .= '</a>';
 		$string = str_replace( '%datesymbol%', $value, $string );
  	}
 	// date
  	if ( strpos( $string, '%date%' ) !== false ) {
  		// $moddate = get_the_modified_date( apply_filters( 'dedo_shortcode_date_format', '' ), $id );
- 		$moddate = get_the_modified_date( 'l, d.m.Y H:i:s', $id );
+ 		$moddate = get_the_modified_date( 'l d. M Y H:i:s', $id );
 		//$credate = get_the_date( apply_filters( 'dedo_shortcode_date_format', '' ), $id );
-		$credate = get_the_date( 'l, d.m.Y H:i:s', $id );
+		$credate = get_the_date( 'l d. M Y H:i:s', $id );
 		if ( $moddate != $credate ) {$value = $credate . ' | ' . $moddate;} else {$value = $credate;}
 		if ( !is_user_logged_in() ) {$value = $moddate;}
 		$value .= ddago(intval(get_the_modified_date( 'U, d.m.Y H:i:s', $id )));
@@ -273,6 +309,11 @@ function dedo_get_shortcode_lists() {
  	if ( strpos( $string, '%filesize%' ) !== false ) {
  		$value = size_format( get_post_meta( $id, '_dedo_file_size', true ), 1 );
  		$string = str_replace( '%filesize%', $value, $string );
+ 	}
+ 	// downloadtime
+ 	if ( strpos( $string, '%downloadtime%' ) !== false ) {
+ 		$value = download_times(intval(get_post_meta( $id, '_dedo_file_size', true )));
+ 		$string = str_replace( '%downloadtime%', $value, $string );
  	}
  	// downloads
  	if ( strpos( $string, '%count%' ) !== false ) {
@@ -313,8 +354,7 @@ function dedo_get_shortcode_lists() {
  }
 
 /**
- * Download Link
- * Generate download link based on provided id.
+ * Download Link * Generate download link based on provided id.
  */
 function dedo_download_link( $id ) {
 	global $dedo_options;
@@ -322,9 +362,7 @@ function dedo_download_link( $id ) {
 	return apply_filters( 'dedo_download_link', $output );
 }
 
-/**
- * Check for valid download
- */
+// Check for valid download
 function dedo_download_valid( $download_id ) {
 	$download_id = absint( $download_id );
 
@@ -358,8 +396,6 @@ function dedo_download_permission( $options ) {
 
 /**
  * Check if user is blocked
- *
- * @since  1.3
  */
 function dedo_download_blocked( $current_agent ) {
 	// Retrieve user agents
@@ -397,8 +433,6 @@ function dedo_get_agents() {
 
 /**
  * Get users IP Address
- *
- * @since  1.0
  */
 function dedo_download_ip() {
 	if ( !empty( $_SERVER['HTTP_CLIENT_IP'] ) ) {
