@@ -6,7 +6,7 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Version: 9.9.42
 Stable tag: 9.9.42
 Requires at least: 5.1
-Tested up to: 5.8.3
+Tested up to: 5.9.0
 Requires PHP: 8.0
 
 A super-awesome downloads manager and statistics tracker for WordPress.
@@ -319,6 +319,154 @@ valid values for the shortcode attribute styles are. Can be found in includes/fu
 	 	iconlink	= Icon, Download Link, displays DOWNLOAD or selected wildcards as text field
 	 	plain_text	= Download URL (quicklink) as text
 
+
+-------------------- Custom templates ----------------------------
+The following list styles are registered by default:
+```
+<?php
+$lists = array(
+ 	'title' => array(
+ 		'name'	=> __( 'Title', 'delightful-downloads' ),
+ 		'format' => '<a href="%url%" title="%title%" rel="nofollow">%title%</a>'
+ 	),
+ 	'title_date' => array(
+ 		'name' => __( 'Title (Date)', 'delightful-downloads' ),
+ 		'format' => '<a href="%url%" title="%title% (%date%)" rel="nofollow">%title% (%date%)</a>'
+ 	),
+ 	'title_count' => array(
+ 		'name' => __( 'Title (Count)', 'delightful-downloads' ),
+ 		'format' => '<a href="%url%" title="%title% (Downloads: %count%)" rel="nofollow">%title% (Downloads: %count%)</a>'
+ 	),
+ 	'title_filesize' => array(
+ 		'name' => __( 'Title (Filesize)', 'delightful-downloads' ),
+ 		'format' => '<a href="%url%" title="%title% (%filesize%)" rel="nofollow">%title% (%filesize%)</a>'
+ 	)
+);
+```
+To add a new list style to those already registered by Delightful Downloads simply add a new key to the $lists array:
+```
+<?php
+function custom_list( $lists ) {
+	$lists['icon_date'] = array(
+ 		'name' => 'Icon (Date)',
+ 		'format' => '<i class="fa fa-download"></i><a href="%url%" title="%title%" rel="nofollow">%title% - %date%</a>'
+	);
+	return $lists;
+}
+add_filter( 'dedo_get_lists', 'custom_list' );
+```
+replace list
+```
+<?php
+function custom_list( $lists ) {
+	$new_lists['icon_date'] = array(
+ 		'name' => 'Icon (Date)',
+ 		'format' => '<i class="fa fa-download"></i><a href="%url%" title="%title%" rel="nofollow">%title% - %date%</a>'
+	);
+	return $new_lists;
+}
+add_filter( 'dedo_get_lists', 'custom_list' );
+```
+Remove List
+```
+<?php
+function custom_list( $lists ) {
+	unset( $lists['title_filesize'] );
+	return $lists;
+}
+add_filter( 'dedo_get_lists', 'custom_list' );
+```
+
+To add a new button to those already registered by Delightful Downloads simply add a new key to the $buttons array:
+```
+<?php
+function dedo_custom_button( $buttons ) {
+    $buttons['custom'] = array(
+        'name' => __( 'Custom Button', 'delightful-downloads' ),
+        'class' => 'button-custom'
+    );
+    return $buttons;
+}
+add_filter( 'dedo_get_buttons', 'dedo_custom_button' );
+```
+To completely replace the default buttons simply overwrite the $buttons array:
+```
+<?php
+function dedo_custom_button( $buttons ) {
+    $custom_buttons['bright_pink'] = array(
+        'name' => __( 'Bright Pink', 'delightful-downloads' ),
+        'class' => 'button-bright-pink'
+    );
+    return $custom_buttons;
+}
+add_filter( 'dedo_get_buttons', 'dedo_custom_button' );
+```
+Existing buttons can be removed by simply unsetting them. The following snippet will remove the red and yellow buttons:
+```
+<?php
+function dedo_custom_button( $buttons ) {
+    unset( $buttons['red'] );
+    unset( $buttons['yellow'] );
+    return $buttons;
+}
+add_filter( 'dedo_get_buttons', 'dedo_custom_button' );
+```
+
+The following output styles are registered by default:
+```
+<?php
+$styles = array(
+ 	'button' => array(
+ 		'name' => __( 'Button', 'delightful-downloads' ),
+ 		'format' => '<a href="%url%" title="%text%" rel="nofollow" class="%class%">%text%</a>'
+ 	),
+ 	'link' => array(
+ 		'name' => __( 'Link', 'delightful-downloads' ),
+ 		'format' => '<a href="%url%" title="%text%" rel="nofollow" class="%class%">%text%</a>'
+ 	),
+ 	'plain_text' => array(
+ 		'name' => __( 'Plain Text', 'delightful-downloads' ),
+ 		'format' => '%url%'
+ 	)
+);
+```
+To add a new output style to those already registered by Delightful Downloads simply add a new key to the $styles array:
+```
+<?php
+
+function dedo_custom_output( $styles ) {
+	$styles['icon_link'] = array(
+ 		'name' => __( 'Icon Link', 'delightful-downloads' ),
+ 		'format' => '<div class="download_container"><i class="fa fa-download"></i><a href="%url%" title="%title%" rel="nofollow">%title%</a></div>'
+	);
+
+	return $styles;
+}
+add_filter( 'dedo_get_styles', 'dedo_custom_output' );
+```
+To completely replace the default output styles simply overwrite the $styles array:
+```
+<?php
+function dedo_custom_output( $styles ) {
+	$new_styles['icon_link'] = array(
+ 		'name' => __( 'Icon Link', 'delightful-downloads' ),
+ 		'format' => '<div class="download_container"><i class="fa fa-download"></i><a href="%url%" title="%title%" rel="nofollow">%title%</a></div>'
+	);
+	return $new_styles;
+}
+add_filter( 'dedo_get_styles', 'dedo_custom_output' );
+```
+You use a custom output like so, [ddownload id="123" style="icon_link"].
+Existing outputs can be removed by simply unsetting them. The following snippet will remove the plain text output:
+```
+<?php
+function dedo_custom_output( $styles ) {
+	unset( $styles['plain_text'] );
+	return $styles;
+}
+add_filter( 'dedo_get_styles', 'dedo_custom_output' );
+```
+
 ---------------------------- End of documentation ---------------------------------------------------
 
 
@@ -334,7 +482,11 @@ Please refer to the [documentation] at the root folder of this plugin for furthe
 
 Please refer to the [FAQ] at the root folder of this plugin for further instructions (documentation.txt) 
 
-== Changelog ==
+
+==================== Changelog =================================
+= 9.9.43 =
+documentation in text form replaces pdf file
+wp5.9.0 compatibility check
 
 = 9.9.42 =
 infobox datesymbol layout shows create and modified dates and agos on mouseover
