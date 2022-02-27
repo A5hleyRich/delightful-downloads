@@ -719,10 +719,6 @@
   height: 200px;
   border: 4px dashed #bbb;
   vertical-align: middle;
-  -webkit-transition: all .5s ease;
-  -moz-transition: all .5s ease;
-  -o-transition: all .5s ease;
-  -ms-transition: all .5s ease;
   transition: all .5s ease;
 }
 /* line 736, ../sass/delightful-downloads-admin.scss */
