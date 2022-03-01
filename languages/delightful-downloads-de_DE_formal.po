@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the Plugins - Delightful Downloads - Stable (latest release) package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2021-10-27 09:23+0000\n"
+"PO-Revision-Date: 2022-03-01 16:29+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -17,11 +17,11 @@ msgstr ""
 "Language-Team: Deutsch (Sie)\n"
 "X-Loco-Version: 2.4.3; wp-5.5.1"
 
-#: includes/functions.php:41
+#: includes/functions.php:49
 msgid "1 day after tomorrow"
 msgstr "übermorgen"
 
-#: includes/functions.php:37
+#: includes/functions.php:45
 msgid "1 day before yesterday"
 msgstr "vorgestern"
 
@@ -30,12 +30,15 @@ msgid "A list of your site's downloads."
 msgstr "Liste der Downloads dieser Webseite. "
 
 #. Description of the plugin
+#| msgid ""
+#| "A super-awesome downloads manager for WordPress with htacces file limits "
+#| "and file icons."
 msgid ""
 "A super-awesome downloads manager for WordPress with htacces file limits and "
-"file icons."
+"file icons and one day passes."
 msgstr ""
 "Download Manager mit optionalem .htaccess Dateischutz und Dateityp-Symbolen "
-"sowie Oneday-Downloadtickets"
+"sowie Oneday-Downloadtickets."
 
 #: includes/post-types.php:24
 msgid "Add New"
@@ -61,7 +64,7 @@ msgstr "Vorgänge im Dashboard "
 msgid "Advanced"
 msgstr "Erweitert"
 
-#: includes/functions.php:31
+#: includes/functions.php:38
 msgid "ago"
 msgstr "her"
 
@@ -126,7 +129,7 @@ msgstr "Automatisch Löschen"
 msgid "Automatically delete old logs."
 msgstr "Alte Logs automatisch löschen."
 
-#: includes/functions.php:102
+#: includes/functions.php:113
 msgid "Black"
 msgstr "Schwarz"
 
@@ -134,11 +137,11 @@ msgstr "Schwarz"
 msgid "Block User Agents"
 msgstr "User-Agents (Bots etc.) blockieren"
 
-#: includes/functions.php:106
+#: includes/functions.php:117
 msgid "Blue"
 msgstr "Blau"
 
-#: includes/functions.php:76 includes/admin/media-button.php:85
+#: includes/functions.php:87 includes/admin/media-button.php:85
 msgid "Button"
 msgstr "Button"
 
@@ -206,7 +209,7 @@ msgstr "Datum"
 msgid "Date modified"
 msgstr "Datum letzte Änderung"
 
-#: includes/functions.php:69
+#: includes/functions.php:84
 msgid "Datei herunterladen"
 msgstr "Datei herunterladen"
 
@@ -375,7 +378,7 @@ msgstr "Download bearbeiten"
 msgid "Edit Tag"
 msgstr "Tags bearbeiten"
 
-#: includes/functions.php:205
+#: includes/functions.php:231
 msgid "edit this download"
 msgstr "Download bearbeiten"
 
@@ -447,11 +450,11 @@ msgstr "Global"
 msgid "Grace Period"
 msgstr "Ablauffrist"
 
-#: includes/functions.php:114
+#: includes/functions.php:125
 msgid "Green"
 msgstr "Grün"
 
-#: includes/functions.php:110
+#: includes/functions.php:121
 msgid "Grey"
 msgstr "Grau"
 
@@ -479,7 +482,7 @@ msgstr "https://github.com/svenbolte/"
 msgid "https://github.com/svenbolte/delightful-downloads/"
 msgstr "https://github.com/svenbolte/delightful-downloads/"
 
-#: includes/functions.php:84
+#: includes/functions.php:95
 msgid "Icon und Link"
 msgstr "Icon und Link"
 
@@ -503,16 +506,16 @@ msgstr "in"
 msgid "Inaccessible File"
 msgstr "Dateizugriff nicht möglich"
 
-#: includes/functions.php:65
+#: includes/functions.php:75
 msgid "Infobox mit Icon, Rahmen für Post Archive"
 msgstr "Infobox mit Icon, Rahmen für Post Archive"
 
-#: includes/functions.php:52
+#: includes/functions.php:60
 #| msgid "Infobox mit Icon und Details"
 msgid "Infobox mit Icon, Rahmen und Details"
 msgstr "Infobox mit Icon, Rahmen und Details"
 
-#: includes/functions.php:176
+#: includes/functions.php:187
 msgid "Infoboxliste (Icon,Date,Extension,Filesize,count,Thumb,descript)"
 msgstr ""
 "Infoboxliste (Icon,Datum,Dateiname,Größe,Zähler,Beitragsbild,Beschreibung)"
@@ -537,8 +540,8 @@ msgstr "Download einfügen"
 msgid "Invalid button attribute."
 msgstr "Ungültiges Button-Attribut."
 
-#: includes/shortcodes.php:47 includes/shortcodes.php:344
-#: includes/shortcodes.php:408
+#: includes/shortcodes.php:47 includes/shortcodes.php:348
+#: includes/shortcodes.php:412
 msgid "Invalid download ID."
 msgstr "Ungültige-Download-ID."
 
@@ -546,7 +549,7 @@ msgstr "Ungültige-Download-ID."
 msgid "Invalid download."
 msgstr "Ungültiger Download."
 
-#: includes/shortcodes.php:178
+#: includes/shortcodes.php:182
 msgid "Invalid order attribute."
 msgstr "Ungültiges order-Attribut."
 
@@ -554,7 +557,7 @@ msgstr "Ungültiges order-Attribut."
 msgid "Invalid orderby attribute."
 msgstr "Ungültiges orderby-Attribut."
 
-#: includes/shortcodes.php:187
+#: includes/shortcodes.php:191
 msgid "Invalid relation attribute."
 msgstr "Ungültiges relation-Attribut."
 
@@ -562,7 +565,7 @@ msgstr "Ungültiges relation-Attribut."
 msgid "Invalid settings file."
 msgstr "Ungültige Konfigurations-Datei. "
 
-#: includes/shortcodes.php:59 includes/shortcodes.php:262
+#: includes/shortcodes.php:59 includes/shortcodes.php:266
 msgid "Invalid style attribute."
 msgstr "Ungültiges Style-Attribut."
 
@@ -587,7 +590,7 @@ msgstr "Letzte 7 Tage"
 msgid "Licenses"
 msgstr "Lizenzen"
 
-#: includes/functions.php:80
+#: includes/functions.php:91
 msgid "Link"
 msgstr "Link"
 
@@ -682,7 +685,7 @@ msgstr "Keine Downloads gefunden"
 msgid "No downloads found in Trash"
 msgstr "Keine Downloads im Papierkorb gefunden"
 
-#: includes/shortcodes.php:311
+#: includes/shortcodes.php:315
 msgid "No downloads found."
 msgstr "Keine Downloads gefunden."
 
@@ -711,7 +714,7 @@ msgstr "Nicht angemeldet "
 msgid "Number of downloads to show:"
 msgstr "Anzahl der anzuzeigenden Downloads:"
 
-#: includes/functions.php:203 includes/post-types.php:153
+#: includes/functions.php:229 includes/post-types.php:153
 msgid "One day pass copied to clipboard."
 msgstr "1-Tages-Download in die Zwischenablage kopiert."
 
@@ -764,7 +767,7 @@ msgstr "Seiten"
 msgid "Password Required"
 msgstr "Passwort erforderlich"
 
-#: includes/functions.php:88
+#: includes/functions.php:99
 msgid "Plain Text"
 msgstr "Nur Text"
 
@@ -789,7 +792,7 @@ msgstr "Beliebte Downloads"
 msgid "Popular Tags"
 msgstr "Populäre Schlagworte (Tags)"
 
-#: includes/functions.php:118
+#: includes/functions.php:129
 msgid "Purple"
 msgstr "Purpur"
 
@@ -809,7 +812,7 @@ msgstr "Zufällig"
 msgid "really delete attached file from server?"
 msgstr "die Datei wirklich vom Server löschen?"
 
-#: includes/functions.php:122
+#: includes/functions.php:133
 msgid "Red"
 msgstr "Rot"
 
@@ -1026,36 +1029,36 @@ msgstr ""
 "Downloads-Upload-Verzeichnis gespeichert ist, müssen Sie die Einstellung für "
 "%sfolder protection%s auf \"Nein\" setzen. "
 
-#: includes/class-dedo-widget-list.php:138 includes/functions.php:139
+#: includes/class-dedo-widget-list.php:138 includes/functions.php:150
 #: includes/post-types.php:62
 msgid "Title"
 msgstr "Titel"
 
-#: includes/functions.php:147
+#: includes/functions.php:158
 msgid "Title (Count)"
 msgstr "Titel (Zähler)"
 
-#: includes/functions.php:143
+#: includes/functions.php:154
 msgid "Title (Date)"
 msgstr "Titel (Datum)"
 
-#: includes/functions.php:159
+#: includes/functions.php:170
 msgid "Title (Date, Extension, File size)"
 msgstr "Titel (Datum, Erweiterung, Dateigröße)"
 
-#: includes/functions.php:163
+#: includes/functions.php:174
 msgid "Title (Date, Extension, File size,count)"
 msgstr "Titel (Datum, Erweiterung, Dateigröße, Anzahl)"
 
-#: includes/functions.php:155
+#: includes/functions.php:166
 msgid "Title (Extension, File size)"
 msgstr "Titel (Dateierweiterung, Dateigröße)"
 
-#: includes/functions.php:151
+#: includes/functions.php:162
 msgid "Title (File size)"
 msgstr "Titel (Dateigröße)"
 
-#: includes/functions.php:167
+#: includes/functions.php:178
 msgid "Title (Icon, Category, Filesize)"
 msgstr "Titel (Symbol, Kategorie, Dateigröße)"
 
@@ -1063,7 +1066,7 @@ msgstr "Titel (Symbol, Kategorie, Dateigröße)"
 msgid "Title:"
 msgstr "Titel:"
 
-#: includes/functions.php:39
+#: includes/functions.php:47
 msgid "tomorrow"
 msgstr "morgen"
 
@@ -1124,11 +1127,11 @@ msgstr "Download anzeigen"
 msgid "View Tag"
 msgstr "Schlagwort anzeigen"
 
-#: includes/functions.php:31
+#: includes/functions.php:34
 msgid "vor"
 msgstr "vor"
 
-#: includes/functions.php:126
+#: includes/functions.php:137
 msgid "Yellow"
 msgstr "Gelb"
 
@@ -1143,7 +1146,7 @@ msgstr "Gelb"
 msgid "Yes"
 msgstr "Ja"
 
-#: includes/functions.php:35
+#: includes/functions.php:43
 msgid "yesterday"
 msgstr "gestern"
 
