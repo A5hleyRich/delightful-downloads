@@ -3,8 +3,8 @@ Contributors: A5hleyRich, Sven Bolte, others (best of forks)
 Tags: download, manager, downloads, monitor, shortcode, delightful downloads, file, counter, tracking, infobox, fixed filetree,ipflag, chartscodes
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
-Version: 9.9.43
-Stable tag: 9.9.43
+Version: 9.9.44
+Stable tag: 9.9.44
 Requires at least: 5.1
 Tested up to: 5.9.2
 Requires PHP: 8.0
@@ -245,6 +245,9 @@ display a filetype icon (from a color png sprite)
 %category%
 display the first dedo category assigned to the download
 
+%tags%
+display a list of all dedo tags assigned to the download
+
 %count%
 The number of times the download has been downloaded.
 
@@ -305,19 +308,19 @@ Settings Screen Default Text
 ------------------------- List Types ----------------------------------------------------------------
 Choose the default list type for shortcode: ddownload_list in the admin dashboard:
 
-	 	title, title_date, title_count, title_filesize, title_ext_filesize,
-		title_date_ext_filesize,
-		title_ext_filesize_count,
-	 	icon_title_ext_filesize_count
+	title, title_date, title_count, title_filesize, title_ext_filesize,
+	title_date_ext_filesize,
+	title_ext_filesize_count,
+	icon_title_ext_filesize_count
 		
 ------------------------- Styles for output ---------------------------------------------------------
 valid values for the shortcode attribute styles are. Can be found in includes/functions.php:
 
-	 	button		= colored button with download or download Text wildcards
-	 	infobox		= white box with grey border, filetype icon and all possible details
-	 	link		= Download Link, displays DOWNLOAD or selected wildcards as text field
-	 	iconlink	= Icon, Download Link, displays DOWNLOAD or selected wildcards as text field
-	 	plain_text	= Download URL (quicklink) as text
+	button		= colored button with download or download Text wildcards
+	infobox		= white box with grey border, filetype icon and all possible details
+	link		= Download Link, displays DOWNLOAD or selected wildcards as text field
+	iconlink	= Icon, Download Link, displays DOWNLOAD or selected wildcards as text field
+	plain_text	= Download URL (quicklink) as text
 
 
 -------------------- Custom templates ----------------------------
@@ -484,6 +487,11 @@ Please refer to the [FAQ] at the root folder of this plugin for further instruct
 
 
 ==================== Changelog =================================
+
+= 9.9.44 =
+%tags% woldcard displays tags
+added symbols to wildcards, (visible if fontawesome 4.7 is installed with theme) 
+
 = 9.9.43 =
 documentation in text form replaces pdf file
 wp5.9.0 compatibility check

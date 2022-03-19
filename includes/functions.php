@@ -62,12 +62,9 @@ function dedo_get_shortcode_styles() {
 					<div style="display:flex;width:100%">
 					<div style="display:inline-block;min-width:60px;width:60px">%icon%</div>
 					<div style="display:inline-block;width:100%;min-width:70%">
-					%adminedit%%permalink% &nbsp;<abbr><i title="category" class="fa fa-folder-open"></i> %category% &nbsp;
-					%locked% <i title="filename" class="fa fa-file-o"></i> %filename% &nbsp; 
-					<i title="filesize" class="fa fa-expand"></i> %filesize% &nbsp;
-					 %downloadtime% &nbsp;
-					<i title="Downloads" class="fa fa-download"></i> %count% &nbsp; 
-					%datesymbol%</abbr>
+					%adminedit%%permalink% &nbsp;<abbr>%category% &nbsp;
+					%locked% %filename% &nbsp; 
+					%filesize% &nbsp; %downloadtime% &nbsp; %count% &nbsp; %datesymbol%</abbr>
 					<h6><a href="%url%" title="%ext%-Datei&#10;herunterladen" rel="nofollow">%title%</a></h6>
 					<div class="entry-content">%description%</div></div>%thumb%</div> </div>'
 	 	),
@@ -76,10 +73,8 @@ function dedo_get_shortcode_styles() {
 	 		'format'		=> '<div class="%class%" style="display:flex;border:1px solid #e1e1e1;width:100%;padding:4px;border-radius:3px">
 					<div style="display:inline-block;min-width:60px;width:60px">%icon%</div>
 					<div style="display:inline-block;width:100%;min-width:70%">
-					%adminedit%<abbr><i title="category" class="fa fa-folder-open"></i> %category% &nbsp;
-					%locked% <i title="filename" class="fa fa-file-o"></i> %filename% &nbsp; 
-					<i title="filesize" class="fa fa-expand"></i> %filesize% &nbsp; %downloadtime% &nbsp;
-					<i title="Downloads" class="fa fa-download"></i> %count%</abbr>
+					%adminedit%<abbr>%category% &nbsp;
+					%locked% %filename% &nbsp; %filesize% &nbsp; %downloadtime% &nbsp; %count%</abbr>
 					<h6 style="margin:.2em"><a href="%url%" title="%ext%-Datei&#10;herunterladen" rel="nofollow">
 					'.__( 'Datei herunterladen', 'delightful-downloads' ).'</a></h6> </div></div>'
 	 	),
@@ -180,8 +175,8 @@ function dedo_get_shortcode_lists() {
 					<div style="display:inline-block;min-width:60px;width:60px">%icon%</div>
 					<div style="display:inline-block;width:100%;min-width:70%"><a class="headline" href="%url%" title="%ext%-Datei&#10;herunterladen" rel="nofollow">
 					%title%</a><br>%adminedit%
-					%permalink% &nbsp;%locked% &nbsp;<abbr><i title="category" class="fa fa-folder-open"></i> %category% &nbsp;
-					<i title="filesize" class="fa fa-expand"></i> %filesize%</abbr></div></div>'
+					%permalink% &nbsp;%locked% &nbsp;<abbr>%category% %tags% &nbsp;
+					%filesize% &nbsp; %count%</abbr></div></div>'
 	 	),
 	 	'infoboxlist'=> array(
 	 		'name'				=> __( 'Infoboxliste (Icon,Date,Extension,Filesize,count,Thumb,descript)', 'delightful-downloads' ),
@@ -189,12 +184,10 @@ function dedo_get_shortcode_lists() {
 					<div style="display:flex;width:100%">
 					<div style="display:inline-block;min-width:60px;width:60px">%icon%</div>
 					<div style="display:inline-block;width:100%;min-width:70%">
-					%adminedit%%permalink% &nbsp;<abbr><i title="category" class="fa fa-folder-open"></i> %category% &nbsp;
-					%locked% <i title="filename" class="fa fa-file-o"></i> %filename% &nbsp; 
-					<i title="filesize" class="fa fa-expand"></i> %filesize% &nbsp;
-					 %downloadtime% &nbsp;
-					<i title="Downloads" class="fa fa-download"></i> %count% &nbsp; 
-					%datesymbol%</abbr>
+					%adminedit%%permalink% &nbsp;<abbr>%category% %tags% &nbsp; 
+					%locked% %filename% &nbsp; 
+					%filesize% &nbsp;
+					 %downloadtime% &nbsp; %count% &nbsp; %datesymbol%</abbr>
 					<h6><a href="%url%" title="%ext%-Datei&#10;herunterladen" rel="nofollow">%title%</a></h6>
 					<div class="entry-content">%description%</div></div>%thumb%</div>'
 	 	)
@@ -250,8 +243,20 @@ function download_times($filesize) {
  	// Kategorie (erste)
  	if ( strpos( $string, '%category%' ) !== false ) {
 		$post_terms = get_the_terms( $id, 'ddownload_category' );
-		if (!empty($post_terms)) $value = $post_terms[0]->name; else $value='';
+		if (!empty($post_terms)) $value = '<i title="category" class="fa fa-folder-open"></i> ' . $post_terms[0]->name .' &nbsp; '; else $value='';
 		$string = str_replace( '%category%', $value, $string );
+ 	}
+ 	// Tags
+ 	if ( strpos( $string, '%tags%' ) !== false ) {
+		$value = '';
+		$post_terms = get_the_terms( $id, 'ddownload_tag' );
+		if ($post_terms && !is_wp_error($post_terms)) {
+			$value .='<i title="Themen" class="fa fa-tag"></i> ';
+			foreach ($post_terms as $term) {
+				$value .= $term->name . ' ';
+			}
+		}
+		$string = str_replace( '%tags%', $value, $string );
  	}
  	// permalink single cpost
  	if ( strpos( $string, '%permalink%' ) !== false ) {
@@ -314,7 +319,7 @@ function download_times($filesize) {
  	}
  	// filesize
  	if ( strpos( $string, '%filesize%' ) !== false ) {
- 		$value = size_format( get_post_meta( $id, '_dedo_file_size', true ), 1 );
+ 		$value = '<i title="filesize" class="fa fa-expand"></i> '.size_format( get_post_meta( $id, '_dedo_file_size', true ), 0 );
  		$string = str_replace( '%filesize%', $value, $string );
  	}
  	// downloadtime
@@ -322,14 +327,14 @@ function download_times($filesize) {
  		$value = download_times(intval(get_post_meta( $id, '_dedo_file_size', true )));
  		$string = str_replace( '%downloadtime%', $value, $string );
  	}
- 	// downloads
+ 	// downloads (count)
  	if ( strpos( $string, '%count%' ) !== false ) {
- 		$value = number_format_i18n( get_post_meta( $id, '_dedo_file_count', true ) );
+ 		$value = '<i title="Downloadcounter" class="fa fa-download"></i> ' . number_format_i18n( get_post_meta( $id, '_dedo_file_count', true ) );
  		$string = str_replace( '%count%', $value, $string );
  	}
  	// file name
  	if ( strpos( $string, '%filename%' ) !== false ) {
- 		$value = dedo_get_file_name( get_post_meta( $id, '_dedo_file_url', true ) );
+ 		$value = '<i title="filename" class="fa fa-file-o"></i> ' . dedo_get_file_name( get_post_meta( $id, '_dedo_file_url', true ) );
  		$string = str_replace( '%filename%', $value, $string );
  	}
  	// protected file
