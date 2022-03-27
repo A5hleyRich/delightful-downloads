@@ -146,40 +146,49 @@ function dedo_get_shortcode_lists() {
 	 		'format'			=> '<a href="%url%" title="%title%" rel="nofollow" class="%class%">%title%</a>'
 	 	),
 	 	'title_date'		=> array(
-	 		'name'				=> __( 'Title (Date)', 'delightful-downloads' ),
+	 		'name'				=> __( 'Title/Date)', 'delightful-downloads' ),
 	 		'format'			=> '<a href="%url%" title="%title% (%date%)" rel="nofollow" class="%class%">%title% (%date%)</a>'
 	 	),
 	 	'title_count'		=> array(
-	 		'name'				=> __( 'Title (Count)', 'delightful-downloads' ),
+	 		'name'				=> __( 'Title/Count', 'delightful-downloads' ),
 	 		'format'			=> '<a href="%url%" title="%title% (Downloads: %count%)" rel="nofollow" class="%class%">%title% (Downloads: %count%)</a>'
 	 	),
 	 	'title_filesize'	=> array(
-	 		'name'				=> __( 'Title (File size)', 'delightful-downloads' ),
+	 		'name'				=> __( 'Title/File size', 'delightful-downloads' ),
 	 		'format'			=> '<a href="%url%" title="%title% (%filesize%)" rel="nofollow" class="%class%">%title% (%filesize%)</a>'
 	 	),
 	 	'title_ext_filesize'=> array(
-	 		'name'				=> __( 'Title (Extension, File size)', 'delightful-downloads' ),
+	 		'name'				=> __( 'Title/Extension/File size)', 'delightful-downloads' ),
 	 		'format'			=> '<a href="%url%" title="%title% (%ext%, %filesize%)" rel="nofollow" class="%class%">%title% (%ext%, %filesize%)</a>'
 	 	),
 	 	'title_date_ext_filesize'=> array(
-	 		'name'				=> __( 'Title (Date, Extension, File size)', 'delightful-downloads' ),
+	 		'name'				=> __( 'Title/Date/Extension/File size)', 'delightful-downloads' ),
 	 		'format'			=> '<a href="%url%" title="%title% (%date%, %ext%, %filesize%)" rel="nofollow" class="%class%">%title% (%date%, %ext%, %filesize%)</a>'
 	 	),
 	 	'title_ext_filesize_count'=> array(
-	 		'name'				=> __( 'Title (Date, Extension, File size,count)', 'delightful-downloads' ),
+	 		'name'				=> __( 'Title/Date/Extension/File size/count)', 'delightful-downloads' ),
 	 		'format'			=> '<a href="%url%" title="%title% (%date%, %ext%, %filesize%, %count%x)" rel="nofollow" class="%class%">%title% (%date%, %ext%, %filesize%, %count%x)</a>'
 	 	),
-	 	'icon_title_ext_filesize_count'=> array(
-	 		'name'				=> __( 'Title (Icon, Category, Filesize)', 'delightful-downloads' ),
+	 	'icon_title_ext_filesize'=> array(
+	 		'name'				=> __( 'Title/Icon/Category/File size)', 'delightful-downloads' ),
 	 		'format'			=> '<div style="display:flex;width:100%">
 					<div style="display:inline-block;min-width:60px;width:60px">%icon%</div>
 					<div style="display:inline-block;width:100%;min-width:70%"><a class="headline" href="%url%" title="%ext%-Datei&#10;herunterladen" rel="nofollow">
 					%title%</a><br>%adminedit%
 					%permalink% &nbsp;%locked% &nbsp;<abbr>%category% %tags% &nbsp;
-					%filesize% &nbsp; %count%</abbr></div></div>'
+					%filesize%</abbr></div></div>'
+	 	),
+	 	'icon_title_ext_filesize_count_datesymbol'=> array(
+	 		'name'				=> __( 'Title/Icon/Category/File size/Count/Datesymbol)', 'delightful-downloads' ),
+	 		'format'			=> '<div style="display:flex;width:100%">
+					<div style="display:inline-block;min-width:60px;width:60px">%icon%</div>
+					<div style="display:inline-block;width:100%;min-width:70%"><a class="headline" href="%url%" title="%ext%-Datei&#10;herunterladen" rel="nofollow">
+					%title%</a><br>%adminedit%
+					%permalink% &nbsp;%locked% &nbsp;<abbr>%category% %tags% &nbsp;
+					%filesize% &nbsp; %count% &nbsp; %datesymbol%</abbr></div></div>'
 	 	),
 	 	'infoboxlist'=> array(
-	 		'name'				=> __( 'Infoboxliste (Icon,Date,Extension,Filesize,count,Thumb,descript)', 'delightful-downloads' ),
+	 		'name'				=> __( 'Infoboxliste (Icon/Date/Extension/Filesize/count/Thumb/descript)', 'delightful-downloads' ),
 	 		'format'			=> '
 					<div style="display:flex;width:100%">
 					<div style="display:inline-block;min-width:60px;width:60px">%icon%</div>

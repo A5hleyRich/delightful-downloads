@@ -263,7 +263,7 @@ function dedo_shortcode_ddownload_list( $atts ) {
 		$style_format = $registered_styles[ $style ]['format'];
 	}
 	else {
-		return __( 'Invalid style attribute.', 'delightful-downloads' );
+		return __( $style. 'Invalid style attribute.', 'delightful-downloads' );
 	}
 
 	// Supply correct boolean for cache

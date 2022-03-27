@@ -3,8 +3,8 @@ Contributors: A5hleyRich, Sven Bolte, others (best of forks)
 Tags: download, manager, downloads, monitor, shortcode, delightful downloads, file, counter, tracking, infobox, fixed filetree,ipflag, chartscodes
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
-Version: 9.9.44
-Stable tag: 9.9.44
+Version: 9.9.45
+Stable tag: 9.9.45
 Requires at least: 5.1
 Tested up to: 5.9.2
 Requires PHP: 8.0
@@ -13,7 +13,7 @@ A super-awesome downloads manager and statistics tracker for WordPress.
 
 == Description ==
 
-Delightful Downloads is a super-awesome downloads manager for WordPress that allows you to easily add download links, buttons and download information to posts, pages and widget areas. Download statistics are tracked within the WordPress dashboard.
+Delightful Downloads is a super-awesome downloads manager for WordPress that allows you to easily add download links, buttons and download information to posts, pages and as shortcode in widget block areas. Download statistics are tracked within the WordPress dashboard.
 
 **Features**
 
@@ -487,6 +487,11 @@ Please refer to the [FAQ] at the root folder of this plugin for further instruct
 
 
 ==================== Changelog =================================
+
+= 9.9.45 =
+Widget removed as you can use shortcode ddownload_list as html block element in widget block areas
+added some more styles
+german translations updated
 
 = 9.9.44 =
 %tags% woldcard displays tags

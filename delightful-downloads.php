@@ -102,7 +102,6 @@ class Delightful_Downloads {
 		require_once dirname( $this->path ) . '/includes/class-dedo-cache.php';
 		require_once dirname( $this->path ) . '/includes/class-dedo-logging.php';
 		require_once dirname( $this->path ) . '/includes/class-dedo-statistics.php';
-		require_once dirname( $this->path ) . '/includes/class-dedo-widget-list.php';
 		require_once dirname( $this->path ) . '/includes/cron.php';
 		require_once dirname( $this->path ) . '/includes/functions.php';
 		require_once dirname( $this->path ) . '/includes/mime-types.php';
@@ -110,7 +109,6 @@ class Delightful_Downloads {
 		require_once dirname( $this->path ) . '/includes/process-download.php';
 		require_once dirname( $this->path ) . '/includes/scripts.php';
 		require_once dirname( $this->path ) . '/includes/shortcodes.php';
-		require_once dirname( $this->path ) . '/includes/widgets.php';
 		require_once dirname( $this->path ) . '/includes/taxonomies.php';
 
 		if ( is_admin() ) {
