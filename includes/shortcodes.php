@@ -12,11 +12,8 @@ if ( !defined( 'ABSPATH' ) ) exit;
 
 /**
  * Download Shortcode.
- *
  * Outputs a single download based on user defined attributes.
- *
  * @param array $atts
- *
  * @return string
  */
 function dedo_shortcode_ddownload( $atts ) {

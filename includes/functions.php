@@ -62,21 +62,20 @@ function dedo_get_shortcode_styles() {
 					<div style="display:flex;width:100%">
 					<div style="display:inline-block;min-width:60px;width:60px">%icon%</div>
 					<div style="display:inline-block;width:100%;min-width:70%">
-					%adminedit%%permalink% &nbsp;<abbr>%category% &nbsp;
-					%locked% %filename% &nbsp; 
-					%filesize% &nbsp; %downloadtime% &nbsp; %count% &nbsp; %datesymbol%</abbr>
-					<h6><a href="%url%" title="%ext%-Datei&#10;herunterladen" rel="nofollow">%title%</a></h6>
-					<div class="entry-content">%description%</div></div>%thumb%</div> </div>'
+					%adminedit%%permalink%<abbr>&nbsp; %datesymbol%</abbr><br>
+					<abbr>%category% %tags% &nbsp; %locked% %filename% &nbsp; 
+					%filesize% &nbsp; %downloadtime% &nbsp; %count%</abbr>
+					<h6 class="btn" style="margin: .2em 0 .2em 0"><a href="%url%" title="%ext%-Datei&#10;herunterladen" rel="nofollow">%title%</a></h6>
+					<div>%description%</div></div>%thumb%</div></div>'
 	 	),
 	 	'singlepost'		=> array(
 	 		'name'			=> __( 'Infobox mit Icon, Rahmen für Post Archive', 'delightful-downloads' ),
 	 		'format'		=> '<div class="%class%" style="display:flex;border:1px solid #e1e1e1;width:100%;padding:4px;border-radius:3px">
 					<div style="display:inline-block;min-width:60px;width:60px">%icon%</div>
 					<div style="display:inline-block;width:100%;min-width:70%">
-					%adminedit%<abbr>%category% &nbsp;
-					%locked% %filename% &nbsp; %filesize% &nbsp; %downloadtime% &nbsp; %count%</abbr>
-					<h6 style="margin:.2em"><a href="%url%" title="%ext%-Datei&#10;herunterladen" rel="nofollow">
-					'.__( 'Datei herunterladen', 'delightful-downloads' ).'</a></h6> </div></div>'
+					%adminedit%<abbr> &nbsp; %date%<br>%category%  %tags% &nbsp; %locked% %filename% &nbsp; %filesize% &nbsp; %downloadtime% &nbsp; %count%</abbr>
+					<h6 class="btn" style="margin: .2em 0 .2em 0"><a href="%url%" title="%ext%-Datei&#10;herunterladen" rel="nofollow">
+					'.__( 'Datei herunterladen', 'delightful-downloads' ).'</a></h6></div></div>'
 	 	),
 	 	'button'		=> array(
 	 		'name'			=> __( 'Button', 'delightful-downloads' ),
@@ -183,9 +182,9 @@ function dedo_get_shortcode_lists() {
 	 		'format'			=> '<div style="display:flex;width:100%">
 					<div style="display:inline-block;min-width:60px;width:60px">%icon%</div>
 					<div style="display:inline-block;width:100%;min-width:70%"><a class="headline" href="%url%" title="%ext%-Datei&#10;herunterladen" rel="nofollow">
-					%title%</a><br>%adminedit%
-					%permalink% &nbsp;%locked% &nbsp;<abbr>%category% %tags% &nbsp;
-					%filesize% &nbsp; %count% &nbsp; %datesymbol%</abbr></div></div>'
+					%title%</a><br><abbr>%adminedit%
+					%permalink% &nbsp; %locked% &nbsp; %datesymbol%</abbr><br><abbr>%category% %tags% &nbsp;
+					%filesize% &nbsp; %count%</abbr></div></div>'
 	 	),
 	 	'infoboxlist'=> array(
 	 		'name'				=> __( 'Infoboxliste (Icon/Date/Extension/Filesize/count/Thumb/descript)', 'delightful-downloads' ),
@@ -193,12 +192,11 @@ function dedo_get_shortcode_lists() {
 					<div style="display:flex;width:100%">
 					<div style="display:inline-block;min-width:60px;width:60px">%icon%</div>
 					<div style="display:inline-block;width:100%;min-width:70%">
-					%adminedit%%permalink% &nbsp;<abbr>%category% %tags% &nbsp; 
-					%locked% %filename% &nbsp; 
-					%filesize% &nbsp;
-					 %downloadtime% &nbsp; %count% &nbsp; %datesymbol%</abbr>
-					<h6><a href="%url%" title="%ext%-Datei&#10;herunterladen" rel="nofollow">%title%</a></h6>
-					<div class="entry-content">%description%</div></div>%thumb%</div>'
+					%adminedit%%permalink% &nbsp; %datesymbol%<br>
+					<abbr>%category% %tags% &nbsp; %locked% %filename% &nbsp; %filesize% &nbsp;
+					 %downloadtime% &nbsp; %count%</abbr>
+					<h6 class="btn" style="margin: .2em 0 .2em 0"><a href="%url%" title="%ext%-Datei&#10;herunterladen" rel="nofollow">%title%</a></h6>
+					<div>%description%</div></div>%thumb%</div>'
 	 	)
 	);
 	return apply_filters( 'dedo_get_lists', $lists );
@@ -227,8 +225,10 @@ function download_times($filesize) {
  		if(current_user_can('administrator')) {
 			$datetime = new DateTime('now');
 			$hashwert = md5( intval($id) + intval($datetime->format('Ymd')) );
-			$oneday = '<input type="text" title="Copy '.$datetime->format('d.m.Y').' Onedaypass für heute&#10;'.$hashwert.'" class="copy-to-clipboard" style="direction:rtl;cursor:pointer;font-size:0.7em;width:80px;height:20px" value="' . get_site_url() . '?sdownload=' . esc_attr( $id ) .  '&code='. $hashwert . '" readonly> &nbsp; ';
-			$oneday .= '<p class="description" style="display: none;">' . __( 'One day pass copied to clipboard.', 'delightful-downloads' ) . '</p>';
+			if (is_singular() && in_the_loop() ) {
+				$oneday = '<input type="text" title="Copy '.$datetime->format('d.m.Y').' Onedaypass für heute&#10;'.$hashwert.'" class="copy-to-clipboard" style="direction:rtl;cursor:pointer;font-size:0.7em;width:80px;height:20px" value="' . get_site_url() . '?sdownload=' . esc_attr( $id ) .  '&code='. $hashwert . '" readonly> &nbsp; ';
+				$oneday .= '<p class="description" style="display: none;">' . __( 'One day pass copied to clipboard.', 'delightful-downloads' ) . '</p>';
+			} else $oneday='';
 
 			$string = str_replace( '%adminedit%', ' <a href="'. get_home_url() . '/wp-admin/post.php?post='.$id.'&action=edit"><i title="'. __( 'edit this download', 'delightful-downloads' ) . '" class="fa fa-pencil"></i></a> &nbsp; '.$oneday, $string );
 		} else {
@@ -284,7 +284,7 @@ function download_times($filesize) {
  	}
 	// datesymbol
  	if ( strpos( $string, '%datesymbol%' ) !== false ) {
-		$diff = time() - get_the_modified_time('U', false, $id, true);
+		$diff = time() - get_the_modified_time('U', $id);
 		if (round((intval($diff) / 86400), 0) < 30) {
 			$newcolor = "#FFD800";
 		} else {
@@ -292,14 +292,14 @@ function download_times($filesize) {
 		}
 		$erstelldat = get_post_time('l, d. M Y H:i:s', false, $id, true);
 		$postago = ago(get_post_time('U, d. F Y H:i:s', false, $id, true));
-		$moddat = get_the_modified_time('l, d. M Y H:i:s', false, $id, true);
-		$modago = ago(get_the_modified_time('U, d. F Y H:i:s', false, $id, true));
+		$moddat = get_the_modified_time('l, d. M Y H:i:s', $id);
+		$modago = ago(get_the_modified_time('U, d. F Y H:i:s', $id));
 		$diffmod = get_the_modified_time('U', false, $id, true) - get_post_time('U', false, $id, true);
 		$datumlink= '';
 		$erstelltitle = 'erstellt: ' . $erstelldat . ' ' . $postago;
 		if ($diffmod > 0) {
 			$erstelltitle .= '&#10;verändert: ' . $moddat . ' ' . $modago;
-			$erstelltitle .= '&#10;verändert nach: ' . human_time_diff(get_post_time('U', false, $id, true), get_the_modified_time('U', false, $id, true));
+			$erstelltitle .= '&#10;verändert nach: ' . human_time_diff(get_post_time('U', false, $id, true), get_the_modified_time('U', $id));
 		}
 		if ($diffmod > 86400) {
 			$newormod = 'fa fa-calendar-plus-o';
@@ -308,27 +308,46 @@ function download_times($filesize) {
 		}
 		$value = '<a title="' . $erstelltitle . '" '.$datumlink.'><i style="background-color:' . $newcolor . '" class="' . $newormod . '"></i> ';
 			if ($diffmod > 0) {
-				$value .= ' ' . get_the_modified_time(get_option('date_format').' '.get_option('time_format'), false, $id, true) . ' ' . $modago;
+				$value .= ' ' . get_the_modified_time(get_option('date_format').' '.get_option('time_format'), $id) . ' ' . $modago;
 			} else {
-				$value .= ' ' . get_post_time(get_option('date_format').' '.get_option('time_format'), false, $id, true) . ' ' . $idago;
+				$value .= ' ' . get_post_time(get_option('date_format').' '.get_option('time_format'), false, $id, true) . ' ' . $postago;
 			}
 		$value .= '</a>';
 		$string = str_replace( '%datesymbol%', $value, $string );
  	}
 	// date
  	if ( strpos( $string, '%date%' ) !== false ) {
- 		// $moddate = get_the_modified_date( apply_filters( 'dedo_shortcode_date_format', '' ), $id );
- 		$moddate = get_the_modified_date( 'l d. M Y H:i:s', $id );
-		//$credate = get_the_date( apply_filters( 'dedo_shortcode_date_format', '' ), $id );
-		$credate = get_the_date( 'l d. M Y H:i:s', $id );
-		if ( $moddate != $credate ) {$value = $credate . ' | ' . $moddate;} else {$value = $credate;}
-		if ( !is_user_logged_in() ) {$value = $moddate;}
-		$value .= ddago(intval(get_the_modified_date( 'U, d.m.Y H:i:s', $id )));
+		$diff = time() - get_the_modified_time('U', $id);
+		if (round((intval($diff) / 86400), 0) < 30) {
+			$newcolor = "#FFD800";
+		} else {
+			$newcolor = "transparent";
+		}
+		$erstelldat = get_post_time('l, d. M Y H:i:s', false, $id, true);
+		$postago = ago(get_post_time('U, d. F Y H:i:s', false, $id, true));
+		$moddat = get_the_modified_time('l, d. M Y H:i:s', $id);
+		$modago = ago(get_the_modified_time('U, d. F Y H:i:s', $id));
+		$diffmod = get_the_modified_time('U', false, $id, true) - get_post_time('U', false, $id, true);
+		$datumlink= '';
+		$erstelltitle = 'erstellt: ' . $erstelldat . ' ' . $postago;
+		if ($diffmod > 0) {
+			$erstelltitle .= '&#10;verändert: ' . $moddat . ' ' . $modago;
+			$erstelltitle .= '&#10;verändert nach: ' . human_time_diff(get_post_time('U', false, $id, true), get_the_modified_time('U', $id));
+		}
+		if ($diffmod > 86400) {
+			$newormod = 'fa fa-calendar-plus-o';
+		} else {
+			$newormod = 'fa fa-calendar-o';
+		}
+		$value = '<a title="' . $erstelltitle . '" '.$datumlink.'><i class="fa fa-calendar-o"></i> ';
+				$value .= get_post_time(get_option('date_format').' '.get_option('time_format'), false, $id, true) . ' ' . $postago;
+				$value .= ' &nbsp; <i style="background-color:' . $newcolor . '" class="' . $newormod . '"></i> ' . get_the_modified_time(get_option('date_format').' '.get_option('time_format'), $id) . ' ' . $modago;
+		$value .= '</a>';
 		$string = str_replace( '%date%', $value, $string );
  	}
  	// filesize
  	if ( strpos( $string, '%filesize%' ) !== false ) {
- 		$value = '<i title="filesize" class="fa fa-expand"></i> '.size_format( get_post_meta( $id, '_dedo_file_size', true ), 0 );
+ 		$value = '<span style="white-space:nowrap"><i title="filesize" class="fa fa-expand"></i> '.size_format( get_post_meta( $id, '_dedo_file_size', true ), 0 ).'</span>';
  		$string = str_replace( '%filesize%', $value, $string );
  	}
  	// downloadtime
@@ -338,7 +357,7 @@ function download_times($filesize) {
  	}
  	// downloads (count)
  	if ( strpos( $string, '%count%' ) !== false ) {
- 		$value = '<i title="Downloadcounter" class="fa fa-download"></i> ' . number_format_i18n( get_post_meta( $id, '_dedo_file_count', true ) );
+ 		$value = '<span style="white-space:nowrap"><i title="Downloadcounter" class="fa fa-download"></i> ' . number_format_i18n( get_post_meta( $id, '_dedo_file_count', true ) ).'</span>';
  		$string = str_replace( '%count%', $value, $string );
  	}
  	// file name
