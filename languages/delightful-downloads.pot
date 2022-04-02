@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: delightful-downloads 1.6.1\n"
 "Report-Msgid-Bugs-To: hello@ashleyrich.com\n"
-"POT-Creation-Date: 2022-03-27 12:35+0000\n"
+"POT-Creation-Date: 2022-04-02 12:21+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -72,6 +72,10 @@ msgstr ""
 msgid "All Tags"
 msgstr ""
 
+#: includes/admin/dashboard.php:65 includes/admin/dashboard.php:92
+msgid "All Time"
+msgstr ""
+
 #: includes/admin/page-settings.php:271
 msgid "Allow downloads to be tagged or categorised."
 msgstr ""
@@ -106,7 +110,7 @@ msgstr ""
 msgid "Automatically delete old logs."
 msgstr ""
 
-#: includes/functions.php:108
+#: includes/functions.php:107
 msgid "Black"
 msgstr ""
 
@@ -114,11 +118,11 @@ msgstr ""
 msgid "Block User Agents"
 msgstr ""
 
-#: includes/functions.php:112
+#: includes/functions.php:111
 msgid "Blue"
 msgstr ""
 
-#: includes/functions.php:82 includes/admin/media-button.php:85
+#: includes/functions.php:81 includes/admin/media-button.php:85
 msgid "Button"
 msgstr ""
 
@@ -174,7 +178,7 @@ msgstr ""
 msgid "Date"
 msgstr ""
 
-#: includes/functions.php:79
+#: includes/functions.php:78
 msgid "Datei herunterladen"
 msgstr ""
 
@@ -278,6 +282,14 @@ msgstr ""
 msgid "Download Settings"
 msgstr ""
 
+#: includes/admin/dashboard.php:21
+msgid "Download Statistics"
+msgstr ""
+
+#: includes/admin/dashboard.php:38
+msgid "Download statistics could not be retrieved."
+msgstr ""
+
 #: includes/admin/meta-boxes.php:52
 msgid "Download submitted."
 msgstr ""
@@ -343,7 +355,7 @@ msgstr ""
 msgid "Export Logs"
 msgstr ""
 
-#: includes/admin/dashboard.php:26 includes/admin/dashboard.php:63
+#: includes/admin/dashboard.php:115 includes/admin/dashboard.php:152
 #: includes/admin/meta-boxes.php:310
 msgid "Failed security check!"
 msgstr ""
@@ -385,11 +397,11 @@ msgstr ""
 msgid "Grace Period"
 msgstr ""
 
-#: includes/functions.php:120
+#: includes/functions.php:119
 msgid "Green"
 msgstr ""
 
-#: includes/functions.php:116
+#: includes/functions.php:115
 msgid "Grey"
 msgstr ""
 
@@ -412,7 +424,7 @@ msgstr ""
 msgid "https://github.com/svenbolte/delightful-downloads/"
 msgstr ""
 
-#: includes/functions.php:90
+#: includes/functions.php:89
 msgid "Icon und Link"
 msgstr ""
 
@@ -444,7 +456,7 @@ msgstr ""
 msgid "Infobox mit Icon, Rahmen und Details"
 msgstr ""
 
-#: includes/functions.php:191
+#: includes/functions.php:190
 msgid "Infoboxliste (Icon/Date/Extension/Filesize/count/Thumb/descript)"
 msgstr ""
 
@@ -464,12 +476,12 @@ msgstr ""
 msgid "Insert Download"
 msgstr ""
 
-#: includes/shortcodes.php:80
+#: includes/shortcodes.php:76
 msgid "Invalid button attribute."
 msgstr ""
 
-#: includes/shortcodes.php:47 includes/shortcodes.php:348
-#: includes/shortcodes.php:412
+#: includes/shortcodes.php:43 includes/shortcodes.php:338
+#: includes/shortcodes.php:390
 msgid "Invalid download ID."
 msgstr ""
 
@@ -477,15 +489,15 @@ msgstr ""
 msgid "Invalid download."
 msgstr ""
 
-#: includes/shortcodes.php:182
+#: includes/shortcodes.php:177
 msgid "Invalid order attribute."
 msgstr ""
 
-#: includes/shortcodes.php:147
+#: includes/shortcodes.php:143
 msgid "Invalid orderby attribute."
 msgstr ""
 
-#: includes/shortcodes.php:191
+#: includes/shortcodes.php:185
 msgid "Invalid relation attribute."
 msgstr ""
 
@@ -493,7 +505,7 @@ msgstr ""
 msgid "Invalid settings file."
 msgstr ""
 
-#: includes/shortcodes.php:59 includes/shortcodes.php:266
+#: includes/shortcodes.php:55 includes/shortcodes.php:256
 msgid "Invalid style attribute."
 msgstr ""
 
@@ -502,11 +514,23 @@ msgstr ""
 msgid "IP Address"
 msgstr ""
 
+#: includes/admin/dashboard.php:53 includes/admin/dashboard.php:89
+msgid "Last 24 Hours"
+msgstr ""
+
+#: includes/admin/dashboard.php:61 includes/admin/dashboard.php:91
+msgid "Last 30 Days"
+msgstr ""
+
+#: includes/admin/dashboard.php:57 includes/admin/dashboard.php:90
+msgid "Last 7 Days"
+msgstr ""
+
 #: includes/options.php:32
 msgid "Licenses"
 msgstr ""
 
-#: includes/functions.php:86
+#: includes/functions.php:85
 msgid "Link"
 msgstr ""
 
@@ -596,7 +620,7 @@ msgstr ""
 msgid "No downloads found in Trash"
 msgstr ""
 
-#: includes/shortcodes.php:315
+#: includes/shortcodes.php:310
 msgid "No downloads found."
 msgstr ""
 
@@ -621,7 +645,7 @@ msgstr ""
 msgid "Non-member"
 msgstr ""
 
-#: includes/functions.php:231 includes/post-types.php:153
+#: includes/functions.php:230 includes/post-types.php:153
 msgid "One day pass copied to clipboard."
 msgstr ""
 
@@ -631,6 +655,10 @@ msgstr ""
 
 #: includes/admin/meta-boxes.php:184
 msgid "Oneday-Pass Count"
+msgstr ""
+
+#: includes/admin/dashboard.php:68
+msgid "Onedaypass Downloads"
 msgstr ""
 
 #: includes/admin/meta-boxes.php:229
@@ -662,7 +690,7 @@ msgstr ""
 msgid "Password Required"
 msgstr ""
 
-#: includes/functions.php:94
+#: includes/functions.php:93
 msgid "Plain Text"
 msgstr ""
 
@@ -679,11 +707,15 @@ msgstr ""
 msgid "Popular Categories"
 msgstr ""
 
+#: includes/admin/dashboard.php:71
+msgid "Popular Downloads"
+msgstr ""
+
 #: includes/taxonomies.php:57
 msgid "Popular Tags"
 msgstr ""
 
-#: includes/functions.php:124
+#: includes/functions.php:123
 msgid "Purple"
 msgstr ""
 
@@ -699,7 +731,7 @@ msgstr ""
 msgid "really delete attached file from server?"
 msgstr ""
 
-#: includes/functions.php:128
+#: includes/functions.php:127
 msgid "Red"
 msgstr ""
 
@@ -876,6 +908,10 @@ msgstr ""
 msgid "The URL for download links."
 msgstr ""
 
+#: includes/admin/dashboard.php:39 includes/admin/dashboard.php:84
+msgid "There are no popular downloads yet!"
+msgstr ""
+
 #: includes/admin/meta-boxes.php:235
 #, php-format
 msgid ""
@@ -884,39 +920,39 @@ msgid ""
 "%sfolder protection%s setting to 'No'."
 msgstr ""
 
-#: includes/functions.php:145 includes/post-types.php:62
+#: includes/functions.php:144 includes/post-types.php:62
 msgid "Title"
 msgstr ""
 
-#: includes/functions.php:153
+#: includes/functions.php:152
 msgid "Title/Count"
 msgstr ""
 
-#: includes/functions.php:149
+#: includes/functions.php:148
 msgid "Title/Date)"
 msgstr ""
 
-#: includes/functions.php:165
+#: includes/functions.php:164
 msgid "Title/Date/Extension/File size)"
 msgstr ""
 
-#: includes/functions.php:169
+#: includes/functions.php:168
 msgid "Title/Date/Extension/File size/count)"
 msgstr ""
 
-#: includes/functions.php:161
+#: includes/functions.php:160
 msgid "Title/Extension/File size)"
 msgstr ""
 
-#: includes/functions.php:157
+#: includes/functions.php:156
 msgid "Title/File size"
 msgstr ""
 
-#: includes/functions.php:173
+#: includes/functions.php:172
 msgid "Title/Icon/Category/File size)"
 msgstr ""
 
-#: includes/functions.php:182
+#: includes/functions.php:181
 msgid "Title/Icon/Category/File size/Count/Datesymbol)"
 msgstr ""
 
@@ -924,8 +960,16 @@ msgstr ""
 msgid "tomorrow"
 msgstr ""
 
-#: includes/admin/class-dedo-list-table.php:169 includes/admin/dashboard.php:79
-#: includes/admin/page-statistics.php:193
+#: includes/shortcodes.php:297
+msgid "total files"
+msgstr ""
+
+#: includes/shortcodes.php:298
+msgid "total size"
+msgstr ""
+
+#: includes/admin/class-dedo-list-table.php:169
+#: includes/admin/dashboard.php:168 includes/admin/page-statistics.php:193
 msgid "Unknown"
 msgstr ""
 
@@ -983,7 +1027,7 @@ msgstr ""
 msgid "vor"
 msgstr ""
 
-#: includes/functions.php:132
+#: includes/functions.php:131
 msgid "Yellow"
 msgstr ""
 

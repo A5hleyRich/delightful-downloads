@@ -27,15 +27,15 @@
 }
 /* line 28, ../sass/delightful-downloads-admin.scss */
 #dedo-shortcode-modal .dedo-modal-content label.column-2:nth-child(1) {
-  padding-right: 10px;
+  padding-right: 5px;
 }
 /* line 32, ../sass/delightful-downloads-admin.scss */
 #dedo-shortcode-modal .dedo-modal-content label.column-2:nth-child(2) {
-  padding-left: 10px;
+  padding-left: 5px;
 }
 /* line 36, ../sass/delightful-downloads-admin.scss */
 #dedo-shortcode-modal .dedo-modal-content label span {
-  line-height: 24px;
+  line-height: 12px;
 }
 /* line 40, ../sass/delightful-downloads-admin.scss */
 #dedo-shortcode-modal .dedo-modal-content input {
@@ -82,7 +82,7 @@
 }
 /* line 92, ../sass/delightful-downloads-admin.scss */
 .post-type-dedo_download .blank {
-  color: #ccc;
+  color: #555;
   cursor: default;
 }
 /* line 98, ../sass/delightful-downloads-admin.scss */
@@ -136,7 +136,7 @@
 }
 /* line 148, ../sass/delightful-downloads-admin.scss */
 .post-type-dedo_download td.column-members_only, .post-type-dedo_download td.column-open_browser {
-  color: #ccc;
+  color: #555;
 }
 /* line 152, ../sass/delightful-downloads-admin.scss */
 .post-type-dedo_download .column-members_only .true, .post-type-dedo_download .column-members_only .false,
@@ -191,8 +191,8 @@
 #ddownload-count ul li {
   display: block;
   margin: 0;
-  padding: 20px 0;
-  width: 50%;
+  padding: 5px 0;
+  width: 33%;
   float: left;
   box-sizing: border-box;
   text-align: center;
@@ -208,7 +208,7 @@
 /* line 216, ../sass/delightful-downloads-admin.scss */
 #ddownload-count ul li .label {
   display: block;
-  color: #ccc;
+  color: #555;
   font-size: 12px;
   text-transform: uppercase;
 }
@@ -218,11 +218,11 @@
 }
 /* line 228, ../sass/delightful-downloads-admin.scss */
 #ddownload-count ul li:nth-of-type(-n+2) {
-  padding-top: 40px;
+  padding-top: 10px;
 }
 /* line 232, ../sass/delightful-downloads-admin.scss */
 #ddownload-count ul li:nth-of-type(n+3) {
-  padding-bottom: 40px;
+  padding-bottom: 10px;
 }
 
 /* line 238, ../sass/delightful-downloads-admin.scss */

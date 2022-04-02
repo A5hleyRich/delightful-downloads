@@ -21,7 +21,6 @@ function dedo_shortcode_ddownload( $atts ) {
 	 * Use get option again so that WPML can filter default text
 	 * for translation, get_option() is cached so should not
 	 * affect performance.
-	 *
 	 */
 	global $dedo_default_options;
 	$dedo_options = wp_parse_args( get_option( 'delightful-downloads' ), $dedo_default_options );
@@ -175,7 +174,6 @@ function dedo_shortcode_ddownload_list( $atts ) {
 
 	// Validate and set order
 	if ( !in_array( strtoupper( $order ), array( 'ASC', 'DESC' ) ) ) {
-		
 		return __( 'Invalid order attribute.', 'delightful-downloads' );
 	}
 	else {
@@ -184,7 +182,6 @@ function dedo_shortcode_ddownload_list( $atts ) {
 
 	// Validate relation
 	if ( !in_array( strtoupper( $relation ), array( 'AND', 'OR' ) ) ) {
-		
 		return __( 'Invalid relation attribute.', 'delightful-downloads' );
 	}
 	else {
@@ -202,13 +199,11 @@ function dedo_shortcode_ddownload_list( $atts ) {
 		if ( !empty( $categories ) ) {
 			$categories_array = explode( ',' , $categories );
 			$categories_array = array_map( 'trim', $categories_array );
-
 			$query_args['tax_query'][] = array(
 				'taxonomy'	=> 'ddownload_category',
 				'field'		=> 'slug',
 				'terms'		=> $categories_array,
 			);
-
 			// Set taxonomy class
 			$tax_class .= ' category-' . implode( ' category-', $categories_array );
 		}
@@ -216,13 +211,11 @@ function dedo_shortcode_ddownload_list( $atts ) {
 		if ( !empty( $tags ) ) {
 			$tags_array = explode( ',' , $tags );
 			$tags_array = array_map( 'trim', $tags_array );
-
 			$query_args['tax_query'][] = array(
 				'taxonomy'	=> 'ddownload_tag',
 				'field'		=> 'slug',
 				'terms'		=> $tags_array,
 			);
-
 			// Set taxonomy class
 			$tax_class .= ' tag-' . implode( ' tag-', $tags_array );
 		}
@@ -269,7 +262,6 @@ function dedo_shortcode_ddownload_list( $atts ) {
 	// First check for cached data
 	$key = md5( $limit . $orderby . $order . $categories . $tags . $exclude_categories . $exclude_tags . $relation . $style );
 	$key = substr( 'dedo_shortcode_list_' . $key, 0, 45 );
-
 	$dedo_cache = new DEDO_Cache( $key );
 
 	if ( true == $cache && false !== ( $cached_data = $dedo_cache->get() ) ) {
@@ -282,6 +274,8 @@ function dedo_shortcode_ddownload_list( $atts ) {
 		// Begin output
 		if ( $downloads_list->have_posts() ) {
 			ob_start();
+			$filecount=0;
+			$tfilesize=0;
 			echo '<table class="ddownloads_list' . $tax_class . $style_class . '">';
 			while ( $downloads_list->have_posts() ) {
 				$downloads_list->the_post();
@@ -289,16 +283,20 @@ function dedo_shortcode_ddownload_list( $atts ) {
 				// Add classes
 				$classes = 'id-' . get_the_ID(); // Download id
 				$classes .= ' ext-' . dedo_get_file_ext( get_post_meta( get_the_ID(), '_dedo_file_url', true ) ); // File extension
-
 				$new_style_format = str_replace( '%class%', $classes, $style_format );
-
+				$filecount++;
+				$tfilesize += (int) get_post_meta( get_the_ID(), '_dedo_file_size', true );
 				echo '<tr><td>' . dedo_search_replace_wildcards( $new_style_format, get_the_ID() ) . '</td></tr>';
-				// kann weg? ---  $filename = dedo_get_upload_dir( '', $upload_dir ) . get_the_ID(); 
 				// Reset classes for next iteration
 				unset( $classes );
 				unset( $new_style_format );
 			}
 			
+			// File Statistiken, wenn limit nicht gesetzt
+			if ($limit == 0) {
+				echo '<tfoot><tr><td colspan=5>'.__('total files','delightful-downloads').': <b>'.$filecount.'</b> &nbsp; ';
+				echo __('total size','delightful-downloads').': <b>' . size_format( $tfilesize, 0 ).'</b></td></tr></tfoot>';
+			}	
 			echo '</table>';
 			$output = ob_get_clean();
 			wp_reset_postdata();
@@ -311,7 +309,6 @@ function dedo_shortcode_ddownload_list( $atts ) {
 		else {
 			return '<p>' . __( 'No downloads found.', 'delightful-downloads' ) . '</p>';
 		}
-
 	}
 	return apply_filters( 'dedo_shortcode_ddownload_list', $output );
 }
@@ -319,10 +316,7 @@ add_shortcode( 'ddownload_list', 'dedo_shortcode_ddownload_list' );
 
 /**
  * Download Filesize Shortcode
- *
  * Output the filesize of a download.
- *
- * @since   1.0
  */
 function dedo_shortcode_ddownload_filesize( $atts ) {
 	
@@ -341,34 +335,25 @@ function dedo_shortcode_ddownload_filesize( $atts ) {
 
 	// Check for valid download
 	if ( $id !== false && !dedo_download_valid( $id ) ) {
-		
 		return __( 'Invalid download ID.', 'delightful-downloads' );
 	}
 
 	// First check for cached data
 	$key = 'dedo_shortcode_filesize_id' . absint( $id );
-
 	$dedo_cache = new DEDO_Cache( $key );
-
 	if ( true == $cache && false !== ( $cached_data = $dedo_cache->get() ) ) {
-
 		$filesize = $cached_data;
 	}
 	else {
-
 		// No cached data, retrieve file count
 		$filesize = dedo_get_filesize( $id );
 	}
-
 	// Save to cache
 	if ( true == $cache ) {
-		
 		$dedo_cache->set( $filesize );
 	}
-
 	// Format number
 	if ( $format ) {
-		
 		$filesize = size_format( $filesize, 1 );
 	}
 
@@ -380,10 +365,7 @@ add_shortcode( 'ddownload_size', 'dedo_shortcode_ddownload_filesize' ); // Depre
 
 /**
  * Download Count Shortcode
- *
  * Outputs the number of times a download has been downloaded.
- *
- * @since   1.0
  */
 function dedo_shortcode_ddownload_count( $atts ) {
 	
@@ -405,7 +387,6 @@ function dedo_shortcode_ddownload_count( $atts ) {
 
 	// Check for valid download
 	if ( $id !== false && !dedo_download_valid( $id ) ) {
-		
 		return __( 'Invalid download ID.', 'delightful-downloads' );
 	}
 
@@ -420,7 +401,6 @@ function dedo_shortcode_ddownload_count( $atts ) {
 
 	// Format number
 	if ( $format ) {
-		
 		$count = number_format_i18n( $count );
 	}
 
@@ -432,9 +412,7 @@ add_shortcode( 'ddownload_total_count', 'dedo_shortcode_ddownload_count' ); // D
 
 /**
  * Display Total Downloadable Files
- * 
  * Displays the total number of downloadable files.
- *
  * @since   1.3
  */
 function dedo_shortcode_ddownload_files( $atts ) {
@@ -454,15 +432,11 @@ function dedo_shortcode_ddownload_files( $atts ) {
 
 	// First check for cached data
 	$key = 'dedo_shortcode_files';
-
 	$dedo_cache = new DEDO_Cache( $key );
-
 	if ( true == $cache && false !== ( $cached_data = $dedo_cache->get() ) ) {
-
 		$total_files = $cached_data;
 	}
 	else {
-
 		// No cached data, retrieve file count
 		$total_files = wp_count_posts( 'dedo_download' );
 		$total_files = $total_files->publish;
@@ -470,16 +444,12 @@ function dedo_shortcode_ddownload_files( $atts ) {
 
 	// Save to cache
 	if ( true == $cache ) {
-		
 		$dedo_cache->set( $total_files );
 	}
-
 	// Format number
 	if ( $format ) {
-		
 		$total_files = number_format_i18n( $total_files );
 	}
-
 	// Apply filters and return
 	return apply_filters( 'dedo_shortcode_ddownload_files', $total_files );
 }
@@ -488,7 +458,5 @@ add_shortcode( 'ddownload_total_files', 'dedo_shortcode_ddownload_files' ); // D
 
 /**
  * Allow shortcodes in widgets
- *
- * @since  1.0
  */
 add_filter( 'widget_text', 'do_shortcode' );
