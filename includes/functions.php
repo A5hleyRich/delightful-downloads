@@ -146,30 +146,30 @@ function dedo_get_shortcode_lists() {
 	 	),
 	 	'title_date'		=> array(
 	 		'name'				=> __( 'Title/Date)', 'delightful-downloads' ),
-	 		'format'			=> '<a href="%url%" title="%title% (%date%)" rel="nofollow" class="%class%">%title% (%date%)</a>'
+	 		'format'			=> '<a href="%url%" title="%title%" rel="nofollow" class="%class%">%title% (%date%)</a>'
 	 	),
 	 	'title_count'		=> array(
 	 		'name'				=> __( 'Title/Count', 'delightful-downloads' ),
-	 		'format'			=> '<a href="%url%" title="%title% (Downloads: %count%)" rel="nofollow" class="%class%">%title% (Downloads: %count%)</a>'
+	 		'format'			=> '<a style="margin-left:30px" href="%url%" title="%title%" rel="nofollow" class="%class%">%title%</a> &nbsp; %count%'
 	 	),
 	 	'title_filesize'	=> array(
-	 		'name'				=> __( 'Title/File size', 'delightful-downloads' ),
-	 		'format'			=> '<a href="%url%" title="%title% (%filesize%)" rel="nofollow" class="%class%">%title% (%filesize%)</a>'
+	 		'name'				=> __( 'Title/Filesize', 'delightful-downloads' ),
+	 		'format'			=> '<a style="margin-left:30px" href="%url%" title="%title%" rel="nofollow" class="%class%">%title%</a> &nbsp; %filesize%'
 	 	),
 	 	'title_ext_filesize'=> array(
-	 		'name'				=> __( 'Title/Extension/File size)', 'delightful-downloads' ),
-	 		'format'			=> '<a href="%url%" title="%title% (%ext%, %filesize%)" rel="nofollow" class="%class%">%title% (%ext%, %filesize%)</a>'
+	 		'name'				=> __( 'Title/Extension/Filesize', 'delightful-downloads' ),
+	 		'format'			=> '<a style="margin-left:30px" href="%url%" title="%title%" rel="nofollow" class="%class%">%title%</a> &nbsp; %ext% &nbsp; %filesize%'
 	 	),
 	 	'title_date_ext_filesize'=> array(
-	 		'name'				=> __( 'Title/Date/Extension/File size)', 'delightful-downloads' ),
-	 		'format'			=> '<a href="%url%" title="%title% (%date%, %ext%, %filesize%)" rel="nofollow" class="%class%">%title% (%date%, %ext%, %filesize%)</a>'
+	 		'name'				=> __( 'Title/Date/Extension/Filesize', 'delightful-downloads' ),
+	 		'format'			=> '<a style="margin-left:30px" href="%url%" title="%title%" rel="nofollow" class="%class%">%title%</a> &nbsp; %shortdate% &nbsp; %ext% &nbsp; %filesize%'
 	 	),
 	 	'title_ext_filesize_count'=> array(
-	 		'name'				=> __( 'Title/Date/Extension/File size/count)', 'delightful-downloads' ),
-	 		'format'			=> '<a href="%url%" title="%title% (%date%, %ext%, %filesize%, %count%x)" rel="nofollow" class="%class%">%title% (%date%, %ext%, %filesize%, %count%x)</a>'
+	 		'name'				=> __( 'Title/Date/Extension/Filesize/count', 'delightful-downloads' ),
+	 		'format'			=> '<a style="margin-left:30px" href="%url%" title="%title%" rel="nofollow" class="%class%">%title%</a> &nbsp; %shortdate% &nbsp; %ext% &nbsp; %filesize% &nbsp; %count%'
 	 	),
 	 	'icon_title_ext_filesize'=> array(
-	 		'name'				=> __( 'Title/Icon/Category/File size)', 'delightful-downloads' ),
+	 		'name'				=> __( 'Title/Icon/Category/File size', 'delightful-downloads' ),
 	 		'format'			=> '<div style="display:flex;width:100%">
 					<div style="display:inline-block;min-width:60px;width:60px">%icon%</div>
 					<div style="display:inline-block;width:100%;min-width:70%"><a class="headline" href="%url%" title="%ext%-Datei&#10;herunterladen" rel="nofollow">
@@ -345,6 +345,35 @@ function download_times($filesize) {
 		$value .= '</a>';
 		$string = str_replace( '%date%', $value, $string );
  	}
+	// shortdate
+ 	if ( strpos( $string, '%shortdate%' ) !== false ) {
+		$diff = time() - get_the_modified_time('U', $id);
+		if (round((intval($diff) / 86400), 0) < 30) {
+			$newcolor = "#FFD800";
+		} else {
+			$newcolor = "transparent";
+		}
+		$erstelldat = get_post_time('l, d. M Y H:i:s', false, $id, true);
+		$postago = ago(get_post_time('U, d. F Y H:i:s', false, $id, true));
+		$moddat = get_the_modified_time('l, d. M Y H:i:s', $id);
+		$modago = ago(get_the_modified_time('U, d. F Y H:i:s', $id));
+		$diffmod = get_the_modified_time('U', false, $id, true) - get_post_time('U', false, $id, true);
+		$datumlink= '';
+		$erstelltitle = 'erstellt: ' . $erstelldat . ' ' . $postago;
+		if ($diffmod > 0) {
+			$erstelltitle .= '&#10;verändert: ' . $moddat . ' ' . $modago;
+			$erstelltitle .= '&#10;verändert nach: ' . human_time_diff(get_post_time('U', false, $id, true), get_the_modified_time('U', $id));
+		}
+		if ($diffmod > 86400) {
+			$newormod = 'fa fa-calendar-plus-o';
+		} else {
+			$newormod = 'fa fa-calendar-o';
+		}
+		$value = '<span title="' . $erstelltitle . '" '.$datumlink.'><i class="fa fa-calendar-o"></i> ';
+		$value .= get_the_modified_time(get_option('date_format').' '.get_option('time_format'), $id);
+		$value .= '</span>';
+		$string = str_replace( '%shortdate%', $value, $string );
+ 	}
  	// filesize
  	if ( strpos( $string, '%filesize%' ) !== false ) {
  		$value = '<span style="white-space:nowrap"><i title="filesize" class="fa fa-expand"></i> '.size_format( get_post_meta( $id, '_dedo_file_size', true ), 0 ).'</span>';
@@ -376,7 +405,7 @@ function download_times($filesize) {
  	}
  	// file extension
  	if ( strpos( $string, '%ext%' ) !== false ) {
- 		$value = strtoupper( dedo_get_file_ext( get_post_meta( $id, '_dedo_file_url', true ) ) );
+ 		$value = '<i title="filename" class="fa fa-code-fork"></i> '.strtoupper( dedo_get_file_ext( get_post_meta( $id, '_dedo_file_url', true ) ) );
  		$string = str_replace( '%ext%', $value, $string );
  	}
   	// file icon
