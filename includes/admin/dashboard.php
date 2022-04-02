@@ -83,7 +83,7 @@ function dedo_dashboard_downloads_widget() {
 	<div id="ddownload-popular">
 		<h4><?php _e( 'Popular Downloads', 'delightful-downloads' ); ?></h4>
 		<?php
-		$popular_downloads = $dedo_statistics->get_popular_downloads( array( 'limit' => 6, 'cache' => false ) );
+		$popular_downloads = $dedo_statistics->get_popular_downloads( array( 'limit' => 10, 'cache' => false ) );
 		if ( !empty( $popular_downloads ) ) {
 			echo '<ol id="popular-downloads">';
 			foreach ( $popular_downloads as $key => $value ) {
