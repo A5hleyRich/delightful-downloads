@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the Plugins - Delightful Downloads - Stable (latest release) package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2022-04-02 12:24+0000\n"
+"PO-Revision-Date: 2022-04-02 18:20+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -76,7 +76,7 @@ msgstr "Alle Downloads"
 msgid "All Tags"
 msgstr "Alle Tags (Schlagworte)"
 
-#: includes/admin/dashboard.php:65 includes/admin/dashboard.php:92
+#: includes/admin/dashboard.php:67 includes/admin/dashboard.php:105
 msgid "All Time"
 msgstr "Gesamtzeitraum"
 
@@ -307,7 +307,7 @@ msgstr "Downloads Einstellungen"
 msgid "Download Statistics"
 msgstr "Download Statistiken"
 
-#: includes/admin/dashboard.php:38
+#: includes/admin/dashboard.php:37
 msgid "Download statistics could not be retrieved."
 msgstr "Download Statistiken konnten nicht erstellt werden."
 
@@ -380,7 +380,7 @@ msgstr ""
 msgid "Export Logs"
 msgstr "Logs exportieren"
 
-#: includes/admin/dashboard.php:115 includes/admin/dashboard.php:152
+#: includes/admin/dashboard.php:127 includes/admin/dashboard.php:164
 #: includes/admin/meta-boxes.php:310
 msgid "Failed security check!"
 msgstr "Sicherheits-Prüfung fehlgeschlagen!"
@@ -547,15 +547,15 @@ msgstr "Ungültiges Style-Attribut."
 msgid "IP Address"
 msgstr "IP-Adresse"
 
-#: includes/admin/dashboard.php:53 includes/admin/dashboard.php:89
+#: includes/admin/dashboard.php:55 includes/admin/dashboard.php:102
 msgid "Last 24 Hours"
 msgstr "letzte 24 Stunden"
 
-#: includes/admin/dashboard.php:61 includes/admin/dashboard.php:91
+#: includes/admin/dashboard.php:63 includes/admin/dashboard.php:104
 msgid "Last 30 Days"
 msgstr "Letzte 30 Tage"
 
-#: includes/admin/dashboard.php:57 includes/admin/dashboard.php:90
+#: includes/admin/dashboard.php:59 includes/admin/dashboard.php:103
 msgid "Last 7 Days"
 msgstr "Letzte 7 Tage"
 
@@ -691,7 +691,7 @@ msgstr "1-Tages-Download"
 msgid "Oneday-Pass Count"
 msgstr "Oneday-Pass Zähler"
 
-#: includes/admin/dashboard.php:68
+#: includes/admin/dashboard.php:71
 msgid "Onedaypass Downloads"
 msgstr "Ein-Tages-Pass Downloads"
 
@@ -741,7 +741,7 @@ msgstr "Melden Sie sich an, um diese Datei herunterzuladen"
 msgid "Popular Categories"
 msgstr "Populäre Kategorien"
 
-#: includes/admin/dashboard.php:71
+#: includes/admin/dashboard.php:84
 msgid "Popular Downloads"
 msgstr "Populäre Downloads"
 
@@ -959,7 +959,7 @@ msgstr " \tVorhaltezeit (in Minuten) für Queries / Abfragen. "
 msgid "The URL for download links."
 msgstr "Die URL für Download-Links. "
 
-#: includes/admin/dashboard.php:39 includes/admin/dashboard.php:84
+#: includes/admin/dashboard.php:38 includes/admin/dashboard.php:97
 msgid "There are no popular downloads yet!"
 msgstr "Es gibt noch keine populären Downloads!"
 
@@ -989,28 +989,28 @@ msgid "Title/Date)"
 msgstr "Titel/Datum"
 
 #: includes/functions.php:164
-#| msgid "Title (Date, Extension, File size)"
-msgid "Title/Date/Extension/File size)"
+#| msgid "Title/Date/Extension/File size)"
+msgid "Title/Date/Extension/Filesize"
 msgstr "Titel/Datum/Erweiterung/Dateigröße"
 
 #: includes/functions.php:168
-#| msgid "Title (Date, Extension, File size,count)"
-msgid "Title/Date/Extension/File size/count)"
+#| msgid "Title/Date/Extension/File size/count)"
+msgid "Title/Date/Extension/Filesize/count"
 msgstr "Titel/Datum/Erweiterung/Dateigröße/Anzahl"
 
 #: includes/functions.php:160
-#| msgid "Title (Extension, File size)"
-msgid "Title/Extension/File size)"
+#| msgid "Title/Extension/File size)"
+msgid "Title/Extension/Filesize"
 msgstr "Titel/Dateierweiterung/Dateigröße"
 
 #: includes/functions.php:156
-#| msgid "Title (File size)"
-msgid "Title/File size"
+#| msgid "Title/File size"
+msgid "Title/Filesize"
 msgstr "Titel/Dateigröße"
 
 #: includes/functions.php:172
-#| msgid "Title (Icon, Category, Filesize)"
-msgid "Title/Icon/Category/File size)"
+#| msgid "Title/Icon/Category/File size)"
+msgid "Title/Icon/Category/File size"
 msgstr "Titel/Symbol/Kategorie/Dateigröße"
 
 #: includes/functions.php:181
@@ -1021,16 +1021,16 @@ msgstr "Titel/Symbol/Kategorie/Dateigröße/Anzahl/Datumsymbol"
 msgid "tomorrow"
 msgstr "morgen"
 
-#: includes/shortcodes.php:297
+#: includes/shortcodes.php:297 includes/admin/dashboard.php:79
 msgid "total files"
 msgstr "Anzahl Dateien"
 
-#: includes/shortcodes.php:298
+#: includes/shortcodes.php:298 includes/admin/dashboard.php:75
 msgid "total size"
 msgstr "Gesamtgröße"
 
 #: includes/admin/class-dedo-list-table.php:169
-#: includes/admin/dashboard.php:168 includes/admin/page-statistics.php:193
+#: includes/admin/dashboard.php:180 includes/admin/page-statistics.php:193
 msgid "Unknown"
 msgstr "Unbekannt"
 
