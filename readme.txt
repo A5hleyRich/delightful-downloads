@@ -3,8 +3,8 @@ Contributors: A5hleyRich, Sven Bolte, others (best of forks)
 Tags: download, manager, downloads, monitor, shortcode, delightful downloads, file, counter, tracking, infobox, fixed filetree,ipflag, chartscodes
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
-Version: 9.9.47
-Stable tag: 9.9.47
+Version: 9.9.50
+Stable tag: 9.9.50
 Requires at least: 5.1
 Tested up to: 5.9.2
 Requires PHP: 8.0
@@ -189,11 +189,9 @@ Format the number (10000 becomes 10,000). Default: true.
 -----------------------------------------------
 [[ddownload]]
 You can easily output a single download using the [[ddownload]] shortcode. You must supply a download ID and optional attributes can be supplied to modify the output. To output a download using the default settings: [[ddownload id="123"]]
-
 You can find the ID of a download in the All Downloads screen.
 
 All Downloads Screen
-
 When no optional attributes are supplied Delightful Downloads will use the default values which can be configured in the Settings screen under the Shortcodes tab.
 
 Settings Screen Shortcodes Tab
@@ -221,40 +219,41 @@ Add any custom CSS classes to the output.
 
 [[ddownload id="123" class="custom-class button-large"]]
 
-Examples
+----------Examples----------------
 A link output with the file size displayed:
-
 [[ddownload id="123" style="link" text="Download (%filesize%)"]]
 
 A button output with the download count displayed:
-
 [[ddownload id="123" style="button" text="Download (%count%)"]]
 
+Standard infobox layout:
 [[ddownload id="3071"]] - Infobox Layout mit File Icon and grey rounded border
 
 -------------------------- Wildcards --------------------------------------------------
-Wildcards
 Wildcards allow you to dynamically enter data associated with a download. The available wildcards are:
 
 %adminedit%
-display a pencil link next to the downloads for admin use (only displayed if logged in with admin rights)
+display a pencil link next to the downloads for admin use (only displayed if logged in with admin rights and if FA present)
 
 %icon% 
 display a filetype icon (from a color png sprite)
 
 %category%
-display the first dedo category assigned to the download
+display the first dedo category assigned to the download (with FA symbol if fontawesome present)
 
 %tags%
-display a list of all dedo tags assigned to the download
+display a list of all dedo tags assigned to the download (with FA symbol if fontawesome present)
 
 %count%
-The number of times the download has been downloaded.
+The number of times the download has been downloaded. (with FA symbol if fontawesome present)
+
+%shortdate%
+published date and modified date, mod date is shown, stats and other dates on mouseover (with FA symbol if fontawesome present)
 
 %date%
 The date the download was published AND the date it was modified (only shown to logged in users).
 and the time since creation and modification - both with calendar symbol
-+colored calendar symbols
++colored calendar symbols (with FA symbols if fontawesome present)
 
 %datesymbol%
 The date the download was published OR the date it was modified nad time since mod or creation.
@@ -262,16 +261,16 @@ on mouseover: time since create, modification and in between
 +colored calendar symbols
 
 %locked%  
-displays a red lock if Download is password protected
+displays a red lock if Download is password protected (with FA symbol if fontawesome present)
 
 %ext%
-The file extension.
+The file extension. (with FA symbol if fontawesome present)
 
 %filename%
-The file name of the download.
+The file name of the download. (with FA symbol if fontawesome present)
 
 %filesize%
-The file size of the download.
+The file size of the download. (with FA symbol if fontawesome present)
 
 %downloadtime%
 display a clock symbol of fontawesome and download times for typical intern lines (16,25,50,100,200,500,1000MBit)
@@ -297,8 +296,7 @@ The ecxerpt of description of the download entered in the Add Download screen
 %url%
 The URL to the download file.
 
-Where To Use Them
-Wildcards can generate dynamic data in the following places:
+Where To Use Them: Wildcards can generate dynamic data in the following places:
 
 The text attribute of the [[ddownload]] shortcode. Examples:
 
@@ -311,22 +309,35 @@ The text attribute of the [[ddownload]] shortcode. Examples:
 The Default Text field in the Settings screen under the Shortcodes tab.
 Settings Screen Default Text
 
-------------------------- List Types ----------------------------------------------------------------
+------------------------- Shortcode styles ----------------------------------------------------------------
+ddownload parameter: style=""
 Choose the default list type for shortcode: ddownload_list in the admin dashboard:
 
-	title, title_date, title_count, title_filesize, title_ext_filesize,
-	title_date_ext_filesize,
-	title_ext_filesize_count,
-	icon_title_ext_filesize_count
-		
-------------------------- Styles for output ---------------------------------------------------------
-valid values for the shortcode attribute styles are. Can be found in includes/functions.php:
+	 	'infobox'		=> array(
+	 	'singlepost'		=> array(
+	 	'button'		=> array(
+	 	'link'			=> array(
+	 	'iconlink'			=> array(
+	 	'plain_text'	=> array(
 
-	button		= colored button with download or download Text wildcards
-	infobox		= white box with grey border, filetype icon and all possible details
-	link		= Download Link, displays DOWNLOAD or selected wildcards as text field
-	iconlink	= Icon, Download Link, displays DOWNLOAD or selected wildcards as text field
-	plain_text	= Download URL (quicklink) as text
+------------------------ Button colors ---------------------------
+usage: after style="button" button="accent",  default is "grey"
+
+'accent','black','blue','green','purple','grey','red','yellow'
+
+----------------------- List styles ---------------------------------------------------------------------
+ddownload_list parameter: style=""
+
+	 	'title'				=> array(
+	 	'title_date'		=> array(
+	 	'title_count'		=> array(
+	 	'title_filesize'	=> array(
+	 	'title_ext_filesize'=> array(
+	 	'title_date_ext_filesize'=> array(
+	 	'title_ext_filesize_count'=> array(
+	 	'icon_title_ext_filesize'=> array(
+	 	'icon_title_ext_filesize_count_datesymbol'=> array(
+	 	'infoboxlist'=> array(
 
 
 -------------------- Custom templates ----------------------------
@@ -478,21 +489,19 @@ add_filter( 'dedo_get_styles', 'dedo_custom_output' );
 
 ---------------------------- End of documentation ---------------------------------------------------
 
-
 == Installation ==
 
 1. Upload `delightful-downloads` to the `/wp-content/plugins/` directory.
 1. Activate the plugin through the 'Plugins' menu in WordPress.
 1. Go to Downloads > Settings and configure the options.
 
-Please refer to the [documentation] at the root folder of this plugin for further instructions (documentation.txt)
-
-== Frequently asked questions ==
-
-Please refer to the [FAQ] at the root folder of this plugin for further instructions (documentation.txt) 
+Please refer to the [documentation] in this readme.txt.
 
 
-==================== Changelog =================================
+==================== Changelog ==========================================================================
+
+= 9.9.50 =
+updated documentation. cleaned up styles, bugfixes, german translation extended, button in themes accent style added
 
 = 9.9.46 =
 %date% and %datesymbol% improved outputs

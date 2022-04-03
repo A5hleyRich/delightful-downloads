@@ -243,6 +243,7 @@ function dedo_render_part_sidebar() {
 				<p><code>[ddownload_list] - Liste mit Icons</code></p>
 				<p><code>[ddownload id="3071" style="link" text="%title% %filename% - %date% - %filesize% - (%count%x)"]</code></p>
 				<p><code>[ddownload id="3071"] - Infobox Layout mit File Icon</code></p>
+				<p><code>[ddownload id="3071" style="button" button="accent"] - Download button in themes button color</code></p>
 	</div>
 
 	<?php endif;

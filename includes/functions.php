@@ -65,7 +65,7 @@ function dedo_get_shortcode_styles() {
 					%adminedit%%permalink%<abbr>&nbsp; %datesymbol%</abbr><br>
 					<abbr>%category% %tags% &nbsp; %locked% %filename% &nbsp; 
 					%filesize% &nbsp; %downloadtime% &nbsp; %count%</abbr>
-					<h6 class="btn" style="margin: .2em 0 .2em 0"><a href="%url%" title="%ext%-Datei&#10;herunterladen" rel="nofollow">%title%</a></h6>
+					<h6 class="btn" style="margin: .2em 0 .2em 0"><a href="%url%" title="'.__( 'download file', 'delightful-downloads' ).'" rel="nofollow">%title%</a></h6>
 					<div>%description%</div></div>%thumb%</div></div>'
 	 	),
 	 	'singlepost'		=> array(
@@ -74,8 +74,8 @@ function dedo_get_shortcode_styles() {
 					<div style="display:inline-block;min-width:60px;width:60px">%icon%</div>
 					<div style="display:inline-block;width:100%;min-width:70%">
 					%adminedit%<abbr> &nbsp; %date%<br>%category%  %tags% &nbsp; %locked% %filename% &nbsp; %filesize% &nbsp; %downloadtime% &nbsp; %count%</abbr>
-					<h6 class="btn" style="margin: .2em 0 .2em 0"><a href="%url%" title="%ext%-Datei&#10;herunterladen" rel="nofollow">
-					'.__( 'Datei herunterladen', 'delightful-downloads' ).'</a></h6></div></div>'
+					<h6 class="btn" style="margin: .2em 0 .2em 0"><a href="%url%" title="'.__( 'download file', 'delightful-downloads' ).'" rel="nofollow">
+					'.__( 'download file', 'delightful-downloads' ).'</a></h6></div></div>'
 	 	),
 	 	'button'		=> array(
 	 		'name'			=> __( 'Button', 'delightful-downloads' ),
@@ -103,6 +103,10 @@ function dedo_get_shortcode_styles() {
 function dedo_get_shortcode_buttons() {
 	
 	$buttons =  array(
+		'accent'		=> array(
+			'name'		=> __( 'theme accent', 'delightful-downloads' ),
+			'class'		=> 'page-numbers'
+		),
 		'black'		=> array(
 			'name'		=> __( 'Black', 'delightful-downloads' ),
 			'class'		=> 'button-black'
@@ -172,7 +176,7 @@ function dedo_get_shortcode_lists() {
 	 		'name'				=> __( 'Title/Icon/Category/File size', 'delightful-downloads' ),
 	 		'format'			=> '<div style="display:flex;width:100%">
 					<div style="display:inline-block;min-width:60px;width:60px">%icon%</div>
-					<div style="display:inline-block;width:100%;min-width:70%"><a class="headline" href="%url%" title="%ext%-Datei&#10;herunterladen" rel="nofollow">
+					<div style="display:inline-block;width:100%;min-width:70%"><a class="headline" href="%url%" title="'.__( 'download file', 'delightful-downloads' ).'" rel="nofollow">
 					%title%</a><br>%adminedit%
 					%permalink% &nbsp;%locked% &nbsp;<abbr>%category% %tags% &nbsp;
 					%filesize%</abbr></div></div>'
@@ -181,7 +185,7 @@ function dedo_get_shortcode_lists() {
 	 		'name'				=> __( 'Title/Icon/Category/File size/Count/Datesymbol)', 'delightful-downloads' ),
 	 		'format'			=> '<div style="display:flex;width:100%">
 					<div style="display:inline-block;min-width:60px;width:60px">%icon%</div>
-					<div style="display:inline-block;width:100%;min-width:70%"><a class="headline" href="%url%" title="%ext%-Datei&#10;herunterladen" rel="nofollow">
+					<div style="display:inline-block;width:100%;min-width:70%"><a class="headline" href="%url%" title="'.__( 'download file', 'delightful-downloads' ).'" rel="nofollow">
 					%title%</a><br><abbr>%adminedit%
 					%permalink% &nbsp; %locked% &nbsp; %datesymbol%</abbr><br><abbr>%category% %tags% &nbsp;
 					%filesize% &nbsp; %count%</abbr></div></div>'
@@ -195,7 +199,7 @@ function dedo_get_shortcode_lists() {
 					%adminedit%%permalink% &nbsp; %datesymbol%<br>
 					<abbr>%category% %tags% &nbsp; %locked% %filename% &nbsp; %filesize% &nbsp;
 					 %downloadtime% &nbsp; %count%</abbr>
-					<h6 class="btn" style="margin: .2em 0 .2em 0"><a href="%url%" title="%ext%-Datei&#10;herunterladen" rel="nofollow">%title%</a></h6>
+					<h6 class="btn" style="margin: .2em 0 .2em 0"><a href="%url%" title="'.__( 'download file', 'delightful-downloads' ).'" rel="nofollow">%title%</a></h6>
 					<div>%description%</div></div>%thumb%</div>'
 	 	)
 	);
