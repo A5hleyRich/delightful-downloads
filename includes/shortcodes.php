@@ -286,7 +286,7 @@ function dedo_shortcode_ddownload_list( $atts ) {
 				$new_style_format = str_replace( '%class%', $classes, $style_format );
 				$filecount++;
 				$tfilesize += (int) get_post_meta( get_the_ID(), '_dedo_file_size', true );
-				echo '<tr><td style="position:relative"> <div style="text-shadow:1px 1px 3px #555,-1px -1px 3px #555;color:#eee;font-size:1.2em;font-weight:700;position:absolute;left:8px;top:2px;z-index:99999">'. $filecount.'</div>' . dedo_search_replace_wildcards( $new_style_format, get_the_ID() ) . '</td></tr>';
+				echo '<tr><td style="position:relative"> <div style="background-color:#ffffffbb;color:#000;font-size:1.2em;font-weight:700;position:absolute;left:8px;top:6px;z-index:99999;line-height:1em">'. $filecount.'</div>' . dedo_search_replace_wildcards( $new_style_format, get_the_ID() ) . '</td></tr>';
 				// Reset classes for next iteration
 				unset( $classes );
 				unset( $new_style_format );
