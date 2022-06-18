@@ -38,7 +38,8 @@
   overflow: hidden;
 }
 
-.ftyp-zip,.ftyp-rar { background: #f4b400; }
+.ftyp-zip,.ftyp-rar,.ftyp-7z { background: #f4b400; }
+.ftyp-7z::after { content:"7z"; }
 .ftyp-zip::after { content:"zip"; }
 .ftyp-rar::after { content:"rar"; }
 
@@ -88,11 +89,12 @@
 .ftyp-md::after { content:"md"; }
 
 
-.ftyp-jpg,.ftyp-png,.ftyp-gif,.ftyp-heic { background: #9e54bd; }
+.ftyp-jpg,.ftyp-png,.ftyp-gif,.ftyp-heic,.ftyp-bmp { background: #9e54bd; }
 .ftyp-jpg::after { content:"jpg"; }
 .ftyp-png::after { content:"png"; }
 .ftyp-gif::after { content:"gif"; }
 .ftyp-heic::after { content:"heic"; }
+.ftyp-bmp::after { content:"bmp"; }
 
 .ftyp-mp3,.ftyp-wma,.ftyp-m4a { background: #00880088; }
 .ftyp-mp3::after { content:"mp3"; }
