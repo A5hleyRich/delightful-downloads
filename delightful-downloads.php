@@ -8,8 +8,8 @@ Description: A super-awesome downloads manager for WordPress with htacces file l
 Text Domain: delightful-downloads
 Domain Path: /languages/
 License: GPL2
-Version: 9.9.50
-Stable tag: 9.9.50
+Version: 9.9.51
+Stable tag: 9.9.51
 Requires at least: 5.3
 Tested up to: 6.0
 Requires PHP: 8.0
@@ -130,17 +130,11 @@ class Delightful_Downloads {
 		if ( ! defined( 'DEDO_VERSION' ) ) {
 			define( 'DEDO_VERSION', $this->version );
 		}
-
 		if ( ! defined( 'DEDO_PLUGIN_URL' ) ) {
 			define( 'DEDO_PLUGIN_URL', plugin_dir_url( $this->path ) );
 		}
-
 		if ( ! defined( 'DEDO_PLUGIN_DIR' ) ) {
 			define( 'DEDO_PLUGIN_DIR', plugin_dir_path( $this->path ) );
-		}
-
-		if ( ! defined( 'DELIGHTFUL_DOWNLOADS_API' ) ) {
-			define( 'DELIGHTFUL_DOWNLOADS_API', 'https://github.com/A5hleyRich/delightful-downloads' );
 		}
 	}
 

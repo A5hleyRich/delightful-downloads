@@ -21,37 +21,40 @@ function dedo_template( $single_template ) {
 }
 add_filter( 'single_template', 'dedo_template' );
 
-// Zeitdifferenz ermitteln und gestern/vorgestern/morgen schreiben
-function ddago($timestamp) {
-	$xlang = get_bloginfo("language");
-	date_default_timezone_set('Europe/Berlin');
-	$now = time();
-	if ($timestamp > $now) {
-		$prepo = __('in', 'delightful-downloads');
-		$postpo = '';
-	} else {
-		if ($xlang == 'de-DE') {
-			$prepo = __('vor', 'delightful-downloads');
+// Zeitdifferenz ermitteln und gestern/vorgestern/morgen schreiben @chartscodes, delightful-downloads, penguin
+if( !function_exists('ago')) {
+	function ago($timestamp) {
+		if (empty($timestamp)) return;
+		$xlang = get_bloginfo("language");
+		date_default_timezone_set('Europe/Berlin');
+		$now = time();
+		if ($timestamp > $now) {
+			$prepo = __('in', 'penguin');
 			$postpo = '';
 		} else {
-			$prepo = '';
-			$postpo = __('ago', 'delightful-downloads');
+			if ($xlang == 'de-DE') {
+				$prepo = __('vor', 'penguin');
+				$postpo = '';
+			} else {
+				$prepo = '';
+				$postpo = __('ago', 'penguin');
+			}
 		}
+		$her = intval($now) - intval($timestamp);
+		if ($her > 86400 and $her < 172800) {
+			$hdate = __('yesterday', 'penguin');
+		} else if ($her > 172800 and $her < 259200) {
+			$hdate = __('1 day before yesterday', 'penguin');
+		} else if ($her < - 86400 and $her > - 172800) {
+			$hdate = __('tomorrow', 'penguin');
+		} else if ($her < - 172800 and $her > - 259200) {
+			$hdate = __('1 day after tomorrow', 'penguin');
+		} else {
+			$hdate = ' ' . $prepo . ' ' . human_time_diff(intval($timestamp), $now) . ' ' . $postpo;
+		}
+		return $hdate;
 	}
-	$her = intval($now) - intval($timestamp);
-	if ($her > 86400 and $her < 172800) {
-		$hdate = __('yesterday', 'delightful-downloads');
-	} else if ($her > 172800 and $her < 259200) {
-		$hdate = __('1 day before yesterday', 'delightful-downloads');
-	} else if ($her < - 86400 and $her > - 172800) {
-		$hdate = __('tomorrow', 'delightful-downloads');
-	} else if ($her < - 172800 and $her > - 259200) {
-		$hdate = __('1 day after tomorrow', 'delightful-downloads');
-	} else {
-		$hdate = ' ' . $prepo . ' ' . human_time_diff(intval($timestamp), $now) . ' ' . $postpo;
-	}
-	return $hdate;
-}
+}	
 
 // Shortcode Styles
 function dedo_get_shortcode_styles() {

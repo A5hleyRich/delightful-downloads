@@ -64,9 +64,9 @@ function dedo_download_column_headings( $columns ) {
 		'filesize'     => __( 'File Size', 'delightful-downloads' ),
 		'shortcode'    => __( 'Shortcode', 'delightful-downloads' ),
 		'onedaypass'    => __( 'One day pass:', 'delightful-downloads' ),
-		'downloads'    => __( 'Downloads', 'delightful-downloads' ),
-		'members_only' => '<span class="icon" title="' . __( 'Members Only', 'delightful-downloads' ) . '">' . __( 'Members Only', 'delightful-downloads' ) . '</span>',
-		'open_browser' => '<span class="icon" title="' . __( 'Open in Browser', 'delightful-downloads' ) . '">' . __( 'Open in Browser', 'delightful-downloads' ) . '</span>',
+		'downloads'    => '<span class="dashicons dashicons-download" title="' . __( 'Downloads', 'delightful-downloads' ) . '"></span>',
+		'members_only' => '<span class="dashicons dashicons-businessperson" title="' . __( 'Members Only', 'delightful-downloads' ) . '"></span>',
+		'open_browser' => '<span class="dashicons dashicons-portfolio" title="' . __( 'Open in Browser', 'delightful-downloads' ) . '"></span>',
 		'date'         => __( 'Date', 'delightful-downloads' ),
 	);
 
@@ -116,7 +116,7 @@ function dedo_download_column_contents( $column_name, $post_id ) {
 		  }	
 		} 
 		$file_url = dedo_get_file_name( $file_url );
-		echo ( ! $file_url ) ? '<span class="blank">--</span>' : esc_attr( $file_url );
+		echo ( ! $file_url ) ? '<span class="blank">--</span>' : '<span style="font-weight:700">'. esc_attr( $file_url ) .'</span>';
 		if (file_exists($file_path)) { 
 			echo '<br><a style="color:tomato;padding-top:7px" title="'.$file_path.'" onclick="return confirm(\''.__( 'really delete attached file from server?', 'delightful-downloads' ).'\');" href ="'.admin_url( "edit.php?post_type=dedo_download&post=$post_id&aktion=dedodelete").'">' . __( 'delete file', 'delightful-downloads' ) .'</a>';
 		} else { echo '<br>'.__( 'file is deleted', 'delightful-downloads' ); }
@@ -127,6 +127,8 @@ function dedo_download_column_contents( $column_name, $post_id ) {
 		$file_size = get_post_meta( $post_id, '_dedo_file_size', true );
 		$file_size = ( ! $file_size ) ? 0 : size_format( $file_size, 1 );
 		echo ( ! $file_size ) ? '<span class="blank">--</span>' : esc_attr( $file_size );
+		$file_datum = get_the_modified_date(get_option('date_format').' '.get_option('time_format'),$post_id);
+		echo '<br><br><i title="modified">'.$file_datum.' '.ago(get_the_modified_date('U')).'</i>';
 	}
 
 	// Shortcode column
@@ -159,7 +161,7 @@ function dedo_download_column_contents( $column_name, $post_id ) {
 		$count = ( ! $count ) ? 0 : number_format_i18n( $count );
 		$scount = get_post_meta( $post_id, '_dedo_oneday_count', true );
 		$scount = ( ! $scount ) ? 0 : number_format_i18n( $scount );
-		echo esc_attr( $count . ' / ' . $scount );
+		echo esc_attr( $count ) . '<br><br><span title="onedaypass">' . esc_attr( $scount ) .'</span>';
 	}
 
 	// Members only column
@@ -183,6 +185,7 @@ function dedo_download_column_contents( $column_name, $post_id ) {
 			echo '<span class="blank" title="' . __( 'Inherit', 'delightful-downloads' ) . '">--</span>';
 		}
 	}
+
 }
 add_action( 'manage_dedo_download_posts_custom_column', 'dedo_download_column_contents', 10, 2 );
 
