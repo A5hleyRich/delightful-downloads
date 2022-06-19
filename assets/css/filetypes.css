@@ -46,6 +46,12 @@ background:#f4b400
 .ftyp-7z::after {
 content:"7z"
 }
+.ftyp-zip:after {
+content:"zip"
+}
+.ftyp-rar::after {
+content:"rar"
+}
 
 .ftyp-exe {
 background:#000000cc
