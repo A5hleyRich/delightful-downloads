@@ -259,7 +259,7 @@ function download_times($filesize) {
  	// Kategorie (erste)
  	if ( strpos( $string, '%category%' ) !== false ) {
 		$post_terms = get_the_terms( $id, 'ddownload_category' );
-		if (!empty($post_terms)) $value = '<i title="category" class="fa fa-folder-open"></i> ' . $post_terms[0]->name .' &nbsp; '; else $value='';
+		if (!empty($post_terms)) $value = '<i title="category" class="fa fa-folder-open"></i> <a href="'.get_term_link($post_terms[0]->slug,'ddownload_category').'">' . $post_terms[0]->name .'</a> &nbsp; '; else $value='';
 		$string = str_replace( '%category%', $value, $string );
  	}
  	// Tags
@@ -383,8 +383,7 @@ function download_times($filesize) {
  	}
  	// filesize
  	if ( strpos( $string, '%filesize%' ) !== false ) {
- 		$value = '<span style="white-space:nowrap"><i title="filesize" class="fa fa-expand"></i> '.size_format( get_post_meta( $id, '_dedo_file_size', true ), 0 ).'</span>';
- 		$string = str_replace( '%filesize%', $value, $string );
+ 		$value = '<span style="white-space:nowrap"><i title="filesize" class="fa fa-expand"></i><span class="newlabel white">'.size_format( get_post_meta( $id, '_dedo_file_size', true ), 0 ).'</span></span>'; 		$string = str_replace( '%filesize%', $value, $string );
  	}
  	// downloadtime
  	if ( strpos( $string, '%downloadtime%' ) !== false ) {
@@ -393,7 +392,7 @@ function download_times($filesize) {
  	}
  	// downloads (count)
  	if ( strpos( $string, '%count%' ) !== false ) {
- 		$value = '<span style="white-space:nowrap"><i title="Downloadcounter" class="fa fa-download"></i> ' . number_format_i18n( get_post_meta( $id, '_dedo_file_count', true ) ).'</span>';
+ 		$value = '<span style="white-space:nowrap"><i title="Downloadcounter" class="fa fa-download"></i><span class="newlabel white">' . number_format_i18n( get_post_meta( $id, '_dedo_file_count', true ) ).'</span></span>';
  		$string = str_replace( '%count%', $value, $string );
  	}
  	// file name

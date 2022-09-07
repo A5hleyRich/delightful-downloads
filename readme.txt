@@ -3,8 +3,8 @@ Contributors: A5hleyRich, Sven Bolte, others (best of forks)
 Tags: download, manager, downloads, monitor, shortcode, delightful downloads, file, counter, tracking, infobox, fixed filetree,ipflag, chartscodes
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
-Version: 9.9.51
-Stable tag: 9.9.51
+Version: 9.9.52
+Stable tag: 9.9.52
 Requires at least: 5.1
 Tested up to: 6.0.1
 Requires PHP: 8.0
@@ -499,6 +499,10 @@ Please refer to the [documentation] in this readme.txt.
 
 
 ==================== Changelog ==========================================================================
+
+= 9.9.52 =
+download categories are clickable now to show all dls with that category
+Styling for size and download counts preset to "newlabel". Add custom css to display in box or use penguin mod plugin
 
 = 9.9.51 =
 admin list improved, added ago and changed date, dashicons for download and options columns
