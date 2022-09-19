@@ -18,7 +18,7 @@ get_header();
 				$tcolor = get_theme_mod( 'link-color', '#006060' );
 				$backgd = hexdec(substr($tcolor,1,2)).','.hexdec(substr($tcolor,3,2)).','.hexdec(substr($tcolor,5,2)).',.1';
 				echo '<div style="background-color:#eee;background-color:rgba('.$backgd.')">';
-				meta_icons(); 
+				echo echo meta_icons(); 
 				echo '</div>';
 				if ( is_single() ) {
 					the_title( '<h1 class="entry-title">', '</h1>' );
