@@ -3,8 +3,8 @@ Contributors: A5hleyRich, Sven Bolte, others (best of forks)
 Tags: download, manager, downloads, monitor, shortcode, delightful downloads, file, counter, tracking, infobox, fixed filetree,ipflag, chartscodes
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
-Version: 9.9.53
-Stable tag: 9.9.53
+Version: 9.9.54
+Stable tag: 9.9.54
 Requires at least: 5.1
 Tested up to: 6.0.2
 Requires PHP: 8.0
@@ -499,6 +499,9 @@ Please refer to the [documentation] in this readme.txt.
 
 
 ==================== Changelog ==========================================================================
+
+= 9.9.52 =
+infobox border changed to blockquote layout
 
 = 9.9.52 =
 download categories are clickable now to show all dls with that category

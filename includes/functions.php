@@ -61,7 +61,7 @@ function dedo_get_shortcode_styles() {
 	$styles = array(
 	 	'infobox'		=> array(
 	 		'name'			=> __( 'Infobox mit Icon, Rahmen und Details', 'delightful-downloads' ),
-	 		'format'		=> '<div class="%class%" style="display:flex;border:1px solid #e1e1e1;width:100%;padding:4px;border-radius:3px">
+	 		'format'		=> '<blockquote class="%class%" style="display:flex;width:100%;padding:4px;border-radius:3px">
 					<div style="display:flex;width:100%">
 					<div style="display:inline-block;min-width:60px;width:60px">%icon%</div>
 					<div style="display:inline-block;width:100%;min-width:70%">
@@ -69,16 +69,16 @@ function dedo_get_shortcode_styles() {
 					<abbr>%category% %tags% &nbsp; %locked% %filename% &nbsp; 
 					%filesize% &nbsp; %downloadtime% &nbsp; %count%</abbr>
 					<h6 class="btn" style="margin: .2em 0 .2em 0"><a href="%url%" title="'.__( 'download file', 'delightful-downloads' ).'" rel="nofollow">%title%</a></h6>
-					<div>%description%</div></div>%thumb%</div></div>'
+					<div>%description%</div></div>%thumb%</div></blockquote>'
 	 	),
 	 	'singlepost'		=> array(
 	 		'name'			=> __( 'Infobox mit Icon, Rahmen für Post Archive', 'delightful-downloads' ),
-	 		'format'		=> '<div class="%class%" style="display:flex;border:1px solid #e1e1e1;width:100%;padding:4px;border-radius:3px">
+	 		'format'		=> '<blockquote class="%class%" style="display:flex;width:100%;padding:4px;border-radius:3px">
 					<div style="display:inline-block;min-width:60px;width:60px">%icon%</div>
 					<div style="display:inline-block;width:100%;min-width:70%">
 					%adminedit%<abbr> &nbsp; %date%<br>%category%  %tags% &nbsp; %locked% %filename% &nbsp; %filesize% &nbsp; %downloadtime% &nbsp; %count%</abbr>
 					<h6 class="btn" style="margin: .2em 0 .2em 0"><a href="%url%" title="'.__( 'download file', 'delightful-downloads' ).'" rel="nofollow">
-					'.__( 'download file', 'delightful-downloads' ).'</a></h6></div></div>'
+					'.__( 'download file', 'delightful-downloads' ).'</a></h6></div></blockquote>'
 	 	),
 	 	'button'		=> array(
 	 		'name'			=> __( 'Button', 'delightful-downloads' ),
