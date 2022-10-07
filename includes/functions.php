@@ -77,7 +77,7 @@ function dedo_get_shortcode_styles() {
 	 		'format'		=> '<blockquote class="%class%" style="display:flex;width:100%;padding:4px;border-radius:3px">
 					<div style="display:inline-block;min-width:60px;width:60px">%icon%</div>
 					<div style="display:inline-block;width:100%;min-width:70%">
-					%adminedit%<abbr> &nbsp; %date%<br>%category%  %tags% &nbsp; %locked% %filename% &nbsp; %filesize% &nbsp; %downloadtime% &nbsp; %count%</abbr>
+					%adminedit% &nbsp; %date%<abbr><br>%category%  %tags% &nbsp; %locked% %filename% &nbsp; %filesize% &nbsp; %downloadtime% &nbsp; %count%</abbr>
 					<h6 class="btn" style="margin: .2em 0 .2em 0"><a href="%url%" title="'.__( 'download file', 'delightful-downloads' ).'" rel="nofollow">
 					'.__( 'download file', 'delightful-downloads' ).'</a></h6></div></blockquote>'
 	 	),
@@ -191,7 +191,7 @@ function dedo_get_shortcode_lists() {
 					<div style="display:inline-block;min-width:60px;width:60px">%icon%</div>
 					<div style="display:inline-block;width:100%;min-width:70%"><a class="headline" href="%url%" title="'.__( 'download file', 'delightful-downloads' ).'" rel="nofollow">
 					%title%</a><br><abbr>%adminedit%
-					%permalink% &nbsp; %locked% &nbsp; %datesymbol%</abbr><br><abbr>%category% %tags% &nbsp;
+					%permalink% &nbsp; %locked% &nbsp; </abbr>%datesymbol%<br><abbr>%category% %tags% &nbsp;
 					%filesize% &nbsp; %count%</abbr></div></div>'
 	 	),
 	 	'infoboxlist'=> array(
@@ -270,7 +270,7 @@ function download_times($filesize) {
 		if ($post_terms && !is_wp_error($post_terms)) {
 			$value .='<i title="Themen" class="fa fa-tag"></i> ';
 			foreach ($post_terms as $term) {
-				$value .= $term->name . ' ';
+				$value .= '<a href="'.esc_attr( get_tag_link( $term->term_id ) ).'">'.$term->name . '</a> ';
 			}
 		}
 		$string = str_replace( '%tags%', $value, $string );
@@ -294,9 +294,9 @@ function download_times($filesize) {
  	if ( strpos( $string, '%datesymbol%' ) !== false ) {
 		$diff = time() - get_the_modified_time('U', $id);
 		if (round((intval($diff) / 86400), 0) < 30) {
-			$newcolor = "#FFD800";
+			$newcolor = "#ffd800";
 		} else {
-			$newcolor = "transparent";
+			$newcolor = "#fff";
 		}
 		$erstelldat = get_post_time('l, d. M Y H:i:s', false, $id, true);
 		$postago = ago(get_post_time('U, d. F Y H:i:s', false, $id, true));
@@ -314,22 +314,22 @@ function download_times($filesize) {
 		} else {
 			$newormod = 'fa fa-calendar-o';
 		}
-		$value = '<a title="' . $erstelltitle . '" '.$datumlink.'><i style="background-color:' . $newcolor . '" class="' . $newormod . '"></i> ';
+		$value = '<i class="' . $newormod . '"></i><span title="' . $erstelltitle . '" class="newlabel" style="background-color:' . $newcolor . '">';
 			if ($diffmod > 0) {
 				$value .= ' ' . get_the_modified_time(get_option('date_format').' '.get_option('time_format'), $id) . ' ' . $modago;
 			} else {
 				$value .= ' ' . get_post_time(get_option('date_format').' '.get_option('time_format'), false, $id, true) . ' ' . $postago;
 			}
-		$value .= '</a>';
+		$value .= '</span>';
 		$string = str_replace( '%datesymbol%', $value, $string );
  	}
 	// date
  	if ( strpos( $string, '%date%' ) !== false ) {
 		$diff = time() - get_the_modified_time('U', $id);
 		if (round((intval($diff) / 86400), 0) < 30) {
-			$newcolor = "#FFD800";
+			$newcolor = "#ffd800";
 		} else {
-			$newcolor = "transparent";
+			$newcolor = "#fff";
 		}
 		$erstelldat = get_post_time('l, d. M Y H:i:s', false, $id, true);
 		$postago = ago(get_post_time('U, d. F Y H:i:s', false, $id, true));
@@ -347,19 +347,20 @@ function download_times($filesize) {
 		} else {
 			$newormod = 'fa fa-calendar-o';
 		}
-		$value = '<a title="' . $erstelltitle . '" '.$datumlink.'><i class="fa fa-calendar-o"></i> ';
-				$value .= get_post_time(get_option('date_format').' '.get_option('time_format'), false, $id, true) . ' ' . $postago;
-				$value .= ' &nbsp; <i style="background-color:' . $newcolor . '" class="' . $newormod . '"></i> ' . get_the_modified_time(get_option('date_format').' '.get_option('time_format'), $id) . ' ' . $modago;
-		$value .= '</a>';
+		$value = '<i class="fa fa-calendar-o"></i><span title="' . $erstelltitle . '" class="newlabel white">';
+		$value .= get_post_time(get_option('date_format').' '.get_option('time_format'), false, $id, true) . ' ' . $postago;
+		$value .= '</span> &nbsp; <i class="fa fa-calendar-plus-o"></i><span title="' . $erstelltitle . '" class="newlabel" style="background-color:' . $newcolor . '">';
+		$value .= get_the_modified_time(get_option('date_format').' '.get_option('time_format'), $id) . ' ' . $modago;
+		$value .= '</span>';
 		$string = str_replace( '%date%', $value, $string );
  	}
 	// shortdate
  	if ( strpos( $string, '%shortdate%' ) !== false ) {
 		$diff = time() - get_the_modified_time('U', $id);
 		if (round((intval($diff) / 86400), 0) < 30) {
-			$newcolor = "#FFD800";
+			$newcolor = "#ffd800";
 		} else {
-			$newcolor = "transparent";
+			$newcolor = "#fff";
 		}
 		$erstelldat = get_post_time('l, d. M Y H:i:s', false, $id, true);
 		$postago = ago(get_post_time('U, d. F Y H:i:s', false, $id, true));
@@ -377,7 +378,7 @@ function download_times($filesize) {
 		} else {
 			$newormod = 'fa fa-calendar-o';
 		}
-		$value = '<span title="' . $erstelltitle . '" '.$datumlink.'><i class="fa fa-calendar-o"></i> ';
+		$value = '<i class="' . $newormod . '"></i><span title="' . $erstelltitle . '" class="newlabel" style="background-color:' . $newcolor . '">';
 		$value .= get_the_modified_time(get_option('date_format').' '.get_option('time_format'), $id);
 		$value .= '</span>';
 		$string = str_replace( '%shortdate%', $value, $string );
