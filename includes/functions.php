@@ -802,8 +802,6 @@ function dedo_get_file_status( $url ) {
 function dedo_get_file_icon( $file ) {
 	$ext = dedo_get_file_ext( $file );
 	$fmime = dedo_get_file_mime( $file );
-	// Load css sprite for file type icons
-	wp_enqueue_style( 'filetye-style', DEDO_PLUGIN_URL . 'assets/css/filetypes.min.css' );
 	$icon = '<i class="ftyp ftyp-'.strtolower($ext).'" title="'.$ext.'-Datei&#10;'.$fmime.'"></i>';
 	return $icon;
 }
