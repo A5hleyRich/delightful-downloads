@@ -96,6 +96,8 @@ Why do my files show a file size of unknown?
 This is caused when the file does not exist at the location specified or is inaccessible due to incorrect permissions.
 
 
+---------------------------- detailed documentation ---------------------------------------------------
+
 -----------------------------------Shortcodes----------------------
 [[ddownload_count]]
 You can output the number of times a download has been downloaded using the [[ddownload_count]] shortcode. You must supply a download ID and optional attributes can be supplied to further customise the output. To output a download count using the default settings: [[ddownload_count id="123"]]
