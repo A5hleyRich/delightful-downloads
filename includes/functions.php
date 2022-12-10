@@ -215,8 +215,8 @@ function download_times($filesize) {
 	$bbreite = array (25,50,100,200,500,1000,16);
 	$outp = array();
 	foreach ($bbreite as $value) {
-		$time16 = $filesize * 8 / ($value*1024*1024);
-		$s = $time16%60;
+		$time16 = floor($filesize * 8 / ($value*1024*1024));
+		$s = floor($time16%60);
 		$m = floor(($time16%3600)/60);
 		$h = floor(($time16%86400)/3600);
 		$outp[] = ($h>0 ? $h.'h ' :'').($m>0 ? $m.'m ' :'').$s.'s@'.$value.'MBit';
