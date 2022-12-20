@@ -46,9 +46,11 @@ background:#f4b400
 .ftyp-7z::after {
 content:"7z"
 }
+
 .ftyp-zip:after {
 content:"zip"
 }
+
 .ftyp-rar::after {
 content:"rar"
 }
@@ -112,10 +114,10 @@ background:#0F9DAA
 .ftyp-pub::after {
 content:"pub"
 }
+
 .ftyp-pubx::after {
 content:"pubx"
 }
-
 
 .ftyp-xls,.ftyp-xlsx,.ftyp-xlsm,.ftyp-xltx,.ftyp-xltm,.ftyp-ods,.ftyp-ots {
 background:#0f9d58

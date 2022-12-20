@@ -20,7 +20,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 function dedo_enqueue_scripts( $page ) {
 	global $dedo_options;
 	// Load css sprite for file type icons
-	wp_enqueue_style( 'filetye-style', DEDO_PLUGIN_URL . 'assets/css/filetypes.min.css' );
+	wp_enqueue_style( 'filetype-style', DEDO_PLUGIN_URL . 'assets/css/filetypes.min.css' );
 
 	// Enqueue frontend CSS if option is enabled
 	if ( ! $dedo_options['enable_css'] ) {

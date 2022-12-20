@@ -186,13 +186,13 @@ function dedo_get_shortcode_lists() {
 					%filesize%</abbr></div></div>'
 	 	),
 	 	'icon_title_ext_filesize_count_datesymbol'=> array(
-	 		'name'				=> __( 'Title/Icon/Category/File size/Count/Datesymbol)', 'delightful-downloads' ),
+	 		'name'				=> __( 'Title/Icon/Category/File size/Count/Dateago)', 'delightful-downloads' ),
 	 		'format'			=> '<div style="display:flex;width:100%">
 					<div style="display:inline-block;min-width:60px;width:60px">%icon%</div>
-					<div style="display:inline-block;width:100%;min-width:70%"><a class="headline" href="%url%" title="'.__( 'download file', 'delightful-downloads' ).'" rel="nofollow">
-					%title%</a><br><abbr>%adminedit%
-					%permalink% &nbsp; %locked% &nbsp; </abbr>%datesymbol%<br><abbr>%category% %tags% &nbsp;
-					%filesize% &nbsp; %count%</abbr></div></div>'
+					<div style="display:inline-block;width:100%;min-width:70%;vertical-align:top;line-height:1.2em"><a class="headline" style="display:block;max-width:98vw;white-space:nowrap;overflow:hidden" href="%url%" title="'.__( 'download file', 'delightful-downloads' ).'" rel="nofollow">
+					%title%</a><abbr>%adminedit%
+					%permalink% &nbsp; %locked% &nbsp; </abbr>%dateago% &nbsp;
+					%filesize% &nbsp; %count%<br><abbr>%category% %tags%</abbr></div></div>'
 	 	),
 	 	'infoboxlist'=> array(
 	 		'name'				=> __( 'Infoboxliste (Icon/Date/Extension/Filesize/count/Thumb/descript)', 'delightful-downloads' ),
@@ -294,7 +294,7 @@ function download_times($filesize) {
  	if ( strpos( $string, '%datesymbol%' ) !== false ) {
 		$diff = time() - get_the_modified_time('U', $id);
 		if (round((intval($diff) / 86400), 0) < 30) {
-			$newcolor = "#ffd800";
+			$newcolor = "#ffd80088";
 		} else {
 			$newcolor = "#fff";
 		}
@@ -323,11 +323,39 @@ function download_times($filesize) {
 		$value .= '</span>';
 		$string = str_replace( '%datesymbol%', $value, $string );
  	}
+	// dateago
+ 	if ( strpos( $string, '%dateago%' ) !== false ) {
+		$diff = time() - get_the_modified_time('U', $id);
+		if (round((intval($diff) / 86400), 0) < 30) {
+			$newcolor = "#ffd80088";
+		} else {
+			$newcolor = "#fff";
+		}
+		$erstelldat = get_post_time('l, d. M Y H:i:s', false, $id, true);
+		$postago = ago(get_post_time('U, d. F Y H:i:s', false, $id, true));
+		$moddat = get_the_modified_time('l, d. M Y H:i:s', $id);
+		$modago = ago(get_the_modified_time('U, d. F Y H:i:s', $id));
+		$diffmod = get_the_modified_time('U', false, $id, true) - get_post_time('U', false, $id, true);
+		$datumlink= '';
+		$erstelltitle = 'erstellt: ' . $erstelldat . ' ' . $postago;
+		if ($diffmod > 0) {
+			$erstelltitle .= '&#10;verändert: ' . $moddat . ' ' . $modago;
+			$erstelltitle .= '&#10;verändert nach: ' . human_time_diff(get_post_time('U', false, $id, true), get_the_modified_time('U', $id));
+		}
+		$value = '<i class="' . $newormod . '"></i><span title="' . $erstelltitle . '" class="newlabel" style="background-color:' . $newcolor . '">';
+			if ($diffmod > 0) {
+				$value .= ' ' . $modago;
+			} else {
+				$value .=  ' ' . $postago;
+			}
+		$value .= '</span>';
+		$string = str_replace( '%dateago%', $value, $string );
+ 	}
 	// date
  	if ( strpos( $string, '%date%' ) !== false ) {
 		$diff = time() - get_the_modified_time('U', $id);
 		if (round((intval($diff) / 86400), 0) < 30) {
-			$newcolor = "#ffd800";
+			$newcolor = "#ffd80088";
 		} else {
 			$newcolor = "#fff";
 		}
@@ -358,7 +386,7 @@ function download_times($filesize) {
  	if ( strpos( $string, '%shortdate%' ) !== false ) {
 		$diff = time() - get_the_modified_time('U', $id);
 		if (round((intval($diff) / 86400), 0) < 30) {
-			$newcolor = "#ffd800";
+			$newcolor = "#ffd80088";
 		} else {
 			$newcolor = "#fff";
 		}
@@ -385,7 +413,10 @@ function download_times($filesize) {
  	}
  	// filesize
  	if ( strpos( $string, '%filesize%' ) !== false ) {
- 		$value = '<span style="white-space:nowrap"><i title="filesize" class="fa fa-expand"></i><span class="newlabel white">'.size_format( get_post_meta( $id, '_dedo_file_size', true ), 0 ).'</span></span>'; 		$string = str_replace( '%filesize%', $value, $string );
+ 		if (!empty( get_post_meta( $id, '_dedo_file_size', true ) )) {
+			$value = '<span style="white-space:nowrap"><i title="filesize" class="fa fa-expand"></i><span class="newlabel white">'.size_format( get_post_meta( $id, '_dedo_file_size', true ), 0 ).'</span></span>';
+		} else { $value='';  }	
+		$string = str_replace( '%filesize%', $value, $string );
  	}
  	// downloadtime
  	if ( strpos( $string, '%downloadtime%' ) !== false ) {
