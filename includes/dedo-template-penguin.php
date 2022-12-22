@@ -11,8 +11,6 @@ get_header();
 		<?php
 		while ( have_posts() ) : the_post(); // Start the loop.	?>
 			<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-			<?php 
-			penguin_entry_top(); ?>
 			<header class="entry-header">
 				<?php
 				$tcolor = get_theme_mod( 'link-color', '#006060' );
