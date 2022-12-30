@@ -25,6 +25,9 @@ function dedo_shortcode_ddownload( $atts ) {
 	global $dedo_default_options;
 	$dedo_options = wp_parse_args( get_option( 'delightful-downloads' ), $dedo_default_options );
 
+	// filetype skript laden
+	wp_enqueue_style( 'filetype-style' );
+
 	// Attributes
 	extract( shortcode_atts(
 		array(
@@ -111,6 +114,9 @@ add_shortcode( 'ddownload', 'dedo_shortcode_ddownload' );
 function dedo_shortcode_ddownload_list( $atts ) {
 	global $dedo_options;
 
+	// filetype skript laden
+	wp_enqueue_style( 'filetype-style' );
+	
 	// Attributes
 	extract( shortcode_atts(
 		array(

@@ -342,6 +342,11 @@ function download_times($filesize) {
 			$erstelltitle .= '&#10;verändert: ' . $moddat . ' ' . $modago;
 			$erstelltitle .= '&#10;verändert nach: ' . human_time_diff(get_post_time('U', false, $id, true), get_the_modified_time('U', $id));
 		}
+		if ($diffmod > 86400) {
+			$newormod = 'fa fa-calendar-plus-o';
+		} else {
+			$newormod = 'fa fa-calendar-o';
+		}
 		$value = '<i class="' . $newormod . '"></i><span title="' . $erstelltitle . '" class="newlabel" style="background-color:' . $newcolor . '">';
 			if ($diffmod > 0) {
 				$value .= ' ' . $modago;

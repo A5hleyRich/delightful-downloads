@@ -18,14 +18,12 @@ if ( ! defined( 'ABSPATH' ) ) {
  * @since  1.0
  */
 function dedo_enqueue_scripts( $page ) {
-	global $dedo_options;
+	global $dedo_options,$post;
 	// Load css sprite for file type icons
-	wp_enqueue_style( 'filetype-style', DEDO_PLUGIN_URL . 'assets/css/filetypes.min.css' );
-
+	wp_register_style( 'filetype-style', DEDO_PLUGIN_URL . 'assets/css/filetypes.min.css' );
+	if ( 'dedo_download' == get_post_type() ) wp_enqueue_style( 'filetype-style' );
 	// Enqueue frontend CSS if option is enabled
-	if ( ! $dedo_options['enable_css'] ) {
-		return;
-	}
+	if ( ! $dedo_options['enable_css'] ) { return; }
 	$version = defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ? time() : DEDO_VERSION;
 	$suffix  = defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ? '' : '.min';
 	// Register frontend CSS
