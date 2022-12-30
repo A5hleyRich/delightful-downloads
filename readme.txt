@@ -3,8 +3,8 @@ Contributors: A5hleyRich, Sven Bolte, others (best of forks)
 Tags: download, manager, downloads, monitor, shortcode, delightful downloads, file, counter, tracking, infobox, fixed filetree,ipflag, chartscodes
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
-Version: 9.9.63
-Stable tag: 9.9.63
+Version: 9.9.64
+Stable tag: 9.9.64
 Requires at least: 5.1
 Tested up to: 6.1.1
 Requires PHP: 8.0
@@ -15,7 +15,7 @@ A super-awesome downloads manager and statistics tracker for WordPress.
 
 Delightful Downloads is a super-awesome downloads manager for WordPress that allows you to easily add download links, buttons and download information to posts, pages and as shortcode in widget block areas. Download statistics are tracked within the WordPress dashboard.
 
-**Features**
+### Features
 
 * optional: If chartscodes plugin is installed, country of downloader with flag and country code will be listed (last digit of ip set to 0)
 * one day pass are unique per download now (user can download named file until 2400 hrs same day). Direct directory access to file is blocked by .htaccess
@@ -37,20 +37,20 @@ Delightful Downloads is a super-awesome downloads manager for WordPress that all
 * Localisation support and german translations.
 * IP-Address for downloads is stored shortened with last digit = 0
 
-**Requirements**
+## Requirements
 
 To add and manage downloads via the WordPress Administration screens, you must have a [modern web browser](http://browsehappy.com/ "Browse Happy") with JavaScript enabled.
 
-**GitHub, Source Code**
+## GitHub, Source Code
 
 If you would like to contribute to the plugin, you can do so on [GitHub](https://github.com/svenbolte/delightful-downloads).
 There are several forks (like this one).
 
-**Documentation**
-The Delightful Downloads documentation can be found at the root folder of this plugin (documentation-styles.pdf)
-More details here:
+## Documentation
+you can find it in this readme file below
 
-------------------------------------  FAQ -------------------------
+
+### FAQ
 General
 Can I manually upload files via FTP/SFTP?
 Yes, simply upload them to your server anywhere within the WordPress file structure (usually wp-content/uploads/). Once uploaded, you can enter the file URL into the Add New Download screen.
@@ -96,7 +96,7 @@ Why do my files show a file size of unknown?
 This is caused when the file does not exist at the location specified or is inaccessible due to incorrect permissions.
 
 
----------------------------- detailed documentation ---------------------------------------------------
+### detailed documentation
 
 -----------------------------------Shortcodes----------------------
 [[ddownload_count]]
@@ -249,15 +249,19 @@ display a list of all dedo tags assigned to the download (with FA symbol if font
 %count%
 The number of times the download has been downloaded. (with FA symbol if fontawesome present)
 
-%shortdate%
+%shortdate%    example: |+| Mo 22. Dez 2022 14:30
 published date and modified date, mod date is shown, stats and other dates on mouseover (with FA symbol if fontawesome present)
+(takes format date and time from wordpress settings)
 
-%date%
+%date%     example: | | Mo 11. Apr 2022 14:30 |+| Mo 22. Dez 2022 14:30
 The date the download was published AND the date it was modified (only shown to logged in users).
 and the time since creation and modification - both with calendar symbol
 +colored calendar symbols (with FA symbols if fontawesome present)
 
-%datesymbol%
+%dateago%    example: vor 3 Wochen
+display human (german) time diff since files was modified (and more info on mouseover title tag)
+
+%datesymbol%     example: | | Mo 11. Apr 2022 14:30 vor drei Monaten |+| Mo 22. Dez 2022 14:30 gestern
 The date the download was published OR the date it was modified nad time since mod or creation.
 on mouseover: time since create, modification and in between
 +colored calendar symbols
@@ -504,6 +508,7 @@ Please refer to the [documentation] in this readme.txt.
 
 = 9.9.63 =
 PHP 8.2 compatibility 
+documentation was updated and put in the project in text form (/readme.txt)
 filetype handling: css will only be loaded on filetype dedo_download and on shortcodes using the icons
 same filetypes will also be uses when using dirlist shortcode from foldergallery/slider mod plugin
 (the will be only loaded when used too) 
