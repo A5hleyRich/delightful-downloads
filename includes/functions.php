@@ -66,9 +66,9 @@ function dedo_get_shortcode_styles() {
 					<div style="display:flex;width:100%">
 					<div style="display:inline-block;min-width:60px;width:60px">%icon%</div>
 					<div style="display:inline-block;width:100%;min-width:70%">
-					%adminedit%%permalink%<abbr>&nbsp; %datesymbol%</abbr><br>
-					<abbr>%category% %tags% &nbsp; %locked% %filename% &nbsp; 
-					%filesize% &nbsp; %downloadtime% &nbsp; %count%</abbr>
+					%adminedit%%permalink% &nbsp; %datesymbol%<br>
+					%category% %tags% &nbsp; %locked% %filename% &nbsp; 
+					%filesize% &nbsp; %downloadtime% &nbsp; %count% 
 					<h6 class="btn" style="margin: .2em 0 .2em 0"><a href="%url%" title="'.__( 'download file', 'delightful-downloads' ).'" rel="nofollow">%title%</a></h6>
 					<div>%description%</div></div>%thumb%</div></blockquote>'
 	 	),
@@ -77,7 +77,7 @@ function dedo_get_shortcode_styles() {
 	 		'format'		=> '<blockquote class="%class%" style="display:flex;width:100%;padding:4px;border-radius:3px">
 					<div style="display:inline-block;min-width:60px;width:60px">%icon%</div>
 					<div style="display:inline-block;width:100%;min-width:70%">
-					%adminedit% &nbsp; %date%<abbr><br>%category%  %tags% &nbsp; %locked% %filename% &nbsp; %filesize% &nbsp; %downloadtime% &nbsp; %count%</abbr>
+					%adminedit% &nbsp; %date%<br>%locked% %filename% &nbsp; %filesize% &nbsp; %downloadtime% &nbsp; %count%
 					<h6 class="btn" style="margin: .2em 0 .2em 0"><a href="%url%" title="'.__( 'download file', 'delightful-downloads' ).'" rel="nofollow">
 					'.__( 'download file', 'delightful-downloads' ).'</a></h6></div></blockquote>'
 	 	),
@@ -182,16 +182,16 @@ function dedo_get_shortcode_lists() {
 					<div style="display:inline-block;min-width:60px;width:60px">%icon%</div>
 					<div style="display:inline-block;width:100%;min-width:70%"><a class="headline" href="%url%" title="'.__( 'download file', 'delightful-downloads' ).'" rel="nofollow">
 					%title%</a><br>%adminedit%
-					%permalink% &nbsp;%locked% &nbsp;<abbr>%category% %tags% &nbsp;
-					%filesize%</abbr></div></div>'
+					%permalink% &nbsp;%locked% &nbsp;%category% %tags% &nbsp;
+					%filesize%</div></div>'
 	 	),
 	 	'icon_title_ext_filesize_count_datesymbol'=> array(
 	 		'name'				=> __( 'Title/Icon/Category/File size/Count/Dateago)', 'delightful-downloads' ),
 	 		'format'			=> '<div style="display:flex;width:100%">
 					<div style="display:inline-block;min-width:60px;width:60px">%icon%</div>
 					<div style="display:inline-block;width:100%;min-width:70%;vertical-align:top;line-height:1.2em"><a class="headline" style="display:block;max-width:98vw;white-space:nowrap;overflow:hidden" href="%url%" title="'.__( 'download file', 'delightful-downloads' ).'" rel="nofollow">
-					%title%</a><abbr>%adminedit%
-					%permalink% &nbsp; %locked% &nbsp; </abbr>%dateago% &nbsp;
+					%title%</a> %adminedit%
+					%permalink% &nbsp; %locked% &nbsp; %dateago% &nbsp;
 					%filesize% &nbsp; %count%<br><abbr>%category% %tags%</abbr></div></div>'
 	 	),
 	 	'infoboxlist'=> array(
