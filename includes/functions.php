@@ -62,7 +62,7 @@ function dedo_get_shortcode_styles() {
 	$styles = array(
 	 	'infobox'		=> array(
 	 		'name'			=> __( 'Infobox mit Icon, Rahmen und Details', 'delightful-downloads' ),
-	 		'format'		=> '<blockquote class="%class%" style="display:flex;width:100%;padding:4px;border-radius:3px">
+	 		'format'		=> '<blockquote class="%class% blockleer" style="display:flex;width:100%;padding:4px;border-radius:3px">
 					<div style="display:flex;width:100%">
 					<div style="display:inline-block;min-width:60px;width:60px">%icon%</div>
 					<div style="display:inline-block;width:100%;min-width:70%">
@@ -74,7 +74,7 @@ function dedo_get_shortcode_styles() {
 	 	),
 	 	'singlepost'		=> array(
 	 		'name'			=> __( 'Infobox mit Icon, Rahmen für Post Archive', 'delightful-downloads' ),
-	 		'format'		=> '<blockquote class="%class%" style="display:flex;width:100%;padding:4px;border-radius:3px">
+	 		'format'		=> '<blockquote class="%class% blockleer" style="display:flex;width:100%;padding:4px;border-radius:3px">
 					<div style="display:inline-block;min-width:60px;width:60px">%icon%</div>
 					<div style="display:inline-block;width:100%;min-width:70%">
 					%adminedit% &nbsp; %date%<br>%locked% %filename% &nbsp; %filesize% &nbsp; %downloadtime% &nbsp; %count%
