@@ -277,7 +277,7 @@ function download_times($filesize) {
  	}
  	// permalink single cpost
  	if ( strpos( $string, '%permalink%' ) !== false ) {
-		$value = ' <a href="'.get_the_permalink($id).'"><i title="'.__('read more').'" class="fa fa-search-plus"></i></a>';
+		$value = ' <a href="'.get_the_permalink($id).'"><i title="'.__('read more','delightful-downloads').'" class="fa fa-search-plus"></i></a>';
  		$string = str_replace( '%permalink%', $value, $string );
  	}
  	// beschreibung
