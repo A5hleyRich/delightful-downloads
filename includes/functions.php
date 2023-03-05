@@ -189,10 +189,11 @@ function dedo_get_shortcode_lists() {
 	 		'name'				=> __( 'Title/Icon/Category/File size/Count/Dateago)', 'delightful-downloads' ),
 	 		'format'			=> '<div style="display:flex;width:100%">
 					<div style="display:inline-block;min-width:60px;width:60px">%icon%</div>
-					<div style="display:inline-block;width:100%;min-width:70%;vertical-align:top;line-height:1.2em"><a class="headline" style="display:block;max-width:98vw;white-space:nowrap;overflow:hidden" href="%url%" title="'.__( 'download file', 'delightful-downloads' ).'" rel="nofollow">
-					%title%</a> %adminedit%
+					<div style="display:inline-block;width:100%;min-width:70%;vertical-align:top;line-height:1.35em"><a class="headline" style="display:block;max-width:98vw;white-space:nowrap;overflow:hidden" href="%url%" title="'.__( 'download file', 'delightful-downloads' ).'" rel="nofollow">
+					%title%</a>
+					<div style="background-color:#ffffff55">%adminedit%
 					%permalink% &nbsp; %locked% &nbsp; %dateago% &nbsp;
-					%filesize% &nbsp; %count%<br><abbr>%category% %tags%</abbr></div></div>'
+					%filesize% &nbsp; %count%<br><abbr>%category% %tags%</abbr></div></div></div>'
 	 	),
 	 	'infoboxlist'=> array(
 	 		'name'				=> __( 'Infoboxliste (Icon/Date/Extension/Filesize/count/Thumb/descript)', 'delightful-downloads' ),
