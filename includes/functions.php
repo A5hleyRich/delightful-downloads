@@ -127,10 +127,6 @@ function dedo_get_shortcode_buttons() {
 			'name'		=> __( 'Green', 'delightful-downloads' ),
 			'class'		=> 'button-green'
 		),
-		'purple'	=> array(
-			'name'		=> __( 'Purple', 'delightful-downloads' ),
-			'class'		=> 'button-purple'
-		),
 		'red'		=> array(
 			'name'		=> __( 'Red', 'delightful-downloads' ),
 			'class'		=> 'button-red'
@@ -191,9 +187,9 @@ function dedo_get_shortcode_lists() {
 					<div style="display:inline-block;min-width:60px;width:60px">%icon%</div>
 					<div style="display:inline-block;width:100%;min-width:70%;vertical-align:top;line-height:1.35em"><a class="headline" style="display:block;max-width:98vw;white-space:nowrap;overflow:hidden" href="%url%" title="'.__( 'download file', 'delightful-downloads' ).'" rel="nofollow">
 					%title%</a>
-					<div style="background-color:#ffffff55">%adminedit%
+					<div style="background-color:#ffffff38"><div class="iconfade">%adminedit%
 					%permalink% &nbsp; %locked% &nbsp; %dateago% &nbsp;
-					%filesize% &nbsp; %count%<br><abbr>%category% %tags%</abbr></div></div></div>'
+					%filesize% &nbsp; %count%</div><abbr>%category% %tags%</abbr></div></div></div>'
 	 	),
 	 	'infoboxlist'=> array(
 	 		'name'				=> __( 'Infoboxliste (Icon/Date/Extension/Filesize/count/Thumb/descript)', 'delightful-downloads' ),
@@ -456,7 +452,7 @@ function download_times($filesize) {
   	// file icon
  	if ( strpos( $string, '%icon%' ) !== false ) {
  		$ffile = ( get_post_meta( $id, '_dedo_file_url', true ) );
-		$value = dedo_get_file_icon( $ffile );
+		$value = ' <a href="'.get_the_permalink($id).'">'.dedo_get_file_icon( $ffile ).'</a>';
  		$string = str_replace( '%icon%', $value, $string );
  	}
  	// file mime
