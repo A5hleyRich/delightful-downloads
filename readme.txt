@@ -3,8 +3,8 @@ Contributors: A5hleyRich, Sven Bolte, others (best of forks)
 Tags: download, manager, downloads, monitor, shortcode, delightful downloads, file, counter, tracking, infobox, fixed filetree,ipflag, chartscodes
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
-Version: 9.9.70
-Stable tag: 9.9.70
+Version: 9.9.71
+Stable tag: 9.9.71
 Requires at least: 5.1
 Tested up to: 6.1.1
 Requires PHP: 8.0
@@ -506,10 +506,11 @@ Please refer to the [documentation] in this readme.txt.
 
 ==================== Changelog ==========================================================================
 
-= 9.9.66 =
+= 9.9.71 =
 fontawesome 4.7 will be loaded now if your them is not penguin mod. showing type items then
 filetype icon is clickable now. calls the custom post containing the download.
 still click on the title to download directly
+removed legacy browser support for fontawesome47
 
 = 9.9.66 =
 list type styling improved to set meta icons with translucent background
