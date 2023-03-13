@@ -62,24 +62,24 @@ function dedo_get_shortcode_styles() {
 	$styles = array(
 	 	'infobox'		=> array(
 	 		'name'			=> __( 'Infobox mit Icon, Rahmen und Details', 'delightful-downloads' ),
-	 		'format'		=> '<blockquote class="%class% blockleer" style="display:flex;width:100%;padding:4px;border-radius:3px">
+	 		'format'		=> '<blockquote class="%class% blockleer" style="font-size:inherit;display:flex;width:100%;padding:4px;border-radius:3px">
 					<div style="display:flex;width:100%">
 					<div style="display:inline-block;min-width:60px;width:60px">%icon%</div>
 					<div style="display:inline-block;width:100%;min-width:70%">
-					%adminedit%%permalink% &nbsp; %datesymbol%<br>
-					%category% %tags% &nbsp; %locked% %filename% &nbsp; 
-					%filesize% &nbsp; %downloadtime% &nbsp; %count% 
+					%adminedit%%permalink%&nbsp;%datesymbol%  
+					%filesize%&nbsp;%downloadtime%&nbsp;%count% %locked% %filename%<br>
+					%category% %tags% 
 					<h6 class="btn" style="margin: .2em 0 .2em 0"><a href="%url%" title="'.__( 'download file', 'delightful-downloads' ).'" rel="nofollow">%title%</a></h6>
 					<div>%description%</div></div>%thumb%</div></blockquote>'
 	 	),
 	 	'singlepost'		=> array(
 	 		'name'			=> __( 'Infobox mit Icon, Rahmen für Post Archive', 'delightful-downloads' ),
-	 		'format'		=> '<blockquote class="%class% blockleer" style="display:flex;width:100%;padding:4px;border-radius:3px">
+	 		'format'		=> '<blockquote class="%class% blockleer" style="font-size:inherit;display:flex;width:100%;padding:4px;border-radius:3px">
 					<div style="display:inline-block;min-width:60px;width:60px">%icon%</div>
 					<div style="display:inline-block;width:100%;min-width:70%">
-					%adminedit% &nbsp; %date%<br>%locked% %filename% &nbsp; %filesize% &nbsp; %downloadtime% &nbsp; %count%
+					%adminedit% &nbsp;%date%&nbsp;%filesize%&nbsp;%downloadtime%&nbsp;%count%
 					<h6 class="btn" style="margin: .2em 0 .2em 0"><a href="%url%" title="'.__( 'download file', 'delightful-downloads' ).'" rel="nofollow">
-					'.__( 'download file', 'delightful-downloads' ).'</a></h6></div></blockquote>'
+					'.__( 'download file', 'delightful-downloads' ).' %locked% %filename%</a></h6></div></blockquote>'
 	 	),
 	 	'button'		=> array(
 	 		'name'			=> __( 'Button', 'delightful-downloads' ),
@@ -188,8 +188,7 @@ function dedo_get_shortcode_lists() {
 					<div style="display:inline-block;width:100%;min-width:70%;vertical-align:top;line-height:1.35em"><a class="headline" style="display:block;max-width:98vw;white-space:nowrap;overflow:hidden" href="%url%" title="'.__( 'download file', 'delightful-downloads' ).'" rel="nofollow">
 					%title%</a>
 					<div class="iconfade" style="background-color:#ffffff55">%adminedit%
-					%permalink% &nbsp; %locked% &nbsp; %dateago% &nbsp;
-					%filesize% &nbsp; %count%</div><abbr>%category% %tags%</abbr></div></div>'
+					%permalink% &nbsp; %locked% &nbsp;%dateago%&nbsp;%filesize%&nbsp;%count%</div><abbr>%category% %tags%</abbr></div></div>'
 	 	),
 	 	'infoboxlist'=> array(
 	 		'name'				=> __( 'Infoboxliste (Icon/Date/Extension/Filesize/count/Thumb/descript)', 'delightful-downloads' ),
@@ -197,9 +196,8 @@ function dedo_get_shortcode_lists() {
 					<div style="display:flex;width:100%">
 					<div style="display:inline-block;min-width:60px;width:60px">%icon%</div>
 					<div style="display:inline-block;width:100%;min-width:70%">
-					<div class="iconfade" style="background-color:#ffffff55">%adminedit%%permalink% &nbsp; %datesymbol% &nbsp;  
-					<abbr>%filesize% &nbsp; %count% 
-					 %downloadtime% &nbsp; %locked% %filename%</div>%category% %tags%</abbr>
+					<div class="iconfade" style="background-color:#ffffff55">%adminedit%%permalink% &nbsp;%datesymbol% 
+					%filesize%&nbsp;%count% %downloadtime% %locked% %filename%</div><abbr>%category% %tags%</abbr>
 					<h6 class="btn" style="margin: .2em 0 .2em 0"><a href="%url%" title="'.__( 'download file', 'delightful-downloads' ).'" rel="nofollow">%title%</a></h6>
 					<div>%description%</div></div>%thumb%</div>'
 	 	)
@@ -218,7 +216,7 @@ function download_times($filesize) {
 		$h = floor(($time16%86400)/3600);
 		$outp[] = ($h>0 ? $h.'h ' :'').($m>0 ? $m.'m ' :'').$s.'s@'.$value.'MBit';
 	}	
-	if ($s > 0) $dtime='<a title="'.implode("\n", $outp).'"><i class="fa fa-clock-o"></i> '.$outp[6].'</a>'; else $dtime='';
+	if ($s > 0) $dtime='<a class="newlabel white" title="'.implode("\n", $outp).'"><i class="fa fa-clock-o"></i> '.$outp[6].'</a>'; else $dtime='';
 	return $dtime;
 }
 
@@ -311,12 +309,13 @@ function download_times($filesize) {
 		} else {
 			$newormod = 'fa fa-calendar-o';
 		}
-		$value = '<i class="' . $newormod . '"></i><span title="' . $erstelltitle . '" class="newlabel" style="background-color:' . $newcolor . '">';
-			if ($diffmod > 0) {
-				$value .= ' ' . get_the_modified_time(get_option('date_format').' '.get_option('time_format'), $id) . ' ' . $modago;
-			} else {
-				$value .= ' ' . get_post_time(get_option('date_format').' '.get_option('time_format'), false, $id, true) . ' ' . $postago;
-			}
+		$value = '<span title="' . $erstelltitle . '" class="newlabel" style="background-color:' . $newcolor . '">';
+		$value .= '<i class="' . $newormod . '" style="vertical-align:top;font-size:1.2em;margin:-2px 3px 0 0"></i>';
+		if ($diffmod > 0) {
+			$value .= ' ' . get_the_modified_time(get_option('date_format').' '.get_option('time_format'), $id) . ' ' . $modago;
+		} else {
+			$value .= ' ' . get_post_time(get_option('date_format').' '.get_option('time_format'), false, $id, true) . ' ' . $postago;
+		}
 		$value .= '</span>';
 		$string = str_replace( '%datesymbol%', $value, $string );
  	}
@@ -344,7 +343,8 @@ function download_times($filesize) {
 		} else {
 			$newormod = 'fa fa-calendar-o';
 		}
-		$value = '<i class="' . $newormod . '"></i><span title="' . $erstelltitle . '" class="newlabel" style="background-color:' . $newcolor . '">';
+		$value = '<span title="' . $erstelltitle . '" class="newlabel" style="background-color:' . $newcolor . '">';
+		$value .= '<i class="' . $newormod . '" style="vertical-align:top;font-size:1.2em;margin:-2px 3px 0 0"></i>';
 			if ($diffmod > 0) {
 				$value .= ' ' . $modago;
 			} else {
@@ -377,9 +377,10 @@ function download_times($filesize) {
 		} else {
 			$newormod = 'fa fa-calendar-o';
 		}
-		$value = '<i class="fa fa-calendar-o"></i><span title="' . $erstelltitle . '" class="newlabel white">';
+		$value = '<span title="' . $erstelltitle . '" class="newlabel white"><i class="fa fa-calendar-o"  style="vertical-align:top;font-size:1.2em;margin-right:3px"></i>';
 		$value .= get_post_time(get_option('date_format').' '.get_option('time_format'), false, $id, true) . ' ' . $postago;
-		$value .= '</span> &nbsp; <i class="fa fa-calendar-plus-o"></i><span title="' . $erstelltitle . '" class="newlabel" style="background-color:' . $newcolor . '">';
+		$value .= '</span>&nbsp;<span title="' . $erstelltitle . '" class="newlabel" style="background-color:' . $newcolor . '">';
+		$value .='<i class="fa fa-calendar-plus-o" style="vertical-align:top;font-size:1.2em;margin-right:3px"></i>';
 		$value .= get_the_modified_time(get_option('date_format').' '.get_option('time_format'), $id) . ' ' . $modago;
 		$value .= '</span>';
 		$string = str_replace( '%date%', $value, $string );
@@ -408,7 +409,8 @@ function download_times($filesize) {
 		} else {
 			$newormod = 'fa fa-calendar-o';
 		}
-		$value = '<i class="' . $newormod . '"></i><span title="' . $erstelltitle . '" class="newlabel" style="background-color:' . $newcolor . '">';
+		$value = '<span title="' . $erstelltitle . '" class="newlabel" style="background-color:' . $newcolor . '">';
+		$value .= '<i class="' . $newormod . '" style="vertical-align:top;font-size:1.2em;margin-right:3px"></i>';
 		$value .= get_the_modified_time(get_option('date_format').' '.get_option('time_format'), $id);
 		$value .= '</span>';
 		$string = str_replace( '%shortdate%', $value, $string );
@@ -416,7 +418,7 @@ function download_times($filesize) {
  	// filesize
  	if ( strpos( $string, '%filesize%' ) !== false ) {
  		if (!empty( get_post_meta( $id, '_dedo_file_size', true ) )) {
-			$value = '<span style="white-space:nowrap"><i title="filesize" class="fa fa-expand"></i><span class="newlabel white">'.size_format( get_post_meta( $id, '_dedo_file_size', true ), 0 ).'</span></span>';
+			$value = '<span class="newlabel white"><i title="filesize" class="fa fa-expand" style="font-size:1.1em;margin-right:3px"></i>'.size_format( get_post_meta( $id, '_dedo_file_size', true ), 0 ).'</span>';
 		} else { $value='';  }	
 		$string = str_replace( '%filesize%', $value, $string );
  	}
@@ -427,7 +429,7 @@ function download_times($filesize) {
  	}
  	// downloads (count)
  	if ( strpos( $string, '%count%' ) !== false ) {
- 		$value = '<span style="white-space:nowrap"><i title="Downloadcounter" class="fa fa-download"></i><span class="newlabel white">' . number_format_i18n( get_post_meta( $id, '_dedo_file_count', true ) ).'</span></span>';
+ 		$value = '<span title="Downloadcounter" class="newlabel white"><i class="fa fa-download" style="font-size:1.1em;margin-right:3px"></i>' . number_format_i18n( get_post_meta( $id, '_dedo_file_count', true ) ).'</span>';
  		$string = str_replace( '%count%', $value, $string );
  	}
  	// file name
