@@ -66,8 +66,8 @@ function dedo_get_shortcode_styles() {
 					<div style="display:flex;width:100%">
 					<div style="display:inline-block;min-width:60px;width:60px">%icon%</div>
 					<div style="display:inline-block;width:100%;min-width:70%">
-					%adminedit%%permalink%&nbsp;%datesymbol%  
-					%filesize%&nbsp;%downloadtime%&nbsp;%count% %locked% %filename%<br>
+					%locked% &nbsp; %adminedit%%permalink%&nbsp;%datesymbol%  
+					%filesize% %downloadtime% %count% &nbsp; %filename%<br>
 					%category% %tags% 
 					<h6 class="btn" style="margin: .2em 0 .2em 0"><a href="%url%" title="'.__( 'download file', 'delightful-downloads' ).'" rel="nofollow">%title%</a></h6>
 					<div>%description%</div></div>%thumb%</div></blockquote>'
@@ -77,9 +77,10 @@ function dedo_get_shortcode_styles() {
 	 		'format'		=> '<blockquote class="%class% blockleer" style="font-size:inherit;display:flex;width:100%;padding:4px;border-radius:3px">
 					<div style="display:inline-block;min-width:60px;width:60px">%icon%</div>
 					<div style="display:inline-block;width:100%;min-width:70%">
-					%adminedit% &nbsp;%date%&nbsp;%filesize%&nbsp;%downloadtime%&nbsp;%count%
+					<div class="iconfade" style="background-color:#ffffff55">
+					%locked% &nbsp; %adminedit%&nbsp;%filename%&nbsp;%filesize%&nbsp;%downloadtime%&nbsp;%count%</div>
 					<h6 class="btn" style="margin: .2em 0 .2em 0"><a href="%url%" title="'.__( 'download file', 'delightful-downloads' ).'" rel="nofollow">
-					'.__( 'download file', 'delightful-downloads' ).' %locked% %filename%</a></h6></div></blockquote>'
+					'.__( 'download file', 'delightful-downloads' ).'</a></h6></div></blockquote>'
 	 	),
 	 	'button'		=> array(
 	 		'name'			=> __( 'Button', 'delightful-downloads' ),
@@ -187,8 +188,8 @@ function dedo_get_shortcode_lists() {
 					<div style="display:inline-block;min-width:60px;width:60px">%icon%</div>
 					<div style="display:inline-block;width:100%;min-width:70%;vertical-align:top;line-height:1.35em"><a class="headline" style="display:block;max-width:98vw;white-space:nowrap;overflow:hidden" href="%url%" title="'.__( 'download file', 'delightful-downloads' ).'" rel="nofollow">
 					%title%</a>
-					<div class="iconfade" style="background-color:#ffffff55">%adminedit%
-					%permalink% &nbsp; %locked% &nbsp;%dateago%&nbsp;%filesize%&nbsp;%count%</div><abbr>%category% %tags%</abbr></div></div>'
+					<div class="iconfade" style="background-color:#ffffff55">%locked% &nbsp; %adminedit%%permalink%
+					&nbsp; %dateago%&nbsp;%filesize%&nbsp;%count%</div><abbr>%category% %tags%</abbr></div></div>'
 	 	),
 	 	'infoboxlist'=> array(
 	 		'name'				=> __( 'Infoboxliste (Icon/Date/Extension/Filesize/count/Thumb/descript)', 'delightful-downloads' ),
@@ -196,8 +197,8 @@ function dedo_get_shortcode_lists() {
 					<div style="display:flex;width:100%">
 					<div style="display:inline-block;min-width:60px;width:60px">%icon%</div>
 					<div style="display:inline-block;width:100%;min-width:70%">
-					<div class="iconfade" style="background-color:#ffffff55">%adminedit%%permalink% &nbsp;%datesymbol% 
-					%filesize%&nbsp;%count% %downloadtime% %locked% %filename%</div><abbr>%category% %tags%</abbr>
+					<div class="iconfade" style="background-color:#ffffff55">%locked% &nbsp; %adminedit%%permalink% &nbsp;%datesymbol%
+					<br> &nbsp; %filename% &nbsp; %filesize%&nbsp;%count% %downloadtime%</div><abbr>%category% %tags%</abbr>
 					<h6 class="btn" style="margin: .2em 0 .2em 0"><a href="%url%" title="'.__( 'download file', 'delightful-downloads' ).'" rel="nofollow">%title%</a></h6>
 					<div>%description%</div></div>%thumb%</div>'
 	 	)
@@ -434,7 +435,7 @@ function download_times($filesize) {
  	}
  	// file name
  	if ( strpos( $string, '%filename%' ) !== false ) {
- 		$value = '<i title="filename" class="fa fa-file-o"></i> ' . dedo_get_file_name( get_post_meta( $id, '_dedo_file_url', true ) );
+ 		$value = '<span title="Dateiname" class="newlabel white"><i class="fa fa-file-o" style="font-size:1.1em;margin-right:3px"></i> ' . dedo_get_file_name( get_post_meta( $id, '_dedo_file_url', true ) ).'</span>';
  		$string = str_replace( '%filename%', $value, $string );
  	}
  	// protected file
