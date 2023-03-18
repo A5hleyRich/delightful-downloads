@@ -6,15 +6,15 @@ color:#fff;
 display:inline-block;
 font-style:normal;
 font-weight:700;
-height:60px;
+height:55px;
 position:relative;
 text-align:center;
 text-transform:uppercase;
-width:48px
+width:45px
 }
 
 .ftyp::before {
-border-color:transparent transparent rgba(255,255,255,.55) rgba(255,255,255,.55);
+border-color:#00000000 #00000000 #ffffff88 #ffffff88;
 border-style:solid;
 border-width:6px;
 content:"";
@@ -30,13 +30,17 @@ width:0
 bottom:0;
 content:"?";
 display:block;
-font-size:1em;
+font-size:.85em;
 left:0;
 overflow:hidden;
 padding:2px;
 position:absolute;
 white-space:nowrap;
 width:100%
+}
+
+.ftyp:hover {
+filter:brightness(0.8)
 }
 
 .ftyp-zip,.ftyp-rar,.ftyp-7z {
