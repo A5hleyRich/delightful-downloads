@@ -286,7 +286,7 @@ function download_times($filesize) {
  	}
 	// post thumbnail - Beitragsbild mit img-zoom on hover
  	if ( strpos( $string, '%thumb%' ) !== false ) {
- 		$value = '<div style="display:inline-block;max-width:200px;border:1px none"><img class="img-zoom" style="transform-origin: center right" src="' . get_the_post_thumbnail_url( $id ) . '"></div>';
+ 		$value = '<div style="padding-top:2em;display:inline-block;max-width:200px;border:1px none"><img class="img-zoom" style="min-height:100px;transform-origin: center right" src="' . get_the_post_thumbnail_url( $id ) . '"></div>';
  		$string = str_replace( '%thumb%', $value, $string );
  	}
 	// datesymbol
