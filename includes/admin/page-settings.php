@@ -77,7 +77,7 @@ function dedo_render_page_settings() {
 	$registered_tabs = dedo_get_tabs();
 
 	// Get current tab
-	$active_tab = isset( $_GET['tab'] ) ? $_GET['tab'] : 'general'; 
+	$active_tab = isset( $_GET['tab'] ) ? esc_html($_GET['tab']) : 'general'; 
 	?>
 
 	<div class="wrap">
