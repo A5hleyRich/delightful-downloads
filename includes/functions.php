@@ -184,10 +184,6 @@ function dedo_get_shortcode_buttons() {
 			'name'		=> __( 'Black', 'delightful-downloads' ),
 			'class'		=> 'button-black'
 		),
-		'blue'		=> array(
-			'name'		=> __( 'Blue', 'delightful-downloads' ),
-			'class'		=> 'button-blue'
-		),
 		'grey'		=> array(
 			'name'		=> __( 'Grey', 'delightful-downloads' ),
 			'class'		=> 'button-grey'
@@ -200,10 +196,6 @@ function dedo_get_shortcode_buttons() {
 			'name'		=> __( 'Red', 'delightful-downloads' ),
 			'class'		=> 'button-red'
 		),
-		'yellow'	=> array(
-			'name'		=> __( 'Yellow', 'delightful-downloads' ),
-			'class'		=> 'button-yellow'
-		)
 	);
 	return apply_filters( 'dedo_get_buttons', $buttons );
 }

@@ -3,8 +3,8 @@ Contributors: A5hleyRich, Sven Bolte, others (best of forks)
 Tags: download, manager, downloads, monitor, shortcode, delightful downloads, file, counter, tracking, infobox, fixed filetree,ipflag, chartscodes
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
-Version: 9.9.72
-Stable tag: 9.9.72
+Version: 9.9.73
+Stable tag: 9.9.73
 Requires at least: 5.1
 Tested up to: 6.2
 Requires PHP: 8.0
@@ -505,6 +505,13 @@ Please refer to the [documentation] in this readme.txt.
 
 
 ==================== Changelog ==========================================================================
+
+= 9.9.73 =
+Buttons styles optimized for css3 and modernized, removed unused color buttons,
+black,grey,red,green,accent can be used now. accent gets the theme color.
+wp6.2 compatibility checked
+meta-icons can be used as a shortcode now when penguin-mod theme active
+update penguin-mod template for single display of post type
 
 = 9.9.72 =
 Styles and shortcodes optimized

@@ -8,8 +8,10 @@ get_header();
 <div id="content-area">
 	<div id="primary">
     <main id="main" class="site-main" role="main">
+	<div id="posts-container">
 		<?php
-		while ( have_posts() ) : the_post(); // Start the loop.	?>
+		 while ( have_posts() ) {  // Start the loop.
+				the_post(); ?>
 			<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 			<header class="entry-header">
 				<?php
@@ -28,17 +30,23 @@ get_header();
 			<div class="entry-content">
 				<?php
 				the_content();
-				echo '<br><br>'.do_shortcode('[ddownload id="'.get_the_ID().'" style="singlepost"]');
+				echo '<div style="margin-top:2em">'.do_shortcode('[ddownload id="'.get_the_ID().'" style="singlepost"]').'</div>';
 				?>
             </div><!-- .entry-content -->
 			<footer class="entry-footer">
 			</footer><!-- .entry-footer -->
           </article>
-		  <?php // If comments are open or we have at least one comment, load up the comment template.
+		  <?php
+			penguin_post_navigation();
+		  // If comments are open or we have at least one comment, load up the comment template.
 		  if ( comments_open() || get_comments_number() ) comments_template();
 		  setPostViews(get_the_ID());
-		  // End the loop.
-        endwhile; ?>
+		 } // End the loop.
+		 ?>
+	</div><!-- #posts-container -->
+	<div class="footer-sidebar">
+	<?php dynamic_sidebar( 'sidebar-2' );  ?>
+	</div>
     </main><!-- .site-main -->
 	</div><!-- #primary -->
 <?php get_sidebar(); ?>
