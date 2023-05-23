@@ -79,7 +79,7 @@ function dedo_get_shortcode_styles() {
 					<div style="display:inline-block;min-width:60px;width:60px">%icon%</div>
 					<div style="display:inline-block;width:100%;min-width:70%">
 					<div class="iconfade" style="background-color:#ffffff55">
-					%locked% &nbsp; %adminedit%&nbsp;%filename%&nbsp;%filesize%&nbsp;%downloadtime%&nbsp;%count%</div>
+					%locked% &nbsp; %adminedit%&nbsp;%filename%%filesize%%filedate%%downloadtime%&nbsp;%count%</div>
 					<h6 class="btn" style="margin: .2em 0 .2em 0"><a href="%url%" title="'.__( 'download file', 'delightful-downloads' ).'" rel="nofollow">
 					'.__( 'download file', 'delightful-downloads' ).'</a></h6></div></blockquote>'
 	 	),
@@ -225,7 +225,7 @@ function download_times($filesize) {
 			$datetime = new DateTime('now');
 			$hashwert = md5( intval($id) + intval($datetime->format('Ymd')) );
 			if (is_singular() && in_the_loop() ) {
-				$oneday = '<input type="text" title="Copy '.$datetime->format('d.m.Y').' Onedaypass für heute&#10;'.$hashwert.'" class="copy-to-clipboard" style="direction:rtl;cursor:pointer;font-size:0.7em;width:80px;height:20px" value="' . get_site_url() . '?sdownload=' . esc_attr( $id ) .  '&code='. $hashwert . '" readonly> &nbsp; ';
+				$oneday = '<input type="text" title="Copy '.$datetime->format('d.m.Y').' Onedaypass für heute&#10;'.$hashwert.'" class="copy-to-clipboard" style="direction:rtl;cursor:pointer;font-size:0.7em;width:80px;height:17px;margin-top:0" value="' . get_site_url() . '?sdownload=' . esc_attr( $id ) .  '&code='. $hashwert . '" readonly> &nbsp;';
 				$oneday .= '<p class="description" style="display: none;">' . __( 'One day pass copied to clipboard.', 'delightful-downloads' ) . '</p>';
 			} else $oneday='';
 			$string = str_replace( '%adminedit%', ' <a href="'. get_home_url() . '/wp-admin/post.php?post='.$id.'&action=edit"><i title="'. __( 'edit this download', 'delightful-downloads' ) . '" class="fa fa-pencil"></i></a> &nbsp; '.$oneday, $string );
@@ -279,6 +279,15 @@ function download_times($filesize) {
  	if ( strpos( $string, '%thumb%' ) !== false ) {
  		$value = '<div style="padding-top:2em;display:inline-block;max-width:200px;border:1px none"><img class="img-zoom" style="min-height:100px;transform-origin: center right" src="' . get_the_post_thumbnail_url( $id ) . '"></div>';
  		$string = str_replace( '%thumb%', $value, $string );
+ 	}
+ 	// file-date created modified
+ 	if ( strpos( $string, '%filedate%' ) !== false ) {
+ 		if (!empty( get_post_meta( $id, '_dedo_file_url', true ) )) {
+			$fpath = dedo_get_abs_path(get_post_meta( $id, '_dedo_file_url', true));
+			$filecd = wp_date( get_option( 'date_format' ).' '.get_option( 'time_format' ), filemtime($fpath));
+			if (!empty($filecd)) $value = '<span class="newlabel white"><i title="'.__('file upload date','delightful-downloads').'" class="fa fa-calendar-check-o" style="font-size:1.1em;margin-right:3px"></i>'.$filecd.'</span>'; else $value="";
+		} else { $value='';  }	
+		$string = str_replace( '%filedate%', $value, $string );
  	}
 	// datesymbol
  	if ( strpos( $string, '%datesymbol%' ) !== false ) {

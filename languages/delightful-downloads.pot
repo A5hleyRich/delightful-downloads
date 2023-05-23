@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: delightful-downloads 1.6.1\n"
 "Report-Msgid-Bugs-To: hello@ashleyrich.com\n"
-"POT-Creation-Date: 2023-04-13 10:55+0000\n"
+"POT-Creation-Date: 2023-05-23 11:11+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -360,6 +360,10 @@ msgstr ""
 
 #: includes/post-types.php:64 includes/admin/media-button.php:105
 msgid "File Size"
+msgstr ""
+
+#: includes/functions.php:288
+msgid "file upload date"
 msgstr ""
 
 #: includes/admin/meta-boxes.php:282

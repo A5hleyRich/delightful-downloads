@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the Plugins - Delightful Downloads - Stable (latest release) package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2023-04-13 10:56+0000\n"
+"PO-Revision-Date: 2023-05-23 11:12+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -386,6 +386,10 @@ msgstr "Datei nicht vorhanden"
 #: includes/post-types.php:64 includes/admin/media-button.php:105
 msgid "File Size"
 msgstr "Dateigröße"
+
+#: includes/functions.php:288
+msgid "file upload date"
+msgstr "Upload-Datum aus Dateisystem"
 
 #: includes/admin/meta-boxes.php:282
 msgid "File URL or path..."
