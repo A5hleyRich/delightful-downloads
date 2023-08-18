@@ -6,7 +6,7 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Version: 9.9.74
 Stable tag: 9.9.74
 Requires at least: 5.1
-Tested up to: 6.2.2
+Tested up to: 6.3
 Requires PHP: 8.0
 
 A super-awesome downloads manager and statistics tracker for WordPress.
