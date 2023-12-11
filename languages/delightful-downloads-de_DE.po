@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the Plugins - Delightful Downloads - Stable (latest release) package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2023-12-11 09:36+0000\n"
+"PO-Revision-Date: 2023-12-11 16:32+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -109,7 +109,7 @@ msgstr "Automatisch Löschen"
 msgid "Automatically delete old logs."
 msgstr "Alte Logs automatisch löschen."
 
-#: includes/functions.php:197
+#: includes/functions.php:198
 msgid "Black"
 msgstr "Schwarz"
 
@@ -246,7 +246,7 @@ msgstr "Anzahl Downloads"
 msgid "download count"
 msgstr "Downloadzähler"
 
-#: includes/functions.php:73 includes/functions.php:177
+#: includes/functions.php:73 includes/functions.php:178
 msgid "download details"
 msgstr "Download Details"
 
@@ -256,8 +256,8 @@ msgstr "Der Download-Entwurf wurde aktualisiert. "
 
 #: includes/functions.php:75 includes/functions.php:83
 #: includes/functions.php:84 includes/functions.php:153
-#: includes/functions.php:163 includes/functions.php:179
-#: includes/functions.php:179
+#: includes/functions.php:163 includes/functions.php:180
+#: includes/functions.php:180
 msgid "download file"
 msgstr "Datei herunterladen"
 
@@ -350,7 +350,7 @@ msgstr "Download bearbeiten"
 msgid "Edit Tag"
 msgstr "Tags bearbeiten"
 
-#: includes/functions.php:245
+#: includes/functions.php:246
 msgid "edit this download"
 msgstr "Download bearbeiten"
 
@@ -408,7 +408,7 @@ msgstr "Dateigröße"
 msgid "file size"
 msgstr "Dateigröße"
 
-#: includes/functions.php:302
+#: includes/functions.php:303
 msgid "file upload date"
 msgstr "Upload-Datum aus Dateisystem"
 
@@ -419,6 +419,10 @@ msgstr "Datei URL oder Pfad..."
 #: includes/functions.php:87
 msgid "filename"
 msgstr "Dateiname"
+
+#: includes/shortcodes.php:296 includes/shortcodes.php:300
+msgid "files"
+msgstr "Datei(en)"
 
 #: includes/options.php:158
 msgid "Folder Protection"
@@ -437,11 +441,11 @@ msgstr "Global"
 msgid "Grace Period"
 msgstr "Ablauffrist"
 
-#: includes/functions.php:205
+#: includes/functions.php:206
 msgid "Green"
 msgstr "Grün"
 
-#: includes/functions.php:201
+#: includes/functions.php:202
 msgid "Grey"
 msgstr "Grau"
 
@@ -485,6 +489,10 @@ msgstr "Daten importieren"
 msgid "Import Settings"
 msgstr "Einstellungen importieren"
 
+#: includes/shortcodes.php:296
+msgid "in list"
+msgstr "In der Liste"
+
 #: includes/admin/meta-boxes.php:119
 msgid "Inaccessible File"
 msgstr "Dateizugriff nicht möglich"
@@ -498,7 +506,7 @@ msgstr "Infobox mit Icon, Rahmen für Post Archive"
 msgid "Infobox mit Icon, Rahmen und Details"
 msgstr "Infobox mit Icon, Rahmen und Details"
 
-#: includes/functions.php:169
+#: includes/functions.php:170
 #| msgid "Infoboxliste (Icon,Date,Extension,Filesize,count,Thumb,descript)"
 msgid "Infoboxliste (Icon/Date/Extension/Filesize/count/Thumb/descript)"
 msgstr ""
@@ -520,12 +528,12 @@ msgstr "Einfügen"
 msgid "Insert Download"
 msgstr "Download einfügen"
 
-#: includes/shortcodes.php:79
+#: includes/shortcodes.php:72
 msgid "Invalid button attribute."
 msgstr "Ungültiges Button-Attribut."
 
-#: includes/shortcodes.php:46 includes/shortcodes.php:344
-#: includes/shortcodes.php:396
+#: includes/shortcodes.php:45 includes/shortcodes.php:341
+#: includes/shortcodes.php:391
 msgid "Invalid download ID."
 msgstr "Ungültige-Download-ID."
 
@@ -533,15 +541,15 @@ msgstr "Ungültige-Download-ID."
 msgid "Invalid download."
 msgstr "Ungültiger Download."
 
-#: includes/shortcodes.php:183
+#: includes/shortcodes.php:176
 msgid "Invalid order attribute."
 msgstr "Ungültiges order-Attribut."
 
-#: includes/shortcodes.php:149
+#: includes/shortcodes.php:142
 msgid "Invalid orderby attribute."
 msgstr "Ungültiges orderby-Attribut."
 
-#: includes/shortcodes.php:191
+#: includes/shortcodes.php:184
 msgid "Invalid relation attribute."
 msgstr "Ungültiges relation-Attribut."
 
@@ -549,7 +557,7 @@ msgstr "Ungültiges relation-Attribut."
 msgid "Invalid settings file."
 msgstr "Ungültige Konfigurations-Datei. "
 
-#: includes/shortcodes.php:58 includes/shortcodes.php:262
+#: includes/shortcodes.php:57 includes/shortcodes.php:255
 msgid "Invalid style attribute."
 msgstr "Ungültiges Style-Attribut."
 
@@ -574,7 +582,7 @@ msgstr "Letzte 7 Tage"
 msgid "Licenses"
 msgstr "Lizenzen"
 
-#: includes/functions.php:229
+#: includes/functions.php:230
 msgid "light speed"
 msgstr "Lichtgeschwindigkeit"
 
@@ -673,7 +681,7 @@ msgstr "Keine Downloads gefunden"
 msgid "No downloads found in Trash"
 msgstr "Keine Downloads im Papierkorb gefunden"
 
-#: includes/shortcodes.php:316
+#: includes/shortcodes.php:313
 msgid "No downloads found."
 msgstr "Keine Downloads gefunden."
 
@@ -698,7 +706,7 @@ msgstr "Keine Stil-Definitionen registriert "
 msgid "Non-member"
 msgstr "Nicht angemeldet "
 
-#: includes/functions.php:243 includes/post-types.php:155
+#: includes/functions.php:244 includes/post-types.php:155
 msgid "One day pass copied to clipboard."
 msgstr "1-Tages-Download in die Zwischenablage kopiert."
 
@@ -779,7 +787,7 @@ msgstr "QuickLink in die Zwischenablage kopiert."
 msgid "really delete attached file from server?"
 msgstr "die Datei wirklich vom Server löschen?"
 
-#: includes/functions.php:209
+#: includes/functions.php:210
 msgid "Red"
 msgstr "Rot"
 
@@ -973,7 +981,7 @@ msgstr " \tVorhaltezeit (in Minuten) für Queries / Abfragen. "
 msgid "The URL for download links."
 msgstr "Die URL für Download-Links. "
 
-#: includes/functions.php:193
+#: includes/functions.php:194
 msgid "theme accent"
 msgstr "Akzentfarbe (vom Design)"
 
@@ -1036,11 +1044,11 @@ msgstr "Titel/Symbol/Kategorie/Dateigröße"
 msgid "Title/Icon/Category/File size/Count/Dateago)"
 msgstr "Titel/Symbol/Kategorie/Dateigröße/Anzahl/Datumsymbol (her)"
 
-#: includes/shortcodes.php:303 includes/admin/dashboard.php:79
+#: includes/admin/dashboard.php:79
 msgid "total files"
 msgstr "Anzahl Dateien"
 
-#: includes/shortcodes.php:304 includes/admin/dashboard.php:75
+#: includes/admin/dashboard.php:75
 msgid "total size"
 msgstr "Gesamtgröße"
 

@@ -4,7 +4,7 @@
  *
  * @package     Delightful Downloads
  * @subpackage  Includes/Shortcodes
- * @since       1.0
+ * @since       1.1
 */
 
 // Exit if accessed directly
@@ -35,7 +35,6 @@ function dedo_shortcode_ddownload( $atts ) {
 			'text'	=> $dedo_options['default_text'],
 			'style'	=> $dedo_options['default_style'],
 			'button'=> '',
-			'color'	=> '', // Deprecated
 			'class'	=> ''
 		), $atts, 'ddownload' )
 	);
@@ -56,12 +55,6 @@ function dedo_shortcode_ddownload( $atts ) {
 	else {
 		
 		return __( 'Invalid style attribute.', 'delightful-downloads' );
-	}
-
-	// Check for deprecated color att
-	if ( !empty( $color ) && empty( $button ) ) {
-		
-		$button = $color;
 	}
 
 	// Check button against registered buttons
@@ -283,6 +276,7 @@ function dedo_shortcode_ddownload_list( $atts ) {
 			$filecount=0;
 			$tfilesize=0;
 			echo '<table style="table-layout: fixed" class="ddownloads_list' . $tax_class . $style_class . '">';
+			if (!empty($categories)) echo '<thead><tr><th style="width:100%"><i class="fa fa-filter"></i> '.$categories.'</th></tr></thead><tbody>';
 			while ( $downloads_list->have_posts() ) {
 				$downloads_list->the_post();
 
@@ -300,8 +294,14 @@ function dedo_shortcode_ddownload_list( $atts ) {
 			
 			// File Statistiken, wenn limit nicht gesetzt
 			if ($limit == 0) {
-				echo '<tfoot><tr><td colspan=5>'.__('total files','delightful-downloads').': <b>'.$filecount.'</b> &nbsp; ';
-				echo __('total size','delightful-downloads').': <b>' . size_format( $tfilesize, 0 ).'</b></td></tr></tfoot>';
+				$total_files = wp_count_posts( 'dedo_download' )->publish;
+				echo '<tfoot><tr><td>';
+				if ((int) $filecount < (int) $total_files) {
+					echo __('in list','delightful-downloads').': <b>'.$filecount.'</b> '.__('files','delightful-downloads').' / ';
+					echo ' <b>' . size_format( $tfilesize, 0 ).'</b>';
+				}	
+				echo ' &nbsp; TOTAL: <b>'.$total_files.'</b> '.__('files','delightful-downloads').' / <b>'.size_format( dedo_get_filesize(), 0 ).'</b>';
+				echo '</td></tr></tfoot>';
 			}	
 			echo '</table>';
 			$output = ob_get_clean();
@@ -366,17 +366,13 @@ function dedo_shortcode_ddownload_filesize( $atts ) {
 	return apply_filters( 'dedo_shortcode_ddownload_filesize', $filesize );
 }
 add_shortcode( 'ddownload_filesize', 'dedo_shortcode_ddownload_filesize' );
-add_shortcode( 'ddownload_total_filesize', 'dedo_shortcode_ddownload_filesize' ); // Deprecated
-add_shortcode( 'ddownload_size', 'dedo_shortcode_ddownload_filesize' ); // Deprecated
 
 /**
  * Download Count Shortcode
  * Outputs the number of times a download has been downloaded.
  */
 function dedo_shortcode_ddownload_count( $atts ) {
-	
 	global $dedo_statistics;
-
 	// Attributes
 	extract( shortcode_atts(
 		array(
@@ -396,8 +392,6 @@ function dedo_shortcode_ddownload_count( $atts ) {
 		return __( 'Invalid download ID.', 'delightful-downloads' );
 	}
 
-	// No need to check cache, caching handled by dedo_statistics
-
 	// Get count
 	$count = $dedo_statistics->count_downloads( array( 
 		'download_id'	=> $id, 
@@ -414,7 +408,6 @@ function dedo_shortcode_ddownload_count( $atts ) {
 	return apply_filters( 'dedo_shortcode_ddownload_count', $count );
 }
 add_shortcode( 'ddownload_count', 'dedo_shortcode_ddownload_count' );
-add_shortcode( 'ddownload_total_count', 'dedo_shortcode_ddownload_count' ); // Deprecated
 
 /**
  * Display Total Downloadable Files
@@ -460,7 +453,6 @@ function dedo_shortcode_ddownload_files( $atts ) {
 	return apply_filters( 'dedo_shortcode_ddownload_files', $total_files );
 }
 add_shortcode( 'ddownload_files', 'dedo_shortcode_ddownload_files' );
-add_shortcode( 'ddownload_total_files', 'dedo_shortcode_ddownload_files' ); // Deprecated
 
 /**
  * Allow shortcodes in widgets

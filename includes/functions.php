@@ -161,6 +161,7 @@ function dedo_get_shortcode_lists() {
 					<div style="display:inline-block;min-width:55px;width:55px">%icon%</div>
 					<div style="display:inline-block;width:100%;min-width:70%;vertical-align:top;line-height:1.35em">
 					<a class="headline" style="display:block;max-width:98vw;white-space:nowrap;overflow:hidden" href="%url%" title="'.__( 'download file', 'delightful-downloads' ).'" rel="nofollow">
+					<i class="fa fa-download"></i> 
 					%title%</a>
 					<div class="iconfade" style="background-color:#ffffff55">%locked% &nbsp; %adminedit%
 					&nbsp;%dateago% %filesize% %count%</div><div class="greybox">%category% %tags%</div></div></div>'

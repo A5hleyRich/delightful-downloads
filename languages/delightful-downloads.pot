@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: delightful-downloads 1.6.1\n"
 "Report-Msgid-Bugs-To: hello@ashleyrich.com\n"
-"POT-Creation-Date: 2023-12-11 09:31+0000\n"
+"POT-Creation-Date: 2023-12-11 16:30+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -98,7 +98,7 @@ msgstr ""
 msgid "Automatically delete old logs."
 msgstr ""
 
-#: includes/functions.php:197
+#: includes/functions.php:198
 msgid "Black"
 msgstr ""
 
@@ -229,7 +229,7 @@ msgstr ""
 msgid "download count"
 msgstr ""
 
-#: includes/functions.php:73 includes/functions.php:177
+#: includes/functions.php:73 includes/functions.php:178
 msgid "download details"
 msgstr ""
 
@@ -239,8 +239,8 @@ msgstr ""
 
 #: includes/functions.php:75 includes/functions.php:83
 #: includes/functions.php:84 includes/functions.php:153
-#: includes/functions.php:163 includes/functions.php:179
-#: includes/functions.php:179
+#: includes/functions.php:163 includes/functions.php:180
+#: includes/functions.php:180
 msgid "download file"
 msgstr ""
 
@@ -327,7 +327,7 @@ msgstr ""
 msgid "Edit Tag"
 msgstr ""
 
-#: includes/functions.php:245
+#: includes/functions.php:246
 msgid "edit this download"
 msgstr ""
 
@@ -383,7 +383,7 @@ msgstr ""
 msgid "file size"
 msgstr ""
 
-#: includes/functions.php:302
+#: includes/functions.php:303
 msgid "file upload date"
 msgstr ""
 
@@ -393,6 +393,10 @@ msgstr ""
 
 #: includes/functions.php:87
 msgid "filename"
+msgstr ""
+
+#: includes/shortcodes.php:296 includes/shortcodes.php:300
+msgid "files"
 msgstr ""
 
 #: includes/options.php:158
@@ -412,11 +416,11 @@ msgstr ""
 msgid "Grace Period"
 msgstr ""
 
-#: includes/functions.php:205
+#: includes/functions.php:206
 msgid "Green"
 msgstr ""
 
-#: includes/functions.php:201
+#: includes/functions.php:202
 msgid "Grey"
 msgstr ""
 
@@ -455,6 +459,10 @@ msgstr ""
 msgid "Import Settings"
 msgstr ""
 
+#: includes/shortcodes.php:296
+msgid "in list"
+msgstr ""
+
 #: includes/admin/meta-boxes.php:119
 msgid "Inaccessible File"
 msgstr ""
@@ -467,7 +475,7 @@ msgstr ""
 msgid "Infobox mit Icon, Rahmen und Details"
 msgstr ""
 
-#: includes/functions.php:169
+#: includes/functions.php:170
 msgid "Infoboxliste (Icon/Date/Extension/Filesize/count/Thumb/descript)"
 msgstr ""
 
@@ -487,12 +495,12 @@ msgstr ""
 msgid "Insert Download"
 msgstr ""
 
-#: includes/shortcodes.php:79
+#: includes/shortcodes.php:72
 msgid "Invalid button attribute."
 msgstr ""
 
-#: includes/shortcodes.php:46 includes/shortcodes.php:344
-#: includes/shortcodes.php:396
+#: includes/shortcodes.php:45 includes/shortcodes.php:341
+#: includes/shortcodes.php:391
 msgid "Invalid download ID."
 msgstr ""
 
@@ -500,15 +508,15 @@ msgstr ""
 msgid "Invalid download."
 msgstr ""
 
-#: includes/shortcodes.php:183
+#: includes/shortcodes.php:176
 msgid "Invalid order attribute."
 msgstr ""
 
-#: includes/shortcodes.php:149
+#: includes/shortcodes.php:142
 msgid "Invalid orderby attribute."
 msgstr ""
 
-#: includes/shortcodes.php:191
+#: includes/shortcodes.php:184
 msgid "Invalid relation attribute."
 msgstr ""
 
@@ -516,7 +524,7 @@ msgstr ""
 msgid "Invalid settings file."
 msgstr ""
 
-#: includes/shortcodes.php:58 includes/shortcodes.php:262
+#: includes/shortcodes.php:57 includes/shortcodes.php:255
 msgid "Invalid style attribute."
 msgstr ""
 
@@ -541,7 +549,7 @@ msgstr ""
 msgid "Licenses"
 msgstr ""
 
-#: includes/functions.php:229
+#: includes/functions.php:230
 msgid "light speed"
 msgstr ""
 
@@ -639,7 +647,7 @@ msgstr ""
 msgid "No downloads found in Trash"
 msgstr ""
 
-#: includes/shortcodes.php:316
+#: includes/shortcodes.php:313
 msgid "No downloads found."
 msgstr ""
 
@@ -664,7 +672,7 @@ msgstr ""
 msgid "Non-member"
 msgstr ""
 
-#: includes/functions.php:243 includes/post-types.php:155
+#: includes/functions.php:244 includes/post-types.php:155
 msgid "One day pass copied to clipboard."
 msgstr ""
 
@@ -745,7 +753,7 @@ msgstr ""
 msgid "really delete attached file from server?"
 msgstr ""
 
-#: includes/functions.php:209
+#: includes/functions.php:210
 msgid "Red"
 msgstr ""
 
@@ -922,7 +930,7 @@ msgstr ""
 msgid "The URL for download links."
 msgstr ""
 
-#: includes/functions.php:193
+#: includes/functions.php:194
 msgid "theme accent"
 msgstr ""
 
@@ -974,11 +982,11 @@ msgstr ""
 msgid "Title/Icon/Category/File size/Count/Dateago)"
 msgstr ""
 
-#: includes/shortcodes.php:303 includes/admin/dashboard.php:79
+#: includes/admin/dashboard.php:79
 msgid "total files"
 msgstr ""
 
-#: includes/shortcodes.php:304 includes/admin/dashboard.php:75
+#: includes/admin/dashboard.php:75
 msgid "total size"
 msgstr ""
 
