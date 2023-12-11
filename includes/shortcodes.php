@@ -267,9 +267,9 @@ function dedo_shortcode_ddownload_list( $atts ) {
 			echo '<table style="table-layout: fixed" class="ddownloads_list' . $tax_class . $style_class . '">';
 			if (!empty($categories)) $listfilter .= '<i class="fa fa-folder-open-o"></i> '.$categories;
 			if (!empty($tags)) $listfilter .= ' &nbsp;<i class="fa fa-tags"></i> '.$tags;
-			if (!empty($exclude_categories)) $listfilter .= ' &nbsp;<i title="exclude cats" class="fa fa-filter"></i><i class="fa fa-folder-open-o"></i> '.$exclude_categories;
-			if (!empty($exclude_tags)) $listfilter .= ' &nbsp;<i title="exclude cats" class="fa fa-filter"></i><i class="fa fa-tags"></i> '.$exclude_tags;
-			if (!empty($listfilter))echo '<thead><tr><th style="width:100%"> '.$listfilter.'</th></tr></thead><tbody>';
+			if (!empty($exclude_categories)) $listfilter .= ' &nbsp;<i title="excluded cats" class="fa fa-filter" style="color:tomato">></i><i class="fa fa-folder-open-o"></i> '.$exclude_categories;
+			if (!empty($exclude_tags)) $listfilter .= ' &nbsp;<i title="excluded tags" class="fa fa-filter" style="color:tomato"></i><i class="fa fa-tags"></i> '.$exclude_tags;
+			if (!empty($listfilter)) echo '<thead><tr><th style="width:100%;text-transform:uppercase"><strong>'.__('downloads','delightful_downloads').'</strong> &nbsp;'.$listfilter.'</th></tr></thead><tbody>';
 			while ( $downloads_list->have_posts() ) {
 				$downloads_list->the_post();
 				// Add classes
