@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: delightful-downloads 1.6.1\n"
 "Report-Msgid-Bugs-To: hello@ashleyrich.com\n"
-"POT-Creation-Date: 2023-05-23 11:11+0000\n"
+"POT-Creation-Date: 2023-12-11 09:31+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -98,7 +98,7 @@ msgstr ""
 msgid "Automatically delete old logs."
 msgstr ""
 
-#: includes/functions.php:184
+#: includes/functions.php:197
 msgid "Black"
 msgstr ""
 
@@ -106,7 +106,7 @@ msgstr ""
 msgid "Block User Agents"
 msgstr ""
 
-#: includes/functions.php:87 includes/admin/media-button.php:85
+#: includes/functions.php:96 includes/admin/media-button.php:85
 msgid "Button"
 msgstr ""
 
@@ -225,13 +225,22 @@ msgstr ""
 msgid "Download Count"
 msgstr ""
 
+#: includes/functions.php:91
+msgid "download count"
+msgstr ""
+
+#: includes/functions.php:73 includes/functions.php:177
+msgid "download details"
+msgstr ""
+
 #: includes/admin/meta-boxes.php:55
 msgid "Download draft updated."
 msgstr ""
 
-#: includes/functions.php:73 includes/functions.php:83
-#: includes/functions.php:84 includes/functions.php:143
-#: includes/functions.php:152 includes/functions.php:166
+#: includes/functions.php:75 includes/functions.php:83
+#: includes/functions.php:84 includes/functions.php:153
+#: includes/functions.php:163 includes/functions.php:179
+#: includes/functions.php:179
 msgid "download file"
 msgstr ""
 
@@ -288,6 +297,10 @@ msgstr ""
 msgid "Download Tags"
 msgstr ""
 
+#: includes/functions.php:90
+msgid "download time"
+msgstr ""
+
 #: includes/admin/meta-boxes.php:45 includes/admin/meta-boxes.php:48
 #, php-format
 msgid "Download updated. Use the %s shortcode to include it in posts or pages."
@@ -314,7 +327,7 @@ msgstr ""
 msgid "Edit Tag"
 msgstr ""
 
-#: includes/functions.php:231
+#: includes/functions.php:245
 msgid "edit this download"
 msgstr ""
 
@@ -354,6 +367,10 @@ msgstr ""
 msgid "File"
 msgstr ""
 
+#: includes/functions.php:89
+msgid "file date"
+msgstr ""
+
 #: includes/post-types.php:122
 msgid "file is deleted"
 msgstr ""
@@ -362,12 +379,20 @@ msgstr ""
 msgid "File Size"
 msgstr ""
 
-#: includes/functions.php:288
+#: includes/functions.php:88
+msgid "file size"
+msgstr ""
+
+#: includes/functions.php:302
 msgid "file upload date"
 msgstr ""
 
 #: includes/admin/meta-boxes.php:282
 msgid "File URL or path..."
+msgstr ""
+
+#: includes/functions.php:87
+msgid "filename"
 msgstr ""
 
 #: includes/options.php:158
@@ -387,11 +412,11 @@ msgstr ""
 msgid "Grace Period"
 msgstr ""
 
-#: includes/functions.php:192
+#: includes/functions.php:205
 msgid "Green"
 msgstr ""
 
-#: includes/functions.php:188
+#: includes/functions.php:201
 msgid "Grey"
 msgstr ""
 
@@ -414,7 +439,7 @@ msgstr ""
 msgid "https://github.com/svenbolte/delightful-downloads/"
 msgstr ""
 
-#: includes/functions.php:95
+#: includes/functions.php:104
 msgid "Icon und Link"
 msgstr ""
 
@@ -434,7 +459,7 @@ msgstr ""
 msgid "Inaccessible File"
 msgstr ""
 
-#: includes/functions.php:77
+#: includes/functions.php:79
 msgid "Infobox mit Icon, Rahmen für Post Archive"
 msgstr ""
 
@@ -442,7 +467,7 @@ msgstr ""
 msgid "Infobox mit Icon, Rahmen und Details"
 msgstr ""
 
-#: includes/functions.php:158
+#: includes/functions.php:169
 msgid "Infoboxliste (Icon/Date/Extension/Filesize/count/Thumb/descript)"
 msgstr ""
 
@@ -516,7 +541,11 @@ msgstr ""
 msgid "Licenses"
 msgstr ""
 
-#: includes/functions.php:91
+#: includes/functions.php:229
+msgid "light speed"
+msgstr ""
+
+#: includes/functions.php:100
 msgid "Link"
 msgstr ""
 
@@ -526,6 +555,10 @@ msgstr ""
 
 #: includes/admin/meta-boxes.php:117
 msgid "Local File"
+msgstr ""
+
+#: includes/functions.php:86
+msgid "Locked admin Onedaypass"
 msgstr ""
 
 #: includes/admin/class-dedo-list-table.php:30
@@ -631,7 +664,7 @@ msgstr ""
 msgid "Non-member"
 msgstr ""
 
-#: includes/functions.php:229 includes/post-types.php:155
+#: includes/functions.php:243 includes/post-types.php:155
 msgid "One day pass copied to clipboard."
 msgstr ""
 
@@ -675,7 +708,7 @@ msgstr ""
 msgid "Password Required"
 msgstr ""
 
-#: includes/functions.php:99
+#: includes/functions.php:108
 msgid "Plain Text"
 msgstr ""
 
@@ -708,15 +741,11 @@ msgstr ""
 msgid "Quicklink copied to clipboard."
 msgstr ""
 
-#: includes/functions.php:270
-msgid "read more"
-msgstr ""
-
 #: includes/post-types.php:121
 msgid "really delete attached file from server?"
 msgstr ""
 
-#: includes/functions.php:196
+#: includes/functions.php:209
 msgid "Red"
 msgstr ""
 
@@ -893,7 +922,7 @@ msgstr ""
 msgid "The URL for download links."
 msgstr ""
 
-#: includes/functions.php:180
+#: includes/functions.php:193
 msgid "theme accent"
 msgstr ""
 
@@ -909,39 +938,39 @@ msgid ""
 "%sfolder protection%s setting to 'No'."
 msgstr ""
 
-#: includes/functions.php:112 includes/post-types.php:62
+#: includes/functions.php:121 includes/post-types.php:62
 msgid "Title"
 msgstr ""
 
-#: includes/functions.php:120
+#: includes/functions.php:129
 msgid "Title/Count"
 msgstr ""
 
-#: includes/functions.php:116
+#: includes/functions.php:125
 msgid "Title/Date)"
 msgstr ""
 
-#: includes/functions.php:132
+#: includes/functions.php:141
 msgid "Title/Date/Extension/Filesize"
 msgstr ""
 
-#: includes/functions.php:136
+#: includes/functions.php:145
 msgid "Title/Date/Extension/Filesize/count"
 msgstr ""
 
-#: includes/functions.php:128
+#: includes/functions.php:137
 msgid "Title/Extension/Filesize"
 msgstr ""
 
-#: includes/functions.php:124
+#: includes/functions.php:133
 msgid "Title/Filesize"
 msgstr ""
 
-#: includes/functions.php:140
+#: includes/functions.php:149
 msgid "Title/Icon/Category/File size"
 msgstr ""
 
-#: includes/functions.php:149
+#: includes/functions.php:159
 msgid "Title/Icon/Category/File size/Count/Dateago)"
 msgstr ""
 

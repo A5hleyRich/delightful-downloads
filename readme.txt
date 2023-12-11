@@ -3,8 +3,8 @@ Contributors: A5hleyRich, Sven Bolte, others (best of forks)
 Tags: download, manager, downloads, monitor, shortcode, delightful downloads, file, counter, tracking, infobox, fixed filetree,ipflag, chartscodes
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
-Version: 9.9.74
-Stable tag: 9.9.74
+Version: 9.9.75
+Stable tag: 9.9.75
 Requires at least: 6.0
 Tested up to: 6.4.2
 Requires PHP: 8.0
@@ -505,6 +505,10 @@ Please refer to the [documentation] in this readme.txt.
 
 
 ==================== Changelog ==========================================================================
+
+= 9.9.75 =
+wp 6.4.2 compatibility 
+style templates improved with download buttons and single post detailed view
 
 = 9.9.74 =
 Shortword %filedate% displays file upload date from file system of server

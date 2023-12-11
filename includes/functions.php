@@ -67,10 +67,12 @@ function dedo_get_shortcode_styles() {
 					<div style="display:inline-block;min-width:60px;width:60px">%icon%</div>
 					<div style="display:inline-block;width:100%;min-width:70%">
 					<div class="iconfade" style="background-color:#ffffff55">
-					%locked% &nbsp; %adminedit%%permalink%&nbsp;%datesymbol%  
+					%locked% &nbsp; %adminedit% &nbsp;%datesymbol%  
 					%filesize% %downloadtime% %count% &nbsp; %filename%</div> 
 					<div class="greybox">%category% %tags%</div>
-					<h6 class="btn" style="margin: .2em 0 .2em 0"><a href="%url%" title="'.__( 'download file', 'delightful-downloads' ).'" rel="nofollow">%title%</a></h6>
+					<h6 style="margin-top:6px"><a href="%permalink%" title="'.__( 'download details', 'delightful-downloads' ).'" rel="nofollow">
+					%title%</a></h6>
+					<a class="ddownload-button page-numbers"  href="%url%" title="'.__( 'download file', 'delightful-downloads' ).'" rel="nofollow">'.__( 'download file', 'delightful-downloads' ).'</a>
 					<div>%description%</div></div>%thumb%</div></blockquote>'
 	 	),
 	 	'singlepost'		=> array(
@@ -78,10 +80,17 @@ function dedo_get_shortcode_styles() {
 	 		'format'		=> '<blockquote class="%class% blockleer" style="font-size:inherit;display:flex;width:100%;padding:4px;border-radius:3px">
 					<div style="display:inline-block;min-width:60px;width:60px">%icon%</div>
 					<div style="display:inline-block;width:100%;min-width:70%">
-					<div class="iconfade" style="background-color:#ffffff55">
-					%locked% &nbsp; %adminedit%&nbsp;%filename%%filesize%%filedate%%downloadtime%&nbsp;%count%</div>
-					<h6 class="btn" style="margin: .2em 0 .2em 0"><a href="%url%" title="'.__( 'download file', 'delightful-downloads' ).'" rel="nofollow">
-					'.__( 'download file', 'delightful-downloads' ).'</a></h6></div></blockquote>'
+					<a class="ddownload-button page-numbers"  href="%url%" title="'.__( 'download file', 'delightful-downloads' ).'" rel="nofollow">
+					'.__( 'download file', 'delightful-downloads' ).'</a>
+					<table>
+					<tr><td style="width:25%">'.__( 'Locked admin Onedaypass', 'delightful-downloads' ).'</td><td>%locked% &nbsp; %adminedit%</td></tr>
+					<tr><td>'.__( 'filename', 'delightful-downloads' ).'</td><td>%filename%</td></tr>
+					<tr><td>'.__( 'file size', 'delightful-downloads' ).'</td><td>%filesize%</td></tr>
+					<tr><td>'.__( 'file date', 'delightful-downloads' ).'</td><td>%filedate%</td></tr>
+					<tr><td>'.__( 'download time', 'delightful-downloads' ).'</td><td>%downloadtime%</td></tr>
+					<tr><td>'.__( 'download count', 'delightful-downloads' ).'</td><td>%count%</td></tr>
+					</table>
+					</div></blockquote>'
 	 	),
 	 	'button'		=> array(
 	 		'name'			=> __( 'Button', 'delightful-downloads' ),
@@ -140,18 +149,20 @@ function dedo_get_shortcode_lists() {
 	 		'name'				=> __( 'Title/Icon/Category/File size', 'delightful-downloads' ),
 	 		'format'			=> '<div style="display:flex;width:100%">
 					<div style="display:inline-block;min-width:60px;width:60px">%icon%</div>
-					<div style="display:inline-block;width:100%;min-width:70%"><a class="headline" href="%url%" title="'.__( 'download file', 'delightful-downloads' ).'" rel="nofollow">
+					<div style="display:inline-block;width:100%;min-width:70%">
+					<a class="headline" href="%url%" title="'.__( 'download file', 'delightful-downloads' ).'" rel="nofollow">
 					%title%</a><br>%adminedit%
-					%permalink% &nbsp;%locked% &nbsp;%category% %tags% &nbsp;
+					 &nbsp;%locked% &nbsp;%category% %tags% &nbsp;
 					%filesize%</div></div>'
 	 	),
 	 	'icon_title_ext_filesize_count_datesymbol'=> array(
 	 		'name'				=> __( 'Title/Icon/Category/File size/Count/Dateago)', 'delightful-downloads' ),
 	 		'format'			=> '<div style="display:flex;width:100%">
 					<div style="display:inline-block;min-width:55px;width:55px">%icon%</div>
-					<div style="display:inline-block;width:100%;min-width:70%;vertical-align:top;line-height:1.35em"><a class="headline" style="display:block;max-width:98vw;white-space:nowrap;overflow:hidden" href="%url%" title="'.__( 'download file', 'delightful-downloads' ).'" rel="nofollow">
+					<div style="display:inline-block;width:100%;min-width:70%;vertical-align:top;line-height:1.35em">
+					<a class="headline" style="display:block;max-width:98vw;white-space:nowrap;overflow:hidden" href="%url%" title="'.__( 'download file', 'delightful-downloads' ).'" rel="nofollow">
 					%title%</a>
-					<div class="iconfade" style="background-color:#ffffff55">%locked% &nbsp; %adminedit%%permalink%
+					<div class="iconfade" style="background-color:#ffffff55">%locked% &nbsp; %adminedit%
 					&nbsp;%dateago% %filesize% %count%</div><div class="greybox">%category% %tags%</div></div></div>'
 	 	),
 	 	'infoboxlist'=> array(
@@ -160,10 +171,12 @@ function dedo_get_shortcode_lists() {
 					<div style="display:flex;width:100%">
 					<div style="display:inline-block;min-width:55px;width:55px">%icon%</div>
 					<div style="display:inline-block;width:100%;min-width:70%">
-					<div class="iconfade" style="background-color:#ffffff55">%locked% &nbsp; %adminedit%%permalink%
+					<div class="iconfade" style="background-color:#ffffff55">%locked% &nbsp; %adminedit%
 					&nbsp;%datesymbol% %filename% %filesize% %count% %downloadtime%</div>
 					<div class="greybox">%category% %tags%</div>
-					<h6 class="btn" style="margin: .2em 0 .2em 0"><a href="%url%" title="'.__( 'download file', 'delightful-downloads' ).'" rel="nofollow">%title%</a></h6>
+					<h6 style="margin-top:6px"><a href="%permalink%" title="'.__( 'download details', 'delightful-downloads' ).'" rel="nofollow">
+					%title%</a></h6>
+					<a class="ddownload-button page-numbers"  href="%url%" title="'.__( 'download file', 'delightful-downloads' ).'" rel="nofollow">'.__( 'download file', 'delightful-downloads' ).'</a>
 					<div>%description%</div></div>%thumb%</div>'
 	 	)
 	);
@@ -203,7 +216,7 @@ function dedo_get_shortcode_buttons() {
 
 // Get download-time for typical internet lines
 function download_times($filesize) {
-	$bbreite = array (25,50,100,200,500,1000,16);
+	$bbreite = array (25,50,100,200,300,500,1000,16);
 	$outp = array();
 	foreach ($bbreite as $value) {
 		$time16 = floor($filesize * 8 / ($value*1024*1024));
@@ -212,7 +225,8 @@ function download_times($filesize) {
 		$h = floor(($time16%86400)/3600);
 		$outp[] = ($h>0 ? $h.'h ' :'').($m>0 ? $m.'m ' :'').$s.'s@'.$value.'MBit';
 	}	
-	if ($s > 0) $dtime='<a class="newlabel white" title="'.implode("\n", $outp).'"><i class="fa fa-clock-o"></i> '.$outp[6].'</a>'; else $dtime='';
+	if ($s > 0) $dtime = '<a class="newlabel white" title="'.implode("\n", $outp).'"><i class="fa fa-clock-o"></i> '.$outp[6].'</a>';
+	else $dtime = __('light speed','delightful-downloads');
 	return $dtime;
 }
 
@@ -267,7 +281,7 @@ function download_times($filesize) {
  	}
  	// permalink single cpost
  	if ( strpos( $string, '%permalink%' ) !== false ) {
-		$value = ' <a href="'.get_the_permalink($id).'"><i title="'.__('read more','delightful-downloads').'" class="fa fa-search-plus"></i></a>';
+		$value = get_the_permalink($id);
  		$string = str_replace( '%permalink%', $value, $string );
  	}
  	// beschreibung
