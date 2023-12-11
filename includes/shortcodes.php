@@ -298,9 +298,9 @@ function dedo_shortcode_ddownload_list( $atts ) {
 				echo '<tfoot><tr><td>';
 				if ((int) $filecount < (int) $total_files) {
 					echo __('in list','delightful-downloads').': <b>'.$filecount.'</b> '.__('files','delightful-downloads').' / ';
-					echo ' <b>' . size_format( $tfilesize, 0 ).'</b>';
+					echo ' <b>' . size_format( $tfilesize, 1 ).'</b>';
 				}	
-				echo ' &nbsp; TOTAL: <b>'.$total_files.'</b> '.__('files','delightful-downloads').' / <b>'.size_format( dedo_get_filesize(), 0 ).'</b>';
+				echo ' &nbsp; TOTAL: <b>'.$total_files.'</b> '.__('files','delightful-downloads').' / <b>'.size_format( dedo_get_filesize(), 1 ).'</b>';
 				echo '</td></tr></tfoot>';
 			}	
 			echo '</table>';
