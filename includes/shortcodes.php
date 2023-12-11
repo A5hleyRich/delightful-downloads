@@ -41,7 +41,6 @@ function dedo_shortcode_ddownload( $atts ) {
 
 	// Validate download id
 	if ( $id == '' || !dedo_download_valid( $id ) ) {
-		
 		return __( 'Invalid download ID.', 'delightful-downloads' );
 	}
 
@@ -49,26 +48,20 @@ function dedo_shortcode_ddownload( $atts ) {
 	$registered_styles = dedo_get_shortcode_styles();
 
 	if ( array_key_exists( $style, $registered_styles ) ) {
-		
 		$style_format = $registered_styles[ $style ]['format'];
 	}
 	else {
-		
 		return __( 'Invalid style attribute.', 'delightful-downloads' );
 	}
 
 	// Check button against registered buttons
 	if ( $style == 'button' ) {
-		
 		$button = ( empty( $button ) ) ? $dedo_options['default_button'] : $button;
 		$registered_buttons = dedo_get_shortcode_buttons();
-
 		if ( array_key_exists( $button, $registered_buttons ) ) {
-			
 			$button_class = $registered_buttons[ $button ]['class'];
 		}
 		else {
-			
 			return __( 'Invalid button attribute.', 'delightful-downloads' );
 		}
 	}
@@ -79,7 +72,6 @@ function dedo_shortcode_ddownload( $atts ) {
 	$classes .= ' id-' . $id; // Download id
 	$classes .= ' ext-' . dedo_get_file_ext( get_post_meta( $id, '_dedo_file_url', true ) ); // File extension
 	$classes .= ( !empty( $class ) ) ? ' ' . $class : ''; // User defined
-
 	// Replace text and class att
 	$replace = array(
 		'%text%'	=> $text,
@@ -89,19 +81,15 @@ function dedo_shortcode_ddownload( $atts ) {
 	foreach ( $replace as $key => $value ) {
  		$style_format = str_replace( $key, $value, $style_format );
  	}
-
 	// Search and replace wildcards
 	$output = dedo_search_replace_wildcards( $style_format, $id );
-
 	return apply_filters( 'dedo_shortcode_ddownload', $output, $id, $atts, $classes );
 }
 add_shortcode( 'ddownload', 'dedo_shortcode_ddownload' );
 
 /**
  * Downloads List Shortcode
- *
  * Displays a list of downloads based on user defined attributes.
- *
  * @since   1.3
  */
 function dedo_shortcode_ddownload_list( $atts ) {
@@ -275,11 +263,15 @@ function dedo_shortcode_ddownload_list( $atts ) {
 			ob_start();
 			$filecount=0;
 			$tfilesize=0;
+			$listfilter='';
 			echo '<table style="table-layout: fixed" class="ddownloads_list' . $tax_class . $style_class . '">';
-			if (!empty($categories)) echo '<thead><tr><th style="width:100%"><i class="fa fa-filter"></i> '.$categories.'</th></tr></thead><tbody>';
+			if (!empty($categories)) $listfilter .= '<i class="fa fa-folder-open-o"></i> '.$categories;
+			if (!empty($tags)) $listfilter .= ' &nbsp;<i class="fa fa-tags"></i> '.$tags;
+			if (!empty($exclude_categories)) $listfilter .= ' &nbsp;<i title="exclude cats" class="fa fa-filter"></i><i class="fa fa-folder-open-o"></i> '.$exclude_categories;
+			if (!empty($exclude_tags)) $listfilter .= ' &nbsp;<i title="exclude cats" class="fa fa-filter"></i><i class="fa fa-tags"></i> '.$exclude_tags;
+			if (!empty($listfilter))echo '<thead><tr><th style="width:100%"> '.$listfilter.'</th></tr></thead><tbody>';
 			while ( $downloads_list->have_posts() ) {
 				$downloads_list->the_post();
-
 				// Add classes
 				$classes = 'id-' . get_the_ID(); // Download id
 				$classes .= ' ext-' . dedo_get_file_ext( get_post_meta( get_the_ID(), '_dedo_file_url', true ) ); // File extension
@@ -325,7 +317,6 @@ add_shortcode( 'ddownload_list', 'dedo_shortcode_ddownload_list' );
  * Output the filesize of a download.
  */
 function dedo_shortcode_ddownload_filesize( $atts ) {
-	
 	// Attributes
 	extract( shortcode_atts(
 		array(
@@ -338,12 +329,10 @@ function dedo_shortcode_ddownload_filesize( $atts ) {
 	// Supply correct boolean for format and cache
 	$format = ( in_array( $format, array( 'true', 'yes' ) ) ) ? true : false;
 	$cache = ( in_array( $cache, array( 'true', 'yes' ) ) ) ? true : false;
-
 	// Check for valid download
 	if ( $id !== false && !dedo_download_valid( $id ) ) {
 		return __( 'Invalid download ID.', 'delightful-downloads' );
 	}
-
 	// First check for cached data
 	$key = 'dedo_shortcode_filesize_id' . absint( $id );
 	$dedo_cache = new DEDO_Cache( $key );
