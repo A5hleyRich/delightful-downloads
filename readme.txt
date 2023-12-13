@@ -3,8 +3,8 @@ Contributors: A5hleyRich, Sven Bolte, others (best of forks)
 Tags: download, manager, downloads, monitor, shortcode, delightful downloads, file, counter, tracking, infobox, fixed filetree,ipflag, chartscodes
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
-Version: 9.9.75
-Stable tag: 9.9.75
+Version: 9.9.76
+Stable tag: 9.9.76
 Requires at least: 6.0
 Tested up to: 6.4.2
 Requires PHP: 8.0
@@ -99,36 +99,7 @@ This is caused when the file does not exist at the location specified or is inac
 ### detailed documentation
 
 -----------------------------------Shortcodes----------------------
-[[ddownload_count]]
-You can output the number of times a download has been downloaded using the [[ddownload_count]] shortcode. You must supply a download ID and optional attributes can be supplied to further customise the output. To output a download count using the default settings: [[ddownload_count id="123"]]
-You can find the ID of a download in the All Downloads screen.
 
-All Downloads Screen
-
-Attributes
-The following are optional attributes that will modify the output.
-
-format
-Format the number (10000 becomes 10,000). Default: true.
-
-[[ddownload_count id="123" format="false"]]
-
------------------------------------------------
-[[ddownload_filesize]]
-You can output the file size of a download using the [[ddownload_filesize]] shortcode. You must supply a download ID and optional attributes can be supplied to further customise the output. To output a file size using the default settings: [[ddownload_filesize id="123"]]
-You can find the ID of a download in the All Downloads screen.
-
-All Downloads Screen
-
-Attributes
-The following are optional attributes that will modify the output.
-
-format
-Format the number (100000 becomes 97.66 KB). Default: true.
-
-[[ddownload_filesize id="123" format="false"]]
-
------------------------------------------------
 [[ddownload_list]]
 You can output a list of downloads using the [[ddownload_list]] shortcode. Optional attributes can be supplied to customise the output. To output all published downloads, sorted by title in ascending order: [[ddownload_list]]
 
@@ -164,29 +135,6 @@ The output style that should be used to display the list of downloads. The defau
 
 tags
 Show only downloads within specified tags. Comma separated list of tag slugs. Default: blank.
-
-
------------------------------------------------
-[[ddownload_total_count]]
-You can output the total number of downloads for all files using the [[ddownload_total_count]] shortcode. Optional attributes can be supplied to further customise the output. To output the total download count with the default settings: [[ddownload_total_count]]
-
-Attributes
-The following are optional attributes that will modify the output.
-
-cache
-Cache the results. The amount of time the results are cached for can be set in the Settings screen under the Advanced tab. Default: true.
-
-[[ddownload_total_count cache="false"]]
-
-days
-Show the total download count over the last number of days. Set to 0 for all time. Default: 0.
-
-[[ddownload_total_count days="7"]]
-
-format
-Format the number (10000 becomes 10,000). Default: true.
-
-[[ddownload_total_count format="false"]]
 
 -----------------------------------------------
 [[ddownload]]
@@ -266,6 +214,13 @@ The date the download was published OR the date it was modified nad time since m
 on mouseover: time since create, modification and in between
 +colored calendar symbols
 
+%filedate%
+display / file-date created modified in formatted span box
+
+%thumb%
+display post thumbnail on right side with img-zoom on hover - Beitragsbild mit img-zoom on hover
+
+
 %locked%  
 displays a red lock if Download is password protected (with FA symbol if fontawesome present)
 
@@ -301,6 +256,9 @@ The ecxerpt of description of the download entered in the Add Download screen
 
 %url%
 The URL to the download file.
+
+%permalink%
+Permalink zum Single post (Detaildarstellung, ohne den Download zu starten)
 
 Where To Use Them: Wildcards can generate dynamic data in the following places:
 
@@ -505,6 +463,11 @@ Please refer to the [documentation] in this readme.txt.
 
 
 ==================== Changelog ==========================================================================
+
+= 9.9.76 =
+documentation with shortwords %% updated
+removed total files, total size and total counts as the values are displayed bottom of the ddownload list.
+some code optimizations
 
 = 9.9.75 =
 wp 6.4.2 compatibility 

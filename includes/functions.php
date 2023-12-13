@@ -226,8 +226,8 @@ function download_times($filesize) {
 		$h = floor(($time16%86400)/3600);
 		$outp[] = ($h>0 ? $h.'h ' :'').($m>0 ? $m.'m ' :'').$s.'s@'.$value.'MBit';
 	}	
-	if ($s > 0) $dtime = '<a class="newlabel white" title="'.implode("\n", $outp).'"><i class="fa fa-clock-o"></i> '.$outp[6].'</a>';
-	else $dtime = __('light speed','delightful-downloads');
+	if ($s > 0) $s=1;
+	$dtime = '<a class="newlabel white" title="'.implode("\n", $outp).'"><i class="fa fa-clock-o"></i> '.$outp[5].'</a>';
 	return $dtime;
 }
 
@@ -448,7 +448,7 @@ function download_times($filesize) {
  	}
  	// downloads (count)
  	if ( strpos( $string, '%count%' ) !== false ) {
- 		$value = '<span title="Downloadcounter" class="newlabel white"><i class="fa fa-download" style="font-size:1.1em;margin-right:3px"></i>' . number_format_i18n( get_post_meta( $id, '_dedo_file_count', true ) ).'</span>';
+ 		$value = '<span title="Downloadcounter" class="newlabel white"><i class="fa fa-cloud-download" style="font-size:1.1em;margin-right:3px"></i>' . number_format_i18n( get_post_meta( $id, '_dedo_file_count', true ) ).'</span>';
  		$string = str_replace( '%count%', $value, $string );
  	}
  	// file name

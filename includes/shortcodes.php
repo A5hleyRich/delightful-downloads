@@ -93,7 +93,7 @@ add_shortcode( 'ddownload', 'dedo_shortcode_ddownload' );
  * @since   1.3
  */
 function dedo_shortcode_ddownload_list( $atts ) {
-	global $dedo_options;
+	global $dedo_options, $dedo_statistics;
 
 	// filetype skript laden
 	wp_enqueue_style( 'filetype-style' );
@@ -261,6 +261,7 @@ function dedo_shortcode_ddownload_list( $atts ) {
 		// Begin output
 		if ( $downloads_list->have_posts() ) {
 			ob_start();
+			$dlcount=0;
 			$filecount=0;
 			$tfilesize=0;
 			$listfilter='';
@@ -277,6 +278,7 @@ function dedo_shortcode_ddownload_list( $atts ) {
 				$classes .= ' ext-' . dedo_get_file_ext( get_post_meta( get_the_ID(), '_dedo_file_url', true ) ); // File extension
 				$new_style_format = str_replace( '%class%', $classes, $style_format );
 				$filecount++;
+				$dlcount += get_post_meta( get_the_ID(), '_dedo_file_count', true );
 				$tfilesize += (int) get_post_meta( get_the_ID(), '_dedo_file_size', true );
 				echo '<tr><td style="position:relative;width:100%"><div style="background-color:#ffffffbb;color:#000;font-size:1.2em;font-weight:700;position:absolute;left:8px;top:6px;z-index:99999;line-height:1em">'. $filecount.'</div>' . dedo_search_replace_wildcards( $new_style_format, get_the_ID() ) . '</td></tr>';
 				// Reset classes for next iteration
@@ -289,10 +291,11 @@ function dedo_shortcode_ddownload_list( $atts ) {
 				$total_files = wp_count_posts( 'dedo_download' )->publish;
 				echo '<tfoot><tr><td>';
 				if ((int) $filecount < (int) $total_files) {
-					echo __('in list','delightful-downloads').': <b>'.$filecount.'</b> '.__('files','delightful-downloads').' / ';
+					echo '<i class="fa fa-list"></i> <b>'.$filecount.'</b> '.__('files','delightful-downloads');
 					echo ' <b>' . size_format( $tfilesize, 1 ).'</b>';
 				}	
-				echo ' &nbsp; TOTAL: <b>'.$total_files.'</b> '.__('files','delightful-downloads').' / <b>'.size_format( dedo_get_filesize(), 1 ).'</b>';
+				echo ' <i class="fa fa-cloud-download"></i> <b>'. number_format_i18n( $dlcount,0).'</b>';
+				echo ' &nbsp; TOTAL <b>'.$total_files.'</b> '.__('files','delightful-downloads').' <b>'.size_format( dedo_get_filesize(), 1 ).'</b>';
 				echo '</td></tr></tfoot>';
 			}	
 			echo '</table>';
@@ -311,137 +314,6 @@ function dedo_shortcode_ddownload_list( $atts ) {
 	return apply_filters( 'dedo_shortcode_ddownload_list', $output );
 }
 add_shortcode( 'ddownload_list', 'dedo_shortcode_ddownload_list' );
-
-/**
- * Download Filesize Shortcode
- * Output the filesize of a download.
- */
-function dedo_shortcode_ddownload_filesize( $atts ) {
-	// Attributes
-	extract( shortcode_atts(
-		array(
-			'id' 		=> false,
-			'format'	=> true,
-			'cache'		=> true
-		), $atts, 'ddownload_filesize' )
-	);
-
-	// Supply correct boolean for format and cache
-	$format = ( in_array( $format, array( 'true', 'yes' ) ) ) ? true : false;
-	$cache = ( in_array( $cache, array( 'true', 'yes' ) ) ) ? true : false;
-	// Check for valid download
-	if ( $id !== false && !dedo_download_valid( $id ) ) {
-		return __( 'Invalid download ID.', 'delightful-downloads' );
-	}
-	// First check for cached data
-	$key = 'dedo_shortcode_filesize_id' . absint( $id );
-	$dedo_cache = new DEDO_Cache( $key );
-	if ( true == $cache && false !== ( $cached_data = $dedo_cache->get() ) ) {
-		$filesize = $cached_data;
-	}
-	else {
-		// No cached data, retrieve file count
-		$filesize = dedo_get_filesize( $id );
-	}
-	// Save to cache
-	if ( true == $cache ) {
-		$dedo_cache->set( $filesize );
-	}
-	// Format number
-	if ( $format ) {
-		$filesize = size_format( $filesize, 1 );
-	}
-
-	return apply_filters( 'dedo_shortcode_ddownload_filesize', $filesize );
-}
-add_shortcode( 'ddownload_filesize', 'dedo_shortcode_ddownload_filesize' );
-
-/**
- * Download Count Shortcode
- * Outputs the number of times a download has been downloaded.
- */
-function dedo_shortcode_ddownload_count( $atts ) {
-	global $dedo_statistics;
-	// Attributes
-	extract( shortcode_atts(
-		array(
-			'id' 		=> false,
-			'days'		=> false,
-			'format'	=> true,
-			'cache'		=> true
-		), $atts, 'ddownload_count' )
-	);
-
-	// Supply correct boolean for format and cache
-	$format = ( in_array( $format, array( 'true', 'yes' ) ) ) ? true : false;
-	$cache = ( in_array( $cache, array( 'true', 'yes' ) ) ) ? true : false;
-
-	// Check for valid download
-	if ( $id !== false && !dedo_download_valid( $id ) ) {
-		return __( 'Invalid download ID.', 'delightful-downloads' );
-	}
-
-	// Get count
-	$count = $dedo_statistics->count_downloads( array( 
-		'download_id'	=> $id, 
-		'days'			=> $days,
-		'cache' 		=> $cache 
-	) );
-
-	// Format number
-	if ( $format ) {
-		$count = number_format_i18n( $count );
-	}
-
-	// Apply filters and return
-	return apply_filters( 'dedo_shortcode_ddownload_count', $count );
-}
-add_shortcode( 'ddownload_count', 'dedo_shortcode_ddownload_count' );
-
-/**
- * Display Total Downloadable Files
- * Displays the total number of downloadable files.
- * @since   1.3
- */
-function dedo_shortcode_ddownload_files( $atts ) {
-	global $dedo_options;
-
-	// Attributes
-	extract( shortcode_atts(
-		array(
-			'format'	=> true,
-			'cache'		=> true
-		), $atts, 'ddownload_files' )
-	);
-
-	// Supply correct boolean for format and cache
-	$format = ( in_array( $format, array( 'true', 'yes' ) ) ) ? true : false;
-	$cache = ( in_array( $cache, array( 'true', 'yes' ) ) ) ? true : false;
-
-	// First check for cached data
-	$key = 'dedo_shortcode_files';
-	$dedo_cache = new DEDO_Cache( $key );
-	if ( true == $cache && false !== ( $cached_data = $dedo_cache->get() ) ) {
-		$total_files = $cached_data;
-	}
-	else {
-		// No cached data, retrieve file count
-		$total_files = wp_count_posts( 'dedo_download' );
-		$total_files = $total_files->publish;
-	}
-
-	// Save to cache
-	if ( true == $cache ) {
-		$dedo_cache->set( $total_files );
-	}
-	// Format number
-	if ( $format ) {
-		$total_files = number_format_i18n( $total_files );
-	}
-	// Apply filters and return
-	return apply_filters( 'dedo_shortcode_ddownload_files', $total_files );
-}
-add_shortcode( 'ddownload_files', 'dedo_shortcode_ddownload_files' );
 
 /**
  * Allow shortcodes in widgets
