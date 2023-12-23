@@ -67,6 +67,14 @@ background:#000000cc
 content:"exe"
 }
 
+.ftyp-msi {
+background:#000000dd
+}
+
+.ftyp-msi::after {
+content:"msi"
+}
+
 .ftyp-pdf,.ftyp-xps {
 background:#e13d34
 }
