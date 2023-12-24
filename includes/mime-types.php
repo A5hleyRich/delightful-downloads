@@ -35,6 +35,7 @@ function dedo_mime_types( $existing_mimes ) {
 	// Misc
 	$existing_mimes['json']	= 'application/json';
 	$existing_mimes['exe']	= 'application/octet-stream';
+	$existing_mimes['msi']	= 'application/vnd.ms-msi';
 	$existing_mimes['dmg']	= 'application/x-apple-diskimage';
 
 	return $existing_mimes;
