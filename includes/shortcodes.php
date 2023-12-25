@@ -291,12 +291,14 @@ function dedo_shortcode_ddownload_list( $atts ) {
 				$total_files = wp_count_posts( 'dedo_download' )->publish;
 				echo '<tfoot><tr><td>';
 				if ((int) $filecount < (int) $total_files) {
-					echo '<i class="fa fa-list"></i> <b>'.$filecount.'</b> '.__('files','delightful-downloads');
-					echo ' <b>' . size_format( $tfilesize, 1 ).'</b>';
+					echo '<i class="fa fa-list"></i> <b>'.$filecount.'</b> &nbsp;';
+					echo '<i class="fa fa-expand"></i> <b>' . size_format( $tfilesize, 1 ).'</b>';
+					echo ' <i class="fa fa-cloud-download"></i> <b>'. number_format_i18n( $dlcount,0).'</b>';
 				}	
-				echo ' <i class="fa fa-cloud-download"></i> <b>'. number_format_i18n( $dlcount,0).'</b>';
-				echo ' &nbsp; TOTAL <b>'.$total_files.'</b> '.__('files','delightful-downloads').' <b>'.size_format( dedo_get_filesize(), 1 ).'</b>';
-				echo '</td></tr></tfoot>';
+				echo ' &nbsp; TOTAL <b>'.$total_files.'</b> &nbsp;'
+					.'<i class="fa fa-expand"></i> <b>'.size_format( dedo_get_filesize(), 1 ).'</b> '
+					.'<i class="fa fa-cloud-download"></i> <b>'.number_format_i18n(dedo_total_downloads());
+				echo '</b></td></tr></tfoot>';
 			}	
 			echo '</table>';
 			$output = ob_get_clean();

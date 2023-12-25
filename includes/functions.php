@@ -21,6 +21,29 @@ function dedo_template( $single_template ) {
 }
 add_filter( 'single_template', 'dedo_template' );
 
+// k,M,G T formatieren bei großen Zahlen
+function dedo_number_format_short( $n ) {
+    if ( $n>0 ) {
+		$si_prefix = array( '', 'K', 'M', 'G', 'T', 'E', 'Z', 'Y' );
+		$base = 1024;
+		if ($n < $base) $precis=0; else $precis=1;
+		$class = min((int)log($n , $base) , count($si_prefix) - 1);
+		return '<span title="'.number_format_i18n($n ?? 0).'">' . sprintf('%1.'.$precis.'f' , $n / pow($base,$class)) . $si_prefix[$class] . '</span>';
+	}	
+}
+
+// colorize heat after given value and return volor value
+function dedo_heatcolor($visithotness) {
+	$heatmapcols = array('#A9D0F5','#A9e2f3','#a9f5f2','#b2ff99','#ccff99','#e5ff99','#ffff99','#ffe599','#ffee99','#ffcc99','#ffb299aa','#ff9999aa','#D0A9F5aa','#F5A9F2aa');
+	if ( $visithotness <=3 ) $hotcolor = $heatmapcols[0];
+	else if ( $visithotness <=100 ) $hotcolor = $heatmapcols[floor(floor($visithotness) / 10)];
+	else if ( $visithotness <=150 ) $hotcolor = $heatmapcols[11];
+	else if ( $visithotness <=200 ) $hotcolor = $heatmapcols[12];
+	else if ( $visithotness >200 ) $hotcolor = $heatmapcols[13];
+	return $hotcolor;	
+}
+
+
 // Zeitdifferenz ermitteln und gestern/vorgestern/morgen schreiben: chartscodes, dedo, foldergallery, timeclock, w4-post-list
 if( !function_exists('ago')) {
 	function ago($timestamp) {
@@ -59,6 +82,7 @@ if( !function_exists('ago')) {
 
 // Shortcode Styles
 function dedo_get_shortcode_styles() {
+	if (empty(get_theme_mod('userfade')) || is_user_logged_in()) $userfade='iconleiste'; else $userfade='iconfade';
 	$styles = array(
 	 	'infobox'		=> array(
 	 		'name'			=> __( 'Infobox mit Icon, Rahmen und Details', 'delightful-downloads' ),
@@ -66,10 +90,10 @@ function dedo_get_shortcode_styles() {
 					<div style="display:flex;width:100%">
 					<div style="display:inline-block;min-width:60px;width:60px">%icon%</div>
 					<div style="display:inline-block;width:100%;min-width:70%">
-					<div class="iconfade" style="background-color:#ffffff55">
+					<div class="'.$userfade.'" style="background-color:#fff5">
 					%locked% &nbsp; %adminedit% &nbsp;%datesymbol%  
 					%filesize% %downloadtime% %count% &nbsp; %filename%</div> 
-					<div class="greybox">%category% %tags%</div>
+					<div class="greybox" style="background-color:#fff5">%category% %tags%</div>
 					<h6 style="margin-top:6px"><a href="%permalink%" title="'.__( 'download details', 'delightful-downloads' ).'" rel="nofollow">
 					%title%</a></h6>
 					<a class="ddownload-button page-numbers"  href="%url%" title="'.__( 'download file', 'delightful-downloads' ).'" rel="nofollow">'.__( 'download file', 'delightful-downloads' ).'</a>
@@ -116,6 +140,7 @@ function dedo_get_shortcode_styles() {
  * Returns List Styles
  */
 function dedo_get_shortcode_lists() {
+	if (empty(get_theme_mod('userfade')) || is_user_logged_in()) $userfade='iconleiste'; else $userfade='iconfade';
 	$lists = array(
 	 	'title'				=> array(
 	 		'name'				=> __( 'Title', 'delightful-downloads' ),
@@ -160,8 +185,8 @@ function dedo_get_shortcode_lists() {
 	 		'format'			=> '<div style="display:flex;width:100%">
 					<div style="display:inline-block;min-width:55px;width:55px">%icon%</div>
 					<div style="display:inline-block;width:100%;min-width:70%;vertical-align:top;line-height:1.35em">
-					<div class="iconfade" style="background-color:#ffffff55">%locked% &nbsp; %adminedit%
-					&nbsp;%dateago% %filesize% %count%</div><div class="greybox">%category% %tags%</div>
+					<div class="'.$userfade.'" style="background-color:#fff5">%locked% &nbsp; %adminedit%
+					&nbsp;%dateago% %filesize% %count%</div><div class="greybox" style="background-color:#fff5">%category% %tags%</div>
 					<h6 style="margin-top:4px"><a style="display:block;max-width:98vw;white-space:nowrap;overflow:hidden" href="%url%" title="'.__( 'download file', 'delightful-downloads' ).'" rel="nofollow">
 					<i class="fa fa-download"></i> %title%</a></h6>
 					</div></div>'
@@ -172,9 +197,9 @@ function dedo_get_shortcode_lists() {
 					<div style="display:flex;width:100%">
 					<div style="display:inline-block;min-width:55px;width:55px">%icon%</div>
 					<div style="display:inline-block;width:100%;min-width:70%">
-					<div class="iconfade" style="background-color:#ffffff55">%locked% &nbsp; %adminedit%
+					<div class="'.$userfade.'" style="background-color:#fff5">%locked% &nbsp; %adminedit%
 					&nbsp;%datesymbol% %filename% %filesize% %count% %downloadtime%</div>
-					<div class="greybox">%category% %tags%</div>
+					<div class="greybox" style="background-color:#fff5">%category% %tags%</div>
 					<h6 style="margin-top:4px"><a style="display:block;max-width:98vw;white-space:nowrap;overflow:hidden" href="%url%" title="'.__( 'download file', 'delightful-downloads' ).'" rel="nofollow">
 					<i class="fa fa-download"></i> %title%</a></h6>
 					<div>%description%</div></div>%thumb%</div>'
@@ -226,7 +251,7 @@ function download_times($filesize) {
 		$outp[] = ($h>0 ? $h.'h ' :'').($m>0 ? $m.'m ' :'').$s.'s@'.$value.'MBit';
 	}	
 	if ($s > 0) $s=1;
-	$dtime = '<a class="newlabel white" title="'.implode("\n", $outp).'"><i class="fa fa-clock-o"></i> '.$outp[5].'</a>';
+	$dtime = '<a class="newlabel white" title="'.implode("\n", $outp).'"><i class="fa fa-clock-o"></i> '.$outp[4].'</a>';
 	return $dtime;
 }
 
@@ -447,7 +472,16 @@ function download_times($filesize) {
  	}
  	// downloads (count)
  	if ( strpos( $string, '%count%' ) !== false ) {
- 		$value = '<span title="Downloadcounter" class="newlabel white"><i class="fa fa-cloud-download" style="font-size:1.1em;margin-right:3px"></i>' . number_format_i18n( get_post_meta( $id, '_dedo_file_count', true ) ).'</span>';
+		$filedlc = get_post_meta( $id, '_dedo_file_count', true );
+		$totaldownloads = dedo_total_downloads();
+		if ($totaldownloads > 0) {
+			$perctotal = round( $filedlc / $totaldownloads ) * 100;
+			// Wenn heatcolor aus penguin_mod vorhanden
+			$hotcolor = dedo_heatcolor($perctotal);
+		} else { $perctotal = 0; $hotcolor = '#fff'; }
+		$fullcounter = number_format_i18n( $filedlc );
+		$shortcounter = dedo_number_format_short($filedlc);
+ 		$value = '<span title="Downloadcounter: '.$fullcounter.' Ranking: '.$perctotal.'%" class="newlabel" style="background-color:'.$hotcolor.'" ><i class="fa fa-cloud-download" style="font-size:1.1em;margin-right:3px"></i>' . $shortcounter .'</span>';
  		$string = str_replace( '%count%', $value, $string );
  	}
  	// file name
@@ -458,9 +492,9 @@ function download_times($filesize) {
  	// protected file
  	if ( strpos( $string, '%locked%' ) !== false ) {
  		if (post_password_required($id)) {
-			$value='<i title="Kennwortgeschützt" class="fa fa-lg fa-lock" style="color:tomato"></i>';
+			$value='<i title="Kennwortgeschützt" class="fa fa-lock" style="color:tomato"></i>';
 		} else {
-			$value='';
+			$value='<i title="öffentlich" class="fa fa-unlock"></i>';
 		}
  		$string = str_replace( '%locked%', $value, $string );
  	}
@@ -858,4 +892,11 @@ function dedo_get_file_icon( $file ) {
 	$fmime = dedo_get_file_mime( $file );
 	$icon = '<i class="ftyp ftyp-'.strtolower($ext).'" title="'.$ext.'-Datei&#10;'.$fmime.'"></i>';
 	return $icon;
+}
+
+// Get total downloads counter
+function dedo_total_downloads() {
+	global $wpdb;
+	$sql = $wpdb->prepare( "SELECT SUM(meta_value) FROM $wpdb->postmeta	WHERE meta_key = %s	", '_dedo_file_count' );
+	return $wpdb->get_var( $sql );
 }
