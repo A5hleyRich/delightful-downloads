@@ -28,7 +28,7 @@ function dedo_number_format_short( $n ) {
 		$base = 1024;
 		if ($n < $base) $precis=0; else $precis=1;
 		$class = min((int)log($n , $base) , count($si_prefix) - 1);
-		return '<span title="'.number_format_i18n($n ?? 0).'">' . sprintf('%1.'.$precis.'f' , $n / pow($base,$class)) . $si_prefix[$class] . '</span>';
+		return sprintf('%1.'.$precis.'f' , $n / pow($base,$class)) . $si_prefix[$class];
 	}	
 }
 
@@ -91,8 +91,7 @@ function dedo_get_shortcode_styles() {
 					<div style="display:inline-block;min-width:60px;width:60px">%icon%</div>
 					<div style="display:inline-block;width:100%;min-width:70%">
 					<div class="'.$userfade.'" style="background-color:#fff5">
-					%locked% &nbsp; %adminedit% &nbsp;%datesymbol%  
-					%filesize% %downloadtime% %count% &nbsp; %filename%</div> 
+					%locked% &nbsp; %adminedit%%datesymbol%%filesize%%downloadtime%%count%%filename%</div> 
 					<div class="greybox" style="background-color:#fff5">%category% %tags%</div>
 					<h6 style="margin-top:6px"><a href="%permalink%" title="'.__( 'download details', 'delightful-downloads' ).'" rel="nofollow">
 					%title%</a></h6>
@@ -186,7 +185,7 @@ function dedo_get_shortcode_lists() {
 					<div style="display:inline-block;min-width:55px;width:55px">%icon%</div>
 					<div style="display:inline-block;width:100%;min-width:70%;vertical-align:top;line-height:1.35em">
 					<div class="'.$userfade.'" style="background-color:#fff5">%locked% &nbsp; %adminedit%
-					&nbsp;%dateago% %filesize% %count%</div><div class="greybox" style="background-color:#fff5">%category% %tags%</div>
+					%dateago%%filesize%%count%</div><div class="greybox" style="background-color:#fff5">%category% %tags%</div>
 					<h6 style="margin-top:4px"><a style="display:block;max-width:98vw;white-space:nowrap;overflow:hidden" href="%url%" title="'.__( 'download file', 'delightful-downloads' ).'" rel="nofollow">
 					<i class="fa fa-download"></i> %title%</a></h6>
 					</div></div>'
@@ -198,7 +197,7 @@ function dedo_get_shortcode_lists() {
 					<div style="display:inline-block;min-width:55px;width:55px">%icon%</div>
 					<div style="display:inline-block;width:100%;min-width:70%">
 					<div class="'.$userfade.'" style="background-color:#fff5">%locked% &nbsp; %adminedit%
-					&nbsp;%datesymbol% %filename% %filesize% %count% %downloadtime%</div>
+					%datesymbol%%filename%%filesize%%count%%downloadtime%</div>
 					<div class="greybox" style="background-color:#fff5">%category% %tags%</div>
 					<h6 style="margin-top:4px"><a style="display:block;max-width:98vw;white-space:nowrap;overflow:hidden" href="%url%" title="'.__( 'download file', 'delightful-downloads' ).'" rel="nofollow">
 					<i class="fa fa-download"></i> %title%</a></h6>
@@ -475,13 +474,13 @@ function download_times($filesize) {
 		$filedlc = get_post_meta( $id, '_dedo_file_count', true );
 		$totaldownloads = dedo_total_downloads();
 		if ($totaldownloads > 0) {
-			$perctotal = round( $filedlc / $totaldownloads ) * 100;
+			$perctotal = round( (int) $filedlc / $totaldownloads * 100) ;
 			// Wenn heatcolor aus penguin_mod vorhanden
 			$hotcolor = dedo_heatcolor($perctotal);
 		} else { $perctotal = 0; $hotcolor = '#fff'; }
 		$fullcounter = number_format_i18n( $filedlc );
 		$shortcounter = dedo_number_format_short($filedlc);
- 		$value = '<span title="Downloadcounter: '.$fullcounter.' Ranking: '.$perctotal.'%" class="newlabel" style="background-color:'.$hotcolor.'" ><i class="fa fa-cloud-download" style="font-size:1.1em;margin-right:3px"></i>' . $shortcounter .'</span>';
+ 		$value = '<span title="DLCounter: '.$fullcounter.' Ranking: '.$perctotal.'%" class="newlabel" style="background-color:'.$hotcolor.'" ><i class="fa fa-cloud-download" style="font-size:1.1em;margin-right:3px"></i>' . $shortcounter .'</span>';
  		$string = str_replace( '%count%', $value, $string );
  	}
  	// file name
