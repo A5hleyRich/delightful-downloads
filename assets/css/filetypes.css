@@ -14,7 +14,7 @@ width:45px
 }
 
 .ftyp::before {
-border-color:#00000000 #00000000 #ffffff88 #ffffff88;
+border-color:#0000 #0000 #fff8 #fff8;
 border-style:solid;
 border-width:6px;
 content:"";
@@ -44,7 +44,7 @@ filter:brightness(0.8)
 }
 
 .ftyp-zip,.ftyp-rar,.ftyp-7z {
-background:#f4b400
+background:#fb0
 }
 
 .ftyp-7z::after {
@@ -60,7 +60,7 @@ content:"rar"
 }
 
 .ftyp-exe {
-background:#000000cc
+background:#000c
 }
 
 .ftyp-exe::after {
@@ -68,7 +68,7 @@ content:"exe"
 }
 
 .ftyp-msi {
-background:#000000dd
+background:#000d
 }
 
 .ftyp-msi::after {
@@ -76,7 +76,7 @@ content:"msi"
 }
 
 .ftyp-pdf,.ftyp-xps {
-background:#e13d34
+background:#c33
 }
 
 .ftyp-pdf::after {
@@ -88,7 +88,7 @@ content:"xps"
 }
 
 .ftyp-doc,.ftyp-docx,.ftyp-docm,.ftyp-dotx,.ftyp-dotm,.ftyp-odt,.ftyp-ott {
-background:#307cf1
+background:#36f
 }
 
 .ftyp-doc::after {
@@ -120,7 +120,7 @@ content:"ott"
 }
 
 .ftyp-pub,.ftyp-pubx {
-background:#0F9DAA
+background:#19a
 }
 
 .ftyp-pub::after {
@@ -132,7 +132,7 @@ content:"pubx"
 }
 
 .ftyp-xls,.ftyp-xlsx,.ftyp-xlsm,.ftyp-xltx,.ftyp-xltm,.ftyp-ods,.ftyp-ots {
-background:#0f9d58
+background:#195
 }
 
 .ftyp-xls::after {
@@ -164,7 +164,7 @@ content:"ots"
 }
 
 .ftyp-vsd,.ftyp-vsdx,.ftyp-vss,.ftyp-vssx {
-background:#0000ffaa
+background:#34b
 }
 
 .ftyp-vsd::after {
@@ -184,7 +184,7 @@ content:"vssx"
 }
 
 .ftyp-ppt,.ftyp-pps,.ftyp-pptx,.ftyp-ppsx,.ftyp-pot,.ftyp-potm,.ftyp-pptm {
-background:#FF6A00ee
+background:#f70
 }
 
 .ftyp-ppt::after {
@@ -216,7 +216,7 @@ content:"pptm"
 }
 
 .ftyp-txt,.ftyp-css,.ftyp-php,.ftyp-asp,.ftyp-js,.ftyp-c {
-background:#0000cc55
+background:#0006
 }
 
 .ftyp-txt::after {
@@ -252,7 +252,7 @@ content:"xml"
 }
 
 .ftyp-jpg,.ftyp-png,.ftyp-gif,.ftyp-heic,.ftyp-bmp {
-background:#9e54bd
+background:#77f
 }
 
 .ftyp-jpg::after {
@@ -276,7 +276,7 @@ content:"bmp"
 }
 
 .ftyp-mp3,.ftyp-wma,.ftyp-m4a {
-background:#00880088
+background:#96f
 }
 
 .ftyp-mp3::after {
@@ -292,7 +292,7 @@ content:"m4a"
 }
 
 .ftyp-mp4,.ftyp-avi,.ftyp-mkv,.ftyp-mov,.ftyp-wmv {
-background:#7a3ce7
+background:#74e
 }
 
 .ftyp-mp4::after {
