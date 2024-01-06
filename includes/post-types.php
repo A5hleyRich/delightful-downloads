@@ -37,7 +37,7 @@ function dedo_download_post_type() {
 	$args = array(
 		'labels'        => apply_filters( 'dedo_ddownload_labels', $labels ),
 		'public'        => true,
-		'rewrite'       => array( 'slug' => 'ddl' ),
+		// 'rewrite'       => array( 'slug' => 'ddl' ),
 		'has_archive'	=> true,
 		'show_ui'       => true,
 		'show_in_menu'  => true,
