@@ -331,7 +331,7 @@ function download_times($filesize) {
  	if ( strpos( $string, '%datesymbol%' ) !== false ) {
 		$diff = time() - get_the_modified_time('U', $id);
 		if (round((intval($diff) / 86400), 0) < 30) {
-			$newcolor = "#ffd80088";
+			$newcolor = "#fd08";
 		} else {
 			$newcolor = "#fff";
 		}
@@ -365,7 +365,7 @@ function download_times($filesize) {
  	if ( strpos( $string, '%dateago%' ) !== false ) {
 		$diff = time() - get_the_modified_time('U', $id);
 		if (round((intval($diff) / 86400), 0) < 30) {
-			$newcolor = "#ffd80088";
+			$newcolor = "#fd08";
 		} else {
 			$newcolor = "#fff";
 		}
@@ -399,7 +399,7 @@ function download_times($filesize) {
  	if ( strpos( $string, '%date%' ) !== false ) {
 		$diff = time() - get_the_modified_time('U', $id);
 		if (round((intval($diff) / 86400), 0) < 30) {
-			$newcolor = "#ffd80088";
+			$newcolor = "#fd08";
 		} else {
 			$newcolor = "#fff";
 		}
@@ -431,7 +431,7 @@ function download_times($filesize) {
  	if ( strpos( $string, '%shortdate%' ) !== false ) {
 		$diff = time() - get_the_modified_time('U', $id);
 		if (round((intval($diff) / 86400), 0) < 30) {
-			$newcolor = "#ffd80088";
+			$newcolor = "#fd08";
 		} else {
 			$newcolor = "#fff";
 		}
