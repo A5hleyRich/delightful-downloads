@@ -1,30 +1,92 @@
-![Version](https://img.shields.io/wordpress/plugin/dt/delightful-downloads.svg) ![Rating](https://img.shields.io/wordpress/plugin/r/delightful-downloads.svg)
+# Delightful Downloads – PBMod Fork
 
-## Bugs
+A professional WordPress download manager with secure file delivery, signed 7-day and 365-day ticket links, GDPR-friendly statistics, advanced shortcode support and extended download presentation.
 
-If you find a bug, please raise it [here](https://github.com/A5hleyRich/delightful-downloads/issues).
+## Why this Fork?
 
-## Contributions
+This PBMod fork combines the best improvements from multiple Delightful Downloads forks and adds additional security, usability and localization features.
 
-Anyone is welcome to contribute to Delightful Downloads. There are various ways to do so:
+### Improvements
 
-* Report a bug on GitHub
-* Send a Pull Request with your bug fixes and/or new features
-* [Translate](https://www.transifex.com/projects/p/delightful-downloads/) Delightful Downloads into different languages
-* Provide feedback and suggestions on enhancements
+- Security fixes for the former jQueryFileTree vulnerability
+- One-Day-Pass download links
+- Extended file type icons
+- Additional file type support (Office, Visio, 7-Zip and more)
+- Categories and tags for downloads
+- Extended metadata support
+- German and German Formal translations
+- Improved shortcode layouts and infoboxes
 
-## Development
+## Features
 
-Development should be performed on the __develop__ branch. After cloning the __develop__ branch to your local machine you should run:
+### Secure Download Management
+- Protected download directories
+- Password protected downloads
+- Member-only downloads
+- Bot protection
+- Optional browser viewing for PDFs and media files
 
-`npm install`
+### Signed Ticket Links
+- Shareable signed download links
+- 7-day and 365-day validity options
+- Easy sharing with customers and partners
 
-Followed by:
+### Download Statistics
+- Download counters
+- Download logs
+- Configurable duplicate protection
+- Automatic log cleanup
+- Optional country detection via Chartcodes/IPFlag integration
+- GDPR-friendly anonymized IP storage
 
-`grunt`
+### Download Organization
+- Categories and tags
+- Local and remote files
+- Searchable download lists
+- Sorting by title, date, filesize and downloads
 
-This will build the required CSS files.
+### Frontend Presentation
+- One canonical single-download display
+- One canonical download-list display
+- One unified singular template
+- File type icons
+- Extensive wildcard support
+- Folder downloads with SVG protection status and optional share tokens
 
-If you require the localisation files you will need to install the [Transifex client](http://docs.transifex.com/client/setup/) and then run:
+### Developer Features
+- Filter hooks
+- Custom list templates
+- Custom output styles
+- Custom button styles
+- Theme integration support
 
-`grunt translate`
+## Main Shortcodes
+
+```text
+[ddownload id="123"]
+[ddownload_list]
+```
+
+The complete shortcode reference, wildcard documentation, template examples and developer documentation can be found in `readme.txt`.
+
+## Documentation
+
+A complete user and developer reference is included in the project:
+
+- Shortcodes
+- Wildcards
+- Output styles
+- List styles
+- Button styles
+- Custom templates
+- Filters and hooks
+- Installation guide
+- Changelog
+
+## Contributing
+
+Bug reports, pull requests and feature suggestions are welcome.
+
+## License
+
+GPL v2 or later

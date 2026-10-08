@@ -1,0 +1,121 @@
+:root{--dedo-accent:#04a4cc}
+#dedo-shortcode-modal{z-index:100000}
+#dedo-shortcode-modal .dedo-modal-content h1{margin-bottom:24px}
+#dedo-shortcode-modal .dedo-modal-content p{color:#333;font-size:13px}
+#dedo-shortcode-modal .dedo-modal-content p.clear:after{clear:both;content:"";display:table}
+#dedo-shortcode-modal .dedo-modal-content label.column-2,#dedo-stats-export .left,#dedo-stats-export .right,#dedo-existing-download .left-panel,#dedo-existing-download .right-panel{box-sizing:border-box;float:left}
+#dedo-shortcode-modal .dedo-modal-content label.column-2{display:block;width:50%}
+#dedo-shortcode-modal .dedo-modal-content label.column-2:nth-child(1){padding-right:5px}
+#dedo-shortcode-modal .dedo-modal-content label.column-2:nth-child(2){padding-left:5px}
+#dedo-shortcode-modal .dedo-modal-content label span{line-height:12px}
+#dedo-shortcode-modal .dedo-modal-content input{border:1px solid #aaa;display:block;width:100%}
+#dedo-shortcode-modal .dedo-modal-content .buttons{background:#fcfcfc;border-top:1px solid #ddd;margin:24px -16px 0;padding:12px 16px}
+#dedo-shortcode-modal .dedo-modal-content .buttons a,.post-type-dedo_download th.column-downloads a span.sorting-indicator{margin-right:5px}
+#dedo-shortcode-modal select.dedo-native-select,#dedo-stats-export .left input,#dedo-stats-export .right input,#dedo_support,input.copy-to-clipboard{width:100%}
+.post-type-dedo_download .inline-edit-col-left,.post-type-dedo_download .inline-edit-col-right{float:none!important;margin-top:0!important;width:50%!important}
+.post-type-dedo_download .inline-edit-col-left .inline-edit-col,.post-type-dedo_download .inline-edit-col-right .inline-edit-col{border:none!important}
+.post-type-dedo_download .inline-edit-save a.save{float:none!important;margin-left:1em}
+.post-type-dedo_download .blank,.post-type-dedo_download td.column-members_only,.post-type-dedo_download td.column-open_browser,.post-type-dedo_download .column-members_only .true,.post-type-dedo_download .column-members_only .false,.post-type-dedo_download .column-open_browser .true,.post-type-dedo_download .column-open_browser .false{color:#555}
+.post-type-dedo_download .blank{cursor:default}
+.post-type-dedo_download th.column-downloads,.post-type-dedo_download .column-downloads{padding-right:20px}
+.post-type-dedo_download th.column-downloads a{display:inline}
+.post-type-dedo_download .column-downloads{text-align:right;width:60px}
+.post-type-dedo_download .column-members_only,.post-type-dedo_download .column-open_browser{text-align:center;width:30px}
+.post-type-dedo_download .column-members_only .icon,.post-type-dedo_download .column-open_browser .icon,.post-type-dedo_download .column-members_only .true,.post-type-dedo_download .column-members_only .false,.post-type-dedo_download .column-open_browser .true,.post-type-dedo_download .column-open_browser .false,#dedo-existing-download .file-status .status{display:inline-block;float:none}
+.post-type-dedo_download .column-members_only .icon,.post-type-dedo_download .column-open_browser .icon{height:1em;margin-top:-4px;overflow:hidden;vertical-align:middle;width:1em}
+.post-type-dedo_download .column-members_only .icon:before,.post-type-dedo_download .column-open_browser .icon:before,.post-type-dedo_download .column-members_only .true:before,.post-type-dedo_download .column-members_only .false:before,.post-type-dedo_download .column-open_browser .true:before,.post-type-dedo_download .column-open_browser .false:before,#dedo-media-button span.wp-media-buttons-icon:before,.dedo-modal .dedo-modal-close span.media-modal-icon:before,#dedo-existing-download .file-status .status:before{-webkit-font-smoothing:antialiased;content:'';font-family:dashicons;speak:none;text-align:center}
+.post-type-dedo_download .column-members_only .icon:before,.post-type-dedo_download .column-open_browser .icon:before{content:'\f110';font-size:1em;font-style:normal;font-weight:400}
+.post-type-dedo_download .column-open_browser .icon:before{content:'\f472'}
+.post-type-dedo_download .column-members_only .true:before,.post-type-dedo_download .column-members_only .false:before,.post-type-dedo_download .column-open_browser .true:before,.post-type-dedo_download .column-open_browser .false:before{content:'\f147';font-size:1.2em;font-style:normal;font-weight:400}
+.post-type-dedo_download .column-members_only .false:before,.post-type-dedo_download .column-open_browser .false:before{content:'\f335'}
+.post-type-dedo_download .view-switch,.post-type-dedo_download .inline-edit-group em,.post-type-dedo_download .inline-edit-group .inline-edit-private,.taxonomy-ddownload_category .row-actions .view,.taxonomy-ddownload_tag .row-actions .view,.post-type-dedo_download #visibility-radio-private,.post-type-dedo_download label[for="visibility-radio-private"],#dedo-upload-modal #dedo-drag-drop-area.uploading p{display:none}
+.post-type-dedo_download th.column-downloads a span,#ddownload-popular ol li .count,#ddownload-popular ol li .percentage,#ddownload-popular .sub #popular-downloads-dropdown,#ddownload-popular .sub .spinner{float:right}
+#dedo-media-button span.wp-media-buttons-icon:before{content:"\f316"!important;font-size:18px;font-style:normal;font-weight:400;line-height:1}
+#ddownload-count{margin:-11px 0 0}
+#ddownload-count ul,#ddownload-popular,#ddownload-popular ol,#ddownload-popular ol li,#ddownload-popular .sub .error{margin:0}
+#ddownload-count ul,#ddownload-popular .sub,#dedo-existing-download,#dedo-upload-modal #dedo-drag-drop-area-container{overflow:hidden}
+#ddownload-count ul li{box-sizing:border-box;display:block;float:left;margin:0;padding:5px 0;text-align:center;width:33%}
+#ddownload-count ul li .count{color:var(--dedo-accent);display:block;font-size:32px;font-weight:300;line-height:1.5}
+#ddownload-count ul li .label,#ddownload-popular ol li,#ddownload-popular ol li .position{color:#777}
+#ddownload-count ul li .label{display:block;font-size:12px;text-transform:uppercase}
+#ddownload-count ul li:nth-of-type(odd){border-right:1px dotted #eee}
+#ddownload-count ul li:nth-of-type(-n+2){padding-top:10px}
+#ddownload-count ul li:nth-of-type(n+3){padding-bottom:10px}
+#ddownload-popular h4{border:1px solid #eee;border-left:none;border-right:0;margin:0 -12px!important;padding:8px 12px;position:relative}
+#ddownload-popular ol{list-style:none;margin:0 -12px}
+#ddownload-popular ol li a{display:block;padding:8px 12px}
+#ddownload-popular ol li .position{display:inline-block;margin-right:1em}
+#ddownload-popular ol li:hover{background:#f2f2f2}
+#ddownload-popular ol li:nth-child(odd){background:#fafafa}
+#ddownload-popular ol li:nth-child(odd):hover{background:#f7f7f7}
+#ddownload-popular .sub{border-top:1px solid #eee;margin:0 -12px;padding:11px 12px 0}
+#ddownload-popular .sub .error,#dedo-progress-error,#dedo-existing-download .footer .delete,.dedo_download_page_dedo_settings .status.disconnected{color:red}
+.dedo_download_page_dedo_settings .nav-tab-wrapper{margin-bottom:0}
+.dedo_download_page_dedo_settings .nav-tab-wrapper .nav-tab:focus,#dedo-select-modal #dedo-file-browser .dedo-file-browser-item:focus{box-shadow:none;outline:none}
+.dedo_download_page_dedo_settings .description{max-width:600px}
+.dedo_download_page_dedo_settings .status-container{margin-top:12px}
+.dedo_download_page_dedo_settings .status-container .error,#dedo-progress-error{font-style:italic}
+.dedo_download_page_dedo_settings .status-container .error,#dedo-existing-download .footer .delete{color:#a00}
+.dedo_download_page_dedo_settings .status{color:#fff;display:inline-block;font-size:12px;font-weight:700;padding:3px 6px;text-transform:uppercase}
+.dedo_download_page_dedo_settings .status.connected{background:#32cd32}
+.dedo_download_page_dedo_settings #dedo-settings-main,.dedo_download_page_dedo_settings #dedo-settings-sidebar,#dedo-existing-download .left-panel,#dedo-existing-download .right-panel,#dedo-select-modal #dedo-file-browser{box-sizing:border-box}
+.dedo_download_page_dedo_settings #dedo-settings-main,.dedo_download_page_dedo_settings #dedo-settings-sidebar{float:left}
+.dedo_download_page_dedo_settings #dedo-settings-main{background-color:#fff;border:1px solid #e1e1e1;padding:.2em 20px 0 10px;width:75%}
+.dedo_download_page_dedo_settings #dedo-settings-sidebar{border-left:none;padding:1em 0 0 20px;width:25%}
+.dedo_download_page_dedo_settings .dedo-sub-option,#dedo-existing-download .dedo-sub-option{margin-top:30px}
+.dedo_download_page_dedo_settings label,#dedo-existing-download .form-table label{margin-right:12px}
+.dedo-settings-textarea{height:200px;width:50%}
+#dedo-existing-download{margin:-6px -12px -12px}
+input.copy-to-clipboard + .description{margin-top:5px}
+#dedo_support{height:500px;resize:vertical}
+#dedo-stats-export .left,#dedo-stats-export .right{margin-top:0;width:50%}
+#dedo-stats-export .left{padding-right:8px}
+#dedo-stats-export .right{padding-left:8px}
+#dedo-stats-export .left label,#dedo-stats-export .right label{color:#000;font-weight:700}
+.dedo-modal{background:#fff;box-shadow:0 5px 15px rgb(0 0 0 / 70%);padding:0 16px;position:fixed;top:60px;z-index:16000}
+.dedo-modal .dedo-modal-close{height:30px;position:absolute;right:10px;text-decoration:none;top:12px;width:30px;z-index:1000}
+.dedo-modal .dedo-modal-close span.media-modal-icon{background-image:none;display:block;height:15px;margin:8px auto 0;width:15px}
+.dedo-modal .dedo-modal-close span.media-modal-icon:before{color:#666;content:'\f158';font-size:20px;font-style:normal;font-weight:400;line-height:1;vertical-align:middle}
+.dedo-modal .dedo-modal-close:hover span.media-modal-icon:before{color:#0099d5}
+.dedo-modal h1{background:#fcfcfc;border-bottom:1px solid #ddd;font-size:22px;line-height:60px;margin:0 -16px;padding:0 16px}
+#dedo-modal-background{background:#000;bottom:0;left:0;opacity:.7;position:fixed;right:0;top:0;z-index:15999}
+.post-type-dedo_download #titlediv{margin-bottom:20px}
+.post-type-dedo_download #post-visibility-select p{margin-top:0}
+#dedo-new-download{padding:60px 0;text-align:center}
+#dedo-new-download .button{display:inline-block;font-size:16px;height:auto;margin:10px 5px;padding:16px 0;width:180px}
+#dedo-existing-download .left-panel{border-right:1px solid #ddd;margin-right:-1px;padding:30px 20px;text-align:center;width:33%}
+#dedo-existing-download .right-panel{border-left:none;padding:30px 20px;width:67%}
+#dedo-existing-download .footer{background:#f5f5f5;border-top:1px solid #ddd;clear:both;line-height:28px;padding:10px 12px}
+#dedo-existing-download .footer .button{margin-left:5px}
+#dedo-existing-download .footer .delete{float:right;text-decoration:none}
+#dedo-existing-download .footer .delete:hover{color:red}
+#dedo-existing-download .file-icon{height:128px;width:128px}
+#dedo-existing-download .file-icon{margin:0 auto 1.4em}
+#dedo-existing-download .file-icon .ftyp{display:flex;margin:0 auto;transform:scale(2);transform-origin:top center}
+#dedo-existing-download .file-name{font-weight:700;position:relative}
+#dedo-existing-download .file-size{color:#666;margin-bottom:1.4em}
+#dedo-existing-download .file-status .status:before{font-style:normal;font-weight:400;line-height:1}
+#dedo-existing-download .file-status .status.local:before{color:#0a0;content:'\f147';font-size:22px}
+#dedo-existing-download .file-status .status.remote:before{color:#0a0;content:'\f103';font-size:16px}
+#dedo-existing-download .file-status .status.warning:before{color:#ffba00;content:'\f348';font-size:18px}
+#dedo-existing-download .form-table{margin:-20px 0}
+#dedo-existing-download .form-table th{padding-right:30px;white-space:nowrap;width:auto}
+#dedo-existing-download .form-table td{padding-right:0;width:100%}
+#dedo-existing-download .form-table .regular-text{width:100px}
+#dedo-upload-modal #dedo-drag-drop-area-container{display:table;margin-top:1em;position:relative;width:100%}
+#dedo-upload-modal #dedo-drag-drop-area{border:4px dashed #bbb;display:table-cell;height:200px;transition:all .5s ease;vertical-align:middle}
+#dedo-upload-modal #dedo-drag-drop-area p{color:#aaa;font-size:14px;margin:5px 0;text-align:center}
+#dedo-upload-modal #dedo-drag-drop-area .drag-drop-info{font-size:20px}
+#dedo-upload-modal #dedo-drag-drop-area #dedo-progress-percent{background:var(--dedo-accent);bottom:0;display:none;left:0;opacity:.5;position:absolute;top:0}
+#dedo-upload-modal #dedo-drag-drop-area #dedo-progress-text{color:var(--dedo-accent);display:none;font-size:48px;line-height:1;text-align:center;width:100%}
+#dedo-upload-modal #dedo-drag-drop-area.uploading{border:4px solid var(--dedo-accent);height:100px}
+#dedo-upload-modal #dedo-drag-drop-area.uploading #dedo-progress-percent,#dedo-upload-modal #dedo-drag-drop-area.uploading #dedo-progress-text{display:block}
+#dedo-select-modal #dedo-file-url{padding:5px 5px 6px}
+#dedo-select-modal .dedo-file-browser-breadcrumbs{font-size:13px;margin:0 0 10px}
+#dedo-select-modal .dedo-file-browser-breadcrumbs .separator{color:#777;margin:0 4px}
+#dedo-select-modal #dedo-file-browser{background:#fcfcfc;border:1px solid #ddd;box-shadow:inset 0 1px 2px rgb(0 0 0 / 7%);display:flex;flex-direction:column;gap:4px;margin:1px;max-height:200px;overflow:auto;padding:10px;width:99%}
+#dedo-select-modal #dedo-file-browser .dedo-file-browser-item{align-items:center;background:transparent;border:0;color:#1d2327;cursor:pointer;display:flex;gap:8px;padding:6px 8px;text-align:left;text-decoration:none;width:100%}
+#dedo-select-modal #dedo-file-browser .dedo-file-browser-item:hover,#dedo-select-modal #dedo-file-browser .dedo-file-browser-item:focus{background:#f0f6fc}
+#dedo-select-modal #dedo-file-browser .dedo-file-browser-item.active{background:#dcdcde}
+#dedo-select-modal #dedo-file-browser .dedo-file-browser-item .dashicons{color:#646970}
+input.copy-to-clipboard{border:none;box-shadow:none;cursor:pointer;font-family:"Courier New",Courier,mono;font-size:1em;margin:0;max-width:300px;padding:6px 10px}
